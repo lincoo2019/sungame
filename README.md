@@ -77,6 +77,7 @@ scons platform=macos arch=arm64 target=editor
 
 ## 版权说明
 
-- `app/`：本项目自有代码。
+- `app/`：本项目自有代码，以 **AGPL-3.0** 发布（见 [LICENSE](LICENSE)）；原因是静态链接了 AGPL 的 libchiaki。
+- 第三方组件与各自许可见 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)。
 - `engine/`：Godot Engine，遵循 MIT 许可证（见 `engine/COPYRIGHT.txt`）。
 - `game/`：游戏工程与素材版权归原作者所有，仅用于个人学习与研究，请勿用于商业用途。
