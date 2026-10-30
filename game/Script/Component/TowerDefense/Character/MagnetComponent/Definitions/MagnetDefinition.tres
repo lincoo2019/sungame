@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MagnetComponentDefinition" format=3 uid="uid://cs613yqq3ycr4"]
+
+[ext_resource type="Resource" uid="uid://b1wm86anngnv1" path="res://Script/Component/TowerDefense/Character/MagnetComponent/MagnetComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://b7fnmxkhv541o" path="res://Script/Component/TowerDefense/Character/MagnetComponent/MagnetComponentDefinition.cs" id="3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape_check"]
+size = Vector2(240, 294)
+
+[sub_resource type="Resource" id="CheckShape"]
+script = ExtResource("2")
+Geometry = SubResource("RectangleShape_check")
+
+[resource]
+script = ExtResource("3")
+checkShape = SubResource("CheckShape")
+checkRange = Vector2(1.5, 1.5)
+posMarkerPath = NodePath("SpriteGroup/Marker2D")
+breakDownTime = 1.0
+ComponentTypeId = "MagnetComponent"
+DefinitionId = "builtin.component.magnet.item_magnet"
+InstanceId = "character.magnet"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"MagnetComponent"]

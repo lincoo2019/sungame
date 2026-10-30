@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://r8vifboa306g"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://ds36lp2hcu2k1" path="res://Asset/Anime/Character/Plant/Chapter0/ThreePeater/Scene/TowerDefensePlantThreePeaterComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://buffmxl2plh0f" path="res://Asset/Anime/Character/Plant/Chapter0/ThreePeater/Scene/TowerDefensePlantThreePeater.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="5"]
+[ext_resource type="Resource" uid="uid://bac84wqb8laum" path="res://Asset/Anime/Character/Plant/Chapter0/ThreePeater/Config/TowerDefensePlantThreePeater.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://drooiootm4kg3" path="res://Asset/Anime/Character/Plant/Chapter0/ThreePeater/ThreePeater.tscn" id="7"]
+
+[sub_resource type="Resource" id="Resource_ef1bb"]
+script = ExtResource("5")
+projectileName = &"Pea"
+catapultHeight = 400.0
+
+[node name="TowerDefensePlantThreePeater" unique_id=1472601311 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 1
+projectileData = SubResource("Resource_ef1bb")
+idleAnimeClip = "BodyIdle"
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ThreePeater")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="ThreePeater" parent="SpriteGroup/TransformPoint" index="0" unique_id=1213213646 instance=ExtResource("7")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="Head1" parent="SpriteGroup/TransformPoint/ThreePeater" index="0"]
+trueFrameRate = 180.0
+
+[node name="Head2" parent="SpriteGroup/TransformPoint/ThreePeater" index="1"]
+trueFrameRate = 180.0
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/ThreePeater/Head2" index="0" unique_id=1461046595]
+position = Vector2(21.162, -2.6)
+
+[node name="Head3" parent="SpriteGroup/TransformPoint/ThreePeater" index="2"]
+trueFrameRate = 180.0
+
+[editable path="SpriteGroup/TransformPoint/ThreePeater"]

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ChangeProjectileComponentDefinition" format=3 uid="uid://dradlk0m3o037"]
+
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="1"]
+[ext_resource type="Script" uid="uid://vwytd5y6qoea" path="res://Script/Component/TowerDefense/Character/ChangeProjectile/ChangeProjectileComponentDefinition.cs" id="2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_check"]
+size = Vector2(100, 98)
+
+[sub_resource type="Resource" id="AabbShape2DResource_check"]
+script = ExtResource("1")
+Geometry = SubResource("RectangleShape2D_check")
+
+[resource]
+script = ExtResource("2")
+changeName = &"Fire"
+changeAudio = "FireHit"
+checkShape = SubResource("AabbShape2DResource_check")
+ComponentTypeId = "ChangeProjectileComponent"
+DefinitionId = "builtin.component.change_projectile.fire.centered"
+InstanceId = "change_projectile"
+WireIndex = 0
+StateMachineDefinition = null
+LegacyNodeNames = [&"ChangeProjectileComponent"]

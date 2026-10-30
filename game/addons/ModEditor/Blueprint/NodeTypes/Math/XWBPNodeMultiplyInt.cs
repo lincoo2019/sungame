@@ -1,0 +1,40 @@
+using Godot;
+
+namespace PVZHE.ModEditor.Blueprint;
+
+public partial class XWBPNodeMultiplyInt : XWBPNodeType
+{
+	public XWBPNodeMultiplyInt()
+	{
+		base.TypeId = "__XWBPGraphNode_MultiplyInt";
+		base.Category = "数学";
+		base.DisplayName = "乘法 (Int)";
+		base.Description = "整数相乘";
+		base.Color = new Color(0.4f, 0.3f, 0.2f);
+		AddInput("A", XWBPNodePortData.PortType.Integer, "", 0);
+		AddInput("B", XWBPNodePortData.PortType.Integer, "", 0);
+		AddOutput("结果", XWBPNodePortData.PortType.Integer);
+	}
+
+	public override string GetOutputValue(XWBPCodeGenerator generator, XWBPNodeData node, string portName, XWBPFunctionData function)
+	{
+		if (portName == "结果")
+		{
+			string inputValue = generator.GetInputValue(node, "A", function);
+			string inputValue2 = generator.GetInputValue(node, "B", function);
+			return $"({inputValue} * {inputValue2})";
+		}
+		return "null";
+	}
+
+	public override string GetOutputValueFromGraph(XWBPCodeGenerator generator, XWBPNodeData node, string portName, XWBPGraphData graph)
+	{
+		if (portName == "结果")
+		{
+			string inputValueFromGraph = generator.GetInputValueFromGraph(node, "A", graph);
+			string inputValueFromGraph2 = generator.GetInputValueFromGraph(node, "B", graph);
+			return $"({inputValueFromGraph} * {inputValueFromGraph2})";
+		}
+		return "null";
+	}
+}

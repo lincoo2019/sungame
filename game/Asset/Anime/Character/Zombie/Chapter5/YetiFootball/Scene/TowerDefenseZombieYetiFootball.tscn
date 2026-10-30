@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dycupcitaypey"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bi7ocxlqam2se" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiFootball/Scene/TowerDefenseZombieYetiFootball.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://bdm1rrviqrmxo" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiFootball/Config/TowerDefenseZombieYetiFootball.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bulmb5eshcdvo" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiFootball/DamagePoint/Config/ZombieYetiFootballDamagePointArm.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dax3wr03o2q51" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiFootball/DamagePoint/Config/ZombieYetiFootballDamagePointHead.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dnqb46hdg7csw" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiFootball/Armor/Config/ZombieYetiFootballArmorHelmet.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://fcefy7x5jwo8" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiFootball/ZombieYetiFootball.tscn" id="8"]
+
+[node name="TowerDefenseZombieYetiFootball" unique_id=1758679974 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+walkSpeedScale = 0.25
+HitBoxDefinition = ExtResource("3")
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieYetiFootball")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieYetiFootball/HeadSlot")
+damagePart = {
+"Arm": ExtResource("5"),
+"Head": ExtResource("6"),
+"Helmet": ExtResource("7")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieYetiFootball/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieYetiFootball/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieYetiFootball/HelmentSlot")
+}
+currentArmor = []
+currentCustom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(4, 40)
+scale = Vector2(1.25, 1.25)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieYetiFootball" parent="SpriteGroup/TransformPoint" index="0" unique_id=2020338469 instance=ExtResource("8")]
+position = Vector2(-12, -33)
+clip = "Idle"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, true, true, true, true, false]
+mediaReplace = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+mediaReplaceUse = [false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+mediaReplaceAtlasPaths = ["", "res://Asset/AtlasSource/Armor/Texture/Character/Armor/Helmet/ZombieHelmet1.png", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieYetiFootball" index="0" unique_id=1404164438]
+position = Vector2(-21.841084, -59.65839)
+rotation = -0.02106734
+scale = Vector2(0.7199208, 0.7199208)
+drawLayerId = -2
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieYetiFootball" index="1" unique_id=881895507]
+position = Vector2(15.56285, -2.9040813)
+rotation = 0.033062544
+scale = Vector2(0.71985614, 0.71985614)
+
+[node name="HelmentSlot" parent="SpriteGroup/TransformPoint/ZombieYetiFootball" index="2" unique_id=1463659601]
+position = Vector2(-18.166878, -68.61473)
+rotation = -0.021050433
+scale = Vector2(1.0719193, 1.0719193)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieYetiFootball" index="3" unique_id=109299470]
+position = Vector2(-63.813595, 1.0041122)
+scale = Vector2(1.0003781, 1.0003781)
+
+[editable path="SpriteGroup/TransformPoint/ZombieYetiFootball"]

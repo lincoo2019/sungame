@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://c1sl1ikdnkou5"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_4f2ip"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_a3i8k"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="3_jg5fy"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_3dpxm"]
+[ext_resource type="PackedScene" uid="uid://3pmhi4k1pb0w" path="res://Asset/Config/Projectile/Star/SnowStar/ProjectileSnowStar.tscn" id="5_uoc0f"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="6_jnklf"]
+[ext_resource type="PackedScene" uid="uid://bxwrp4411jwyy" path="res://Prefab/Particles/Splats/SnowStarSplats/SnowStarSplats.tscn" id="7_4f2ip"]
+
+[sub_resource type="Resource" id="Resource_m37m2"]
+script = ExtResource("3_jg5fy")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_r2lpg"]
+script = ExtResource("4_3dpxm")
+buffList = Array[ExtResource("2_a3i8k")]([SubResource("Resource_m37m2")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("6_jnklf")
+name = "SnowStar"
+isStar = true
+projectileScene = ExtResource("5_uoc0f")
+splatScene = ExtResource("7_4f2ip")
+hitCharacterEventList = Array[ExtResource("1_4f2ip")]([SubResource("Resource_r2lpg")])
+rotateScale = 2.0

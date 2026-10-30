@@ -1,0 +1,265 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.045, 0.058, 0.071, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.19, 0.42, 0.35, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 11.0
+content_margin_top = 10.0
+content_margin_right = 11.0
+content_margin_bottom = 11.0
+
+[sub_resource type="StyleBoxFlat" id="StyleOverlay"]
+bg_color = Color(0.025, 0.037, 0.047, 0.84)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.48, 0.41, 0.72)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 8.0
+content_margin_top = 5.0
+content_margin_right = 8.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleFallback"]
+bg_color = Color(0.27, 0.18, 0.055, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.61, 0.19, 0.85)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleHealth"]
+bg_color = Color(0.059, 0.079, 0.092, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.15, 0.25, 0.28, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+
+[node name="CharacterDataVisualPreviewPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 390)
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Header" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PreviewIcon" type="Label" parent="Layout/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.49, 0.92, 0.63, 1)
+text = "▶"
+
+[node name="Title" type="Label" parent="Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.83, 0.94, 0.87, 1)
+theme_override_font_sizes/font_size = 16
+text = "游戏内角色表现"
+
+[node name="Status" type="Label" parent="Layout/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.75, 0.72, 1)
+horizontal_alignment = 2
+
+[node name="HealthRow" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Layout/HealthRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.71, 0.82, 0.77, 1)
+text = "游戏内生命状态"
+
+[node name="Slider" type="HSlider" parent="Layout/HealthRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+step = 1.0
+value = 100.0
+tooltip_text = "拖动后直接驱动完整角色场景的受伤点和护甲外观"
+
+[node name="HealthValueLabel" type="Label" parent="Layout/HealthRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.81, 0.39, 1)
+text = "100%"
+horizontal_alignment = 2
+
+[node name="PlaybackRow" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="PlaybackStateLabel" type="Label" parent="Layout/PlaybackRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.64, 0.78, 0.71, 1)
+text = "拖动生命值，或播放一次完整受击过程"
+vertical_alignment = 1
+
+[node name="DamagePlayPauseButton" type="Button" parent="Layout/PlaybackRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(108, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.42, 1)
+text = "▶ 播放受击"
+tooltip_text = "在真实角色预览中连续播放从满生命到零生命的受击阶段"
+
+[node name="DamageResetButton" type="Button" parent="Layout/PlaybackRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 32)
+layout_mode = 2
+text = "↺ 满生命"
+tooltip_text = "停止演示并把角色恢复为满生命"
+
+[node name="ViewportFrame" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+clip_contents = true
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="Layout/ViewportFrame"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+tooltip_text = "拖拽移动角色，滚轮缩放"
+
+[node name="CharacterViewport" type="SubViewport" parent="Layout/ViewportFrame/ViewportContainer"]
+unique_name_in_owner = true
+transparent_bg = true
+disable_3d = true
+size = Vector2i(900, 300)
+render_target_update_mode = 4
+
+[node name="GameBackground" type="TextureRect" parent="Layout/ViewportFrame/ViewportContainer/CharacterViewport"]
+offset_right = 900.0
+offset_bottom = 300.0
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="PreviewRoot" type="Node2D" parent="Layout/ViewportFrame/ViewportContainer/CharacterViewport"]
+unique_name_in_owner = true
+position = Vector2(450, 228)
+
+[node name="CompositeOverlay" type="MarginContainer" parent="Layout/ViewportFrame"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 40.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="OverlayPanel" type="PanelContainer" parent="Layout/ViewportFrame/CompositeOverlay"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleOverlay")
+
+[node name="OverlayRow" type="HBoxContainer" parent="Layout/ViewportFrame/CompositeOverlay/OverlayPanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="ModeLabel" type="Label" parent="Layout/ViewportFrame/CompositeOverlay/OverlayPanel/OverlayRow"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.51, 0.90, 0.65, 1)
+text = "实时合成"
+
+[node name="PreviewOverlayLabel" type="Label" parent="Layout/ViewportFrame/CompositeOverlay/OverlayPanel/OverlayRow"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.73, 0.79, 0.80, 1)
+text = "角色场景 · 护甲 · 外观 · 受伤阶段"
+
+[node name="FallbackRibbon" type="PanelContainer" parent="Layout/ViewportFrame"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -40.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleFallback")
+
+[node name="FallbackRibbonLabel" type="Label" parent="Layout/ViewportFrame/FallbackRibbon"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.51, 1)
+text = "未找到完整角色引用，正在显示配置合成预览"
+horizontal_alignment = 1
+
+[node name="MissingLabel" type="Label" parent="Layout/ViewportFrame"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.89, 0.92, 0.88, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+text = "正在查找引用该数据的角色场景……"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

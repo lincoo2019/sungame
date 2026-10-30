@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://bpf8apswci8yh"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cfopw888kb56t" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Scene/TowerDefenseZombieChessComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://cu4btxheimn55" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Scene/TowerDefenseZombieChess.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cbkqth30i03gn" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Scene/TowerDefenseZombieChessStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://bui7xoe5jvlv1" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Config/TowerDefenseZombieChess.tres" id="6"]
+[ext_resource type="Resource" uid="uid://c1xjutrchstc7" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/DamagePoint/Config/ZombieChessDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cwmj4t1ype2i3" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Armor/Config/ZombieChessArmorChess.tres" id="8"]
+[ext_resource type="Resource" uid="uid://c8hhv71jnnd2y" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/DamagePoint/Config/ZombieChessDamagePointHead.tres" id="9"]
+[ext_resource type="Resource" uid="uid://5qnngpp2s6rb" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/Armor/Config/ZombieChessArmorPogo.tres" id="10"]
+[ext_resource type="PackedScene" uid="uid://dw4i5413q1eul" path="res://Asset/Anime/Character/Zombie/Chapter5/Chess/ZombieChess.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="12"]
+
+[node name="TowerDefenseZombieChess" unique_id=2076286401 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieChess/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+waterHeight = 30.0
+idleAnimeClip = "Pogo"
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieChess")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieChess/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"Chess": ExtResource("8"),
+"Head": ExtResource("9"),
+"Pogo": ExtResource("10")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieChess/ArmSlot"),
+"Chess": NodePath("SpriteGroup/TransformPoint/ZombieChess/ChessSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieChess/HeadSlot"),
+"Pogo": NodePath("SpriteGroup/TransformPoint/ZombieChess/PogoSlot")
+}
+gravity = 490.0
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(12.6, 40)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(23, 44)
+
+[node name="ZombieChess" parent="SpriteGroup/TransformPoint" index="0" unique_id=1279910592 instance=ExtResource("11")]
+position = Vector2(-23, -44)
+clip = "Pogo"
+layerVisible = [false, true, true, true, true, true, true, false, false, true, true, true, true, true, true, true, true, false, true, true, true, false, false, true, true, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieChess" index="0" unique_id=1858494133]
+position = Vector2(-7.655819, -49.5057)
+rotation = -0.054156512
+clip = "Idle"
+layerVisible = [false, true, false]
+mediaReplaceAtlasPaths = ["", ""]
+mediaReplaceUse = [false, false]
+followParentSpriteLayerId = 12
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieChess" index="1" unique_id=1495855807]
+drawLayerId = -2
+position = Vector2(-11.858238, -45.703133)
+rotation = -0.14563102
+scale = Vector2(0.7991131, 0.7991131)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieChess" index="2" unique_id=1041103028]
+position = Vector2(18.503712, -23.403698)
+rotation = -0.22315216
+scale = Vector2(0.74094105, 0.75394213)
+
+[node name="PogoSlot" parent="SpriteGroup/TransformPoint/ZombieChess" index="3" unique_id=1733877310]
+position = Vector2(-4.0680866, 3.9392815)
+rotation = 1.1368347
+scale = Vector2(0.6817707, 0.80806035)
+skew = 0.042394996
+
+[node name="ChessSlot" parent="SpriteGroup/TransformPoint/ZombieChess" index="4" unique_id=1900335827]
+position = Vector2(-4.5067863, -69.03296)
+rotation = -0.14563102
+scale = Vector2(0.7991131, 0.7991131)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieChess" index="5" unique_id=659566717]
+position = Vector2(-29.0392, -40)
+scale = Vector2(1, 1)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=634896316 instance=ExtResource("12")]
+visible = false
+position = Vector2(-12, -58)
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = [true, true]
+mediaReplaceAtlasPaths = ["", "", ""]
+mediaReplaceUse = [false, false, false]
+
+[editable path="SpriteGroup/TransformPoint/ZombieChess"]

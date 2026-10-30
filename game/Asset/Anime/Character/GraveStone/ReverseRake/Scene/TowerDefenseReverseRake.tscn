@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dhfclua463r3b"]
+
+[ext_resource type="PackedScene" uid="uid://jm05awl7yeg" path="res://Prefab/TowerDefense/Character/TowerDefenseGravestone.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bkvju8pe6bqi5" path="res://Asset/Anime/Character/GraveStone/ReverseRake/Scene/TowerDefenseReverseRake.cs" id="2"]
+[ext_resource type="Resource" uid="uid://06bidalmtijr" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefenseCharacterComponentSet.tres" id="3"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/GraveStone/ReverseRake/Config/TowerDefenseReverseRake.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://cn37xmxwc0y0p" path="res://Asset/Anime/Character/GraveStone/ReverseRake/ReverseRake.tscn" id="5"]
+
+[node name="TowerDefenseReverseRake" node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+ComponentSet = ExtResource("3")
+rise = false
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/ReverseRake")
+
+[node name="ShadowSprite" parent="." index="0"]
+position = Vector2(0, 25)
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(0, 37)
+
+[node name="ReverseRake" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("5")]
+position = Vector2(0, -37)

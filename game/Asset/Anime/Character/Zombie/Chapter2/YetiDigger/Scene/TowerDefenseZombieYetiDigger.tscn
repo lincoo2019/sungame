@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bap3qogi5vb86"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://ddb28r4cup7a5" path="res://Asset/Anime/Character/Zombie/Chapter2/YetiDigger/Scene/TowerDefenseZombieYetiDigger.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://csuikuln8gp0x" path="res://Asset/Anime/Character/Zombie/Chapter2/YetiDigger/Scene/TowerDefenseZombieYetiDiggerStateMachine.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c8fjq4ufduh6f" path="res://Asset/Anime/Character/Zombie/Chapter2/YetiDigger/Config/TowerDefenseZombieYetiDigger.tres" id="5"]
+[ext_resource type="Resource" uid="uid://c1dvshopk6sci" path="res://Asset/Anime/Character/Zombie/Chapter2/YetiDigger/DamagePoint/Config/ZombieYetiDiggerDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cxgw5kwsyqgio" path="res://Asset/Anime/Character/Zombie/Chapter2/YetiDigger/Armor/Config/ZombieYetiDiggerArmorHardHat.tres" id="7"]
+[ext_resource type="Resource" uid="uid://47gnlpwqey4q" path="res://Asset/Anime/Character/Zombie/Chapter2/YetiDigger/DamagePoint/Config/ZombieYetiDiggerDamagePointHead.tres" id="8"]
+[ext_resource type="Resource" uid="uid://dmlyr13jwd1ph" path="res://Asset/Anime/Character/Zombie/Chapter2/YetiDigger/Armor/Config/ZombieYetiDiggerArmorPick.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://djpaatp5h7ubu" path="res://Asset/Anime/Character/Zombie/Chapter2/YetiDigger/ZombieYetiDigger.tscn" id="10"]
+
+[node name="TowerDefenseZombieYetiDigger" node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+walkSpeedScale = 0.25
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieYetiDigger")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieYetiDigger/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"HardHat": ExtResource("7"),
+"Head": ExtResource("8"),
+"Pick": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieYetiDigger/ArmSlot"),
+"HardHat": NodePath("SpriteGroup/TransformPoint/ZombieYetiDigger/HardHatSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieYetiDigger/HeadSlot"),
+"Pick": NodePath("SpriteGroup/TransformPoint/ZombieYetiDigger/PickSlot")
+}
+currentArmor = ["HardHat", "Pick"]
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(12, 33)
+
+[node name="ZombieYetiDigger" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("10")]
+position = Vector2(-12, -33)
+Animation/LayerVisible/AnimeClips = false
+Animation/MediaReplace/Zombie_digger_hardhat.png = "res://Asset/AtlasSource/Armor/Texture/Character/Armor/HardHat/ZombieHardHat1.png"
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieYetiDigger" index="0"]
+drawLayerId = -2
+position = Vector2(-8.839489, -67.42357)
+rotation = -0.004469242
+scale = Vector2(0.71997315, 0.71997315)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieYetiDigger" index="1"]
+position = Vector2(27.899399, -10.176254)
+rotation = 0.07656765
+scale = Vector2(0.71980065, 0.71980065)
+
+[node name="HardHatSlot" parent="SpriteGroup/TransformPoint/ZombieYetiDigger" index="2"]
+position = Vector2(-4.365284, -94.22665)
+rotation = -0.008729361
+scale = Vector2(0.7999895, 0.7999895)
+
+[node name="PickSlot" parent="SpriteGroup/TransformPoint/ZombieYetiDigger" index="3"]
+position = Vector2(-38, -13.266663)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieYetiDigger" index="4"]
+position = Vector2(-41.166664, 1.0333328)
+scale = Vector2(1.0001373, 1.0001373)
+
+[editable path="SpriteGroup/TransformPoint/ZombieYetiDigger"]

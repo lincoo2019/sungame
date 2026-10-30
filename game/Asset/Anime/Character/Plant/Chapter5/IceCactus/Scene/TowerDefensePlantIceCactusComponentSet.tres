@@ -1,0 +1,97 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://bgixaul3e4e5u"]
+
+[ext_resource type="Resource" uid="uid://dqcvgdjiwl85s" path="res://Script/Component/TowerDefense/Character/FireComponent/ExtendComponent/FireComponentExtendCactus/FireComponentExtendCactusStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://g5ufh5lko5ry" path="res://Script/Component/TowerDefense/Character/FireComponent/ExtendComponent/FireComponentExtendCactus/FireComponentExtendCactusDefinition.cs" id="2"]
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="3"]
+[ext_resource type="Script" uid="uid://bbglc127qw1jb" path="res://Resource/TowerDefense/Collision/AabbRay2DResource.cs" id="4"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="5"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="6"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="7"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="8"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="9"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="10"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="11"]
+
+[sub_resource type="Resource" id="CactusExtendDefinition"]
+script = ExtResource("2")
+spritePath = NodePath("SpriteGroup/TransformPoint/IceCactus")
+ComponentTypeId = "FireComponentExtendCactus"
+DefinitionId = "builtin.component.fire.cactus.asset.anime.character.plant.chapter5.ice_cactus"
+InstanceId = "character.fire.cactus"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponentExtendCactus"]
+
+[sub_resource type="Resource" id="Ray_up"]
+script = ExtResource("4")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, -76)
+
+[sub_resource type="Resource" id="Ray_center"]
+script = ExtResource("4")
+
+[sub_resource type="Resource" id="Ray_down"]
+script = ExtResource("4")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, 76)
+
+[sub_resource type="Resource" id="ProjectileData"]
+script = ExtResource("5")
+projectileName = &"IceSpike"
+damageFlags = 2
+collisionFlags = 2
+fireMethodFlags = 5
+catapultHeight = 400.0
+
+[sub_resource type="Resource" id="Projectile_air"]
+script = ExtResource("6")
+projectileData = SubResource("ProjectileData")
+
+[sub_resource type="Resource" id="Check_air"]
+script = ExtResource("7")
+projectile = SubResource("Projectile_air")
+useParentCollision = false
+collisionFlags = 2
+
+[sub_resource type="Resource" id="Projectile_ground"]
+script = ExtResource("6")
+projectileData = SubResource("ProjectileData")
+
+[sub_resource type="Resource" id="Check_ground"]
+script = ExtResource("7")
+projectile = SubResource("Projectile_ground")
+useParentCollision = false
+collisionFlags = 9
+
+[sub_resource type="Resource" id="FireProjectile_center"]
+script = ExtResource("8")
+
+[sub_resource type="Resource" id="FireProjectile_down"]
+script = ExtResource("8")
+offsetLine = 1
+
+[sub_resource type="Resource" id="FireProjectile_up"]
+script = ExtResource("8")
+offsetLine = -1
+
+[sub_resource type="Resource" id="FireDefinition"]
+script = ExtResource("9")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/IceCactus/AdobeAnimateSlot/Marker2D")]
+spritePath = NodePath("SpriteGroup/TransformPoint/IceCactus")
+preExtendInstanceId = "character.fire.cactus"
+checkRayResources = [SubResource("Ray_up"), SubResource("Ray_center"), SubResource("Ray_down")]
+fireAnimeClipsArray = ["Fire", "UpFire"]
+fireAnimeTimeScale = 2.0
+fireCheckList = [SubResource("Check_air"), SubResource("Check_ground")]
+fireProjectileList = [SubResource("FireProjectile_center"), SubResource("FireProjectile_down"), SubResource("FireProjectile_up")]
+checkAllLine = true
+airFirst = true
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter5.ice_cactus"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("3")
+LegacyNodeNames = [&"FireComponent"]
+
+[resource]
+script = ExtResource("11")
+ParentSet = ExtResource("10")
+Components = [SubResource("CactusExtendDefinition"), SubResource("FireDefinition")]

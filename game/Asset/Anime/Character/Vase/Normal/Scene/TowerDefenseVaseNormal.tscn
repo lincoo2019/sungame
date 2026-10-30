@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://6cmkkxsgd6h8"]
+
+[ext_resource type="PackedScene" uid="uid://udsya47xq3qh" path="res://Prefab/TowerDefense/Character/TowerDefenseVase.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bfk4oye8qa8c7" path="res://Asset/Anime/Character/Vase/Normal/Scene/TowerDefenseVaseNormal.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_1p25.tres" id="3"]
+[ext_resource type="Resource" uid="uid://bxacyge6jhjll" path="res://Asset/Anime/Character/Vase/Normal/Config/TowerDefenseVaseNormal.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://nrqdcacrnc4n" path="res://Asset/Anime/Character/Vase/Normal/VaseNormal.tscn" id="5"]
+
+[node name="TowerDefenseVaseNormal" node_paths=PackedStringArray("backSprite", "sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+backSprite = NodePath("SpriteGroup/TransformPoint/VaseNormal/Node2D/Back")
+packetCanShow = true
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/VaseNormal")
+
+[node name="VaseNormal" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("5")]
+position = Vector2(0, -36)
+runtimeViewportCullingEnabled = false
+
+[node name="ZombieWaterLine" parent="SpriteGroup" index="1"]
+
+[node name="Hammer" parent="." index="3"]
+material = null
+
+[node name="ShadowSprite" parent="." index="4"]
+scale = Vector2(1.1395348, 1.1111112)

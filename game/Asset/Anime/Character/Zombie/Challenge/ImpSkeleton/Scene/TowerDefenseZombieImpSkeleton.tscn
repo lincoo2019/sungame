@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://63y4lv5owy78"]
+
+[ext_resource type="PackedScene" uid="uid://s74hf6v6x5r7" path="res://Prefab/TowerDefense/Character/TowerDefenseZombieImpBase.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c0gtr83cruvwe" path="res://Asset/Anime/Character/Zombie/Challenge/ImpSkeleton/Scene/TowerDefenseZombieImpSkeleton.cs" id="2"]
+[ext_resource type="Resource" uid="uid://qpg204e0s01g" path="res://Asset/Anime/Character/Zombie/Challenge/ImpSkeleton/Config/TowerDefenseZombieImpSkeleton.tres" id="3"]
+[ext_resource type="Resource" uid="uid://iea3qnktmgk8" path="res://Asset/Anime/Character/Zombie/Challenge/ImpSkeleton/DamagePoint/Config/ZombieImpSkeletonDamagePointArm.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dgd5ntvh8tnh2" path="res://Asset/Anime/Character/Zombie/Challenge/ImpSkeleton/DamagePoint/Config/ZombieImpSkeletonDamagePointHead.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://cixf0nhhpfl10" path="res://Asset/Anime/Character/Zombie/Challenge/ImpSkeleton/ZombieImpSkeleton.tscn" id="6"]
+
+[node name="TowerDefenseZombieImpSkeleton" unique_id=547883494 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+groan = ""
+dieWaterAnimeClip = "SwimDeath"
+waterHeight = 10.0
+idleAnimeClip = "Walk"
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieImpSkeleton")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieImpSkeleton/HeadSlot")
+damagePart = {
+"Arm": ExtResource("4"),
+"Head": ExtResource("5")
+}
+PreviewDamagePointPersontage = 1.0
+DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieImpSkeleton/ArmSlot")
+DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieImpSkeleton/HeadSlot")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(9, 40)
+scale = Vector2(0.906977, 0.944445)
+
+[node name="ZombieImpSkeleton" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=603216091 instance=ExtResource("6")]
+position = Vector2(-19, -36)
+blendTimeInit = 0.2
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieImpSkeleton" index="0" unique_id=1346737099]
+drawLayerId = -2
+position = Vector2(-1.5854073, -5.0582886)
+rotation = -0.06761031
+scale = Vector2(0.99783325, 0.99783325)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieImpSkeleton" index="1" unique_id=242922573]
+position = Vector2(11.653216, 23.908325)
+rotation = -0.87670374
+scale = Vector2(1.0552154, 1.0191773)
+skew = 0.048175216
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieImpSkeleton" index="2" unique_id=244999314]
+position = Vector2(-71.070366, 10)
+
+[editable path="SpriteGroup/TransformPoint/ZombieImpSkeleton"]

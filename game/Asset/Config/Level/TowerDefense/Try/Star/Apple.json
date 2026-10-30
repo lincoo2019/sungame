@@ -1,0 +1,801 @@
+{
+	"Name": "TryLevel_PlantApple",
+	"Description": "",
+	"LevelName": "苹果闹钟",
+	"LevelNumber": 1,
+	"NextLevel": "",
+	"HomeWorld": "Noone",
+	"Talk": {
+		"Talk": [
+			{
+				"Anime": "SmallTalk",
+				"Audio": "CrazyDaveShort",
+				"Mode": "Default",
+				"Npc": "CrazyDave",
+				"Text": "本关会有各种舞王僵尸来袭，请用闹钟定住僵尸，防止僵尸召唤并进行攻击！"
+			},
+			{
+				"Anime": "SmallTalk",
+				"Audio": "CrazyDaveShort",
+				"Mode": "Default",
+				"Npc": "CrazyDave",
+				"Text": "场上的豌豆可以升级并移动！"
+			}
+		],
+		"SaveKey": ""
+	},
+	"Tutorial": "",
+	"VaseManager": {
+		"Shuffle": false,
+		"Vase": [],
+		"VaseFill": []
+	},
+	"Map": "Frontlawn",
+	"BGM": "Frontlawn",
+	"Reward": {
+		"RewardFirst": "2000",
+		"RewardType": "Coin"
+	},
+	"Event": {
+		"EventInit": [],
+		"EventReady": [],
+		"EventStart": []
+	},
+	"PreSpawn": {
+		"Packet": [
+			{
+				"Name": "PlantPeaShooterSingle",
+				"CharacterOverride": {
+					"CanMowerMove": true,
+					"PropertyChange": [
+						{
+							"PropertyName": "fireInterval",
+							"Value": 0.5
+						}
+					]
+				},
+				"GridPos": [
+					1,
+					3
+				]
+			},
+			{
+				"Name": "PlantPumpkin",
+				"CharacterOverride": {
+					"CanMowerMove": true
+				},
+				"GridPos": [
+					1,
+					3
+				]
+			}
+		]
+	},
+	"PacketBank": {
+		"ColdDownStart": false,
+		"LimitGridPlantNum": -1,
+		"Method": "Preset",
+		"PlantColumn": false,
+		"Value": [
+			"PlantApple",
+			"PlantApple",
+			"PlantApple",
+			"PlantApple",
+			"PlantApple",
+			"PlantApple",
+			"PlantApple",
+			"PlantApple",
+			"PlantApple",
+			"PlantApple",
+			{
+				"Override": {
+					"CharacterOverride": {
+						"CanMowerMove": true,
+						"PropertyChange": [
+							{
+								"PropertyName": "fireInterval",
+								"Value": 0.1
+							}
+						]
+					},
+					"Cost": 500,
+					"EventPlant": [
+						{
+							"EventName": "ChangePacket",
+							"Value": {
+								"Override": {
+									"CharacterOverride": {
+										"CanMowerMove": true,
+										"PropertyChange": [
+											{
+												"PropertyName": "fireInterval",
+												"Value": 0.3
+											}
+										]
+									},
+									"Cost": 500,
+									"EventPlant": [
+										{
+											"EventName": "ChangePacket",
+											"Value": {
+												"Override": {
+													"CharacterOverride": {
+														"CanMowerMove": true,
+														"PropertyChange": [
+															{
+																"PropertyName": "fireInterval",
+																"Value": 0.1
+															}
+														]
+													},
+													"Cost": 500,
+													"EventPlant": [
+														{
+															"EventName": "ChangePacket",
+															"Value": {
+																"Override": {
+																	"CharacterOverride": {
+																		"CanMowerMove": true,
+																		"PropertyChange": [
+																			{
+																				"PropertyName": "fireInterval",
+																				"Value": 0.1
+																			},
+																			{
+																				"PropertyName": "projectileName",
+																				"Value": "FirePea"
+																			}
+																		]
+																	},
+																	"Cost": 500,
+																	"EventPlant": [
+																		{
+																			"EventName": "Delete"
+																		}
+																	],
+																	"PacketCooldown": 0,
+																	"PlantCover": [
+																		"PlantWildPea"
+																	],
+																	"StartingCooldown": 0
+																},
+																"PacketName": "PlantWildPea"
+															}
+														}
+													],
+													"PacketCooldown": 0,
+													"PlantCover": [
+														"PlantGatlingPea"
+													],
+													"StartingCooldown": 0
+												},
+												"PacketName": "PlantWildPea"
+											}
+										}
+									],
+									"PacketCooldown": 0,
+									"PlantCover": [
+										"PlantPeaShooter"
+									],
+									"StartingCooldown": 0
+								},
+								"PacketName": "PlantGatlingPea"
+							}
+						}
+					],
+					"PacketCooldown": 0,
+					"PlantCover": [
+						"PlantPeaShooterSingle"
+					],
+					"StartingCooldown": 0
+				},
+				"PacketName": "PlantPeaShooter"
+			},
+			"PlantSquash",
+			"PlantIceSquash",
+			"PlantCherryBomb",
+			"PlantTabooDoomShroom"
+		]
+	},
+	"SunManager": {
+		"Begin": 300,
+		"MovingMethod": "Land",
+		"Open": true,
+		"SpawnInterval": 10,
+		"SpawnNum": 50
+	},
+	"WaveManager": {
+		"BeginCol": 10,
+		"Dynamic": [
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{}
+		],
+		"FlagWaveInterval": 8,
+		"FlagZombie": "ZombieFlag",
+		"MaxNextWaveHealthPercentage": 0.25,
+		"MinNextWaveHealthPercentage": 0.25,
+		"SpawnColEnd": 25,
+		"SpawnColStart": 25,
+		"SpawnOverride": {
+			"DieEvent": [
+				{
+					"EventName": "SunCreate",
+					"Value": {
+						"Num": 10
+					}
+				}
+			]
+		},
+		"Wave": [
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 200,
+					"ZombiePool": [
+						"ZombieNormal"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 300,
+					"ZombiePool": [
+						"ZombieNormal"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": [
+					{
+						"Line": -1,
+						"Num": 1,
+						"Zombie": "ZombieJackson"
+					}
+				]
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 400,
+					"ZombiePool": [
+						"ZombieNormal"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 500,
+					"ZombiePool": [
+						"ZombieNormal"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": [
+					{
+						"Line": -1,
+						"Num": 1,
+						"Zombie": "ZombieJackson"
+					}
+				]
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 600,
+					"ZombiePool": [
+						"ZombieNormal"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": [
+					{
+						"Line": -1,
+						"Num": 2,
+						"Zombie": "ZombieJackson"
+					}
+				]
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 600,
+					"ZombiePool": [
+						"ZombieNormal",
+						"ZombieNormalCone",
+						"ZombieJackson"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 700,
+					"ZombiePool": [
+						"ZombieNormal",
+						"ZombieNormalCone",
+						"ZombieJackson"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": [
+					{
+						"Line": -1,
+						"Num": 1,
+						"Zombie": "ZombieJackson"
+					}
+				]
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 800,
+					"ZombiePool": [
+						"ZombieNormal",
+						"ZombieNormalCone",
+						"ZombieJackson"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 1000,
+					"ZombiePool": [
+						"ZombieNormal",
+						"ZombieNormalCone",
+						"ZombieJackson",
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieDisco"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 1200,
+					"ZombiePool": [
+						"ZombieNormal",
+						"ZombieNormalCone",
+						"ZombieJackson",
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieDisco"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 1400,
+					"ZombiePool": [
+						"ZombieNormal",
+						"ZombieNormalCone",
+						"ZombieJackson",
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieDisco"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 1600,
+					"ZombiePool": [
+						"ZombieNormal",
+						"ZombieNormalCone",
+						"ZombieJackson",
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieDisco"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 1800,
+					"ZombiePool": [
+						"ZombieNormal",
+						"ZombieJackson",
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieDisco",
+						"ZombieNormalCone"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 2000,
+					"ZombiePool": [
+						"ZombieNormal",
+						"ZombieJackson",
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieDisco",
+						"ZombieNormalCone"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 2400,
+					"ZombiePool": [
+						"ZombieNormal",
+						"ZombieJackson",
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieDisco",
+						"ZombieNormalCone",
+						"ZombieJacksonBlackHelmet"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 2600,
+					"ZombiePool": [
+						"ZombieNormal",
+						"ZombieJackson",
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieDisco",
+						"ZombieNormalCone",
+						"ZombieJacksonBlackHelmet"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 3000,
+					"ZombiePool": [
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieJacksonBlackHelmet"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 3400,
+					"ZombiePool": [
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieJacksonBlackHelmet"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 3800,
+					"ZombiePool": [
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieJacksonBlackHelmet"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 4200,
+					"ZombiePool": [
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieJacksonBlackHelmet"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 4600,
+					"ZombiePool": [
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieDiscoGargantuar",
+						"ZombieJacksonBlackHelmet"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 5000,
+					"ZombiePool": [
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieDiscoGargantuar",
+						"ZombieJacksonBlackHelmet"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 5500,
+					"ZombiePool": [
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieDiscoGargantuar",
+						"ZombieJacksonBlackHelmet"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			},
+			{
+				"Event": [],
+				"Dynamic": {
+					"Point": 6000,
+					"ZombiePool": [
+						"ZombiePogoJackson",
+						"ZombieDiscoFire",
+						"ZombieDiscopaper",
+						"ZombieDiscoGargantuar",
+						"ZombieJacksonBlackHelmet"
+					]
+				},
+				"DynamicPlantfood": [
+					0,
+					0,
+					0,
+					0,
+					0,
+					0,
+					0
+				],
+				"Spawn": []
+			}
+		]
+	}
+}

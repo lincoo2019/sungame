@@ -1,0 +1,131 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_row"]
+bg_color = Color(0.08, 0.105, 0.09, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.5, 0.28, 0.85)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+
+[node name="TutorialConditionRow" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 86)
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_row")
+
+[node name="Layout" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Icon" type="TextureRect" parent="Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Fields" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="TypeTitle" type="Label" parent="Layout/Fields"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "教程条件"
+
+[node name="Values" type="HBoxContainer" parent="Layout/Fields"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CharacterLabel" type="Label" parent="Layout/Fields/Values"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "角色"
+vertical_alignment = 1
+
+[node name="CharacterName" type="LineEdit" parent="Layout/Fields/Values"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "角色资源名"
+
+[node name="Comparison" type="OptionButton" parent="Layout/Fields/Values"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(78, 34)
+layout_mode = 2
+
+[node name="ComparisonVisualChoices" type="HFlowContainer" parent="Layout/Fields/Values"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="TargetLabel" type="Label" parent="Layout/Fields/Values"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "目标"
+vertical_alignment = 1
+
+[node name="Target" type="SpinBox" parent="Layout/Fields/Values"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 34)
+layout_mode = 2
+max_value = 1000000.0
+allow_greater = true
+
+[node name="UnitLabel" type="Label" parent="Layout/Fields/Values"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "个"
+vertical_alignment = 1
+
+[node name="CustomPropertyHost" type="VBoxContainer" parent="Layout/Fields"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Actions" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="OrderActions" type="HBoxContainer" parent="Layout/Actions"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="MoveUpButton" type="Button" parent="Layout/Actions/OrderActions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 30)
+layout_mode = 2
+tooltip_text = "上移条件"
+
+[node name="MoveDownButton" type="Button" parent="Layout/Actions/OrderActions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 30)
+layout_mode = 2
+tooltip_text = "下移条件"
+
+[node name="DuplicateButton" type="Button" parent="Layout/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 30)
+layout_mode = 2
+text = "复制"
+
+[node name="RemoveButton" type="Button" parent="Layout/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 30)
+layout_mode = 2
+text = "移除"

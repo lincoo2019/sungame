@@ -1,0 +1,547 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+[ext_resource type="PackedScene" path="res://Asset/Anime/Character/Plant/Chapter0/PeaShooter/PeaShooter.tscn" id="2_plant"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Shovel/Shovel.png" id="3_shovel"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Mower/MowerDefault.png" id="4_mower"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ResourceCollectable.svg" id="5_sun"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Projectile/ProjectileCoin.png" id="6_projectile"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Packet/PC/SeedPacketLarger.png" id="7_packet"]
+
+[sub_resource type="StyleBoxFlat" id="Style_header"]
+bg_color = Color(0.075, 0.09, 0.065, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43, 0.57, 0.24, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxFlat" id="Style_game"]
+bg_color = Color(0.015, 0.02, 0.012, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.21, 0.31, 0.12, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_hud"]
+bg_color = Color(0.02, 0.025, 0.018, 0.84)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.68, 0.75, 0.39, 0.75)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 10.0
+content_margin_top = 7.0
+content_margin_right = 10.0
+content_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxFlat" id="Style_fields"]
+bg_color = Color(0.045, 0.052, 0.04, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.21, 0.27, 0.16, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 12.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxFlat" id="Style_apply"]
+bg_color = Color(0.25, 0.37, 0.13, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.62, 0.79, 0.33, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="Style_pumpkin"]
+bg_color = Color(1, 0.42, 0.08, 0.08)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(1, 0.46, 0.08, 0.9)
+corner_radius_top_left = 44
+corner_radius_top_right = 44
+corner_radius_bottom_right = 44
+corner_radius_bottom_left = 44
+
+[node name="ToolEventVisualEditorLayout" type="VBoxContainer"]
+custom_minimum_size = Vector2(780, 690)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_header")
+
+[node name="HeaderRow" type="HBoxContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Header/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "工具事件效果"
+
+[node name="EventType" type="Label" parent="Header/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.93, 0.56, 1)
+text = "ShovelEventConfig"
+
+[node name="GameFrame" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(760, 390)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Style_game")
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="GameFrame"]
+layout_mode = 2
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="GameFrame/ViewportContainer"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(960, 480)
+render_target_update_mode = 4
+gui_disable_input = true
+
+[node name="World" type="Control" parent="GameFrame/ViewportContainer/Viewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lawn" type="TextureRect" parent="GameFrame/ViewportContainer/Viewport/World"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Shade" type="ColorRect" parent="GameFrame/ViewportContainer/Viewport/World"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.015, 0.02, 0.012, 0.2)
+
+[node name="RowGuide" type="ColorRect" parent="GameFrame/ViewportContainer/Viewport/World"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 365.0
+offset_right = 905.0
+offset_bottom = 370.0
+mouse_filter = 2
+color = Color(0.78, 0.95, 0.42, 0.55)
+
+[node name="StatusHud" type="PanelContainer" parent="GameFrame/ViewportContainer/Viewport/World"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 17.0
+offset_right = 580.0
+offset_bottom = 76.0
+theme_override_styles/panel = SubResource("Style_hud")
+
+[node name="Outcome" type="Label" parent="GameFrame/ViewportContainer/Viewport/World/StatusHud"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "调整模拟目标后，点击“演示工具效果”"
+autowrap_mode = 2
+
+[node name="TargetRoot" type="Node2D" parent="GameFrame/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+position = Vector2(480, 356)
+
+[node name="TargetPlant" parent="GameFrame/ViewportContainer/Viewport/TargetRoot" instance=ExtResource("2_plant")]
+unique_name_in_owner = true
+position = Vector2(0, 0)
+
+[node name="TargetHealthBar" type="ProgressBar" parent="GameFrame/ViewportContainer/Viewport/TargetRoot"]
+unique_name_in_owner = true
+offset_left = -72.0
+offset_top = 55.0
+offset_right = 72.0
+offset_bottom = 72.0
+value = 100.0
+show_percentage = false
+
+[node name="TargetLabel" type="Label" parent="GameFrame/ViewportContainer/Viewport/TargetRoot"]
+offset_left = -90.0
+offset_top = 77.0
+offset_right = 90.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(1, 0.95, 0.72, 1)
+text = "模拟目标植物"
+horizontal_alignment = 1
+
+[node name="PumpkinEffect" type="PanelContainer" parent="GameFrame/ViewportContainer/Viewport/TargetRoot"]
+unique_name_in_owner = true
+visible = false
+offset_left = -76.0
+offset_top = -95.0
+offset_right = 76.0
+offset_bottom = 52.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_pumpkin")
+
+[node name="ToolRoot" type="Node2D" parent="GameFrame/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+position = Vector2(350, 90)
+
+[node name="ShovelTool" type="TextureRect" parent="GameFrame/ViewportContainer/Viewport/ToolRoot"]
+unique_name_in_owner = true
+offset_left = -52.0
+offset_top = -52.0
+offset_right = 52.0
+offset_bottom = 52.0
+mouse_filter = 2
+texture = ExtResource("3_shovel")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MowerTool" type="TextureRect" parent="GameFrame/ViewportContainer/Viewport/ToolRoot"]
+unique_name_in_owner = true
+visible = false
+offset_left = -78.0
+offset_top = -47.0
+offset_right = 78.0
+offset_bottom = 47.0
+mouse_filter = 2
+texture = ExtResource("4_mower")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Effects" type="Control" parent="GameFrame/ViewportContainer/Viewport/World"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SunEffect" type="TextureRect" parent="GameFrame/ViewportContainer/Viewport/World/Effects"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 588.0
+offset_top = 188.0
+offset_right = 674.0
+offset_bottom = 274.0
+texture = ExtResource("5_sun")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ProjectileEffect" type="TextureRect" parent="GameFrame/ViewportContainer/Viewport/World/Effects"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 560.0
+offset_top = 292.0
+offset_right = 650.0
+offset_bottom = 352.0
+texture = ExtResource("6_projectile")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PacketEffect" type="TextureRect" parent="GameFrame/ViewportContainer/Viewport/World/Effects"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 610.0
+offset_top = 220.0
+offset_right = 732.0
+offset_bottom = 356.0
+texture = ExtResource("7_packet")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FireEffect" type="ColorRect" parent="GameFrame/ViewportContainer/Viewport/World/Effects"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 70.0
+offset_top = 285.0
+offset_right = 890.0
+offset_bottom = 378.0
+color = Color(1, 0.16, 0.015, 0.6)
+
+[node name="EffectLabel" type="Label" parent="GameFrame/ViewportContainer/Viewport/World/Effects"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 290.0
+offset_top = 188.0
+offset_right = 670.0
+offset_bottom = 230.0
+theme_override_colors/font_color = Color(1, 0.88, 0.43, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.95)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 22
+text = "工具事件效果"
+horizontal_alignment = 1
+
+[node name="SimulationControls" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CostLabel" type="Label" parent="SimulationControls"]
+layout_mode = 2
+text = "目标费用"
+vertical_alignment = 1
+
+[node name="TargetCost" type="SpinBox" parent="SimulationControls"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 5000.0
+value = 100.0
+
+[node name="HealthLabel" type="Label" parent="SimulationControls"]
+layout_mode = 2
+text = "目标生命"
+vertical_alignment = 1
+
+[node name="TargetHealth" type="HSlider" parent="SimulationControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+value = 100.0
+
+[node name="HealthValue" type="Label" parent="SimulationControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(46, 0)
+layout_mode = 2
+text = "100%"
+vertical_alignment = 1
+
+[node name="IzmMode" type="CheckBox" parent="SimulationControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "我是僵尸模式"
+
+[node name="Spacer" type="Control" parent="SimulationControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ApplyButton" type="Button" parent="SimulationControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 36)
+layout_mode = 2
+theme_override_styles/normal = SubResource("Style_apply")
+text = "演示工具效果"
+
+[node name="FieldsPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_fields")
+
+[node name="Fields" type="VBoxContainer" parent="FieldsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="CommonFields" type="GridContainer" parent="FieldsPanel/Fields"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="ResourceNameLabel" type="Label" parent="FieldsPanel/Fields/CommonFields"]
+layout_mode = 2
+text = "资源名称"
+
+[node name="ResourceNameEdit" type="LineEdit" parent="FieldsPanel/Fields/CommonFields"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "用于区分工具事件资源"
+
+[node name="LocalToSceneLabel" type="Label" parent="FieldsPanel/Fields/CommonFields"]
+layout_mode = 2
+text = "资源归属"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="FieldsPanel/Fields/CommonFields"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "场景本地资源"
+
+[node name="FormHint" type="Label" parent="FieldsPanel/Fields"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 0.82, 0.61, 1)
+text = "参数直接在对应游戏效果旁编辑；模拟不会调用 Execute，也不会生成真实奖励。"
+autowrap_mode = 2
+
+[node name="BaseFields" type="HBoxContainer" parent="FieldsPanel/Fields"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FieldsPanel/Fields/BaseFields"]
+layout_mode = 2
+text = "该事件没有额外参数，使用上方目标状态预览固定行为。"
+
+[node name="CreateSunFields" type="HBoxContainer" parent="FieldsPanel/Fields"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FieldsPanel/Fields/CreateSunFields"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "小推车触发后生成阳光"
+
+[node name="SunNum" type="SpinBox" parent="FieldsPanel/Fields/CreateSunFields"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -99999.0
+max_value = 99999.0
+value = 25.0
+
+[node name="RecycleFields" type="HBoxContainer" parent="FieldsPanel/Fields"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsPanel/Fields/RecycleFields"]
+layout_mode = 2
+text = "返还费用比例"
+
+[node name="RecyclePercentage" type="SpinBox" parent="FieldsPanel/Fields/RecycleFields"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 10.0
+step = 0.05
+value = 0.2
+
+[node name="RecycleDestroy" type="CheckBox" parent="FieldsPanel/Fields/RecycleFields"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "回收后销毁目标"
+
+[node name="JalapenoFields" type="HBoxContainer" parent="FieldsPanel/Fields"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="JalapenoDestroy" type="CheckBox" parent="FieldsPanel/Fields/JalapenoFields"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "生成整行火焰后销毁目标"
+
+[node name="ProjectileFields" type="GridContainer" parent="FieldsPanel/Fields"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+columns = 4
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+
+[node name="EveryLabel" type="Label" parent="FieldsPanel/Fields/ProjectileFields"]
+layout_mode = 2
+text = "每多少费用生成 1 枚"
+
+[node name="ProjectileEveryNum" type="SpinBox" parent="FieldsPanel/Fields/ProjectileFields"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 99999.0
+value = 10.0
+
+[node name="NameLabel" type="Label" parent="FieldsPanel/Fields/ProjectileFields"]
+layout_mode = 2
+text = "子弹名"
+
+[node name="ProjectileName" type="LineEdit" parent="FieldsPanel/Fields/ProjectileFields"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "例如 CoinSilver"
+
+[node name="DamageLabel" type="Label" parent="FieldsPanel/Fields/ProjectileFields"]
+layout_mode = 2
+text = "基础伤害"
+
+[node name="ProjectileDamage" type="SpinBox" parent="FieldsPanel/Fields/ProjectileFields"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -999999.0
+max_value = 999999.0
+value = 20.0
+
+[node name="DamageSpacer" type="Control" parent="FieldsPanel/Fields/ProjectileFields"]
+layout_mode = 2
+
+[node name="DamageSpacer2" type="Control" parent="FieldsPanel/Fields/ProjectileFields"]
+layout_mode = 2
+
+[node name="PacketFields" type="GridContainer" parent="FieldsPanel/Fields"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+columns = 4
+theme_override_constants/h_separation = 8
+
+[node name="NameLabel" type="Label" parent="FieldsPanel/Fields/PacketFields"]
+layout_mode = 2
+text = "卡牌 saveKey"
+
+[node name="PacketName" type="LineEdit" parent="FieldsPanel/Fields/PacketFields"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "例如 ItemMagnetWave"
+
+[node name="EveryLabel" type="Label" parent="FieldsPanel/Fields/PacketFields"]
+layout_mode = 2
+text = "每多少费用生成 1 张"
+
+[node name="PacketEveryNum" type="SpinBox" parent="FieldsPanel/Fields/PacketFields"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 99999.0
+value = 50.0

@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="Environment" id="Environment_preview"]
+background_mode = 1
+background_color = Color(0.025, 0.035, 0.055, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.72, 0.78, 0.9, 1)
+ambient_light_energy = 0.65
+
+[node name="UniversalSceneRuntimePreview" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Toolbar" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Status" type="Label" parent="Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "场景实机预览"
+
+[node name="RestartButton" type="Button" parent="Toolbar"]
+layout_mode = 2
+text = "重新运行"
+
+[node name="OpenButton" type="Button" parent="Toolbar"]
+layout_mode = 2
+text = "进入场景编辑"
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="."]
+custom_minimum_size = Vector2(0, 430)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="ViewportContainer"]
+disable_3d = false
+transparent_bg = false
+gui_disable_input = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Environment" type="WorldEnvironment" parent="ViewportContainer/Viewport"]
+environment = SubResource("Environment_preview")
+
+[node name="PreviewRoot" type="Node" parent="ViewportContainer/Viewport"]
+
+[node name="FallbackCamera" type="Camera3D" parent="ViewportContainer/Viewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6)
+current = false
+
+[node name="FallbackLight" type="DirectionalLight3D" parent="ViewportContainer/Viewport"]
+rotation_degrees = Vector3(-38, -32, 0)
+shadow_enabled = true
+
+[node name="Hint" type="Label" parent="."]
+layout_mode = 2
+text = "在隔离的 1920×1080 游戏视口中运行；预览输入已隔离，不会触发正式场景切换。"
+autowrap_mode = 2
+horizontal_alignment = 1
+modulate = Color(0.72, 0.78, 0.86, 1)

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://mbyesuqamf51"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Special/PresentBoxGreen/Scene/TowerDefensePlantPresentBoxGreenComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://5hxyd17le2ph" path="res://Asset/Anime/Character/Plant/Special/PresentBoxGreen/Scene/TowerDefensePlantPresentBoxGreen.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cosryvgoegfu7" path="res://Asset/Anime/Character/Plant/Special/PresentBoxGreen/Config/TowerDefensePlantPresentBoxGreen.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://x3fwpqckpbk6" path="res://Asset/Anime/Character/Plant/Special/PresentBoxGreen/PresentBoxGreen.tscn" id="6"]
+
+[node name="TowerDefensePlantPresentBoxGreen" unique_id=1182221819 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+z_index = -10
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+packetBank = "PlantPresentBox"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/PresentBoxGreen")
+itemLayer = 5
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PresentBoxGreen" parent="SpriteGroup/TransformPoint" index="0" unique_id=1527502369 instance=ExtResource("6")]
+position = Vector2(0, -40)
+scale = Vector2(0.8, 0.8)
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = [true, true]
+mediaReplaceAtlasPaths = ["", ""]
+mediaReplaceUse = [false, false]

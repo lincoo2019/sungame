@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://drmlt4fmk4m1k"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://bb07wg4074ph" path="res://Asset/Anime/Character/Plant/Star/SquashCandy/Scene/TowerDefensePlantSquashCandyComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://di32o5kf76y8k" path="res://Asset/Anime/Character/Plant/Star/SquashCandy/Scene/TowerDefensePlantSquashCandy.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Script" uid="uid://c4cnj7r56bj3k" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffDizziness.cs" id="5"]
+[ext_resource type="Script" uid="uid://dpvg0h7sof7k8" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffPogo.cs" id="6"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="7"]
+[ext_resource type="Resource" uid="uid://dud3d0ab70fkr" path="res://Asset/Anime/Character/Plant/Star/SquashCandy/Config/TowerDefensePlantSquashCandy.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://38jxbymmyqoy" path="res://Asset/Anime/Character/Plant/Star/SquashCandy/SquashCandy.tscn" id="9"]
+
+[sub_resource type="Resource" id="Resource_05ja1"]
+script = ExtResource("5")
+time = 5.0
+metadata/_custom_type_script = "uid://c4cnj7r56bj3k"
+
+[sub_resource type="Resource" id="Resource_umhbm"]
+script = ExtResource("6")
+time = 5.0
+metadata/_custom_type_script = "uid://dpvg0h7sof7k8"
+
+[sub_resource type="Resource" id="Resource_ifq5e"]
+script = ExtResource("7")
+buffList = [SubResource("Resource_05ja1"), SubResource("Resource_umhbm")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[node name="TowerDefensePlantSquashCandy" unique_id=617747053 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+eventList = [SubResource("Resource_ifq5e")]
+config = ExtResource("8")
+sprite = NodePath("SpriteGroup/TransformPoint/SquashCandy")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="SquashCandy" parent="SpriteGroup/TransformPoint" index="0" unique_id=1988933001 instance=ExtResource("9")]
+position = Vector2(0, -30)

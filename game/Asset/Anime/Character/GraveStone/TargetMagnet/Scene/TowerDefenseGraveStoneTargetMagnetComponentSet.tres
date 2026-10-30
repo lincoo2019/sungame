@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://cyy0umutr7wag"]
+
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="1"]
+[ext_resource type="Script" uid="uid://vwytd586qoea" path="res://Script/Component/TowerDefense/Character/ChangeProjectileState/ChangeProjectileStateComponentDefinition.cs" id="2"]
+[ext_resource type="Resource" uid="uid://djmsa1e62nh5" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefenseBuffDisabledComponentSet.tres" id="3"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_change_state"]
+size = Vector2(368, 320)
+
+[sub_resource type="Resource" id="AabbShape2DResource_change_state"]
+script = ExtResource("1")
+Enabled = false
+Geometry = SubResource("RectangleShape2D_change_state")
+
+[sub_resource type="Resource" id="ChangeProjectileStateComponentDefinition"]
+script = ExtResource("2")
+checkShape = SubResource("AabbShape2DResource_change_state")
+damageFlags = 2
+fireMethodFlags = 32
+ComponentTypeId = "ChangeProjectileStateComponent"
+DefinitionId = "builtin.component.change_projectile_state.target_magnet"
+InstanceId = "target_magnet.change_projectile_state"
+WireIndex = 0
+StateMachineDefinition = null
+LegacyNodeNames = [&"ChangeProjectileStateComponent"]
+
+[resource]
+script = ExtResource("4")
+ParentSet = ExtResource("3")
+Components = [SubResource("ChangeProjectileStateComponentDefinition")]

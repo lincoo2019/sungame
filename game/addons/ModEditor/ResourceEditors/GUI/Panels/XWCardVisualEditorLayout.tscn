@@ -1,0 +1,892 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+
+[sub_resource type="World2D" id="World2D_preview"]
+
+[sub_resource type="StyleBoxFlat" id="StyleShell"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.035, 0.085, 0.055, 0.98)
+border_color = Color(0.28, 0.52, 0.23, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.42)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleHeader"]
+content_margin_left = 18.0
+content_margin_top = 12.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+bg_color = Color(0.075, 0.22, 0.105, 1)
+border_color = Color(0.64, 0.82, 0.28, 1)
+border_width_bottom = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleWood"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.24, 0.125, 0.055, 0.97)
+border_color = Color(0.72, 0.46, 0.18, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleSeedBank"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.19, 0.08, 0.98)
+border_color = Color(0.54, 0.72, 0.25, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleSun"]
+content_margin_left = 10.0
+content_margin_top = 6.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+bg_color = Color(0.55, 0.32, 0.035, 1)
+border_color = Color(1, 0.82, 0.24, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBattle"]
+bg_color = Color(0.02, 0.04, 0.025, 1)
+border_color = Color(0.5, 0.69, 0.25, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleEvent"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.055, 0.12, 0.075, 0.98)
+border_color = Color(0.31, 0.56, 0.25, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[node name="CardVisualEditorLayout" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleHeader")
+
+[node name="HeaderRow" type="HFlowContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleBlock" type="VBoxContainer" parent="Header/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="Header/HeaderRow/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 1, 0.76, 1)
+theme_override_font_sizes/font_size = 22
+text = "种子包战斗实验室"
+
+[node name="Subtitle" type="Label" parent="Header/HeaderRow/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.82, 0.58, 1)
+text = "直接在游戏草坪与种子栏中校验外观、费用、冷却和种植结果"
+
+[node name="InlineSaveKeyLineEdit" type="LineEdit" parent="Header/HeaderRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.32, 1)
+horizontal_alignment = 2
+placeholder_text = "直接编辑资源键"
+tooltip_text = "这个文本就是游戏注册和存档使用的卡牌唯一键，可在标题位置直接编辑"
+select_all_on_focus = true
+
+[node name="Top" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="CardFrame" type="PanelContainer" parent="Top"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleShell")
+
+[node name="CardSurface" type="VBoxContainer" parent="Top/CardFrame"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="SeedBankHud" type="PanelContainer" parent="Top/CardFrame/CardSurface"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleSeedBank")
+
+[node name="SeedBankRow" type="HFlowContainer" parent="Top/CardFrame/CardSurface/SeedBankHud"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SunPill" type="PanelContainer" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow"]
+custom_minimum_size = Vector2(132, 46)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleSun")
+
+[node name="SunRow" type="HBoxContainer" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/SunPill"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Icon" type="Label" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/SunPill/SunRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.32, 1)
+theme_override_font_sizes/font_size = 20
+text = "☀"
+vertical_alignment = 1
+
+[node name="PreviewSunSpinBox" type="SpinBox" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/SunPill/SunRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(88, 34)
+layout_mode = 2
+min_value = -100000.0
+max_value = 99999.0
+step = 25.0
+value = 500.0
+allow_greater = true
+
+[node name="PacketSlot" type="Control" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+
+[node name="PacketShowRoot" type="Control" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/PacketSlot"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImageMissingLabel" type="Label" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/PacketSlot"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "未找到种子包预览"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PacketInteractionButton" type="Button" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/PacketSlot"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+flat = true
+tooltip_text = "使用真实游戏卡片节点预览悬停动画；点击拿起或放回卡片"
+
+[node name="StateControls" type="VBoxContainer" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="StateRow" type="HFlowContainer" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/StateControls"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="StateTitle" type="Label" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/StateControls/StateRow"]
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 2
+text = "战斗状态"
+vertical_alignment = 1
+
+[node name="RuntimeStateCards" type="HFlowContainer" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/StateControls/StateRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="MobilePreviewCheck" type="CheckButton" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/StateControls/StateRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "手机版"
+
+[node name="CooldownRow" type="HBoxContainer" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/StateControls"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/StateControls/CooldownRow"]
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 2
+text = "冷却剩余"
+
+[node name="CooldownProgressSlider" type="HSlider" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/StateControls/CooldownRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[node name="CooldownPercentLabel" type="Label" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/StateControls/CooldownRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(52, 0)
+layout_mode = 2
+text = "0%"
+horizontal_alignment = 2
+
+[node name="RuntimeClockLabel" type="Label" parent="Top/CardFrame/CardSurface/SeedBankHud/SeedBankRow/StateControls/CooldownRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(132, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.86, 1, 1)
+text = "未配置冷却"
+horizontal_alignment = 2
+
+[node name="BattlePanel" type="PanelContainer" parent="Top/CardFrame/CardSurface"]
+custom_minimum_size = Vector2(420, 270)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBattle")
+
+[node name="CharacterViewportContainer" type="SubViewportContainer" parent="Top/CardFrame/CardSurface/BattlePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+stretch = true
+tooltip_text = "这里运行卡片绑定的完整游戏角色场景"
+
+[node name="CharacterViewport" type="SubViewport" parent="Top/CardFrame/CardSurface/BattlePanel/CharacterViewportContainer"]
+unique_name_in_owner = true
+world_2d = SubResource("World2D_preview")
+transparent_bg = true
+disable_3d = true
+size = Vector2i(720, 365)
+render_target_update_mode = 4
+
+[node name="GameBackground" type="TextureRect" parent="Top/CardFrame/CardSurface/BattlePanel/CharacterViewportContainer/CharacterViewport"]
+unique_name_in_owner = true
+offset_right = 720.0
+offset_bottom = 365.0
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="BattleTint" type="ColorRect" parent="Top/CardFrame/CardSurface/BattlePanel/CharacterViewportContainer/CharacterViewport"]
+unique_name_in_owner = true
+offset_right = 720.0
+offset_bottom = 365.0
+mouse_filter = 2
+color = Color(0.04, 0.12, 0.035, 0.12)
+
+[node name="CharacterPreviewRoot" type="Node2D" parent="Top/CardFrame/CardSurface/BattlePanel/CharacterViewportContainer/CharacterViewport"]
+unique_name_in_owner = true
+z_index = 64
+position = Vector2(500, 285)
+
+[node name="CharacterMissingLabel" type="Label" parent="Top/CardFrame/CardSurface/BattlePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.52, 1)
+theme_override_font_sizes/font_size = 18
+text = "请先为卡片绑定角色"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardBattleDropSurface" type="Control" parent="Top/CardFrame/CardSurface/BattlePanel"]
+unique_name_in_owner = true
+z_index = 80
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+tooltip_text = "从上方真实卡牌拖到草坪格子；绿色可放置，红色会取消"
+
+[node name="CardDragTargetHighlight" type="ColorRect" parent="Top/CardFrame/CardSurface/BattlePanel/CardBattleDropSurface"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 54.0
+mouse_filter = 2
+color = Color(0.32, 1, 0.38, 0.34)
+
+[node name="BattleStatusLabel" type="Label" parent="Top/CardFrame/CardSurface/BattlePanel"]
+unique_name_in_owner = true
+z_index = 96
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.94, 1, 0.78, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 16
+text = "准备种植"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionBar" type="HFlowContainer" parent="Top/CardFrame/CardSurface"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CostLabel" type="Label" parent="Top/CardFrame/CardSurface/ActionBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 38)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.3, 1)
+theme_override_font_sizes/font_size = 19
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InlineCostSpinBox" type="SpinBox" parent="Top/CardFrame/CardSurface/ActionBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(122, 38)
+layout_mode = 2
+min_value = -1.0
+max_value = 99999.0
+step = 1.0
+allow_greater = true
+suffix = " 阳光"
+tooltip_text = "直接修改卡片在游戏种子栏中显示的费用；-1 表示继承角色费用"
+
+[node name="CardNameLabel" type="LineEdit" parent="Top/CardFrame/CardSurface/ActionBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+placeholder_text = "在这里直接编辑卡片名称文本键"
+tooltip_text = "对应游戏图鉴与卡片信息中的名称文本"
+
+[node name="PreviewPlantButton" type="Button" parent="Top/CardFrame/CardSurface/ActionBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(118, 38)
+layout_mode = 2
+text = "种植并冷却"
+tooltip_text = "重新生成完整角色场景，并显示使用卡片后的冷却状态"
+
+[node name="PauseRuntimeButton" type="Button" parent="Top/CardFrame/CardSurface/ActionBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 38)
+layout_mode = 2
+text = "继续冷却"
+tooltip_text = "暂停或继续按真实秒数运行的卡片冷却预览"
+
+[node name="ResetRuntimeButton" type="Button" parent="Top/CardFrame/CardSurface/ActionBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 38)
+layout_mode = 2
+text = "重置战斗"
+
+[node name="DirectValuePanel" type="PanelContainer" parent="Top/CardFrame/CardSurface"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleSeedBank")
+
+[node name="DirectValueLayout" type="VBoxContainer" parent="Top/CardFrame/CardSurface/DirectValuePanel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ValueRow" type="HFlowContainer" parent="Top/CardFrame/CardSurface/DirectValuePanel/DirectValueLayout"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CooldownTitle" type="Label" parent="Top/CardFrame/CardSurface/DirectValuePanel/DirectValueLayout/ValueRow"]
+layout_mode = 2
+text = "冷却"
+vertical_alignment = 1
+
+[node name="InlineCooldownSpinBox" type="SpinBox" parent="Top/CardFrame/CardSurface/DirectValuePanel/DirectValueLayout/ValueRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(118, 36)
+layout_mode = 2
+min_value = -1.0
+max_value = 99999.0
+step = 0.1
+allow_greater = true
+suffix = " 秒"
+tooltip_text = "直接修改游戏卡牌冷却；-1 表示继承角色配置"
+
+[node name="StartingTitle" type="Label" parent="Top/CardFrame/CardSurface/DirectValuePanel/DirectValueLayout/ValueRow"]
+layout_mode = 2
+text = "初始冷却"
+vertical_alignment = 1
+
+[node name="InlineStartingCooldownSpinBox" type="SpinBox" parent="Top/CardFrame/CardSurface/DirectValuePanel/DirectValueLayout/ValueRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(118, 36)
+layout_mode = 2
+min_value = -1.0
+max_value = 99999.0
+step = 0.1
+allow_greater = true
+suffix = " 秒"
+tooltip_text = "直接修改游戏开局初始冷却；-1 表示继承角色配置"
+
+[node name="AnimationTitle" type="Label" parent="Top/CardFrame/CardSurface/DirectValuePanel/DirectValueLayout/ValueRow"]
+layout_mode = 2
+text = "卡面动画"
+vertical_alignment = 1
+
+[node name="InlineAnimationLineEdit" type="LineEdit" parent="Top/CardFrame/CardSurface/DirectValuePanel/DirectValueLayout/ValueRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(170, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "直接编辑动画片段"
+tooltip_text = "直接修改卡牌图像播放的动画片段名称"
+select_all_on_focus = true
+
+[node name="InlineCharacterBindingButton" type="Button" parent="Top/CardFrame/CardSurface/DirectValuePanel/DirectValueLayout/ValueRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+text = "选择角色图像"
+tooltip_text = "在卡牌画面旁直接选择绑定角色，不切换到原始检查器"
+
+[node name="ValueOverrideBadge" type="Label" parent="Top/CardFrame/CardSurface/DirectValuePanel/DirectValueLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.42, 1)
+text = "数值覆盖 · 费用继承 · 冷却继承 · 初始冷却继承"
+autowrap_mode = 2
+
+[node name="MetaGrid" type="GridContainer" parent="Top/CardFrame/CardSurface"]
+layout_mode = 2
+columns = 2
+
+[node name="TypeLabel" type="Label" parent="Top/CardFrame/CardSurface/MetaGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+clip_text = true
+
+[node name="CooldownLabel" type="Label" parent="Top/CardFrame/CardSurface/MetaGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+clip_text = true
+
+[node name="CharacterLabel" type="Label" parent="Top/CardFrame/CardSurface/MetaGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+clip_text = true
+
+[node name="AnimationLabel" type="Label" parent="Top/CardFrame/CardSurface/MetaGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+clip_text = true
+
+[node name="KeyLabel" type="Label" parent="Top/CardFrame/CardSurface/MetaGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="InspectorPanel" type="PanelContainer" parent="Top"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleWood")
+
+[node name="InspectorScroll" type="ScrollContainer" parent="Top/InspectorPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="InspectorHost" type="VBoxContainer" parent="Top/InspectorPanel/InspectorScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="BehaviorPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleSeedBank")
+
+[node name="BehaviorLayout" type="VBoxContainer" parent="BehaviorPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="BehaviorHeader" type="HBoxContainer" parent="BehaviorPanel/BehaviorLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="BehaviorPanel/BehaviorLayout/BehaviorHeader"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.33, 1)
+theme_override_font_sizes/font_size = 20
+text = "◆ 卡牌行为拼图"
+
+[node name="BehaviorSummaryLabel" type="Label" parent="BehaviorPanel/BehaviorLayout/BehaviorHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.92, 0.64, 1)
+text = "注册行为 0 · 内联行为 0"
+horizontal_alignment = 2
+
+[node name="ExecutionHint" type="Label" parent="BehaviorPanel/BehaviorLayout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.78, 0.56, 1)
+text = "执行顺序：注册行为 → 内联行为 → 费用规则。预览只读取配置，不会运行模组行为代码。"
+autowrap_mode = 2
+
+[node name="BehaviorColumns" type="GridContainer" parent="BehaviorPanel/BehaviorLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="RegistryBehaviorBox" type="PanelContainer" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns"]
+custom_minimum_size = Vector2(320, 210)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleWood")
+
+[node name="Layout" type="VBoxContainer" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.83, 0.35, 1)
+theme_override_font_sizes/font_size = 17
+text = "① 注册行为库"
+
+[node name="RegistryToolbar" type="HFlowContainer" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="PickRegistryBehaviorButton" type="Button" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox/Layout/RegistryToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "＋ 选择拼图"
+tooltip_text = "从当前游戏和已加载模组注册的卡牌行为中选择"
+
+[node name="OpenRegistryBehaviorButton" type="Button" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox/Layout/RegistryToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "打开"
+
+[node name="RemoveRegistryBehaviorButton" type="Button" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox/Layout/RegistryToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "移除"
+
+[node name="MoveRegistryBehaviorUpButton" type="Button" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox/Layout/RegistryToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "↑"
+tooltip_text = "提前执行"
+
+[node name="MoveRegistryBehaviorDownButton" type="Button" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox/Layout/RegistryToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "↓"
+tooltip_text = "稍后执行"
+
+[node name="RefreshRegistryBehaviorButton" type="Button" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox/Layout/RegistryToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "刷新行为库"
+
+[node name="CustomIdToolbar" type="HBoxContainer" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CustomBehaviorIdEdit" type="LineEdit" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox/Layout/CustomIdToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "高级：输入尚未加载的模组行为标识"
+tooltip_text = "允许先写入未来由模组注册的行为标识；缺失项会显示为断开的红色拼图"
+
+[node name="AddCustomBehaviorIdButton" type="Button" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox/Layout/CustomIdToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加标识"
+
+[node name="RegistryBehaviorList" type="ItemList" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 112)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "绿色为可用卡牌行为，红色为缺失，橙色为类型不匹配"
+
+[node name="RegistryBehaviorStatusLabel" type="Label" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/RegistryBehaviorBox/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.82, 0.62, 1)
+text = "行为库尚未刷新"
+autowrap_mode = 2
+
+[node name="InlineBehaviorBox" type="PanelContainer" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns"]
+custom_minimum_size = Vector2(320, 210)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleWood")
+
+[node name="Layout" type="VBoxContainer" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/InlineBehaviorBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/InlineBehaviorBox/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 17
+text = "② 卡牌内联行为"
+
+[node name="InlineToolbar" type="HFlowContainer" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/InlineBehaviorBox/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="AddInlineBehaviorButton" type="Button" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/InlineBehaviorBox/Layout/InlineToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "＋ 新建拼图"
+tooltip_text = "从已加载的 C# 卡牌行为类型创建内联资源"
+
+[node name="OpenInlineBehaviorButton" type="Button" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/InlineBehaviorBox/Layout/InlineToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "直接编辑"
+
+[node name="RemoveInlineBehaviorButton" type="Button" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/InlineBehaviorBox/Layout/InlineToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "移除"
+
+[node name="MoveInlineBehaviorUpButton" type="Button" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/InlineBehaviorBox/Layout/InlineToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "↑"
+tooltip_text = "提前执行"
+
+[node name="MoveInlineBehaviorDownButton" type="Button" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/InlineBehaviorBox/Layout/InlineToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "↓"
+tooltip_text = "稍后执行"
+
+[node name="InlineBehaviorList" type="ItemList" parent="BehaviorPanel/BehaviorLayout/BehaviorColumns/InlineBehaviorBox/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 145)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "双击拼图可在主面板直接编辑全部属性"
+
+[node name="RegistryBehaviorPicker" type="PopupMenu" parent="BehaviorPanel"]
+unique_name_in_owner = true
+
+[node name="EventPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleEvent")
+
+[node name="EventLayout" type="VBoxContainer" parent="EventPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="EventSummaryLabel" type="Label" parent="EventPanel/EventLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 1, 0.72, 1)
+theme_override_font_sizes/font_size = 17
+
+[node name="EventToolbar" type="HFlowContainer" parent="EventPanel/EventLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="AddPressButton" type="Button" parent="EventPanel/EventLayout/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "＋ 按下事件"
+
+[node name="RemovePressButton" type="Button" parent="EventPanel/EventLayout/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "－ 按下事件"
+
+[node name="OpenPressButton" type="Button" parent="EventPanel/EventLayout/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "打开按下"
+
+[node name="MovePressUpButton" type="Button" parent="EventPanel/EventLayout/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "按下↑"
+
+[node name="MovePressDownButton" type="Button" parent="EventPanel/EventLayout/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "按下↓"
+
+[node name="AddPlantButton" type="Button" parent="EventPanel/EventLayout/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "＋ 种植事件"
+
+[node name="RemovePlantButton" type="Button" parent="EventPanel/EventLayout/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "－ 种植事件"
+
+[node name="OpenPlantButton" type="Button" parent="EventPanel/EventLayout/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "打开种植"
+
+[node name="MovePlantUpButton" type="Button" parent="EventPanel/EventLayout/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "种植↑"
+
+[node name="MovePlantDownButton" type="Button" parent="EventPanel/EventLayout/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "种植↓"
+
+[node name="EventHint" type="Label" parent="EventPanel/EventLayout/EventToolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.55, 0.72, 0.5, 1)
+text = "双击条目或点击打开，可进入事件画面继续编辑"
+horizontal_alignment = 2
+
+[node name="Lists" type="HBoxContainer" parent="EventPanel/EventLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="PressBox" type="VBoxContainer" parent="EventPanel/EventLayout/Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="EventPanel/EventLayout/Lists/PressBox"]
+layout_mode = 2
+text = "拿起卡片时"
+
+[node name="EventPressList" type="ItemList" parent="EventPanel/EventLayout/Lists/PressBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "按下事件 pressedActions"
+
+[node name="PlantBox" type="VBoxContainer" parent="EventPanel/EventLayout/Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="EventPanel/EventLayout/Lists/PlantBox"]
+layout_mode = 2
+text = "完成种植时"
+
+[node name="EventPlantList" type="ItemList" parent="EventPanel/EventLayout/Lists/PlantBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "种植事件 useSucceededActions"
+
+[node name="UnlockBox" type="VBoxContainer" parent="EventPanel/EventLayout/Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="EventPanel/EventLayout/Lists/UnlockBox"]
+layout_mode = 2
+text = "解锁条件"
+
+[node name="UnlockConditionList" type="ItemList" parent="EventPanel/EventLayout/Lists/UnlockBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "解锁条件 unlockCheckList"

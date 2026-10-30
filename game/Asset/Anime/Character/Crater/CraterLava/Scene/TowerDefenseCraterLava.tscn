@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bnxk4r3u1gynk"]
+
+[ext_resource type="PackedScene" uid="uid://cwhqvqfanhp7s" path="res://Prefab/TowerDefense/Character/TowerDefenseCrater.tscn" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="3"]
+[ext_resource type="Script" uid="uid://dp2pqwer6loc1" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffRedHeat.cs" id="4"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="5"]
+[ext_resource type="Script" uid="uid://b8rialbjr540d" path="res://Script/Component/TowerDefense/Character/PeriodicAreaEventComponent/PeriodicAreaEventComponentDefinition.cs" id="6"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="7"]
+[ext_resource type="Resource" uid="uid://sn5xkh8i05a4" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefenseCraterComponentSet.tres" id="8"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="9"]
+[ext_resource type="Script" uid="uid://dmxw56xofbjbd" path="res://Asset/Anime/Character/Crater/CraterLava/Scene/TowerDefenseCraterLava.cs" id="10"]
+[ext_resource type="Resource" uid="uid://brnhhvhc1flfh" path="res://Asset/Anime/Character/Crater/CraterLava/Config/TowerDefenseCraterLava.tres" id="11"]
+[ext_resource type="PackedScene" uid="uid://c25wwvdcirunp" path="res://Asset/Anime/Character/Crater/CraterLava/CraterLava.tscn" id="12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwiha"]
+size = Vector2(90, 44)
+
+[sub_resource type="Resource" id="AabbShape2DResource_vwiha"]
+script = ExtResource("2")
+Geometry = SubResource("RectangleShape2D_vwiha")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, -2)
+
+[sub_resource type="Resource" id="Resource_i1oqr"]
+script = ExtResource("3")
+num = 40.0
+damageFlags = 6
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[sub_resource type="Resource" id="Resource_vatto"]
+script = ExtResource("4")
+time = 2.0
+metadata/_custom_type_script = "uid://dp2pqwer6loc1"
+
+[sub_resource type="Resource" id="Resource_yguhv"]
+script = ExtResource("5")
+buffList = [SubResource("Resource_vatto")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="PeriodicDefinition"]
+script = ExtResource("6")
+eventList = [SubResource("Resource_i1oqr"), SubResource("Resource_yguhv")]
+targetEffectType = "Sprite"
+targetEffectScene = ExtResource("7")
+checkShape = SubResource("AabbShape2DResource_vwiha")
+ComponentTypeId = "PeriodicAreaEventComponent"
+DefinitionId = "builtin.component.periodic_area_event.crater_lava"
+InstanceId = "character.periodic_area_event"
+WireIndex = 0
+StateMachineDefinition = null
+LegacyNodeNames = [&"PeriodicAreaEventComponent"]
+
+[sub_resource type="Resource" id="PeriodicComponentSet"]
+script = ExtResource("9")
+ParentSet = ExtResource("8")
+Components = [SubResource("PeriodicDefinition")]
+
+[node name="TowerDefenseCraterLava" unique_id=1808330769 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = SubResource("PeriodicComponentSet")
+script = ExtResource("10")
+config = ExtResource("11")
+sprite = NodePath("SpriteGroup/TransformPoint/CraterLava")
+
+[node name="CraterLava" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=844737884 instance=ExtResource("12")]
+position = Vector2(0, -18)
+Animation/LayerVisible/AnimeClips = false
+Animation/LayerVisible/CraterHalf = false

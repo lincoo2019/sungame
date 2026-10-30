@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://l5ap1af7o8tx"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter5/BalloonBomb/Scene/TowerDefenseZombieBalloonBombComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://p5wh1roc3n5d" path="res://Asset/Anime/Character/Zombie/Chapter5/BalloonBomb/Scene/TowerDefenseZombieBalloonBomb.cs" id="3"]
+[ext_resource type="Resource" uid="uid://bbi08n1v2pomp" path="res://Asset/Anime/Character/Zombie/Chapter5/BalloonBomb/Scene/TowerDefenseZombieBalloonBombStateMachine.tres" id="4"]
+[ext_resource type="Script" uid="uid://bt7fis5jparcx" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.cs" id="5"]
+[ext_resource type="Resource" uid="uid://6ga2gkcs0n3u" path="res://Asset/Anime/Character/Zombie/Chapter5/BalloonBomb/Config/TowerDefenseZombieBalloonBomb.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://dgbp36k2e4mc2" path="res://Asset/Anime/Character/Zombie/Chapter5/BalloonBomb/ZombieBalloonBomb.tscn" id="7"]
+
+[sub_resource type="Resource" id="Resource_u2asg"]
+script = ExtResource("5")
+num = 100.0
+metadata/_custom_type_script = "uid://bt7fis5jparcx"
+
+[node name="TowerDefenseZombieBalloonBomb" unique_id=1713223417 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+eventList = [SubResource("Resource_u2asg")]
+walkSpeedScale = 1.5
+waterHeight = 30.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieBalloonBomb")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+scale = Vector2(0.8837209, 0.9444443)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieBalloonBomb" parent="SpriteGroup/TransformPoint" index="0" unique_id=518316040 instance=ExtResource("7")]
+position = Vector2(-4, -29)
+clip = "Idle"
+layerVisible = [true, true, true, true, true, false, true]
+mediaReplaceAtlasPaths = ["", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false]
+
+[editable path="SpriteGroup/TransformPoint/ZombieBalloonBomb"]

@@ -1,0 +1,99 @@
+[gd_resource type="Resource" script_class="FireComponentDefinition" format=3 uid="uid://dp7lltgrlrnfn"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbglc127qw1jb" path="res://Resource/TowerDefense/Collision/AabbRay2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://bi6p43no6bcyx" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeightItem.cs" id="5"]
+[ext_resource type="Script" uid="uid://6pte6bht2hgs" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeight.cs" id="6"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="7"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="8"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="9"]
+
+[sub_resource type="Resource" id="AabbRay2DResource_backward"]
+script = ExtResource("2")
+TargetPosition = Vector2(-2000, 0)
+
+[sub_resource type="Resource" id="Resource_sjbm5"]
+script = ExtResource("3")
+projectileName = &"CoinSilver"
+
+[sub_resource type="Resource" id="Resource_d6xi6"]
+script = ExtResource("3")
+projectileName = &"CoinSilver"
+baseDamage = 100.0
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Resource_uxakw"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_d6xi6")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_2hdds"]
+script = ExtResource("5")
+projectileResource = SubResource("Resource_uxakw")
+weight = 0.7
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Resource_3x5fq"]
+script = ExtResource("3")
+projectileName = &"CoinGold"
+baseDamage = 500.0
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Resource_rdwhb"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_3x5fq")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_1yd6y"]
+script = ExtResource("5")
+projectileResource = SubResource("Resource_rdwhb")
+weight = 0.25
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Resource_foun5"]
+script = ExtResource("3")
+projectileName = &"CoinDiamond"
+baseDamage = 1000.0
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Resource_4jl43"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_foun5")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_o5wxw"]
+script = ExtResource("5")
+projectileResource = SubResource("Resource_4jl43")
+weight = 0.05
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Resource_3mwvw"]
+script = ExtResource("6")
+projectileData = SubResource("Resource_sjbm5")
+projectileWeight = [SubResource("Resource_2hdds"), SubResource("Resource_1yd6y"), SubResource("Resource_o5wxw")]
+metadata/_custom_type_script = "uid://6pte6bht2hgs"
+
+[sub_resource type="Resource" id="Resource_4fh8r"]
+script = ExtResource("7")
+projectile = SubResource("Resource_3mwvw")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Resource_fcfpc"]
+script = ExtResource("8")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[resource]
+script = ExtResource("9")
+checkRayResources = [SubResource("AabbRay2DResource_backward")]
+checkUse = false
+fireInterval = 3.0
+fireCheckList = [SubResource("Resource_4fh8r")]
+fireProjectileList = [SubResource("Resource_fcfpc")]
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.zombie.chapter7.fatgold.scene.towerdefensezombiefatgold"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]

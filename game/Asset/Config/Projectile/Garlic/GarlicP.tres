@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://csdnkvehyg6gd"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_d2oc0"]
+[ext_resource type="PackedScene" uid="uid://dxk0mglno4y4v" path="res://Asset/Config/Projectile/Garlic/GarlicP/ProjectileGarlicP.tscn" id="2_d2oc0"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_v1r8p"]
+[ext_resource type="Script" uid="uid://d1fie66tskvhk" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffPoisoning.cs" id="3_c51en"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="3_d1hgb"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_b6cfs"]
+[ext_resource type="PackedScene" uid="uid://c6y3fsw8r5qby" path="res://Prefab/Particles/Splats/GarlicPSplats/GarlicPSplats.tscn" id="4_keise"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="5_c51en"]
+
+[sub_resource type="Resource" id="Resource_kam44"]
+script = ExtResource("3_c51en")
+time = 3.0
+metadata/_custom_type_script = "uid://d1fie66tskvhk"
+
+[sub_resource type="Resource" id="Resource_u2yfl"]
+script = ExtResource("4_b6cfs")
+buffList = Array[ExtResource("2_v1r8p")]([SubResource("Resource_kam44")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("3_d1hgb")
+name = "GarlicP"
+projectileScene = ExtResource("2_d2oc0")
+projectileObject = 346
+splatScene = ExtResource("4_keise")
+hitCharacterEventList = Array[ExtResource("1_d2oc0")]([SubResource("Resource_u2yfl")])
+useRange = true
+rangeSize = Vector2(0.5, 0.25)
+collisionFlags = 1
+catapultHeight = 400.0

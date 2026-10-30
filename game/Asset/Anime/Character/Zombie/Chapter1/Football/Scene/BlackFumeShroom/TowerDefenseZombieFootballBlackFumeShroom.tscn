@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://biu1ji68neii0"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://nyo22lyfufs5" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Scene/BlackFumeShroom/TowerDefenseZombieFootballBlackFumeShroomComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bl2nqj67uj6ni" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Scene/BlackFumeShroom/TowerDefenseZombieFootballBlackFumeShroom.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bboismvojfqgp" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Config/TowerDefenseZombieFootballBlackFumeShroom.tres" id="5"]
+[ext_resource type="Resource" uid="uid://b8w8htp4yuf7k" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/DamagePoint/Config/ZombieFootballDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://bb01ieo87s4co" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballFumeShroomArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://d0c6qmcgnjnb0" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/DamagePoint/Config/ZombieFootballDamagePointHead.tres" id="8"]
+[ext_resource type="Resource" uid="uid://dgoild34vd4mw" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballFumeShroomArmorHelmet.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://bmmysw024fr0c" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Sprite/BlackFumeShroom/ZombieFootballBlackFumeShroom.tscn" id="10"]
+[ext_resource type="Texture2D" uid="uid://bgqrj8e8qsgw8" path="res://Asset/Config/Projectile/Puff/Sprite/PuffShroom/ProjectilePuffShroomPuff.png" id="11"]
+
+[sub_resource type="Curve" id="Curve_81i8b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.589744, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4p3xn"]
+curve = SubResource("Curve_81i8b")
+
+[sub_resource type="Curve" id="Curve_ktiwv"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 38.1566), 0.0, 0.0, 0, 0, Vector2(0.535897, 100), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rw0y7"]
+curve = SubResource("Curve_ktiwv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sssaj"]
+lifetime_randomness = 0.38
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 20.0
+spread = 15.0
+flatness = 0.552
+initial_velocity_min = 240.58
+initial_velocity_max = 788.5
+gravity = Vector3(0, 0, 0)
+damping_min = 3.199
+damping_max = 36.884
+damping_curve = SubResource("CurveTexture_rw0y7")
+scale_min = 0.6
+scale_max = 0.9
+alpha_curve = SubResource("CurveTexture_4p3xn")
+
+[node name="TowerDefenseZombieFootballBlackFumeShroom" unique_id=598906549 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+walkSpeedScale = 2.0
+swimAnimeClip = "Swim"
+dieWaterAnimeClip = "SwimDeath"
+garlicReplace = "Zombie_football_head.png"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Head": ExtResource("8"),
+"Helmet": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom/HelmentSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom/HelmentSlot")
+}
+currentArmor = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(9, 37)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieFootballBlackFumeShroom" parent="SpriteGroup/TransformPoint" index="0" unique_id=859133807 instance=ExtResource("10")]
+position = Vector2(-12, -33)
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom" index="0" unique_id=795001496]
+
+[node name="FumeShroomHeadSlot" parent="SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom/Head" index="0" unique_id=1165499639]
+position = Vector2(-66.39516, -28.475506)
+rotation = -0.00012607861
+scale = Vector2(0.7913525, 0.81406695)
+skew = 0.00012600422
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom/Head/FumeShroomHeadSlot" index="0" unique_id=831794546]
+position = Vector2(99.21434, 48.14427)
+rotation = 0.030824302
+scale = Vector2(1.3358706, 1.1502031)
+skew = 0.0013504028
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom" index="1" unique_id=1859030246]
+drawLayerId = -2
+position = Vector2(-12.506754, -57.76824)
+rotation = -0.012430437
+scale = Vector2(0.7998427, 0.7998427)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom" index="2" unique_id=1454029380]
+position = Vector2(-34.36907, -20.451792)
+rotation = -0.042655434
+scale = Vector2(0.7994514, 0.7994514)
+
+[node name="HelmentSlot" parent="SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom" index="3" unique_id=137893895]
+position = Vector2(-8.291649, -62.135025)
+rotation = -0.022599788
+scale = Vector2(0.7997917, 0.7997917)
+
+[node name="FireParticles" type="GPUParticles2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="3" unique_id=1587647636]
+unique_name_in_owner = true
+z_index = 3
+position = Vector2(-37.972244, -76.09054)
+rotation = -3.124452
+scale = Vector2(1.1482315, -1.0916929)
+skew = -0.027527094
+emitting = false
+amount = 64
+texture = ExtResource("11")
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.4
+randomness = 0.4
+process_material = SubResource("ParticleProcessMaterial_sssaj")
+
+[editable path="SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom"]

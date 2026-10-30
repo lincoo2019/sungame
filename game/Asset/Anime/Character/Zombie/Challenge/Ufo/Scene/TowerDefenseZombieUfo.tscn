@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dnxcrts28unw"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cmfs5me5tytl0" path="res://Asset/Anime/Character/Zombie/Challenge/Ufo/Scene/TowerDefenseZombieUfo.cs" id="2"]
+[ext_resource type="Resource" uid="uid://b8x2kgam0q1w" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_190x70_At_n5_0.tres" id="3"]
+[ext_resource type="Resource" uid="uid://bcgej0iwt7jq4" path="res://Asset/Anime/Character/Zombie/Challenge/Ufo/Scene/TowerDefenseZombieUfoStateMachine.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cjuuacrbd0u1l" path="res://Asset/Anime/Character/Zombie/Challenge/Ufo/Scene/TowerDefenseZombieUfoComponentSet.tres" id="5"]
+[ext_resource type="Resource" uid="uid://rkdn6btiwdrv" path="res://Asset/Anime/Character/Zombie/Challenge/Ufo/Config/TowerDefenseZombieUfo.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://cpigx55jm2t6c" path="res://Asset/Anime/Character/Zombie/Challenge/Ufo/ZombieUfo.tscn" id="7"]
+
+[node name="TowerDefenseZombieUfo" unique_id=28680171 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+ComponentSet = ExtResource("5")
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieUfo")
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieUfo/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieUfo/HeadSlot")
+}
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 42)
+scale = Vector2(2.5, 1.5)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieUfo" parent="SpriteGroup/TransformPoint" index="0" unique_id=697165537 instance=ExtResource("7")]
+position = Vector2(-12, -33)
+
+[editable path="SpriteGroup/TransformPoint/ZombieUfo"]

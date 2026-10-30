@@ -1,0 +1,179 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/XWInspectorPropertyEditorBase.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/ResourceInspectorExtend/Material/XWInspectorPropertyEditorMaterial.cs" id="2_script"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/Resource/XWResourcePicker.tscn" id="3_picker"]
+
+[node name="XWInspectorPropertyEditorMaterial" node_paths=PackedStringArray("PropertyEditorPath") instance=ExtResource("1_base")]
+custom_minimum_size = Vector2(0, 340)
+script = ExtResource("2_script")
+PropertyEditorPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor")
+
+[node name="MaterialEditor" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 332)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="MaterialPreview" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ShaderControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="ShaderPicker" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/ShaderControls" instance=ExtResource("3_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ShaderParamTree" type="Tree" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/ShaderControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+column_titles_visible = true
+hide_root = true
+
+[node name="CanvasControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="CanvasModeGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/CanvasControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="BlendModeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/CanvasControls/CanvasModeGrid"]
+custom_minimum_size = Vector2(58, 26)
+layout_mode = 2
+text = "混合"
+vertical_alignment = 1
+
+[node name="BlendModeOption" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/CanvasControls/CanvasModeGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(94, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LightModeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/CanvasControls/CanvasModeGrid"]
+custom_minimum_size = Vector2(58, 26)
+layout_mode = 2
+text = "光照"
+vertical_alignment = 1
+
+[node name="LightModeOption" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/CanvasControls/CanvasModeGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(94, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ParticleRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/CanvasControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="ParticlesAnimationCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/CanvasControls/ParticleRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+text = "粒子动画"
+
+[node name="ParticlesAnimLoopCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/CanvasControls/ParticleRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+text = "循环"
+
+[node name="ParticleFrameGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/CanvasControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="ParticlesHFramesLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/CanvasControls/ParticleFrameGrid"]
+custom_minimum_size = Vector2(58, 26)
+layout_mode = 2
+text = "横帧"
+vertical_alignment = 1
+
+[node name="ParticlesHFramesSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/CanvasControls/ParticleFrameGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(74, 26)
+layout_mode = 2
+min_value = 1.0
+max_value = 4096.0
+value = 1.0
+
+[node name="ParticlesVFramesLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/CanvasControls/ParticleFrameGrid"]
+custom_minimum_size = Vector2(58, 26)
+layout_mode = 2
+text = "纵帧"
+vertical_alignment = 1
+
+[node name="ParticlesVFramesSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/CanvasControls/ParticleFrameGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(74, 26)
+layout_mode = 2
+min_value = 1.0
+max_value = 4096.0
+value = 1.0
+
+[node name="Base3DControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Base3DGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/Base3DControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="AlbedoColorLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/Base3DControls/Base3DGrid"]
+custom_minimum_size = Vector2(72, 26)
+layout_mode = 2
+text = "颜色"
+vertical_alignment = 1
+
+[node name="AlbedoColorPicker" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/Base3DControls/Base3DGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MetallicLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/Base3DControls/Base3DGrid"]
+custom_minimum_size = Vector2(72, 26)
+layout_mode = 2
+text = "金属度"
+vertical_alignment = 1
+
+[node name="MetallicSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/Base3DControls/Base3DGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[node name="RoughnessLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/Base3DControls/Base3DGrid"]
+custom_minimum_size = Vector2(72, 26)
+layout_mode = 2
+text = "粗糙度"
+vertical_alignment = 1
+
+[node name="RoughnessSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/MaterialEditor/Base3DControls/Base3DGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01

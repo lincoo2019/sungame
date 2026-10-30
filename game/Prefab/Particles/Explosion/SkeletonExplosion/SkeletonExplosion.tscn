@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dykgix28gj14b"]
+
+[ext_resource type="Texture2D" uid="uid://dv5x6ax2qiod0" path="res://Asset/Anime/Particles/Explosion/ExplosionCloud.png" id="1_h32ks"]
+[ext_resource type="Material" uid="uid://bm02nixlyehnl" path="res://Prefab/Particles/Explosion/SkeletonExplosion/SkeletonExplosion.tres" id="2_fe1lo"]
+[ext_resource type="Script" uid="uid://cmjj5ejt1ranr" path="res://Extends/Particles/GPUParticles2DOnece.cs" id="3_37qj4"]
+[ext_resource type="Texture2D" uid="uid://byflw2xo5xd7" path="res://Prefab/Particles/Explosion/SkeletonExplosion/ZombieSkeletuarBreakPart.png" id="4_o3e28"]
+[ext_resource type="Material" uid="uid://b1ddu3vxtev0v" path="res://Prefab/Particles/Explosion/SkeletonExplosion/SkeletonExplosionPart.tres" id="5_81m6g"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pvbux"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[node name="SkeletonExplosion" type="GPUParticles2D" unique_id=1350295819]
+emitting = false
+amount = 12
+texture = ExtResource("1_h32ks")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+draw_order = 0
+process_material = ExtResource("2_fe1lo")
+script = ExtResource("3_37qj4")
+
+[node name="SkeletonExplosionPart" type="GPUParticles2D" parent="." unique_id=875304282]
+material = SubResource("CanvasItemMaterial_pvbux")
+emitting = false
+amount = 16
+texture = ExtResource("4_o3e28")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+draw_order = 0
+process_material = ExtResource("5_81m6g")

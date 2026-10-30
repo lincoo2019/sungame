@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://b4uot0y2pw1s5"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cymiyuoq7sfn0" path="res://Asset/Anime/Character/Zombie/Chapter3/DuckRider/Scene/TowerDefenseZombieDuckRiderComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://c8uivlpr0ad1f" path="res://Asset/Anime/Character/Zombie/Chapter3/DuckRider/Scene/TowerDefenseZombieDuckRider.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_64x33_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c8ng3cmnilypr" path="res://Asset/Anime/Character/Zombie/Chapter3/DuckRider/Config/TowerDefenseZombieDuckRider.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://pr7iwjuuhqgv" path="res://Asset/Anime/Character/Zombie/Chapter3/DuckRider/ZombieDuckRider.tscn" id="6"]
+
+[node name="TowerDefenseZombieDuckRider" unique_id=2016841854 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+walkSpeedScale = 1.5
+inSwimAnimeClip = "Jump"
+swimAnimeClip = "Swim"
+outSwimAnimeClip = "OutWater"
+attackAnimeClip = ""
+dieWaterAnimeClip = "WaterDeath"
+waterHeight = 25.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieDuckRider")
+PreviewDamagePointPersontage = 1.0
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieDuckRider" parent="SpriteGroup/TransformPoint" index="0" unique_id=957327467 instance=ExtResource("6")]
+position = Vector2(-12, -33)
+Animation/MediaReplace/Zombie_DuckRider_duckBody.png = "res://Asset/AtlasSource/DamagePoint/Anime/Character/Zombie/Chapter3/DuckRider/DamagePoint/Zombie_DuckRider_duckBody.png"
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieDuckRider" index="0" unique_id=40988141]
+position = Vector2(-44.1338, -40)
+Layer = 1

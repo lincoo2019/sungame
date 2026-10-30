@@ -1,0 +1,83 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ModSystem/ModProjectCreateDialog.cs" id="1_script"]
+
+[node name="ModProjectCreateDialog" type="ConfirmationDialog"]
+title = "新建 Mod 工程"
+initial_position = 1
+size = Vector2i(560, 440)
+min_size = Vector2i(560, 440)
+ok_button_text = "创建"
+cancel_button_text = "取消"
+script = ExtResource("1_script")
+
+[node name="Form" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NameLabel" type="Label" parent="Form"]
+layout_mode = 2
+text = "工程名称:"
+
+[node name="NameEdit" type="LineEdit" parent="Form"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "输入 Mod 名称（如：MyCoolMod）"
+
+[node name="VersionLabel" type="Label" parent="Form"]
+layout_mode = 2
+text = "版本:"
+
+[node name="VersionEdit" type="LineEdit" parent="Form"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1.0.0"
+placeholder_text = "如 1.0.0"
+
+[node name="AuthorLabel" type="Label" parent="Form"]
+layout_mode = 2
+text = "作者:"
+
+[node name="AuthorEdit" type="LineEdit" parent="Form"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "输入作者名称"
+
+[node name="DescriptionLabel" type="Label" parent="Form"]
+layout_mode = 2
+text = "描述:"
+
+[node name="DescriptionEdit" type="TextEdit" parent="Form"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+placeholder_text = "输入 Mod 描述（可选）"
+wrap_mode = 1
+
+[node name="PathLabel" type="Label" parent="Form"]
+layout_mode = 2
+text = "工程位置（选择父目录，工程将在此目录下创建）:"
+
+[node name="PathRow" type="HBoxContainer" parent="Form"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PathEdit" type="LineEdit" parent="Form/PathRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "输入或选择工程保存的父目录路径"
+
+[node name="BrowseButton" type="Button" parent="Form/PathRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "浏览..."
+
+[node name="BrowseDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "选择工程保存位置"
+initial_position = 1
+size = Vector2i(700, 520)
+min_size = Vector2i(640, 480)
+file_mode = 2
+access = 2

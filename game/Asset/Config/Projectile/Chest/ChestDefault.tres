@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://cmnahkhrjuvxw"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_hfw3b"]
+[ext_resource type="Script" uid="uid://ce1i8olrvxerv" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHitBack.cs" id="2_qj30h"]
+[ext_resource type="PackedScene" uid="uid://geg3f83r7bsx" path="res://Asset/Config/Projectile/Chest/Sprite/Chest/ProjectileChest.tscn" id="3_4awnx"]
+[ext_resource type="Script" uid="uid://bj5pfd0xrphk7" path="res://Resource/TowerDefense/Character/Event/Special/TowerDefenseCharacterEventExplodeProjectileFromMetaData.cs" id="3_qj30h"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="4_1n8tk"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="4_4awnx"]
+[ext_resource type="PackedScene" uid="uid://dgksig5vvlsf4" path="res://Asset/Anime/Effect/ChestBroke/ChestBroke.tscn" id="5_cxt66"]
+
+[sub_resource type="Resource" id="Resource_8mecq"]
+script = ExtResource("2_qj30h")
+length = 0.15
+time = 0.1
+metadata/_custom_type_script = "uid://ce1i8olrvxerv"
+
+[sub_resource type="Resource" id="Resource_4awnx"]
+script = ExtResource("3_qj30h")
+metadata/_custom_type_script = "uid://bj5pfd0xrphk7"
+
+[resource]
+script = ExtResource("4_1n8tk")
+name = "Chest"
+baseDamage = 100.0
+projectileScene = ExtResource("3_4awnx")
+splatSceneType = "Sprite"
+splatAudio = "Bonk"
+splatScene = ExtResource("5_cxt66")
+hitTargetEventList = Array[ExtResource("1_hfw3b")]([SubResource("Resource_8mecq"), SubResource("Resource_4awnx")])
+collisionFlags = 61
+catapultHeight = 600.0

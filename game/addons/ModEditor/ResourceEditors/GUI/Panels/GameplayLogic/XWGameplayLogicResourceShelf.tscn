@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ResourceCharacter.svg" id="1_icon"]
+
+[node name="ResourceShelfHost" type="PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+size_flags_vertical = 3
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Layout/Header"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+texture = ExtResource("1_icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "战斗资源架"
+
+[node name="Hint" type="Label" parent="Layout"]
+layout_mode = 2
+text = "拖入角色、卡片、地图或效果"
+autowrap_mode = 2
+
+[node name="Divider" type="HSeparator" parent="Layout"]
+layout_mode = 2
+
+[node name="OperationRow" type="GridContainer" parent="Layout"]
+layout_mode = 2
+columns = 3
+
+[node name="InsertButton" type="Button" parent="Layout/OperationRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "新增"
+
+[node name="DuplicateButton" type="Button" parent="Layout/OperationRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "复制"
+
+[node name="ReplaceButton" type="Button" parent="Layout/OperationRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "替换"
+
+[node name="MoveUpButton" type="Button" parent="Layout/OperationRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "上移"
+
+[node name="MoveDownButton" type="Button" parent="Layout/OperationRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "下移"
+
+[node name="RemoveButton" type="Button" parent="Layout/OperationRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除"
+
+[node name="ShelfScroll" type="ScrollContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ShelfRoot" type="VBoxContainer" parent="Layout/ShelfScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="EmptyHint" type="Label" parent="Layout"]
+layout_mode = 2
+text = "选择战斗逻辑后，这里显示可拖放的游戏对象。"
+autowrap_mode = 2

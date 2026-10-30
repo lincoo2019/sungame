@@ -1,0 +1,108 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.1, 0.105, 0.11, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28, 0.3, 0.32, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+
+[node name="FallingObjectPreviewPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(420, 340)
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Summary" type="Label" parent="Layout"]
+layout_mode = 2
+
+[node name="PickSummary" type="Label" parent="Layout"]
+layout_mode = 2
+text = "点击生成后，按当前权重直接把真实游戏对象掉进草坪"
+
+[node name="Toolbar" type="HFlowContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PickOnceButton" type="Button" parent="Layout/Toolbar"]
+layout_mode = 2
+text = "掉落一次"
+
+[node name="SimulationCount" type="SpinBox" parent="Layout/Toolbar"]
+visible = false
+layout_mode = 2
+tooltip_text = "批量模拟次数"
+min_value = 10.0
+max_value = 100000.0
+step = 10.0
+value = 1000.0
+rounded = true
+
+[node name="SimulateButton" type="Button" parent="Layout/Toolbar"]
+layout_mode = 2
+text = "连续掉落"
+
+[node name="ClearButton" type="Button" parent="Layout/Toolbar"]
+layout_mode = 2
+text = "清空草坪"
+
+[node name="LastPick" type="Label" parent="Layout/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "等待模拟"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="GameStage" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(400, 250)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+clip_contents = true
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="Layout/GameStage"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+tooltip_text = "这里显示对象池中的真实游戏掉落物"
+
+[node name="Viewport" type="SubViewport" parent="Layout/GameStage/ViewportContainer"]
+unique_name_in_owner = true
+transparent_bg = true
+disable_3d = true
+size = Vector2i(700, 290)
+render_target_update_mode = 4
+
+[node name="GameBackground" type="TextureRect" parent="Layout/GameStage/ViewportContainer/Viewport"]
+offset_right = 700.0
+offset_bottom = 290.0
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="DropRoot" type="Node2D" parent="Layout/GameStage/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+
+[node name="SimulationGrid" type="GridContainer" parent="Layout"]
+visible = false
+layout_mode = 2

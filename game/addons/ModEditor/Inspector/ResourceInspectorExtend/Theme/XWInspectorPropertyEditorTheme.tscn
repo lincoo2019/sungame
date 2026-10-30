@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/XWInspectorPropertyEditorBase.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/ResourceInspectorExtend/Theme/XWInspectorPropertyEditorTheme.cs" id="2_script"]
+
+[node name="XWInspectorPropertyEditorTheme" node_paths=PackedStringArray("PropertyEditorPath") instance=ExtResource("1_base")]
+custom_minimum_size = Vector2(0, 260)
+script = ExtResource("2_script")
+PropertyEditorPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ThemeEditor")
+
+[node name="ThemeEditor" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 252)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="PreviewPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ThemeEditor"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PreviewMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ThemeEditor/PreviewPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="PreviewButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ThemeEditor/PreviewPanel/PreviewMargin"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "主题预览"
+
+[node name="ThemeItemTree" type="Tree" parent="MarginContainer/VBoxContainer/HBoxContainer/ThemeEditor"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 190)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+column_titles_visible = true
+hide_root = true

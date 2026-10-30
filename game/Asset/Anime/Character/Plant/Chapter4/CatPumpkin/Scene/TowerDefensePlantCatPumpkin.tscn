@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://1chi7gmuamqw"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://c5drnfvdd4vft" path="res://Asset/Anime/Character/Plant/Chapter4/CatPumpkin/Scene/TowerDefensePlantCatPumpkinComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://ypjambknq0v4" path="res://Asset/Anime/Character/Plant/Chapter4/CatPumpkin/Scene/TowerDefensePlantCatPumpkin.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_64x33_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cr0f8jklqfjyr" path="res://Asset/Anime/Character/Plant/Chapter4/CatPumpkin/Config/TowerDefensePlantCatPumpkin.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://cn057t42odf7s" path="res://Asset/Anime/Character/Plant/Chapter4/CatPumpkin/CatPumpkin.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantCatPumpkin" unique_id=536072996 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+showHealthOffset = Vector2(0, 16)
+z_index = -10
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 2
+projectileName = "Spike"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/CatPumpkin")
+PreviewDamagePointPersontage = 1.0
+Custom = []
+itemLayer = 5
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="CatPumpkin" parent="SpriteGroup/TransformPoint" index="0" unique_id=428133044 instance=ExtResource("6")]
+position = Vector2(0, -30)
+
+[node name="Node2D" parent="SpriteGroup/TransformPoint/CatPumpkin" index="0" unique_id=883644291]
+z_index = -2
+
+[node name="Back" parent="SpriteGroup/TransformPoint/CatPumpkin/Node2D" index="0" unique_id=1666224095]
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/CatPumpkin" index="1" unique_id=1892842962]
+skew = 0.021429181
+script = ExtResource("7")
+followSlotId = 5
+Layer = 5
+drawLayerId = 5
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/CatPumpkin/AdobeAnimateSlot" index="0" unique_id=314242671]
+position = Vector2(9.261096, 7.9329524)
+
+[editable path="SpriteGroup/TransformPoint/CatPumpkin"]

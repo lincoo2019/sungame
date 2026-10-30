@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://2iwlbcdgat36"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/BackyardFullNight/BackyardFullNightBaseDifficult.json" id="1_me3sg"]
+[ext_resource type="Script" uid="uid://huks85pqdgqb" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalConfig.cs" id="2_wdupb"]
+[ext_resource type="Script" uid="uid://bru304ldtwq3e" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.cs" id="3_vf0oa"]
+
+[sub_resource type="Resource" id="Resource_s786x"]
+script = ExtResource("3_vf0oa")
+_round = 1
+zombieList = ["ZombiePaper", "ZombieNormalScreendoor", "ZombieFootball", "ZombieJackson", "ZombieDuck", "ZombieDolphinrider"]
+
+[sub_resource type="Resource" id="Resource_hr4ue"]
+script = ExtResource("3_vf0oa")
+_round = 2
+zombieList = ["ZombieBalloon", "ZombieLadder", "ZombiePogo", "ZombiePolestriker", "ZombieBalloonColour", "ZombieDolphiSN", "ZombieSnorkle", "ZombieDuckRider", "ZombieMagnetic"]
+
+[resource]
+script = ExtResource("2_wdupb")
+json = ExtResource("1_me3sg")
+roundLimit = 3
+pointIncrementPerWave = 120
+pointIncrementPerBigWave = 180
+pointIncrementPerRound = 800
+pointMax = 60000
+pointBigWaveScale = 0.5
+zombiePoolBase = ["ZombieNormal", "ZombieNormalCone", "ZombieNormalBucket"]
+zombiePoolRoundAdd = Array[ExtResource("3_vf0oa")]([SubResource("Resource_s786x"), SubResource("Resource_hr4ue")])
+metadata/_custom_type_script = "uid://huks85pqdgqb"

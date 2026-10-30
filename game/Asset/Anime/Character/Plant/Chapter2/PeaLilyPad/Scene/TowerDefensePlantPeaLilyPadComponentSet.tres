@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://dyxjd8amsny6y"]
+
+[ext_resource type="Resource" path="res://Script/Component/TowerDefense/Character/SlotComponent/Definitions/PeaLilyPadSlotComponentDefinition.tres" id="1"]
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="2"]
+[ext_resource type="Script" uid="uid://bbglc127qw1jb" path="res://Resource/TowerDefense/Collision/AabbRay2DResource.cs" id="3"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="4"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="5"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="6"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="7"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="8"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="9"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="10"]
+
+[sub_resource type="Resource" id="Fire_AabbRay2DResource_forward"]
+script = ExtResource("3")
+
+[sub_resource type="Resource" id="Fire_Resource_d1350"]
+script = ExtResource("4")
+projectileName = &"Pea"
+collisionFlags = 33
+catapultHeight = 400.0
+
+[sub_resource type="Resource" id="Fire_Resource_3kvvy"]
+script = ExtResource("5")
+projectileData = SubResource("Fire_Resource_d1350")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Fire_Resource_gyehw"]
+script = ExtResource("6")
+projectile = SubResource("Fire_Resource_3kvvy")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Fire_Resource_kj53x"]
+script = ExtResource("7")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="FireDefinition"]
+script = ExtResource("8")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/PeaLilyPad/MouseSlot/FireMarker")]
+spritePath = NodePath("SpriteGroup/TransformPoint/PeaLilyPad")
+checkRayResources = [SubResource("Fire_AabbRay2DResource_forward")]
+fireAnimeTimeScale = 3.0
+fireInterval = 3.0
+fireCheckList = [SubResource("Fire_Resource_gyehw")]
+fireProjectileList = [SubResource("Fire_Resource_kj53x")]
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter2.pealilypad"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("2")
+LegacyNodeNames = [&"FireComponent"]
+
+[resource]
+script = ExtResource("10")
+ParentSet = ExtResource("9")
+Components = [ExtResource("1"), SubResource("FireDefinition")]

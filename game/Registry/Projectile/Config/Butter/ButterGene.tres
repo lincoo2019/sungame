@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://drxym5mamnep4"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_b42xj"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_e7bpi"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffButterGene.cs" id="3_k01w6"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_4x0hh"]
+[ext_resource type="PackedScene" uid="uid://b8msctl02t7xi" path="res://Asset/Config/Projectile/Butter/Sprite/ButterGene/ProjectileButterGene.tscn" id="5_b42xj"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="6_iuipr"]
+[ext_resource type="PackedScene" uid="uid://5se4p3vq67y8" path="res://Prefab/Particles/Splats/ButterSplats/ButterSplats.tscn" id="7_4q1fs"]
+
+[sub_resource type="Resource" id="Resource_c77gh"]
+script = ExtResource("3_k01w6")
+time = 4.0
+
+[sub_resource type="Resource" id="Resource_jldlt"]
+script = ExtResource("4_4x0hh")
+buffList = Array[ExtResource("2_e7bpi")]([SubResource("Resource_c77gh")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("6_iuipr")
+name = "ButterGene"
+baseDamage = 80.0
+projectileScene = ExtResource("5_b42xj")
+splatScene = ExtResource("7_4q1fs")
+hitTargetEventList = Array[ExtResource("1_b42xj")]([SubResource("Resource_jldlt")])
+rotateScale = 5.0

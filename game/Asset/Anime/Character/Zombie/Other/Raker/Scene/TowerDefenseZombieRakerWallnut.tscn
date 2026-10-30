@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b5erlbaiverls"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cqsfsxkmxudoo" path="res://Asset/Anime/Character/Zombie/Other/Raker/Scene/TowerDefenseZombieRakerComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bsafqqsivv0mv" path="res://Asset/Anime/Character/Zombie/Other/Raker/Scene/TowerDefenseZombieRakerWallnut.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dakrvmbv26lkn" path="res://Asset/Anime/Character/Zombie/Other/Raker/Scene/TowerDefenseZombieRakerStateMachine.tres" id="5"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Other/Raker/Config/TowerDefenseZombieRakerWallnut.tres" id="6"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Other/Raker/DamagePoint/Config/ZombieRakerDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Other/Raker/DamagePoint/Config/ZombieRakerWallnutDamagePointHead.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://b8tseaiup6tym" path="res://Asset/Anime/Character/Zombie/Other/Raker/ZombieRakerWallnut.tscn" id="9"]
+
+[node name="TowerDefenseZombieRakerWallnut" unique_id=1896737604 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+swimAnimeClip = "SwimWalk"
+dieWaterAnimeClip = "SwimDeath"
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieRakerWallnut")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieRakerWallnut/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"Head": ExtResource("8")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieRakerWallnut/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieRakerWallnut/HeadSlot")
+}
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(12.6, 40)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(23, 44)
+
+[node name="ZombieRakerWallnut" parent="SpriteGroup/TransformPoint" index="0" unique_id=651954961 instance=ExtResource("9")]
+position = Vector2(-23, -44)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieRakerWallnut" index="0" unique_id=3052127]
+drawLayerId = -2
+position = Vector2(-6.2388477, -52.397537)
+rotation = -0.006006027
+scale = Vector2(0.7999536, 0.7999536)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieRakerWallnut" index="1" unique_id=1243341279]
+position = Vector2(8.485223, -4.1081934)
+rotation = -0.019566048
+scale = Vector2(0.79998785, 0.79998785)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieRakerWallnut" index="2" unique_id=448628490]
+position = Vector2(-78, -18)
+
+[editable path="SpriteGroup/TransformPoint/ZombieRakerWallnut"]

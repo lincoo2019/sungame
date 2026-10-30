@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" load_steps=9 format=3]
+
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="1_definition"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2_state"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3_transition"]
+[ext_resource type="Resource" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseZombieStateMachine.tres" id="4_base"]
+
+[sub_resource type="Resource" id="State_bungi_spawn_drop"]
+script = ExtResource("2_state")
+StableId = "zombie.bungi_spawn.drop"
+DisplayName = &"Drop"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_bungi_spawn_rise"]
+script = ExtResource("2_state")
+StableId = "zombie.bungi_spawn.rise"
+DisplayName = &"Rise"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_bungi_spawn_to_drop"]
+script = ExtResource("3_transition")
+StableId = "zombie.bungi_spawn.to_drop"
+SourceStateId = "character.root"
+TargetStateId = "zombie.bungi_spawn.drop"
+EventName = &"ToDrop"
+DeclarationOrder = 7
+
+[sub_resource type="Resource" id="Transition_bungi_spawn_to_rise"]
+script = ExtResource("3_transition")
+StableId = "zombie.bungi_spawn.to_rise"
+SourceStateId = "character.root"
+TargetStateId = "zombie.bungi_spawn.rise"
+EventName = &"ToRise"
+DeclarationOrder = 8
+
+[resource]
+script = ExtResource("1_definition")
+DefinitionId = "builtin.character.zombie.bungi_spawn"
+BaseDefinition = ExtResource("4_base")
+States = Array[ExtResource("2_state")]([SubResource("State_bungi_spawn_drop"), SubResource("State_bungi_spawn_rise")])
+Transitions = Array[ExtResource("3_transition")]([SubResource("Transition_bungi_spawn_to_drop"), SubResource("Transition_bungi_spawn_to_rise")])

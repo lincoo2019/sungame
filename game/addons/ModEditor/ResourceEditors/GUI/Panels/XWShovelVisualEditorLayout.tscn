@@ -1,0 +1,348 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWShovelTargetPreview.tscn" id="1_target_preview"]
+
+[sub_resource type="StyleBoxFlat" id="StylePreview"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.105, 0.11, 1)
+border_color = Color(0.298, 0.302, 0.306, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleTexture"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.08, 0.085, 0.09, 1)
+border_color = Color(0.282, 0.286, 0.29, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="ShovelVisualEditorLayout" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PreviewPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(620, 210)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StylePreview")
+
+[node name="PreviewLayout" type="HBoxContainer" parent="PreviewPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="TextureFrame" type="PanelContainer" parent="PreviewPanel/PreviewLayout"]
+custom_minimum_size = Vector2(180, 160)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleTexture")
+
+[node name="TexturePreview" type="TextureRect" parent="PreviewPanel/PreviewLayout/TextureFrame"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Summary" type="VBoxContainer" parent="PreviewPanel/PreviewLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="PreviewPanel/PreviewLayout/Summary"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="TextSummaryLabel" type="Label" parent="PreviewPanel/PreviewLayout/Summary"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="ListSummaryLabel" type="Label" parent="PreviewPanel/PreviewLayout/Summary"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="TextureResourceLabel" type="Label" parent="PreviewPanel/PreviewLayout/Summary"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="TargetPreview" parent="PreviewPanel/PreviewLayout/Summary" instance=ExtResource("1_target_preview")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="EditorSplit" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="InfoScroll" type="ScrollContainer" parent="EditorSplit"]
+custom_minimum_size = Vector2(420, 420)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InfoPanel" type="VBoxContainer" parent="EditorSplit/InfoScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="MetaTitle" type="Label" parent="EditorSplit/InfoScroll/InfoPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "资源身份"
+
+[node name="ResourceNameRow" type="HBoxContainer" parent="EditorSplit/InfoScroll/InfoPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="EditorSplit/InfoScroll/InfoPanel/ResourceNameRow"]
+custom_minimum_size = Vector2(118, 0)
+layout_mode = 2
+text = "资源名称"
+vertical_alignment = 1
+
+[node name="ResourceNameEdit" type="LineEdit" parent="EditorSplit/InfoScroll/InfoPanel/ResourceNameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "用于区分铲子资源"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="EditorSplit/InfoScroll/InfoPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "资源仅属于当前场景"
+
+[node name="BasicTitle" type="Label" parent="EditorSplit/InfoScroll/InfoPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "游戏内铲子信息"
+
+[node name="SaveKeyRow" type="HBoxContainer" parent="EditorSplit/InfoScroll/InfoPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="EditorSplit/InfoScroll/InfoPanel/SaveKeyRow"]
+custom_minimum_size = Vector2(118, 0)
+layout_mode = 2
+text = "存档 Key"
+vertical_alignment = 1
+
+[node name="SaveKeyLineEdit" type="LineEdit" parent="EditorSplit/InfoScroll/InfoPanel/SaveKeyRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "解锁与存档使用的唯一 Key"
+
+[node name="NameRow" type="HBoxContainer" parent="EditorSplit/InfoScroll/InfoPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="EditorSplit/InfoScroll/InfoPanel/NameRow"]
+custom_minimum_size = Vector2(118, 0)
+layout_mode = 2
+text = "名称 Key"
+vertical_alignment = 1
+
+[node name="NameLineEdit" type="LineEdit" parent="EditorSplit/InfoScroll/InfoPanel/NameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DescribeLabel" type="Label" parent="EditorSplit/InfoScroll/InfoPanel"]
+layout_mode = 2
+text = "游戏描述 Key"
+
+[node name="DescribeTextEdit" type="TextEdit" parent="EditorSplit/InfoScroll/InfoPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+
+[node name="HandbookDescribeLabel" type="Label" parent="EditorSplit/InfoScroll/InfoPanel"]
+layout_mode = 2
+text = "图鉴描述"
+
+[node name="HandbookDescribeTextEdit" type="TextEdit" parent="EditorSplit/InfoScroll/InfoPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+
+[node name="HandbookStoryLabel" type="Label" parent="EditorSplit/InfoScroll/InfoPanel"]
+layout_mode = 2
+text = "图鉴故事"
+
+[node name="HandbookStoryTextEdit" type="TextEdit" parent="EditorSplit/InfoScroll/InfoPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+
+[node name="TextureLabel" type="Label" parent="EditorSplit/InfoScroll/InfoPanel"]
+layout_mode = 2
+text = "铲子图像"
+
+[node name="TexturePickerHost" type="VBoxContainer" parent="EditorSplit/InfoScroll/InfoPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EventScroll" type="ScrollContainer" parent="EditorSplit"]
+custom_minimum_size = Vector2(460, 420)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EventPanel" type="VBoxContainer" parent="EditorSplit/EventScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="ShovelableTitle" type="Label" parent="EditorSplit/EventScroll/EventPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "可铲目标名称"
+
+[node name="ShovelableToolbar" type="HBoxContainer" parent="EditorSplit/EventScroll/EventPanel"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ShovelableNameLineEdit" type="LineEdit" parent="EditorSplit/EventScroll/EventPanel/ShovelableToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "角色 / 墓碑 / 弹坑 Key"
+
+[node name="AddShovelableButton" type="Button" parent="EditorSplit/EventScroll/EventPanel/ShovelableToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(58, 28)
+layout_mode = 2
+text = "添加"
+
+[node name="RemoveShovelableButton" type="Button" parent="EditorSplit/EventScroll/EventPanel/ShovelableToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(58, 28)
+layout_mode = 2
+text = "删除"
+
+[node name="ShovelableList" type="ItemList" parent="EditorSplit/EventScroll/EventPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnlockTitle" type="Label" parent="EditorSplit/EventScroll/EventPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "解锁条件"
+
+[node name="UnlockPickerHost" type="VBoxContainer" parent="EditorSplit/EventScroll/EventPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnlockToolbar" type="HBoxContainer" parent="EditorSplit/EventScroll/EventPanel"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="AddUnlockButton" type="Button" parent="EditorSplit/EventScroll/EventPanel/UnlockToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加"
+
+[node name="ReplaceUnlockButton" type="Button" parent="EditorSplit/EventScroll/EventPanel/UnlockToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "替换"
+
+[node name="RemoveUnlockButton" type="Button" parent="EditorSplit/EventScroll/EventPanel/UnlockToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除"
+
+[node name="OpenUnlockButton" type="Button" parent="EditorSplit/EventScroll/EventPanel/UnlockToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "打开编辑"
+
+[node name="UnlockList" type="ItemList" parent="EditorSplit/EventScroll/EventPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EventTitle" type="Label" parent="EditorSplit/EventScroll/EventPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "铲子事件"
+
+[node name="EventPickerHost" type="VBoxContainer" parent="EditorSplit/EventScroll/EventPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EventToolbar" type="HBoxContainer" parent="EditorSplit/EventScroll/EventPanel"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="AddEventButton" type="Button" parent="EditorSplit/EventScroll/EventPanel/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加"
+
+[node name="ReplaceEventButton" type="Button" parent="EditorSplit/EventScroll/EventPanel/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "替换"
+
+[node name="RemoveEventButton" type="Button" parent="EditorSplit/EventScroll/EventPanel/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除"
+
+[node name="OpenEventButton" type="Button" parent="EditorSplit/EventScroll/EventPanel/EventToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "打开编辑"
+
+[node name="EventList" type="ItemList" parent="EditorSplit/EventScroll/EventPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+size_flags_horizontal = 3

@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dranhg1mteucc"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://dnlg52gg6lvm7" path="res://Asset/Anime/Character/Zombie/Chapter2/Polestriker/Scene/TowerDefenseZombiePolestrikerComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://c07hby3j5kn2q" path="res://Asset/Anime/Character/Zombie/Chapter2/Polestriker/Scene/TowerDefenseZombiePolestriker.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b2j4armf1omsy" path="res://Asset/Anime/Character/Zombie/Chapter2/Polestriker/Scene/TowerDefenseZombiePolestrikerStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://d2sbdms4rwoc" path="res://Asset/Anime/Character/Zombie/Chapter2/Polestriker/Config/TowerDefenseZombiePolestriker.tres" id="6"]
+[ext_resource type="Resource" uid="uid://bjcykhglyf5k2" path="res://Asset/Anime/Character/Zombie/Chapter2/Polestriker/DamagePoint/Config/ZombiePolestrikerDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://lyh6x8uh57rs" path="res://Asset/Anime/Character/Zombie/Chapter2/Polestriker/DamagePoint/Config/ZombiePolestrikerDamagePointHead.tres" id="8"]
+[ext_resource type="Resource" uid="uid://c571ru6n1jxpa" path="res://Asset/Anime/Character/Zombie/Chapter2/Polestriker/Armor/Config/ZombiePolestrikerArmorHelmet.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://d2caaj1sa2ywr" path="res://Asset/Anime/Character/Zombie/Chapter2/Polestriker/ZombiePolestriker.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="11"]
+
+[node name="TowerDefenseZombiePolestriker" unique_id=1737448067 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+walkSpeedScale = 1.5
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombiePolestriker/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+garlicReplace = "Zombie_football_head.png"
+waterHeight = 25.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombiePolestriker")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombiePolestriker/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"Head": ExtResource("8"),
+"Helmet": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombiePolestriker/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombiePolestriker/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombiePolestriker/HeadSlot")
+}
+currentArmor = ["Helmet"]
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(12.6, 40)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(23, 44)
+
+[node name="ZombiePolestriker" parent="SpriteGroup/TransformPoint" index="0" unique_id=1579634691 instance=ExtResource("10")]
+position = Vector2(-23, -44)
+trueFrameRate = 180.0
+Animation/MediaReplace/Zombie_football_red_helmet.png = "res://Asset/AtlasSource/Armor/Texture/Character/Armor/Helmet/ZombieHelmet1.png"
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombiePolestriker" index="0"]
+trueFrameRate = 180.0
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombiePolestriker" index="1"]
+drawLayerId = -2
+position = Vector2(-6.596693, -51.855736)
+rotation = -0.02396645
+scale = Vector2(0.79988855, 0.79988855)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombiePolestriker" index="2"]
+position = Vector2(9.098291, -3.1620378)
+rotation = -0.06237642
+scale = Vector2(0.7999881, 0.7999881)
+
+[node name="HemetSlot" parent="SpriteGroup/TransformPoint/ZombiePolestriker" index="3"]
+position = Vector2(-9.905006, -53.32306)
+rotation = -0.02396645
+scale = Vector2(0.79988855, 0.79988855)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombiePolestriker" index="4"]
+position = Vector2(-48, -88)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=575523055 instance=ExtResource("11")]
+visible = false
+position = Vector2(-12, -50)
+trueFrameRate = 180.0
+
+[editable path="SpriteGroup/TransformPoint/ZombiePolestriker"]

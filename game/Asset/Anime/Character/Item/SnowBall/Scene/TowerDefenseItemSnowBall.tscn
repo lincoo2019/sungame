@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bmedlbkpbkj1x"]
+
+[ext_resource type="PackedScene" uid="uid://uawo0nxcj2ji" path="res://Prefab/TowerDefense/Character/TowerDefenseItem.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://c71jksu6ruutv" path="res://Asset/Anime/Character/Item/SnowBall/Scene/TowerDefenseItemSnowBallComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://2a268l3ev6f1" path="res://Asset/Anime/Character/Item/SnowBall/Scene/TowerDefenseItemSnowBall.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_n0p25_n25_NotMonitorable.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c5t2lawso78x3" path="res://Asset/Anime/Character/Item/SnowBall/Config/TowerDefenseItemSnowBall.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://dy8ewroum32lh" path="res://Asset/Anime/Character/Item/SnowBall/SnowBall.tscn" id="6"]
+
+[node name="TowerDefenseItemSnowBall" unique_id=239006865 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+z_index = -11
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+canCheckTarget = false
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ItemSnowBall")
+itemLayer = 4
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+scale = Vector2(2, 2)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 37)
+
+[node name="ItemSnowBall" parent="SpriteGroup/TransformPoint" index="0" unique_id=757804339 instance=ExtResource("6")]
+position = Vector2(0, -68)
+
+[editable path="SpriteGroup/TransformPoint/ItemSnowBall"]

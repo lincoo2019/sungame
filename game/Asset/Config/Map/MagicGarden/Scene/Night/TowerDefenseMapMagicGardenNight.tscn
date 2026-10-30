@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://csrmlg2ejhh6f"]
+
+[ext_resource type="Script" uid="uid://1vbdhy886xaa" path="res://Asset/Config/Map/MagicGarden/Scene/Night/TowerDefenseMapMagicGardenNight.cs" id="1_map"]
+[ext_resource type="Texture2D" uid="uid://xsw7j44js11l" path="res://Asset/Config/Map/MagicGarden/Scene/Night/TowerDefenseMapMagicGardenNightGradient.tres" id="2_gradient"]
+[ext_resource type="Texture2D" uid="uid://xc1yh3p82ehk" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/MagicGarden/MagicGardenNight.jpg" id="3_background"]
+[ext_resource type="Texture2D" uid="uid://bbbiwhq1ib7vi" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Stripe.png" id="4_stripe"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/MagicGarden/MagicGardenNightFloor.png" id="5_floor"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/MagicGarden/MagicGardenNightDoor.png" id="6_door"]
+
+[node name="TowerDefenseMapMagicGardenNight" type="Node2D" node_paths=PackedStringArray("stripe")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_map")
+stripe = NodePath("Stripe")
+canvasModulateGradient = ExtResource("2_gradient")
+enterRoomRevealNodeNames = "MagicGardenFloor,MagicGardenDoor"
+
+[node name="MagicGardenNight" type="Sprite2D" parent="."]
+texture = ExtResource("3_background")
+centered = false
+
+[node name="MagicGardenFloor" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, 149)
+texture = ExtResource("5_floor")
+centered = false
+
+[node name="EnterRoomLayer" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="MagicGardenDoor" type="Sprite2D" parent="EnterRoomLayer"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, 74.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_door")
+centered = false
+
+[node name="Stripe" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(496, 160)
+scale = Vector2(2, 3.9840639)
+texture = ExtResource("4_stripe")
+centered = false

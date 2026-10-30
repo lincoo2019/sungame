@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://si1ehp17lesr"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_qrn7j"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_90wiu"]
+[ext_resource type="PackedScene" uid="uid://uiq0as8suvhk" path="res://Asset/Config/Projectile/Pea/Sprite/MagicPeaFireMega/MagicPeaFireMega.tscn" id="3_8owdu"]
+[ext_resource type="Script" uid="uid://bqyxask6qffq7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFireHit.cs" id="4_44t54"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="5_bjq19"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="6_r8to7"]
+[ext_resource type="PackedScene" uid="uid://cqk5e8gyrn284" path="res://Prefab/Particles/Splats/MegaFireSplats/MegaFireSplats.tscn" id="7_iw2xw"]
+[ext_resource type="PackedScene" uid="uid://6if2br8jrllu" path="res://Prefab/ProjectileEffect/MagicPeaBlow/TowerDefenseProjectileEffectMagicPeaFireMegaBlow.tscn" id="8_d5s06"]
+[ext_resource type="Script" uid="uid://dagqelp0alh1i" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventProjectileSplit.cs" id="9_mmsgo"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="10_8d24y"]
+
+[sub_resource type="Resource" id="Resource_iz9mh"]
+script = ExtResource("10_8d24y")
+projectileName = &"MegaFirePea"
+
+[sub_resource type="Resource" id="Resource_yq5a7"]
+script = ExtResource("9_mmsgo")
+projectileData = SubResource("Resource_iz9mh")
+effectScene = ExtResource("8_d5s06")
+metadata/_custom_type_script = "uid://dagqelp0alh1i"
+
+[sub_resource type="Resource" id="Resource_5r42y"]
+script = ExtResource("4_44t54")
+metadata/_custom_type_script = "uid://bqyxask6qffq7"
+
+[sub_resource type="Resource" id="Resource_milia"]
+script = ExtResource("6_r8to7")
+buffList = Array[ExtResource("2_90wiu")]([SubResource("Resource_5r42y")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("5_bjq19")
+name = "MagicPeaFireMega"
+baseDamage = 80.0
+projectileScene = ExtResource("3_8owdu")
+splatSceneType = "Sprite"
+splatAudio = "Ignite"
+splatScene = ExtResource("7_iw2xw")
+hitEffect = ExtResource("8_d5s06")
+hitTargetEventList = Array[ExtResource("1_qrn7j")]([SubResource("Resource_milia"), SubResource("Resource_yq5a7")])
+hitBody = true
+useRange = true
+rangeSize = Vector2(0.5, 0.25)
+hitPesontage = 0.5
+isFire = true
+isMagic = true

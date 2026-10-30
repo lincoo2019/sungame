@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="ExplodeComponentDefinition" format=3 uid="uid://bw5trjqg2uo54"]
+
+[ext_resource type="Resource" uid="uid://64l72hop5ev2" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bpobxkjerypff" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventForzen.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="3"]
+[ext_resource type="Script" uid="uid://b3ws8dbxgchm3" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponentDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="Resource_iqacc"]
+script = ExtResource("2")
+time = 3.0
+metadata/_custom_type_script = "uid://bpobxkjerypff"
+
+[sub_resource type="RectangleShape2D" id="ExplodePreviewRectangle"]
+size = Vector2(240, 294)
+
+[sub_resource type="Resource" id="ExplodePreviewShape"]
+script = ExtResource("3")
+Geometry = SubResource("ExplodePreviewRectangle")
+
+[resource]
+script = ExtResource("4")
+spritePath = NodePath("SpriteGroup/TransformPoint/HypnoShroomIce")
+explodeAnimeClips = ""
+explodeAnimeTimeScale = 1.25
+explodeMethod = "Line"
+reload = false
+explodeAudio = ""
+explodeEvent = [SubResource("Resource_iqacc")]
+explodeEffect = null
+explodeShape = SubResource("ExplodePreviewShape")
+explodeJalaFireType = "IceFire"
+explodeJalaOffset = [0]
+ComponentTypeId = "ExplodeComponent"
+DefinitionId = "builtin.component.explode.asset.anime.character.plant.cover.hypnoshroomice.scene.towerdefenseplanthypnoshroomice.tscn"
+InstanceId = "character.explode"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"ExplodeComponent"]

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://7e2ylijvno4n"]
+
+[ext_resource type="Texture2D" uid="uid://dbg4c6a00qebj" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/WarningLine.png" id="1_7lmcl"]
+[ext_resource type="Script" uid="uid://c3wcvmc7eff6" path="res://Prefab/TowerDefense/Object/WarningLine.cs" id="1_ox0nh"]
+[ext_resource type="Script" uid="uid://daabbarea2d01" path="res://Core/TowerDefenseManager/SubSystem/AabbArea2D.cs" id="aabb_area"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="AabbShape2DResource"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ox0nh"]
+size = Vector2(19.5, 505.5)
+
+[sub_resource type="Resource" id="AabbShape2DResource_area_1"]
+script = ExtResource("AabbShape2DResource")
+Geometry = SubResource("RectangleShape2D_ox0nh")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, 253)
+
+[sub_resource type="Resource" id="AabbShape2DResource_area_2"]
+script = ExtResource("AabbShape2DResource")
+Geometry = SubResource("RectangleShape2D_ox0nh")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, 253)
+
+[node name="WarningLine" type="Node2D" unique_id=1782688174]
+script = ExtResource("1_ox0nh")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1682188985]
+unique_name_in_owner = true
+texture = ExtResource("1_7lmcl")
+centered = false
+
+[node name="Area2D" type="Node2D" parent="Sprite" unique_id=1409722662]
+script = ExtResource("aabb_area")
+ShapeResources = Array[ExtResource("AabbShape2DResource")]([SubResource("AabbShape2DResource_area_1")])
+position = Vector2(-20, 0)
+collision_layer = 0
+monitorable = false
+
+[node name="Area2D2" type="Node2D" parent="Sprite" unique_id=1818214062]
+script = ExtResource("aabb_area")
+ShapeResources = Array[ExtResource("AabbShape2DResource")]([SubResource("AabbShape2DResource_area_2")])
+position = Vector2(41, 0)
+collision_layer = 0
+monitorable = false

@@ -1,0 +1,101 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://i7pferguvp44"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://bi6p43no6bcyx" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeightItem.cs" id="5"]
+[ext_resource type="Script" uid="uid://6pte6bht2hgs" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeight.cs" id="6"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="7"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="8"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="9"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="10"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="11"]
+
+[sub_resource type="SegmentShape2D" id="Fire_SegmentShape2D_mig1w"]
+b = Vector2(2000, 0)
+
+[sub_resource type="Resource" id="Fire_AabbShape2DResource_fire_check"]
+script = ExtResource("2")
+Geometry = SubResource("Fire_SegmentShape2D_mig1w")
+
+[sub_resource type="Resource" id="Fire_Resource_57cd1"]
+script = ExtResource("3")
+projectileName = &"MagnetDisable"
+baseDamage = 60.0
+damageFlags = 10
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+overrideCatapultHeight = true
+
+[sub_resource type="Resource" id="Fire_Resource_lxsnn"]
+script = ExtResource("4")
+projectileData = SubResource("Fire_Resource_57cd1")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Fire_Resource_2mokq"]
+script = ExtResource("5")
+projectileResource = SubResource("Fire_Resource_lxsnn")
+weight = 0.75
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Fire_Resource_3d68c"]
+script = ExtResource("3")
+projectileName = &"Magnet"
+baseDamage = 60.0
+damageFlags = 10
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+overrideCatapultHeight = true
+
+[sub_resource type="Resource" id="Fire_Resource_th8th"]
+script = ExtResource("4")
+projectileData = SubResource("Fire_Resource_3d68c")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Fire_Resource_qfluy"]
+script = ExtResource("5")
+projectileResource = SubResource("Fire_Resource_th8th")
+weight = 0.25
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Fire_Resource_jqg4i"]
+script = ExtResource("6")
+projectileData = SubResource("Fire_Resource_57cd1")
+projectileWeight = [SubResource("Fire_Resource_2mokq"), SubResource("Fire_Resource_qfluy")]
+metadata/_custom_type_script = "uid://6pte6bht2hgs"
+
+[sub_resource type="Resource" id="Fire_Resource_fnh4k"]
+script = ExtResource("7")
+projectile = SubResource("Fire_Resource_jqg4i")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Fire_Resource_72aeq"]
+script = ExtResource("8")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="FireDefinition"]
+script = ExtResource("9")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/CornpultM/AdobeAnimateSlot/Marker2D")]
+spritePath = NodePath("SpriteGroup/TransformPoint/CornpultM")
+checkShapeResources = [SubResource("Fire_AabbShape2DResource_fire_check")]
+fireAnimeTimeScale = 3.0
+fireIntervalBase = 3.0
+fireInterval = 3.0
+fireCheckList = [SubResource("Fire_Resource_fnh4k")]
+fireProjectileList = [SubResource("Fire_Resource_72aeq")]
+readyConfirmProjectile = true
+checkHeight = false
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter4.cornpultm"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]
+
+[resource]
+script = ExtResource("11")
+ParentSet = ExtResource("10")
+Components = [SubResource("FireDefinition")]

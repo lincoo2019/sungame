@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dnmc72y5lnlni"]
+
+[ext_resource type="PackedScene" uid="uid://uawo0nxcj2ji" path="res://Prefab/TowerDefense/Character/TowerDefenseItem.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Item/MagnetWave/Scene/TowerDefenseItemMagnetWaveComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://cmiye3u6153r4" path="res://Asset/Anime/Character/Item/MagnetWave/Scene/TowerDefenseItemMagnetWave.cs" id="3"]
+[ext_resource type="Resource" uid="uid://8edra7nj3e5x" path="res://Asset/Anime/Character/Item/MagnetWave/Config/TowerDefenseItemMagnetWave.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://b3i7smb3jtvjf" path="res://Asset/Anime/Character/Item/MagnetWave/MagnetWave.tscn" id="5"]
+
+[node name="TowerDefenseItemMagnetWave" unique_id=1474771172 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+z_index = -5
+script = ExtResource("3")
+canCheck = true
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/MagnetWave")
+itemLayer = 10
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 37)
+
+[node name="MagnetWave" parent="SpriteGroup/TransformPoint" index="0" unique_id=1408116219 instance=ExtResource("5")]
+position = Vector2(0, -37)
+trueFrameRate = 180.0
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=143943029]
+
+[node name="ShadowSprite" parent="." index="3" unique_id=1970894107]
+visible = false
+position = Vector2(12, 36)
+
+[editable path="SpriteGroup/TransformPoint/MagnetWave"]

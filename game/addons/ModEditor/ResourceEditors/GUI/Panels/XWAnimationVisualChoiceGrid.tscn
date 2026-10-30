@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWAnimationVisualChoiceGrid.cs" id="1_script"]
+
+[node name="AnimationVisualChoiceGrid" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 166)
+size_flags_horizontal = 3
+script = ExtResource("1_script")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 7
+
+[node name="Stack" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Header" type="HFlowContainer" parent="Margin/Stack"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+
+[node name="ChoiceTitle" type="Label" parent="Margin/Stack/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "视觉选择"
+
+[node name="ChoiceSummary" type="Label" parent="Margin/Stack/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 个视觉选项"
+modulate = Color(0.66, 0.84, 0.58, 1)
+
+[node name="ChoiceScroll" type="ScrollContainer" parent="Margin/Stack"]
+custom_minimum_size = Vector2(0, 118)
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="ChoiceHost" type="HFlowContainer" parent="Margin/Stack/ChoiceScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 7
+
+[node name="EmptyLabel" type="Label" parent="Margin/Stack/ChoiceScroll/ChoiceHost"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择时间轴中的帧状态后显示可视化选项"
+autowrap_mode = 2

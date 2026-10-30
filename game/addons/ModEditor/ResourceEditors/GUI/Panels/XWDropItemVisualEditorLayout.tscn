@@ -1,0 +1,554 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ResourceCollectable.svg" id="2_drop"]
+
+[sub_resource type="StyleBoxFlat" id="Style_header"]
+bg_color = Color(0.075, 0.09, 0.065, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42, 0.57, 0.24, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxFlat" id="Style_game"]
+bg_color = Color(0.015, 0.02, 0.012, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.21, 0.31, 0.12, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_hud"]
+bg_color = Color(0.02, 0.025, 0.018, 0.82)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.68, 0.75, 0.39, 0.75)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 10.0
+content_margin_top = 7.0
+content_margin_right = 10.0
+content_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxFlat" id="Style_fields"]
+bg_color = Color(0.045, 0.052, 0.04, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.21, 0.27, 0.16, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="Style_badge"]
+bg_color = Color(0.12, 0.08, 0.025, 0.93)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.75, 0.2, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+content_margin_left = 9.0
+content_margin_top = 3.0
+content_margin_right = 9.0
+content_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="Style_button"]
+bg_color = Color(0.22, 0.32, 0.12, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.57, 0.72, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="DropItemVisualEditorLayout" type="VBoxContainer"]
+custom_minimum_size = Vector2(420, 480)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_header")
+
+[node name="HeaderRow" type="HFlowContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Header/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "战场掉落物"
+
+[node name="ResourceType" type="Label" parent="Header/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.93, 0.56, 1)
+text = "DropItemConfig"
+
+[node name="ResourceMetaPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_fields")
+
+[node name="ResourceMetaRow" type="HFlowContainer" parent="ResourceMetaPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ResourceNameLabel" type="Label" parent="ResourceMetaPanel/ResourceMetaRow"]
+layout_mode = 2
+text = "资源名称"
+vertical_alignment = 1
+
+[node name="ResourceNameEdit" type="LineEdit" parent="ResourceMetaPanel/ResourceMetaRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "例如：金币掉落物"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="ResourceMetaPanel/ResourceMetaRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "仅当前场景"
+
+[node name="GamePanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(420, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Style_game")
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="GamePanel"]
+layout_mode = 2
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="GamePanel/ViewportContainer"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(960, 480)
+render_target_update_mode = 4
+gui_disable_input = true
+
+[node name="World" type="Control" parent="GamePanel/ViewportContainer/Viewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lawn" type="TextureRect" parent="GamePanel/ViewportContainer/Viewport/World"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Shade" type="ColorRect" parent="GamePanel/ViewportContainer/Viewport/World"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.015, 0.02, 0.012, 0.25)
+
+[node name="StatusHud" type="PanelContainer" parent="GamePanel/ViewportContainer/Viewport/World"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 395.0
+offset_bottom = 72.0
+theme_override_styles/panel = SubResource("Style_hud")
+
+[node name="Status" type="Label" parent="GamePanel/ViewportContainer/Viewport/World/StatusHud"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "点击“模拟下落”查看游戏表现"
+
+[node name="Collector" type="PanelContainer" parent="GamePanel/ViewportContainer/Viewport/World"]
+layout_mode = 0
+offset_left = 748.0
+offset_top = 20.0
+offset_right = 936.0
+offset_bottom = 95.0
+theme_override_styles/panel = SubResource("Style_hud")
+
+[node name="Label" type="Label" parent="GamePanel/ViewportContainer/Viewport/World/Collector"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "玩家资源栏\n拾取目标"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GroundLine" type="ColorRect" parent="GamePanel/ViewportContainer/Viewport/World"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 398.0
+offset_right = 890.0
+offset_bottom = 402.0
+mouse_filter = 2
+color = Color(0.77, 0.95, 0.42, 0.6)
+
+[node name="MissingScene" type="Label" parent="GamePanel/ViewportContainer/Viewport/World"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 335.0
+offset_top = 265.0
+offset_right = 625.0
+offset_bottom = 305.0
+theme_override_colors/font_color = Color(1, 0.82, 0.46, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "未配置场景，使用编辑器占位图标"
+horizontal_alignment = 1
+
+[node name="PreviewRoot" type="Node2D" parent="GamePanel/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+position = Vector2(480, 105)
+
+[node name="Shadow" type="Polygon2D" parent="GamePanel/ViewportContainer/Viewport/PreviewRoot"]
+position = Vector2(0, 33)
+color = Color(0, 0, 0, 0.36)
+polygon = PackedVector2Array(-45, 0, -30, -10, 30, -10, 45, 0, 30, 10, -30, 10)
+
+[node name="FallbackDrop" type="TextureRect" parent="GamePanel/ViewportContainer/Viewport/PreviewRoot"]
+unique_name_in_owner = true
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 42.0
+offset_bottom = 42.0
+mouse_filter = 2
+texture = ExtResource("2_drop")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SceneHost" type="Node2D" parent="GamePanel/ViewportContainer/Viewport/PreviewRoot"]
+unique_name_in_owner = true
+
+[node name="ValueBadge" type="PanelContainer" parent="GamePanel/ViewportContainer/Viewport/PreviewRoot"]
+offset_left = 30.0
+offset_top = -64.0
+offset_right = 122.0
+offset_bottom = -31.0
+theme_override_styles/panel = SubResource("Style_badge")
+
+[node name="ValueLabel" type="Label" parent="GamePanel/ViewportContainer/Viewport/PreviewRoot/ValueBadge"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.91, 0.42, 1)
+theme_override_font_sizes/font_size = 16
+text = "+25"
+horizontal_alignment = 1
+
+[node name="GameControls" type="HFlowContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DropButton" type="Button" parent="GameControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 36)
+layout_mode = 2
+theme_override_styles/normal = SubResource("Style_button")
+text = "模拟下落"
+
+[node name="PickButton" type="Button" parent="GameControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 36)
+layout_mode = 2
+theme_override_styles/normal = SubResource("Style_button")
+text = "模拟拾取"
+
+[node name="ReloadButton" type="Button" parent="GameControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "重新载入场景"
+
+[node name="PlayFallAudio" type="Button" parent="GameControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "试听下落音效"
+
+[node name="PlayPickAudio" type="Button" parent="GameControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "试听拾取音效"
+
+[node name="Spacer" type="Control" parent="GameControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RuntimeState" type="Label" parent="GameControls"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.86, 0.58, 1)
+text = "预览待机"
+vertical_alignment = 1
+
+[node name="FieldsPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_fields")
+
+[node name="FieldsLayout" type="VBoxContainer" parent="FieldsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="ConfigFields" type="VBoxContainer" parent="FieldsPanel/FieldsLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ConfigHint" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.73, 0.8, 0.61, 1)
+text = "数值直接在游戏掉落物画面下方编辑；Scene 与自定义 Handler 可在右侧检查器选择。"
+autowrap_mode = 2
+
+[node name="Grid" type="GridContainer" parent="FieldsPanel/FieldsLayout/ConfigFields"]
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 6
+
+[node name="NameLabel" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+layout_mode = 2
+text = "注册名"
+
+[node name="NameEdit" type="LineEdit" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+placeholder_text = "例如 CoinGold"
+
+[node name="ValueLabelTitle" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+layout_mode = 2
+text = "拾取数值"
+
+[node name="ValueSpin" type="SpinBox" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -999999.0
+max_value = 999999.0
+value = 25.0
+
+[node name="CategoryLabel" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+layout_mode = 2
+text = "掉落分类"
+
+[node name="CategoryCards" type="HFlowContainer" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="ObjectIdLabel" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+layout_mode = 2
+text = "对象池 ID"
+
+[node name="ObjectLibraryHost" type="VBoxContainer" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PoolLabel" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+layout_mode = 2
+text = "对象池上限"
+
+[node name="PoolSpin" type="SpinBox" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 10000.0
+value = 100.0
+
+[node name="CoinIdLabel" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+layout_mode = 2
+text = "硬币对象 ID"
+
+[node name="CoinIdSpin" type="SpinBox" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -1.0
+max_value = 99999.0
+value = -1.0
+
+[node name="HandlerLabel" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+layout_mode = 2
+text = "拾取处理器"
+
+[node name="HandlerCards" type="HFlowContainer" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="FallAudioLabel" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+layout_mode = 2
+text = "下落音效键"
+
+[node name="FallAudioEdit" type="LineEdit" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "CoinFall"
+
+[node name="PickAudioLabel" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+layout_mode = 2
+text = "拾取音效键"
+
+[node name="PickAudioEdit" type="LineEdit" parent="FieldsPanel/FieldsLayout/ConfigFields/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "CoinPick"
+
+[node name="AudioPickerRow" type="HFlowContainer" parent="FieldsPanel/FieldsLayout/ConfigFields"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="ChooseFallAudioButton" type="Button" parent="FieldsPanel/FieldsLayout/ConfigFields/AudioPickerRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择下落音效…"
+
+[node name="ClearFallAudioButton" type="Button" parent="FieldsPanel/FieldsLayout/ConfigFields/AudioPickerRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "清除下落音效"
+
+[node name="ChoosePickAudioButton" type="Button" parent="FieldsPanel/FieldsLayout/ConfigFields/AudioPickerRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择拾取音效…"
+
+[node name="ClearPickAudioButton" type="Button" parent="FieldsPanel/FieldsLayout/ConfigFields/AudioPickerRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "清除拾取音效"
+
+[node name="ScenePickerRow" type="HBoxContainer" parent="FieldsPanel/FieldsLayout/ConfigFields"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields/ScenePickerRow"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "游戏场景"
+vertical_alignment = 1
+
+[node name="ScenePickerHost" type="HBoxContainer" parent="FieldsPanel/FieldsLayout/ConfigFields/ScenePickerRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HandlerPickerRow" type="HBoxContainer" parent="FieldsPanel/FieldsLayout/ConfigFields"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields/HandlerPickerRow"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "自定义处理器"
+vertical_alignment = 1
+
+[node name="HandlerPickerHost" type="HBoxContainer" parent="FieldsPanel/FieldsLayout/ConfigFields/HandlerPickerRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SceneRow" type="HBoxContainer" parent="FieldsPanel/FieldsLayout/ConfigFields"]
+layout_mode = 2
+
+[node name="SceneTitle" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields/SceneRow"]
+layout_mode = 2
+text = "场景："
+
+[node name="SceneStatus" type="Label" parent="FieldsPanel/FieldsLayout/ConfigFields/SceneRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "未配置"
+text_overrun_behavior = 3
+
+[node name="HandlerFields" type="VBoxContainer" parent="FieldsPanel/FieldsLayout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="HandlerTypeLabel" type="Label" parent="FieldsPanel/FieldsLayout/HandlerFields"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "掉落处理器"
+
+[node name="HandlerEffectLabel" type="Label" parent="FieldsPanel/FieldsLayout/HandlerFields"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "处理器决定拾取后发生的游戏效果。"
+autowrap_mode = 2
+
+[node name="HandlerSimulationRow" type="HBoxContainer" parent="FieldsPanel/FieldsLayout/HandlerFields"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FieldsPanel/FieldsLayout/HandlerFields/HandlerSimulationRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "模拟连续拾取次数"
+
+[node name="HandlerSimulationCount" type="SpinBox" parent="FieldsPanel/FieldsLayout/HandlerFields/HandlerSimulationRow"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 1000.0
+value = 1.0
+
+[node name="HandlerOutcome" type="Label" parent="FieldsPanel/FieldsLayout/HandlerFields"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.46, 1)
+text = "模拟结果"
+autowrap_mode = 2
+
+[node name="DirectAudioPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true

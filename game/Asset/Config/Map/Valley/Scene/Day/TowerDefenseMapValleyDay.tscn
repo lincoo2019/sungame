@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://bqnqq6xaqnweh"]
+
+[ext_resource type="Script" uid="uid://4ntqk7sah15c" path="res://Asset/Config/Map/Valley/Scene/Day/TowerDefenseMapValleyDay.cs" id="1_map"]
+[ext_resource type="Texture2D" uid="uid://blbgboxl11d0j" path="res://Asset/Config/Map/Valley/Scene/Day/TowerDefenseMapValleyDayGradient.tres" id="2_gradient"]
+[ext_resource type="Texture2D" uid="uid://dpherww5xon2p" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Valley/ValleyDay.jpg" id="3_background"]
+[ext_resource type="Texture2D" uid="uid://bbbiwhq1ib7vi" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Stripe.png" id="4_stripe"]
+[ext_resource type="Shader" uid="uid://bc8ixl427erpw" path="res://Asset/Shader/Map/MapPool.gdshader" id="5_poolshader"]
+[ext_resource type="Texture2D" uid="uid://cfxpmm5gfirpi" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Backyard/PoolNoise.tres" id="6_noise"]
+[ext_resource type="Texture2D" uid="uid://6jq52ylqm2y7" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Backyard/PoolSparkly.png" id="7_sparkly"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pool"]
+resource_local_to_scene = true
+shader = ExtResource("5_poolshader")
+shader_parameter/refraction_map = ExtResource("6_noise")
+shader_parameter/refraction_stretch = Vector2(1, 1)
+shader_parameter/refraction_strength = 0.006
+shader_parameter/timer = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_waterfall"]
+resource_local_to_scene = true
+shader = ExtResource("5_poolshader")
+shader_parameter/refraction_map = ExtResource("6_noise")
+shader_parameter/refraction_stretch = Vector2(1.5, 0.6)
+shader_parameter/refraction_strength = 0.008
+shader_parameter/timer = 0.0
+
+[sub_resource type="Curve" id="Curve_sparkle"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_sparkle"]
+curve = SubResource("Curve_sparkle")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sparkle"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(675, 90, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.25
+scale_max = 0.65
+alpha_curve = SubResource("CurveTexture_sparkle")
+
+[node name="TowerDefenseMapValleyDay" type="Node2D" node_paths=PackedStringArray("stripe")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_map")
+stripe = NodePath("Stripe")
+canvasModulateGradient = ExtResource("2_gradient")
+shaderTimeNodeNames = "Pool,Waterfall"
+waveSpeed = 0.08
+
+[node name="ValleyDay" type="Sprite2D" parent="."]
+texture = ExtResource("3_background")
+centered = false
+
+[node name="Pool" type="Polygon2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_pool")
+polygon = PackedVector2Array(526, 594, 700, 594, 980, 590, 1200, 598, 1470, 594, 1730, 594, 1980, 592, 1970, 642, 1984, 676, 1978, 732, 1986, 794, 1980, 872, 1680, 874, 1360, 874, 1100, 878, 820, 876, 650, 874, 526, 882)
+
+[node name="Waterfall" type="Polygon2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_waterfall")
+polygon = PackedVector2Array(370, 568, 408, 574, 450, 586, 490, 606, 522, 612, 522, 864, 478, 888, 440, 890, 400, 930, 380, 976, 354, 1040, 318, 1100, 310, 1200, 0, 1200, 0, 712, 56, 720, 144, 718, 214, 692, 260, 660, 296, 604, 326, 574)
+
+[node name="PoolParticles" type="GPUParticles2D" parent="."]
+position = Vector2(1248, 738)
+amount = 48
+texture = ExtResource("7_sparkly")
+lifetime = 2.0
+randomness = 1.0
+visibility_rect = Rect2(-710, -120, 1420, 240)
+process_material = SubResource("ParticleProcessMaterial_sparkle")
+
+[node name="Stripe" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(510, 160)
+scale = Vector2(4, 4.2071714)
+texture = ExtResource("4_stripe")
+centered = false

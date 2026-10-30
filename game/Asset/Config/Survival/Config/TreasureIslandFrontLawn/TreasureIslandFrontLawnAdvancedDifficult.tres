@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://qewevr8a4i1e"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/TreasureIslandFrontLawn/TreasureIslandFrontLawnAdvancedDifficult.json" id="1_52lkq"]
+[ext_resource type="Script" uid="uid://huks85pqdgqb" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalConfig.cs" id="2_8mk4y"]
+[ext_resource type="Script" uid="uid://bru304ldtwq3e" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.cs" id="3_ifwq3"]
+
+[sub_resource type="Resource" id="Resource_0cytk"]
+script = ExtResource("3_ifwq3")
+_round = 1
+zombieList = ["ZombieAxe", "ZombieNormalScreendoor", "ZombieFatGold", "ZombieFarmer"]
+
+[sub_resource type="Resource" id="Resource_ttl7q"]
+script = ExtResource("3_ifwq3")
+_round = 2
+zombieList = ["ZombieFootball", "ZombieDiamond", "ZombieMerchant", "ZombieCaptain"]
+
+[sub_resource type="Resource" id="Resource_anjkm"]
+script = ExtResource("3_ifwq3")
+_round = 3
+zombieList = ["ZombieDigger", "ZombieJackson", "ZombiePolevaulter", "ZombiePolestriker"]
+
+[sub_resource type="Resource" id="Resource_gqtt1"]
+script = ExtResource("3_ifwq3")
+_round = 4
+zombieList = ["ZombieCaptain", "ZombieFootballBlack", "ZombieGargantuar", "ZombieDiscoFire", "ZombieGargantuarDigger"]
+
+[resource]
+script = ExtResource("2_8mk4y")
+json = ExtResource("1_52lkq")
+roundLimit = 5
+roundDayNightChange = true
+pointIncrementPerWave = 100
+pointIncrementPerBigWave = 200
+pointIncrementPerRound = 800
+pointMax = 50000
+pointBigWaveScale = 0.5
+zombiePoolBase = ["ZombieNormal", "ZombieNormalCone", "ZombieNormalBucket"]
+zombiePoolRoundAdd = Array[ExtResource("3_ifwq3")]([SubResource("Resource_0cytk"), SubResource("Resource_ttl7q"), SubResource("Resource_anjkm"), SubResource("Resource_gqtt1")])
+metadata/_custom_type_script = "uid://huks85pqdgqb"

@@ -1,0 +1,115 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://ccctqu81m2nml"]
+
+[ext_resource type="Resource" uid="uid://cktl6q1og62xd" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseZombieStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_balloon_colour_fly"]
+script = ExtResource("2")
+StableId = "zombie.balloon_colour.fly"
+DisplayName = &"Fly"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_balloon_colour_fly_attack"]
+script = ExtResource("2")
+StableId = "zombie.balloon_colour.fly_attack"
+DisplayName = &"FlyAttack"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_balloon_colour_pop"]
+script = ExtResource("2")
+StableId = "zombie.balloon_colour.pop"
+DisplayName = &"Pop"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_balloon_colour_to_pop"]
+script = ExtResource("3")
+StableId = "zombie.balloon_colour.to_pop"
+SourceStateId = "character.root"
+TargetStateId = "zombie.balloon_colour.pop"
+EventName = &"ToPop"
+DeclarationOrder = 1
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_balloon_colour_to_fly"]
+script = ExtResource("3")
+StableId = "zombie.balloon_colour.to_fly"
+SourceStateId = "character.root"
+TargetStateId = "zombie.balloon_colour.fly"
+EventName = &"ToFly"
+DeclarationOrder = 2
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_balloon_colour_to_fly_attack"]
+script = ExtResource("3")
+StableId = "zombie.balloon_colour.to_fly_attack"
+SourceStateId = "character.root"
+TargetStateId = "zombie.balloon_colour.fly_attack"
+EventName = &"ToFlyAttack"
+DeclarationOrder = 3
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_inherited_character_to_sleep"]
+script = ExtResource("3")
+StableId = "character.to_sleep"
+SourceStateId = "character.root"
+TargetStateId = "character.sleep"
+EventName = &"ToSleep"
+DeclarationOrder = 4
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_inherited_character_to_component"]
+script = ExtResource("3")
+StableId = "character.to_component"
+SourceStateId = "character.root"
+TargetStateId = "character.component"
+EventName = &"ToComponent"
+DeclarationOrder = 5
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_inherited_zombie_to_walk"]
+script = ExtResource("3")
+StableId = "zombie.to_walk"
+SourceStateId = "character.root"
+TargetStateId = "zombie.walk"
+EventName = &"ToWalk"
+DeclarationOrder = 6
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_inherited_zombie_to_attack"]
+script = ExtResource("3")
+StableId = "zombie.to_attack"
+SourceStateId = "character.root"
+TargetStateId = "zombie.attack"
+EventName = &"ToAttack"
+DeclarationOrder = 7
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_inherited_zombie_to_garlic"]
+script = ExtResource("3")
+StableId = "zombie.to_garlic"
+SourceStateId = "character.root"
+TargetStateId = "zombie.garlic"
+EventName = &"ToGarlic"
+DeclarationOrder = 8
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_inherited_zombie_to_die"]
+script = ExtResource("3")
+StableId = "zombie.to_die"
+SourceStateId = "character.root"
+TargetStateId = "zombie.die"
+EventName = &"ToDie"
+DeclarationOrder = 9
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.zombie.balloon_colour"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_balloon_colour_fly"), SubResource("State_balloon_colour_fly_attack"), SubResource("State_balloon_colour_pop")]
+Transitions = [SubResource("Transition_balloon_colour_to_pop"), SubResource("Transition_balloon_colour_to_fly"), SubResource("Transition_balloon_colour_to_fly_attack"), SubResource("Transition_inherited_character_to_sleep"), SubResource("Transition_inherited_character_to_component"), SubResource("Transition_inherited_zombie_to_walk"), SubResource("Transition_inherited_zombie_to_attack"), SubResource("Transition_inherited_zombie_to_garlic"), SubResource("Transition_inherited_zombie_to_die")]

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://tycju72m5cvs"]
+
+[ext_resource type="Texture2D" uid="uid://dv5x6ax2qiod0" path="res://Asset/Anime/Particles/Explosion/ExplosionCloud.png" id="1"]
+[ext_resource type="Material" uid="uid://cp4hanb1rjfag" path="res://Prefab/Particles/Explosion/PowieJewelExplosion/PowieJewelExplosionSide.tres" id="2"]
+[ext_resource type="Script" uid="uid://cmjj5ejt1ranr" path="res://Extends/Particles/GPUParticles2DOnece.cs" id="3"]
+[ext_resource type="Material" uid="uid://b3rb3w16i2cgf" path="res://Prefab/Particles/Explosion/PowieJewelExplosion/PowieJewelExplosion.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://3jt557jobvu6" path="res://Asset/Anime/Particles/Explosion/ExplosionPowieJewel.png" id="5"]
+
+[node name="PowieJewelExplosion" type="GPUParticles2D" unique_id=1664698904]
+z_index = 1
+emitting = false
+amount = 32
+texture = ExtResource("1")
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = ExtResource("2")
+script = ExtResource("3")
+
+[node name="PowieJewelExplosionSide" type="GPUParticles2D" parent="." unique_id=415068782]
+z_index = 1
+emitting = false
+amount = 12
+texture = ExtResource("1")
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+draw_order = 0
+process_material = ExtResource("4")
+
+[node name="Sprite2D" type="Sprite2D" parent="PowieJewelExplosionSide" unique_id=1424465648]
+z_index = 1
+texture = ExtResource("5")

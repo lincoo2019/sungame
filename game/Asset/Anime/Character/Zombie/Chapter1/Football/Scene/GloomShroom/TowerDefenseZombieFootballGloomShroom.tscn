@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cjivjjsrelhd7"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cpikff12fy330" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Scene/GloomShroom/TowerDefenseZombieFootballGloomShroomComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://b1i8rn7fv66va" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Scene/GloomShroom/TowerDefenseZombieFootballGloomShroom.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dnlgip2pmkvte" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Config/TowerDefenseZombieFootballGloomShroom.tres" id="5"]
+[ext_resource type="Resource" uid="uid://b8w8htp4yuf7k" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/DamagePoint/Config/ZombieFootballDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://bdqvjthyoys55" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballGloomShroomArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://d0c6qmcgnjnb0" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/DamagePoint/Config/ZombieFootballDamagePointHead.tres" id="8"]
+[ext_resource type="Resource" uid="uid://dedieta5uv0ct" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballGloomShroomArmorHelmet.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://dwkiqbrl7lcsq" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Sprite/GloomShroom/ZombieFootballGloomShroom.tscn" id="10"]
+
+[node name="TowerDefenseZombieFootballGloomShroom" unique_id=598906549 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 2.0
+walkSpeedScale = 2.0
+swimAnimeClip = "Swim"
+dieWaterAnimeClip = "SwimDeath"
+garlicReplace = "Zombie_football_head.png"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieFootballGloomShroom")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieFootballGloomShroom/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Head": ExtResource("8"),
+"Helmet": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieFootballGloomShroom/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieFootballGloomShroom/HelmentSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieFootballGloomShroom/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieFootballGloomShroom/HelmentSlot")
+}
+currentArmor = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(9, 37)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieFootballGloomShroom" parent="SpriteGroup/TransformPoint" index="0" unique_id=859133807 instance=ExtResource("10")]
+position = Vector2(-12, -33)
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieFootballGloomShroom" index="0" unique_id=795001496]
+
+[node name="GloomShroomHeadSlot" parent="SpriteGroup/TransformPoint/ZombieFootballGloomShroom/Head" index="0" unique_id=1165499639]
+position = Vector2(-65.30584, -17.08204)
+scale = Vector2(0.8111022, 0.79599506)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieFootballGloomShroom" index="1" unique_id=1859030246]
+drawLayerId = -2
+position = Vector2(-13.084053, -55.482716)
+rotation = -0.047156572
+scale = Vector2(0.79956895, 0.79956895)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieFootballGloomShroom" index="2" unique_id=1454029380]
+position = Vector2(-34.129242, -16.897211)
+rotation = -0.107880495
+scale = Vector2(0.79871935, 0.79871935)
+
+[node name="HelmentSlot" parent="SpriteGroup/TransformPoint/ZombieFootballGloomShroom" index="3" unique_id=137893895]
+position = Vector2(-9.223419, -59.87046)
+rotation = -0.072825536
+scale = Vector2(0.79942834, 0.79942834)
+
+[editable path="SpriteGroup/TransformPoint/ZombieFootballGloomShroom"]

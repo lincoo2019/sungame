@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cu8nc147admpx"]
+
+[ext_resource type="Script" uid="uid://bb07bxkgi6wpp" path="res://Registry/Battle/Feature/Fog/Object/TowerDefenseFog.cs" id="1_rwoox"]
+[ext_resource type="Texture2D" uid="uid://c7psic8525tv4" path="res://Asset/Texture/ScreenEffect/Fog/Fog.png" id="2_eaieg"]
+[ext_resource type="Script" uid="uid://daabbarea2d01" path="res://Core/TowerDefenseManager/SubSystem/AabbArea2D.cs" id="aabb_area"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eaieg"]
+size = Vector2(88, 112)
+
+[node name="TowerDefenseFog" type="Node2D" unique_id=1800232717]
+z_index = 1000
+script = ExtResource("1_rwoox")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1380044938]
+unique_name_in_owner = true
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_eaieg")
+hframes = 8
+
+[node name="Area" type="Node2D" parent="." unique_id=1707000985]
+script = ExtResource("aabb_area")
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="Shape" type="CollisionShape2D" parent="Area" unique_id=406209055]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_eaieg")

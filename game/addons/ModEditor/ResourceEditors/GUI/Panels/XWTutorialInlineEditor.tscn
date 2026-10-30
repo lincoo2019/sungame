@@ -1,0 +1,307 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWTutorialInlineEditor.cs" id="1_script"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="2_background"]
+[ext_resource type="PackedScene" path="res://Core/BroadCastManager/BroadCastManager.tscn" id="3_broadcast"]
+[ext_resource type="FontFile" path="res://Asset/Font/fzkt.ttf" id="4_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stage"]
+bg_color = Color(0.025, 0.04, 0.03, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24, 0.42, 0.22, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_text"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_focus"]
+bg_color = Color(0, 0, 0, 0.08)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.96, 0.72, 0.25, 0.95)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="TutorialInlineEditor" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 560)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+script = ExtResource("1_script")
+
+[node name="RootControls" type="HFlowContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SaveKeyLabel" type="Label" parent="RootControls"]
+layout_mode = 2
+text = "教程存档键"
+vertical_alignment = 1
+
+[node name="SaveKeyEdit" type="LineEdit" parent="RootControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 34)
+layout_mode = 2
+placeholder_text = "用于记录教程进度的唯一键"
+clear_button_enabled = true
+
+[node name="JsonSourceLabel" type="Label" parent="RootControls"]
+layout_mode = 2
+text = "JSON 来源"
+vertical_alignment = 1
+
+[node name="JsonSourcePickerHost" type="VBoxContainer" parent="RootControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Header" type="HFlowContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "游戏内教程编辑 · 直接编辑广播条与完成条件"
+
+[node name="PreviousButton" type="Button" parent="Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 34)
+layout_mode = 2
+text = "◀ 上一步"
+
+[node name="StepOption" type="OptionButton" parent="Header"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(250, 34)
+layout_mode = 2
+tooltip_text = "选择要在游戏画面中编辑的教程步骤"
+
+[node name="StepVisualChoices" type="HFlowContainer" parent="Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="NextButton" type="Button" parent="Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 34)
+layout_mode = 2
+text = "下一步 ▶"
+
+[node name="StepActions" type="HFlowContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="StepActionsTitle" type="Label" parent="StepActions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "步骤卡片"
+vertical_alignment = 1
+
+[node name="StepCountBadge" type="Label" parent="StepActions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 34)
+layout_mode = 2
+text = "0 步"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AddStepButton" type="Button" parent="StepActions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 34)
+layout_mode = 2
+text = "新增"
+
+[node name="DuplicateStepButton" type="Button" parent="StepActions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 34)
+layout_mode = 2
+text = "复制"
+
+[node name="MoveStepUpButton" type="Button" parent="StepActions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 34)
+layout_mode = 2
+
+[node name="MoveStepDownButton" type="Button" parent="StepActions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 34)
+layout_mode = 2
+
+[node name="RemoveStepButton" type="Button" parent="StepActions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 34)
+layout_mode = 2
+text = "移除"
+
+[node name="StageFrame" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_stage")
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="StageFrame"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="StageFrame/ViewportContainer"]
+size = Vector2i(960, 480)
+render_target_update_mode = 4
+handle_input_locally = true
+
+[node name="GameBackground" type="TextureRect" parent="StageFrame/ViewportContainer/Viewport"]
+offset_right = 960.0
+offset_bottom = 480.0
+mouse_filter = 2
+texture = ExtResource("2_background")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="RuntimeBroadcast" parent="StageFrame/ViewportContainer/Viewport" instance=ExtResource("3_broadcast")]
+unique_name_in_owner = true
+editorPreviewMode = true
+
+[node name="EditorOverlay" type="CanvasLayer" parent="StageFrame/ViewportContainer/Viewport"]
+layer = 51
+
+[node name="BroadcastTextEditor" type="TextEdit" parent="StageFrame/ViewportContainer/Viewport/EditorOverlay"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = -197.0
+offset_right = -72.0
+offset_bottom = -75.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.916655, 0.844854, 0.633096, 1)
+theme_override_colors/font_selected_color = Color(0.98, 0.91, 0.7, 1)
+theme_override_colors/caret_color = Color(1, 0.8, 0.3, 1)
+theme_override_colors/selection_color = Color(0.95, 0.65, 0.18, 0.35)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_text")
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
+placeholder_text = "勾选“显示游戏广播”后，直接在这里输入教程文本"
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="BroadcastControls" type="HFlowContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BroadcastUse" type="CheckButton" parent="BroadcastControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "显示游戏广播"
+
+[node name="DurationLabel" type="Label" parent="BroadcastControls"]
+layout_mode = 2
+text = "持续时间"
+vertical_alignment = 1
+
+[node name="BroadcastDuration" type="SpinBox" parent="BroadcastControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 34)
+layout_mode = 2
+min_value = -1.0
+max_value = 3600.0
+step = 0.1
+allow_greater = true
+allow_lesser = false
+suffix = " 秒"
+
+[node name="DurationHint" type="Label" parent="BroadcastControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "-1 表示等待玩家完成本步骤条件"
+vertical_alignment = 1
+
+[node name="ConditionPanel" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="ConditionHeader" type="HFlowContainer" parent="ConditionPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ConditionTitle" type="Label" parent="ConditionPanel/ConditionHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "步骤完成条件 · 在游戏规则语境中编辑"
+
+[node name="ConditionType" type="OptionButton" parent="ConditionPanel/ConditionHeader"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(180, 34)
+layout_mode = 2
+
+[node name="ConditionTypeVisualChoices" type="HFlowContainer" parent="ConditionPanel/ConditionHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="AddConditionButton" type="Button" parent="ConditionPanel/ConditionHeader"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(116, 34)
+layout_mode = 2
+text = "＋ 添加条件"
+
+[node name="CustomConditionBar" type="HFlowContainer" parent="ConditionPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CustomConditionLabel" type="Label" parent="ConditionPanel/CustomConditionBar"]
+layout_mode = 2
+text = "条件资源图鉴"
+vertical_alignment = 1
+
+[node name="CustomConditionPickerHost" type="VBoxContainer" parent="ConditionPanel/CustomConditionBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AddSelectedConditionButton" type="Button" parent="ConditionPanel/CustomConditionBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(132, 34)
+layout_mode = 2
+text = "添加资源副本"
+
+[node name="ConditionScroll" type="ScrollContainer" parent="ConditionPanel"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ConditionRows" type="VBoxContainer" parent="ConditionPanel/ConditionScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Status" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "修改会立即写回当前教程资源"
+horizontal_alignment = 1
+autowrap_mode = 2

@@ -1,0 +1,319 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/Resource/XWResourcePicker.tscn" id="1_picker"]
+
+[sub_resource type="StyleBoxFlat" id="StyleCore"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.055, 0.09, 0.11, 0.98)
+border_width_left = 3
+border_color = Color(0.24, 0.67, 0.86, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ProjectileCoreFields" type="PanelContainer"]
+custom_minimum_size = Vector2(400, 0)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleCore")
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Content/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.55, 0.86, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "子弹本体"
+
+[node name="SelectProjectileButton" type="Button" parent="Content/Header"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "从图鉴选择"
+
+[node name="NameRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/NameRow"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "游戏内名称"
+vertical_alignment = 1
+
+[node name="ProjectileNameLineEdit" type="LineEdit" parent="Content/NameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Projectile Key"
+
+[node name="SkinRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/SkinRow"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "皮肤"
+vertical_alignment = 1
+
+[node name="SkinNameLineEdit" type="LineEdit" parent="Content/SkinRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Default"
+
+[node name="DamageRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/DamageRow"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "基础伤害"
+vertical_alignment = 1
+
+[node name="BaseDamageSpinBox" type="SpinBox" parent="Content/DamageRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -999999.0
+max_value = 999999.0
+step = 1.0
+
+[node name="SizeRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Content/SizeRow"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "碰撞尺寸"
+vertical_alignment = 1
+
+[node name="XLabel" type="Label" parent="Content/SizeRow"]
+layout_mode = 2
+text = "X"
+vertical_alignment = 1
+
+[node name="SizeXSpinBox" type="SpinBox" parent="Content/SizeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.01
+
+[node name="YLabel" type="Label" parent="Content/SizeRow"]
+layout_mode = 2
+text = "Y"
+vertical_alignment = 1
+
+[node name="SizeYSpinBox" type="SpinBox" parent="Content/SizeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.01
+
+[node name="ScaleRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Content/ScaleRow"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "显示缩放"
+vertical_alignment = 1
+
+[node name="XLabel" type="Label" parent="Content/ScaleRow"]
+layout_mode = 2
+text = "X"
+vertical_alignment = 1
+
+[node name="ScaleXSpinBox" type="SpinBox" parent="Content/ScaleRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1000.0
+max_value = 1000.0
+step = 0.01
+
+[node name="YLabel" type="Label" parent="Content/ScaleRow"]
+layout_mode = 2
+text = "Y"
+vertical_alignment = 1
+
+[node name="ScaleYSpinBox" type="SpinBox" parent="Content/ScaleRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1000.0
+max_value = 1000.0
+step = 0.01
+
+[node name="ObjectRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/ObjectRow"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "对象池"
+vertical_alignment = 1
+
+[node name="ProjectileObjectOption" type="OptionButton" parent="Content/ObjectRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProjectileObjectCatalogButton" type="Button" parent="Content/ObjectRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "对象池图鉴"
+tooltip_text = "搜索对象池名称或 ID"
+
+[node name="Separator" type="HSeparator" parent="Content"]
+layout_mode = 2
+
+[node name="SceneTitle" type="Label" parent="Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.88, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "场景与命中反馈"
+
+[node name="ProjectileSceneRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/ProjectileSceneRow"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "子弹场景"
+vertical_alignment = 1
+
+[node name="ProjectileScenePicker" parent="Content/ProjectileSceneRow" instance=ExtResource("1_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProjectileSceneCatalogButton" type="Button" parent="Content/ProjectileSceneRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 34)
+layout_mode = 2
+text = "图鉴"
+
+[node name="SplatTypeRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/SplatTypeRow"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "命中特效类型"
+vertical_alignment = 1
+
+[node name="SplatSceneTypeOption" type="OptionButton" parent="Content/SplatTypeRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SplatSceneTypeSegments" type="HFlowContainer" parent="Content/SplatTypeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="SplatAudioRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/SplatAudioRow"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "命中音效"
+vertical_alignment = 1
+
+[node name="SplatAudioLineEdit" type="LineEdit" parent="Content/SplatAudioRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SplatSceneRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/SplatSceneRow"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "命中特效"
+vertical_alignment = 1
+
+[node name="SplatScenePicker" parent="Content/SplatSceneRow" instance=ExtResource("1_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SplatSceneCatalogButton" type="Button" parent="Content/SplatSceneRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 34)
+layout_mode = 2
+text = "图鉴"
+
+[node name="HitEffectRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/HitEffectRow"]
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+text = "附加效果"
+vertical_alignment = 1
+
+[node name="HitEffectPicker" parent="Content/HitEffectRow" instance=ExtResource("1_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HitEffectCatalogButton" type="Button" parent="Content/HitEffectRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 34)
+layout_mode = 2
+text = "图鉴"
+
+[node name="ProjectileDamageSummary" type="Label" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.82, 0.92, 1)
+autowrap_mode = 2

@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://c8m0d1t7edit1"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/Blueprint/GUI/GraphEdit/XWBPGraphEdit.cs" id="1_edit"]
+
+[node name="XWBPGraphEdit" type="GraphEdit"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_edit")
+
+[node name="ExtendsClassButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 0
+text = "无继承"
+
+[node name="GenerateScriptButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 0
+text = "生成脚本"
+
+[node name="BlueprintNavigationTools" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+theme_override_constants/separation = 4
+
+[node name="RunPreviewButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(132, 0)
+layout_mode = 0
+text = "安全运行预览"
+tooltip_text = "在受限纯数据环境中运行当前拼图；不会载入或执行生成的 Mod 程序集"
+
+[node name="NavigationSeparator" type="VSeparator" parent="BlueprintNavigationTools"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="PreviewStatusPanel" type="PanelContainer" parent="BlueprintNavigationTools"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(124, 28)
+layout_mode = 2
+tooltip_text = "蓝图安全运行预览状态"
+
+[node name="PreviewStatusLabel" type="Label" parent="BlueprintNavigationTools/PreviewStatusPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "● 预览待机"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MinimapToggleButton" type="Button" parent="BlueprintNavigationTools"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 30)
+layout_mode = 2
+tooltip_text = "显示或隐藏蓝图小地图"
+toggle_mode = true
+button_pressed = true
+flat = true
+
+[node name="ResetZoomButton" type="Button" parent="BlueprintNavigationTools"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 30)
+layout_mode = 2
+tooltip_text = "恢复 100% 缩放"
+flat = true
+
+[node name="FocusSelectionButton" type="Button" parent="BlueprintNavigationTools"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 30)
+layout_mode = 2
+tooltip_text = "将所选节点移动到画布中央"
+disabled = true
+flat = true
+
+[node name="GraphOverviewPanel" type="PanelContainer" parent="BlueprintNavigationTools"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(86, 28)
+layout_mode = 2
+tooltip_text = "当前蓝图的节点与连线数量"
+
+[node name="StatsMargin" type="MarginContainer" parent="BlueprintNavigationTools/GraphOverviewPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Stats" type="HBoxContainer" parent="BlueprintNavigationTools/GraphOverviewPanel/StatsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="NodeCountIcon" type="TextureRect" parent="BlueprintNavigationTools/GraphOverviewPanel/StatsMargin/Stats"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NodeCountLabel" type="Label" parent="BlueprintNavigationTools/GraphOverviewPanel/StatsMargin/Stats"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="ConnectionCountIcon" type="TextureRect" parent="BlueprintNavigationTools/GraphOverviewPanel/StatsMargin/Stats"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ConnectionCountLabel" type="Label" parent="BlueprintNavigationTools/GraphOverviewPanel/StatsMargin/Stats"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="VariablePopupMenu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+item_count = 2
+item_0/text = "获取"
+item_0/id = 0
+item_1/text = "设置"
+item_1/id = 1
+
+[node name="SignalPopupMenu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+item_count = 2
+item_0/text = "信号事件"
+item_0/id = 0
+item_1/text = "发射信号"
+item_1/id = 1

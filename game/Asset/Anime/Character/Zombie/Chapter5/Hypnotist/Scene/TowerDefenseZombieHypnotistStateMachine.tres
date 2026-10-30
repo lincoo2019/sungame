@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://dvmn1efhk0cgn"]
+
+[ext_resource type="Resource" uid="uid://cktl6q1og62xd" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseZombieStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_hypnotist_drop"]
+script = ExtResource("2")
+StableId = "zombie.hypnotist.drop"
+DisplayName = &"Drop"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_hypnotist_grab"]
+script = ExtResource("2")
+StableId = "zombie.hypnotist.grab"
+DisplayName = &"Grab"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_hypnotist_rise"]
+script = ExtResource("2")
+StableId = "zombie.hypnotist.rise"
+DisplayName = &"Rise"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_hypnotist_to_drop"]
+script = ExtResource("3")
+StableId = "zombie.hypnotist.to_drop"
+SourceStateId = "character.root"
+TargetStateId = "zombie.hypnotist.drop"
+EventName = &"ToDrop"
+DeclarationOrder = 7
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_hypnotist_to_grab"]
+script = ExtResource("3")
+StableId = "zombie.hypnotist.to_grab"
+SourceStateId = "character.root"
+TargetStateId = "zombie.hypnotist.grab"
+EventName = &"ToGrab"
+DeclarationOrder = 8
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_hypnotist_to_rise"]
+script = ExtResource("3")
+StableId = "zombie.hypnotist.to_rise"
+SourceStateId = "character.root"
+TargetStateId = "zombie.hypnotist.rise"
+EventName = &"ToRise"
+DeclarationOrder = 9
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.zombie.hypnotist"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_hypnotist_drop"), SubResource("State_hypnotist_grab"), SubResource("State_hypnotist_rise")]
+Transitions = [SubResource("Transition_hypnotist_to_drop"), SubResource("Transition_hypnotist_to_grab"), SubResource("Transition_hypnotist_to_rise")]

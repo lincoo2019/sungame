@@ -1,0 +1,695 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://Prefab/TowerDefense/GUI/InGame/Packet/TowerDefenseInGamePacketShow.tscn" id="1_packet"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="2_lawn"]
+
+[sub_resource type="StyleBoxFlat" id="Style_header"]
+bg_color = Color(0.075, 0.09, 0.065, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43, 0.57, 0.24, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxFlat" id="Style_game"]
+bg_color = Color(0.045, 0.032, 0.018, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.37, 0.29, 0.13, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_seedbank"]
+bg_color = Color(0.12, 0.08, 0.035, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.53, 0.39, 0.16, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_panel"]
+bg_color = Color(0.045, 0.052, 0.04, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.21, 0.27, 0.16, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 12.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxFlat" id="Style_subpanel"]
+bg_color = Color(0.08, 0.065, 0.035, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38, 0.28, 0.12, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 8.0
+content_margin_top = 7.0
+content_margin_right = 8.0
+content_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxFlat" id="Style_apply"]
+bg_color = Color(0.25, 0.37, 0.13, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.62, 0.79, 0.33, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="PacketOverrideVisualEditorLayout" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 620)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_header")
+
+[node name="Row" type="HFlowContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Header/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "卡牌覆盖规则演算台"
+
+[node name="OverrideBadge" type="Label" parent="Header/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.93, 0.56, 1)
+text = "继承原卡牌"
+
+[node name="ResourceMetaPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_panel")
+
+[node name="Row" type="HFlowContainer" parent="ResourceMetaPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ResourceNameLabel" type="Label" parent="ResourceMetaPanel/Row"]
+layout_mode = 2
+text = "资源名称"
+vertical_alignment = 1
+
+[node name="ResourceNameEdit" type="LineEdit" parent="ResourceMetaPanel/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "输入覆盖规则资源名称"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="ResourceMetaPanel/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "场景本地资源"
+
+[node name="GameFrame" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Style_game")
+
+[node name="Stage" type="Control" parent="GameFrame"]
+layout_mode = 2
+clip_contents = true
+
+[node name="Lawn" type="TextureRect" parent="GameFrame/Stage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_lawn")
+expand_mode = 1
+stretch_mode = 6
+modulate = Color(0.46, 0.46, 0.4, 1)
+
+[node name="Shade" type="ColorRect" parent="GameFrame/Stage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.018, 0.01, 0.38)
+
+[node name="SeedBank" type="PanelContainer" parent="GameFrame/Stage"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 38.0
+offset_right = 748.0
+offset_bottom = 265.0
+theme_override_styles/panel = SubResource("Style_seedbank")
+
+[node name="BaseCaption" type="Label" parent="GameFrame/Stage"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 51.0
+offset_right = 290.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 17
+text = "原卡牌运行值"
+horizontal_alignment = 1
+
+[node name="ResultCaption" type="Label" parent="GameFrame/Stage"]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 51.0
+offset_right = 680.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 17
+text = "覆盖后的运行值"
+horizontal_alignment = 1
+
+[node name="Arrow" type="Label" parent="GameFrame/Stage"]
+layout_mode = 0
+offset_left = 365.0
+offset_top = 124.0
+offset_right = 433.0
+offset_bottom = 182.0
+theme_override_colors/font_color = Color(0.91, 0.78, 0.34, 1)
+theme_override_font_sizes/font_size = 34
+text = "➜"
+horizontal_alignment = 1
+
+[node name="BaseCardRoot" type="Control" parent="GameFrame/Stage"]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 139.0
+offset_right = 194.0
+offset_bottom = 139.0
+
+[node name="BasePacket" parent="GameFrame/Stage/BaseCardRoot" instance=ExtResource("1_packet")]
+unique_name_in_owner = true
+process_mode = 4
+scale = Vector2(2.4, 2.4)
+only_draw = true
+use_cost = false
+set_pc_layout = true
+
+[node name="BaseSummary" type="Label" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 65.0
+offset_top = 230.0
+offset_right = 325.0
+offset_bottom = 260.0
+text = "费用 100 · 冷却 7.5 秒"
+horizontal_alignment = 1
+
+[node name="ResultCardRoot" type="Control" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 584.0
+offset_top = 139.0
+offset_right = 584.0
+offset_bottom = 139.0
+
+[node name="ResultPacket" parent="GameFrame/Stage/ResultCardRoot" instance=ExtResource("1_packet")]
+unique_name_in_owner = true
+process_mode = 4
+scale = Vector2(2.4, 2.4)
+only_draw = true
+use_cost = false
+set_pc_layout = true
+
+[node name="ResultSummary" type="Label" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 455.0
+offset_top = 230.0
+offset_right = 715.0
+offset_bottom = 260.0
+text = "费用 100 · 冷却 7.5 秒"
+horizontal_alignment = 1
+
+[node name="OverrideState" type="Label" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 45.0
+offset_top = 278.0
+offset_right = 735.0
+offset_bottom = 316.0
+theme_override_colors/font_color = Color(0.96, 0.92, 0.7, 1)
+text = "调整继承值与覆盖规则后，点击应用查看游戏中的最终卡牌"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SimulationPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_panel")
+
+[node name="Layout" type="VBoxContainer" parent="SimulationPanel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="SimulationPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 0.9, 0.58, 1)
+text = "原卡牌继承值（仅用于预演，不写入覆盖资源）"
+
+[node name="Row1" type="HFlowContainer" parent="SimulationPanel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="TypeLabel" type="Label" parent="SimulationPanel/Layout/Row1"]
+layout_mode = 2
+text = "卡框"
+vertical_alignment = 1
+
+[node name="BaseType" type="OptionButton" parent="SimulationPanel/Layout/Row1"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="BaseTypeVisualChoices" type="HFlowContainer" parent="SimulationPanel/Layout/Row1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="CostLabel" type="Label" parent="SimulationPanel/Layout/Row1"]
+layout_mode = 2
+text = "费用"
+vertical_alignment = 1
+
+[node name="BaseCost" type="SpinBox" parent="SimulationPanel/Layout/Row1"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -999999.0
+max_value = 999999.0
+value = 100.0
+
+[node name="CooldownLabel" type="Label" parent="SimulationPanel/Layout/Row1"]
+layout_mode = 2
+text = "冷却"
+vertical_alignment = 1
+
+[node name="BaseCooldown" type="SpinBox" parent="SimulationPanel/Layout/Row1"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 999999.0
+step = 0.1
+value = 7.5
+
+[node name="StartingLabel" type="Label" parent="SimulationPanel/Layout/Row1"]
+layout_mode = 2
+text = "开局冷却"
+vertical_alignment = 1
+
+[node name="BaseStartingCooldown" type="SpinBox" parent="SimulationPanel/Layout/Row1"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 999999.0
+step = 0.1
+value = 3.0
+
+[node name="Row2" type="HFlowContainer" parent="SimulationPanel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="WeightLabel" type="Label" parent="SimulationPanel/Layout/Row2"]
+layout_mode = 2
+text = "僵尸权重"
+vertical_alignment = 1
+
+[node name="BaseWeight" type="SpinBox" parent="SimulationPanel/Layout/Row2"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -1.0
+max_value = 999999.0
+value = 10.0
+
+[node name="WaveLabel" type="Label" parent="SimulationPanel/Layout/Row2"]
+layout_mode = 2
+text = "波次点数"
+vertical_alignment = 1
+
+[node name="BaseWavePointCost" type="SpinBox" parent="SimulationPanel/Layout/Row2"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -1.0
+max_value = 999999.0
+value = 10.0
+
+[node name="Spacer" type="Control" parent="SimulationPanel/Layout/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResetButton" type="Button" parent="SimulationPanel/Layout/Row2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "重置画面"
+
+[node name="ApplyButton" type="Button" parent="SimulationPanel/Layout/Row2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(148, 36)
+layout_mode = 2
+theme_override_styles/normal = SubResource("Style_apply")
+text = "应用覆盖规则"
+
+[node name="OverridePanel" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_panel")
+
+[node name="Layout" type="VBoxContainer" parent="OverridePanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="OverridePanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.83, 0.36, 1)
+theme_override_font_sizes/font_size = 17
+text = "覆盖值（-1 表示继承原卡牌）"
+
+[node name="EconomyGrid" type="GridContainer" parent="OverridePanel/Layout"]
+layout_mode = 2
+columns = 4
+theme_override_constants/h_separation = 9
+theme_override_constants/v_separation = 7
+
+[node name="TypeLabel" type="Label" parent="OverridePanel/Layout/EconomyGrid"]
+layout_mode = 2
+text = "覆盖卡框"
+
+[node name="OverrideType" type="OptionButton" parent="OverridePanel/Layout/EconomyGrid"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="OverrideTypeVisualChoices" type="HFlowContainer" parent="OverridePanel/Layout/EconomyGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="CostRiseLabel" type="Label" parent="OverridePanel/Layout/EconomyGrid"]
+layout_mode = 2
+text = "费用成长"
+
+[node name="CostRise" type="SpinBox" parent="OverridePanel/Layout/EconomyGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -1.0
+max_value = 999999.0
+value = -1.0
+
+[node name="CostLabel" type="Label" parent="OverridePanel/Layout/EconomyGrid"]
+layout_mode = 2
+text = "固定费用"
+
+[node name="OverrideCost" type="SpinBox" parent="OverridePanel/Layout/EconomyGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -1.0
+max_value = 999999.0
+value = -1.0
+
+[node name="MultipleLabel" type="Label" parent="OverridePanel/Layout/EconomyGrid"]
+layout_mode = 2
+text = "费用倍率"
+
+[node name="CostMultiple" type="SpinBox" parent="OverridePanel/Layout/EconomyGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -1.0
+max_value = 999999.0
+step = 0.05
+value = -1.0
+
+[node name="CooldownLabel" type="Label" parent="OverridePanel/Layout/EconomyGrid"]
+layout_mode = 2
+text = "固定冷却"
+
+[node name="PacketCooldown" type="SpinBox" parent="OverridePanel/Layout/EconomyGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -1.0
+max_value = 999999.0
+step = 0.1
+value = -1.0
+
+[node name="StartingLabel" type="Label" parent="OverridePanel/Layout/EconomyGrid"]
+layout_mode = 2
+text = "开局冷却"
+
+[node name="StartingCooldown" type="SpinBox" parent="OverridePanel/Layout/EconomyGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -1.0
+max_value = 999999.0
+step = 0.1
+value = -1.0
+
+[node name="WeightLabel" type="Label" parent="OverridePanel/Layout/EconomyGrid"]
+layout_mode = 2
+text = "僵尸权重"
+
+[node name="Weight" type="SpinBox" parent="OverridePanel/Layout/EconomyGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -1.0
+max_value = 999999.0
+value = -1.0
+
+[node name="WaveLabel" type="Label" parent="OverridePanel/Layout/EconomyGrid"]
+layout_mode = 2
+text = "波次点数"
+
+[node name="WavePointCost" type="SpinBox" parent="OverridePanel/Layout/EconomyGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -1.0
+max_value = 999999.0
+value = -1.0
+
+[node name="Flags" type="HFlowContainer" parent="OverridePanel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="IsLimitGridNum" type="CheckBox" parent="OverridePanel/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "限制同格数量"
+
+[node name="CoverCanDirectPlant" type="CheckBox" parent="OverridePanel/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "覆盖时可直接种植"
+
+[node name="Hypnoses" type="CheckBox" parent="OverridePanel/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "生成催眠单位"
+
+[node name="CharacterOverrideRow" type="HFlowContainer" parent="OverridePanel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CharacterOverrideStatus" type="Label" parent="OverridePanel/Layout/CharacterOverrideRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "角色覆盖：默认"
+vertical_alignment = 1
+
+[node name="CharacterOverridePickerHost" type="VBoxContainer" parent="OverridePanel/Layout/CharacterOverrideRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterOverrideButton" type="Button" parent="OverridePanel/Layout/CharacterOverrideRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "编辑角色覆盖…"
+
+[node name="Lists" type="HFlowContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="CoverPanel" type="PanelContainer" parent="Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Style_subpanel")
+
+[node name="Layout" type="VBoxContainer" parent="Lists/CoverPanel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="Lists/CoverPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.82, 1, 1)
+text = "允许覆盖的植物类型"
+
+[node name="InputRow" type="HBoxContainer" parent="Lists/CoverPanel/Layout"]
+layout_mode = 2
+
+[node name="PlantCoverInput" type="LineEdit" parent="Lists/CoverPanel/Layout/InputRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "输入植物覆盖 Key"
+
+[node name="AddPlantCoverButton" type="Button" parent="Lists/CoverPanel/Layout/InputRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加"
+
+[node name="RemovePlantCoverButton" type="Button" parent="Lists/CoverPanel/Layout/InputRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "移除"
+
+[node name="PlantCoverList" type="ItemList" parent="Lists/CoverPanel/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_vertical = 3
+allow_reselect = true
+
+[node name="EventsPanel" type="PanelContainer" parent="Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Style_subpanel")
+
+[node name="Layout" type="VBoxContainer" parent="Lists/EventsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="Lists/EventsPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 1, 0.72, 1)
+text = "覆盖卡牌事件（双击进入可视编辑器）"
+
+[node name="EventLists" type="HBoxContainer" parent="Lists/EventsPanel/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="PressBox" type="VBoxContainer" parent="Lists/EventsPanel/Layout/EventLists"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Lists/EventsPanel/Layout/EventLists/PressBox"]
+layout_mode = 2
+text = "按下事件"
+
+[node name="EventPressList" type="ItemList" parent="Lists/EventsPanel/Layout/EventLists/PressBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="Lists/EventsPanel/Layout/EventLists/PressBox"]
+layout_mode = 2
+
+[node name="AddPressEventButton" type="Button" parent="Lists/EventsPanel/Layout/EventLists/PressBox/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "添加"
+
+[node name="MovePressEventUpButton" type="Button" parent="Lists/EventsPanel/Layout/EventLists/PressBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 0)
+layout_mode = 2
+tooltip_text = "上移事件"
+text = "↑"
+
+[node name="MovePressEventDownButton" type="Button" parent="Lists/EventsPanel/Layout/EventLists/PressBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 0)
+layout_mode = 2
+tooltip_text = "下移事件"
+text = "↓"
+
+[node name="RemovePressEventButton" type="Button" parent="Lists/EventsPanel/Layout/EventLists/PressBox/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "移除"
+
+[node name="PlantBox" type="VBoxContainer" parent="Lists/EventsPanel/Layout/EventLists"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Lists/EventsPanel/Layout/EventLists/PlantBox"]
+layout_mode = 2
+text = "种植事件"
+
+[node name="EventPlantList" type="ItemList" parent="Lists/EventsPanel/Layout/EventLists/PlantBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="Lists/EventsPanel/Layout/EventLists/PlantBox"]
+layout_mode = 2
+
+[node name="AddPlantEventButton" type="Button" parent="Lists/EventsPanel/Layout/EventLists/PlantBox/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "添加"
+
+[node name="MovePlantEventUpButton" type="Button" parent="Lists/EventsPanel/Layout/EventLists/PlantBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 0)
+layout_mode = 2
+tooltip_text = "上移事件"
+text = "↑"
+
+[node name="MovePlantEventDownButton" type="Button" parent="Lists/EventsPanel/Layout/EventLists/PlantBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 0)
+layout_mode = 2
+tooltip_text = "下移事件"
+text = "↓"
+
+[node name="RemovePlantEventButton" type="Button" parent="Lists/EventsPanel/Layout/EventLists/PlantBox/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "移除"

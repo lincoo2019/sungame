@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b553xpe6ejn4s"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter4/SunPot/Scene/TowerDefensePlantSunPotComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://diglqwxlrcnwt" path="res://Asset/Anime/Character/Plant/Chapter4/SunPot/Scene/TowerDefensePlantSunPot.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bsoe0fs4d5fkg" path="res://Asset/Anime/Character/Plant/Chapter4/SunPot/Config/TowerDefensePlantSunPot.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://f48qpok30gxi" path="res://Asset/Anime/Character/Plant/Chapter4/SunPot/SunPot.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantSunPot" unique_id=256837845 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+showHealthOffset = Vector2(0, 30)
+z_index = -13
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+produceInterval = 25.0
+sunNum = 25
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/SunPot")
+PreviewDamagePointPersontage = 1.0
+Custom = []
+itemLayer = 2
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(-1, 48)
+scale = Vector2(1.0465115, 1.1666667)
+texture = null
+
+[node name="SpriteGroup" parent="." index="2" unique_id=1006029617]
+
+[node name="TransformPoint" parent="SpriteGroup" index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="SunPot" parent="SpriteGroup/TransformPoint" index="0" unique_id=16726303 instance=ExtResource("6")]
+position = Vector2(0, -26)
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/SunPot" index="0" unique_id=1836959728]
+script = ExtResource("7")
+followSlotId = 3
+Layer = 3
+drawLayerId = 3
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SunPot/AdobeAnimateSlot" index="0" unique_id=1803179545]
+position = Vector2(56.25086, 11.916847)

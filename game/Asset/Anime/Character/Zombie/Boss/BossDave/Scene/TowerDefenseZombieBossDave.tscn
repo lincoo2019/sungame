@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://tbysxggvf04f"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://lt2iclcjriet" path="res://Asset/Anime/Character/Zombie/Boss/BossDave/Scene/TowerDefenseZombieBossDaveComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bn061t2j0whvu" path="res://Asset/Anime/Character/Zombie/Boss/BossDave/Scene/TowerDefenseZombieBossDave.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x1268_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dkyjccknfk68o" path="res://Asset/Anime/Character/Zombie/Boss/BossDave/Scene/TowerDefenseZombieBossDaveStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://r7t52icae83p" path="res://Asset/Anime/Character/Zombie/Boss/BossDave/Config/TowerDefenseZombieBossDave.tres" id="6"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Boss/BossDave/Config/TowerDefenseZombieBossDaveAbilityConfig.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://b8w8wgjf8efe0" path="res://Asset/Anime/Character/Zombie/Boss/BossDave/ZombieBossDave.tscn" id="8"]
+
+[node name="TowerDefenseZombieBossDave" unique_id=1383326017 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+garlicReplace = "Zombie_sleep_head.png"
+waterHeight = 20.0
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+config = ExtResource("6")
+abilityConfig = ExtResource("7")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieBossDave")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieBossDave/HeadSlot")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieBossDave" parent="SpriteGroup/TransformPoint" index="0" unique_id=1425198720 instance=ExtResource("8")]
+position = Vector2(-12, -33)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieBossDave" index="1" unique_id=2124984946]
+position = Vector2(-181.98529, -147.54814)
+rotation = -0.004533819
+scale = Vector2(0.7964276, 0.7964276)
+drawLayerId = -2
+
+[editable path="SpriteGroup/TransformPoint/ZombieBossDave"]

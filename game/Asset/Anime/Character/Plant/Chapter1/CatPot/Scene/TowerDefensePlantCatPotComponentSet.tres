@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://6uou8yflsl2k"]
+
+[ext_resource type="Resource" path="res://Script/Component/TowerDefense/Character/SlotComponent/Definitions/CatPotSlotComponentDefinition.tres" id="1"]
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="5"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="6"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="7"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="8"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="9"]
+
+[sub_resource type="Resource" id="Fire_Resource_3c8e3"]
+script = ExtResource("3")
+projectileName = &"Spike"
+damageFlags = 2
+fireMethodFlags = 33
+catapultHeight = 400.0
+penetrateNum = 10000
+
+[sub_resource type="Resource" id="Fire_Resource_7w2il"]
+script = ExtResource("4")
+projectileData = SubResource("Fire_Resource_3c8e3")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Fire_Resource_wv5nr"]
+script = ExtResource("5")
+projectile = SubResource("Fire_Resource_7w2il")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Fire_Resource_mjnwx"]
+script = ExtResource("6")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="FireDefinition"]
+script = ExtResource("7")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/CatPot/MouseSlot/FireMarker")]
+spritePath = NodePath("SpriteGroup/TransformPoint/CatPot")
+fireAnimeTimeScale = 3.0
+fireNum = 2
+fireCheckList = [SubResource("Fire_Resource_wv5nr")]
+fireProjectileList = [SubResource("Fire_Resource_mjnwx")]
+airFirst = true
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter1.catpot"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("2")
+LegacyNodeNames = [&"FireComponent"]
+
+[resource]
+script = ExtResource("9")
+ParentSet = ExtResource("8")
+Components = [ExtResource("1"), SubResource("FireDefinition")]

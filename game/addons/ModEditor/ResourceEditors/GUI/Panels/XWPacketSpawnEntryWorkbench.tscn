@@ -1,0 +1,549 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/SeedBank/SeedBank.png" id="2_seedbank"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/ConveyorBelt/ConveyorBelt.png" id="3_conveyor"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWPacketSpawnEntryRangeControl.tscn" id="4_range"]
+
+[sub_resource type="StyleBoxFlat" id="Style_header"]
+bg_color = Color(0.075, 0.105, 0.055, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.48, 0.68, 0.25, 1)
+corner_radius_top_left = 11
+corner_radius_top_right = 11
+corner_radius_bottom_right = 11
+corner_radius_bottom_left = 11
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxFlat" id="Style_stage"]
+bg_color = Color(0.025, 0.032, 0.018, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.34, 0.27, 0.12, 1)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="Style_side"]
+bg_color = Color(0.04, 0.055, 0.035, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.27, 0.37, 0.17, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 14.0
+content_margin_top = 12.0
+content_margin_right = 14.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="Style_footer"]
+bg_color = Color(0.065, 0.06, 0.035, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42, 0.34, 0.15, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+content_margin_left = 12.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxFlat" id="Style_badge"]
+bg_color = Color(0.23, 0.38, 0.105, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.72, 0.88, 0.39, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 12.0
+content_margin_top = 4.0
+content_margin_right = 12.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="Style_missing"]
+bg_color = Color(0.14, 0.095, 0.035, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.92, 0.66, 0.2, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_override"]
+bg_color = Color(0.29, 0.18, 0.04, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.78, 0.25, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="Style_slot"]
+bg_color = Color(0.05, 0.035, 0.018, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.47, 0.19, 0.9)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="Style_ring"]
+bg_color = Color(0.25, 0.65, 0.9, 0.08)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.57, 0.88, 1, 0.85)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="Gradient" id="Gradient_meter_under"]
+colors = PackedColorArray(0.045, 0.055, 0.035, 1, 0.045, 0.055, 0.035, 1)
+
+[sub_resource type="GradientTexture2D" id="Texture_meter_under"]
+gradient = SubResource("Gradient_meter_under")
+width = 320
+height = 20
+
+[sub_resource type="Gradient" id="Gradient_meter_progress"]
+colors = PackedColorArray(0.47, 0.76, 0.18, 1, 0.96, 0.72, 0.16, 1)
+
+[sub_resource type="GradientTexture2D" id="Texture_meter_progress"]
+gradient = SubResource("Gradient_meter_progress")
+width = 320
+height = 20
+fill_from = Vector2(0, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="PacketSpawnEntryWorkbench" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 560)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="HeaderFrame" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_header")
+
+[node name="HeaderRow" type="HFlowContainer" parent="HeaderFrame"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ModeBadge" type="Label" parent="HeaderFrame/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 1, 0.7, 1)
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("Style_badge")
+text = "种子栏条目"
+
+[node name="ResourceStatus" type="Label" parent="HeaderFrame/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.87, 0.68, 1)
+text = "等待加载卡牌条目"
+vertical_alignment = 1
+
+[node name="RetryPreviewButton" type="Button" parent="HeaderFrame/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "刷新卡面"
+
+[node name="ResourceFields" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_footer")
+
+[node name="Row" type="HFlowContainer" parent="ResourceFields"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="ResourceFields/Row"]
+layout_mode = 2
+text = "资源名称"
+vertical_alignment = 1
+
+[node name="ResourceNameEdit" type="LineEdit" parent="ResourceFields/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "例如：第 1 波白卡候选"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="ResourceFields/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "仅当前场景"
+
+[node name="ResourceMetaStatus" type="Label" parent="ResourceFields/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.87, 0.68, 1)
+text = "可复用资源"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Content" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 410
+
+[node name="StageFrame" type="PanelContainer" parent="Content"]
+custom_minimum_size = Vector2(400, 420)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("Style_stage")
+
+[node name="StageViewport" type="Control" parent="Content/StageFrame"]
+layout_mode = 2
+clip_contents = true
+
+[node name="LawnBackdrop" type="TextureRect" parent="Content/StageFrame/StageViewport"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+modulate = Color(0.64, 0.68, 0.54, 1)
+
+[node name="StageShade" type="ColorRect" parent="Content/StageFrame/StageViewport"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.015, 0.025, 0.01, 0.25)
+
+[node name="SeedBankStage" type="TextureRect" parent="Content/StageFrame/StageViewport"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 45.0
+offset_top = 42.0
+offset_right = 555.0
+offset_bottom = 192.0
+mouse_filter = 2
+texture = ExtResource("2_seedbank")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SeedBankCaption" type="Label" parent="Content/StageFrame/StageViewport/SeedBankStage"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 112.0
+offset_bottom = 144.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.58, 1)
+theme_override_font_sizes/font_size = 18
+text = "游戏内种子栏槽位"
+horizontal_alignment = 1
+
+[node name="ConveyorStage" type="TextureRect" parent="Content/StageFrame/StageViewport"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 136.0
+offset_right = 568.0
+offset_bottom = 318.0
+mouse_filter = 2
+texture = ExtResource("3_conveyor")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ConveyorCaption" type="Label" parent="Content/StageFrame/StageViewport/ConveyorStage"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 42.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.58, 1)
+theme_override_font_sizes/font_size = 18
+text = "传送带候选卡牌"
+horizontal_alignment = 1
+
+[node name="RainStage" type="Control" parent="Content/StageFrame/StageViewport"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RainGuide" type="ColorRect" parent="Content/StageFrame/StageViewport/RainStage"]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 58.0
+offset_right = 296.0
+offset_bottom = 354.0
+color = Color(0.62, 0.9, 1, 0.5)
+
+[node name="RainLandingRing" type="PanelContainer" parent="Content/StageFrame/StageViewport/RainStage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 246.0
+offset_top = 318.0
+offset_right = 342.0
+offset_bottom = 414.0
+theme_override_styles/panel = SubResource("Style_ring")
+
+[node name="RainCaption" type="Label" parent="Content/StageFrame/StageViewport/RainStage"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 14.0
+offset_right = 420.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.76, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "种子雨掉落与存活位置"
+horizontal_alignment = 1
+
+[node name="StageHost" type="Control" parent="Content/StageFrame/StageViewport"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PacketSlot" type="PanelContainer" parent="Content/StageFrame/StageViewport/StageHost"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 216.0
+offset_top = 150.0
+offset_right = 376.0
+offset_bottom = 370.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("Style_slot")
+
+[node name="SlotContent" type="Control" parent="Content/StageFrame/StageViewport/StageHost/PacketSlot"]
+layout_mode = 2
+
+[node name="PacketPreviewHost" type="Control" parent="Content/StageFrame/StageViewport/StageHost/PacketSlot/SlotContent"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MissingPacketBadge" type="Button" parent="Content/StageFrame/StageViewport/StageHost/PacketSlot/SlotContent"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_top = 70.0
+offset_right = 145.0
+offset_bottom = 144.0
+theme_override_colors/font_color = Color(1, 0.88, 0.55, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("Style_missing")
+text = "＋\n选择卡牌"
+
+[node name="OverrideBadge" type="Button" parent="Content/StageFrame/StageViewport/StageHost/PacketSlot/SlotContent"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 85.0
+offset_top = 8.0
+offset_right = 150.0
+offset_bottom = 40.0
+mouse_filter = 0
+theme_override_colors/font_color = Color(1, 0.9, 0.52, 1)
+theme_override_styles/normal = SubResource("Style_override")
+text = "覆盖"
+
+[node name="StageHint" type="Label" parent="Content/StageFrame/StageViewport"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = -46.0
+offset_right = -36.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.93, 0.95, 0.78, 1)
+text = "预览使用运行时卡牌副本，不会修改游戏注册表"
+horizontal_alignment = 1
+
+[node name="SpawnTuningPanel" type="PanelContainer" parent="Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_side")
+
+[node name="SpawnTuningFields" type="VBoxContainer" parent="Content/SpawnTuningPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Content/SpawnTuningPanel/SpawnTuningFields"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.96, 0.58, 1)
+theme_override_font_sizes/font_size = 19
+text = "生成规则"
+
+[node name="WeightCaption" type="Label" parent="Content/SpawnTuningPanel/SpawnTuningFields"]
+layout_mode = 2
+text = "候选权重"
+
+[node name="WeightMeter" type="TextureProgressBar" parent="Content/SpawnTuningPanel/SpawnTuningFields"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+max_value = 100.0
+value = 10.0
+texture_under = SubResource("Texture_meter_under")
+texture_progress = SubResource("Texture_meter_progress")
+
+[node name="WeightLabel" type="Label" parent="Content/SpawnTuningPanel/SpawnTuningFields"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.83, 0.34, 1)
+text = "相对权重 10"
+horizontal_alignment = 1
+
+[node name="WeightSlider" type="HSlider" parent="Content/SpawnTuningPanel/SpawnTuningFields"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 0
+min_value = 0.0
+max_value = 100.0
+value = 10.0
+
+[node name="Divider1" type="HSeparator" parent="Content/SpawnTuningPanel/SpawnTuningFields"]
+layout_mode = 2
+
+[node name="CountRangeHost" type="MarginContainer" parent="Content/SpawnTuningPanel/SpawnTuningFields"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 6
+
+[node name="CountRangeControl" parent="Content/SpawnTuningPanel/SpawnTuningFields/CountRangeHost" instance=ExtResource("4_range")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Divider2" type="HSeparator" parent="Content/SpawnTuningPanel/SpawnTuningFields"]
+layout_mode = 2
+
+[node name="MagnificationRangeHost" type="MarginContainer" parent="Content/SpawnTuningPanel/SpawnTuningFields"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 6
+
+[node name="MagnificationRangeControl" parent="Content/SpawnTuningPanel/SpawnTuningFields/MagnificationRangeHost" instance=ExtResource("4_range")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ReadOnlyHint" type="Label" parent="Content/SpawnTuningPanel/SpawnTuningFields"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.62, 0.67, 0.56, 1)
+text = "直接拖动滑杆和区间手柄；修改会写入撤销记录并同步卡面。"
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="FooterFrame" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_footer")
+
+[node name="FooterControls" type="HFlowContainer" parent="FooterFrame"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ChoosePacketButton" type="Button" parent="FooterFrame/FooterControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 38)
+layout_mode = 2
+text = "从卡牌图鉴选择"
+
+[node name="FooterSpacer" type="Control" parent="FooterFrame/FooterControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CreateOverrideButton" type="Button" parent="FooterFrame/FooterControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "创建覆盖规则"
+
+[node name="OpenOverrideButton" type="Button" parent="FooterFrame/FooterControls"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "编辑覆盖规则"
+
+[node name="ClearOverrideButton" type="Button" parent="FooterFrame/FooterControls"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "清除覆盖规则"
+
+[node name="ClearOverrideConfirmation" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "清除卡牌覆盖规则"
+initial_position = 1
+size = Vector2i(430, 160)
+dialog_text = "确定清除这个条目的卡牌覆盖规则吗？此操作可以撤销。"
+ok_button_text = "清除覆盖"
+cancel_button_text = "保留"

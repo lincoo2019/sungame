@@ -1,0 +1,436 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWMowerScenePreview.tscn" id="1_scene_preview"]
+
+[sub_resource type="StyleBoxFlat" id="StylePreview"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.105, 0.11, 1)
+border_color = Color(0.298, 0.302, 0.306, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleTexture"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.08, 0.085, 0.09, 1)
+border_color = Color(0.282, 0.286, 0.29, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="MowerVisualEditorLayout" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PreviewPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(760, 270)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StylePreview")
+
+[node name="PreviewLayout" type="HBoxContainer" parent="PreviewPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="TextureFrame" type="PanelContainer" parent="PreviewPanel/PreviewLayout"]
+custom_minimum_size = Vector2(220, 160)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleTexture")
+
+[node name="TexturePreview" type="TextureRect" parent="PreviewPanel/PreviewLayout/TextureFrame"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScenePreview" parent="PreviewPanel/PreviewLayout" instance=ExtResource("1_scene_preview")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Summary" type="VBoxContainer" parent="PreviewPanel/PreviewLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="PreviewPanel/PreviewLayout/Summary"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="SpriteLabel" type="Label" parent="PreviewPanel/PreviewLayout/Summary"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="TextSummaryLabel" type="Label" parent="PreviewPanel/PreviewLayout/Summary"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="UnlockSummaryLabel" type="Label" parent="PreviewPanel/PreviewLayout/Summary"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="EditorSplit" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="BindingPanel" type="PanelContainer" parent="EditorSplit"]
+custom_minimum_size = Vector2(390, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleTexture")
+
+[node name="BindingLayout" type="VBoxContainer" parent="EditorSplit/BindingPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="BaseTitle" type="Label" parent="EditorSplit/BindingPanel/BindingLayout"]
+layout_mode = 2
+text = "基础信息"
+
+[node name="ResourceNameRow" type="HBoxContainer" parent="EditorSplit/BindingPanel/BindingLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="EditorSplit/BindingPanel/BindingLayout/ResourceNameRow"]
+custom_minimum_size = Vector2(118, 0)
+layout_mode = 2
+text = "资源名称"
+vertical_alignment = 1
+
+[node name="ResourceNameEdit" type="LineEdit" parent="EditorSplit/BindingPanel/BindingLayout/ResourceNameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "便于在资源库中识别"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="EditorSplit/BindingPanel/BindingLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "场景内独立副本"
+
+[node name="SaveKeyRow" type="HBoxContainer" parent="EditorSplit/BindingPanel/BindingLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="EditorSplit/BindingPanel/BindingLayout/SaveKeyRow"]
+custom_minimum_size = Vector2(118, 0)
+layout_mode = 2
+text = "存档 Key"
+vertical_alignment = 1
+
+[node name="SaveKeyLineEdit" type="LineEdit" parent="EditorSplit/BindingPanel/BindingLayout/SaveKeyRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "例如 mower_lawn"
+
+[node name="NameRow" type="HBoxContainer" parent="EditorSplit/BindingPanel/BindingLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="EditorSplit/BindingPanel/BindingLayout/NameRow"]
+custom_minimum_size = Vector2(118, 0)
+layout_mode = 2
+text = "名称 Key"
+vertical_alignment = 1
+
+[node name="NameLineEdit" type="LineEdit" parent="EditorSplit/BindingPanel/BindingLayout/NameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DescribeRow" type="HBoxContainer" parent="EditorSplit/BindingPanel/BindingLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="EditorSplit/BindingPanel/BindingLayout/DescribeRow"]
+custom_minimum_size = Vector2(118, 0)
+layout_mode = 2
+text = "描述 Key"
+vertical_alignment = 1
+
+[node name="DescribeTextEdit" type="TextEdit" parent="EditorSplit/BindingPanel/BindingLayout/DescribeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+
+[node name="HandbookDescribeRow" type="HBoxContainer" parent="EditorSplit/BindingPanel/BindingLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="EditorSplit/BindingPanel/BindingLayout/HandbookDescribeRow"]
+custom_minimum_size = Vector2(118, 0)
+layout_mode = 2
+text = "图鉴描述"
+vertical_alignment = 1
+
+[node name="HandbookDescribeTextEdit" type="TextEdit" parent="EditorSplit/BindingPanel/BindingLayout/HandbookDescribeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+
+[node name="HandbookStoryRow" type="HBoxContainer" parent="EditorSplit/BindingPanel/BindingLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="EditorSplit/BindingPanel/BindingLayout/HandbookStoryRow"]
+custom_minimum_size = Vector2(118, 0)
+layout_mode = 2
+text = "图鉴故事"
+vertical_alignment = 1
+
+[node name="HandbookStoryTextEdit" type="TextEdit" parent="EditorSplit/BindingPanel/BindingLayout/HandbookStoryRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 82)
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+
+[node name="ResourceTitle" type="Label" parent="EditorSplit/BindingPanel/BindingLayout"]
+layout_mode = 2
+text = "游戏资源"
+
+[node name="TextureRow" type="HBoxContainer" parent="EditorSplit/BindingPanel/BindingLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="EditorSplit/BindingPanel/BindingLayout/TextureRow"]
+custom_minimum_size = Vector2(118, 0)
+layout_mode = 2
+text = "预览贴图"
+vertical_alignment = 1
+
+[node name="TexturePickerHost" type="HBoxContainer" parent="EditorSplit/BindingPanel/BindingLayout/TextureRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpriteRow" type="HBoxContainer" parent="EditorSplit/BindingPanel/BindingLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="EditorSplit/BindingPanel/BindingLayout/SpriteRow"]
+custom_minimum_size = Vector2(118, 0)
+layout_mode = 2
+text = "运行场景"
+vertical_alignment = 1
+
+[node name="SpritePickerHost" type="HBoxContainer" parent="EditorSplit/BindingPanel/BindingLayout/SpriteRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CollectionPanel" type="PanelContainer" parent="EditorSplit"]
+custom_minimum_size = Vector2(390, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleTexture")
+
+[node name="CollectionLayout" type="VBoxContainer" parent="EditorSplit/CollectionPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="UnlockTitle" type="Label" parent="EditorSplit/CollectionPanel/CollectionLayout"]
+layout_mode = 2
+text = "解锁条件"
+
+[node name="UnlockListHost" type="VBoxContainer" parent="EditorSplit/CollectionPanel/CollectionLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="UnlockList" type="ItemList" parent="EditorSplit/CollectionPanel/CollectionLayout/UnlockListHost"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 130)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "双击或点击“编辑所选”进入解锁条件编辑器"
+
+[node name="UnlockPickerRow" type="HBoxContainer" parent="EditorSplit/CollectionPanel/CollectionLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="EditorSplit/CollectionPanel/CollectionLayout/UnlockPickerRow"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "候选条件"
+vertical_alignment = 1
+
+[node name="UnlockPickerHost" type="HBoxContainer" parent="EditorSplit/CollectionPanel/CollectionLayout/UnlockPickerRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnlockActions" type="HBoxContainer" parent="EditorSplit/CollectionPanel/CollectionLayout"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="UnlockAddButton" type="Button" parent="EditorSplit/CollectionPanel/CollectionLayout/UnlockActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "添加"
+
+[node name="UnlockReplaceButton" type="Button" parent="EditorSplit/CollectionPanel/CollectionLayout/UnlockActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "替换"
+
+[node name="UnlockRemoveButton" type="Button" parent="EditorSplit/CollectionPanel/CollectionLayout/UnlockActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "移除所选"
+
+[node name="UnlockOpenButton" type="Button" parent="EditorSplit/CollectionPanel/CollectionLayout/UnlockActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "编辑所选"
+
+[node name="UnlockOrderActions" type="HBoxContainer" parent="EditorSplit/CollectionPanel/CollectionLayout"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="UnlockMoveUpButton" type="Button" parent="EditorSplit/CollectionPanel/CollectionLayout/UnlockOrderActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "上移条件"
+
+[node name="UnlockMoveDownButton" type="Button" parent="EditorSplit/CollectionPanel/CollectionLayout/UnlockOrderActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "下移条件"
+
+[node name="EventTitle" type="Label" parent="EditorSplit/CollectionPanel/CollectionLayout"]
+layout_mode = 2
+text = "碰撞事件"
+
+[node name="EventListHost" type="VBoxContainer" parent="EditorSplit/CollectionPanel/CollectionLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EventList" type="ItemList" parent="EditorSplit/CollectionPanel/CollectionLayout/EventListHost"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 130)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "双击或点击“编辑所选”进入小推车事件编辑器"
+
+[node name="EventPickerRow" type="HBoxContainer" parent="EditorSplit/CollectionPanel/CollectionLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="EditorSplit/CollectionPanel/CollectionLayout/EventPickerRow"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "候选事件"
+vertical_alignment = 1
+
+[node name="EventPickerHost" type="HBoxContainer" parent="EditorSplit/CollectionPanel/CollectionLayout/EventPickerRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EventActions" type="HBoxContainer" parent="EditorSplit/CollectionPanel/CollectionLayout"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="EventAddButton" type="Button" parent="EditorSplit/CollectionPanel/CollectionLayout/EventActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "添加"
+
+[node name="EventReplaceButton" type="Button" parent="EditorSplit/CollectionPanel/CollectionLayout/EventActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "替换"
+
+[node name="EventRemoveButton" type="Button" parent="EditorSplit/CollectionPanel/CollectionLayout/EventActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "移除所选"
+
+[node name="EventOpenButton" type="Button" parent="EditorSplit/CollectionPanel/CollectionLayout/EventActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "编辑所选"
+
+[node name="EventOrderActions" type="HBoxContainer" parent="EditorSplit/CollectionPanel/CollectionLayout"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="EventMoveUpButton" type="Button" parent="EditorSplit/CollectionPanel/CollectionLayout/EventOrderActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "上移事件"
+
+[node name="EventMoveDownButton" type="Button" parent="EditorSplit/CollectionPanel/CollectionLayout/EventOrderActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "下移事件"
+
+[node name="EventHint" type="Label" parent="EditorSplit/CollectionPanel/CollectionLayout"]
+layout_mode = 2
+text = "双击列表项也可进入对应的解锁条件或小推车事件编辑器。"
+autowrap_mode = 2

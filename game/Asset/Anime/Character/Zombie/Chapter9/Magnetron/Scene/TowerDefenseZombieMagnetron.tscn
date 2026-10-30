@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ddf1e0hmly6ql"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://dnmjubvr7bunx" path="res://Asset/Anime/Character/Zombie/Chapter9/Magnetron/Scene/TowerDefenseZombieMagnetronComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://dp7mg6jwe1tpi" path="res://Asset/Anime/Character/Zombie/Chapter9/Magnetron/Scene/TowerDefenseZombieMagnetron.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_154x33_At_26_n1.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cegyl36btxvhf" path="res://Asset/Anime/Character/Zombie/Chapter9/Magnetron/Config/TowerDefenseZombieMagnetron.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://mgm55x3d4m6o" path="res://Asset/Anime/Character/Zombie/Chapter9/Magnetron/ZombieMagnetron.tscn" id="6"]
+
+[node name="TowerDefenseZombieMagnetron" node_paths=PackedStringArray("sprite", "pullOriginPath", "frontAnchorPath") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+walkAnimeClip = "anim_drive"
+swimAnimeClip = "anim_drive"
+attackAnimeClip = "anim_drive"
+dieAnimeClip = "anim_wheelie"
+dieWaterAnimeClip = "anim_wheelie"
+idleAnimeClip = "anim_drive"
+sleepAnimeClip = "anim_drive"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieMagnetron")
+pullOriginPath = NodePath("SpriteGroup/TransformPoint/ZombieMagnetron/PullSlot/PullOrigin")
+frontAnchorPath = NodePath("FrontAnchor")
+PreviewDamagePointPersontage = 1.0
+
+[node name="FrontAnchor" type="Marker2D" parent="."]
+position = Vector2(-97, 0)
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(12, 33)
+
+[node name="ZombieMagnetron" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("6")]
+position = Vector2(18, 3)
+
+[node name="ShadowSprite" parent="." index="3"]
+position = Vector2(18, 45)
+scale = Vector2(3.1, 1.45)
+
+[editable path="SpriteGroup/TransformPoint/ZombieMagnetron"]

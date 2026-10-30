@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://bho2oyhuprp4j"]
+
+[ext_resource type="Resource" uid="uid://cktl6q1og62xd" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseZombieStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_dolphinrider_jump"]
+script = ExtResource("2")
+StableId = "zombie.dolphinrider.jump"
+DisplayName = &"Jump"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_dolphinrider_run"]
+script = ExtResource("2")
+StableId = "zombie.dolphinrider.run"
+DisplayName = &"Run"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_dolphinrider_to_jump"]
+script = ExtResource("3")
+StableId = "zombie.dolphinrider.to_jump"
+SourceStateId = "character.root"
+TargetStateId = "zombie.dolphinrider.jump"
+EventName = &"ToJump"
+DeclarationOrder = 5
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_dolphinrider_to_run"]
+script = ExtResource("3")
+StableId = "zombie.dolphinrider.to_run"
+SourceStateId = "character.root"
+TargetStateId = "zombie.dolphinrider.run"
+EventName = &"ToRun"
+DeclarationOrder = 6
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_inherited_zombie_to_garlic"]
+script = ExtResource("3")
+StableId = "zombie.to_garlic"
+SourceStateId = "character.root"
+TargetStateId = "zombie.garlic"
+EventName = &"ToGarlic"
+DeclarationOrder = 7
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_inherited_zombie_to_die"]
+script = ExtResource("3")
+StableId = "zombie.to_die"
+SourceStateId = "character.root"
+TargetStateId = "zombie.die"
+EventName = &"ToDie"
+DeclarationOrder = 8
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.zombie.dolphinrider"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_dolphinrider_jump"), SubResource("State_dolphinrider_run")]
+Transitions = [SubResource("Transition_dolphinrider_to_jump"), SubResource("Transition_dolphinrider_to_run"), SubResource("Transition_inherited_zombie_to_garlic"), SubResource("Transition_inherited_zombie_to_die")]

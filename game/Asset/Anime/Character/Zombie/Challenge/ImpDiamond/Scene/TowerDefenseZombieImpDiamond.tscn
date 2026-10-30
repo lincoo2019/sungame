@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://nt3q0tk6rl8h"]
+
+[ext_resource type="PackedScene" uid="uid://s74hf6v6x5r7" path="res://Prefab/TowerDefense/Character/TowerDefenseZombieImpBase.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c3cnxxwwwn8kr" path="res://Asset/Anime/Character/Zombie/Challenge/ImpDiamond/Scene/TowerDefenseZombieImpDiamond.cs" id="2"]
+[ext_resource type="Resource" uid="uid://bwl4tdeqk3rru" path="res://Asset/Anime/Character/Zombie/Challenge/ImpDiamond/Config/TowerDefenseZombieImpDiamond.tres" id="3"]
+[ext_resource type="Resource" uid="uid://cpc7f07nd3dn2" path="res://Asset/Anime/Character/Zombie/Challenge/ImpDiamond/DamagePoint/Config/ZombieImpDiamondDamagePointArm.tres" id="4"]
+[ext_resource type="Resource" uid="uid://q6x2jsn1n1ur" path="res://Asset/Anime/Character/Zombie/Challenge/ImpDiamond/DamagePoint/Config/ZombieImpDiamondDamagePointHead.tres" id="5"]
+[ext_resource type="Resource" uid="uid://cqclv330ubbh3" path="res://Asset/Anime/Character/Zombie/Challenge/ImpDiamond/Armor/Config/ZombieImpDiamondArmorHelmetDiamond.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://b5d8i6qqj0kg0" path="res://Asset/Anime/Character/Zombie/Challenge/ImpDiamond/ZombieImpDiamond.tscn" id="7"]
+
+[node name="TowerDefenseZombieImpDiamond" unique_id=547883494 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+groan = ""
+walkSpeedScale = 0.8
+dieWaterAnimeClip = "SwimDeath"
+waterHeight = 10.0
+idleAnimeClip = "Walk"
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieImpDiamond")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieImpDiamond/HeadSlot")
+damagePart = {
+"Arm": ExtResource("4"),
+"Head": ExtResource("5"),
+"HelmetDiamond": ExtResource("6")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieImpDiamond/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieImpDiamond/HeadSlot"),
+"HelmetDiamond": NodePath("SpriteGroup/TransformPoint/ZombieImpDiamond/HeadSlot")
+}
+currentArmor = ["HelmetDiamond"]
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(9, 40)
+scale = Vector2(0.906977, 0.944445)
+
+[node name="ZombieImpDiamond" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=603216091 instance=ExtResource("7")]
+position = Vector2(-19, -36)
+blendTimeInit = 0.2
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieImpDiamond" index="0" unique_id=1346737099]
+drawLayerId = -2
+position = Vector2(3.772067, -12.338894)
+rotation = 0.21486633
+scale = Vector2(0.9992426, 0.9992426)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieImpDiamond" index="1" unique_id=242922573]
+position = Vector2(12.939744, 19.769518)
+rotation = -0.856295
+scale = Vector2(1.0600085, 1.0238669)
+skew = 0.04820597
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieImpDiamond" index="2" unique_id=244999314]
+position = Vector2(-37.08664, 10)
+
+[editable path="SpriteGroup/TransformPoint/ZombieImpDiamond"]

@@ -1,0 +1,319 @@
+[gd_scene format=3 uid="uid://cttxxkxrktmki"]
+
+[ext_resource type="Script" uid="uid://dvkoeal5hvuib" path="res://Scene/TowerDefesne/TowerDefenseOld/TowerDefenseControlOld.cs" id="1_1wmj0"]
+[ext_resource type="PackedScene" uid="uid://q2eo6wgcbefw" path="res://Registry/Battle/Feature/Map/Control/TowerDefenseMapControl.tscn" id="4_arrrd"]
+[ext_resource type="PackedScene" uid="uid://iydc3rp06xgs" path="res://Registry/Battle/Feature/PacketBank/PacketBank/TowerDefenseInGamePacketBank.tscn" id="5_m18kl"]
+[ext_resource type="PackedScene" uid="uid://chrvpojeedrwe" path="res://Prefab/TowerDefense/GUI/InGame/ZombieWon/TowerDefenseZombieWon.tscn" id="6_22mnp"]
+[ext_resource type="PackedScene" uid="uid://bgkuthysw0876" path="res://Prefab/GUI/Button/NinePatchButtonBase/NinePatchButtonBase.tscn" id="7_ju7mh"]
+[ext_resource type="Texture2D" uid="uid://da1nikmivd2n8" path="res://Asset/Texture/TowerDefense/PacketBank/PacketBankButton.png" id="8_stqqu"]
+[ext_resource type="Texture2D" uid="uid://dphra8cjrdw34" path="res://Asset/Texture/TowerDefense/PacketBank/PacketBankButtonGlow.png" id="9_okb8x"]
+[ext_resource type="FontFile" uid="uid://d0aylc13b87r0" path="res://Asset/Font/BrianneTod.ttf" id="10_lnvuv"]
+[ext_resource type="PackedScene" uid="uid://bml60wmq62jay" path="res://Prefab/GUI/Button/MainButton.tscn" id="11_fnxuq"]
+[ext_resource type="PackedScene" uid="uid://2vh1csqbvbqx" path="res://Registry/Battle/Feature/SeedBank/Control/TowerDefenseInGameSeedBank.tscn" id="12_ng4fk"]
+[ext_resource type="PackedScene" uid="uid://cdnyb8d1qw7g4" path="res://Prefab/GUI/Button/SpriteBrightButton/SpriteBrightButton.tscn" id="13_un2rj"]
+[ext_resource type="Shader" uid="uid://bi8x813unwm5l" path="res://Asset/Shader/ShaderBright.gdshader" id="14_o2eb3"]
+[ext_resource type="Texture2D" uid="uid://dgviglko6y6sa" path="res://Asset/Texture/GUI/TowerDefense/Level/LevelChooseOption.png" id="15_f0tld"]
+[ext_resource type="PackedScene" uid="uid://cn2idxrgpsjc5" path="res://Registry/Battle/Feature/ScreenEffect/ScreenEffectControl/ScreenEffectControl.tscn" id="16_hvty6"]
+[ext_resource type="PackedScene" uid="uid://dqo2jc1bsf6gq" path="res://Prefab/TowerDefense/GUI/InGame/LevelControl/TowerDefenseInGameLevelControl.tscn" id="17_rxufp"]
+[ext_resource type="PackedScene" uid="uid://u3bg1snrdknl" path="res://Registry/Battle/Feature/ConveyorBelt/ConveyorBelt/ConveyorBeltManager.tscn" id="18_cbm"]
+[ext_resource type="PackedScene" uid="uid://jkx1gyhm21mr" path="res://Registry/Battle/Feature/Shovel/ShovelManager/ShovelManager.tscn" id="20_shovel"]
+[ext_resource type="PackedScene" uid="uid://dlgafsqc16cbw" path="res://Registry/Battle/Feature/Progress/Manager/TowerDefenseProgressManager.tscn" id="21_progess"]
+[ext_resource type="Script" uid="uid://daabbarea2d01" path="res://Core/TowerDefenseManager/SubSystem/AabbArea2D.cs" id="aabb_area"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="AabbShape2DResource"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxr3p"]
+size = Vector2(341, 1997)
+
+[sub_resource type="Resource" id="AabbShape2DResource_pxr3p"]
+script = ExtResource("AabbShape2DResource")
+Geometry = SubResource("RectangleShape2D_pxr3p")
+LocalTransform = Transform2D(1, 0, 0, 1, -13.5, 1001.5)
+
+[sub_resource type="InputEventKey" id="InputEventKey_pxr3p"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_ewbhq"]
+events = [SubResource("InputEventKey_pxr3p")]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1gw7"]
+shader = ExtResource("14_o2eb3")
+shader_parameter/brightStrength = 0.0
+
+[sub_resource type="Animation" id="Animation_4cyyy"]
+resource_name = "Enter"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -88), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cmofa"]
+resource_name = "MobileEnter"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-210, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_07xgw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-220, -88)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4h7tl"]
+_data = {
+&"Enter": SubResource("Animation_4cyyy"),
+&"MobileEnter": SubResource("Animation_cmofa"),
+&"RESET": SubResource("Animation_07xgw")
+}
+
+[node name="TowerDefenseControlOld" type="Node" unique_id=2092857298 node_paths=PackedStringArray("buttonPause", "checkBox2X")]
+process_mode = 1
+script = ExtResource("1_1wmj0")
+buttonPause = NodePath("GUILayerFront/ButtonPause")
+checkBox2X = NodePath("GUILayerFront/CheckBox2X")
+
+[node name="MapLayer" type="CanvasLayer" parent="." unique_id=1807464835]
+layer = 0
+follow_viewport_enabled = true
+
+[node name="TowerDefenseMapControl" parent="MapLayer" unique_id=1539150135 node_paths=PackedStringArray("canvasModulateCharacter") instance=ExtResource("4_arrrd")]
+unique_name_in_owner = true
+physics_interpolation_mode = 2
+z_index = -100
+canvasModulateCharacter = NodePath("../../CharacterLayer/CanvasModulate")
+
+[node name="ZombieWonArea" type="Node2D" parent="MapLayer" unique_id=1924105921]
+script = ExtResource("aabb_area")
+ShapeResources = Array[ExtResource("AabbShape2DResource")]([SubResource("AabbShape2DResource_pxr3p")])
+unique_name_in_owner = true
+collision_layer = 0
+monitorable = false
+
+[node name="GUILayerFront" type="CanvasLayer" parent="." unique_id=123503744]
+layer = 3
+
+[node name="TowerDefenseInGamePacketBank" parent="GUILayerFront" unique_id=877513505 instance=ExtResource("5_m18kl")]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+
+[node name="TowerDefenseZombieWon" parent="GUILayerFront" unique_id=318807770 instance=ExtResource("6_22mnp")]
+unique_name_in_owner = true
+
+[node name="ShopButton" parent="GUILayerFront" unique_id=657571953 instance=ExtResource("7_ju7mh")]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -343.0
+offset_top = -34.0
+offset_right = -186.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "商店"
+normalTexture = ExtResource("8_stqqu")
+pressedTexture = ExtResource("9_okb8x")
+hoverTexture = ExtResource("9_okb8x")
+
+[node name="NinePatchTexture" parent="GUILayerFront/ShopButton" index="0"]
+texture = ExtResource("8_stqqu")
+
+[node name="LabelText" parent="GUILayerFront/ShopButton/CenterContainer" index="0"]
+theme_override_colors/font_color = Color(0.306155, 0.122686, 6.49765e-07, 1)
+theme_override_fonts/font = ExtResource("10_lnvuv")
+text = "商店"
+
+[node name="AlmanacButton" parent="GUILayerFront" unique_id=1484482174 instance=ExtResource("7_ju7mh")]
+visible = false
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.002
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_left = -179.0
+offset_top = -35.2001
+offset_right = -22.0
+offset_bottom = -4.20007
+text = "查看图鉴"
+normalTexture = ExtResource("8_stqqu")
+pressedTexture = ExtResource("9_okb8x")
+hoverTexture = ExtResource("9_okb8x")
+
+[node name="NinePatchTexture" parent="GUILayerFront/AlmanacButton" index="0"]
+texture = ExtResource("8_stqqu")
+
+[node name="LabelText" parent="GUILayerFront/AlmanacButton/CenterContainer" index="0"]
+theme_override_colors/font_color = Color(0.306155, 0.122686, 6.49765e-07, 1)
+theme_override_fonts/font = ExtResource("10_lnvuv")
+text = "查看图鉴"
+
+[node name="ButtonPause" parent="GUILayerFront" unique_id=1831701519 instance=ExtResource("11_fnxuq")]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -105.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 77.0
+grow_horizontal = 0
+toggle_mode = true
+shortcut = SubResource("Shortcut_ewbhq")
+shortcut_in_tooltip = false
+ignore_texture_size = true
+text = "菜单"
+
+[node name="CheckBox2X" type="CheckBox" parent="GUILayerFront" unique_id=1054038081]
+unique_name_in_owner = true
+light_mask = 0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -107.0
+offset_top = 64.0
+offset_right = -5.0
+offset_bottom = 128.0
+grow_horizontal = 0
+scale = Vector2(0.78, 0.78)
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "加速"
+
+[node name="OptionButton" parent="GUILayerFront" unique_id=555083078 instance=ExtResource("13_un2rj")]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_y1gw7")
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -56.0
+offset_right = 139.0
+offset_bottom = 75.0
+grow_vertical = 0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("15_f0tld")
+autoSize = true
+
+[node name="TowerDefenseProgressManager" parent="GUILayerFront" unique_id=1487352548 instance=ExtResource("21_progess")]
+unique_name_in_owner = true
+offset_left = 1080.0
+offset_top = 600.0
+offset_right = 1080.0
+offset_bottom = 600.0
+
+[node name="GUILayerBack" type="CanvasLayer" parent="." unique_id=364360050]
+unique_name_in_owner = true
+
+[node name="SeedBankLayer" type="CanvasLayer" parent="." unique_id=1819004460]
+unique_name_in_owner = true
+
+[node name="TowerDefenseInGameSeedBank" parent="SeedBankLayer" unique_id=285447703 instance=ExtResource("12_ng4fk")]
+unique_name_in_owner = true
+offset_left = -220.0
+offset_right = -220.0
+
+[node name="SeedBankAnimationPlayer2" type="AnimationPlayer" parent="SeedBankLayer/TowerDefenseInGameSeedBank" unique_id=734106268]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_4h7tl")
+
+[node name="ConveyorBeltManager" parent="SeedBankLayer" unique_id=1621204420 instance=ExtResource("18_cbm")]
+unique_name_in_owner = true
+
+[node name="ShovelManager" parent="SeedBankLayer" unique_id=1945827020 instance=ExtResource("20_shovel")]
+unique_name_in_owner = true
+
+[node name="CharacterLayer" type="CanvasLayer" parent="." unique_id=1918131413]
+follow_viewport_enabled = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CharacterLayer" unique_id=1659647847]
+
+[node name="CharacterNode" type="Node2D" parent="CharacterLayer" unique_id=1191738268]
+unique_name_in_owner = true
+physics_interpolation_mode = 2
+y_sort_enabled = true
+
+[node name="EffectLayer" type="CanvasLayer" parent="." unique_id=557529603]
+layer = 2
+
+[node name="ScreenEffectControl" parent="EffectLayer" unique_id=1490904519 instance=ExtResource("16_hvty6")]
+unique_name_in_owner = true
+
+[node name="TowerDefenseInGameLevelControl" parent="." unique_id=2099565643 instance=ExtResource("17_rxufp")]
+unique_name_in_owner = true
+offset_left = 18.0
+offset_top = 2.0
+offset_right = 18.0
+offset_bottom = 2.0
+
+[editable path="GUILayerFront/ShopButton"]
+[editable path="GUILayerFront/AlmanacButton"]

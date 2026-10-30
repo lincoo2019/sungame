@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://djftub7thaff4"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Challenge/ImpScaredy/Scene/TowerDefenseZombieImpScaredyComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bthu8o4x71pdr" path="res://Asset/Anime/Character/Zombie/Challenge/ImpScaredy/Scene/TowerDefenseZombieImpScaredy.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cd2eyg7yfkr8x" path="res://Asset/Anime/Character/Zombie/Challenge/ImpScaredy/Scene/TowerDefenseZombieImpScaredyStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://cqk0o35q33o0g" path="res://Asset/Anime/Character/Zombie/Challenge/ImpScaredy/Config/TowerDefenseZombieImpScaredy.tres" id="6"]
+[ext_resource type="Resource" uid="uid://bohix3yt4bivf" path="res://Asset/Anime/Character/Zombie/Challenge/ImpScaredy/DamagePoint/Config/ZombieImpScaredyDamagePointHead.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://bj168cw2e2s0w" path="res://Asset/Anime/Character/Zombie/Challenge/ImpScaredy/ZombieImpScaredy.tscn" id="8"]
+
+[node name="TowerDefenseZombieImpScaredy" unique_id=1926337199 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+walkSpeedScale = 2.0
+inSwimAnimeClipScale = 1.5
+swimAnimeClip = "Swim"
+attackWaterAnimeClip = "EatSwim"
+dieWaterAnimeClip = "WaterDeath"
+waterHeight = 13.0
+idleAnimeClip = "Walk"
+sleepAnimeClip = "Walk"
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieImpScaredy")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieImpScaredy/HeadSlot")
+damagePart = {
+"Head": ExtResource("7")
+}
+PreviewDamagePointPersontage = 1.0
+DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieImpScaredy/HeadSlot")
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieImpScaredy" parent="SpriteGroup/TransformPoint" index="0" unique_id=1551396594 instance=ExtResource("8")]
+position = Vector2(-12, -33)
+Animation/Clip = "Death"
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieImpScaredy" index="0" unique_id=582609602]
+drawLayerId = -2
+position = Vector2(-2.875143, 2.7085705)
+rotation = -0.12121115
+scale = Vector2(0.9982439, 0.9982439)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieImpScaredy" index="1" unique_id=1737063097]
+position = Vector2(-5.882416, 30.954718)
+rotation = -0.5253198
+scale = Vector2(0.8463914, 0.9056814)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieImpScaredy" index="2" unique_id=1019665297]
+position = Vector2(-84.320465, 10)
+
+[editable path="SpriteGroup/TransformPoint/ZombieImpScaredy"]

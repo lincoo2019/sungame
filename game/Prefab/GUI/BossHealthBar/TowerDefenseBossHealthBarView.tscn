@@ -1,0 +1,81 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Prefab/GUI/BossHealthBar/TowerDefenseBossHealthBarView.cs" id="1_view"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/GUI/TowerDefense/BossHealthBar/BossHealthBarFrame.png" id="2_frame"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/GUI/TowerDefense/BossHealthBar/BossHealthBarFillNeutral.png" id="3_fill"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/GUI/TowerDefense/BossHealthBar/BossHealthBarDeadCross.png" id="4_cross"]
+
+[node name="TowerDefenseBossHealthBarView" type="Control"]
+custom_minimum_size = Vector2(575, 109)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 575.0
+offset_bottom = 109.0
+mouse_filter = 2
+script = ExtResource("1_view")
+
+[node name="RotatingBody" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 575.0
+offset_bottom = 109.0
+mouse_filter = 2
+
+[node name="Frame" type="TextureRect" parent="RotatingBody"]
+layout_mode = 0
+offset_right = 575.0
+offset_bottom = 109.0
+mouse_filter = 2
+texture = ExtResource("2_frame")
+expand_mode = 1
+
+[node name="BodyProgress" type="TextureProgressBar" parent="RotatingBody"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 97.0
+offset_top = 51.0
+offset_right = 568.0
+offset_bottom = 62.0
+mouse_filter = 2
+max_value = 1.0
+step = 0.0001
+value = 1.0
+texture_progress = ExtResource("3_fill")
+
+[node name="ShieldProgress" type="TextureProgressBar" parent="RotatingBody"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 97.0
+offset_top = 51.0
+offset_right = 568.0
+offset_bottom = 62.0
+mouse_filter = 2
+self_modulate = Color(0.352941, 0.580392, 0.815686, 0.65)
+max_value = 1.0
+step = 0.0001
+value = 0.0
+texture_progress = ExtResource("3_fill")
+
+[node name="BossIcon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 18.0
+offset_right = 86.0
+offset_bottom = 91.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DeadCross" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 17.0
+offset_right = 91.0
+offset_bottom = 92.0
+mouse_filter = 2
+texture = ExtResource("4_cross")
+expand_mode = 1
+stretch_mode = 5

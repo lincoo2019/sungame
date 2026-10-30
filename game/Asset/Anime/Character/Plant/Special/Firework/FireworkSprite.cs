@@ -1,0 +1,17 @@
+using Godot;
+
+[Tool]
+[GlobalClass]
+public partial class FireworkSprite : AdobeAnimateSpriteBase
+{
+	protected override bool RequiresDisplayFrameBatchPhysicsUpdate => true;
+
+	public override void BatchPhysicsUpdate(double delta)
+	{
+		base.BatchPhysicsUpdate(delta);
+		if (CanRun())
+		{
+			base.offset = new Vector2(-40f, -40f) + new Vector2(GD.RandRange(-1, 1), GD.RandRange(-1, 1));
+		}
+	}
+}

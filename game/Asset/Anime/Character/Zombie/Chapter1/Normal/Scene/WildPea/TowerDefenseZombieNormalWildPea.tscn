@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://beorgh5lvgm75"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Scene/WildPea/TowerDefenseZombieNormalWildPeaComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bhsc4ycvvth3j" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Scene/WildPea/TowerDefenseZombieNormalWildPea.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="5"]
+[ext_resource type="Resource" uid="uid://djs5qsg6k1fb" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Config/TowerDefenseZombieNormalWildPea.tres" id="6"]
+[ext_resource type="Resource" uid="uid://chvyxpm81irbp" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://clvqblkq2jo2l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBlackHelmet.tres" id="8"]
+[ext_resource type="Resource" uid="uid://d4b68a6hw3c2d" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBucket.tres" id="9"]
+[ext_resource type="Resource" uid="uid://cfim36uopws7u" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorCone.tres" id="10"]
+[ext_resource type="Resource" uid="uid://c7nx2fl3rq01m" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalPlantDamagePointHead.tres" id="11"]
+[ext_resource type="Resource" uid="uid://byth0yfgejk1l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorHelmet.tres" id="12"]
+[ext_resource type="Resource" uid="uid://dmgd4ygng30xn" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorScreendoor.tres" id="13"]
+[ext_resource type="Resource" uid="uid://cryuyu1d8jqbt" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorSpecialHelmet.tres" id="14"]
+[ext_resource type="PackedScene" uid="uid://rg8iwkgsecjh" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Sprite/WildPea/ZombieNormalWildPea.tscn" id="15"]
+
+[sub_resource type="Resource" id="Resource_344d6"]
+script = ExtResource("5")
+projectileName = &"Pea"
+catapultHeight = 400.0
+
+[node name="TowerDefenseZombieNormalWildPea" unique_id=1154397843 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 2.0
+fireNum = 1
+projectileData = SubResource("Resource_344d6")
+walkAnimeClip = "Walk1&Walk2"
+swimAnimeClip = "Swim"
+dieAnimeClip = "Death1&Death2"
+dieWaterAnimeClip = "Waterdeath"
+waterHeight = 25.0
+idleAnimeClip = "Idle1&Idle2"
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieNormalWildPea")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieNormalWildPea/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"BlackHelmet": ExtResource("8"),
+"Bucket": ExtResource("9"),
+"Cone": ExtResource("10"),
+"Head": ExtResource("11"),
+"Helmet": ExtResource("12"),
+"Screendoor": ExtResource("13"),
+"SpecialHelmet": ExtResource("14")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieNormalWildPea/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalWildPea/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieNormalWildPea/BucketSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieNormalWildPea/ConeSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieNormalWildPea/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalWildPea/HeadSlot"),
+"Screendoor": NodePath("SpriteGroup/TransformPoint/ZombieNormalWildPea/ScreendoorSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalWildPea/HeadSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieNormalWildPea" parent="SpriteGroup/TransformPoint" index="0" unique_id=221279958 instance=ExtResource("15")]
+position = Vector2(-12, -33)
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieNormalWildPea" index="0" unique_id=1790977777]
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieNormalWildPea/Head" index="0" unique_id=1804093396]
+position = Vector2(11.474773, 20.980984)
+rotation = 2.8915906
+scale = Vector2(0.9999917, 1.0000087)
+skew = -2.9325485e-05
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWildPea" index="1" unique_id=741637452]
+drawLayerId = -2
+position = Vector2(-15.197153, -44.393814)
+rotation = -0.07036373
+scale = Vector2(0.7998052, 0.7998052)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWildPea" index="2" unique_id=1514920198]
+position = Vector2(4.017783, 2.0436516)
+rotation = -0.052712083
+scale = Vector2(0.79976594, 0.79976594)
+
+[node name="ConeSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWildPea" index="3" unique_id=38373720]
+position = Vector2(-9.178947, -70.08617)
+rotation = -0.0007322375
+scale = Vector2(0.7991424, 0.7991424)
+
+[node name="BucketSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWildPea" index="4" unique_id=445711075]
+position = Vector2(-14.112583, -59.395706)
+rotation = -0.06699565
+scale = Vector2(0.799807, 0.799807)
+
+[node name="ScreendoorSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWildPea" index="5" unique_id=1280125332]
+position = Vector2(-19.485462, 0.6881256)
+rotation = -0.024958108
+scale = Vector2(0.7999189, 0.7999189)
+
+[editable path="SpriteGroup/TransformPoint/ZombieNormalWildPea"]

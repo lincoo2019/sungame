@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://drgi1inbme22c"]
+
+[ext_resource type="Texture2D" uid="uid://chtc153yblxse" path="res://Asset/Anime/Particles/Splats/GarlicSplats.png" id="1_80qgw"]
+[ext_resource type="Material" uid="uid://dyk4vpu5xav58" path="res://Prefab/Particles/Splats/GarlicSplats/GarlicSplats.tres" id="2_evn7k"]
+[ext_resource type="Script" uid="uid://cmjj5ejt1ranr" path="res://Extends/Particles/GPUParticles2DOnece.cs" id="3_8eaku"]
+[ext_resource type="Texture2D" uid="uid://dmqs02t3drofw" path="res://Asset/Anime/Particles/Splats/GarlicParticles.png" id="4_80qgw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wiwmn"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ek2em"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="GarlicSplats" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_wiwmn")
+emitting = false
+amount = 6
+texture = ExtResource("1_80qgw")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource("2_evn7k")
+script = ExtResource("3_8eaku")
+
+[node name="GarlicParticles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ek2em")
+emitting = false
+amount = 6
+texture = ExtResource("4_80qgw")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource("2_evn7k")

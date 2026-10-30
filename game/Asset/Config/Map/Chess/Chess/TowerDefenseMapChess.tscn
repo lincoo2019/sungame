@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://w46rbht7jbhw"]
+
+[ext_resource type="Script" uid="uid://m6hgcehbtu8d" path="res://Asset/Config/Map/Chess/Chess/TowerDefenseMapChess.cs" id="1_7fw06"]
+[ext_resource type="Texture2D" uid="uid://cml6laa2haync" path="res://Asset/Config/Map/Chess/Chess/TowerDefenseMapChessGradient.tres" id="2_osxfl"]
+[ext_resource type="Texture2D" uid="uid://ejb6wu6leryk" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Chess/Chess.jpg" id="3_2otki"]
+[ext_resource type="Texture2D" uid="uid://bbbiwhq1ib7vi" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Stripe.png" id="4_811g8"]
+[ext_resource type="Texture2D" uid="uid://dvbgpxvy62oga" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Chess/ChessFloor.png" id="5_2svh2"]
+[ext_resource type="Texture2D" uid="uid://bsgxvbcyjkipb" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Chess/ChessDoor.png" id="6_mxg2n"]
+
+[node name="TowerDefenseMapChess" type="Node2D" unique_id=22977297 node_paths=PackedStringArray("stripe")]
+script = ExtResource("1_7fw06")
+stripe = NodePath("Stripe")
+canvasModulateGradient = ExtResource("2_osxfl")
+
+[node name="Chess" type="Sprite2D" parent="." unique_id=1421840305]
+scale = Vector2(1, 1)
+texture = ExtResource("3_2otki")
+centered = false
+
+[node name="Stripe" type="Sprite2D" parent="." unique_id=1954643692]
+visible = false
+position = Vector2(494, 70)
+scale = Vector2(2, 2)
+texture = ExtResource("4_811g8")
+centered = false
+
+[node name="FrontlawnFloor" type="Sprite2D" parent="." unique_id=422784139]
+unique_name_in_owner = true
+position = Vector2(87.8, 283)
+scale = Vector2(0.99715909, 1)
+texture = ExtResource("5_2svh2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=127460791]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="FrontlawnDoor" type="Sprite2D" parent="CanvasLayer" unique_id=606160848]
+unique_name_in_owner = true
+visible = false
+position = Vector2(87.55, 283.2)
+scale = Vector2(0.99715909, 1)
+texture = ExtResource("6_mxg2n")

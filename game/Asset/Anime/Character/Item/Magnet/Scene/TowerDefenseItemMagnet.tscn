@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://fjbsjn07veoc"]
+
+[ext_resource type="PackedScene" uid="uid://uawo0nxcj2ji" path="res://Prefab/TowerDefense/Character/TowerDefenseItem.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Item/Magnet/Scene/TowerDefenseItemMagnetComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://b1v8fhley0f45" path="res://Asset/Anime/Character/Item/Magnet/Scene/TowerDefenseItemMagnet.cs" id="3"]
+[ext_resource type="Script" uid="uid://bt7fis5jparcx" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.cs" id="4"]
+[ext_resource type="Resource" uid="uid://b7ur8wgohjvrs" path="res://Asset/Anime/Character/Item/Magnet/Config/TowerDefenseItemMagnet.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://dc6x5urdse6j7" path="res://Asset/Anime/Character/Item/Magnet/Magnet.tscn" id="6"]
+
+[sub_resource type="Resource" id="Resource_mw7f7"]
+script = ExtResource("4")
+num = 60.0
+metadata/_custom_type_script = "uid://bt7fis5jparcx"
+
+[node name="TowerDefenseItemMagnet" unique_id=239006865 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+z_index = -10
+script = ExtResource("3")
+eventList = [SubResource("Resource_mw7f7")]
+canCheck = true
+canCheckTarget = false
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/Magnet")
+itemLayer = 5
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(12, 36)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 37)
+
+[node name="Magnet" parent="SpriteGroup/TransformPoint" index="0" unique_id=757804339 instance=ExtResource("6")]
+position = Vector2(0, -37)
+trueFrameRate = 180.0
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=353033650]
+
+[editable path="SpriteGroup/TransformPoint/Magnet"]

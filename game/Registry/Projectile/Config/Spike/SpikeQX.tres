@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://crphu7rm5da4c"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_qaggh"]
+[ext_resource type="PackedScene" uid="uid://ehx7xeeth5yb" path="res://Asset/Config/Projectile/Spike/Sprite/SpikeQX/ProjectileSpikeQX.tscn" id="2_qaggh"]
+[ext_resource type="PackedScene" uid="uid://cvuvrycoyfvuf" path="res://Asset/Anime/Splat/SpikeQX/SpikeQXSplats.tscn" id="2_rsjqj"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="3_ni2hr"]
+[ext_resource type="PackedScene" uid="uid://br7muxuvxx77s" path="res://Asset/Anime/Splat/Spike/SpikeSplats.tscn" id="4_splats"]
+[ext_resource type="Script" uid="uid://lf5s31dwudf3" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeCreate.cs" id="6_explode_create"]
+[ext_resource type="Script" uid="uid://bt7fis5jparcx" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.cs" id="7_explode_hurt"]
+
+[sub_resource type="Resource" id="Resource_n4js4"]
+script = ExtResource("7_explode_hurt")
+num = 200.0
+metadata/_custom_type_script = "uid://bt7fis5jparcx"
+
+[sub_resource type="Resource" id="Resource_3ioun"]
+script = ExtResource("6_explode_create")
+effectScene = ExtResource("2_rsjqj")
+effectAudio = "ExplodeCherrybomb"
+explodeEvents = Array[Object]([SubResource("Resource_n4js4")])
+
+[resource]
+script = ExtResource("3_ni2hr")
+name = "SpikeQX"
+baseDamage = 80.0
+projectileScene = ExtResource("2_qaggh")
+splatScene = ExtResource("4_splats")
+hitTargetEventList = Array[ExtResource("1_qaggh")]([SubResource("Resource_3ioun")])
+rotateFollowVelocity = true
+hitBody = true
+useRange = true

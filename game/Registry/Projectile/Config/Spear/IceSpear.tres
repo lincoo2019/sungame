@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://cnwomkk87o278"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_b0w0l"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_6umxu"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="3_c63qe"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_oqoyf"]
+[ext_resource type="Script" uid="uid://bpobxkjerypff" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventForzen.cs" id="5_3n3vx"]
+[ext_resource type="Script" uid="uid://c55feeuvm3ss" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionRandom.cs" id="6_viq7i"]
+[ext_resource type="PackedScene" uid="uid://bnl0hms7upsbj" path="res://Asset/Config/Projectile/IceSpear/Sprite/IceSpear/ProjectileIceSpear.tscn" id="7_njvh4"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="8_0jnle"]
+[ext_resource type="PackedScene" uid="uid://c73f1gkmmso7m" path="res://Prefab/Particles/Splats/SnowPeaSplats/SnowPeaSplats.tscn" id="9_hm4dp"]
+
+[sub_resource type="Resource" id="Resource_8u1yh"]
+script = ExtResource("3_c63qe")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_dt5ec"]
+script = ExtResource("4_oqoyf")
+buffList = Array[ExtResource("2_6umxu")]([SubResource("Resource_8u1yh")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Resource_mia7t"]
+script = ExtResource("5_3n3vx")
+time = 3.0
+metadata/_custom_type_script = "uid://bpobxkjerypff"
+
+[sub_resource type="Resource" id="Resource_1qix7"]
+script = ExtResource("6_viq7i")
+eventList = Array[ExtResource("1_b0w0l")]([SubResource("Resource_mia7t")])
+percentage = 0.05
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[resource]
+script = ExtResource("8_0jnle")
+name = "IceSpear"
+projectileScene = ExtResource("7_njvh4")
+splatScene = ExtResource("9_hm4dp")
+hitCharacterEventList = Array[ExtResource("1_b0w0l")]([SubResource("Resource_dt5ec"), SubResource("Resource_1qix7")])
+hitBody = true

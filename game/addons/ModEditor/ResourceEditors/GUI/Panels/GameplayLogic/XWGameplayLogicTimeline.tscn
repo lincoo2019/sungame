@@ -1,0 +1,180 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/GameplayLogic/XWGameplayLifecycleWorkbench.cs" id="1_workbench"]
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/GameplayLogic/XWGameplayLifecycleTimelineCanvas.cs" id="2_canvas"]
+
+[node name="TimelineHost" type="PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 252)
+size_flags_horizontal = 3
+script = ExtResource("1_workbench")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="LifecycleHeader" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Layout/LifecycleHeader"]
+layout_mode = 2
+text = "无副作用战斗沙盘"
+
+[node name="LifecyclePhaseBadge" type="Label" parent="Layout/LifecycleHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "READY"
+
+[node name="LifecycleSummaryLabel" type="Label" parent="Layout/LifecycleHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "等待配置"
+text_overrun_behavior = 3
+
+[node name="LifecycleTimeLabel" type="Label" parent="Layout/LifecycleHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00:00 / 00:00"
+
+[node name="LifecyclePhaseStrip" type="HFlowContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 4
+
+[node name="LifecycleReadyButton" type="Button" parent="Layout/LifecyclePhaseStrip"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "◇  READY"
+tooltip_text = "跳到准备阶段；只读配置，不加载战斗场景"
+
+[node name="LifecycleBattleButton" type="Button" parent="Layout/LifecyclePhaseStrip"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "◆  BATTLE"
+tooltip_text = "跳到战斗阶段的沙盘投影"
+
+[node name="LifecycleSettleButton" type="Button" parent="Layout/LifecyclePhaseStrip"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "◇  SETTLE"
+tooltip_text = "跳到结算阶段；不会发奖、保存或推进关卡"
+
+[node name="TransportSeparator" type="VSeparator" parent="Layout/LifecyclePhaseStrip"]
+layout_mode = 2
+
+[node name="PlayPauseButton" type="Button" parent="Layout/LifecyclePhaseStrip"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "▶  播放"
+
+[node name="StepButton" type="Button" parent="Layout/LifecyclePhaseStrip"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "▷|  单步"
+tooltip_text = "前进到下一条配置事件标记"
+
+[node name="ResetButton" type="Button" parent="Layout/LifecyclePhaseStrip"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "↺  重置"
+
+[node name="LifecycleTimelineCanvas" type="Control" parent="Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("2_canvas")
+
+[node name="LifecycleScrubber" type="HSlider" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 13.0
+step = 0.1
+
+[node name="TimelineBody" type="HSplitContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offset = -230
+
+[node name="PresenterLayout" type="VBoxContainer" parent="Layout/TimelineBody"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="HBoxContainer" parent="Layout/TimelineBody/PresenterLayout"]
+visible = false
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/TimelineBody/PresenterLayout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "呈现器时间线"
+
+[node name="TimeLabel" type="Label" parent="Layout/TimelineBody/PresenterLayout/Header"]
+layout_mode = 2
+text = "00:00 / 00:00"
+
+[node name="Transport" type="HBoxContainer" parent="Layout/TimelineBody/PresenterLayout"]
+visible = false
+layout_mode = 2
+
+[node name="ReadyButton" type="Button" parent="Layout/TimelineBody/PresenterLayout/Transport"]
+layout_mode = 2
+text = "准备"
+
+[node name="BattleButton" type="Button" parent="Layout/TimelineBody/PresenterLayout/Transport"]
+layout_mode = 2
+text = "战斗"
+
+[node name="SettleButton" type="Button" parent="Layout/TimelineBody/PresenterLayout/Transport"]
+layout_mode = 2
+text = "结算"
+
+[node name="Scrubber" type="HSlider" parent="Layout/TimelineBody/PresenterLayout/Transport"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+
+[node name="TimelineRoot" type="HBoxContainer" parent="Layout/TimelineBody/PresenterLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="HistoryPanel" type="PanelContainer" parent="Layout/TimelineBody"]
+custom_minimum_size = Vector2(210, 74)
+layout_mode = 2
+
+[node name="HistoryLayout" type="VBoxContainer" parent="Layout/TimelineBody/HistoryPanel"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HistoryTitle" type="Label" parent="Layout/TimelineBody/HistoryPanel/HistoryLayout"]
+layout_mode = 2
+text = "事件历史（沙盘）"
+
+[node name="HistoryScroll" type="ScrollContainer" parent="Layout/TimelineBody/HistoryPanel/HistoryLayout"]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LifecycleHistoryRoot" type="VBoxContainer" parent="Layout/TimelineBody/HistoryPanel/HistoryLayout/HistoryScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="LifecyclePreviewTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+wait_time = 0.1

@@ -1,0 +1,234 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8m0d1t7sel1"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/Blueprint/GUI/Window/NodeSelector/XWWindowBPNodeSelector.cs" id="1_sel"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Search.svg" id="2_search"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/GraphEdit.svg" id="3_graph"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_description"]
+bg_color = Color(0.10588235, 0.12941177, 0.101960786, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3372549, 0.5294118, 0.21568628, 0.72)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="XWWindowBPNodeSelector" type="ConfirmationDialog"]
+title = "选择蓝图节点"
+initial_position = 1
+size = Vector2i(820, 660)
+min_size = Vector2i(560, 420)
+transient = true
+ok_button_text = "添加节点"
+cancel_button_text = "取消"
+script = ExtResource("1_sel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="RootLayout" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HFlowContainer" parent="MarginContainer/RootLayout"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 4
+
+[node name="HeaderIcon" type="TextureRect" parent="MarginContainer/RootLayout/Header"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+texture = ExtResource("3_graph")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="HeaderText" type="VBoxContainer" parent="MarginContainer/RootLayout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="MarginContainer/RootLayout/Header/HeaderText"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "蓝图拼图节点库"
+
+[node name="Hint" type="Label" parent="MarginContainer/RootLayout/Header/HeaderText"]
+layout_mode = 2
+text = "按图标和颜色选择节点；右键卡片收藏，双击立即添加"
+
+[node name="CatalogCount" type="Label" parent="MarginContainer/RootLayout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 个节点"
+vertical_alignment = 1
+
+[node name="SearchLineEdit" type="LineEdit" parent="MarginContainer/RootLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+placeholder_text = "搜索节点名称、用途、类型 ID……"
+right_icon = ExtResource("2_search")
+clear_button_enabled = true
+
+[node name="CategoryScroll" type="ScrollContainer" parent="MarginContainer/RootLayout"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="CategoryChips" type="HBoxContainer" parent="MarginContainer/RootLayout/CategoryScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="WorkspaceTabs" type="TabContainer" parent="MarginContainer/RootLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="VisualLibrary" type="VBoxContainer" parent="MarginContainer/RootLayout/WorkspaceTabs"]
+layout_mode = 2
+metadata/_tab_index = 0
+theme_override_constants/separation = 6
+
+[node name="CardsScroll" type="ScrollContainer" parent="MarginContainer/RootLayout/WorkspaceTabs/VisualLibrary"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="NodeCardGrid" type="HFlowContainer" parent="MarginContainer/RootLayout/WorkspaceTabs/VisualLibrary/CardsScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="CatalogEmpty" type="Label" parent="MarginContainer/RootLayout/WorkspaceTabs/VisualLibrary"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "当前分类没有可用节点；可以清除筛选或切换分类。"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Pager" type="HFlowContainer" parent="MarginContainer/RootLayout/WorkspaceTabs/VisualLibrary"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 4
+
+[node name="PreviousPageButton" type="Button" parent="MarginContainer/RootLayout/WorkspaceTabs/VisualLibrary/Pager"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(84, 32)
+layout_mode = 2
+text = "◀ 上一页"
+
+[node name="PageLabel" type="Label" parent="MarginContainer/RootLayout/WorkspaceTabs/VisualLibrary/Pager"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+text = "1 / 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextPageButton" type="Button" parent="MarginContainer/RootLayout/WorkspaceTabs/VisualLibrary/Pager"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(84, 32)
+layout_mode = 2
+text = "下一页 ▶"
+
+[node name="DescriptionPanel" type="PanelContainer" parent="MarginContainer/RootLayout/WorkspaceTabs/VisualLibrary"]
+custom_minimum_size = Vector2(0, 92)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_description")
+
+[node name="DescriptionMargin" type="MarginContainer" parent="MarginContainer/RootLayout/WorkspaceTabs/VisualLibrary/DescriptionPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 6
+
+[node name="DescriptionLayout" type="VBoxContainer" parent="MarginContainer/RootLayout/WorkspaceTabs/VisualLibrary/DescriptionPanel/DescriptionMargin"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="NameLabel" type="RichTextLabel" parent="MarginContainer/RootLayout/WorkspaceTabs/VisualLibrary/DescriptionPanel/DescriptionMargin/DescriptionLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="DescribeLabel" type="RichTextLabel" parent="MarginContainer/RootLayout/WorkspaceTabs/VisualLibrary/DescriptionPanel/DescriptionMargin/DescriptionLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="Directory" type="VBoxContainer" parent="MarginContainer/RootLayout/WorkspaceTabs"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+theme_override_constants/separation = 6
+
+[node name="DirectoryHint" type="Label" parent="MarginContainer/RootLayout/WorkspaceTabs/Directory"]
+layout_mode = 2
+text = "树状目录适合精确查找脚本方法、属性和信号；选择结果仍在主画布直接添加。"
+autowrap_mode = 2
+
+[node name="Tree" type="Tree" parent="MarginContainer/RootLayout/WorkspaceTabs/Directory"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/icon_max_width = 30
+hide_root = true
+
+[node name="Collections" type="TabContainer" parent="MarginContainer/RootLayout/WorkspaceTabs"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Favorites" type="ScrollContainer" parent="MarginContainer/RootLayout/WorkspaceTabs/Collections"]
+layout_mode = 2
+metadata/_tab_index = 0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="FavoritesContainer" type="VBoxContainer" parent="MarginContainer/RootLayout/WorkspaceTabs/Collections/Favorites"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Recent" type="ScrollContainer" parent="MarginContainer/RootLayout/WorkspaceTabs/Collections"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="RecentContainer" type="VBoxContainer" parent="MarginContainer/RootLayout/WorkspaceTabs/Collections/Recent"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6

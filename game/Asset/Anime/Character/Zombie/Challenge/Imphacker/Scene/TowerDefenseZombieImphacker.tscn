@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://clm2rtu3jc6vl"]
+
+[ext_resource type="PackedScene" uid="uid://s74hf6v6x5r7" path="res://Prefab/TowerDefense/Character/TowerDefenseZombieImpBase.tscn" id="1"]
+[ext_resource type="Script" uid="uid://83w03a541uv0" path="res://Asset/Anime/Character/Zombie/Challenge/Imphacker/Scene/TowerDefenseZombieImphacker.cs" id="2"]
+[ext_resource type="Resource" uid="uid://wwlnotgcsthg" path="res://Asset/Anime/Character/Zombie/Challenge/Imphacker/Scene/TowerDefenseZombieImphackerStateMachine.tres" id="3"]
+[ext_resource type="Resource" uid="uid://twfrdn30q4ro" path="res://Asset/Anime/Character/Zombie/Challenge/Imphacker/Config/TowerDefenseZombieImphacker.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cikdgcy01df7f" path="res://Asset/Anime/Character/Zombie/Challenge/Imphacker/DamagePoint/Config/ZombieImphackerDamagePointArm.tres" id="5"]
+[ext_resource type="Resource" uid="uid://djudnqdkwl8wi" path="res://Asset/Anime/Character/Zombie/Challenge/Imphacker/DamagePoint/Config/ZombieImphackerDamagePointHead.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://vetk6ldjiht5" path="res://Asset/Anime/Character/Zombie/Challenge/Imphacker/ZombieImphacker.tscn" id="7"]
+
+[node name="TowerDefenseZombieImphacker" unique_id=810341263 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+MainStateMachineDefinition = ExtResource("3")
+flyAnimeClip = ""
+landAnimeClip = ""
+groan = ""
+waterHeight = 10.0
+idleAnimeClip = "Walk"
+sleepAnimeClip = "Walk"
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieImp")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieImp/HeadSlot")
+damagePart = {
+"Arm": ExtResource("5"),
+"Head": ExtResource("6")
+}
+PreviewDamagePointPersontage = 1.0
+DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieImp/ArmSlot")
+DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieImp/HeadSlot")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(9, 40)
+scale = Vector2(0.906977, 0.944445)
+
+[node name="ZombieImp" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=1294641144 instance=ExtResource("7")]
+position = Vector2(-19, -36)
+blendTimeInit = 0.2
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieImp" index="0" unique_id=1378531840]
+drawLayerId = -2
+position = Vector2(2.9174604, -10.717731)
+rotation = 0.22933838
+scale = Vector2(0.99839604, 0.99839604)
+Layer = 18
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieImp" index="1" unique_id=1230476700]
+position = Vector2(11.709889, 22.048363)
+rotation = -0.6781348
+scale = Vector2(1.0549103, 1.0188462)
+Layer = 22
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieImp" index="2" unique_id=550803482]
+position = Vector2(-50.992893, 10)
+Layer = 1
+
+[node name="HackTimer" type="Timer" parent="." index="10" unique_id=1950025821]
+process_callback = 0
+wait_time = 10.0
+one_shot = true
+
+[editable path="SpriteGroup/TransformPoint/ZombieImp"]

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cu2ju0s1chcac"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter6/DoomShroomF/Scene/TowerDefensePlantDoomShroomFComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://ymq7iovi63dr" path="res://Asset/Anime/Character/Plant/Chapter6/DoomShroomF/Scene/TowerDefensePlantDoomShroomF.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Script" uid="uid://bt7fis5jparcx" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.cs" id="5"]
+[ext_resource type="Script" uid="uid://dp2pqwer6loc1" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffRedHeat.cs" id="6"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="7"]
+[ext_resource type="Resource" uid="uid://d0hc6peaf5r7p" path="res://Asset/Anime/Character/Plant/Chapter6/DoomShroomF/Config/TowerDefensePlantDoomShroomF.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://ckj6nb77y1yhi" path="res://Asset/Anime/Character/Plant/Chapter6/DoomShroomF/DoomShroomF.tscn" id="9"]
+
+[sub_resource type="Resource" id="Resource_rtuxn"]
+script = ExtResource("5")
+type = "Jala"
+metadata/_custom_type_script = "uid://bt7fis5jparcx"
+
+[sub_resource type="Resource" id="Resource_g1shw"]
+script = ExtResource("6")
+metadata/_custom_type_script = "uid://dp2pqwer6loc1"
+
+[sub_resource type="Resource" id="Resource_aq40t"]
+script = ExtResource("7")
+buffList = [SubResource("Resource_g1shw")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[node name="TowerDefensePlantDoomShroomF" unique_id=559742729 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+eventList = [SubResource("Resource_rtuxn"), SubResource("Resource_aq40t")]
+sleepAnimeClip = "Sleep"
+config = ExtResource("8")
+sprite = NodePath("SpriteGroup/TransformPoint/DoomShroomF")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="DoomShroomF" parent="SpriteGroup/TransformPoint" index="0" unique_id=739227572 instance=ExtResource("9")]
+position = Vector2(0, -30)
+offset = Vector2(-39.389137, -39.784634)

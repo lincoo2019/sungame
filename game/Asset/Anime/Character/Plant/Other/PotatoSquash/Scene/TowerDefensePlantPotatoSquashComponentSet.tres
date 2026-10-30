@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://bn8xinv4br7hk"]
+
+[ext_resource type="Resource" path="res://Script/Component/TowerDefense/Character/PotatoComponent/PotatoComponentSquashDefinition.tres" id="1"]
+[ext_resource type="Resource" uid="uid://1qgpplw0bale" path="res://Script/Component/TowerDefense/Character/SquashComponent/Definitions/PotatoSquashDefinition.tres" id="2"]
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="3"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="4"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="5"]
+[ext_resource type="Resource" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantPotatoComponentSet.tres" id="6"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="7"]
+
+[sub_resource type="RectangleShape2D" id="Attack0_RectangleShape2D_b2enb"]
+size = Vector2(368, 320)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_attack_check"]
+script = ExtResource("4")
+Geometry = SubResource("Attack0_RectangleShape2D_b2enb")
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("5")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_attack_check")]
+checkGrid = false
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.other.potatosquash.scene.towerdefenseplantpotatosquash.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("3")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("7")
+ParentSet = ExtResource("6")
+Components = [ExtResource("1"), ExtResource("2"), SubResource("Attack0_Definition")]

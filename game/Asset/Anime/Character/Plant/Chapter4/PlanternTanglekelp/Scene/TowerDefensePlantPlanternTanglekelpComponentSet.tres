@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://dhj1h16etaswh"]
+
+[ext_resource type="Resource" path="res://Script/Component/TowerDefense/Character/WaterEnvironmentComponent/Definitions/WaterEnvironmentPlanternTanglekelpDefinition.tres" id="1"]
+[ext_resource type="Resource" path="res://Script/Component/TowerDefense/Character/TanglekelpComponent/Definitions/PlanternTanglekelpDefinition.tres" id="2"]
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="3"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="4"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="5"]
+[ext_resource type="Resource" uid="uid://bdtlhiygv0ny8" path="res://Asset/Anime/Character/Plant/Chapter4/PlanternTanglekelp/Scene/TowerDefensePlantPlanternTanglekelpFogAreaComponentDefinition.tres" id="6"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="7"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="8"]
+
+[sub_resource type="RectangleShape2D" id="Attack0_RectangleShape2D_5m3eh"]
+size = Vector2(84, 33)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_check"]
+script = ExtResource("4")
+Geometry = SubResource("Attack0_RectangleShape2D_5m3eh")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, -0.5)
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("5")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_check")]
+checkIntreval = 0
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.chapter4.planterntanglekelp.scene.towerdefenseplantplanterntanglekelp.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("3")
+LegacyNodeNames = [&"AttackComponent"]
+
+[sub_resource type="RectangleShape2D" id="Attack1_RectangleShape2D_dk2kd"]
+size = Vector2(73, 73)
+
+[sub_resource type="Resource" id="Attack1_AabbShape2DResource_attack"]
+script = ExtResource("4")
+Geometry = SubResource("Attack1_RectangleShape2D_dk2kd")
+LocalTransform = Transform2D(1, 0, 0, 1, -1.5, -0.5)
+
+[sub_resource type="Resource" id="Attack1_Definition"]
+script = ExtResource("5")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack1_AabbShape2DResource_attack")]
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.chapter4.planterntanglekelp.scene.towerdefenseplantplanterntanglekelp.1"
+InstanceId = "character.attack.1"
+WireIndex = 1
+StateMachineDefinition = ExtResource("3")
+LegacyNodeNames = [&"AttackComponent2"]
+
+[resource]
+script = ExtResource("8")
+ParentSet = ExtResource("7")
+Components = [ExtResource("1"), ExtResource("2"), SubResource("Attack0_Definition"), SubResource("Attack1_Definition"), ExtResource("6")]

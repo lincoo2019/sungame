@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cs28v5to64dq"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter0/Pot/Scene/TowerDefensePlantPotComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bfw3t4ixka1sc" path="res://Asset/Anime/Character/Plant/Chapter0/Pot/Scene/TowerDefensePlantPot.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://qji31e3ma1w" path="res://Asset/Anime/Character/Plant/Chapter0/Pot/Config/TowerDefensePlantPot.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://cuew34oa6wvrs" path="res://Asset/Anime/Character/Plant/Chapter0/Pot/Pot.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantPot" node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+showHealthOffset = Vector2(0, 30)
+z_index = -13
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/Pot")
+PreviewDamagePointPersontage = 1.0
+itemLayer = 2
+
+[node name="SpriteGroup" parent="." index="1"]
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(0, 30)
+
+[node name="Pot" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("6")]
+position = Vector2(0, -26)
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/Pot" index="0"]
+script = ExtResource("7")
+followSlotId = 6
+Layer = 6
+drawLayerId = 6
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/Pot/AdobeAnimateSlot" index="0"]
+position = Vector2(40, 0)
+
+[node name="ShadowSprite" parent="." index="3"]
+position = Vector2(0, 47)
+scale = Vector2(0.821918, 0.77551)
+texture = null

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bgc317fuflyqj"]
+
+[ext_resource type="Texture2D" uid="uid://dv5x6ax2qiod0" path="res://Asset/Anime/Particles/Explosion/ExplosionCloud.png" id="1"]
+[ext_resource type="Material" uid="uid://dq2crkfc1rndg" path="res://Prefab/Particles/Explosion/IceBallExplosion/IceBallExplosion.tres" id="2"]
+[ext_resource type="Script" uid="uid://cmjj5ejt1ranr" path="res://Extends/Particles/GPUParticles2DOnece.cs" id="3"]
+[ext_resource type="Material" uid="uid://buw8kw8lbk3eg" path="res://Prefab/Particles/Explosion/IceBallExplosion/IceBallExplosionSide.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://c1npurma8f2t8" path="res://Asset/Anime/Particles/Explosion/ExplosionPowieIce.png" id="5"]
+
+[node name="CherryBombExplosion" type="GPUParticles2D"]
+emitting = false
+amount = 32
+texture = ExtResource("1")
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+draw_order = 0
+process_material = ExtResource("2")
+script = ExtResource("3")
+
+[node name="CherryBombExplosionSide" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 12
+texture = ExtResource("1")
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+draw_order = 0
+process_material = ExtResource("4")
+
+[node name="Sprite2D" type="Sprite2D" parent="CherryBombExplosionSide"]
+texture = ExtResource("5")

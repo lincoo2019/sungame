@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cyx3w5o1ueo4s"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://ws2exfi1eno3" path="res://Asset/Anime/Character/Zombie/Other/LadderPult/Scene/TowerDefenseZombieLadderPult.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_130x54_At_0_0.tres" id="3"]
+[ext_resource type="Resource" uid="uid://cnkuowu6agdot" path="res://Asset/Anime/Character/Zombie/Other/LadderPult/Scene/TowerDefenseZombieLadderPultComponentSet.tres" id="4"]
+[ext_resource type="Resource" uid="uid://ij0oohqxwnaj" path="res://Asset/Anime/Character/Zombie/Other/LadderPult/Config/TowerDefenseZombieLadderPult.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://cbpxf3v2ua2by" path="res://Asset/Anime/Character/Zombie/Other/LadderPult/ZombieLadderPult.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+[ext_resource type="PackedScene" uid="uid://c64t5qco6f0gu" path="res://Prefab/Particles/Smoke/ZamboniSmoke/ZamboniSmoke.tscn" id="8"]
+
+[node name="TowerDefenseZombieLadderPult" unique_id=699406748 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+attackAnimeClip = "Walk"
+dieAnimeClip = "Bounce"
+dieWaterAnimeClip = "Bounce"
+HitBoxDefinition = ExtResource("3")
+ComponentSet = ExtResource("4")
+PreviewDamagePointPersontage = 1.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieLadderPult")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieLadderPult/HeadSlot")
+damagePart = {}
+damagePartSlot = {}
+currentArmor = []
+currentCustom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(-8.499992, 28.000025)
+scale = Vector2(2.825581, 1.2777766)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieLadderPult" parent="SpriteGroup/TransformPoint" index="0" unique_id=275405947 instance=ExtResource("6")]
+position = Vector2(-12, -33)
+offset = Vector2(-75.037704, -100.31181)
+clip = "Idle"
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+mediaReplace = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+
+[node name="FireSlot" type="Node2D" parent="SpriteGroup/TransformPoint/ZombieLadderPult" index="1" unique_id=994499695]
+unique_name_in_owner = true
+position = Vector2(-71.92553, -71.31604)
+rotation = 0.003577039
+script = ExtResource("7")
+followSlotId = 18
+drawLayerId = 18
+useScale = false
+useSkew = false
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="FireMarker" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieLadderPult/FireSlot" index="0" unique_id=2007809423]
+position = Vector2(136.8661, 18.01284)
+
+[node name="ZamboniSmoke" parent="SpriteGroup/TransformPoint" index="1" unique_id=842698775 instance=ExtResource("8")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -8)

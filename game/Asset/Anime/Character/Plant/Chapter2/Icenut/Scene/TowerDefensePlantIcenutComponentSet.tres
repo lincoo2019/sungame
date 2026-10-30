@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://d36xio2ar4k8r"]
+
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="1"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="2"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="3"]
+[ext_resource type="Script" uid="uid://b8rialbjr540d" path="res://Script/Component/TowerDefense/Character/PeriodicAreaEventComponent/PeriodicAreaEventComponentDefinition.cs" id="4"]
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="5"]
+[ext_resource type="Script" uid="uid://bbglc127qw1jb" path="res://Resource/TowerDefense/Collision/AabbRay2DResource.cs" id="6"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="7"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="8"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="9"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="10"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="11"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="12"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="13"]
+
+[sub_resource type="Resource" id="PeriodicHurtEvent"]
+script = ExtResource("1")
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[sub_resource type="Resource" id="PeriodicIceSpeedDown"]
+script = ExtResource("2")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="PeriodicAddBuffEvent"]
+script = ExtResource("3")
+buffList = [SubResource("PeriodicIceSpeedDown")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="PeriodicDefinition"]
+script = ExtResource("4")
+eventList = [SubResource("PeriodicHurtEvent"), SubResource("PeriodicAddBuffEvent")]
+staticTime = 0.5
+targetEffectScene = null
+checkShape = null
+ComponentTypeId = "PeriodicAreaEventComponent"
+DefinitionId = "builtin.component.periodic_area_event.plant_icenut"
+InstanceId = "character.periodic_area_event"
+WireIndex = 0
+StateMachineDefinition = null
+LegacyNodeNames = [&"PeriodicAreaEventComponent"]
+
+[sub_resource type="Resource" id="FireRay"]
+script = ExtResource("6")
+
+[sub_resource type="Resource" id="FireProjectileData"]
+script = ExtResource("7")
+projectileName = &"SnowPea"
+catapultHeight = 400.0
+
+[sub_resource type="Resource" id="FireProjectile"]
+script = ExtResource("8")
+projectileData = SubResource("FireProjectileData")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="FireCheck"]
+script = ExtResource("9")
+projectile = SubResource("FireProjectile")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="FireProjectileConfig"]
+script = ExtResource("10")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="FireDefinition"]
+script = ExtResource("11")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/Icenut/AdobeAnimateSlot/FireMarker")]
+spritePath = NodePath("SpriteGroup/TransformPoint/Icenut")
+checkRayResources = [SubResource("FireRay")]
+fireAnimeTimeScale = 3.0
+fireNum = 2
+fireCheckList = [SubResource("FireCheck")]
+fireProjectileList = [SubResource("FireProjectileConfig")]
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter2.icenut"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("5")
+LegacyNodeNames = [&"FireComponent"]
+
+[resource]
+script = ExtResource("13")
+ParentSet = ExtResource("12")
+Components = [SubResource("PeriodicDefinition"), SubResource("FireDefinition")]

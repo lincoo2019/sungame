@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://hvdjrdrnh40s"]
+
+[ext_resource type="PackedScene" uid="uid://s74hf6v6x5r7" path="res://Prefab/TowerDefense/Character/TowerDefenseZombieImpBase.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Scene/Sunpult/TowerDefenseZombieImpSunpultComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://e07r8og407q8" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Scene/Sunpult/TowerDefenseZombieImpSunpult.cs" id="3"]
+[ext_resource type="Resource" uid="uid://bnu2he1w6opb7" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Config/TowerDefenseZombieImpSunpult.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b1i34e3ocmogl" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/DamagePoint/Config/ZombieImpDamagePointArm.tres" id="5"]
+[ext_resource type="Resource" uid="uid://58r0tjmwweja" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorBlackHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://qgfffnlxkr4m" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorBucket.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cmjaxhp5g71q5" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorCone.tres" id="8"]
+[ext_resource type="Resource" uid="uid://dh77v1ckvfdxu" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/DamagePoint/Config/ZombieImpPlantDamagePointHead.tres" id="9"]
+[ext_resource type="Resource" uid="uid://cs3au7yvdnjpi" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorHelmet.tres" id="10"]
+[ext_resource type="Resource" uid="uid://dnbxvkk0ikxie" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Armor/Config/ZombieImpArmorSpecialHelmet.tres" id="11"]
+[ext_resource type="PackedScene" uid="uid://borcqbvteqs1h" path="res://Asset/Anime/Character/Zombie/Chapter1/Imp/Sprite/Sunpult/ZombieImpSunpult.tscn" id="12"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="13"]
+
+[node name="TowerDefenseZombieImpSunpult" unique_id=537231166 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+produceInterval = 10.0
+sunNum = 15
+growUpTime = 25.0
+fireInterval = 3.0
+fireNum = 1
+projectileName = "Sunshroom"
+groan = ""
+dieWaterAnimeClip = "SwimDeath"
+waterHeight = 10.0
+invisible = false
+idleAnimeClip = "Walk"
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot")
+damagePartClip = "particles"
+damagePart = {
+"Arm": ExtResource("5"),
+"BlackHelmet": ExtResource("6"),
+"Bucket": ExtResource("7"),
+"Cone": ExtResource("8"),
+"Head": ExtResource("9"),
+"Helmet": ExtResource("10"),
+"SpecialHelmet": ExtResource("11")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieImpSunpult/HeadSlot")
+}
+currentArmor = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(9, 40)
+scale = Vector2(0.906977, 0.944445)
+
+[node name="ZombieImpSunpult" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=496655966 instance=ExtResource("12")]
+position = Vector2(-12, -36)
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieImpSunpult" index="0" unique_id=764864368]
+
+[node name="ProjectileSlot" type="Node2D" parent="SpriteGroup/TransformPoint/ZombieImpSunpult/Head" index="0" unique_id=959116005]
+skew = -2.6583672e-05
+script = ExtResource("13")
+followSlotId = 2
+Layer = 2
+drawLayerId = 2
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieImpSunpult/Head/ProjectileSlot" index="0" unique_id=1083584014]
+position = Vector2(30.935326, -15.827517)
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieImpSunpult/Head" index="1" unique_id=1657361961]
+position = Vector2(-18.731264, 17.052639)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieImpSunpult" index="1" unique_id=1679610570]
+drawLayerId = -2
+position = Vector2(3.8715973, -12.453209)
+rotation = 0.21963292
+scale = Vector2(0.9992705, 0.9992705)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieImpSunpult" index="2" unique_id=1448527260]
+position = Vector2(12.899817, 19.709927)
+rotation = -0.84906316
+scale = Vector2(1.0600996, 1.0239577)
+skew = 0.04820621
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieImpSunpult" index="3" unique_id=1776460655]
+position = Vector2(-100, 10)
+
+[editable path="SpriteGroup/TransformPoint/ZombieImpSunpult"]

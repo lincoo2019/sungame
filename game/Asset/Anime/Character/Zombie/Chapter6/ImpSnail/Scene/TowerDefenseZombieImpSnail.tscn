@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ckjgl63p2v6c4"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://ouvxa21u4ib4" path="res://Asset/Anime/Character/Zombie/Chapter6/ImpSnail/Scene/TowerDefenseZombieImpSnail.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://b4kx7lj2fdmyw" path="res://Asset/Anime/Character/Zombie/Chapter6/ImpSnail/Config/TowerDefenseZombieImpSnail.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cyr4ffu0oupc2" path="res://Asset/Anime/Character/Zombie/Chapter6/ImpSnail/DamagePoint/Config/ZombieImpSnailDamagePointArm.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dsncrittuyuy5" path="res://Asset/Anime/Character/Zombie/Chapter6/ImpSnail/DamagePoint/Config/ZombieImpSnailDamagePointHead.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://cbodh1xoek2nf" path="res://Asset/Anime/Character/Zombie/Chapter6/ImpSnail/ZombieImpSnail.tscn" id="7"]
+
+[node name="TowerDefenseZombieImpSnail" unique_id=842589144 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+walkSpeedScale = 0.5
+dieAnimeClip = "Death2"
+dieWaterAnimeClip = ""
+waterHeight = 20.0
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieImpSnail")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieImpSnail/HeadSlot")
+damagePart = {
+"Arm": ExtResource("5"),
+"Head": ExtResource("6")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieImpSnail/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieImpSnail/HeadSlot")
+}
+currentArmor = ["ShellArmored"]
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieImpSnail" parent="SpriteGroup/TransformPoint" index="0" unique_id=1182669728 instance=ExtResource("7")]
+position = Vector2(-12, -33)
+clip = "Idle"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "res://Asset/AtlasSource/Armor/Anime/Character/Zombie/Chapter6/ImpSnail/Armor/Zombie_impSnail_shell.png", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, true, false, false, false]
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieImpSnail" index="0" unique_id=410203072]
+position = Vector2(-46.959652, -40)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieImpSnail" index="1" unique_id=1658025813]
+drawLayerId = -2
+position = Vector2(-49.625164, 13.358974)
+rotation = -0.08250506
+scale = Vector2(0.99901694, 0.99901694)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieImpSnail" index="2" unique_id=715394034]
+position = Vector2(-35.129158, 34.91331)
+rotation = -0.64706665
+scale = Vector2(1.0585219, 1.0224957)
+
+[editable path="SpriteGroup/TransformPoint/ZombieImpSnail"]

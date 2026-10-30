@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dx5xy36b3buc1"]
+
+[ext_resource type="PackedScene" uid="uid://uawo0nxcj2ji" path="res://Prefab/TowerDefense/Character/TowerDefenseItem.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cuisstpaxlnc3" path="res://Asset/Anime/Character/Item/Brain/Scene/TowerDefenseItemBrain.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_59x70_At_n0p25_n25.tres" id="3"]
+[ext_resource type="Resource" uid="uid://dmmfmb7pfsuis" path="res://Asset/Anime/Character/Item/Brain/Config/TowerDefenseItemBrain.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://do3n8leuysj1q" path="res://Asset/Anime/Character/Item/Brain/Brain.tscn" id="5"]
+
+[node name="TowerDefenseItemBrain" unique_id=222472290 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -11
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+canCheck = true
+invisible = false
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/Brain")
+damagePartClip = "particles"
+itemLayer = 4
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(1.9073486e-06, 28)
+scale = Vector2(0.41860458, 0.44444445)
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 37)
+
+[node name="Brain" parent="SpriteGroup/TransformPoint" index="0" unique_id=809200652 instance=ExtResource("5")]
+position = Vector2(0, -37)
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = [true, true]
+mediaReplaceAtlasPaths = [""]
+mediaReplaceUse = [false]
+
+[editable path="SpriteGroup/TransformPoint/Brain"]

@@ -1,0 +1,339 @@
+[gd_scene format=3 uid="uid://8c5010cwpik"]
+
+[ext_resource type="Script" uid="uid://85t56kht8ln" path="res://Prefab/GUI/DialogBox/DailyChallenge/Preview/DailyChallengeLevelPreview.cs" id="1_daily"]
+[ext_resource type="FontFile" uid="uid://bibg4dobk6vpn" path="res://Asset/Font/fzjz.ttf" id="2_font"]
+[ext_resource type="Texture2D" uid="uid://biewbfqqa138j" path="res://Asset/Texture/GUI/LevelEditor/LevelEditorMapShowBox.png" id="3_frame"]
+[ext_resource type="Texture2D" uid="uid://dwwg5awviq8g2" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="4_map"]
+[ext_resource type="Texture2D" uid="uid://c3orr2y7i6k7" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengeFinish.png" id="5_finish"]
+[ext_resource type="Texture2D" uid="uid://ca5pe3bkj7p1v" path="res://Asset/Texture/TowerDefense/Packet/PacketSelect.png" id="6_select"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.105882, 0.0745098, 0.0431373, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.352941, 0.254902, 0.129412, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tag_chip"]
+content_margin_left = 5.0
+content_margin_top = 1.0
+content_margin_right = 5.0
+content_margin_bottom = 1.0
+bg_color = Color(0.254902, 0.180392, 0.0745098, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.843137, 0.65098, 0.2, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_select_tl"]
+atlas = ExtResource("6_select")
+region = Rect2(0, 0, 44, 36)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_select_tr"]
+atlas = ExtResource("6_select")
+region = Rect2(60, 0, 44, 36)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_select_bl"]
+atlas = ExtResource("6_select")
+region = Rect2(0, 108, 44, 36)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_select_br"]
+atlas = ExtResource("6_select")
+region = Rect2(60, 108, 44, 36)
+filter_clip = true
+
+[node name="DailyChallengeLevelPreview" type="Control" unique_id=1393091073]
+custom_minimum_size = Vector2(226, 340)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+script = ExtResource("1_daily")
+metadata/_custom_type_script = "uid://85t56kht8ln"
+
+[node name="CardBackground" type="Panel" parent="." unique_id=689063765]
+mouse_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="MapMask" type="ColorRect" parent="." unique_id=872789044]
+clip_children = 1
+layout_mode = 0
+offset_left = 36.0
+offset_top = 21.0
+offset_right = 190.0
+offset_bottom = 138.0
+mouse_filter = 2
+color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+
+[node name="MapTexture" type="TextureRect" parent="MapMask" unique_id=578522110]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_map")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MapFrame" type="TextureRect" parent="." unique_id=1364591662]
+layout_mode = 0
+offset_left = 15.0
+offset_right = 211.0
+offset_bottom = 193.0
+mouse_filter = 2
+texture = ExtResource("3_frame")
+expand_mode = 1
+
+[node name="NameShade" type="ColorRect" parent="." unique_id=1322898512]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 144.0
+offset_right = 186.0
+offset_bottom = 187.0
+mouse_filter = 2
+color = Color(0.26657522, 0.2665752, 0.2665752, 0.5803922)
+
+[node name="NameLabel" type="Label" parent="." unique_id=2083143562]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 45.0
+offset_top = 146.0
+offset_right = 180.0
+offset_bottom = 186.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "这是一个关卡名"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 3
+max_lines_visible = 2
+
+[node name="IconContainer" type="CenterContainer" parent="." unique_id=2076931808]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 21.0
+offset_right = 190.0
+offset_bottom = 131.0
+mouse_filter = 2
+
+[node name="IconBox" type="HBoxContainer" parent="IconContainer" unique_id=1527651111]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="FinishTexture" type="TextureRect" parent="." unique_id=1458824617]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 167.0
+offset_top = 145.0
+offset_right = 204.0
+offset_bottom = 184.0
+mouse_filter = 2
+texture = ExtResource("5_finish")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TypeLabel" type="Label" parent="." unique_id=1659257561]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 197.0
+offset_right = 218.0
+offset_bottom = 220.0
+theme_override_colors/font_color = Color(0.941176, 0.901961, 0.745098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "类型：未知"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="DifficultyBadge" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 91.0
+offset_top = 25.0
+offset_right = 186.0
+offset_bottom = 47.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_tag_chip")
+
+[node name="DifficultyLabel" type="Label" parent="DifficultyBadge"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.921569, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.0823529, 0.0470588, 0.0156863, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="TagFlow" type="HFlowContainer" parent="." unique_id=1302999524]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 222.0
+offset_right = 218.0
+offset_bottom = 290.0
+mouse_filter = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+alignment = 1
+
+[node name="TagChipTemplate" type="PanelContainer" parent="TagFlow" unique_id=470923722]
+visible = false
+custom_minimum_size = Vector2(67, 20)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tag_chip")
+
+[node name="Text" type="Label" parent="TagFlow/TagChipTemplate" unique_id=1048423641]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.921569, 0.65098, 1)
+theme_override_colors/font_outline_color = Color(0.0823529, 0.0470588, 0.0156863, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "无"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="RewardLabel" type="Label" parent="." unique_id=347841252]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 293.0
+offset_right = 218.0
+offset_bottom = 317.0
+theme_override_colors/font_color = Color(0.431373, 1, 0.431373, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "奖励：未知"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="AuthorLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 317.0
+offset_right = 218.0
+offset_bottom = 338.0
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.941176, 0.901961, 0.745098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="UnavailableLabel" type="Label" parent="." unique_id=1463133192]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 36.0
+offset_top = 112.0
+offset_right = 190.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(1, 0.317647, 0.25098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "关卡数据不可用"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectionCorners" type="Control" parent="." unique_id=1915987705]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopLeft" type="TextureRect" parent="SelectionCorners" unique_id=1442391256]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 46.0
+offset_bottom = 37.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_select_tl")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="SelectionCorners" unique_id=1368409281]
+layout_mode = 0
+offset_left = 180.0
+offset_top = -6.0
+offset_right = 232.0
+offset_bottom = 37.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_select_tr")
+expand_mode = 1
+
+[node name="BottomLeft" type="TextureRect" parent="SelectionCorners" unique_id=1350275053]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 303.0
+offset_right = 46.0
+offset_bottom = 346.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_select_bl")
+expand_mode = 1
+
+[node name="BottomRight" type="TextureRect" parent="SelectionCorners" unique_id=2029326772]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 303.0
+offset_right = 232.0
+offset_bottom = 346.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_select_br")
+expand_mode = 1

@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://c3sm5l5asw3gy"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://b3icmd3v6kju8" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Scene/TowerDefenseZombieDolphinriderGatlingPeaComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://dtfuo8xvbdvna" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Scene/TowerDefenseZombieDolphinriderGatlingPea.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b78nvggnjuknk" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Scene/TowerDefenseZombieDolphinriderGatlingPeaStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://bcu33b2br3j3f" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Config/TowerDefenseZombieDolphinriderGatlingPea.tres" id="6"]
+[ext_resource type="Resource" uid="uid://b3ubc70a7n1db" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/DamagePoint/Config/ZombieDolphinriderDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://ryoresff6mb5" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Armor/Config/ZombieDolphinriderArmorBlackHelmet.tres" id="8"]
+[ext_resource type="Resource" uid="uid://cwxymwrx4flcy" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Armor/Config/ZombieDolphinriderArmorCone.tres" id="9"]
+[ext_resource type="Resource" uid="uid://cmpwkc62dhvit" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/DamagePoint/Config/ZombieDolphinriderDamagePointHead.tres" id="10"]
+[ext_resource type="Resource" uid="uid://hpapb5s2884t" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Armor/Config/ZombieDolphinriderArmorHelmet.tres" id="11"]
+[ext_resource type="Resource" uid="uid://c1ghmtt3o6mxh" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Armor/Config/ZombieDolphinriderArmorSpecialHelmet.tres" id="12"]
+[ext_resource type="PackedScene" uid="uid://b3d6jaa3dewca" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Sprite/GatlingPea/ZombieDolphinriderGatlingPea.tscn" id="13"]
+
+[node name="TowerDefenseZombieDolphinriderGatlingPea" unique_id=19911650 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+fireInterval = 1.5
+fireNum = 1
+projectileName = "Pea"
+walkSpeedScale = 1.5
+inSwimAnimeClipScale = 0.5
+useAttackDps = false
+walkAnimeClip = "DolphinWalk"
+inSwimAnimeClip = "JumpInWater"
+swimAnimeClip = "SwimWalk"
+attackAnimeClip = "DolphinAttack"
+attackWaterAnimeClip = "SwimEat"
+dieAnimeClip = "DolphinDeath"
+dieWaterAnimeClip = "SwimDeath"
+waterHeight = -10.0
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieDolphinriderGatlingPea")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieDolphinriderGatlingPea/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"BlackHelmet": ExtResource("8"),
+"Cone": ExtResource("9"),
+"Head": ExtResource("10"),
+"Helmet": ExtResource("11"),
+"SpecialHelmet": ExtResource("12")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieDolphinriderGatlingPea/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieDolphinriderGatlingPea/HeadSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieDolphinriderGatlingPea/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieDolphinriderGatlingPea/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieDolphinriderGatlingPea/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieDolphinriderGatlingPea/HeadSlot")
+}
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieDolphinriderGatlingPea" parent="SpriteGroup/TransformPoint" index="0" unique_id=1514060668 instance=ExtResource("13")]
+position = Vector2(-12, -33)
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, true, true, true, true, true, true, true, true, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieDolphinriderGatlingPea" index="0"]
+position = Vector2(-44.2061, -63.510468)
+rotation = -0.30482316
+trueFrameRate = 180.0
+clip = "HeadIdle"
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieDolphinriderGatlingPea/Head" index="0" unique_id=878769704]
+position = Vector2(8.80349, 20.100159)
+rotation = 2.7603729
+scale = Vector2(0.99991107, -0.99991107)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinriderGatlingPea" index="1"]
+position = Vector2(-23.104458, -43.845142)
+rotation = -0.054823164
+scale = Vector2(0.79969454, 0.79969454)
+drawLayerId = -2
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinriderGatlingPea" index="2"]
+position = Vector2(19.990715, -10.1022835)
+rotation = -0.04633592
+scale = Vector2(0.79958814, 0.79958814)
+
+[editable path="SpriteGroup/TransformPoint/ZombieDolphinriderGatlingPea"]

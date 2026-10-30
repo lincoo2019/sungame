@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://clwipl0781y7k"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Other/GarlicBomb/Scene/TowerDefensePlantGarlicBombComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://c3gv1neef1wo" path="res://Asset/Anime/Character/Plant/Other/GarlicBomb/Scene/TowerDefensePlantGarlicBomb.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cfiwgifyu0xda" path="res://Asset/Anime/Character/Plant/Other/GarlicBomb/Config/TowerDefensePlantGarlicBomb.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://bvpy3cgfusn2s" path="res://Asset/Anime/Character/Plant/Other/GarlicBomb/GarlicBomb.tscn" id="6"]
+
+[node name="TowerDefensePlantGarlicBomb" unique_id=2078914697 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/GarlicBomb")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="SpriteGroup" parent="." index="2" unique_id=1006029617]
+
+[node name="TransformPoint" parent="SpriteGroup" index="0" unique_id=429682308]
+use_parent_material = true
+position = Vector2(0, 30)
+
+[node name="GarlicBomb" parent="SpriteGroup/TransformPoint" index="0" unique_id=1472996017 instance=ExtResource("6")]
+position = Vector2(0, -30)
+offset = Vector2(-39.297176, -39.908348)
+Animation/Clip = "Explode"

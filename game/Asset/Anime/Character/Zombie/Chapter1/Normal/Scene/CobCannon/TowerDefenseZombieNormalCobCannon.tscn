@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://bc1h1lmbsdcrm"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Scene/CobCannon/TowerDefenseZombieNormalCobCannonComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://d0fuumrawlwyd" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Scene/CobCannon/TowerDefenseZombieNormalCobCannon.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://kheuljhp5un1" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Config/TowerDefenseZombieNormalCobCannon.tres" id="5"]
+[ext_resource type="Resource" uid="uid://chvyxpm81irbp" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://clvqblkq2jo2l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://d4b68a6hw3c2d" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBucket.tres" id="8"]
+[ext_resource type="Resource" uid="uid://cfim36uopws7u" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorCone.tres" id="9"]
+[ext_resource type="Resource" uid="uid://c7nx2fl3rq01m" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalPlantDamagePointHead.tres" id="10"]
+[ext_resource type="Resource" uid="uid://byth0yfgejk1l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorHelmet.tres" id="11"]
+[ext_resource type="Resource" uid="uid://dmgd4ygng30xn" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorScreendoor.tres" id="12"]
+[ext_resource type="Resource" uid="uid://cryuyu1d8jqbt" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorSpecialHelmet.tres" id="13"]
+[ext_resource type="Texture2D" uid="uid://bsd6indlsqwpy" path="res://Asset/Config/Projectile/CobCannon/CobCannonCob/CobCannonCob.png" id="14"]
+[ext_resource type="PackedScene" uid="uid://c5j7iw0f7xo7n" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Sprite/CobCannon/ZombieNormalCobCannon.tscn" id="15"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="16"]
+
+[node name="TowerDefenseZombieNormalCobCannon" unique_id=712894744 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+restTime = 15.0
+walkAnimeClip = "Walk1&Walk2"
+swimAnimeClip = "Swim"
+dieAnimeClip = "Death1&Death2"
+dieWaterAnimeClip = "Waterdeath"
+waterHeight = 25.0
+idleAnimeClip = "Idle1&Idle2"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieNormalCobCannon")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieNormalCobCannon/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Bucket": ExtResource("8"),
+"Cone": ExtResource("9"),
+"Head": ExtResource("10"),
+"Helmet": ExtResource("11"),
+"Screendoor": ExtResource("12"),
+"SpecialHelmet": ExtResource("13")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieNormalCobCannon/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalCobCannon/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieNormalCobCannon/BucketSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieNormalCobCannon/ConeSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieNormalCobCannon/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalCobCannon/HeadSlot"),
+"Screendoor": NodePath("SpriteGroup/TransformPoint/ZombieNormalCobCannon/ScreendoorSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalCobCannon/HeadSlot")
+}
+currentArmor = []
+
+[node name="CobCannon" type="Sprite2D" parent="." index="0" unique_id=1342322254]
+visible = false
+position = Vector2(-16.950737, -42.097046)
+scale = Vector2(0.81784856, 0.786798)
+texture = ExtResource("14")
+centered = false
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieNormalCobCannon" parent="SpriteGroup/TransformPoint" index="0" unique_id=2005208045 instance=ExtResource("15")]
+position = Vector2(-12, -33)
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieNormalCobCannon" index="0" unique_id=1447859647]
+
+[node name="ProjectileSlot" type="Node2D" parent="SpriteGroup/TransformPoint/ZombieNormalCobCannon/Head" index="0" unique_id=1773780882]
+unique_name_in_owner = true
+script = ExtResource("16")
+followSlotId = 8
+Layer = 8
+drawLayerId = 8
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCobCannon" index="1" unique_id=743571121]
+drawLayerId = -2
+position = Vector2(-15.012957, -44.66176)
+rotation = -0.0635213
+scale = Vector2(0.7998229, 0.7998229)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCobCannon" index="2" unique_id=614180353]
+position = Vector2(4.1214275, 1.9957609)
+rotation = -0.05273393
+scale = Vector2(0.7997731, 0.7997731)
+
+[node name="ConeSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCobCannon" index="3" unique_id=802627952]
+position = Vector2(-8.775099, -70.350464)
+rotation = 0.007900832
+scale = Vector2(0.7992017, 0.7992017)
+
+[node name="BucketSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCobCannon" index="4" unique_id=1107578253]
+position = Vector2(-13.833519, -59.69771)
+rotation = -0.06048074
+scale = Vector2(0.7998246, 0.7998246)
+
+[node name="ScreendoorSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCobCannon" index="5" unique_id=1067547515]
+position = Vector2(-19.379972, 0.63565445)
+rotation = -0.022531087
+scale = Vector2(0.79992557, 0.79992557)
+
+[editable path="SpriteGroup/TransformPoint/ZombieNormalCobCannon"]

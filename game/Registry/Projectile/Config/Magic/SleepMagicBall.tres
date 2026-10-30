@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://c5t00lxqqihvt"]
+
+[ext_resource type="Script" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="script"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventMagicHit.cs" id="spell"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffSleep.cs" id="buff"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="buffbase"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="event"]
+[ext_resource type="PackedScene" uid="uid://dwcdgry5ofo32" path="res://Registry/Projectile/Config/Magic/Sprite/SleepMagicBall/SleepMagicBall.tscn" id="sprite"]
+[ext_resource type="PackedScene" path="res://Asset/Anime/Effect/SleepMagic/SleepMagic.tscn" id="effect"]
+
+[sub_resource type="Resource" id="Sleep"]
+script = ExtResource("buff")
+time = 30.0
+
+[sub_resource type="Resource" id="Spell"]
+script = ExtResource("spell")
+num = 60.0
+buffList = Array[ExtResource("buffbase")]([SubResource("Sleep")])
+plantsOnly = false
+allowOtherUnitTargets = true
+
+[resource]
+script = ExtResource("script")
+name = "SleepMagicBall"
+baseDamage = 0.0
+size = Vector2(24, 24)
+projectileScene = ExtResource("sprite")
+splatScene = ExtResource("effect")
+splatSceneType = "Sprite"
+splatAudio = ""
+hitBody = true
+hitTargetEventList = Array[ExtResource("event")]([SubResource("Spell")])

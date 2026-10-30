@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://ddp25eqdu0xi2"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_8owdu"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_44t54"]
+[ext_resource type="PackedScene" uid="uid://dsquyu71qjv4t" path="res://Asset/Config/Projectile/Pea/Sprite/MagicPeaFireBlue/MagicPeaFireBlue.tscn" id="3_bjq19"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="4_r8to7"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="5_iw2xw"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="6_d5s06"]
+[ext_resource type="PackedScene" uid="uid://dxdsva0xl5qtd" path="res://Prefab/Particles/Splats/IceFireSplats/IceFireSplats.tscn" id="7_mmsgo"]
+[ext_resource type="PackedScene" uid="uid://dc1nqr7f0a1do" path="res://Prefab/ProjectileEffect/MagicPeaBlow/TowerDefenseProjectileEffectMagicPeaFireBlueBlow.tscn" id="8_8d24y"]
+[ext_resource type="Script" uid="uid://dagqelp0alh1i" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventProjectileSplit.cs" id="9_iz9mh"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="10_yq5a7"]
+
+[sub_resource type="Resource" id="Resource_5r42y"]
+script = ExtResource("10_yq5a7")
+projectileName = &"IceFirePea"
+
+[sub_resource type="Resource" id="Resource_milia"]
+script = ExtResource("9_iz9mh")
+projectileData = SubResource("Resource_5r42y")
+effectScene = ExtResource("8_8d24y")
+metadata/_custom_type_script = "uid://dagqelp0alh1i"
+
+[sub_resource type="Resource" id="Resource_tusnh"]
+script = ExtResource("4_r8to7")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_8ria8"]
+script = ExtResource("6_d5s06")
+buffList = Array[ExtResource("2_44t54")]([SubResource("Resource_tusnh")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("5_iw2xw")
+name = "MagicPeaFireBlue"
+baseDamage = 40.0
+projectileScene = ExtResource("3_bjq19")
+splatSceneType = "Sprite"
+splatAudio = "Ignite"
+splatScene = ExtResource("7_mmsgo")
+hitEffect = ExtResource("8_8d24y")
+hitCharacterEventList = Array[ExtResource("1_8owdu")]([SubResource("Resource_8ria8")])
+hitTargetEventList = Array[ExtResource("1_8owdu")]([SubResource("Resource_milia")])
+hitBody = true
+useRange = true
+rangeSize = Vector2(0.5, 0.25)
+isMagic = true

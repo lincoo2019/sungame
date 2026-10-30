@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://b1w3e14w7nmbj"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://b3tk1k4djoh84" path="res://Asset/Anime/Character/Zombie/Chapter5/Bungi/Scene/TowerDefenseZombieBungiComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://wdm2l40jy7qh" path="res://Asset/Anime/Character/Zombie/Chapter5/Bungi/Scene/TowerDefenseZombieBungi.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_58x44_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bgk5od8vwe4am" path="res://Asset/Anime/Character/Zombie/Chapter5/Bungi/Scene/TowerDefenseZombieBungiStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://ce7a7oe4xiua1" path="res://Asset/Anime/Character/Zombie/Chapter5/Bungi/Config/TowerDefenseZombieBungi.tres" id="6"]
+[ext_resource type="Shader" uid="uid://br5iva3fmqfl1" path="res://Asset/Anime/Character/Zombie/Chapter5/Bungi/BungiCord.gdshader" id="7"]
+[ext_resource type="Texture2D" uid="uid://cvtmjjavvcrbc" path="res://Asset/Anime/Character/Zombie/Chapter5/Bungi/BungeeCord.png" id="8"]
+[ext_resource type="PackedScene" uid="uid://ci3adqsl0ujhp" path="res://Asset/Anime/Character/Zombie/Chapter5/Bungi/ZombieBungi.tscn" id="9"]
+[ext_resource type="Texture2D" uid="uid://drveyco2224tr" path="res://Asset/Anime/Character/Zombie/Chapter5/Bungi/BungeeTarget.png" id="10"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8d07x"]
+shader = ExtResource("7")
+shader_parameter/_length = 600.0
+
+[node name="TowerDefenseZombieBungi" unique_id=1554597779 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+z_index = -13
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+waterHeight = 25.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieBungi")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieBungi/HeadSlot")
+forceLocalRenderDuringZMotion = true
+itemLayer = 2
+gravityUse = false
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+
+[node name="Cord" type="Sprite2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=465741134]
+texture_filter = 2
+texture_repeat = 2
+material = SubResource("ShaderMaterial_8d07x")
+position = Vector2(-1, -323)
+scale = Vector2(1, 9)
+texture = ExtResource("8")
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieBungi" parent="SpriteGroup/TransformPoint" index="0" unique_id=960142792 instance=ExtResource("9")]
+position = Vector2(-12, -49)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieBungi" index="0" unique_id=1884538768]
+drawLayerId = -2
+position = Vector2(-0.412426, -39.582222)
+Layer = 23
+
+[node name="BungeeTarget" type="Sprite2D" parent="FrontEffectNode" parent_id_path=PackedInt32Array(1161662400) index="0" unique_id=1843674150]
+unique_name_in_owner = true
+visible = false
+z_index = 5
+position = Vector2(0, 15)
+texture = ExtResource("10")

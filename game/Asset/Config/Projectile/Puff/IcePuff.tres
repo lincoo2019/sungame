@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://bueajic5idois"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_hrwjq"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_qh2m5"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="3_l5jjt"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="3_vaar4"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_62h0k"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="5_l5jjt"]
+[ext_resource type="PackedScene" uid="uid://bhdtkj10cvald" path="res://Asset/Config/Projectile/Puff/Sprite/IcePuffShroom/ProjectilePuffShroomPuff.tscn" id="5_qh2m5"]
+[ext_resource type="PackedScene" uid="uid://cfehh0xpgt345" path="res://Prefab/Particles/Splats/IcePuffSplats/TowerDefenseEffectParticlesIcePuffSplats.tscn" id="7_l5jjt"]
+
+[sub_resource type="Resource" id="Resource_m37m2"]
+script = ExtResource("3_l5jjt")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_flns6"]
+script = ExtResource("4_62h0k")
+buffList = Array[ExtResource("2_qh2m5")]([SubResource("Resource_m37m2")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("3_vaar4")
+name = "IcePuff"
+projectileScene = ExtResource("5_qh2m5")
+projectileObject = 321
+splatScene = ExtResource("7_l5jjt")
+hitCharacterEventList = Array[ExtResource("1_hrwjq")]([SubResource("Resource_flns6")])
+collisionFlags = 1
+catapultHeight = 400.0

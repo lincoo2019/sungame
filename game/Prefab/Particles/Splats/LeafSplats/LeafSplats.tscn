@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbcaaogxq3kxj"]
+
+[ext_resource type="Material" uid="uid://2026hqfwfieh" path="res://Prefab/Particles/Splats/LeafSplats/LeafSplats.tres" id="1_jub0k"]
+[ext_resource type="Texture2D" uid="uid://cc6e2jia5i67x" path="res://Asset/Anime/Particles/Splats/LeafSplats.png" id="2_sx6wt"]
+[ext_resource type="Script" uid="uid://cmjj5ejt1ranr" path="res://Extends/Particles/GPUParticles2DOnece.cs" id="3_ul0as"]
+[ext_resource type="Texture2D" uid="uid://bcnm5m08q2tid" path="res://Asset/Anime/Particles/Splats/LeafParticles.png" id="4_rtjr1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wiwmn"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ek2em"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="LeafSplats" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_wiwmn")
+emitting = false
+amount = 6
+process_material = ExtResource("1_jub0k")
+texture = ExtResource("2_sx6wt")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("3_ul0as")
+
+[node name="LeafParticles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ek2em")
+emitting = false
+amount = 6
+process_material = ExtResource("1_jub0k")
+texture = ExtResource("4_rtjr1")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://ddisxxjwktk0i"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bkp4m8bagh1wk" path="res://Asset/Anime/Character/Zombie/Chapter4/Backuppaper/Scene/TowerDefenseZombieBackuppaper.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://dhxh0t8vc2jpx" path="res://Asset/Anime/Character/Zombie/Chapter4/Backuppaper/Scene/TowerDefenseZombieBackuppaperStateMachine.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cu0p5gbvfcylx" path="res://Asset/Anime/Character/Zombie/Chapter4/Backuppaper/Config/TowerDefenseZombieBackuppaper.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dufwfdyvlolv5" path="res://Asset/Anime/Character/Zombie/Chapter4/Backuppaper/DamagePoint/Config/ZombieBackuppaperDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://da13sf1goo3ni" path="res://Asset/Anime/Character/Zombie/Chapter4/Backuppaper/DamagePoint/Config/ZombieBackuppaperDamagePointHead.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://pibs41w2wdnd" path="res://Asset/Anime/Character/Zombie/Chapter4/Backuppaper/ZombieBackuppaper.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="9"]
+
+[node name="TowerDefenseZombieBackuppaper" unique_id=1144021001 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieBackuppaper/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+garlicReplace = "Zombie_dancer__head.png"
+waterHeight = 40.0
+idleAnimeClip = "Walk"
+sleepAnimeClip = "Walk"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieBackuppaper")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieBackuppaper/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"Head": ExtResource("7")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieBackuppaper/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieBackuppaper/HeadSlot")
+}
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieBackuppaper" parent="SpriteGroup/TransformPoint" index="0" unique_id=1881167140 instance=ExtResource("8")]
+material = null
+position = Vector2(-13, -26)
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieBackuppaper" index="0" unique_id=165448981]
+material = null
+position = Vector2(-0.79953384, -90.58294)
+rotation = -0.0001053381
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieBackuppaper" index="1" unique_id=885178642]
+drawLayerId = -2
+position = Vector2(8.745458, -87.03325)
+scale = Vector2(0.9988972, 0.9988972)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieBackuppaper" index="2" unique_id=1826612197]
+position = Vector2(37.617294, -40.616776)
+rotation = -0.034381956
+scale = Vector2(0.7965035, 0.7965035)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=2055917436 instance=ExtResource("9")]
+visible = false
+position = Vector2(0.99999994, -57)
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = [true, true]
+mediaReplaceAtlasPaths = ["", "", ""]
+mediaReplaceUse = [false, false, false]
+
+[editable path="SpriteGroup/TransformPoint/ZombieBackuppaper"]

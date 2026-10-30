@@ -1,0 +1,419 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://cr4dlc37sbaoh"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/Challenge/Gold/Challenge_Level18_1_D.json" id="1_up71n"]
+[ext_resource type="Script" uid="uid://ba76j1qc1ehmt" path="res://Registry/Battle/Feature/Event/Resource/TowerDefenseLevelEventBase.cs" id="2_pd4qd"]
+[ext_resource type="Script" uid="uid://dbpqspbkam44d" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.cs" id="3_3vup3"]
+[ext_resource type="Script" uid="uid://elndp7rr41y0" path="res://Registry/Battle/Feature/LookStar/Resource/TowerDefenseLevelLookStarCheckConfig.cs" id="4_ivdwg"]
+[ext_resource type="Script" uid="uid://ge6chewkhjqd" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.cs" id="5_1misw"]
+[ext_resource type="Script" uid="uid://crdubirc3xofm" path="res://Resource/TowerDefense/Level/Packet/TowerDefenseLevelPacketConfig.cs" id="6_686ap"]
+[ext_resource type="Script" uid="uid://d17gywmt3g3lb" path="res://Resource/TowerDefense/Level/PreSpawn/TowerDefenseLevelPreSpawnConfig.cs" id="7_67etq"]
+[ext_resource type="Script" uid="uid://dfj86l56q1n8g" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.cs" id="8_3c8o1"]
+[ext_resource type="Script" uid="uid://blrb5liskebi6" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.cs" id="9_qr7eg"]
+[ext_resource type="Script" uid="uid://br6kawt7m03sc" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelDynamicConfig.cs" id="10_37yvr"]
+[ext_resource type="Script" uid="uid://ctvkmai1q8sa6" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.cs" id="11_d4bcu"]
+[ext_resource type="Script" uid="uid://c67uxwpu4jftb" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.cs" id="12_wetse"]
+
+[sub_resource type="Resource" id="Resource_0iqdu"]
+script = ExtResource("3_3vup3")
+
+[sub_resource type="Resource" id="Resource_61l5d"]
+script = ExtResource("5_1misw")
+
+[sub_resource type="Resource" id="Resource_lbm7j"]
+script = ExtResource("6_686ap")
+packetName = "PlantGarCobCannon"
+
+[sub_resource type="Resource" id="Resource_8a8kn"]
+script = ExtResource("6_686ap")
+packetName = "PlantSunFlowerZ"
+
+[sub_resource type="Resource" id="Resource_pd4qd"]
+script = ExtResource("6_686ap")
+packetName = "PlantKabbageTail"
+
+[sub_resource type="Resource" id="Resource_3vup3"]
+script = ExtResource("6_686ap")
+packetName = "PlantPeashooterZ"
+
+[sub_resource type="Resource" id="Resource_ivdwg"]
+script = ExtResource("6_686ap")
+packetName = "PlantTorchwood"
+
+[sub_resource type="Resource" id="Resource_1misw"]
+script = ExtResource("6_686ap")
+packetName = "PlantImitaterW"
+
+[sub_resource type="Resource" id="Resource_gtv4v"]
+script = ExtResource("6_686ap")
+packetName = "PlantCherryBean"
+
+[sub_resource type="Resource" id="Resource_67etq"]
+script = ExtResource("6_686ap")
+packetName = "PlantSquashKing"
+
+[sub_resource type="Resource" id="Resource_3c8o1"]
+script = ExtResource("6_686ap")
+packetName = "PlantPuffPot"
+
+[sub_resource type="Resource" id="Resource_qr7eg"]
+script = ExtResource("9_qr7eg")
+
+[sub_resource type="Resource" id="Resource_37yvr"]
+script = ExtResource("11_d4bcu")
+flagWaveInterval = 5
+dynamic = Array[ExtResource("10_37yvr")]([])
+
+[resource]
+script = ExtResource("8_3c8o1")
+data = ExtResource("1_up71n")
+featureData = Dictionary[StringName, Dictionary]({
+&"BGM": {
+"BackgroundMusic": "FrontlawnNight"
+},
+&"Brain": {},
+&"Camera": {},
+&"Event": {
+"EventInit": [],
+"EventReady": [],
+"EventStart": []
+},
+&"Map": {
+"MapName": "UndeadVillageLawn"
+},
+&"Mower": {},
+&"PacketBank": {
+"PacketBankName": "GeneralPlant"
+},
+&"PacketPick": {},
+&"PreSpawn": {
+"Packet": [{
+"GridPos": [1.0, 3.0],
+"Name": "PlantGarCobCannon"
+}, {
+"GridPos": [1.0, 3.0],
+"Name": "PlantPot"
+}, {
+"GridPos": [2.0, 3.0],
+"Name": "PlantPot"
+}]
+},
+&"Progress": {},
+&"SeedBank": {
+"ColdDownStart": false,
+"Method": "Preset",
+"Packet": [{
+"PacketName": "PlantGarCobCannon"
+}, "PlantSunFlowerZ", "PlantKabbageTail", "PlantPeashooterZ", "PlantTorchwood", "PlantImitaterW", "PlantCherryBean", "PlantSquashKing", "PlantPuffPot"]
+},
+&"Shovel": {},
+&"Sun": {
+"Begin": 1000.0,
+"MovingMethod": "Land",
+"Open": true,
+"SpawnInterval": 12.0,
+"SpawnNum": 50.0
+},
+&"Wave": {
+"BeginCol": 20.0,
+"Dynamic": [{}, {}, {}, {}, {}, {}, {}],
+"FlagWaveInterval": 7.0,
+"FlagZombie": "ZombieFlag",
+"MaxNextWaveHealthPercentage": 0.3,
+"MinNextWaveHealthPercentage": 0.15,
+"SpawnColEnd": 20.0,
+"SpawnColStart": 10.0,
+"SpawnOverride": {},
+"Wave": [{
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuar"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalTallnut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalTallnut"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancer"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalTallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalTallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuar"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormalTallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerB"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalTallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancer"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalTallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImpCloud"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormalTallnut"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancer"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalTallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancer"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerB"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalTallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancer"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerB"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImpCloud"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalTallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerB"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImpCloud"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormalTallnut"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerB"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImpCloud"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancerG"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNecromancer"
+}]
+}]
+}
+})
+processName = &"Wave"
+processData = {
+"MowerUse": true
+}
+map = ""
+backgroundMusic = ""
+firstRewardValue = "2000"
+packetColdDownStart = false
+packetBankMethod = 2
+sunManager = SubResource("Resource_qr7eg")
+fogManager = SubResource("Resource_0iqdu")
+lookStarManager = SubResource("Resource_61l5d")
+waveManager = SubResource("Resource_37yvr")
+packetBankList = [SubResource("Resource_lbm7j"), SubResource("Resource_8a8kn"), SubResource("Resource_pd4qd"), SubResource("Resource_3vup3"), SubResource("Resource_ivdwg"), SubResource("Resource_1misw"), SubResource("Resource_gtv4v"), SubResource("Resource_67etq"), SubResource("Resource_3c8o1")]
+name = "Challenge_Level18_1"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "CHALLENGE_LEVEL_NAME_18"
+homeWorld = 1
+metadata/_custom_type_script = "uid://dfj86l56q1n8g"

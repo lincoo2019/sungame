@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://be72aj0t1ru57"]
+
+[ext_resource type="Resource" uid="uid://d28ilpm3lyjt5" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefensePlantStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_down"]
+script = ExtResource("2")
+StableId = "plant.robot.down"
+DisplayName = &"Down"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_up"]
+script = ExtResource("2")
+StableId = "plant.robot.up"
+DisplayName = &"Up"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_down"]
+script = ExtResource("3")
+StableId = "plant.robot.to_down"
+SourceStateId = "character.root"
+TargetStateId = "plant.robot.down"
+EventName = &"ToDown"
+DeclarationOrder = 3
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_up"]
+script = ExtResource("3")
+StableId = "plant.robot.to_up"
+SourceStateId = "character.root"
+TargetStateId = "plant.robot.up"
+EventName = &"ToUp"
+DeclarationOrder = 4
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.plant.robot"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_down"), SubResource("State_up")]
+Transitions = [SubResource("Transition_down"), SubResource("Transition_up")]

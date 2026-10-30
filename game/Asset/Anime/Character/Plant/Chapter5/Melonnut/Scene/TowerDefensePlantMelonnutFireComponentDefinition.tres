@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="FireComponentDefinition" format=3 uid="uid://dw1a2ncpwn0p3"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbglc127qw1jb" path="res://Resource/TowerDefense/Collision/AabbRay2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="5"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="6"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="7"]
+
+[sub_resource type="Resource" id="AabbRay2DResource_forward"]
+script = ExtResource("2")
+
+[sub_resource type="Resource" id="Resource_9b2d0"]
+script = ExtResource("3")
+projectileName = &"Melon"
+baseDamage = 80.0
+damageFlags = 10
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+
+[sub_resource type="Resource" id="Resource_stig5"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_9b2d0")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_8eq8s"]
+script = ExtResource("5")
+projectile = SubResource("Resource_stig5")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Resource_a2u58"]
+script = ExtResource("6")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[resource]
+script = ExtResource("7")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/Melonnut/AdobeAnimateSlot/FireMarker")]
+spritePath = NodePath("SpriteGroup/TransformPoint/Melonnut")
+checkRayResources = [SubResource("AabbRay2DResource_forward")]
+fireAnimeTimeScale = 3.0
+fireInterval = 3.0
+fireCheckList = [SubResource("Resource_8eq8s")]
+fireProjectileList = [SubResource("Resource_a2u58")]
+checkHeight = false
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter5.melonnut"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]

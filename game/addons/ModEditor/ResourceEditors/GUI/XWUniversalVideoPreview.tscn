@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frame"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.025, 0.03, 0.04, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.24, 0.32, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="UniversalVideoPreview" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Summary" type="Label" parent="."]
+layout_mode = 2
+text = "视频运行预览"
+
+[node name="Frame" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_frame")
+
+[node name="Player" type="VideoStreamPlayer" parent="Frame"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+
+[node name="Controls" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="Controls"]
+custom_minimum_size = Vector2(100, 34)
+layout_mode = 2
+text = "▶ 播放"
+
+[node name="PauseButton" type="Button" parent="Controls"]
+custom_minimum_size = Vector2(100, 34)
+layout_mode = 2
+text = "Ⅱ 暂停"
+
+[node name="StopButton" type="Button" parent="Controls"]
+custom_minimum_size = Vector2(100, 34)
+layout_mode = 2
+text = "■ 停止"

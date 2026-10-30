@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://duf3y6b3gyjvf"]
+
+[ext_resource type="PackedScene" uid="uid://uawo0nxcj2ji" path="res://Prefab/TowerDefense/Character/TowerDefenseItem.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://bt5bhujikqbn6" path="res://Asset/Anime/Character/Item/ItemFireball/Scene/TowerDefenseItemFireballComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://swo7mfi5pl3l" path="res://Asset/Anime/Character/Item/ItemFireball/Scene/TowerDefenseItemFireball.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_n0p25_n25.tres" id="4"]
+[ext_resource type="Resource" uid="uid://du834wr0w46yq" path="res://Asset/Anime/Character/Item/ItemFireball/Config/TowerDefenseItemFireball.tres" id="5"]
+[ext_resource type="Texture2D" uid="uid://jrhp4k5td27c" path="res://Asset/Anime/Particles/FireBall/FireballGroundParticles.png" id="6"]
+[ext_resource type="PackedScene" uid="uid://b8q8ngpo2h6sk" path="res://Asset/Anime/Character/Item/ItemFireball/ItemFireball.tscn" id="7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x3rey"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_msg5h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7443181, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xtcu1"]
+curve = SubResource("Curve_msg5h")
+
+[sub_resource type="Curve" id="Curve_mmxep"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2528409, 1), 0.0, 0.0, 0, 0, Vector2(0.7443181, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_r0sfa"]
+curve = SubResource("Curve_mmxep")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8r3m2"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 20, 1)
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_r0sfa")
+alpha_curve = SubResource("CurveTexture_xtcu1")
+anim_offset_max = 1.0
+
+[node name="TowerDefenseItemFireball" unique_id=239006865 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+z_index = -5
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+canCheckTarget = true
+idleAnimeClip = "Roll"
+sleepAnimeClip = "Roll"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ItemFireball")
+camp = 1
+itemLayer = 10
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=783450975]
+material = SubResource("CanvasItemMaterial_x3rey")
+position = Vector2(0, 23)
+amount = 18
+texture = ExtResource("6")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_8r3m2")
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=429682308]
+position = Vector2(0, 37)
+
+[node name="ItemFireball" parent="SpriteGroup/TransformPoint" index="0" unique_id=757804339 instance=ExtResource("7")]
+position = Vector2(0, -37)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ItemFireball" index="0" unique_id=732426060]
+position = Vector2(199.72223, -79.02202)
+
+[node name="ShadowSprite" parent="." index="3" unique_id=1970894107]
+visible = false
+position = Vector2(12, 36)

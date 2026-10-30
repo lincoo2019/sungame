@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://cios1gr8gvngy"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_gsnv4"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_sx7bk"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="3_gw3cm"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_32gr4"]
+[ext_resource type="PackedScene" uid="uid://5wxucmmmy8ne" path="res://Asset/Config/Projectile/Pea/Sprite/SnowPea/ProjectileSnowPea.tscn" id="5_w3wsd"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="6_g57m6"]
+[ext_resource type="PackedScene" uid="uid://c73f1gkmmso7m" path="res://Prefab/Particles/Splats/SnowPeaSplats/SnowPeaSplats.tscn" id="7_lym0s"]
+
+[sub_resource type="Resource" id="Resource_m37m2"]
+script = ExtResource("3_gw3cm")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_r2lpg"]
+script = ExtResource("4_32gr4")
+buffList = Array[ExtResource("2_sx7bk")]([SubResource("Resource_m37m2")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("6_g57m6")
+name = "SnowPea"
+projectileScene = ExtResource("5_w3wsd")
+splatScene = ExtResource("7_lym0s")
+hitCharacterEventList = Array[ExtResource("1_gsnv4")]([SubResource("Resource_r2lpg")])

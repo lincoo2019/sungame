@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://b3f6bsiuin3v4"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="2"]
+[ext_resource type="Script" uid="uid://b8rialbjr540d" path="res://Script/Component/TowerDefense/Character/PeriodicAreaEventComponent/PeriodicAreaEventComponentDefinition.cs" id="3"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="4"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter3/PumpkinFire/Scene/TowerDefensePlantPumpkinFireComponentSet.tres" id="5"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="6"]
+[ext_resource type="Script" uid="uid://7v2milmkb0vp" path="res://Asset/Anime/Character/Plant/Chapter3/PumpkinFire/Scene/TowerDefensePlantPumpkinFire.cs" id="7"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_64x33_At_0_0.tres" id="8"]
+[ext_resource type="Script" uid="uid://bqyxask6qffq7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFireHit.cs" id="9"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="10"]
+[ext_resource type="Resource" uid="uid://n0yyarg0b5hr" path="res://Asset/Anime/Character/Plant/Chapter3/PumpkinFire/Config/TowerDefensePlantPumpkinFire.tres" id="11"]
+[ext_resource type="PackedScene" uid="uid://byw6jsnuv2wf2" path="res://Asset/Anime/Character/Plant/Chapter3/PumpkinFire/PumpkinFire.tscn" id="12"]
+
+[sub_resource type="Resource" id="Resource_8eyjb"]
+script = ExtResource("2")
+num = 40.0
+damageFlags = 6
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[sub_resource type="Resource" id="PeriodicDefinition"]
+script = ExtResource("3")
+eventList = [SubResource("Resource_8eyjb")]
+staticTime = 1.5
+targetEffectType = "Sprite"
+targetEffectScene = ExtResource("4")
+checkShape = null
+ComponentTypeId = "PeriodicAreaEventComponent"
+DefinitionId = "builtin.component.periodic_area_event.pumpkin_fire"
+InstanceId = "character.periodic_area_event"
+WireIndex = 0
+StateMachineDefinition = null
+LegacyNodeNames = [&"PeriodicAreaEventComponent"]
+
+[sub_resource type="Resource" id="PeriodicComponentSet"]
+script = ExtResource("6")
+ParentSet = ExtResource("5")
+Components = [SubResource("PeriodicDefinition")]
+
+[sub_resource type="Resource" id="Resource_bevwy"]
+script = ExtResource("9")
+metadata/_custom_type_script = "uid://bqyxask6qffq7"
+
+[sub_resource type="Resource" id="Resource_3ko1g"]
+script = ExtResource("10")
+buffList = [SubResource("Resource_bevwy")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Gradient" id="Gradient_vpdpe"]
+offsets = PackedFloat32Array(0, 0.346154, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.952991, 0.952991, 0.952991, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7kd5i"]
+gradient = SubResource("Gradient_vpdpe")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[node name="TowerDefensePlantPumpkinFire" unique_id=842002567 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = SubResource("PeriodicComponentSet")
+showHealthOffset = Vector2(0, 16)
+z_index = -10
+script = ExtResource("7")
+HitBoxDefinition = ExtResource("8")
+allEventList = [SubResource("Resource_3ko1g")]
+config = ExtResource("11")
+sprite = NodePath("SpriteGroup/TransformPoint/PumpkinFire")
+PreviewDamagePointPersontage = 1.0
+itemLayer = 5
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PumpkinFire" parent="SpriteGroup/TransformPoint" index="0" unique_id=1126663770 instance=ExtResource("12")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="Node2D" parent="SpriteGroup/TransformPoint/PumpkinFire" index="0"]
+z_index = -2
+
+[node name="Back" parent="SpriteGroup/TransformPoint/PumpkinFire/Node2D" index="0"]
+trueFrameRate = 180.0
+
+[node name="Light" type="PointLight2D" parent="." index="7" unique_id=1928565280]
+unique_name_in_owner = true
+visible = false
+energy = 0.35
+texture = SubResource("GradientTexture2D_7kd5i")
+
+[editable path="SpriteGroup/TransformPoint/PumpkinFire"]

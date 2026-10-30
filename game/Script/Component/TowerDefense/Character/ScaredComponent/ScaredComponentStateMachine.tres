@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://df5n350la3v8"]
+
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="1"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="3"]
+
+[sub_resource type="Resource" id="State_root"]
+script = ExtResource("1")
+StableId = "scared.root"
+DisplayName = &"Root"
+Kind = 1
+InitialChildId = "scared.idle"
+
+[sub_resource type="Resource" id="State_idle"]
+script = ExtResource("1")
+StableId = "scared.idle"
+DisplayName = &"Idle"
+ParentId = "scared.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_down"]
+script = ExtResource("1")
+StableId = "scared.down"
+DisplayName = &"ScaredDown"
+ParentId = "scared.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_scared_idle"]
+script = ExtResource("1")
+StableId = "scared.scared_idle"
+DisplayName = &"ScaredIdle"
+ParentId = "scared.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_grow"]
+script = ExtResource("1")
+StableId = "scared.grow"
+DisplayName = &"ScaredGrow"
+ParentId = "scared.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_idle"]
+script = ExtResource("2")
+StableId = "scared.to_idle"
+SourceStateId = "scared.root"
+TargetStateId = "scared.idle"
+EventName = &"ToIdle"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_down"]
+script = ExtResource("2")
+StableId = "scared.to_down"
+SourceStateId = "scared.root"
+TargetStateId = "scared.down"
+EventName = &"ToScaredDown"
+DeclarationOrder = 1
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_scared_idle"]
+script = ExtResource("2")
+StableId = "scared.to_scared_idle"
+SourceStateId = "scared.root"
+TargetStateId = "scared.scared_idle"
+EventName = &"ToScaredIdle"
+DeclarationOrder = 2
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_grow"]
+script = ExtResource("2")
+StableId = "scared.to_grow"
+SourceStateId = "scared.root"
+TargetStateId = "scared.grow"
+EventName = &"ToScaredGrow"
+DeclarationOrder = 3
+GuardDefinition = null
+
+[resource]
+script = ExtResource("3")
+DefinitionId = "builtin.component.scared"
+BaseDefinition = null
+RootStateId = "scared.root"
+States = [SubResource("State_root"), SubResource("State_idle"), SubResource("State_down"), SubResource("State_scared_idle"), SubResource("State_grow")]
+Transitions = [SubResource("Transition_idle"), SubResource("Transition_down"), SubResource("Transition_scared_idle"), SubResource("Transition_grow")]

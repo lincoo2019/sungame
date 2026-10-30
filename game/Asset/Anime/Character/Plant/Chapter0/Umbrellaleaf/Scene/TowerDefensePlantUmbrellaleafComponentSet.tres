@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://b4hnqtk36tuf3"]
+
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="1"]
+[ext_resource type="Script" uid="uid://dblockdef0001" path="res://Script/Component/TowerDefense/Character/BlockComponent/BlockComponentDefinition.cs" id="2"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="3"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_block"]
+size = Vector2(73, 33)
+
+[sub_resource type="Resource" id="AabbShape2DResource_block"]
+script = ExtResource("1")
+Geometry = SubResource("RectangleShape2D_block")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, -16)
+
+[sub_resource type="Resource" id="BlockComponentDefinition"]
+script = ExtResource("2")
+checkShape = SubResource("AabbShape2DResource_block")
+reboundProjectileShape = null
+ComponentTypeId = "BlockComponent"
+DefinitionId = "builtin.component.block.umbrellaleaf"
+InstanceId = "character.block"
+WireIndex = 0
+StateMachineDefinition = null
+LegacyNodeNames = [&"BlockComponent"]
+
+[resource]
+script = ExtResource("4")
+ParentSet = ExtResource("3")
+Components = [SubResource("BlockComponentDefinition")]

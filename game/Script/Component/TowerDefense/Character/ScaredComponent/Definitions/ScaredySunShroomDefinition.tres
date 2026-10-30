@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ScaredComponentDefinition" format=3 uid="uid://bto2sts3huw20"]
+
+[ext_resource type="Resource" uid="uid://df5n350la3v8" path="res://Script/Component/TowerDefense/Character/ScaredComponent/ScaredComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://dtcv8q8mll5ti" path="res://Script/Component/TowerDefense/Character/ScaredComponent/ScaredComponentDefinition.cs" id="3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape_scared"]
+size = Vector2(134, 144)
+
+[sub_resource type="Resource" id="ScareShape"]
+script = ExtResource("2")
+Geometry = SubResource("RectangleShape_scared")
+
+[resource]
+script = ExtResource("3")
+scareShape = SubResource("ScareShape")
+spritePath = NodePath("SpriteGroup/TransformPoint/ScaredySunShroom")
+controlledRuntimeInstanceIds = ["character.fire", "character.grow_up"]
+controlledRuntimeTypeIds = ["FireComponent", "GrowUpComponent"]
+ComponentTypeId = "ScaredComponent"
+DefinitionId = "builtin.component.scared.scaredy_sun_shroom"
+InstanceId = "character.scared"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"ScaredComponent"]

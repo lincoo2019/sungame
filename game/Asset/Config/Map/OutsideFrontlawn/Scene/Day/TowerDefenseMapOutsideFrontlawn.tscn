@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cmw0smbqgllgk"]
+
+[ext_resource type="Script" uid="uid://dftmgtwpwrtmf" path="res://Asset/Config/Map/OutsideFrontlawn/Scene/Day/TowerDefenseMapOutsideFrontlawn.cs" id="1_72mo3"]
+[ext_resource type="Texture2D" uid="uid://b5nfpjyxef8cn" path="res://Asset/Config/Map/OutsideFrontlawn/Scene/Day/TowerDefenseMapOutsideFrontlawnGradient.tres" id="2_w0xxq"]
+[ext_resource type="Texture2D" uid="uid://dtxoa0n3iq2h5" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Outside/OutsideFrontlawn.jpg" id="3_72mo3"]
+[ext_resource type="Texture2D" uid="uid://bbbiwhq1ib7vi" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Stripe.png" id="4_w6e5w"]
+[ext_resource type="Texture2D" uid="uid://hatgxk8a12gq" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Outside/OutsideFrontlawnFloor.png" id="5_72mo3"]
+[ext_resource type="Texture2D" uid="uid://dvlx4l3bnh3tf" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Outside/OutsideFrontlawnDoor.png" id="6_w0xxq"]
+
+[node name="TowerDefenseMapOutsideFrontlawn" type="Node2D" node_paths=PackedStringArray("stripe")]
+script = ExtResource("1_72mo3")
+stripe = NodePath("Stripe")
+canvasModulateGradient = ExtResource("2_w0xxq")
+
+[node name="Frontlawn" type="Sprite2D" parent="."]
+scale = Vector2(1, 1)
+texture = ExtResource("3_72mo3")
+centered = false
+
+[node name="Stripe" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(494, 70)
+scale = Vector2(2, 2)
+texture = ExtResource("4_w6e5w")
+centered = false
+
+[node name="FrontlawnFloor" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(117, 327.75)
+scale = Vector2(1, 0.9980315)
+texture = ExtResource("5_72mo3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="FrontlawnDoor" type="Sprite2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+position = Vector2(117, 328.75)
+scale = Vector2(1, 0.9980315)
+texture = ExtResource("6_w0xxq")

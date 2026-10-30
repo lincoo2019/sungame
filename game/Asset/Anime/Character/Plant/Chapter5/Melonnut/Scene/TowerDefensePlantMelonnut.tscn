@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://kgds4ye8i2eg"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter5/Melonnut/Scene/TowerDefensePlantMelonnutComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://do0w52tbjress" path="res://Asset/Anime/Character/Plant/Chapter5/Melonnut/Scene/TowerDefensePlantMelonnut.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_40p5x66_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cpi4thom4psrg" path="res://Asset/Anime/Character/Plant/Chapter5/Melonnut/Config/TowerDefensePlantMelonnut.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://dvig8iatt0a7i" path="res://Asset/Anime/Character/Plant/Chapter5/Melonnut/Melonnut.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantMelonnut" unique_id=777275083 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 3.0
+fireNum = 1
+projectileName = "Melon"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/Melonnut")
+PreviewDamagePointPersontage = 1.0
+Custom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="Melonnut" parent="SpriteGroup/TransformPoint" index="0" unique_id=236935245 instance=ExtResource("6")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/Melonnut" index="0" unique_id=1091650949]
+script = ExtResource("7")
+followSlotId = 2
+useScale = false
+useSkew = false
+Layer = 2
+drawLayerId = 2
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="FireMarker" type="Marker2D" parent="SpriteGroup/TransformPoint/Melonnut/AdobeAnimateSlot" index="0" unique_id=1327353200]
+position = Vector2(36.00311, 34.520767)

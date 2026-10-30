@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.04, 0.048, 0.06, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.22, 0.3, 0.4, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="UniversalShape2DPreview" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 370)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "Shape2D 碰撞形状预览"
+
+[node name="Status" type="Label" parent="Layout/Header"]
+layout_mode = 2
+horizontal_alignment = 2
+
+[node name="ZoomRow" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/ZoomRow"]
+layout_mode = 2
+text = "预览缩放"
+
+[node name="Zoom" type="HSlider" parent="Layout/ZoomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.1
+max_value = 5.0
+step = 0.1
+value = 1.0
+
+[node name="ZoomValue" type="Label" parent="Layout/ZoomRow"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "1.0×"
+horizontal_alignment = 2
+
+[node name="Canvas" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 285)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+clip_contents = true

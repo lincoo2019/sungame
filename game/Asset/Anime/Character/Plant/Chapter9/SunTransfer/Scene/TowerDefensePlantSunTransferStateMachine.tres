@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://c2ss3hlv0j2td"]
+
+[ext_resource type="Resource" uid="uid://d28ilpm3lyjt5" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefensePlantStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_shoot"]
+script = ExtResource("2")
+StableId = "plant.sun_transfer.shoot"
+DisplayName = &"Shoot"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_transfer"]
+script = ExtResource("2")
+StableId = "plant.sun_transfer.transfer"
+DisplayName = &"Transfer"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_to_shoot"]
+script = ExtResource("3")
+StableId = "plant.sun_transfer.to_shoot"
+SourceStateId = "character.root"
+TargetStateId = "plant.sun_transfer.shoot"
+EventName = &"ToShoot"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_transfer"]
+script = ExtResource("3")
+StableId = "plant.sun_transfer.to_transfer"
+SourceStateId = "character.root"
+TargetStateId = "plant.sun_transfer.transfer"
+EventName = &"ToTransfer"
+DeclarationOrder = 1
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.plant.sun_transfer"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_shoot"), SubResource("State_transfer")]
+Transitions = [SubResource("Transition_to_shoot"), SubResource("Transition_to_transfer")]

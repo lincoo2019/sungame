@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="FireComponentDefinition" format=3 uid="uid://bub0sey340hc7"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="2"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="3"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="4"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="5"]
+
+[sub_resource type="Resource" id="Resource_cg625"]
+script = ExtResource("2")
+projectileName = &"FirePea"
+baseDamage = 40.0
+collisionFlags = 11
+fireMethodFlags = 32
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Resource_ygfif"]
+script = ExtResource("3")
+projectileData = SubResource("Resource_cg625")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_rf10a"]
+script = ExtResource("4")
+projectile = SubResource("Resource_ygfif")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[resource]
+script = ExtResource("5")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/QueenSunFlower/AdobeAnimateSlot/Marker2D")]
+fireCheckList = [SubResource("Resource_rf10a")]
+checkAllLine = true
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.gold.queen_sun_flower"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]

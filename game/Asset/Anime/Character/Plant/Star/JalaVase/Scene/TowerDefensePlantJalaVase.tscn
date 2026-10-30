@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://curpp2c7e4y1q"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantVaseWaterEnvironmentComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://yaqgatixwdeu" path="res://Asset/Anime/Character/Plant/Star/JalaVase/Scene/TowerDefensePlantJalaVase.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_40p5x66_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b5n3j24wbc2n" path="res://Asset/Anime/Character/Plant/Star/JalaVase/Scene/TowerDefensePlantJalaVaseStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://cw4tsydoft603" path="res://Asset/Anime/Character/Plant/Star/JalaVase/Config/TowerDefensePlantJalaVase.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://bftqaax2sj1x3" path="res://Asset/Anime/Character/Plant/Star/JalaVase/JalaVase.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://4okp7722qggt" path="res://Asset/Anime/Effect/Hammer/Hammer.tscn" id="9"]
+
+[node name="TowerDefensePlantJalaVase" unique_id=1652151444 node_paths=PackedStringArray("waterLineSprite", "sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+waterLineSprite = NodePath("SpriteGroup/ZombieWaterLine")
+waterHeightPersontage = 0.6
+waterHeight = 25.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/JalaVase")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="JalaVase" parent="SpriteGroup/TransformPoint" index="0" unique_id=1837696943 instance=ExtResource("7")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="ZombieWaterLine" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=777360160 instance=ExtResource("8")]
+visible = false
+position = Vector2(2, 1)
+trueFrameRate = 180.0
+
+[node name="MouseMask" type="ColorRect" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="4" unique_id=70464275]
+unique_name_in_owner = true
+offset_left = -30.0
+offset_top = -54.0
+offset_right = 31.0
+offset_bottom = 61.0
+mouse_default_cursor_shape = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Hammer" parent="." index="3" unique_id=1486844724 instance=ExtResource("9")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(25, -37)
+timeScale = 5.0
+trueFrameRate = 180.0
+Animation/Clip = "OpenPot"

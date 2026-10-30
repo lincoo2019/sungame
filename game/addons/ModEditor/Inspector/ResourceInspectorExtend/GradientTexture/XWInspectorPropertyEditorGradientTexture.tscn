@@ -1,0 +1,171 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/XWInspectorPropertyEditorBase.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/ResourceInspectorExtend/GradientTexture/XWInspectorPropertyEditorGradientTexture.cs" id="2_script"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/Resource/XWResourcePicker.tscn" id="3_picker"]
+
+[node name="XWInspectorPropertyEditorGradientTexture" node_paths=PackedStringArray("PropertyEditorPath") instance=ExtResource("1_base")]
+custom_minimum_size = Vector2(0, 248)
+script = ExtResource("2_script")
+PropertyEditorPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor")
+
+[node name="GradientTextureEditor" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="PreviewPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GradientTexturePreview" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/PreviewPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 66)
+layout_mode = 2
+texture_filter = 1
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GradientPicker" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor" instance=ExtResource("3_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SizeGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="WidthLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/SizeGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "宽度"
+vertical_alignment = 1
+
+[node name="WidthSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/SizeGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(74, 26)
+layout_mode = 2
+min_value = 1.0
+max_value = 4096.0
+value = 256.0
+
+[node name="HeightLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/SizeGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "高度"
+vertical_alignment = 1
+
+[node name="HeightSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/SizeGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(74, 26)
+layout_mode = 2
+min_value = 1.0
+max_value = 4096.0
+value = 1.0
+
+[node name="UseHdrCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+text = "HDR"
+
+[node name="Texture2DControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="ModeGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="FillLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls/ModeGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "填充"
+vertical_alignment = 1
+
+[node name="FillOption" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls/ModeGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RepeatLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls/ModeGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "重复"
+vertical_alignment = 1
+
+[node name="RepeatOption" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls/ModeGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VectorGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="FillFromXLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls/VectorGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "From X"
+vertical_alignment = 1
+
+[node name="FillFromXSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls/VectorGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(74, 26)
+layout_mode = 2
+step = 0.01
+allow_greater = true
+allow_lesser = true
+
+[node name="FillFromYLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls/VectorGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "From Y"
+vertical_alignment = 1
+
+[node name="FillFromYSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls/VectorGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(74, 26)
+layout_mode = 2
+step = 0.01
+allow_greater = true
+allow_lesser = true
+
+[node name="FillToXLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls/VectorGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "To X"
+vertical_alignment = 1
+
+[node name="FillToXSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls/VectorGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(74, 26)
+layout_mode = 2
+step = 0.01
+allow_greater = true
+allow_lesser = true
+value = 1.0
+
+[node name="FillToYLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls/VectorGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "To Y"
+vertical_alignment = 1
+
+[node name="FillToYSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientTextureEditor/Texture2DControls/VectorGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(74, 26)
+layout_mode = 2
+step = 0.01
+allow_greater = true
+allow_lesser = true

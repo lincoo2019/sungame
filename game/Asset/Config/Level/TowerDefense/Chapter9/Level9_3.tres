@@ -1,0 +1,374 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://bvdgk38ntue65"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/Chapter9/Level9_3.json" id="1_y2sb7"]
+[ext_resource type="Script" uid="uid://ba76j1qc1ehmt" path="res://Registry/Battle/Feature/Event/Resource/TowerDefenseLevelEventBase.cs" id="2_3fqge"]
+[ext_resource type="Script" uid="uid://dbpqspbkam44d" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.cs" id="3_f7x2y"]
+[ext_resource type="Script" uid="uid://elndp7rr41y0" path="res://Registry/Battle/Feature/LookStar/Resource/TowerDefenseLevelLookStarCheckConfig.cs" id="4_x21d3"]
+[ext_resource type="Script" uid="uid://ge6chewkhjqd" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.cs" id="5_livjn"]
+[ext_resource type="Script" uid="uid://d17gywmt3g3lb" path="res://Resource/TowerDefense/Level/PreSpawn/TowerDefenseLevelPreSpawnConfig.cs" id="7_6qb5f"]
+[ext_resource type="Script" uid="uid://dfj86l56q1n8g" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.cs" id="11_l3u2d"]
+[ext_resource type="Script" uid="uid://blrb5liskebi6" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.cs" id="12_x4mvs"]
+[ext_resource type="Script" uid="uid://br6kawt7m03sc" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelDynamicConfig.cs" id="13_y3lsq"]
+[ext_resource type="Script" uid="uid://ctvkmai1q8sa6" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.cs" id="14_6b3yp"]
+[ext_resource type="Script" uid="uid://c67uxwpu4jftb" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.cs" id="15_g1r0x"]
+
+[sub_resource type="Resource" id="Resource_y2sb7"]
+script = ExtResource("3_f7x2y")
+
+[sub_resource type="Resource" id="Resource_d6uji"]
+script = ExtResource("5_livjn")
+
+[sub_resource type="Resource" id="Resource_tujpc"]
+script = ExtResource("12_x4mvs")
+
+[sub_resource type="Resource" id="Resource_oxfch"]
+script = ExtResource("14_6b3yp")
+flagWaveInterval = 5
+dynamic = Array[ExtResource("13_y3lsq")]([])
+
+[resource]
+script = ExtResource("11_l3u2d")
+data = ExtResource("1_y2sb7")
+featureData = Dictionary[StringName, Dictionary]({
+&"BGM": {
+"BackgroundMusic": "RoofNight"
+},
+&"Brain": {},
+&"Camera": {},
+&"Event": {
+"EventInit": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["TimeBomb"],
+"GravestoneNum": 1.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"EventReady": [],
+"EventStart": []
+},
+&"Map": {
+"MapName": "Laboratory"
+},
+&"Mower": {},
+&"NpcTalk": {
+"TalkName": "Level9_3Talk"
+},
+&"PacketBank": {
+"PacketBankName": "GeneralPlant"
+},
+&"PacketPick": {},
+&"PreSpawn": {
+"Packet": []
+},
+&"Progress": {},
+&"SeedBank": {
+"Method": "Choose",
+"Packet": []
+},
+&"Shovel": {},
+&"Sun": {
+"Begin": 200.0,
+"MovingMethod": "Land",
+"Open": true,
+"SpawnInterval": 12.0,
+"SpawnNum": 15.0,
+"Type": "Jala"
+},
+&"Wave": {
+"BeginCol": 20.0,
+"Dynamic": [{}, {}, {}, {}, {}, {}, {}],
+"FlagWaveInterval": 7.0,
+"FlagZombie": "ZombieFlag",
+"MaxNextWaveHealthPercentage": 0.3,
+"MinNextWaveHealthPercentage": 0.15,
+"SpawnColEnd": 20.0,
+"SpawnColStart": 10.0,
+"SpawnOverride": {},
+"Wave": [{
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePaper"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePaper"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["TimeBomb"],
+"GravestoneNum": 1.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 7.0,
+"y": 1.0,
+"z": 7.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombiePaper"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombiePaper"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieMagnetic"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombiePaper"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["TimeBomb"],
+"GravestoneNum": 1.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 7.0,
+"y": 1.0,
+"z": 7.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieMagnetic"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombiePaper"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePaper"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["TimeBomb"],
+"GravestoneNum": 1.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 7.0,
+"y": 1.0,
+"z": 7.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieMagnetic"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePaper"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["TimeBomb"],
+"GravestoneNum": 1.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 7.0,
+"y": 1.0,
+"z": 7.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieMagnetic"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePaper"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieMagnetic"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePaper"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["TimeBomb"],
+"GravestoneNum": 2.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 7.0,
+"y": 1.0,
+"z": 7.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieMagnetic"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombiePaper"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieNormal"
+}]
+}]
+}
+})
+processName = &"Wave"
+processData = {
+"MowerUse": true
+}
+map = ""
+backgroundMusic = ""
+firstRewardType = 1
+firstRewardValue = "PlantSunTransfer"
+sunManager = SubResource("Resource_tujpc")
+fogManager = SubResource("Resource_y2sb7")
+lookStarManager = SubResource("Resource_d6uji")
+waveManager = SubResource("Resource_oxfch")
+PacketBank/Name = "GeneralPlant"
+name = "Level9_3"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "PLAYERS_MORDEN_EXPERIMENTALBASE_LEVEL_NAME"
+levelNumber = 3
+homeWorld = 1
+metadata/_custom_type_script = "uid://dfj86l56q1n8g"

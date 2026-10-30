@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://drgu8lx4gm61f"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bd1aspqgyhstj" path="res://Asset/Anime/Character/Zombie/Chapter4/Discopaper/Scene/TowerDefenseZombieDiscopaper.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://di3l8jp6aetxy" path="res://Asset/Anime/Character/Zombie/Chapter4/Discopaper/Scene/TowerDefenseZombieDiscopaperStateMachine.tres" id="4"]
+[ext_resource type="Gradient" uid="uid://bw0gnyj66aqst" path="res://Asset/Texture/Character/Effect/LightGradient.tres" id="5"]
+[ext_resource type="Resource" uid="uid://m1lrlkesln1p" path="res://Asset/Anime/Character/Zombie/Chapter4/Discopaper/Config/TowerDefenseZombieDiscopaper.tres" id="6"]
+[ext_resource type="Resource" uid="uid://b5lykvc4bvr0h" path="res://Asset/Anime/Character/Zombie/Chapter4/Discopaper/DamagePoint/Config/ZombieDiscopaperDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cgc3qbv0f1ewj" path="res://Asset/Anime/Character/Zombie/Chapter4/Discopaper/DamagePoint/Config/ZombieDiscopaperDamagePointHead.tres" id="8"]
+[ext_resource type="Texture2D" uid="uid://dw20amg6idui7" path="res://Asset/Texture/Character/Effect/Spotlight2.png" id="9"]
+[ext_resource type="PackedScene" uid="uid://dwij3ros30qup" path="res://Asset/Anime/Character/Zombie/Chapter4/Discopaper/ZombieDiscopaper.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="11"]
+[ext_resource type="Texture2D" uid="uid://deadkw1wbm3aw" path="res://Asset/Texture/Character/Effect/Spotlight.png" id="12"]
+
+[node name="TowerDefenseZombieDiscopaper" unique_id=138166499 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+spotlightGrandient = ExtResource("5")
+dancerPacketName = "ZombieBackuppaper"
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieDisco/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+garlicReplace = "Zombie_dancer__head.png"
+waterHeight = 45.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieDisco")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieDisco/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"Head": ExtResource("8")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieDisco/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieDisco/HeadSlot")
+}
+currentArmor = ["Paper"]
+
+[node name="Spotlight2" type="Sprite2D" parent="BackEffectNode" parent_id_path=PackedInt32Array(1929493585) index="0" unique_id=698559731]
+unique_name_in_owner = true
+visible = false
+position = Vector2(14, 33)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("9")
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieDisco" parent="SpriteGroup/TransformPoint" index="0" unique_id=2043940886 instance=ExtResource("10")]
+position = Vector2(-12, -33)
+clip = "AngryWalk"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "res://Asset/AtlasSource/Armor/Texture/Character/Armor/Paper/ZombiePaper1.png"]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true]
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieDisco" index="0" unique_id=1207048458]
+position = Vector2(-23.09168, -74.071724)
+rotation = 0.008007693
+clip = "Idle"
+layerVisible = [false, true, false]
+mediaReplaceAtlasPaths = ["", ""]
+mediaReplaceUse = [false, false]
+followParentSpriteLayerId = 14
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieDisco" index="1" unique_id=1501984173]
+drawLayerId = -2
+position = Vector2(-15.101295, -68.908165)
+rotation = 0.048007693
+scale = Vector2(0.9999925, 0.9999925)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieDisco" index="2" unique_id=1772569395]
+position = Vector2(4.7350917, -32.402416)
+rotation = 0.66266525
+scale = Vector2(0.7998952, 0.7998952)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=2121023955 instance=ExtResource("11")]
+visible = false
+position = Vector2(-3, -62)
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = [true, true]
+mediaReplaceAtlasPaths = ["", "", ""]
+mediaReplaceUse = [false, false, false]
+
+[node name="Spotlight" type="Sprite2D" parent="FrontEffectNode" parent_id_path=PackedInt32Array(1161662400) index="0" unique_id=370892860]
+unique_name_in_owner = true
+visible = false
+position = Vector2(17, -200)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("12")
+
+[editable path="SpriteGroup/TransformPoint/ZombieDisco"]

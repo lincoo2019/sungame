@@ -1,0 +1,488 @@
+[gd_scene format=3 uid="uid://qwbfbvqr4qfv"]
+
+[ext_resource type="Script" uid="uid://ccojhdtk0y4kh" path="res://Prefab/GUI/LevelEditor/Battle/LevelEditorBattle.cs" id="1_ag6x2"]
+[ext_resource type="PackedScene" uid="uid://7tkumqfm20gv" path="res://Prefab/GUI/LevelEditor/OnlineLevel/Item/LevelEditorOnlineLevelItem.tscn" id="1_n7mim"]
+[ext_resource type="Texture2D" uid="uid://bilmjv3kylwye" path="res://Asset/Texture/GUI/General/Special/GoldTrophy.png" id="3_bbiqe"]
+[ext_resource type="Texture2D" uid="uid://bq1wjpgclhctf" path="res://Asset/Texture/GUI/LevelEditor/RefreshButton.png" id="3_y3l2t"]
+[ext_resource type="Texture2D" uid="uid://dy7g70lyun16e" path="res://Asset/Texture/GUI/LevelEditor/RefreshButtonPress.png" id="4_6b2di"]
+[ext_resource type="PackedScene" uid="uid://bml60wmq62jay" path="res://Prefab/GUI/Button/MainButton.tscn" id="4_758ds"]
+[ext_resource type="Texture2D" uid="uid://dt8runje2cywg" path="res://Asset/Texture/GUI/LevelEditor/DiySelect_GameplayManual.png" id="5_7dthu"]
+[ext_resource type="Texture2D" uid="uid://b8mcf7jiqo1kh" path="res://Asset/Texture/GUI/LevelEditor/DiySelect_GameplayManual_highlight.png" id="6_cij38"]
+[ext_resource type="PackedScene" uid="uid://cdnyb8d1qw7g4" path="res://Prefab/GUI/Button/SpriteBrightButton/SpriteBrightButton.tscn" id="7_2tdqi"]
+[ext_resource type="Texture2D" uid="uid://ctlmif5y5srn" path="res://Asset/Texture/GUI/LevelEditor/Award/ArenaReward005.png" id="7_7dthu"]
+[ext_resource type="Texture2D" uid="uid://d113rjjs471aa" path="res://Asset/Texture/GUI/LevelEditor/Award/ArenaReward006.png" id="8_cij38"]
+[ext_resource type="Shader" uid="uid://bi8x813unwm5l" path="res://Asset/Shader/ShaderBright.gdshader" id="8_qgipm"]
+[ext_resource type="Texture2D" uid="uid://c6wk0iut0oxr2" path="res://Asset/Texture/GUI/LevelEditor/Award/ArenaReward001.png" id="9_2tdqi"]
+[ext_resource type="Texture2D" uid="uid://djwrlhavsrpd5" path="res://Asset/Texture/GUI/General/General/OptionsCheckBox2.png" id="11_du03s"]
+[ext_resource type="Texture2D" uid="uid://q8tnvwwku6m" path="res://Asset/Texture/GUI/LevelEditor/GameplayManual.png" id="11_qgipm"]
+[ext_resource type="Texture2D" uid="uid://camqjpt2tnw07" path="res://Asset/Texture/GUI/LevelEditor/Award/ArenaReward002.png" id="12_8lidk"]
+[ext_resource type="Texture2D" uid="uid://g0nshu8rrw67" path="res://Asset/Texture/GUI/LevelEditor/Award/ArenaReward003.png" id="13_n6as5"]
+[ext_resource type="Texture2D" uid="uid://oe6bi12ymuwh" path="res://Asset/Texture/GUI/LevelEditor/Award/ArenaReward004.png" id="14_8wgqb"]
+[ext_resource type="Texture2D" uid="uid://dpuwefxr5jdla" path="res://Asset/Texture/GUI/LevelEditor/DIYStage_00.png" id="19_6b2di"]
+[ext_resource type="PackedScene" uid="uid://8hmiilnigfwi" path="res://Prefab/GUI/DragMenu/DragMenu.tscn" id="20_a7iw8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7iw8"]
+shader = ExtResource("8_qgipm")
+shader_parameter/brightStrength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gm20s"]
+shader = ExtResource("8_qgipm")
+shader_parameter/brightStrength = 0.0
+
+[node name="LevelEditorBattle" type="Control" unique_id=766239527]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ag6x2")
+
+[node name="TitleLabel" type="Label" parent="." unique_id=1975919934]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.513
+anchor_right = 0.513
+offset_left = -144.04004
+offset_top = 1.0
+offset_right = 143.95996
+offset_bottom = 114.0
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 96
+text = "竞技场"
+
+[node name="MainNode" type="Control" parent="." unique_id=277858901]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LevelEditorOnlineLevelItem" parent="MainNode" unique_id=1222485594 instance=ExtResource("1_n7mim")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 197.00002
+offset_top = 155.0
+offset_right = 364.625
+offset_bottom = 319.625
+scale = Vector2(1.5, 1.5)
+isBattle = true
+cost = 500
+
+[node name="RefreshButton" type="TextureButton" parent="MainNode/LevelEditorOnlineLevelItem" unique_id=1142480253]
+layout_mode = 0
+offset_left = 136.66666
+offset_top = -5.333333
+offset_right = 189.66666
+offset_bottom = 40.666668
+scale = Vector2(0.75, 0.75)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_y3l2t")
+texture_pressed = ExtResource("4_6b2di")
+texture_hover = ExtResource("4_6b2di")
+
+[node name="TrophyTexture" type="TextureRect" parent="MainNode" unique_id=1976260725]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -103.0
+offset_right = 165.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_bbiqe")
+
+[node name="FinishLabel" type="Label" parent="MainNode/TrophyTexture" unique_id=1440945318]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 182.0
+offset_top = 60.0
+offset_right = 403.0
+offset_bottom = 138.0
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 64
+text = "胜场:10"
+
+[node name="TicketLabel" type="Label" parent="MainNode" unique_id=1283379949]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 194.0
+offset_top = 415.0
+offset_right = 452.0
+offset_bottom = 453.0
+theme_override_colors/font_color = Color(1, 1, 0.61960787, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "门票：500金币/局"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TipsButton" parent="MainNode" unique_id=299340924 instance=ExtResource("4_758ds")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 204.0
+offset_top = 101.0
+offset_right = 441.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_7dthu")
+texture_pressed = ExtResource("6_cij38")
+texture_hover = ExtResource("6_cij38")
+text = ""
+
+[node name="RewardButton" parent="MainNode" unique_id=1388840808 instance=ExtResource("7_2tdqi")]
+unique_name_in_owner = true
+z_index = 2
+material = SubResource("ShaderMaterial_a7iw8")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = 13.0
+offset_right = 241.0
+offset_bottom = 283.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("9_2tdqi")
+stretch_mode = 3
+autoSize = true
+
+[node name="CostomRewardTexture1" type="Sprite2D" parent="MainNode/RewardButton" unique_id=1792428635]
+unique_name_in_owner = true
+visible = false
+position = Vector2(300.5, 152.5)
+texture = ExtResource("8_cij38")
+
+[node name="CostomRewardTexture2" type="Sprite2D" parent="MainNode/RewardButton" unique_id=355688324]
+unique_name_in_owner = true
+visible = false
+position = Vector2(352.79166, 196.79167)
+texture = ExtResource("8_cij38")
+
+[node name="AwardLabel" type="Label" parent="MainNode/RewardButton" unique_id=256674223]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -49.666626
+offset_top = 214.66669
+offset_right = 346.66663
+offset_bottom = 252.66669
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "奖池：500金币"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckBoxNode" type="Control" parent="MainNode" unique_id=698744912]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="FailLabel" type="Label" parent="MainNode/CheckBoxNode" unique_id=1463058959]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 472.0
+offset_right = 267.0
+offset_bottom = 515.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+text = "失败"
+
+[node name="FailCheckBox" type="CheckBox" parent="MainNode/CheckBoxNode" unique_id=1600350945]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 273.0
+offset_top = 474.0
+offset_right = 323.0
+offset_bottom = 521.0
+theme_override_icons/checked = ExtResource("11_du03s")
+theme_override_icons/checked_disabled = ExtResource("11_du03s")
+disabled = true
+
+[node name="FailCheckBox2" type="CheckBox" parent="MainNode/CheckBoxNode" unique_id=14052389]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 327.0
+offset_top = 474.0
+offset_right = 377.0
+offset_bottom = 521.0
+theme_override_icons/checked = ExtResource("11_du03s")
+theme_override_icons/checked_disabled = ExtResource("11_du03s")
+disabled = true
+
+[node name="FailCheckBox3" type="CheckBox" parent="MainNode/CheckBoxNode" unique_id=1610384848]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 382.0
+offset_top = 474.0
+offset_right = 432.0
+offset_bottom = 521.0
+theme_override_icons/checked = ExtResource("11_du03s")
+theme_override_icons/checked_disabled = ExtResource("11_du03s")
+disabled = true
+
+[node name="HistoryButton" parent="MainNode" unique_id=663586664 instance=ExtResource("7_2tdqi")]
+material = SubResource("ShaderMaterial_gm20s")
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -177.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = 248.0
+grow_horizontal = 0
+texture = ExtResource("19_6b2di")
+autoSize = true
+
+[node name="FinishLabel" type="Label" parent="MainNode/HistoryButton" unique_id=1019715679]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 115.0
+offset_right = 162.0
+offset_bottom = 153.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "历史记录"
+
+[node name="TipsNode" type="Control" parent="." unique_id=1190409428]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TipsTexture" type="TextureRect" parent="TipsNode" unique_id=1795095895]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_top = 142.0
+offset_right = 264.0
+offset_bottom = 506.0
+grow_horizontal = 2
+texture = ExtResource("11_qgipm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AwardNode" type="Control" parent="." unique_id=47362127]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ArenaReward001" type="Sprite2D" parent="AwardNode" unique_id=1270351190]
+position = Vector2(310, 178)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("9_2tdqi")
+
+[node name="AwardShowLabel1" type="Label" parent="AwardNode/ArenaReward001" unique_id=1778075099]
+offset_left = -279.0
+offset_top = -64.0
+offset_right = -62.0
+offset_bottom = 56.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "0胜500金币
+1胜1000金币
+2胜2000金币"
+
+[node name="ArenaReward002" type="Sprite2D" parent="AwardNode" unique_id=2104524697]
+position = Vector2(308, 304)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("12_8lidk")
+
+[node name="AwardShowLabel2" type="Label" parent="AwardNode/ArenaReward002" unique_id=1637598578]
+offset_left = -279.0
+offset_top = -64.0
+offset_right = -62.0
+offset_bottom = 56.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "3胜3000金币
+4胜5000金币
+5胜8000金币"
+
+[node name="ArenaReward003" type="Sprite2D" parent="AwardNode" unique_id=534796537]
+position = Vector2(307, 447.00003)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("13_n6as5")
+
+[node name="AwardShowLabel3" type="Label" parent="AwardNode/ArenaReward003" unique_id=2020482932]
+offset_left = -279.0
+offset_top = -64.0
+offset_right = -62.0
+offset_bottom = 56.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "6胜12000金币
+7胜16000金币
+8胜20000金币"
+
+[node name="ArenaReward004" type="Sprite2D" parent="AwardNode" unique_id=570429831]
+position = Vector2(828, 182)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("14_8wgqb")
+
+[node name="AwardShowLabel4" type="Label" parent="AwardNode/ArenaReward004" unique_id=1475872488]
+offset_left = -554.66675
+offset_top = -69.333336
+offset_right = -140.66675
+offset_bottom = 50.666664
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "9胜30000金币
+10胜40000金币+随机皮肤*1
+11胜50000金币+随机皮肤*1"
+
+[node name="ArenaReward006" type="Sprite2D" parent="AwardNode/ArenaReward004" unique_id=2068043424]
+position = Vector2(152, 57.333282)
+texture = ExtResource("8_cij38")
+
+[node name="ArenaReward005" type="Sprite2D" parent="AwardNode" unique_id=1817468702]
+position = Vector2(625, 384)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_7dthu")
+
+[node name="AwardShowLabel5" type="Label" parent="AwardNode/ArenaReward005" unique_id=1077588615]
+offset_left = -177.33344
+offset_top = 146.66667
+offset_right = 236.66656
+offset_bottom = 184.66667
+theme_override_colors/font_color = Color(1, 0.49803922, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "12胜80000金币+随机皮肤*2+随机植物*1"
+
+[node name="ArenaReward006" type="Sprite2D" parent="AwardNode/ArenaReward005" unique_id=1939018816]
+position = Vector2(152, 57.333282)
+texture = ExtResource("8_cij38")
+
+[node name="ArenaReward007" type="Sprite2D" parent="AwardNode/ArenaReward005" unique_id=1838163136]
+position = Vector2(191.99992, 97.33333)
+texture = ExtResource("8_cij38")
+
+[node name="AwardShowLabel6" type="Label" parent="AwardNode" unique_id=359852788]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 555.0
+offset_right = 904.0
+offset_bottom = 593.0
+theme_override_colors/font_color = Color(1, 0.49803922, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "已有的皮肤转化为10000金币（高级皮肤如金卡皮肤20000金币）"
+
+[node name="OverNode" type="Control" parent="." unique_id=164388675]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="OverNode" unique_id=1642099504]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.35686275)
+
+[node name="HistoryNode" type="Control" parent="." unique_id=246795242]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HistoryNode" unique_id=1745620995]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6784314)
+
+[node name="HistoryLabel" type="Label" parent="HistoryNode" unique_id=568692966]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_right = 128.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 36
+theme_override_font_sizes/font_size = 96
+text = "历史记录"
+
+[node name="HistoryDragMenu" parent="HistoryNode" unique_id=984553350 instance=ExtResource("20_a7iw8")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -80.0
+offset_right = -80.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+interval = 300.0
+alphaDecrease = 0.0
+
+[node name="HistoryNooneLabel" type="Label" parent="HistoryNode" unique_id=1314659322]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -19.0
+offset_right = 64.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+text = "暂无记录"

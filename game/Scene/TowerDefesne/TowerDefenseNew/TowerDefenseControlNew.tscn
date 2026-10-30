@@ -1,0 +1,426 @@
+[gd_scene format=3 uid="uid://4gdrrrvcjny1"]
+
+[ext_resource type="Script" uid="uid://33hc6xkvmeh0" path="res://Scene/TowerDefesne/TowerDefenseNew/TowerDefenseControlNew.cs" id="1_qd8ib"]
+[ext_resource type="Script" uid="uid://dawxd0n6rxm8r" path="res://addons/godot_state_charts/StateChart.cs" id="2_17pcj"]
+[ext_resource type="PackedScene" uid="uid://bgkuthysw0876" path="res://Prefab/GUI/Button/NinePatchButtonBase/NinePatchButtonBase.tscn" id="2_jffyy"]
+[ext_resource type="Script" uid="uid://perpug1eji70" path="res://addons/godot_state_charts/CompoundState.cs" id="3_s0hjo"]
+[ext_resource type="Texture2D" uid="uid://da1nikmivd2n8" path="res://Asset/Texture/TowerDefense/PacketBank/PacketBankButton.png" id="3_t7dqk"]
+[ext_resource type="Texture2D" uid="uid://dphra8cjrdw34" path="res://Asset/Texture/TowerDefense/PacketBank/PacketBankButtonGlow.png" id="4_17pcj"]
+[ext_resource type="Script" uid="uid://crbt032pphgyu" path="res://addons/godot_state_charts/AtomicState.cs" id="4_s0hjo"]
+[ext_resource type="FontFile" uid="uid://d0aylc13b87r0" path="res://Asset/Font/BrianneTod.ttf" id="5_s0hjo"]
+[ext_resource type="PackedScene" uid="uid://bml60wmq62jay" path="res://Prefab/GUI/Button/MainButton.tscn" id="6_luhhn"]
+[ext_resource type="Script" uid="uid://2hhl745p2p5l" path="res://addons/godot_state_charts/Transition.cs" id="7_transition"]
+[ext_resource type="PackedScene" uid="uid://cdnyb8d1qw7g4" path="res://Prefab/GUI/Button/SpriteBrightButton/SpriteBrightButton.tscn" id="8_2t6p7"]
+[ext_resource type="PackedScene" uid="uid://dqo2jc1bsf6gq" path="res://Prefab/TowerDefense/GUI/InGame/LevelControl/TowerDefenseInGameLevelControl.tscn" id="8_levelcontrol"]
+[ext_resource type="Shader" uid="uid://bi8x813unwm5l" path="res://Asset/Shader/ShaderBright.gdshader" id="9_vj704"]
+[ext_resource type="PackedScene" uid="uid://chrvpojeedrwe" path="res://Prefab/TowerDefense/GUI/InGame/ZombieWon/TowerDefenseZombieWon.tscn" id="9_zombiewon"]
+[ext_resource type="Texture2D" uid="uid://dgviglko6y6sa" path="res://Asset/Texture/GUI/TowerDefense/Level/LevelChooseOption.png" id="10_qfqy7"]
+[ext_resource type="Script" uid="uid://daabbarea2d01" path="res://Core/TowerDefenseManager/SubSystem/AabbArea2D.cs" id="aabb_area"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="AabbShape2DResource"]
+[ext_resource type="PackedScene" path="res://Prefab/GUI/BossHealthBar/TowerDefenseBossHealthBarManager.tscn" id="boss_health_bar_manager"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_zombiecheck"]
+size = Vector2(341, 1997)
+
+[sub_resource type="Resource" id="AabbShape2DResource_zombiecheck"]
+script = ExtResource("AabbShape2DResource")
+Geometry = SubResource("RectangleShape2D_zombiecheck")
+LocalTransform = Transform2D(1, 0, 0, 1, -13.5, 1001.5)
+
+[sub_resource type="InputEventKey" id="InputEventKey_pxr3p"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_ufnp8"]
+events = [SubResource("InputEventKey_pxr3p")]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2t6p7"]
+shader = ExtResource("9_vj704")
+shader_parameter/brightStrength = 0.0
+
+[sub_resource type="Animation" id="Animation_ufnp8"]
+resource_name = "Enter"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BankUILayer/UITopContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -88), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BankUILayer/UITopContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_j63tn"]
+resource_name = "Exit"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BankUILayer/UITopContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -88)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BankUILayer/UITopContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_3xy8w"]
+resource_name = "MobileEnter"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BankUILayer/UITopContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-210, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BankUILayer/UITopContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2t6p7"]
+resource_name = "MobileExit"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BankUILayer/UITopContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-210, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BankUILayer/UITopContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_3xh7p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BankUILayer/UITopContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-220, -88)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BankUILayer/UITopContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j63tn"]
+_data = {
+&"Enter": SubResource("Animation_ufnp8"),
+&"Exit": SubResource("Animation_j63tn"),
+&"MobileEnter": SubResource("Animation_3xy8w"),
+&"MobileExit": SubResource("Animation_2t6p7"),
+&"RESET": SubResource("Animation_3xh7p")
+}
+
+[node name="TowerDefenseControlNew" type="Node" unique_id=2092857298 node_paths=PackedStringArray("buttonPause", "checkBox2X", "optionButton")]
+process_mode = 1
+script = ExtResource("1_qd8ib")
+buttonPause = NodePath("GUITop/ButtonPause")
+checkBox2X = NodePath("GUITop/CheckBox2X")
+optionButton = NodePath("GUITop/OptionButton")
+
+[node name="TowerDefenseInGameLevelControl" parent="." unique_id=2099565643 instance=ExtResource("8_levelcontrol")]
+unique_name_in_owner = true
+mouse_filter = 2
+
+[node name="BankUILayer" type="CanvasLayer" parent="." unique_id=1120410101]
+unique_name_in_owner = true
+
+[node name="UITopContainer" type="HFlowContainer" parent="BankUILayer" unique_id=1535986173]
+custom_minimum_size = Vector2(975, 0)
+offset_left = -220.0
+offset_top = -88.0
+offset_right = 755.0
+offset_bottom = -8.0
+mouse_filter = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 5
+
+[node name="UITopBankContainer" type="HBoxContainer" parent="BankUILayer/UITopContainer" unique_id=23255990]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="MobileInterval" type="Control" parent="BankUILayer/UITopContainer" unique_id=1660415296]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UITopPropContainer" type="HBoxContainer" parent="BankUILayer/UITopContainer" unique_id=1457558089]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="CharacterLayer" type="CanvasLayer" parent="." unique_id=1918131413]
+follow_viewport_enabled = true
+
+[node name="CharacterCanvasModulate" type="CanvasModulate" parent="CharacterLayer" unique_id=1659647847]
+unique_name_in_owner = true
+
+[node name="ZombieCheckArea" type="Node2D" parent="CharacterLayer" unique_id=556677889]
+script = ExtResource("aabb_area")
+ShapeResources = Array[ExtResource("AabbShape2DResource")]([SubResource("AabbShape2DResource_zombiecheck")])
+unique_name_in_owner = true
+collision_layer = 0
+monitorable = false
+
+[node name="CharacterNode" type="Node2D" parent="CharacterLayer" unique_id=1191738268]
+unique_name_in_owner = true
+physics_interpolation_mode = 2
+y_sort_enabled = true
+
+[node name="TowerDefenseBossHealthBarManager" parent="." instance=ExtResource("boss_health_bar_manager")]
+
+[node name="GUITop" type="CanvasLayer" parent="." unique_id=2117064546]
+layer = 3
+
+[node name="ShopButton" parent="GUITop" unique_id=994950764 instance=ExtResource("2_jffyy")]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -343.0
+offset_top = -34.0
+offset_right = -186.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "商店"
+normalTexture = ExtResource("3_t7dqk")
+pressedTexture = ExtResource("4_17pcj")
+hoverTexture = ExtResource("4_17pcj")
+
+[node name="NinePatchTexture" parent="GUITop/ShopButton" index="0" unique_id=880330122]
+texture = ExtResource("3_t7dqk")
+
+[node name="LabelText" parent="GUITop/ShopButton/CenterContainer" parent_id_path=PackedInt32Array(994950764, 1230502882) index="0" unique_id=1606057322]
+theme_override_colors/font_color = Color(0.306155, 0.122686, 6.49765e-07, 1)
+theme_override_fonts/font = ExtResource("5_s0hjo")
+text = "商店"
+
+[node name="AlmanacButton" parent="GUITop" unique_id=299591339 instance=ExtResource("2_jffyy")]
+visible = false
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.002
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_left = -179.0
+offset_top = -35.2001
+offset_right = -22.0
+offset_bottom = -4.20007
+text = "查看图鉴"
+normalTexture = ExtResource("3_t7dqk")
+pressedTexture = ExtResource("4_17pcj")
+hoverTexture = ExtResource("4_17pcj")
+
+[node name="NinePatchTexture" parent="GUITop/AlmanacButton" index="0" unique_id=880330122]
+texture = ExtResource("3_t7dqk")
+
+[node name="LabelText" parent="GUITop/AlmanacButton/CenterContainer" parent_id_path=PackedInt32Array(299591339, 1230502882) index="0" unique_id=1606057322]
+theme_override_colors/font_color = Color(0.306155, 0.122686, 6.49765e-07, 1)
+theme_override_fonts/font = ExtResource("5_s0hjo")
+text = "查看图鉴"
+
+[node name="ButtonPause" parent="GUITop" unique_id=1267118574 instance=ExtResource("6_luhhn")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -105.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 77.0
+grow_horizontal = 0
+toggle_mode = true
+shortcut = SubResource("Shortcut_ufnp8")
+shortcut_in_tooltip = false
+ignore_texture_size = true
+text = "菜单"
+
+[node name="CheckBox2X" type="CheckBox" parent="GUITop" unique_id=1115768625]
+unique_name_in_owner = true
+visible = false
+light_mask = 0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -107.0
+offset_top = 64.0
+offset_right = -5.0
+offset_bottom = 128.0
+grow_horizontal = 0
+scale = Vector2(0.78, 0.78)
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "加速"
+
+[node name="OptionButton" parent="GUITop" unique_id=456467442 instance=ExtResource("8_2t6p7")]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_2t6p7")
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -56.0
+offset_right = 139.0
+offset_bottom = 75.0
+grow_vertical = 0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_qfqy7")
+autoSize = true
+
+[node name="ZombieWonLayer" type="CanvasLayer" parent="." unique_id=998877665]
+layer = 10
+
+[node name="TowerDefenseZombieWon" parent="ZombieWonLayer" unique_id=887766554 instance=ExtResource("9_zombiewon")]
+unique_name_in_owner = true
+
+[node name="State" type="Node" parent="." unique_id=95540524]
+
+[node name="State" type="Node" parent="State" unique_id=782492813]
+unique_name_in_owner = true
+script = ExtResource("2_17pcj")
+
+[node name="CompoundState" type="Node" parent="State/State" unique_id=920813192]
+script = ExtResource("3_s0hjo")
+initialState = NodePath("Ready")
+
+[node name="Ready" type="Node" parent="State/State/CompoundState" unique_id=1943006760]
+script = ExtResource("4_s0hjo")
+
+[node name="GameInit" type="Node" parent="State/State/CompoundState" unique_id=369597034]
+script = ExtResource("4_s0hjo")
+
+[node name="GameEntry" type="Node" parent="State/State/CompoundState" unique_id=1011851820]
+script = ExtResource("4_s0hjo")
+
+[node name="GameReady" type="Node" parent="State/State/CompoundState" unique_id=1619301532]
+script = ExtResource("4_s0hjo")
+
+[node name="GameRunning" type="Node" parent="State/State/CompoundState" unique_id=1483344202]
+script = ExtResource("4_s0hjo")
+
+[node name="GameFail" type="Node" parent="State/State/CompoundState" unique_id=-1294967295]
+script = ExtResource("4_s0hjo")
+
+[node name="ToReady" type="Node" parent="State/State/CompoundState" unique_id=500691473]
+script = ExtResource("7_transition")
+to = NodePath("../Ready")
+event = &"ToReady"
+
+[node name="ToGameInit" type="Node" parent="State/State/CompoundState" unique_id=1766731785]
+script = ExtResource("7_transition")
+to = NodePath("../GameInit")
+event = &"ToGameInit"
+
+[node name="ToGameEntry" type="Node" parent="State/State/CompoundState" unique_id=573622380]
+script = ExtResource("7_transition")
+to = NodePath("../GameEntry")
+event = &"ToGameEntry"
+
+[node name="ToGameReady" type="Node" parent="State/State/CompoundState" unique_id=1613534093]
+script = ExtResource("7_transition")
+to = NodePath("../GameReady")
+event = &"ToGameReady"
+
+[node name="ToGameRunning" type="Node" parent="State/State/CompoundState" unique_id=1966815457]
+script = ExtResource("7_transition")
+to = NodePath("../GameRunning")
+event = &"ToGameRunning"
+
+[node name="ToGameFail" type="Node" parent="State/State/CompoundState" unique_id=1944372401]
+script = ExtResource("7_transition")
+to = NodePath("../GameFail")
+event = &"ToGameFail"
+
+[node name="UITopAnimationPlayer" type="AnimationPlayer" parent="." unique_id=2109601317]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_j63tn")
+
+[editable path="GUITop/ShopButton"]
+[editable path="GUITop/AlmanacButton"]

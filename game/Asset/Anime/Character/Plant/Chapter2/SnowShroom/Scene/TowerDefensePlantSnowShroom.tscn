@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bhpgh8qt136ke"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dxgtqiyecx3qv" path="res://Asset/Anime/Character/Plant/Chapter2/SnowShroom/Scene/TowerDefensePlantSnowShroom.cs" id="2"]
+[ext_resource type="Script" uid="uid://bpobxkjerypff" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventForzen.cs" id="3"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="4"]
+[ext_resource type="Resource" uid="uid://px62vueb748h" path="res://Asset/Anime/Character/Plant/Chapter2/SnowShroom/Config/TowerDefensePlantSnowShroom.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://djkn7gsrqmxqr" path="res://Asset/Anime/Character/Plant/Chapter2/SnowShroom/SnowShroom.tscn" id="6"]
+
+[sub_resource type="Resource" id="Resource_a3s7x"]
+script = ExtResource("3")
+time = 3.0
+metadata/_custom_type_script = "uid://bpobxkjerypff"
+
+[sub_resource type="Resource" id="Resource_8akdn"]
+script = ExtResource("4")
+collisionFlags = 15
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[node name="TowerDefensePlantSnowShroom" unique_id=1985070464 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+eventList = [SubResource("Resource_a3s7x"), SubResource("Resource_8akdn")]
+sleepAnimeClip = "Sleep"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/SnowShroom")
+Custom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="SnowShroom" parent="SpriteGroup/TransformPoint" index="0" unique_id=1096028002 instance=ExtResource("6")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0

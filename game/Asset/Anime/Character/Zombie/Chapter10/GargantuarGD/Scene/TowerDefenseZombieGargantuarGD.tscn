@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://vsmlrdhbnajd"]
+
+[ext_resource type="PackedScene" uid="uid://be74ryvl4k6y7" path="res://Prefab/TowerDefense/Character/TowerDefenseZombieGargantuarBase.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bqwj7ue7xn4wv" path="res://Asset/Anime/Character/Zombie/Chapter10/GargantuarGD/Scene/TowerDefenseZombieGargantuarGD.cs" id="2"]
+[ext_resource type="Resource" uid="uid://b6s0celo4bqf" path="res://Asset/Anime/Character/Zombie/Chapter10/GargantuarGD/Scene/TowerDefenseZombieGargantuarGDStateMachine.tres" id="3"]
+[ext_resource type="Resource" uid="uid://c1wydrqnvrog4" path="res://Asset/Anime/Character/Zombie/Chapter10/GargantuarGD/Scene/TowerDefenseZombieGargantuarGDComponentSet.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cf2g6pndlgy15" path="res://Asset/Anime/Character/Zombie/Chapter10/GargantuarGD/Config/TowerDefenseZombieGargantuarGD.tres" id="5"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter10/GargantuarGD/Armor/Config/ZombieGargantuarGDArmorHelmet.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://da7kg3pskc2n5" path="res://Asset/Anime/Character/Zombie/Chapter10/GargantuarGD/ZombieGargantuarGD.tscn" id="7"]
+
+[node name="TowerDefenseZombieGargantuarGD" unique_id=1270523756 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+impFilter = ""
+walkSpeedScale = 0.3
+waterHeight = 85.0
+MainStateMachineDefinition = ExtResource("3")
+ComponentSet = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarGD")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarGD/HeadSlot")
+damagePart = {
+"GargantuarGDHelmet": ExtResource("6")
+}
+damagePartSlot = {
+"GargantuarGDHelmet": NodePath("SpriteGroup/TransformPoint/ZombieGargantuarGD/HeadSlot")
+}
+currentArmor = ["GargantuarGDHelmet"]
+currentCustom = []
+
+[node name="ZombieGargantuarGD" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=563478412 instance=ExtResource("7")]
+position = Vector2(-12, -36)
+mediaReplace = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieGargantuarGD" index="0" unique_id=1394992494]
+drawLayerId = -2

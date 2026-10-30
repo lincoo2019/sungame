@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bq68g7n10mqvw"]
+
+[ext_resource type="PackedScene" uid="uid://colk7liw31q6k" path="res://Prefab/TowerDefense/Character/TowerDefensePlantBowlingBase.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cj162brd554gp" path="res://Asset/Anime/Character/Plant/Chapter5/Melonnut/Scene/TowerDefensePlantBowlingMelonnutComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://r3ignxn3sy65" path="res://Asset/Anime/Character/Plant/Chapter5/Melonnut/Scene/TowerDefensePlantBowlingMelonnut.cs" id="3"]
+[ext_resource type="Resource" uid="uid://25sxjm5us0i4" path="res://Asset/Anime/Character/Plant/Chapter5/Melonnut/Config/TowerDefensePlantMelonnutBowling.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://dvig8iatt0a7i" path="res://Asset/Anime/Character/Plant/Chapter5/Melonnut/Melonnut.tscn" id="5"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="6"]
+
+[node name="TowerDefensePlantBowlingIcenut" unique_id=1545566614 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+z_index = -15
+script = ExtResource("3")
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/Melonnut")
+PreviewDamagePointPersontage = 1.0
+Custom = []
+itemLayer = 0
+
+[node name="Melonnut" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=1725676624 instance=ExtResource("5")]
+position = Vector2(-1, -31)
+trueFrameRate = 180.0
+Animation/Clip = "Roll"
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/Melonnut" index="0" unique_id=2018156071]
+script = ExtResource("6")
+followSlotId = 2
+useScale = false
+useSkew = false
+Layer = 2
+drawLayerId = 2
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="FireMarker" type="Marker2D" parent="SpriteGroup/TransformPoint/Melonnut/AdobeAnimateSlot" index="0" unique_id=344025444]
+position = Vector2(36.00311, 34.520767)

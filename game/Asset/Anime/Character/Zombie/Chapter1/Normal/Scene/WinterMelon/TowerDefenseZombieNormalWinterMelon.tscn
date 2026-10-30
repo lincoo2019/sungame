@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://diwwrw1rrd0og"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Scene/WinterMelon/TowerDefenseZombieNormalWinterMelonComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://ci3s73rsycm1" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Scene/WinterMelon/TowerDefenseZombieNormalWinterMelon.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dccmrvlyr0p26" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Config/TowerDefenseZombieNormalWinterMelon.tres" id="5"]
+[ext_resource type="Resource" uid="uid://chvyxpm81irbp" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://clvqblkq2jo2l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://d4b68a6hw3c2d" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBucket.tres" id="8"]
+[ext_resource type="Resource" uid="uid://cfim36uopws7u" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorCone.tres" id="9"]
+[ext_resource type="Resource" uid="uid://c7nx2fl3rq01m" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalPlantDamagePointHead.tres" id="10"]
+[ext_resource type="Resource" uid="uid://byth0yfgejk1l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorHelmet.tres" id="11"]
+[ext_resource type="Resource" uid="uid://dmgd4ygng30xn" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorScreendoor.tres" id="12"]
+[ext_resource type="Resource" uid="uid://cryuyu1d8jqbt" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorSpecialHelmet.tres" id="13"]
+[ext_resource type="PackedScene" uid="uid://rmj42gdj84u2" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Sprite/WinterMelon/ZombieNormalWinterMelon.tscn" id="14"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="15"]
+
+[node name="TowerDefenseZombieNormalWinterMelon" unique_id=712894744 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 3.0
+fireNum = 1
+projectileName = "WinterMelon"
+walkAnimeClip = "Walk1&Walk2"
+swimAnimeClip = "Swim"
+dieAnimeClip = "Death1&Death2"
+dieWaterAnimeClip = "Waterdeath"
+waterHeight = 25.0
+idleAnimeClip = "Idle1&Idle2"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieNormalWinterMelon")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieNormalWinterMelon/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Bucket": ExtResource("8"),
+"Cone": ExtResource("9"),
+"Head": ExtResource("10"),
+"Helmet": ExtResource("11"),
+"Screendoor": ExtResource("12"),
+"SpecialHelmet": ExtResource("13")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieNormalWinterMelon/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalWinterMelon/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieNormalWinterMelon/BucketSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieNormalWinterMelon/ConeSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieNormalWinterMelon/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalWinterMelon/HeadSlot"),
+"Screendoor": NodePath("SpriteGroup/TransformPoint/ZombieNormalWinterMelon/ScreendoorSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalWinterMelon/HeadSlot")
+}
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieNormalWinterMelon" parent="SpriteGroup/TransformPoint" index="0" unique_id=2005208045 instance=ExtResource("14")]
+position = Vector2(-12, -33)
+clip = "Idle2"
+layerVisible = [false, true, true, true, false, false, true, false, true, true, true, true, true, true, true, false, false, true, false, false, false, false, false, false, false, false, false, true, true, false, true, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieNormalWinterMelon" index="0" unique_id=1447859647]
+followParentSpriteLayerId = 7
+
+[node name="ProjectileSlot" type="Node2D" parent="SpriteGroup/TransformPoint/ZombieNormalWinterMelon/Head" index="0" unique_id=78325111]
+script = ExtResource("15")
+followSlotId = 4
+drawLayerId = 4
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieNormalWinterMelon/Head/ProjectileSlot" index="0" unique_id=971637549]
+position = Vector2(29.792692, 25.111378)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWinterMelon" index="2" unique_id=743571121]
+drawLayerId = -2
+position = Vector2(-13.595669, -46.811523)
+rotation = -0.0095785875
+scale = Vector2(0.79996294, 0.79996294)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWinterMelon" index="3" unique_id=614180353]
+position = Vector2(4.9385157, 1.6181936)
+rotation = -0.052906215
+scale = Vector2(0.79982877, 0.79982877)
+
+[node name="ConeSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWinterMelon" index="4" unique_id=802627952]
+position = Vector2(-5.6532516, -72.49734)
+rotation = 0.075960115
+scale = Vector2(0.79967004, 0.79967004)
+
+[node name="BucketSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWinterMelon" index="5" unique_id=1107578253]
+position = Vector2(-11.675846, -62.11442)
+rotation = -0.009120093
+scale = Vector2(0.7999632, 0.7999632)
+
+[node name="ScreendoorSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWinterMelon" index="6" unique_id=1067547515]
+position = Vector2(-18.547981, 0.22280884)
+rotation = -0.0033975383
+scale = Vector2(0.7999784, 0.7999784)
+
+[editable path="SpriteGroup/TransformPoint/ZombieNormalWinterMelon"]

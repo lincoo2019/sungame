@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://clscyarae34gt"]
+
+[ext_resource type="Resource" uid="uid://dakte6k0duj2p" path="res://Script/Component/TowerDefense/Character/ChangeProjectile/Definitions/IceFireOffset3Definition.tres" id="1"]
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="2"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="3"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="4"]
+[ext_resource type="Resource" uid="uid://bh0ynowuk70cg" path="res://Asset/Anime/Character/Plant/Cover/FireTallnut/Scene/TowerDefensePlantFireTallnutFogAreaComponentDefinition.tres" id="5"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="6"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="7"]
+
+[sub_resource type="RectangleShape2D" id="Attack0_RectangleShape2D_ogh66"]
+size = Vector2(73, 47)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_attack"]
+script = ExtResource("3")
+Geometry = SubResource("Attack0_RectangleShape2D_ogh66")
+LocalTransform = Transform2D(1, 0, 0, 1, -1.5, -0.5)
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("4")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_attack")]
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.cover.firetallnut.scene.towerdefenseplantfiretallnut.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("2")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("7")
+ParentSet = ExtResource("6")
+Components = [ExtResource("1"), SubResource("Attack0_Definition"), ExtResource("5")]

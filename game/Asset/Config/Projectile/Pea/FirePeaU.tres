@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://cojbssdr11l7i"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_m5ux1"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_04ixw"]
+[ext_resource type="PackedScene" uid="uid://briyhgjpgrwfi" path="res://Asset/Config/Projectile/Pea/Sprite/FirePeaU/FirePeaU.tscn" id="2_m5ux1"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="3_0u7an"]
+[ext_resource type="Script" uid="uid://dp2pqwer6loc1" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffRedHeat.cs" id="3_nst3x"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="4_04ixw"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_43xd0"]
+[ext_resource type="Script" uid="uid://cspli0aenqr4g" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffBurn.cs" id="5_43xd0"]
+[ext_resource type="PackedScene" uid="uid://cqk5e8gyrn284" path="res://Prefab/Particles/Splats/MegaFireSplats/MegaFireSplats.tscn" id="6_oimbx"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="7_oimbx"]
+
+[sub_resource type="Resource" id="Resource_43xd0"]
+script = ExtResource("5_43xd0")
+dpsAttack = 80.0
+splatSceneType = "Sprite"
+splatScene = ExtResource("6_oimbx")
+metadata/_custom_type_script = "uid://cspli0aenqr4g"
+
+[sub_resource type="Resource" id="Resource_vv505"]
+script = ExtResource("4_43xd0")
+buffList = Array[ExtResource("2_04ixw")]([SubResource("Resource_43xd0")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Resource_oimbx"]
+script = ExtResource("3_nst3x")
+time = 8.0
+metadata/_custom_type_script = "uid://dp2pqwer6loc1"
+
+[sub_resource type="Resource" id="Resource_sxuwc"]
+script = ExtResource("4_43xd0")
+buffList = Array[ExtResource("2_04ixw")]([SubResource("Resource_oimbx")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("3_0u7an")
+name = "FirePeaU"
+baseDamage = 80.0
+projectileScene = ExtResource("2_m5ux1")
+projectileObject = 381
+splatSceneType = "Sprite"
+splatAudio = "Ignite"
+splatScene = ExtResource("4_04ixw")
+hitTargetEventList = Array[ExtResource("1_m5ux1")]([SubResource("Resource_vv505"), SubResource("Resource_sxuwc")])
+hitBody = true
+useRange = true
+rangeSize = Vector2(0.5, 0.25)
+hitPesontage = 0.5
+damageFlags = 7
+fireMethodFlags = 5
+collisionFlags = 1
+catapultHeight = 400.0

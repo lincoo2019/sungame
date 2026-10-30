@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cydrslbbu6hh1"]
+
+[ext_resource type="PackedScene" uid="uid://jm05awl7yeg" path="res://Prefab/TowerDefense/Character/TowerDefenseGravestone.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bqd6lprklag38" path="res://Asset/Anime/Character/GraveStone/WorkerSign/Scene/TowerDefenseWorkerSign.cs" id="2"]
+[ext_resource type="Resource" uid="uid://06bidalmtijr" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefenseCharacterComponentSet.tres" id="3"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/GraveStone/WorkerSign/Config/TowerDefenseWorkerSign.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://c1jocs3s84m21" path="res://Asset/Texture/Character/Effect/Shadow.png" id="5"]
+[ext_resource type="PackedScene" uid="uid://gxv3ytwwkhlj" path="res://Asset/Anime/Character/GraveStone/WorkerSign/WorkerSign.tscn" id="6"]
+
+[node name="TowerDefenseWorkerSign" node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+ComponentSet = ExtResource("3")
+rise = false
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/WorkerSign")
+
+[node name="ShadowSprite" parent="." index="0"]
+position = Vector2(0, 25)
+texture = ExtResource("5")
+
+[node name="WorkerSign" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("6")]
+position = Vector2(0, 10)

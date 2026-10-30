@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bct1gvf1i8ohw"]
+
+[ext_resource type="Script" uid="uid://kqt7q1iijnsf" path="res://Prefab/TowerDefense/DamagePart/DamagePartDrop.cs" id="1_wnilj"]
+[ext_resource type="PackedScene" uid="uid://bhh76tmil13cb" path="res://Script/Component/MoveComponent/MoveComponent.tscn" id="3_ele22"]
+[ext_resource type="Texture2D" uid="uid://c1jocs3s84m21" path="res://Asset/Texture/Character/Effect/Shadow.png" id="4_15rhg"]
+
+[node name="BreakPartDrop" type="Node2D" groups=["Effect"]]
+physics_interpolation_mode = 1
+z_index = -7
+script = ExtResource("1_wnilj")
+itemLayer = 8
+
+[node name="Sprite" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="SpriteGroup" type="Node2D" parent="Sprite"]
+unique_name_in_owner = true
+
+[node name="MoveComponent" parent="Sprite" instance=ExtResource("3_ele22")]
+unique_name_in_owner = true
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = -10
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_15rhg")

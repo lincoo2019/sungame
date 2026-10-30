@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/XWInspectorPropertyEditorBase.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/GUI/Editor/Path/XWInspectorPropertyEditorPath.cs" id="2_script"]
+
+[node name="XWInspectorPropertyEditorPath" instance=ExtResource("1_base")]
+node_paths = PackedStringArray("PropertyEditorPath")
+script = ExtResource("2_script")
+PropertyEditorPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PathContainer")
+
+[node name="PathContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/PathContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BrowseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/PathContainer" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "选择文件"
+flat = true
+
+[node name="FileDialog" type="FileDialog" parent="." index="1"]
+unique_name_in_owner = true

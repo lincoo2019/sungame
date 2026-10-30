@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cjk6ivx13i4qn"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://dhqfvqxwivrj7" path="res://Asset/Anime/Character/Plant/Cover/CatTail/Scene/TowerDefensePlantCatTailComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://d1uvgkv3q7q3v" path="res://Asset/Anime/Character/Plant/Cover/CatTail/Scene/TowerDefensePlantCatTail.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://d1608i0dhcmsm" path="res://Asset/Anime/Character/Plant/Cover/CatTail/Config/TowerDefensePlantCatTail.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://do5sxw78i43bh" path="res://Asset/Anime/Character/Plant/Cover/CatTail/CatTail.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantCatTail" unique_id=1579871605 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+showHealthOffset = Vector2(0, 30)
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 2
+projectileName = "Spike"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/CatTail")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(1, 47)
+scale = Vector2(0.821918, 0.77551)
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="CatTail" parent="SpriteGroup/TransformPoint" index="0" unique_id=1187376579 instance=ExtResource("6")]
+position = Vector2(0, -29)
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="MouseSlot" type="Node2D" parent="SpriteGroup/TransformPoint/CatTail" index="0" unique_id=347826906]
+skew = -0.0428375
+script = ExtResource("7")
+followSlotId = 5
+drawLayerId = 5
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="FireMarker" type="Marker2D" parent="SpriteGroup/TransformPoint/CatTail/MouseSlot" index="0" unique_id=494723715]
+position = Vector2(9.997516, 6.931436)

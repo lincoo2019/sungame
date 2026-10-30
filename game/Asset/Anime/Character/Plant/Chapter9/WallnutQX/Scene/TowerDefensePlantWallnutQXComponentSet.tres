@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://bw840w2mcddm4"]
+
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cr5nwpwl6677g" path="res://Resource/TowerDefense/Attack/AttackConfig.cs" id="3"]
+[ext_resource type="Script" uid="uid://eughsv2mxyyl" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurtWithConfig.cs" id="4"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="5"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="6"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="7"]
+
+[sub_resource type="SegmentShape2D" id="Attack0_SegmentShape2D_o5pol"]
+b = Vector2(2000, 0)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_attack_check"]
+script = ExtResource("2")
+Geometry = SubResource("Attack0_SegmentShape2D_o5pol")
+
+[sub_resource type="Resource" id="Attack0_Resource_2uwtb"]
+script = ExtResource("3")
+num = 40.0
+damageFlags = 2
+
+[sub_resource type="Resource" id="Attack0_Resource_67dwp"]
+script = ExtResource("4")
+AttackConfig = SubResource("Attack0_Resource_2uwtb")
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("5")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_attack_check")]
+spritePath = NodePath("SpriteGroup/TransformPoint/WallnutQX")
+attackAnimeClipsArray = ["Shooting"]
+attackAnimeClips = "Shooting"
+attackAnimeTimeScale = 3.0
+attackInterval = 2.0
+eventList = [SubResource("Attack0_Resource_67dwp")]
+checkLine = true
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.chapter9.wallnutqx.scene.towerdefenseplantwallnutqx.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("7")
+ParentSet = ExtResource("6")
+Components = [SubResource("Attack0_Definition")]

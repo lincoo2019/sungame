@@ -1,0 +1,177 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/XWInspectorPropertyEditorBase.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/ResourceInspectorExtend/Curve/XWInspectorPropertyEditorCurve.cs" id="2_script"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Add.svg" id="3_add"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Remove.svg" id="4_remove"]
+
+[node name="XWInspectorPropertyEditorCurve" node_paths=PackedStringArray("PropertyEditorPath") instance=ExtResource("1_base")]
+custom_minimum_size = Vector2(0, 286)
+script = ExtResource("2_script")
+PropertyEditorPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/CurveEditor")
+
+[node name="CurveEditor" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 278)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="CurvePreview" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "左键添加或拖动曲线点，右键选择最近曲线点"
+
+[node name="RangeGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="MinDomainLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/RangeGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "X最小"
+vertical_alignment = 1
+
+[node name="MinDomainSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/RangeGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(68, 26)
+layout_mode = 2
+step = 0.001
+allow_greater = true
+allow_lesser = true
+
+[node name="MaxDomainLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/RangeGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "X最大"
+vertical_alignment = 1
+
+[node name="MaxDomainSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/RangeGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(68, 26)
+layout_mode = 2
+step = 0.001
+allow_greater = true
+allow_lesser = true
+
+[node name="MinValueLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/RangeGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "Y最小"
+vertical_alignment = 1
+
+[node name="MinValueSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/RangeGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(68, 26)
+layout_mode = 2
+step = 0.001
+allow_greater = true
+allow_lesser = true
+
+[node name="MaxValueLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/RangeGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "Y最大"
+vertical_alignment = 1
+
+[node name="MaxValueSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/RangeGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(68, 26)
+layout_mode = 2
+step = 0.001
+allow_greater = true
+allow_lesser = true
+
+[node name="PointGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="OffsetLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/PointGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "偏移"
+vertical_alignment = 1
+
+[node name="OffsetSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/PointGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(68, 26)
+layout_mode = 2
+step = 0.001
+allow_greater = false
+allow_lesser = false
+
+[node name="ValueLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/PointGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "值"
+vertical_alignment = 1
+
+[node name="ValueSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/PointGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(68, 26)
+layout_mode = 2
+step = 0.001
+allow_greater = false
+allow_lesser = false
+
+[node name="LeftModeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/PointGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "左切线"
+vertical_alignment = 1
+
+[node name="LeftModeOption" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/PointGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(68, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightModeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/PointGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "右切线"
+vertical_alignment = 1
+
+[node name="RightModeOption" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/PointGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(68, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="AddPointButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/ButtonRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "添加曲线点"
+icon = ExtResource("3_add")
+flat = true
+
+[node name="RemovePointButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/ButtonRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "删除曲线点"
+icon = ExtResource("4_remove")
+flat = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor"]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CurvePoints" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveEditor/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2

@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://ds36lp2hcu2k1"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbglc127qw1jb" path="res://Resource/TowerDefense/Collision/AabbRay2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="5"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="6"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="7"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="8"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="9"]
+
+[sub_resource type="Resource" id="Fire_AabbRay2DResource_AabbRayProbe"]
+script = ExtResource("2")
+
+[sub_resource type="Resource" id="Fire_AabbRay2DResource_AabbRayProbe2"]
+script = ExtResource("2")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, -76)
+
+[sub_resource type="Resource" id="Fire_AabbRay2DResource_AabbRayProbe3"]
+script = ExtResource("2")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, 76)
+
+[sub_resource type="Resource" id="Fire_Resource_ef1bb"]
+script = ExtResource("3")
+projectileName = &"Pea"
+catapultHeight = 400.0
+
+[sub_resource type="Resource" id="Fire_Resource_w4g8t"]
+script = ExtResource("4")
+projectileData = SubResource("Fire_Resource_ef1bb")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Fire_Resource_iu6xi"]
+script = ExtResource("5")
+projectile = SubResource("Fire_Resource_w4g8t")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Fire_Resource_ni8it"]
+script = ExtResource("6")
+offsetLine = -1
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Fire_Resource_6ulip"]
+script = ExtResource("6")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Fire_Resource_vw4sq"]
+script = ExtResource("6")
+offsetLine = 1
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="FireDefinition"]
+script = ExtResource("7")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/ThreePeater/Head2/Marker2D")]
+spritePath = NodePath("SpriteGroup/TransformPoint/ThreePeater/Head1")
+spliceSpritePaths = [NodePath("SpriteGroup/TransformPoint/ThreePeater/Head2"), NodePath("SpriteGroup/TransformPoint/ThreePeater/Head3")]
+checkRayResources = [SubResource("Fire_AabbRay2DResource_AabbRayProbe"), SubResource("Fire_AabbRay2DResource_AabbRayProbe2"), SubResource("Fire_AabbRay2DResource_AabbRayProbe3")]
+fireAnimeClipsArray = ["HeadFire1"]
+fireAnimeClips = "HeadFire1"
+fireAnimeTimeScale = 2.0
+spliceIdleAnimeClips = "HeadIdle1"
+isSpliceSprite = true
+spliceSpriteFireAnimeClipsList = ["HeadFire2", "HeadFire3"]
+spliceSpriteIdleAnimeClipsList = ["HeadIdle2", "HeadIdle3"]
+fireCheckList = [SubResource("Fire_Resource_iu6xi")]
+fireProjectileList = [SubResource("Fire_Resource_ni8it"), SubResource("Fire_Resource_6ulip"), SubResource("Fire_Resource_vw4sq")]
+checkAllLine = true
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter0.threepeater"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]
+
+[resource]
+script = ExtResource("9")
+ParentSet = ExtResource("8")
+Components = [SubResource("FireDefinition")]

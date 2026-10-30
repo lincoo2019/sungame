@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cbn22x6y72jsj"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Other/SWC/Scene/TowerDefensePlantSWCComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://cubgqxx22nj2i" path="res://Asset/Anime/Character/Plant/Other/SWC/Scene/TowerDefensePlantSWC.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://hwea0gxbngtk" path="res://Asset/Anime/Character/Plant/Other/SWC/Config/TowerDefensePlantSWC.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://ciuh15dvo71hb" path="res://Asset/Anime/Character/Plant/Other/SWC/SWC.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantSWC" unique_id=1103907929 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+projectileName = "Spike"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/SWC")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(0, 47)
+scale = Vector2(0.821918, 0.77551)
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="SWC" parent="SpriteGroup/TransformPoint" index="0" unique_id=1275436636 instance=ExtResource("6")]
+position = Vector2(0, -30)
+clip = "Idle"
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/SWC" index="0" unique_id=297775065]
+script = ExtResource("7")
+followSlotId = 9
+drawLayerId = 9
+offset = Vector2(60, 15)
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SWC/AdobeAnimateSlot" index="0" unique_id=1147487645]
+position = Vector2(-44.570663, -3.6141415)

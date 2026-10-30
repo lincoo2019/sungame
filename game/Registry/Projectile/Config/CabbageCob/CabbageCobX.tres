@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://dq252nuc6m5ap"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_hm5v5"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="2_iol83"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3_1dyh6"]
+[ext_resource type="Script" uid="uid://dc0owkndbeue" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventProjectileCreate.cs" id="4_30bvw"]
+[ext_resource type="PackedScene" uid="uid://bppnlsk2abnn1" path="res://Asset/Config/Projectile/CabbageCob/Sprite/CabbageCobX/ProjectileCabbageCobX.tscn" id="5_hm5v5"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="6_3jren"]
+
+[sub_resource type="Resource" id="Resource_uaxjr"]
+script = ExtResource("3_1dyh6")
+projectileName = &"Cabbage"
+baseDamage = 40.0
+fireMethodFlags = 2
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_fxmbs"]
+script = ExtResource("4_30bvw")
+projectileData = SubResource("Resource_uaxjr")
+metadata/_custom_type_script = "uid://dc0owkndbeue"
+
+[sub_resource type="Resource" id="Resource_f703w"]
+script = ExtResource("3_1dyh6")
+projectileName = &"Cabbage"
+baseDamage = 40.0
+fireMethodFlags = 2
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_2xnbt"]
+script = ExtResource("4_30bvw")
+projectileData = SubResource("Resource_f703w")
+metadata/_custom_type_script = "uid://dc0owkndbeue"
+
+[resource]
+script = ExtResource("6_3jren")
+name = "CabbageCobX"
+baseDamage = 100.0
+projectileScene = ExtResource("5_hm5v5")
+splatAudio = "ProjectileHit"
+hitTargetEventList = Array[ExtResource("1_hm5v5")]([SubResource("Resource_2xnbt")])
+hitGroundEventList = Array[ExtResource("1_hm5v5")]([SubResource("Resource_fxmbs")])
+rotateFollowVelocity = true
+useRange = true
+rangeSize = Vector2(0.5, 0.25)

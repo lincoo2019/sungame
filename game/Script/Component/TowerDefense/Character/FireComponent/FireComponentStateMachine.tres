@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://ddgn75dlmc8mw"]
+
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="1"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="3"]
+
+[sub_resource type="Resource" id="State_fire_root"]
+script = ExtResource("1")
+StableId = "fire.root"
+DisplayName = &"Root"
+Kind = 1
+InitialChildId = "fire.idle"
+
+[sub_resource type="Resource" id="State_fire_idle"]
+script = ExtResource("1")
+StableId = "fire.idle"
+DisplayName = &"Idle"
+ParentId = "fire.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_fire_attack"]
+script = ExtResource("1")
+StableId = "fire.attack"
+DisplayName = &"Attack"
+ParentId = "fire.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_fire_restore"]
+script = ExtResource("1")
+StableId = "fire.restore"
+DisplayName = &"Restore"
+ParentId = "fire.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_to_idle"]
+script = ExtResource("2")
+StableId = "fire.to_idle"
+SourceStateId = "fire.root"
+TargetStateId = "fire.idle"
+EventName = &"ToIdle"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_attack"]
+script = ExtResource("2")
+StableId = "fire.to_attack"
+SourceStateId = "fire.root"
+TargetStateId = "fire.attack"
+EventName = &"ToAttack"
+DeclarationOrder = 1
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_restore"]
+script = ExtResource("2")
+StableId = "fire.to_restore"
+SourceStateId = "fire.root"
+TargetStateId = "fire.restore"
+EventName = &"ToRestore"
+DeclarationOrder = 2
+GuardDefinition = null
+
+[resource]
+script = ExtResource("3")
+DefinitionId = "builtin.component.fire"
+BaseDefinition = null
+RootStateId = "fire.root"
+States = [SubResource("State_fire_root"), SubResource("State_fire_idle"), SubResource("State_fire_attack"), SubResource("State_fire_restore")]
+Transitions = [SubResource("Transition_to_idle"), SubResource("Transition_to_attack"), SubResource("Transition_to_restore")]

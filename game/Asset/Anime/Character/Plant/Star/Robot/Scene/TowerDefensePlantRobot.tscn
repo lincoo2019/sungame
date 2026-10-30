@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://g87s5ftavyrn"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Star/Robot/Scene/TowerDefensePlantRobotComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bxr7r10otw2rk" path="res://Asset/Anime/Character/Plant/Star/Robot/Scene/TowerDefensePlantRobot.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_124x33_At_39_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://be72aj0t1ru57" path="res://Asset/Anime/Character/Plant/Star/Robot/Scene/TowerDefensePlantRobotStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://b4br5wln5x085" path="res://Asset/Anime/Character/Plant/Star/Robot/Config/TowerDefensePlantRobot.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://1om2rkr0bvfp" path="res://Asset/Anime/Character/Plant/Star/Robot/Robot.tscn" id="7"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="8"]
+
+[node name="TowerDefensePlantRobot" unique_id=1914587403 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+showHealthOffset = Vector2(39, 0)
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+idleAnimeClip = "IdleA"
+sleepAnimeClip = "IdleA"
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/Robot")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(36.5, 30)
+scale = Vector2(1.8488373, 1)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(39, 30)
+
+[node name="Robot" parent="SpriteGroup/TransformPoint" index="0" unique_id=1128723220 instance=ExtResource("7")]
+position = Vector2(-39, -30)
+clip = "IdleA"
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="ProjectileSlot" type="Node2D" parent="SpriteGroup/TransformPoint/Robot" index="0" unique_id=1815139906]
+unique_name_in_owner = true
+script = ExtResource("8")
+followSlotId = 42
+drawLayerId = 42
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/Robot/ProjectileSlot" index="0" unique_id=365035273]
+position = Vector2(69.30016, 27.09903)
+
+[node name="ProjectileSlot2" type="Node2D" parent="SpriteGroup/TransformPoint/Robot" index="1" unique_id=413109267]
+unique_name_in_owner = true
+script = ExtResource("8")
+followSlotId = 20
+drawLayerId = 20
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D2" type="Marker2D" parent="SpriteGroup/TransformPoint/Robot/ProjectileSlot2" index="0" unique_id=1385361765]
+position = Vector2(69.67812, 26.70048)
+rotation = 0.0051215375
+scale = Vector2(1.0000006, 1.0000006)
+
+[node name="ProjectileSlot3" type="Node2D" parent="SpriteGroup/TransformPoint/Robot" index="2" unique_id=1067402560]
+unique_name_in_owner = true
+script = ExtResource("8")
+followSlotId = 3
+drawLayerId = 3
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D3" type="Marker2D" parent="SpriteGroup/TransformPoint/Robot/ProjectileSlot3" index="0" unique_id=1853380907]
+position = Vector2(33.750515, -5.7665386)
+rotation = 0.0051215375
+scale = Vector2(1.0000006, 1.0000006)

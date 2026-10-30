@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://jx3oqw705vpg"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/GUI/XWBlueprintCreateDialog.cs" id="1_script"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Search.svg" id="2_search"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Folder.svg" id="3_folder"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/Node.svg" id="4_node"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/Node2D.svg" id="5_node2d"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/Control.svg" id="6_control"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Object.svg" id="7_resource"]
+
+[node name="XWBlueprintCreateDialog" type="ConfirmationDialog"]
+title = "新建蓝图"
+initial_position = 1
+size = Vector2i(620, 280)
+ok_button_text = "创建"
+cancel_button_text = "取消"
+script = ExtResource("1_script")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ParentPresetLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "选择常用蓝图类型"
+
+[node name="ParentPresetCards" type="GridContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 4
+theme_override_constants/h_separation = 8
+
+[node name="NodeParentCard" type="Button" parent="VBoxContainer/ParentPresetCards"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(138, 58)
+layout_mode = 2
+tooltip_text = "通用逻辑、流程控制与场景节点"
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("4_node")
+text = "节点逻辑"
+icon_max_width = 28
+
+[node name="Node2DParentCard" type="Button" parent="VBoxContainer/ParentPresetCards"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(138, 58)
+layout_mode = 2
+tooltip_text = "具有位置、旋转和缩放的 2D 游戏对象"
+toggle_mode = true
+icon = ExtResource("5_node2d")
+text = "2D 对象"
+icon_max_width = 28
+
+[node name="ControlParentCard" type="Button" parent="VBoxContainer/ParentPresetCards"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(138, 58)
+layout_mode = 2
+tooltip_text = "卡牌、菜单、HUD 与其他游戏界面"
+toggle_mode = true
+icon = ExtResource("6_control")
+text = "游戏界面"
+icon_max_width = 28
+
+[node name="ResourceParentCard" type="Button" parent="VBoxContainer/ParentPresetCards"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(138, 58)
+layout_mode = 2
+tooltip_text = "独立数据、配置和可复用逻辑资源"
+toggle_mode = true
+icon = ExtResource("7_resource")
+text = "数据资源"
+icon_max_width = 28
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="ParentLabel" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "父类"
+
+[node name="ParentRow" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="ParentName" type="LineEdit" parent="VBoxContainer/GridContainer/ParentRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "例如：Node（节点）"
+clear_button_enabled = true
+
+[node name="ParentSearchBtn" type="Button" parent="VBoxContainer/GridContainer/ParentRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "选择父类"
+icon = ExtResource("2_search")
+flat = true
+
+[node name="PathLabel" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "路径"
+
+[node name="PathRow" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="FilePath" type="LineEdit" parent="VBoxContainer/GridContainer/PathRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "保存为 .tres"
+clear_button_enabled = true
+
+[node name="PathBtn" type="Button" parent="VBoxContainer/GridContainer/PathRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "选择保存路径"
+icon = ExtResource("3_folder")
+flat = true
+
+[node name="MsgLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+autowrap_mode = 2
+
+[node name="PathDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true

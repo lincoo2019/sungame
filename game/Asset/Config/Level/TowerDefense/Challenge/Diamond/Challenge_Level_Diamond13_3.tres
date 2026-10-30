@@ -1,0 +1,542 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://7ertdraq8ixd"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/Challenge/Diamond/Challenge_Level_Diamond13_3.json" id="1_732367"]
+[ext_resource type="Script" uid="uid://ba76j1qc1ehmt" path="res://Registry/Battle/Feature/Event/Resource/TowerDefenseLevelEventBase.cs" id="2_286515"]
+[ext_resource type="Script" uid="uid://dbpqspbkam44d" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.cs" id="4_539634"]
+[ext_resource type="Script" uid="uid://elndp7rr41y0" path="res://Registry/Battle/Feature/LookStar/Resource/TowerDefenseLevelLookStarCheckConfig.cs" id="5_256861"]
+[ext_resource type="Script" uid="uid://ge6chewkhjqd" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.cs" id="6_282155"]
+[ext_resource type="Script" uid="uid://d17gywmt3g3lb" path="res://Resource/TowerDefense/Level/PreSpawn/TowerDefenseLevelPreSpawnConfig.cs" id="8_202642"]
+[ext_resource type="Script" uid="uid://dfj86l56q1n8g" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.cs" id="9_415499"]
+[ext_resource type="Script" uid="uid://blrb5liskebi6" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.cs" id="10_479699"]
+[ext_resource type="Script" uid="uid://br6kawt7m03sc" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelDynamicConfig.cs" id="11_535460"]
+[ext_resource type="Script" uid="uid://ctvkmai1q8sa6" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.cs" id="12_690446"]
+[ext_resource type="Script" uid="uid://c67uxwpu4jftb" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.cs" id="13_602451"]
+
+[sub_resource type="Resource" id="Resource_863429_f"]
+script = ExtResource("4_539634")
+
+[sub_resource type="Resource" id="Resource_863429_l"]
+script = ExtResource("6_282155")
+
+[sub_resource type="Resource" id="Resource_863429_s"]
+script = ExtResource("10_479699")
+
+[sub_resource type="Resource" id="Resource_863429_w"]
+script = ExtResource("12_690446")
+flagWaveInterval = 5
+dynamic = Array[ExtResource("11_535460")]([])
+
+[resource]
+script = ExtResource("9_415499")
+data = ExtResource("1_732367")
+featureData = Dictionary[StringName, Dictionary]({
+&"BGM": {
+"BackgroundMusic": "UltimateBattle"
+},
+&"Brain": {},
+&"Camera": {},
+&"ConveyorBelt": {
+"Interval": 5.0,
+"IntervalIncreaseEvery": 3.0,
+"IntervalMagnification": 0.3,
+"Packet": [{
+"Name": "PlantIceShroomGene",
+"MaxMagnification": 0.1,
+"MaxNum": 4.0,
+"MinMagnification": 3.0,
+"MinNum": 2.0,
+"Weight": 50.0
+}, {
+"Name": "PlantIceShroom",
+"MaxMagnification": 0.1,
+"MaxNum": 2.0,
+"Weight": 15.0
+}, {
+"Name": "PlantSnowBlover",
+"MaxMagnification": 0.1,
+"MaxNum": 3.0,
+"MinMagnification": 3.0,
+"MinNum": 1.0,
+"Weight": 35.0
+}, {
+"Name": "PlantIceSquash",
+"MaxMagnification": 0.1,
+"MaxNum": 3.0,
+"MinMagnification": 1.5,
+"MinNum": 2.0,
+"Weight": 30.0
+}, {
+"Name": "PlantIceBomb",
+"MaxMagnification": 0.1,
+"MaxNum": 2.0,
+"MinMagnification": 3.0,
+"MinNum": 1.0,
+"Weight": 25.0
+}, {
+"Name": "PlantJewelBomb",
+"MinMagnification": 3.0,
+"MinNum": 2.0,
+"Weight": 50.0
+}, {
+"Name": "PlantPlanternTanglekelp",
+"MinMagnification": 3.0,
+"MinNum": 1.0,
+"Weight": 35.0
+}],
+"PacketPrioritySpawnList": ["PlantIceShroomGene", "PlantIceSquash", "PlantIceShroomGene", "PlantIceShroom", "PlantIceSquash"],
+"Type": "Default",
+"WaveEvent": [[], [{
+"EventName": "AddPacket",
+"Value": {
+"Name": "PlantDoomShroom",
+"Weight": 35.0
+}
+}], []]
+},
+&"Event": {
+"EventInit": [],
+"EventReady": [],
+"EventStart": []
+},
+&"Map": {
+"MapName": "FrontlawnCold"
+},
+&"Mower": {},
+&"PacketPick": {},
+&"PreSpawn": {
+"Packet": []
+},
+&"Progress": {},
+&"SeedBank": {
+"Method": "Conveyor"
+},
+&"Shovel": {},
+&"Sun": {
+"Begin": 200.0,
+"MovingMethod": "Land",
+"Open": false,
+"SpawnInterval": 12.0,
+"SpawnNum": 15.0,
+"Type": "Jala"
+},
+&"Wave": {
+"BeginCol": 20.0,
+"Dynamic": [{}, {}, {}, {}, {}, {}, {}],
+"FlagWaveInterval": 8.0,
+"FlagZombie": "ZombieFlag",
+"MaxNextWaveHealthPercentage": 0.3,
+"MinNextWaveHealthPercentage": 0.15,
+"SpawnColEnd": 20.0,
+"SpawnColStart": 10.0,
+"SpawnOverride": {},
+"Wave": [{
+"Event": [],
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSleeper"
+}]
+}, {
+"Event": [],
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieDiscopaper"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieFootballBlack"
+}]
+}, {
+"Event": [],
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": 3.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieFootballBlack"
+}]
+}, {
+"Event": [],
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieDiscopaper"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuarZamboni"
+}]
+}, {
+"Event": [],
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieDiscopaper"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieFootballGargantuar"
+}]
+}, {
+"Event": [],
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieDiscopaper"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieFootballGargantuar"
+}]
+}, {
+"Event": [],
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieDiscopaper"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieFootballGargantuar"
+}]
+}, {
+"Event": [{
+"EventName": "MapChange",
+"Value": {
+"Delay": 0.0,
+"Duration": 60.0,
+"MapName": "FrontlawnNightCold"
+}
+}],
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieFootballGargantuar"
+}]
+}, {
+"Event": [],
+"Dynamic": {
+"Point": 2700.0,
+"ZombiePool": ["ZombieGargantuarZamboni", "ZombieFootballGargantuar", "ZombieFootballGargantuarBlackWhiteEyes"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieDiscopaper"
+}]
+}, {
+"Event": [],
+"Dynamic": {
+"Point": 2800.0,
+"ZombiePool": ["ZombieGargantuarZamboni", "ZombieFootballGargantuar", "ZombieFootballGargantuarBlackWhiteEyes"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieDiscopaper"
+}]
+}, {
+"Event": [],
+"Dynamic": {
+"Point": 3000.0,
+"ZombiePool": ["ZombieGargantuarZamboni", "ZombieFootballGargantuar", "ZombieFootballGargantuarBlackWhiteEyes"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieDiscopaper"
+}]
+}, {
+"Event": [],
+"Dynamic": {
+"Point": 3400.0,
+"ZombiePool": ["ZombieGargantuarZamboni", "ZombieFootballGargantuar", "ZombieFootballGargantuarBlackWhiteEyes"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieDiscopaper"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieFootballBlack"
+}]
+}, {
+"Event": [],
+"Dynamic": {
+"Point": 2600.0,
+"ZombiePool": ["ZombieGargantuarZamboni", "ZombieFootballGargantuar", "ZombieFootballGargantuarBlackWhiteEyes"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieDiscopaper"
+}]
+}, {
+"Event": [],
+"Dynamic": {
+"Point": 2800.0,
+"ZombiePool": ["ZombieGargantuarZamboni", "ZombieFootballGargantuar", "ZombieFootballGargantuarBlackWhiteEyes"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieDiscopaper"
+}]
+}, {
+"Event": [],
+"Dynamic": {
+"Point": 2800.0,
+"ZombiePool": ["ZombieGargantuarZamboni", "ZombieFootballGargantuar", "ZombieFootballGargantuarBlackWhiteEyes"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieDiscopaper"
+}]
+}, {
+"Event": [],
+"Dynamic": {
+"Point": 3300.0,
+"ZombiePool": ["ZombieGargantuarZamboni", "ZombieFootballGargantuar", "ZombieFootballGargantuarBlackWhiteEyes"]
+},
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieSleeper"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieGargantuarZamboni"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieDiscopaper"
+}]
+}]
+}
+})
+processName = &"Wave"
+processData = {
+"MowerUse": true
+}
+map = "FrontlawnCold"
+backgroundMusic = "UltimateBattle"
+firstRewardValue = "2000"
+packetBankMethod = 3
+sunManager = SubResource("Resource_863429_s")
+fogManager = SubResource("Resource_863429_f")
+lookStarManager = SubResource("Resource_863429_l")
+waveManager = SubResource("Resource_863429_w")
+name = "Challenge_Level_Diamond13_3"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "CHALLENGE_LEVEL_DIALMONDNAME_13"
+homeWorld = 1
+metadata/_custom_type_script = "uid://dfj86l56q1n8g"

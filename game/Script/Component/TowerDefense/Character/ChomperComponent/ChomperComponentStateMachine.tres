@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://dttjblct10whh"]
+
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="1"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="3"]
+
+[sub_resource type="Resource" id="State_chomper_root"]
+script = ExtResource("1")
+StableId = "chomper.root"
+DisplayName = &"Root"
+Kind = 1
+InitialChildId = "chomper.idle"
+
+[sub_resource type="Resource" id="State_chomper_idle"]
+script = ExtResource("1")
+StableId = "chomper.idle"
+DisplayName = &"Idle"
+ParentId = "chomper.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_chomper_attack"]
+script = ExtResource("1")
+StableId = "chomper.attack"
+DisplayName = &"Attack"
+ParentId = "chomper.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_chomper_chew"]
+script = ExtResource("1")
+StableId = "chomper.chew"
+DisplayName = &"Chew"
+ParentId = "chomper.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_chomper_swallow"]
+script = ExtResource("1")
+StableId = "chomper.swallow"
+DisplayName = &"Swallow"
+ParentId = "chomper.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_to_idle"]
+script = ExtResource("2")
+StableId = "chomper.to_idle"
+SourceStateId = "chomper.root"
+TargetStateId = "chomper.idle"
+EventName = &"ToIdle"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_attack"]
+script = ExtResource("2")
+StableId = "chomper.to_attack"
+SourceStateId = "chomper.root"
+TargetStateId = "chomper.attack"
+EventName = &"ToAttack"
+DeclarationOrder = 1
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_chew"]
+script = ExtResource("2")
+StableId = "chomper.to_chew"
+SourceStateId = "chomper.root"
+TargetStateId = "chomper.chew"
+EventName = &"ToChew"
+DeclarationOrder = 2
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_swallow"]
+script = ExtResource("2")
+StableId = "chomper.to_swallow"
+SourceStateId = "chomper.root"
+TargetStateId = "chomper.swallow"
+EventName = &"ToSwallow"
+DeclarationOrder = 3
+GuardDefinition = null
+
+[resource]
+script = ExtResource("3")
+DefinitionId = "builtin.component.chomper"
+BaseDefinition = null
+RootStateId = "chomper.root"
+States = [SubResource("State_chomper_root"), SubResource("State_chomper_idle"), SubResource("State_chomper_attack"), SubResource("State_chomper_chew"), SubResource("State_chomper_swallow")]
+Transitions = [SubResource("Transition_to_idle"), SubResource("Transition_to_attack"), SubResource("Transition_to_chew"), SubResource("Transition_to_swallow")]

@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://cv4lwe11kmkl5"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cf5kj518yeegl" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Scene/TowerDefenseZombieDuck.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://dk6a4445hgk3d" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Config/TowerDefenseZombieDuck.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dcf4jlp7c5shy" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/DamagePoint/Config/ZombieDuckDamagePointArm.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dtc2i4pyai75g" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorBlackHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://le7h1dggibce" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorBucket.tres" id="7"]
+[ext_resource type="Resource" uid="uid://by7kwmpve5wkr" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorCone.tres" id="8"]
+[ext_resource type="Resource" uid="uid://1eq1spanepgn" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/DamagePoint/Config/ZombieDuckDamagePointHead.tres" id="9"]
+[ext_resource type="Resource" uid="uid://b15w5fw1578wa" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorHelmet.tres" id="10"]
+[ext_resource type="Resource" uid="uid://b3nojrbfbp2yd" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/Armor/Config/ZombieDuckArmorSpecialHelmet.tres" id="11"]
+[ext_resource type="PackedScene" uid="uid://cdx8flivkmr4f" path="res://Asset/Anime/Character/Zombie/Chapter3/Duck/ZombieDuck.tscn" id="12"]
+
+[node name="TowerDefenseZombieDuck" node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+swimAnimeClip = "Swim"
+dieWaterAnimeClip = "SwimDeath"
+waterHeight = 25.0
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieDuck")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieDuck/HeadSlot")
+damagePart = {
+"Arm": ExtResource("5"),
+"BlackHelmet": ExtResource("6"),
+"Bucket": ExtResource("7"),
+"Cone": ExtResource("8"),
+"Head": ExtResource("9"),
+"Helmet": ExtResource("10"),
+"SpecialHelmet": ExtResource("11")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieDuck/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieDuck/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieDuck/BucketSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieDuck/ConeSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieDuck/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieDuck/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieDuck/HeadSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(12, 33)
+
+[node name="ZombieDuck" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("12")]
+position = Vector2(-12, -33)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieDuck" index="0"]
+drawLayerId = -2
+position = Vector2(0.14635372, -47.91162)
+rotation = 0.1912371
+scale = Vector2(0.7983754, 0.7983754)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieDuck" index="1"]
+position = Vector2(11.354419, 1.1188269)
+rotation = -0.11613996
+scale = Vector2(0.7968093, 0.7968093)
+
+[node name="ConeSlot" parent="SpriteGroup/TransformPoint/ZombieDuck" index="2"]
+position = Vector2(12.020355, -71.75771)
+rotation = 0.18616697
+scale = Vector2(0.7994692, 0.7994692)
+
+[node name="BucketSlot" parent="SpriteGroup/TransformPoint/ZombieDuck" index="3"]
+position = Vector2(5.178154, -63.15631)
+rotation = 0.1678602
+scale = Vector2(0.7994392, 0.7994392)
+
+[editable path="SpriteGroup/TransformPoint/ZombieDuck"]

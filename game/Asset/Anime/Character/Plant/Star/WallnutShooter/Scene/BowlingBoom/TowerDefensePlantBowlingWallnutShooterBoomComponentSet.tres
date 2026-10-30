@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://h3i3legiueo1"]
+
+[ext_resource type="Resource" uid="uid://dfm5r4mn8aoo6" path="res://Script/Component/TowerDefense/Character/BowlingComponent/BowlingComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://cghdgwf4bcxx7" path="res://Script/Component/TowerDefense/Character/BowlingComponent/BowlingComponentDefinition.cs" id="2"]
+[ext_resource type="Resource" uid="uid://dubcpgibi4ulb" path="res://Asset/Anime/Character/Plant/Star/WallnutShooter/Scene/BowlingBoom/TowerDefensePlantBowlingWallnutShooterBoomExplodeDefinition.tres" id="3"]
+[ext_resource type="Resource" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantBowlingWaterEnvironmentComponentSet.tres" id="4"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="5"]
+
+[sub_resource type="Resource" id="BowlingDefinition"]
+script = ExtResource("2")
+useParentHitBox = true
+spritePath = NodePath("SpriteGroup/TransformPoint/WallnutShooter")
+ComponentTypeId = "BowlingComponent"
+DefinitionId = "builtin.component.bowling.plant.wallnut_shooter_boom"
+InstanceId = "character.bowling"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"BowlingComponent"]
+
+[resource]
+script = ExtResource("5")
+ParentSet = ExtResource("4")
+Components = [SubResource("BowlingDefinition"), ExtResource("3")]

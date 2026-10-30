@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://025uaeehbpbt"]
+
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="1"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="3"]
+
+[sub_resource type="Resource" id="State_root"]
+script = ExtResource("1")
+StableId = "squash.root"
+DisplayName = &"Root"
+Kind = 1
+InitialChildId = "squash.idle"
+
+[sub_resource type="Resource" id="State_idle"]
+script = ExtResource("1")
+StableId = "squash.idle"
+DisplayName = &"Idle"
+ParentId = "squash.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_ready"]
+script = ExtResource("1")
+StableId = "squash.ready"
+DisplayName = &"Ready"
+ParentId = "squash.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_jump"]
+script = ExtResource("1")
+StableId = "squash.jump"
+DisplayName = &"Jump"
+ParentId = "squash.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_idle"]
+script = ExtResource("2")
+StableId = "squash.to_idle"
+SourceStateId = "squash.root"
+TargetStateId = "squash.idle"
+EventName = &"ToIdle"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_ready"]
+script = ExtResource("2")
+StableId = "squash.to_ready"
+SourceStateId = "squash.root"
+TargetStateId = "squash.ready"
+EventName = &"ToReady"
+DeclarationOrder = 1
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_jump"]
+script = ExtResource("2")
+StableId = "squash.to_jump"
+SourceStateId = "squash.root"
+TargetStateId = "squash.jump"
+EventName = &"ToJump"
+DeclarationOrder = 2
+GuardDefinition = null
+
+[resource]
+script = ExtResource("3")
+DefinitionId = "builtin.component.squash"
+BaseDefinition = null
+RootStateId = "squash.root"
+States = [SubResource("State_root"), SubResource("State_idle"), SubResource("State_ready"), SubResource("State_jump")]
+Transitions = [SubResource("Transition_idle"), SubResource("Transition_ready"), SubResource("Transition_jump")]

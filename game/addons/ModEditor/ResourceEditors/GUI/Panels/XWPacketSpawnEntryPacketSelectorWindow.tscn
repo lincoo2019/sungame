@@ -1,0 +1,138 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWPacketSpawnEntryPacketSelectorWindow.cs" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="Style_background"]
+bg_color = Color(0.025, 0.035, 0.018, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.4, 0.55, 0.2, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 18.0
+content_margin_top = 16.0
+content_margin_right = 18.0
+content_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="Style_description"]
+bg_color = Color(0.07, 0.09, 0.045, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.31, 0.42, 0.17, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="Style_confirm"]
+bg_color = Color(0.35, 0.53, 0.13, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78, 0.94, 0.36, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="PacketSpawnEntryPacketSelectorWindow" type="Window"]
+title = "卡牌图鉴 · 选择关卡卡牌"
+initial_position = 1
+size = Vector2i(960, 680)
+min_size = Vector2i(760, 520)
+transient = true
+exclusive = true
+script = ExtResource("1_script")
+
+[node name="Background" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("Style_background")
+
+[node name="Layout" type="VBoxContainer" parent="Background"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Title" type="Label" parent="Background/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.96, 0.57, 1)
+theme_override_font_sizes/font_size = 23
+text = "卡牌图鉴"
+
+[node name="Filter" type="LineEdit" parent="Background/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "搜索卡牌名称、saveKey 或阳光费用"
+clear_button_enabled = true
+
+[node name="PacketScroll" type="ScrollContainer" parent="Background/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="PacketGrid" type="GridContainer" parent="Background/Layout/PacketScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 1
+
+[node name="EmptyState" type="Label" parent="Background/Layout/PacketScroll"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(700, 260)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.76, 0.62, 1)
+text = "没有符合条件的卡牌"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionFrame" type="PanelContainer" parent="Background/Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_description")
+
+[node name="Description" type="Label" parent="Background/Layout/DescriptionFrame"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+text = "单击卡面选择；双击可直接确认。"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Controls" type="HBoxContainer" parent="Background/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="CancelButton" type="Button" parent="Background/Layout/Controls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 38)
+layout_mode = 2
+text = "取消"
+
+[node name="SelectButton" type="Button" parent="Background/Layout/Controls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 38)
+layout_mode = 2
+disabled = true
+theme_override_styles/normal = SubResource("Style_confirm")
+text = "选择这张卡牌"

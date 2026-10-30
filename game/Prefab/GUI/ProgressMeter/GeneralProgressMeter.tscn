@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://tatjpjdsp6lb"]
+
+[ext_resource type="Script" uid="uid://b0cg8h23tknue" path="res://Prefab/GUI/ProgressMeter/GeneralProgressMeter.cs" id="1_tiv57"]
+[ext_resource type="Texture2D" uid="uid://hbnfxpwe6u4k" path="res://Asset/Texture/GUI/General/FlagMeter/FlagMeterBackground.png" id="2_euub7"]
+[ext_resource type="Texture2D" uid="uid://j0u3c7wlxb3i" path="res://Asset/Texture/GUI/General/FlagMeter/FlagMeterFill.png" id="3_5oohi"]
+[ext_resource type="Texture2D" uid="uid://cwhjyv8jvpy64" path="res://Asset/Texture/GUI/General/FlagMeter/FlagMeterZombieHead.png" id="4_5qw42"]
+[ext_resource type="Texture2D" uid="uid://b6tabbldgpnup" path="res://Asset/Texture/GUI/General/FlagMeter/FlagMeterLevelProgress.png" id="5_5oohi"]
+[ext_resource type="FontFile" uid="uid://coqskwlqtnypf" path="res://Asset/Font/fzkt.ttf" id="6_text"]
+
+[node name="GeneralProgressMeter" type="Control" unique_id=685793881]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_tiv57")
+waveNum = 10
+waveInterval = 5
+
+[node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=1142823490]
+unique_name_in_owner = true
+texture_repeat = 2
+layout_mode = 0
+offset_right = 158.0
+offset_bottom = 23.0
+mouse_filter = 2
+step = 0.001
+fill_mode = 1
+texture_under = ExtResource("2_euub7")
+texture_progress = ExtResource("3_5oohi")
+
+[node name="FlagContainer" type="HBoxContainer" parent="." unique_id=1535007998]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 7.0
+offset_top = 15.0
+offset_right = 153.0
+offset_bottom = 15.0
+mouse_filter = 2
+theme_override_constants/separation = 250
+
+[node name="HeadTexture" type="TextureRect" parent="." unique_id=2068609419]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 140.0
+offset_top = -4.0
+offset_right = 165.0
+offset_bottom = 21.0
+pivot_offset = Vector2(36, 46)
+mouse_filter = 2
+texture = ExtResource("4_5qw42")
+
+[node name="FlagMeterLevelProgress" type="TextureRect" parent="." unique_id=1889146298]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 18.0
+offset_right = 123.0
+offset_bottom = 29.0
+mouse_filter = 2
+texture = ExtResource("5_5oohi")
+
+[node name="ProgressTextLabel" type="Label" parent="." unique_id=902716431]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 0.0
+offset_top = -2.0
+offset_right = 158.0
+offset_bottom = 23.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_text")
+theme_override_font_sizes/font_size = 16
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1

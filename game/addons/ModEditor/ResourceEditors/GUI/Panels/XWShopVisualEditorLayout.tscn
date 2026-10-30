@@ -1,0 +1,623 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://Prefab/GUI/DialogBox/Shop/Shop.tscn" id="1_runtime_shop"]
+
+[sub_resource type="StyleBoxFlat" id="StyleResourceMeta"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.055, 0.066, 0.078, 1)
+border_color = Color(0.18, 0.42, 0.54, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleOverview"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.105, 0.11, 1)
+border_color = Color(0.298, 0.303, 0.307, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StylePreview"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.095, 0.1, 0.105, 1)
+border_color = Color(0.294, 0.298, 0.303, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleTexture"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.07, 0.075, 0.08, 1)
+border_color = Color(0.275, 0.279, 0.282, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="ShopVisualEditorLayout" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="ResourceMetaPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleResourceMeta")
+
+[node name="Layout" type="VBoxContainer" parent="ResourceMetaPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="HeaderRow" type="HBoxContainer" parent="ResourceMetaPanel/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="ResourceMetaPanel/Layout/HeaderRow"]
+layout_mode = 2
+text = "商店档案 · 来源与实例化"
+vertical_alignment = 1
+
+[node name="ResourceNameEdit" type="LineEdit" parent="ResourceMetaPanel/Layout/HeaderRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "资源名称"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="ResourceMetaPanel/Layout/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "随场景本地化"
+
+[node name="JsonRow" type="HBoxContainer" parent="ResourceMetaPanel/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="JsonSourceButton" type="Button" parent="ResourceMetaPanel/Layout/JsonRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "选择商店 JSON 来源"
+
+[node name="ClearJsonButton" type="Button" parent="ResourceMetaPanel/Layout/JsonRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "清除 JSON 与页面"
+
+[node name="DataStatus" type="Label" parent="ResourceMetaPanel/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "JSON 数据：未加载"
+autowrap_mode = 2
+
+[node name="GameShopPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StylePreview")
+
+[node name="Layout" type="VBoxContainer" parent="GameShopPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="GameShopPanel/Layout"]
+layout_mode = 2
+text = "游戏商店实时预览（不会扣除金币或写入存档）"
+horizontal_alignment = 1
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="GameShopPanel/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="GameShopPanel/Layout/ViewportContainer"]
+size = Vector2i(1080, 600)
+render_target_update_mode = 4
+handle_input_locally = true
+
+[node name="RuntimeShop" parent="GameShopPanel/Layout/ViewportContainer/Viewport" instance=ExtResource("1_runtime_shop")]
+unique_name_in_owner = true
+editorPreviewMode = true
+
+[node name="OverviewPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleOverview")
+
+[node name="Overview" type="HBoxContainer" parent="OverviewPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="ShopSummaryLabel" type="Label" parent="OverviewPanel/Overview"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_alignment = 1
+
+[node name="AddPageTopButton" type="Button" parent="OverviewPanel/Overview"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "新增页面"
+
+[node name="SaveButton" type="Button" parent="OverviewPanel/Overview"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "保存"
+
+[node name="Split" type="HFlowContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PagePanel" type="VBoxContainer" parent="Split"]
+custom_minimum_size = Vector2(200, 420)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Split/PagePanel"]
+layout_mode = 2
+text = "页面"
+
+[node name="PageSummaryLabel" type="Label" parent="Split/PagePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+[node name="Toolbar" type="HBoxContainer" parent="Split/PagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="PageAddButton" type="Button" parent="Split/PagePanel/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "添加"
+
+[node name="PageRemoveButton" type="Button" parent="Split/PagePanel/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "删除"
+
+[node name="PageUpButton" type="Button" parent="Split/PagePanel/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "上移"
+
+[node name="PageDownButton" type="Button" parent="Split/PagePanel/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "下移"
+
+[node name="ShopPageList" type="ItemList" parent="Split/PagePanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 320)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemPanel" type="VBoxContainer" parent="Split"]
+custom_minimum_size = Vector2(230, 420)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Split/ItemPanel"]
+layout_mode = 2
+text = "商品"
+
+[node name="ItemSummaryLabel" type="Label" parent="Split/ItemPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ShopItemTypeLineEdit" type="LineEdit" parent="Split/ItemPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "商品分类 Type"
+
+[node name="TypePresets" type="HBoxContainer" parent="Split/ItemPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="ItemTypeButton" type="Button" parent="Split/ItemPanel/TypePresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Item"
+
+[node name="PacketTypeButton" type="Button" parent="Split/ItemPanel/TypePresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Packet"
+
+[node name="FeatureTypeButton" type="Button" parent="Split/ItemPanel/TypePresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Feature"
+
+[node name="Toolbar" type="HBoxContainer" parent="Split/ItemPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="ItemAddButton" type="Button" parent="Split/ItemPanel/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "添加"
+
+[node name="ItemRemoveButton" type="Button" parent="Split/ItemPanel/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "删除"
+
+[node name="ItemUpButton" type="Button" parent="Split/ItemPanel/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "上移"
+
+[node name="ItemDownButton" type="Button" parent="Split/ItemPanel/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "下移"
+
+[node name="ShopItemList" type="ItemList" parent="Split/ItemPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StagePanel" type="VBoxContainer" parent="Split"]
+custom_minimum_size = Vector2(360, 420)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Split/StagePanel"]
+layout_mode = 2
+text = "阶段"
+
+[node name="StageSummaryLabel" type="Label" parent="Split/StagePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Toolbar" type="HBoxContainer" parent="Split/StagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="StageAddButton" type="Button" parent="Split/StagePanel/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "添加"
+
+[node name="StageRemoveButton" type="Button" parent="Split/StagePanel/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "删除"
+
+[node name="StageUpButton" type="Button" parent="Split/StagePanel/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "上移"
+
+[node name="StageDownButton" type="Button" parent="Split/StagePanel/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "下移"
+
+[node name="ShopStageList" type="ItemList" parent="Split/StagePanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(330, 118)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SaveTypeRow" type="HFlowContainer" parent="Split/StagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Split/StagePanel/SaveTypeRow"]
+custom_minimum_size = Vector2(86, 0)
+layout_mode = 2
+text = "SaveType"
+vertical_alignment = 1
+
+[node name="StageSaveTypeOption" type="OptionButton" parent="Split/StagePanel/SaveTypeRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StageSaveTypeVisualChoices" type="HFlowContainer" parent="Split/StagePanel/SaveTypeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="SaveKeyRow" type="HBoxContainer" parent="Split/StagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Split/StagePanel/SaveKeyRow"]
+custom_minimum_size = Vector2(86, 0)
+layout_mode = 2
+text = "SaveKey"
+vertical_alignment = 1
+
+[node name="StageSaveKeyLineEdit" type="LineEdit" parent="Split/StagePanel/SaveKeyRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Feature 或卡片 saveKey"
+
+[node name="ChoosePacketButton" type="Button" parent="Split/StagePanel/SaveKeyRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "选择卡片"
+
+[node name="TextureRow" type="HBoxContainer" parent="Split/StagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Split/StagePanel/TextureRow"]
+custom_minimum_size = Vector2(86, 0)
+layout_mode = 2
+text = "Texture"
+vertical_alignment = 1
+
+[node name="TexturePickerHost" type="HBoxContainer" parent="Split/StagePanel/TextureRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DescribeRow" type="HBoxContainer" parent="Split/StagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Split/StagePanel/DescribeRow"]
+custom_minimum_size = Vector2(86, 0)
+layout_mode = 2
+text = "描述 Key"
+vertical_alignment = 1
+
+[node name="StageDescribeLineEdit" type="LineEdit" parent="Split/StagePanel/DescribeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NpcTalkRow" type="HBoxContainer" parent="Split/StagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Split/StagePanel/NpcTalkRow"]
+custom_minimum_size = Vector2(86, 0)
+layout_mode = 2
+text = "NpcTalk"
+vertical_alignment = 1
+
+[node name="StageNpcTalkLineEdit" type="LineEdit" parent="Split/StagePanel/NpcTalkRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "NPC 对话 key"
+
+[node name="ChooseTalkButton" type="Button" parent="Split/StagePanel/NpcTalkRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "选择对话"
+
+[node name="CostTypeRow" type="HFlowContainer" parent="Split/StagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Split/StagePanel/CostTypeRow"]
+custom_minimum_size = Vector2(86, 0)
+layout_mode = 2
+text = "价格类型"
+vertical_alignment = 1
+
+[node name="StageCostTypeOption" type="OptionButton" parent="Split/StagePanel/CostTypeRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StageCostTypeVisualChoices" type="HFlowContainer" parent="Split/StagePanel/CostTypeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="NumberGrid" type="GridContainer" parent="Split/StagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="CostLabel" type="Label" parent="Split/StagePanel/NumberGrid"]
+layout_mode = 2
+text = "Cost"
+vertical_alignment = 1
+
+[node name="StageCostSpin" type="SpinBox" parent="Split/StagePanel/NumberGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -999999.0
+max_value = 999999.0
+rounded = true
+
+[node name="OpenMinLabel" type="Label" parent="Split/StagePanel/NumberGrid"]
+layout_mode = 2
+text = "OpenMin"
+vertical_alignment = 1
+
+[node name="StageOpenMinSpin" type="SpinBox" parent="Split/StagePanel/NumberGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -999999.0
+max_value = 999999.0
+rounded = true
+
+[node name="OpenMaxLabel" type="Label" parent="Split/StagePanel/NumberGrid"]
+layout_mode = 2
+text = "OpenMax"
+vertical_alignment = 1
+
+[node name="StageOpenMaxSpin" type="SpinBox" parent="Split/StagePanel/NumberGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -999999.0
+max_value = 999999.0
+rounded = true
+
+[node name="AddNumLabel" type="Label" parent="Split/StagePanel/NumberGrid"]
+layout_mode = 2
+text = "AddNum"
+vertical_alignment = 1
+
+[node name="StageAddNumSpin" type="SpinBox" parent="Split/StagePanel/NumberGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -999999.0
+max_value = 999999.0
+rounded = true
+
+[node name="PreviewPanel" type="PanelContainer" parent="Split"]
+custom_minimum_size = Vector2(230, 420)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StylePreview")
+
+[node name="PreviewLayout" type="VBoxContainer" parent="Split/PreviewPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Split/PreviewPanel/PreviewLayout"]
+layout_mode = 2
+text = "预览"
+
+[node name="TextureFrame" type="PanelContainer" parent="Split/PreviewPanel/PreviewLayout"]
+custom_minimum_size = Vector2(190, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleTexture")
+
+[node name="StageTexturePreview" type="TextureRect" parent="Split/PreviewPanel/PreviewLayout/TextureFrame"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StagePreviewTitle" type="Label" parent="Split/PreviewPanel/PreviewLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "商品: 未选择"
+autowrap_mode = 2
+
+[node name="StagePreviewMeta" type="Label" parent="Split/PreviewPanel/PreviewLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "价格: -"
+autowrap_mode = 2
+
+[node name="StagePreviewStock" type="Label" parent="Split/PreviewPanel/PreviewLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "库存: -"
+autowrap_mode = 2
+
+[node name="PurchaseSimulationHost" type="VBoxContainer" parent="Split/PreviewPanel/PreviewLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="JsonSourceDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+access = 2
+file_mode = 0
+filters = PackedStringArray("*.json ; JSON 文件")

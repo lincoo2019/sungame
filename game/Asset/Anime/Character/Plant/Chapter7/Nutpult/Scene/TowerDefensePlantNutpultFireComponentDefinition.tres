@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="FireComponentDefinition" format=3 uid="uid://bib2y67tu4b5b"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="5"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="6"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="7"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mig1w"]
+b = Vector2(2000, 0)
+
+[sub_resource type="Resource" id="AabbShape2DResource_fire_area"]
+script = ExtResource("2")
+Geometry = SubResource("SegmentShape2D_mig1w")
+
+[sub_resource type="Resource" id="Resource_ad035"]
+script = ExtResource("3")
+projectileName = &"Nut"
+baseDamage = 200.0
+damageFlags = 2
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+penetrateNum = 10000
+
+[sub_resource type="Resource" id="Resource_h26ly"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_ad035")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_nyytv"]
+script = ExtResource("5")
+projectile = SubResource("Resource_h26ly")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Resource_l5pm8"]
+script = ExtResource("6")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[resource]
+script = ExtResource("7")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/Nutpult/AdobeAnimateSlot/Marker2D")]
+spritePath = NodePath("SpriteGroup/TransformPoint/Nutpult")
+checkShapeResources = [SubResource("AabbShape2DResource_fire_area")]
+fireAnimeTimeScale = 3.0
+fireInterval = 3.0
+fireCheckList = [SubResource("Resource_nyytv")]
+fireProjectileList = [SubResource("Resource_l5pm8")]
+checkHeight = false
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter7.nutpult"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]

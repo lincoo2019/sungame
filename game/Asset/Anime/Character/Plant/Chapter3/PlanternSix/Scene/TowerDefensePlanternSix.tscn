@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://d2m8u0uajq8y5"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter3/PlanternSix/Scene/TowerDefensePlanternSixComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://4if43e7nlhjm" path="res://Asset/Anime/Character/Plant/Chapter3/PlanternSix/Scene/TowerDefensePlanternSix.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="5"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="6"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="7"]
+[ext_resource type="Resource" uid="uid://dda5m0uk2kreq" path="res://Asset/Anime/Character/Plant/Chapter3/PlanternSix/Config/TowerDefensePlantPlanternSix.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://bxjopd1hikihg" path="res://Asset/Anime/Character/Plant/Chapter3/PlanternSix/PlanternSix.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://dsc2tkcmoc8l1" path="res://Prefab/Particles/Plant/PlanternFog/PlanternFog.tscn" id="10"]
+[ext_resource type="Texture2D" uid="uid://djbq4qbdg6ktq" path="res://Asset/Anime/Particles/Plant/PlanternFogBlue.png" id="11"]
+
+[sub_resource type="Resource" id="Resource_q8yoy"]
+script = ExtResource("5")
+time = 0.5
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_xdger"]
+script = ExtResource("6")
+buffList = [SubResource("Resource_q8yoy")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Resource_nwg4s"]
+script = ExtResource("7")
+damageFlags = 2
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[sub_resource type="Gradient" id="Gradient_7kd5i"]
+offsets = PackedFloat32Array(0, 0.346154, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.952991, 0.952991, 0.952991, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oxn47"]
+gradient = SubResource("Gradient_7kd5i")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[node name="TowerDefensePlanternSix" unique_id=1243751465 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+attackInterval = 1.5
+eventList = [SubResource("Resource_xdger")]
+eventAttackList = [SubResource("Resource_nwg4s")]
+config = ExtResource("8")
+sprite = NodePath("SpriteGroup/TransformPoint/PlanternSix")
+Custom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PlanternSix" parent="SpriteGroup/TransformPoint" index="0" unique_id=1207485047 instance=ExtResource("9")]
+position = Vector2(0, -35)
+
+[node name="PlanternFog" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=2121658194 instance=ExtResource("10")]
+z_index = -4
+texture = ExtResource("11")
+
+[node name="Light" type="PointLight2D" parent="." index="8" unique_id=581946861]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(1.35156, 1.35156)
+color = Color(0.552941, 1, 1, 1)
+energy = 0.35
+texture = SubResource("GradientTexture2D_oxn47")

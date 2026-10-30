@@ -1,0 +1,262 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_background"]
+[ext_resource type="FontFile" path="res://Asset/Font/fzkt.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stage"]
+bg_color = Color(0.02, 0.035, 0.025, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.22, 0.38, 0.2, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_health_bg"]
+bg_color = Color(0.08, 0.08, 0.08, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.02, 0.02, 0.02, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_health_fill"]
+bg_color = Color(0.15, 0.72, 0.18, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="CharacterCombatWorkbench" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 560)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Header" type="HFlowContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 19
+text = "游戏内角色战斗靶场"
+
+[node name="ResourceType" type="Label" parent="Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 34)
+layout_mode = 2
+text = "攻击资源"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TargetMode" type="OptionButton" parent="Header"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(150, 34)
+layout_mode = 2
+
+[node name="TargetModeSegments" type="HFlowContainer" parent="Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+tooltip_text = "切换命中身体或盾牌/护甲，检查伤害标志与倍率"
+
+[node name="ResetButton" type="Button" parent="Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 34)
+layout_mode = 2
+text = "重置靶子"
+
+[node name="SimulateButton" type="Button" parent="Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(124, 34)
+layout_mode = 2
+text = "▶ 模拟命中"
+
+[node name="Stage" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 410)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_stage")
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="Stage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="Stage/ViewportContainer"]
+size = Vector2i(960, 420)
+render_target_update_mode = 4
+handle_input_locally = true
+
+[node name="GameBackground" type="TextureRect" parent="Stage/ViewportContainer/Viewport"]
+offset_right = 960.0
+offset_bottom = 420.0
+mouse_filter = 2
+texture = ExtResource("1_background")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="PreviewRoot" type="Node2D" parent="Stage/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+position = Vector2(530, 330)
+
+[node name="PreviewFallback" type="Label" parent="Stage/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+offset_left = 360.0
+offset_top = 190.0
+offset_right = 700.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 20
+text = "正在加载游戏角色靶子…"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Overlay" type="CanvasLayer" parent="Stage/ViewportContainer/Viewport"]
+layer = 30
+
+[node name="TargetHud" type="VBoxContainer" parent="Stage/ViewportContainer/Viewport/Overlay"]
+offset_left = 220.0
+offset_top = 18.0
+offset_right = 740.0
+offset_bottom = 92.0
+theme_override_constants/separation = 3
+
+[node name="TargetName" type="Label" parent="Stage/ViewportContainer/Viewport/Overlay/TargetHud"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.91, 0.67, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 21
+text = "普通僵尸 · 身体"
+horizontal_alignment = 1
+
+[node name="TargetHealth" type="ProgressBar" parent="Stage/ViewportContainer/Viewport/Overlay/TargetHud"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+max_value = 1000.0
+value = 1000.0
+show_percentage = false
+theme_override_styles/background = SubResource("StyleBoxFlat_health_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_health_fill")
+
+[node name="HealthValue" type="Label" parent="Stage/ViewportContainer/Viewport/Overlay/TargetHud"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 17
+text = "1000 / 1000"
+horizontal_alignment = 1
+
+[node name="StateBadge" type="Label" parent="Stage/ViewportContainer/Viewport/Overlay/TargetHud"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.9, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "状态：正常"
+horizontal_alignment = 1
+
+[node name="StateTimer" type="ProgressBar" parent="Stage/ViewportContainer/Viewport/Overlay/TargetHud"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+max_value = 1.0
+value = 1.0
+show_percentage = false
+theme_override_styles/background = SubResource("StyleBoxFlat_health_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_health_fill")
+
+[node name="DamageNumber" type="Label" parent="Stage/ViewportContainer/Viewport/Overlay"]
+unique_name_in_owner = true
+visible = false
+offset_left = 430.0
+offset_top = 105.0
+offset_right = 630.0
+offset_bottom = 165.0
+theme_override_colors/font_color = Color(1, 0.25, 0.12, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 38
+text = "-20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EventEffect" type="Label" parent="Stage/ViewportContainer/Viewport/Overlay"]
+unique_name_in_owner = true
+visible = false
+offset_left = 265.0
+offset_top = 205.0
+offset_right = 695.0
+offset_bottom = 275.0
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 30
+text = "事件效果"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SimulationText" type="Label" parent="Stage/ViewportContainer/Viewport/Overlay"]
+unique_name_in_owner = true
+offset_left = 90.0
+offset_top = 355.0
+offset_right = 870.0
+offset_bottom = 402.0
+theme_override_colors/font_color = Color(1, 0.93, 0.72, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "点击“模拟命中”查看游戏伤害结果"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PropertyHeader" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PropertyTitle" type="Label" parent="PropertyHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "战斗参数 · 修改后立即驱动上方靶场"
+
+[node name="PropertyCount" type="Label" parent="PropertyHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 个可视属性"
+
+[node name="PropertyScroll" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PropertyRows" type="VBoxContainer" parent="PropertyScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="Status" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "预览完全隔离，不会执行真实战斗事件或修改存档。"
+horizontal_alignment = 1
+autowrap_mode = 2

@@ -1,0 +1,135 @@
+[gd_scene load_steps=9 format=3 uid="uid://b8m0output001"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/OutPutPanel/XWOutputPanel.cs" id="1_output"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Clear.svg" id="2_clear"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/CombineLines.svg" id="3_collapse"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Search.svg" id="4_search"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Popup.svg" id="5_std"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/StatusError.svg" id="6_error"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/StatusWarning.svg" id="7_warning"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Edit.svg" id="8_editor"]
+
+[node name="XWOutputPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 48)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_output")
+
+[node name="ContentMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="RootHBox" type="HBoxContainer" parent="ContentMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MainVBox" type="VBoxContainer" parent="ContentMargin/RootHBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Log" type="RichTextLabel" parent="ContentMargin/RootHBox/MainVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 2
+bbcode_enabled = true
+scroll_following = true
+selection_enabled = true
+context_menu_enabled = true
+deselect_on_focus_loss_enabled = false
+
+[node name="BottomTools" type="HFlowContainer" parent="ContentMargin/RootHBox/MainVBox"]
+layout_mode = 2
+alignment = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 2
+
+[node name="ClearButton" type="Button" parent="ContentMargin/RootHBox/MainVBox/BottomTools"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "清空输出 (Ctrl+Alt+K)"
+focus_mode = 0
+theme_type_variation = &"BottomPanelButton"
+icon = ExtResource("2_clear")
+flat = true
+
+[node name="CollapseButton" type="Button" parent="ContentMargin/RootHBox/MainVBox/BottomTools"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "折叠重复消息，显示出现次数。"
+focus_mode = 0
+theme_type_variation = &"BottomPanelButton"
+toggle_mode = true
+icon = ExtResource("3_collapse")
+flat = true
+
+[node name="SearchBox" type="LineEdit" parent="ContentMargin/RootHBox/MainVBox/BottomTools"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "过滤消息"
+right_icon = ExtResource("4_search")
+clear_button_enabled = true
+
+[node name="FilterButtons" type="HBoxContainer" parent="ContentMargin/RootHBox/MainVBox/BottomTools"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="StdFilter" type="Button" parent="ContentMargin/RootHBox/MainVBox/BottomTools/FilterButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 28)
+layout_mode = 2
+tooltip_text = "切换标准输出消息可见性。"
+focus_mode = 0
+theme_type_variation = &"EditorLogFilterButton"
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("5_std")
+text = "0"
+
+[node name="ErrorFilter" type="Button" parent="ContentMargin/RootHBox/MainVBox/BottomTools/FilterButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 28)
+layout_mode = 2
+tooltip_text = "切换错误可见性。"
+focus_mode = 0
+theme_type_variation = &"EditorLogFilterButton"
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("6_error")
+text = "0"
+
+[node name="WarningFilter" type="Button" parent="ContentMargin/RootHBox/MainVBox/BottomTools/FilterButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 28)
+layout_mode = 2
+tooltip_text = "切换警告可见性。"
+focus_mode = 0
+theme_type_variation = &"EditorLogFilterButton"
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("7_warning")
+text = "0"
+
+[node name="EditorFilter" type="Button" parent="ContentMargin/RootHBox/MainVBox/BottomTools/FilterButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 28)
+layout_mode = 2
+tooltip_text = "切换编辑器消息可见性。"
+focus_mode = 0
+theme_type_variation = &"EditorLogFilterButton"
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("8_editor")
+text = "0"

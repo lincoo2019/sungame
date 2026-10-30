@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://crc0b5gp3fw5h"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cy1d40j3qljn4" path="res://Asset/Anime/Character/Plant/Cover/GatlingPot/Scene/TowerDefensePlantGatlingPotComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://c6bupx13m3uju" path="res://Asset/Anime/Character/Plant/Cover/GatlingPot/Scene/TowerDefensePlantGatlingPot.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="5"]
+[ext_resource type="Resource" uid="uid://blw3qqib04u35" path="res://Asset/Anime/Character/Plant/Cover/GatlingPot/Config/TowerDefensePlantGatlingPot.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://dskoovkqhxy7k" path="res://Asset/Anime/Character/Plant/Cover/GatlingPot/GatlingPot.tscn" id="7"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="8"]
+
+[sub_resource type="Resource" id="Resource_f738e"]
+script = ExtResource("5")
+projectileName = &"Pea"
+catapultHeight = 400.0
+
+[node name="TowerDefensePlantGatlingPot" unique_id=1503711879 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+showHealthOffset = Vector2(0, 30)
+z_index = -13
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 1
+projectileData = SubResource("Resource_f738e")
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/GatlingPot")
+itemLayer = 2
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 47)
+scale = Vector2(0.821918, 0.77551)
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="GatlingPot" parent="SpriteGroup/TransformPoint" index="0" unique_id=679921016 instance=ExtResource("7")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="PotSlot" type="Node2D" parent="SpriteGroup/TransformPoint/GatlingPot" index="0" unique_id=2066416411]
+script = ExtResource("8")
+followSlotId = 2
+useScale = false
+Layer = 2
+drawLayerId = 2
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/GatlingPot/PotSlot" index="0" unique_id=1833780492]
+position = Vector2(32, 0)
+
+[node name="MouseSlot" type="Node2D" parent="SpriteGroup/TransformPoint/GatlingPot" index="1" unique_id=814033812]
+script = ExtResource("8")
+followSlotId = 4
+useRotate = false
+useSkew = false
+Layer = 4
+drawLayerId = 4
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="FireMarker" type="Marker2D" parent="SpriteGroup/TransformPoint/GatlingPot/MouseSlot" index="0" unique_id=1478111550]
+position = Vector2(30.7571, 30.6602)

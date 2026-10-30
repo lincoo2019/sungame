@@ -1,0 +1,326 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWProjectileChangeRuntimePreview.tscn" id="1_runtime"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/Resource/XWResourcePicker.tscn" id="2_picker"]
+
+[sub_resource type="StyleBoxFlat" id="StyleHeader"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.105, 0.11, 0.12, 1)
+border_color = Color(0.302, 0.306, 0.314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleChain"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.095, 0.1, 0.11, 1)
+border_color = Color(0.294, 0.298, 0.306, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleItem"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.11, 0.105, 0.1, 1)
+border_color = Color(0.306, 0.302, 0.298, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleSource"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.055, 0.13, 0.19, 0.96)
+border_color = Color(0.2, 0.58, 0.86, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleTarget"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.19, 0.095, 0.045, 0.96)
+border_color = Color(0.96, 0.5, 0.18, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleEmpty"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.075, 0.09, 0.105, 0.92)
+border_color = Color(0.34, 0.45, 0.54, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ProjectileChangeEditorLayout" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleHeader")
+
+[node name="HeaderLayout" type="VBoxContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ModeBadge" type="Label" parent="Header/HeaderLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.43, 0.83, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "连续变化链"
+
+[node name="SummaryLabel" type="Label" parent="Header/HeaderLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hint" type="Label" parent="Header/HeaderLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "子弹变化链路用于配置命中后替换、分裂或变形到新的子弹配置。左侧管理链路顺序，中间查看流程，右侧用选择窗口绑定来源子弹、目标子弹和音效。"
+autowrap_mode = 2
+
+[node name="RuntimePreview" parent="." instance=ExtResource("1_runtime")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Main" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="ChainPanel" type="PanelContainer" parent="Main"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 360)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleChain")
+
+[node name="ChainLayout" type="VBoxContainer" parent="Main/ChainPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Toolbar" type="HBoxContainer" parent="Main/ChainPanel/ChainLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="AddButton" type="Button" parent="Main/ChainPanel/ChainLayout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加变化"
+
+[node name="RemoveButton" type="Button" parent="Main/ChainPanel/ChainLayout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除"
+
+[node name="MoveUpButton" type="Button" parent="Main/ChainPanel/ChainLayout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "上移"
+
+[node name="MoveDownButton" type="Button" parent="Main/ChainPanel/ChainLayout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "下移"
+
+[node name="ChainList" type="ItemList" parent="Main/ChainPanel/ChainLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(420, 160)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ChainCanvas" type="Control" parent="Main/ChainPanel/ChainLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(420, 140)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "子弹变化链路预览"
+
+[node name="ItemPanel" type="PanelContainer" parent="Main"]
+custom_minimum_size = Vector2(440, 360)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleItem")
+
+[node name="ItemEditorHost" type="VBoxContainer" parent="Main/ItemPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="SelectedLabel" type="Label" parent="Main/ItemPanel/ItemEditorHost"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0.43, 1)
+theme_override_font_sizes/font_size = 17
+text = "来源子弹 → 目标子弹"
+autowrap_mode = 2
+
+[node name="EmptyState" type="PanelContainer" parent="Main/ItemPanel/ItemEditorHost"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleEmpty")
+
+[node name="EmptyStateLabel" type="Label" parent="Main/ItemPanel/ItemEditorHost/EmptyState"]
+layout_mode = 2
+text = "还没有子弹变化项。使用左侧的添加按钮建立一段变化。"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SourceField" type="PanelContainer" parent="Main/ItemPanel/ItemEditorHost"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleSource")
+
+[node name="Layout" type="VBoxContainer" parent="Main/ItemPanel/ItemEditorHost/SourceField"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SourceTitle" type="Label" parent="Main/ItemPanel/ItemEditorHost/SourceField/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.82, 1, 1)
+text = "变化前 · 来源子弹"
+
+[node name="SourceProjectileKeyEdit" type="LineEdit" parent="Main/ItemPanel/ItemEditorHost/SourceField/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+placeholder_text = "未选择来源子弹"
+tooltip_text = "来源 key 只作状态显示，请使用图鉴选择按钮修改"
+
+[node name="ProjectileDataPicker" parent="Main/ItemPanel/ItemEditorHost/SourceField/Layout" instance=ExtResource("2_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ChooseSourceButton" type="Button" parent="Main/ItemPanel/ItemEditorHost/SourceField/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "从子弹图鉴选择来源"
+
+[node name="TargetField" type="PanelContainer" parent="Main/ItemPanel/ItemEditorHost"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleTarget")
+
+[node name="Layout" type="VBoxContainer" parent="Main/ItemPanel/ItemEditorHost/TargetField"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TargetTitle" type="Label" parent="Main/ItemPanel/ItemEditorHost/TargetField/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.67, 0.32, 1)
+text = "变化后 · 目标子弹"
+
+[node name="ProjectileConfigPicker" parent="Main/ItemPanel/ItemEditorHost/TargetField/Layout" instance=ExtResource("2_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ChooseTargetButton" type="Button" parent="Main/ItemPanel/ItemEditorHost/TargetField/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "从子弹图鉴选择目标"
+
+[node name="AudioField" type="VBoxContainer" parent="Main/ItemPanel/ItemEditorHost"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="AudioTitle" type="Label" parent="Main/ItemPanel/ItemEditorHost/AudioField"]
+layout_mode = 2
+text = "变化音效"
+
+[node name="AudioRow" type="HBoxContainer" parent="Main/ItemPanel/ItemEditorHost/AudioField"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ChangeAudioLineEdit" type="LineEdit" parent="Main/ItemPanel/ItemEditorHost/AudioField/AudioRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+placeholder_text = "未选择变化音效"
+tooltip_text = "音效 key 只作状态显示，请使用音效库选择按钮修改"
+
+[node name="ChooseAudioButton" type="Button" parent="Main/ItemPanel/ItemEditorHost/AudioField/AudioRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择音效"
+
+[node name="ClearAudioButton" type="Button" parent="Main/ItemPanel/ItemEditorHost/AudioField/AudioRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "清除"
+
+[node name="EntryPreviewLabel" type="Label" parent="Main/ItemPanel/ItemEditorHost"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.84, 0.89, 1)
+text = "来源: 未配置\n目标: 未配置\n音效: 未配置"
+autowrap_mode = 2

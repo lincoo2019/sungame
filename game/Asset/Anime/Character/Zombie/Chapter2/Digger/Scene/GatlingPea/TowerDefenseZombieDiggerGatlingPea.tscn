@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://kw3ksm3dt8wt"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/Scene/GatlingPea/TowerDefenseZombieDiggerGatlingPeaComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://b7inskyqqwyx5" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/Scene/GatlingPea/TowerDefenseZombieDiggerGatlingPea.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/Scene/GatlingPea/TowerDefenseZombieDiggerGatlingPeaStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://cjevyu3s6ha4e" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/Config/TowerDefenseZombieDiggerGatlingPea.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dybp4l4xkgwff" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/DamagePoint/Config/ZombieDiggerDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://ckrwasaouv8e1" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/Armor/Config/ZombieDiggerArmorHardHat.tres" id="8"]
+[ext_resource type="Resource" uid="uid://dhatm2qs8qero" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/DamagePoint/Config/ZombieDiggerDamagePointHead.tres" id="9"]
+[ext_resource type="Resource" uid="uid://be1ppc3g7ejxi" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/Armor/Config/ZombieDiggerArmorPick.tres" id="10"]
+[ext_resource type="PackedScene" uid="uid://bhmo2eyyqn8wm" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/Sprite/GatlingPea/ZombieDiggerGatlingPea.tscn" id="11"]
+
+[node name="TowerDefenseZombieDiggerGatlingPea" unique_id=28680171 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+fireInterval = 1.5
+fireNum = 1
+projectileName = "Pea"
+walkSpeedScale = 0.5
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieDiggerGatlingPea")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieDiggerGatlingPea/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"HardHat": ExtResource("8"),
+"Head": ExtResource("9"),
+"Pick": ExtResource("10")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieDiggerGatlingPea/ArmSlot"),
+"HardHat": NodePath("SpriteGroup/TransformPoint/ZombieDiggerGatlingPea/HardHatSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieDiggerGatlingPea/HeadSlot"),
+"Pick": NodePath("SpriteGroup/TransformPoint/ZombieDiggerGatlingPea/PickSlot")
+}
+currentArmor = ["Pick"]
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(6.000001, 42)
+scale = Vector2(1.0697676, 1.1666667)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieDiggerGatlingPea" parent="SpriteGroup/TransformPoint" index="0" unique_id=1607443479 instance=ExtResource("11")]
+position = Vector2(-12, -33)
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieDiggerGatlingPea" index="0" unique_id=1330248961]
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieDiggerGatlingPea/Head" index="0" unique_id=1620865045]
+position = Vector2(30.630905, 27.607735)
+rotation = 0.037357412
+scale = Vector2(0.99999464, 1.0000054)
+skew = -3.9100647e-05
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieDiggerGatlingPea" index="1" unique_id=142744396]
+drawLayerId = -2
+position = Vector2(-21.04714, -39.862392)
+rotation = -0.015811956
+scale = Vector2(0.79956734, 0.79956734)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieDiggerGatlingPea" index="2" unique_id=2010994946]
+position = Vector2(0.98567677, 5.486761)
+rotation = 0.06792725
+scale = Vector2(0.7997597, 0.7997715)
+
+[node name="HardHatSlot" parent="SpriteGroup/TransformPoint/ZombieDiggerGatlingPea" index="3" unique_id=2034846501]
+position = Vector2(-17.89318, -55.712364)
+rotation = 0.06256483
+scale = Vector2(0.7993523, 0.7993523)
+
+[node name="PickSlot" parent="SpriteGroup/TransformPoint/ZombieDiggerGatlingPea" index="4" unique_id=764984938]
+position = Vector2(-30.017895, 9.061855)
+rotation = 0.046142615
+scale = Vector2(0.7994042, 0.7994042)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieDiggerGatlingPea" index="5" unique_id=2145813569]
+position = Vector2(-95.17, 10)
+
+[editable path="SpriteGroup/TransformPoint/ZombieDiggerGatlingPea"]

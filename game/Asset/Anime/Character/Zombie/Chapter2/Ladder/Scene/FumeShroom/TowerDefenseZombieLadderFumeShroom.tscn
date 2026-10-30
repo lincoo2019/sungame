@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://b47npmrtx2j"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cc55tyvqls7a" path="res://Asset/Anime/Character/Zombie/Chapter2/Ladder/Scene/FumeShroom/TowerDefenseZombieLadderFumeShroomComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://0b35kownxr4f" path="res://Asset/Anime/Character/Zombie/Chapter2/Ladder/Scene/FumeShroom/TowerDefenseZombieLadderFumeShroom.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b2r7cvdeap5c0" path="res://Asset/Anime/Character/Zombie/Chapter2/Ladder/Scene/TowerDefenseZombieLadderStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://da7aukhwx8r2" path="res://Asset/Anime/Character/Zombie/Chapter2/Ladder/Config/TowerDefenseZombieLadderFumeShroom.tres" id="6"]
+[ext_resource type="Resource" uid="uid://bkvdxf2q8daaf" path="res://Asset/Anime/Character/Zombie/Chapter2/Ladder/DamagePoint/Config/ZombieLadderDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://dhj6fple61f3u" path="res://Asset/Anime/Character/Zombie/Chapter2/Ladder/Armor/Config/ZombieLadderArmorBlackHelmet.tres" id="8"]
+[ext_resource type="Resource" uid="uid://ibwx6tehoy7r" path="res://Asset/Anime/Character/Zombie/Chapter2/Ladder/Armor/Config/ZombieLadderArmorBucket.tres" id="9"]
+[ext_resource type="Resource" uid="uid://2c6xhxlngotl" path="res://Asset/Anime/Character/Zombie/Chapter2/Ladder/Armor/Config/ZombieLadderArmorCone.tres" id="10"]
+[ext_resource type="Resource" uid="uid://bcikav37xppv8" path="res://Asset/Anime/Character/Zombie/Chapter2/Ladder/DamagePoint/Config/ZombieLadderDamagePointHead.tres" id="11"]
+[ext_resource type="Resource" uid="uid://b5jt405fa8s0a" path="res://Asset/Anime/Character/Zombie/Chapter2/Ladder/Armor/Config/ZombieLadderArmorHelmet.tres" id="12"]
+[ext_resource type="Resource" uid="uid://cvi786vt7onjw" path="res://Asset/Anime/Character/Zombie/Chapter2/Ladder/Armor/Config/ZombieLadderArmorLadder.tres" id="13"]
+[ext_resource type="Resource" uid="uid://cu13ahi3sex1g" path="res://Asset/Anime/Character/Zombie/Chapter2/Ladder/Armor/Config/ZombieLadderArmorSpecialHelmet.tres" id="14"]
+[ext_resource type="PackedScene" uid="uid://df23xbrtkem8" path="res://Asset/Anime/Character/Zombie/Chapter2/Ladder/Sprite/FumeShroom/ZombieLadderFumeShroom.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="16"]
+[ext_resource type="Texture2D" uid="uid://bgqrj8e8qsgw8" path="res://Asset/Config/Projectile/Puff/Sprite/PuffShroom/ProjectilePuffShroomPuff.png" id="17"]
+
+[sub_resource type="Curve" id="Curve_81i8b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.589744, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4p3xn"]
+curve = SubResource("Curve_81i8b")
+
+[sub_resource type="Curve" id="Curve_ktiwv"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 38.1566), 0.0, 0.0, 0, 0, Vector2(0.535897, 100), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rw0y7"]
+curve = SubResource("Curve_ktiwv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sssaj"]
+lifetime_randomness = 0.38
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 20.0
+spread = 15.0
+flatness = 0.552
+initial_velocity_min = 240.58
+initial_velocity_max = 788.5
+gravity = Vector3(0, 0, 0)
+damping_min = 3.199
+damping_max = 36.884
+damping_curve = SubResource("CurveTexture_rw0y7")
+scale_min = 0.6
+scale_max = 0.9
+alpha_curve = SubResource("CurveTexture_4p3xn")
+
+[node name="TowerDefenseZombieLadderFumeShroom" unique_id=119969861 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+fireInterval = 1.5
+walkAnimeClip = "LadderWalk"
+swimAnimeClip = "LadderWalk"
+attackAnimeClip = "LadderEat"
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieLadderFumeShroom/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+waterHeight = 25.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieLadderFumeShroom")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieLadderFumeShroom/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"BlackHelmet": ExtResource("8"),
+"Bucket": ExtResource("9"),
+"Cone": ExtResource("10"),
+"Head": ExtResource("11"),
+"Helmet": ExtResource("12"),
+"Ladder": ExtResource("13"),
+"SpecialHelmet": ExtResource("14")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieLadderFumeShroom/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieLadderFumeShroom/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieLadderFumeShroom/HeadSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieLadderFumeShroom/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieLadderFumeShroom/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieLadderFumeShroom/HeadSlot"),
+"Ladder": NodePath("SpriteGroup/TransformPoint/ZombieLadderFumeShroom/LadderSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieLadderFumeShroom/HeadSlot")
+}
+currentArmor = ["Ladder"]
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(23, 44)
+
+[node name="ZombieLadderFumeShroom" parent="SpriteGroup/TransformPoint" index="0" unique_id=343857198 instance=ExtResource("15")]
+position = Vector2(-23, -44)
+trueFrameRate = 180.0
+Animation/MediaReplace/Zombie_ladder_1.png = "res://Asset/AtlasSource/Armor/Texture/Character/Armor/Ladder/ZombieLadder1.png"
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieLadderFumeShroom" index="0"]
+trueFrameRate = 180.0
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieLadderFumeShroom" index="1"]
+drawLayerId = -2
+position = Vector2(-13.7112465, -48.89778)
+rotation = -0.07788136
+scale = Vector2(0.84955305, 0.84955305)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieLadderFumeShroom" index="2"]
+position = Vector2(-3.0388145, -6.7564926)
+rotation = 1.0987725
+scale = Vector2(0.8506745, 1.0315946)
+skew = -0.000849843
+
+[node name="LadderSlot" parent="SpriteGroup/TransformPoint/ZombieLadderFumeShroom" index="3"]
+position = Vector2(-21.84925, 7.9518433)
+rotation = 0.0
+scale = Vector2(0.84999084, 0.84999084)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieLadderFumeShroom" index="4"]
+position = Vector2(-40, -80)
+scale = Vector2(1, 1)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=650382982 instance=ExtResource("16")]
+visible = false
+position = Vector2(-12, -52)
+trueFrameRate = 180.0
+
+[node name="FireParticles" type="GPUParticles2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="3" unique_id=1587647636]
+unique_name_in_owner = true
+z_index = 3
+position = Vector2(-37.972244, -76.09054)
+rotation = -3.124452
+scale = Vector2(1.1482315, -1.0916929)
+skew = -0.027527094
+emitting = false
+amount = 64
+texture = ExtResource("17")
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.4
+randomness = 0.4
+process_material = SubResource("ParticleProcessMaterial_sssaj")
+
+[node name="ShadowSprite" parent="." index="3" unique_id=1970894107]
+position = Vector2(12.6, 40)
+
+[editable path="SpriteGroup/TransformPoint/ZombieLadderFumeShroom"]

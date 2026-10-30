@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://cf3ahi72lr6ut"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter9/EMPlantern/Scene/TowerDefensePlantEMPlanternComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://dfbyp5impkqpc" path="res://Asset/Anime/Character/Plant/Chapter9/EMPlantern/Scene/TowerDefensePlantEMPlantern.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://drn65nlydyq75" path="res://Asset/Anime/Character/Plant/Chapter9/EMPlantern/Config/TowerDefensePlantEMPlantern.tres" id="5"]
+[ext_resource type="Texture2D" uid="uid://ee3sorns57ik" path="res://Asset/Anime/Particles/Plant/EMPlanternShine.png" id="6"]
+[ext_resource type="PackedScene" uid="uid://dammqc4ws1lke" path="res://Asset/Anime/Character/Plant/Chapter9/EMPlantern/EMPlantern.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://dsc2tkcmoc8l1" path="res://Prefab/Particles/Plant/PlanternFog/PlanternFog.tscn" id="8"]
+[ext_resource type="Texture2D" uid="uid://d1ef1wja3qep4" path="res://Asset/Anime/Particles/Plant/PlanternFog.png" id="9"]
+
+[sub_resource type="CanvasItemMaterial" id="HaloMaterial"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="ShineMaterial"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="ShineAlphaCurve"]
+_data = [Vector2(0, 0.116147), 0.0, 0.0, 0, 0, Vector2(0.24291497, 0.503028), 0.0, 0.0, 0, 0, Vector2(0.49392715, 0.3701741), 0.0, 0.0, 0, 0, Vector2(0.74089074, 0.51778954), 0.0, 0.0, 0, 0, Vector2(1, 0.106941), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="ShineAlphaTexture"]
+curve = SubResource("ShineAlphaCurve")
+
+[sub_resource type="Curve" id="ShineScaleCurve"]
+_limits = [0.0, 1.2, 0.0, 1.0]
+_data = [Vector2(0, 1.00105), 0.0, 0.0, 0, 0, Vector2(0.251004, 0.778695), 0.0, 0.0, 0, 0, Vector2(0.497992, 1.08297), 0.0, 0.0, 0, 0, Vector2(0.748996, 0.778695), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="ShineScaleTexture"]
+curve = SubResource("ShineScaleCurve")
+
+[sub_resource type="ParticleProcessMaterial" id="ShineProcessMaterial"]
+particle_flag_disable_z = true
+angular_velocity_min = -60.0
+angular_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("ShineScaleTexture")
+alpha_curve = SubResource("ShineAlphaTexture")
+
+[sub_resource type="Gradient" id="LightGradient"]
+offsets = PackedFloat32Array(0, 0.346154, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.85, 0.96, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="LightTexture"]
+gradient = SubResource("LightGradient")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[node name="TowerDefensePlantEMPlantern" node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/EMPlantern")
+
+[node name="ShadowSprite" parent="." index="0"]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(0, 30)
+
+[node name="LanternShineEM" type="Sprite2D" parent="SpriteGroup/TransformPoint" index="0"]
+z_index = -4
+material = SubResource("HaloMaterial")
+position = Vector2(0, -36)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("6")
+
+[node name="LanternShineParticle" type="GPUParticles2D" parent="SpriteGroup/TransformPoint" index="1"]
+z_index = -4
+material = SubResource("ShineMaterial")
+position = Vector2(0, -36)
+amount = 32
+lifetime = 4.0
+texture = ExtResource("6")
+process_material = SubResource("ShineProcessMaterial")
+
+[node name="EMPlantern" parent="SpriteGroup/TransformPoint" index="2" instance=ExtResource("7")]
+position = Vector2(0, -36)
+trueFrameRate = 180.0
+
+[node name="PlanternFog" parent="SpriteGroup" index="1" instance=ExtResource("8")]
+z_index = -5
+texture = ExtResource("9")
+
+[node name="CurrentAnchor" type="Marker2D" parent="." index="8"]
+unique_name_in_owner = true
+position = Vector2(0, -25)
+
+[node name="Light" type="PointLight2D" parent="." index="9"]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(1.35156, 1.35156)
+color = Color(0.552941, 0.9, 1, 1)
+energy = 0.35
+texture = SubResource("LightTexture")

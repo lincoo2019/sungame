@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://dp1o0wwtp6qbi"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_fggtr"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_bjr82"]
+[ext_resource type="Script" uid="uid://cspli0aenqr4g" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffBurn.cs" id="3_glmbg"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="4_onscm"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="5_x4nks"]
+[ext_resource type="Script" uid="uid://dp2pqwer6loc1" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffRedHeat.cs" id="6_d4aqy"]
+[ext_resource type="Script" uid="uid://c55feeuvm3ss" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionRandom.cs" id="7_3xemu"]
+[ext_resource type="PackedScene" uid="uid://bb87umnlgwgyd" path="res://Asset/Config/Projectile/Jala/Sprite/JalaCabbage/ProjectileJalaCabbage.tscn" id="8_5bsri"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="9_t3d05"]
+
+[sub_resource type="Resource" id="Resource_mwwcg"]
+script = ExtResource("3_glmbg")
+dpsAttack = 40.0
+splatSceneType = "Sprite"
+splatScene = ExtResource("4_onscm")
+metadata/_custom_type_script = "uid://cspli0aenqr4g"
+
+[sub_resource type="Resource" id="Resource_qnfqk"]
+script = ExtResource("5_x4nks")
+buffList = Array[ExtResource("2_bjr82")]([SubResource("Resource_mwwcg")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Resource_aofb1"]
+script = ExtResource("6_d4aqy")
+time = 8.0
+metadata/_custom_type_script = "uid://dp2pqwer6loc1"
+
+[sub_resource type="Resource" id="Resource_lghd4"]
+script = ExtResource("5_x4nks")
+buffList = Array[ExtResource("2_bjr82")]([SubResource("Resource_aofb1")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Resource_nkg6i"]
+script = ExtResource("7_3xemu")
+eventList = Array[ExtResource("1_fggtr")]([SubResource("Resource_lghd4")])
+percentage = 0.2
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[resource]
+script = ExtResource("9_t3d05")
+name = "JalaCabbage"
+projectileScene = ExtResource("8_5bsri")
+hitTargetEventList = Array[ExtResource("1_fggtr")]([SubResource("Resource_qnfqk"), SubResource("Resource_nkg6i")])
+rotateScale = 5.0

@@ -1,0 +1,543 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWNpcTalkInlineEditor.cs" id="1_script"]
+[ext_resource type="PackedScene" path="res://Asset/Config/Map/Frontlawn/Scene/Day/TowerDefenseMapFrontlawn.tscn" id="2_background"]
+[ext_resource type="PackedScene" path="res://Registry/Battle/Feature/NpcTalk/Control/NpcTalkControl.tscn" id="3_runtime_control"]
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWAspectScaledPreviewHost.cs" id="4_scaled_host"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWNpcTalkVisualChoiceCard.tscn" id="5_choice_card"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stage"]
+bg_color = Color(0.035, 0.045, 0.06, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.18, 0.23, 0.3, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_director"]
+bg_color = Color(0.035, 0.05, 0.075, 0.93)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38, 0.55, 0.72, 0.9)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_props"]
+bg_color = Color(0.09, 0.065, 0.035, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.74, 0.54, 0.22, 0.95)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tutorial"]
+bg_color = Color(0.06, 0.08, 0.045, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.48, 0.72, 0.32, 0.95)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+
+[node name="NpcTalkInlineEditor" type="VBoxContainer"]
+custom_minimum_size = Vector2(540, 420)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+script = ExtResource("1_script")
+
+[node name="ResourceHeader" type="HFlowContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="ResourceHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "NPC 对话导演台 · 在游戏气泡和角色身上直接编辑"
+
+[node name="SaveKeyLabel" type="Label" parent="ResourceHeader"]
+layout_mode = 2
+text = "对话 Key"
+vertical_alignment = 1
+
+[node name="SaveKeyLineEdit" type="LineEdit" parent="ResourceHeader"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 34)
+layout_mode = 2
+placeholder_text = "NpcTalk saveKey"
+
+[node name="JsonSourceButton" type="Button" parent="ResourceHeader"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 34)
+layout_mode = 2
+text = "JSON 来源：未设置"
+
+[node name="EntryToolbar" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="NavigationFlow" type="HFlowContainer" parent="EntryToolbar"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="PreviousButton" type="Button" parent="EntryToolbar/NavigationFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 34)
+layout_mode = 2
+text = "◀ 上一句"
+
+[node name="EntryVisualButton" type="Button" parent="EntryToolbar/NavigationFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "选择要在游戏画面中编辑的对话"
+alignment = 0
+icon_max_width = 30
+expand_icon = true
+tooltip_text = "打开带角色、类型和文本摘要的可视句子网格"
+
+[node name="NextButton" type="Button" parent="EntryToolbar/NavigationFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 34)
+layout_mode = 2
+text = "下一句 ▶"
+
+[node name="ActionFlow" type="HFlowContainer" parent="EntryToolbar"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="AddTypeVisualButton" type="Button" parent="EntryToolbar/ActionFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(178, 38)
+layout_mode = 2
+text = "新增类型：普通气泡"
+alignment = 0
+icon_max_width = 28
+expand_icon = true
+tooltip_text = "用图标卡片选择新对话的游戏表现"
+
+[node name="AddEntryButton" type="Button" parent="EntryToolbar/ActionFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "新增"
+
+[node name="DuplicateEntryButton" type="Button" parent="EntryToolbar/ActionFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "复制"
+
+[node name="RemoveEntryButton" type="Button" parent="EntryToolbar/ActionFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "移除"
+
+[node name="MoveEntryUpButton" type="Button" parent="EntryToolbar/ActionFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "上移"
+
+[node name="MoveEntryDownButton" type="Button" parent="EntryToolbar/ActionFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "下移"
+
+[node name="StageFrame" type="Control" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(540, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+clip_contents = true
+script = ExtResource("4_scaled_host")
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="StageFrame"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 480)
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 600.0
+
+[node name="Viewport" type="SubViewport" parent="StageFrame/ViewportContainer"]
+size = Vector2i(1080, 600)
+render_target_update_mode = 4
+handle_input_locally = true
+
+[node name="GameMap" parent="StageFrame/ViewportContainer/Viewport" instance=ExtResource("2_background")]
+
+[node name="NpcUiLayer" type="CanvasLayer" parent="StageFrame/ViewportContainer/Viewport"]
+layer = 4
+follow_viewport_enabled = false
+
+[node name="RuntimeNpcTalkControl" parent="StageFrame/ViewportContainer/Viewport/NpcUiLayer" instance=ExtResource("3_runtime_control")]
+unique_name_in_owner = true
+
+[node name="NpcDirectorPanel" type="PanelContainer" parent="StageFrame/ViewportContainer/Viewport"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -410.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_director")
+
+[node name="Layout" type="VBoxContainer" parent="StageFrame/ViewportContainer/Viewport/NpcDirectorPanel"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="StageFrame/ViewportContainer/Viewport/NpcDirectorPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.85, 1, 1)
+text = "角色机位 · 修改后立即换演员"
+
+[node name="KnownRow" type="HFlowContainer" parent="StageFrame/ViewportContainer/Viewport/NpcDirectorPanel/Layout"]
+layout_mode = 2
+
+[node name="KnownLabel" type="Label" parent="StageFrame/ViewportContainer/Viewport/NpcDirectorPanel/Layout/KnownRow"]
+layout_mode = 2
+text = "演员"
+vertical_alignment = 1
+
+[node name="NpcOption" type="OptionButton" parent="StageFrame/ViewportContainer/Viewport/NpcDirectorPanel/Layout/KnownRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NpcVisualChoices" type="HFlowContainer" parent="StageFrame/ViewportContainer/Viewport/NpcDirectorPanel/Layout/KnownRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="EntryDirectorPanel" type="PanelContainer" parent="StageFrame/ViewportContainer/Viewport"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -410.0
+offset_top = 145.0
+offset_right = -12.0
+offset_bottom = 315.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_director")
+
+[node name="Layout" type="VBoxContainer" parent="StageFrame/ViewportContainer/Viewport/EntryDirectorPanel"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="StageFrame/ViewportContainer/Viewport/EntryDirectorPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.85, 1, 1)
+text = "表演与声音 · 画面即时同步"
+
+[node name="AnimeKnownRow" type="HFlowContainer" parent="StageFrame/ViewportContainer/Viewport/EntryDirectorPanel/Layout"]
+layout_mode = 2
+
+[node name="AnimeKnownLabel" type="Label" parent="StageFrame/ViewportContainer/Viewport/EntryDirectorPanel/Layout/AnimeKnownRow"]
+layout_mode = 2
+text = "动画"
+vertical_alignment = 1
+
+[node name="AnimeOption" type="OptionButton" parent="StageFrame/ViewportContainer/Viewport/EntryDirectorPanel/Layout/AnimeKnownRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimeVisualChoices" type="HFlowContainer" parent="StageFrame/ViewportContainer/Viewport/EntryDirectorPanel/Layout/AnimeKnownRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="AudioRow" type="HBoxContainer" parent="StageFrame/ViewportContainer/Viewport/EntryDirectorPanel/Layout"]
+layout_mode = 2
+
+[node name="AudioLabel" type="Label" parent="StageFrame/ViewportContainer/Viewport/EntryDirectorPanel/Layout/AudioRow"]
+layout_mode = 2
+text = "音频"
+vertical_alignment = 1
+
+[node name="AudioSelectionButton" type="Button" parent="StageFrame/ViewportContainer/Viewport/EntryDirectorPanel/Layout/AudioRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "选择游戏 / Mod 音效"
+clip_text = true
+
+[node name="PlayAudioButton" type="Button" parent="StageFrame/ViewportContainer/Viewport/EntryDirectorPanel/Layout/AudioRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "试听"
+
+[node name="ClearAudioButton" type="Button" parent="StageFrame/ViewportContainer/Viewport/EntryDirectorPanel/Layout/AudioRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "清除"
+
+[node name="HandPropsPanel" type="PanelContainer" parent="StageFrame/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -410.0
+offset_top = 332.0
+offset_right = -12.0
+offset_bottom = 589.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_props")
+
+[node name="Layout" type="VBoxContainer" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Title" type="Label" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.4, 1)
+text = "道具装配 · 点击角色对应挂点换场景"
+
+[node name="Grid" type="GridContainer" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout"]
+layout_mode = 2
+columns = 3
+
+[node name="HandLabel" type="Label" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout/Grid"]
+layout_mode = 2
+text = "手部"
+[node name="HandSceneButton" type="Button" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(235, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "未设置"
+[node name="ClearHandSceneButton" type="Button" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "清除"
+
+[node name="ShoulderLabel" type="Label" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout/Grid"]
+layout_mode = 2
+text = "肩部 1"
+[node name="ShoulderSceneButton" type="Button" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "未设置"
+[node name="ClearShoulderSceneButton" type="Button" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "清除"
+
+[node name="Shoulder2Label" type="Label" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout/Grid"]
+layout_mode = 2
+text = "肩部 2"
+[node name="Shoulder2SceneButton" type="Button" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "未设置"
+[node name="ClearShoulder2SceneButton" type="Button" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "清除"
+
+[node name="HeadLabel" type="Label" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout/Grid"]
+layout_mode = 2
+text = "头部"
+[node name="HeadSceneButton" type="Button" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "未设置"
+[node name="ClearHeadSceneButton" type="Button" parent="StageFrame/ViewportContainer/Viewport/HandPropsPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "清除"
+
+[node name="TutorialPanel" type="PanelContainer" parent="StageFrame/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -410.0
+offset_top = 332.0
+offset_right = -12.0
+offset_bottom = 437.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tutorial")
+
+[node name="Layout" type="VBoxContainer" parent="StageFrame/ViewportContainer/Viewport/TutorialPanel"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Title" type="Label" parent="StageFrame/ViewportContainer/Viewport/TutorialPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 1, 0.55, 1)
+text = "对话结束后接入教程流程"
+
+[node name="Row" type="HBoxContainer" parent="StageFrame/ViewportContainer/Viewport/TutorialPanel/Layout"]
+layout_mode = 2
+
+[node name="TutorialResourceButton" type="Button" parent="StageFrame/ViewportContainer/Viewport/TutorialPanel/Layout/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "教程：未设置"
+
+[node name="ClearTutorialButton" type="Button" parent="StageFrame/ViewportContainer/Viewport/TutorialPanel/Layout/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "清除"
+
+[node name="EmptyLabel" type="Label" parent="StageFrame/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -235.0
+offset_top = 220.0
+offset_right = 235.0
+offset_bottom = 315.0
+text = "当前对话列表为空\n请在上方选择类型并点击“新增”"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 18
+
+[node name="Status" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "点击气泡文字即可编辑；角色、动画、声音和道具会直接显示在游戏画面中。"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="EntryPickerPopup" type="PopupPanel" parent="."]
+unique_name_in_owner = true
+size = Vector2i(720, 480)
+min_size = Vector2i(520, 320)
+
+[node name="Margin" type="MarginContainer" parent="EntryPickerPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="Layout" type="VBoxContainer" parent="EntryPickerPopup/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="EntryPickerPopup/Margin/Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "选择正在导演的句子"
+
+[node name="Hint" type="Label" parent="EntryPickerPopup/Margin/Layout"]
+layout_mode = 2
+text = "卡片同时显示条目类型、演员和气泡摘要。"
+
+[node name="Scroll" type="ScrollContainer" parent="EntryPickerPopup/Margin/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="EntryPickerGrid" type="HFlowContainer" parent="EntryPickerPopup/Margin/Layout/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="AddTypePopup" type="PopupPanel" parent="."]
+unique_name_in_owner = true
+size = Vector2i(650, 300)
+min_size = Vector2i(520, 260)
+
+[node name="Margin" type="MarginContainer" parent="AddTypePopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="Layout" type="VBoxContainer" parent="AddTypePopup/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="AddTypePopup/Margin/Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "选择新句子的游戏表现"
+
+[node name="AddTypeGrid" type="HFlowContainer" parent="AddTypePopup/Margin/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+; Visual choice cards are instantiated from ExtResource("5_choice_card") so
+; sentence lists can reflect the live Mod resource without raw text dropdowns.
+
+[node name="JsonSourceDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "选择 NPC 对话 JSON 来源"
+initial_position = 1
+size = Vector2i(900, 620)
+min_size = Vector2i(700, 480)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json ; JSON 资源")
+
+[node name="PropSceneDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "选择 NPC 道具场景"
+initial_position = 1
+size = Vector2i(900, 620)
+min_size = Vector2i(700, 480)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.tscn,*.scn ; 场景资源")
+
+[node name="TutorialResourceDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "选择教程资源"
+initial_position = 1
+size = Vector2i(900, 620)
+min_size = Vector2i(700, 480)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.tres,*.res ; 教程资源")
+
+[node name="DirectAudioPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true

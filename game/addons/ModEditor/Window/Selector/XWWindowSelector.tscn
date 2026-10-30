@@ -1,0 +1,149 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/Window/Selector/XWWindowSelector.cs" id="1_script"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Search.svg" id="2_search"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.1254902, 0.14509805, 0.1764706, 1)
+
+[node name="XWWindowSelector" type="ConfirmationDialog"]
+title = "选择节点"
+position = Vector2i(0, 36)
+size = Vector2i(900, 700)
+ok_button_text = "确认"
+cancel_button_text = "取消"
+script = ExtResource("1_script")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 892.0
+offset_bottom = 651.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/HSplitContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/VSplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 0
+text = "收藏："
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="PanelContainer" parent="MarginContainer/HSplitContainer/VSplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FavoritesContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/VSplitContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HSplitContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Label2" type="Label" parent="MarginContainer/HSplitContainer/VSplitContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 0
+text = "最近使用："
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="PanelContainer" parent="MarginContainer/HSplitContainer/VSplitContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RecentContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/VSplitContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSplitContainer2" type="VSplitContainer" parent="MarginContainer/HSplitContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+split_offset = 63
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HSplitContainer/VSplitContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="Label3" type="Label" parent="MarginContainer/HSplitContainer/VSplitContainer2/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 0
+text = "搜索："
+vertical_alignment = 1
+
+[node name="SearchLineEdit" type="LineEdit" parent="MarginContainer/HSplitContainer/VSplitContainer2/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+right_icon = ExtResource("2_search")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/HSplitContainer/VSplitContainer2"]
+layout_mode = 2
+split_offset = -120
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HSplitContainer/VSplitContainer2/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Label4" type="Label" parent="MarginContainer/HSplitContainer/VSplitContainer2/VSplitContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 0
+text = "匹配项："
+vertical_alignment = 1
+
+[node name="Tree" type="Tree" parent="MarginContainer/HSplitContainer/VSplitContainer2/VSplitContainer/VBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/icon_max_width = 24
+hide_root = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/VSplitContainer2/VSplitContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="MarginContainer/HSplitContainer/VSplitContainer2/VSplitContainer/VBoxContainer"]
+layout_mode = 2
+text = "描述："
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HSplitContainer/VSplitContainer2/VSplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/VSplitContainer2/VSplitContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="RichTextLabel" parent="MarginContainer/HSplitContainer/VSplitContainer2/VSplitContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bg")
+bbcode_enabled = true
+
+[node name="DescribeLabel" type="RichTextLabel" parent="MarginContainer/HSplitContainer/VSplitContainer2/VSplitContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true

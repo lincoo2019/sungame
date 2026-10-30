@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="BloverComponentDefinition" format=3 uid="uid://dfvdbnj3bayq6"]
+
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="1"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://d17jj7ybm4do7" path="res://Script/Component/TowerDefense/Character/BloverComponent/BloverComponentDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="IceSpeedBuff"]
+script = ExtResource("1")
+canFliter = false
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="AddIceSpeedEvent"]
+script = ExtResource("2")
+buffList = [SubResource("IceSpeedBuff")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="ProjectileData"]
+script = ExtResource("3")
+projectileName = &"SnowPea"
+collisionFlags = 11
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[resource]
+script = ExtResource("4")
+blowTime = 0.5
+blowLength = 1.0
+checkPhysiqueHuge = true
+projectileHeightOffsetRange = Vector2(10, 30)
+projectileDataList = [SubResource("ProjectileData")]
+eventList = [SubResource("AddIceSpeedEvent")]
+ComponentTypeId = "BloverComponent"
+DefinitionId = "builtin.component.blover.snow_blover"
+InstanceId = "plant.blover"
+WireIndex = 0
+StateMachineDefinition = null
+LegacyNodeNames = [&"BloverComponent"]

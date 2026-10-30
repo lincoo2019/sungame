@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://p7p8k4g2216g"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://h58bvdr0yg18" path="res://Asset/Anime/Character/Zombie/Puzzle/Target/Scene/TowerDefenseZombieTarget.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://d1b1qnxdik1wp" path="res://Asset/Anime/Character/Zombie/Puzzle/Target/Config/TowerDefenseZombieTarget.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dxuxix28d8bwx" path="res://Asset/Anime/Character/Zombie/Puzzle/Target/DamagePoint/Config/ZombieTargetDamagePointArm.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dlacaoygdjw10" path="res://Asset/Anime/Character/Zombie/Puzzle/Target/Armor/Config/ZombieTargetArmorHat.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dkhqpenwrg301" path="res://Asset/Anime/Character/Zombie/Puzzle/Target/DamagePoint/Config/ZombieTargetDamagePointHead.tres" id="7"]
+[ext_resource type="Resource" uid="uid://t5igd0lrjwxc" path="res://Asset/Anime/Character/Zombie/Puzzle/Target/Armor/Config/ZombieTargetArmorTarget.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://cp3ixh6vqmyd3" path="res://Asset/Anime/Character/Zombie/Puzzle/Target/ZombieTarget.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="10"]
+
+[node name="TowerDefenseZombieTarget" unique_id=201691632 node_paths=PackedStringArray("waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+dieAnimeClip = "Death1&Death2"
+dieWaterAnimeClip = "Death1&Death2"
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+garlicReplace = "Zombie_Target_head.png"
+waterHeight = 25.0
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieTarget")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieTarget/HeadSlot")
+damagePart = {
+"Arm": ExtResource("5"),
+"HatTarget": ExtResource("6"),
+"Head": ExtResource("7"),
+"Target": ExtResource("8")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieTarget/ArmSlot"),
+"HatTarget": NodePath("SpriteGroup/TransformPoint/ZombieTarget/HatSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieTarget/HeadSlot"),
+"Target": NodePath("SpriteGroup/TransformPoint/ZombieTarget/TargetSlot")
+}
+currentArmor = ["HatTarget", "Target"]
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieTarget" parent="SpriteGroup/TransformPoint" index="0" unique_id=1765886816 instance=ExtResource("9")]
+position = Vector2(-16, -37)
+trueFrameRate = 180.0
+Animation/MediaReplace/Zombie_Target.png = "res://Asset/AtlasSource/Armor/Anime/Character/Zombie/Puzzle/Target/Armor/Zombie_Target.png"
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieTarget" index="0"]
+trueFrameRate = 180.0
+Animation/LayerVisible/Zombie_duckytube_inwater = false
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieTarget" index="1"]
+drawLayerId = -2
+position = Vector2(-15.862419, -42.946777)
+rotation = -0.09476573
+scale = Vector2(0.7997418, 0.7997418)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieTarget" index="2"]
+position = Vector2(-3.144189, -8.106156)
+rotation = 1.0063868
+scale = Vector2(0.79559064, 0.79559064)
+
+[node name="TargetSlot" parent="SpriteGroup/TransformPoint/ZombieTarget" index="3"]
+position = Vector2(-33.022995, -1.1763802)
+rotation = -0.068653636
+scale = Vector2(0.7996676, 0.7996676)
+
+[node name="HatSlot" parent="SpriteGroup/TransformPoint/ZombieTarget" index="4"]
+position = Vector2(-17.753635, -63.39309)
+rotation = -0.14543737
+scale = Vector2(0.799605, 0.799605)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieTarget" index="5"]
+position = Vector2(-21.4309, -40)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=388514405 instance=ExtResource("10")]
+visible = false
+position = Vector2(-4, -42)
+trueFrameRate = 180.0
+
+[editable path="SpriteGroup/TransformPoint/ZombieTarget"]

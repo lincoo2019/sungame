@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://ry3he54sanff"]
+
+[ext_resource type="Resource" uid="uid://dfm5r4mn8aoo6" path="res://Script/Component/TowerDefense/Character/BowlingComponent/BowlingComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://d1fsh2su8nbl0" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventBowlingHurt.cs" id="2"]
+[ext_resource type="Script" uid="uid://cspli0aenqr4g" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffBurn.cs" id="3"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="4"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="5"]
+[ext_resource type="Script" uid="uid://cghdgwf4bcxx7" path="res://Script/Component/TowerDefense/Character/BowlingComponent/BowlingComponentDefinition.cs" id="6"]
+[ext_resource type="Resource" uid="uid://tse8l6ygwtpa" path="res://Asset/Anime/Character/Plant/Chapter1/Firenut/Scene/TowerDefensePlantBowlingFirenutFogAreaComponentDefinition.tres" id="7"]
+[ext_resource type="Resource" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantBowlingWaterEnvironmentComponentSet.tres" id="8"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="9"]
+
+[sub_resource type="Resource" id="BowlingHurtEvent"]
+script = ExtResource("2")
+
+[sub_resource type="Resource" id="BurnBuff"]
+script = ExtResource("3")
+splatSceneType = "Sprite"
+splatScene = ExtResource("4")
+
+[sub_resource type="Resource" id="AddBurnEvent"]
+script = ExtResource("5")
+buffList = [SubResource("BurnBuff")]
+
+[sub_resource type="Resource" id="BowlingDefinition"]
+script = ExtResource("6")
+useParentHitBox = true
+hitEvent = [SubResource("BowlingHurtEvent"), SubResource("AddBurnEvent")]
+spritePath = NodePath("SpriteGroup/TransformPoint/Firenut")
+ComponentTypeId = "BowlingComponent"
+DefinitionId = "builtin.component.bowling.plant.firenut"
+InstanceId = "character.bowling"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"BowlingComponent"]
+
+[resource]
+script = ExtResource("9")
+ParentSet = ExtResource("8")
+Components = [SubResource("BowlingDefinition"), ExtResource("7")]

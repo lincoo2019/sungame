@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dln3dpwifsnod"]
+
+[ext_resource type="Script" uid="uid://csra35wio7s1w" path="res://Prefab/TowerDefense/Character/TowerDefenseCharacter.cs" id="1"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_n0p25_n25.tres" id="2"]
+[ext_resource type="Resource" uid="uid://bf2vg1k12uswl" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseCharacterStateMachine.tres" id="3"]
+[ext_resource type="Resource" uid="uid://06bidalmtijr" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefenseCharacterComponentSet.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://c1jocs3s84m21" path="res://Asset/Texture/Character/Effect/Shadow.png" id="5"]
+[ext_resource type="Script" uid="uid://cuhf335cbge2j" path="res://Prefab/TowerDefense/Character/TowerDefenseCharacterShadowSprite.cs" id="6"]
+[ext_resource type="Script" uid="uid://b7863ts77plqg" path="res://Prefab/TowerDefense/Character/TowerDefenseCharacterSpriteGroup.cs" id="7"]
+[ext_resource type="Script" uid="uid://dddwvnygnap1h" path="res://Prefab/TowerDefense/Character/TowerDefenseCharacterTransformPoint.cs" id="8"]
+
+[node name="TowerDefenseCharacter" type="Node2D" unique_id=82783115]
+z_index = -15
+script = ExtResource("1")
+HitBoxDefinition = ExtResource("2")
+MainStateMachineDefinition = ExtResource("3")
+gravity = 367.5
+ComponentSet = ExtResource("4")
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=1970894107]
+unique_name_in_owner = true
+z_index = -1
+position = Vector2(0, 18)
+texture = ExtResource("5")
+script = ExtResource("6")
+
+[node name="BackEffectNode" type="Node2D" parent="." unique_id=1929493585]
+unique_name_in_owner = true
+
+[node name="SpriteGroup" type="Node2D" parent="." unique_id=1006029617]
+unique_name_in_owner = true
+script = ExtResource("7")
+
+[node name="TransformPoint" type="Marker2D" parent="SpriteGroup" unique_id=429682308]
+unique_name_in_owner = true
+position = Vector2(0, 18)
+script = ExtResource("8")
+
+[node name="FrontEffectNode" type="Node2D" parent="." unique_id=1161662400]
+unique_name_in_owner = true

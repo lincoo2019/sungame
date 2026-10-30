@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://fwvdevsd5p2g"]
+
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="3"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="4"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="5"]
+
+[sub_resource type="RectangleShape2D" id="Attack0_RectangleShape2D_f6h0u"]
+size = Vector2(73, 33)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_attack"]
+script = ExtResource("2")
+Geometry = SubResource("Attack0_RectangleShape2D_f6h0u")
+LocalTransform = Transform2D(1, 0, 0, 1, -1.5, -0.5)
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("3")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_attack")]
+checkIntreval = 2
+spritePath = NodePath("SpriteGroup/TransformPoint/SpikeRock")
+attackAnimeTimeScale = 3.0
+attackIntervalBase = 0.75
+attackInterval = 0.75
+attackIntervalOffset = 0.05
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.cover.spike_rock.scene.towerdefenseplantspikerock.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("5")
+ParentSet = ExtResource("4")
+Components = [SubResource("Attack0_Definition")]

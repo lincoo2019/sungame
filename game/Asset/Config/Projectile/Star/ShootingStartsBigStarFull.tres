@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://dh6h8jqqnyw3o"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_htr1k"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_6ootb"]
+[ext_resource type="PackedScene" uid="uid://lp2o2awc4h0h" path="res://Asset/Config/Projectile/Star/Star/ProjectileStar.tscn" id="2_e3uly"]
+[ext_resource type="Script" uid="uid://c4cnj7r56bj3k" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffDizziness.cs" id="3_b6tpw"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="3_fd2gr"]
+[ext_resource type="PackedScene" uid="uid://b3gm7x2iajkja" path="res://Prefab/Particles/Splats/StarSplats/TowerDefenseEffectParticlesStarSplats.tscn" id="4_6ootb"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_cikkn"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="5_b6tpw"]
+
+[sub_resource type="Resource" id="Resource_vhgab"]
+script = ExtResource("3_b6tpw")
+time = 3.0
+metadata/_custom_type_script = "uid://c4cnj7r56bj3k"
+
+[sub_resource type="Resource" id="Resource_yq7fw"]
+script = ExtResource("4_cikkn")
+buffList = Array[ExtResource("2_6ootb")]([SubResource("Resource_vhgab")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("3_fd2gr")
+name = "ShootingStartsBigStar"
+isStar = true
+scale = Vector2(2, 2)
+baseDamage = 200.0
+projectileScene = ExtResource("2_e3uly")
+projectileObject = 339
+splatScene = ExtResource("4_6ootb")
+hitTargetEventList = Array[ExtResource("1_htr1k")]([SubResource("Resource_yq7fw")])
+rotateScale = 2.0
+damageFlags = 10
+collisionFlags = 43
+catapultHeight = 400.0

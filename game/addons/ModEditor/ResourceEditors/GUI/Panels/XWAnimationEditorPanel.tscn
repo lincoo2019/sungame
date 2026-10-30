@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://dc5j0huyr8vj3"]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/XWGenericVisualResourceEditor.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://4nlexftdbpoe" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWAnimationVisualResourceEditor.cs" id="2_animation"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWAnimationVisualChoiceGrid.tscn" id="3_choice_grid"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/2D.svg" id="4_preview_icon"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/MemberProperty.svg" id="5_settings_icon"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/MainMovieWrite.svg" id="6_timeline_icon"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/EditGroup.svg" id="7_keyframe_icon"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/GraphEdit.svg" id="8_clip_icon"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/AssetLib.svg" id="9_library_icon"]
+
+[node name="XWAnimationEditorPanel" unique_id=929971595 instance=ExtResource("1_base")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_animation")
+
+[node name="CanvasGrid" parent="Root/Split/MainPanel/MainStack" index="0"]
+columns = 1
+
+[node name="AnimationWorkbench" type="VBoxContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid" groups=["mod_editor_static_surface"]]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(360, 610)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="ContextBar" type="PanelContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid/AnimationWorkbench"]
+layout_mode = 2
+
+[node name="ContextFlow" type="HFlowContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid/AnimationWorkbench/ContextBar"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 4
+
+[node name="WorkbenchTitle" type="Label" parent="Root/Split/MainPanel/MainStack/CanvasGrid/AnimationWorkbench/ContextBar/ContextFlow"]
+layout_mode = 2
+text = "动画视觉工作台"
+
+[node name="ResponsiveStatus" type="Label" parent="Root/Split/MainPanel/MainStack/CanvasGrid/AnimationWorkbench/ContextBar/ContextFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "预览优先 · 820px 完整可达"
+modulate = Color(0.67, 0.9, 0.54, 1)
+
+[node name="AnimationWorkbenchTabs" type="TabBar" parent="Root/Split/MainPanel/MainStack/CanvasGrid/AnimationWorkbench"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 0
+clip_tabs = true
+tab_count = 6
+tab_0/title = "预览"
+tab_0/icon = ExtResource("4_preview_icon")
+tab_1/title = "配置"
+tab_1/icon = ExtResource("5_settings_icon")
+tab_2/title = "时间轴"
+tab_2/icon = ExtResource("6_timeline_icon")
+tab_3/title = "帧属性"
+tab_3/icon = ExtResource("7_keyframe_icon")
+tab_4/title = "片段"
+tab_4/icon = ExtResource("8_clip_icon")
+tab_5/title = "素材"
+tab_5/icon = ExtResource("9_library_icon")
+
+[node name="AnimationChoiceSurface" type="VBoxContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid/AnimationWorkbench"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="MediaChoiceGrid" parent="Root/Split/MainPanel/MainStack/CanvasGrid/AnimationWorkbench/AnimationChoiceSurface" instance=ExtResource("3_choice_grid")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LayerChoiceGrid" parent="Root/Split/MainPanel/MainStack/CanvasGrid/AnimationWorkbench/AnimationChoiceSurface" instance=ExtResource("3_choice_grid")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AnimationSourceHost" type="VBoxContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid/AnimationWorkbench"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[editable path="Root/Split/MainPanel/MainStack/CanvasGrid/AnimationWorkbench/AnimationChoiceSurface/MediaChoiceGrid"]
+[editable path="Root/Split/MainPanel/MainStack/CanvasGrid/AnimationWorkbench/AnimationChoiceSurface/LayerChoiceGrid"]

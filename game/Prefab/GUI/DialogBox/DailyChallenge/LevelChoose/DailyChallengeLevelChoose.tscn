@@ -1,0 +1,205 @@
+[gd_scene format=3 uid="uid://kh5l2bpv5cij"]
+
+[ext_resource type="Script" uid="uid://da4iadu6athrn" path="res://Prefab/GUI/DialogBox/DailyChallenge/LevelChoose/DailyChallengeLevelChoose.cs" id="1_choose"]
+[ext_resource type="Texture2D" uid="uid://c855vjpdgvpr" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengeBG.png" id="2_bg"]
+[ext_resource type="FontFile" uid="uid://bibg4dobk6vpn" path="res://Asset/Font/fzjz.ttf" id="3_font"]
+[ext_resource type="Texture2D" uid="uid://d0smlukjcx1r6" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengeCloseButton.png" id="4_close"]
+[ext_resource type="Texture2D" uid="uid://5lvxpd7jaoc4" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengeCloseButtonPress.png" id="5_close_press"]
+[ext_resource type="PackedScene" uid="uid://bml60wmq62jay" path="res://Prefab/GUI/Button/MainButton.tscn" id="6_button"]
+[ext_resource type="Texture2D" uid="uid://becxfsjmy31td" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengePlayButton.png" id="7_play"]
+[ext_resource type="Texture2D" uid="uid://c3mh3bdn1qs1k" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengePlayButtonPress.png" id="8_play_press"]
+[ext_resource type="Texture2D" uid="uid://oks7e2sbpr1o" path="res://Asset/Texture/GUI/General/General/ArrowButton.png" id="9_arrow"]
+[ext_resource type="Texture2D" uid="uid://bdx1imearld07" path="res://Asset/Texture/GUI/General/General/ArrowButtonDown.png" id="10_arrow_press"]
+
+[node name="DailyChallengeLevelChoose" type="Control" unique_id=354887528]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_choose")
+metadata/_custom_type_script = "uid://dxpykggmmyrhl"
+
+[node name="Layer" type="CanvasLayer" parent="." unique_id=512911140]
+layer = 100
+
+[node name="ColorRect" type="ColorRect" parent="Layer" unique_id=276824168]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.22)
+
+[node name="BackgroundTexture" type="Control" parent="Layer" unique_id=11132202]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -280.0
+offset_right = 310.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoardTexture" type="NinePatchRect" parent="Layer/BackgroundTexture" unique_id=2037520135]
+layout_mode = 0
+offset_right = 806.0
+offset_bottom = 728.0
+scale = Vector2(0.769231, 0.769231)
+texture = ExtResource("2_bg")
+patch_margin_left = 110
+patch_margin_top = 105
+patch_margin_right = 130
+patch_margin_bottom = 160
+
+[node name="TitleLabel" type="Label" parent="Layer/BackgroundTexture" unique_id=613061119]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 5.0
+offset_right = 550.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 36
+text = "选择每日挑战"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DateLabel" type="Label" parent="Layer/BackgroundTexture" unique_id=1575289271]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 160.0
+offset_top = 57.0
+offset_right = 460.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(1, 0.94902, 0.737255, 1)
+theme_override_colors/font_outline_color = Color(0.145098, 0.0862745, 0.0313726, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 21
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardsScroll" type="ScrollContainer" parent="Layer/BackgroundTexture" unique_id=1939017123]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 72.0
+offset_top = 84.0
+offset_right = 548.0
+offset_bottom = 440.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+scroll_deadzone = 20
+
+[node name="CardsCenter" type="CenterContainer" parent="Layer/BackgroundTexture/CardsScroll" unique_id=373684905]
+custom_minimum_size = Vector2(476, 352)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CardsPadding" type="MarginContainer" parent="Layer/BackgroundTexture/CardsScroll/CardsCenter" unique_id=972076384]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="CardsContainer" type="HBoxContainer" parent="Layer/BackgroundTexture/CardsScroll/CardsCenter/CardsPadding" unique_id=982323389]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="PreviousPageButton" type="TextureButton" parent="Layer/BackgroundTexture" unique_id=1173106569]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 232.0
+offset_right = 70.0
+offset_bottom = 292.0
+tooltip_text = "上一页"
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("9_arrow")
+texture_pressed = ExtResource("10_arrow_press")
+texture_hover = ExtResource("10_arrow_press")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="NextPageButton" type="TextureButton" parent="Layer/BackgroundTexture" unique_id=1793609438]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 550.0
+offset_top = 232.0
+offset_right = 610.0
+offset_bottom = 292.0
+tooltip_text = "下一页"
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("9_arrow")
+texture_pressed = ExtResource("10_arrow_press")
+texture_hover = ExtResource("10_arrow_press")
+ignore_texture_size = true
+stretch_mode = 5
+flip_h = true
+
+[node name="StatusLabel" type="Label" parent="Layer/BackgroundTexture" unique_id=1993022600]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 60.0
+offset_top = 430.0
+offset_right = 560.0
+offset_bottom = 459.0
+theme_override_colors/font_color = Color(0.117647, 0.380392, 0.0784314, 1)
+theme_override_colors/font_outline_color = Color(1, 0.94902, 0.737255, 0.9)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 19
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="PlayButton" parent="Layer/BackgroundTexture" unique_id=2143395583 instance=ExtResource("6_button")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 110.0
+offset_top = 460.0
+offset_right = 496.0
+offset_bottom = 545.0
+texture_normal = ExtResource("7_play")
+texture_pressed = ExtResource("7_play")
+texture_hover = ExtResource("8_play_press")
+text = "开始挑战"
+
+[node name="TextLabel" parent="Layer/BackgroundTexture/PlayButton" index="0" unique_id=1596121434]
+offset_right = 376.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0.87451, 0.929412, 0.988235, 1)
+theme_override_colors/font_outline_color = Color(0.0705882, 0.101961, 0.160784, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 38
+text = "开始挑战"
+
+[node name="CloseButton" type="TextureButton" parent="Layer/BackgroundTexture" unique_id=470461272]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 535.0
+offset_top = 8.0
+offset_right = 573.0
+offset_bottom = 42.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_close")
+texture_pressed = ExtResource("5_close_press")
+texture_hover = ExtResource("5_close_press")
+
+[editable path="Layer/BackgroundTexture/PlayButton"]

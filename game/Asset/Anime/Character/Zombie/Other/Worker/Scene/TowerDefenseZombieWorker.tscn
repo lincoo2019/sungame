@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bctd3tspmfela"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c1ybo2opdbph0" path="res://Asset/Anime/Character/Zombie/Other/Worker/Scene/TowerDefenseZombieWorker.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://dg64w7ldto58s" path="res://Asset/Anime/Character/Zombie/Other/Worker/Scene/TowerDefenseZombieWorkerStateMachine.tres" id="4"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Other/Worker/Config/TowerDefenseZombieWorker.tres" id="5"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Other/Worker/DamagePoint/Config/ZombieWorkerDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Other/Worker/DamagePoint/Config/ZombieWorkerDamagePointHead.tres" id="7"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Other/Worker/Armor/Config/ZombieWorkerArmorHardHat.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://bxg5h1saqexgj" path="res://Asset/Anime/Character/Zombie/Other/Worker/ZombieWorker.tscn" id="9"]
+
+[node name="TowerDefenseZombieWorker" unique_id=28680171 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+walkSpeedScale = 0.5
+HitBoxDefinition = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieWorker")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieWorker/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"Head": ExtResource("7"),
+"WorkerHardHat": ExtResource("8")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieWorker/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieWorker/HeadSlot"),
+"WorkerHardHat": NodePath("SpriteGroup/TransformPoint/ZombieWorker/HardHatSlot")
+}
+currentArmor = ["WorkerHardHat"]
+currentCustom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(6.000001, 42)
+scale = Vector2(1.0697676, 1.1666667)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieWorker" parent="SpriteGroup/TransformPoint" index="0" unique_id=924573585 instance=ExtResource("9")]
+position = Vector2(-12, -33)
+clip = "Idle"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false]
+mediaReplace = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieWorker" index="0" unique_id=142744396]
+position = Vector2(-19.374279, -42.70247)
+rotation = 0.0058303126
+scale = Vector2(0.7997079, 0.7997079)
+drawLayerId = -2
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieWorker" index="1" unique_id=2010994946]
+position = Vector2(2.5825748, -21.706486)
+rotation = -0.0770043
+scale = Vector2(0.7995369, 0.7995369)
+
+[node name="HardHatSlot" parent="SpriteGroup/TransformPoint/ZombieWorker" index="2" unique_id=2034846501]
+position = Vector2(-15.775425, -58.847298)
+rotation = 0.05535846
+scale = Vector2(0.79954755, 0.79954755)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieWorker" index="3" unique_id=2145813569]
+position = Vector2(-62, 10)
+
+[editable path="SpriteGroup/TransformPoint/ZombieWorker"]

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bttp0q8vglml0"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dgqhatfasp2hl" path="res://Asset/Anime/Character/Plant/Chapter2/IceSunShroom/Scene/TowerDefensePlantIceSunShroom.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="3"]
+[ext_resource type="Script" uid="uid://cewg6ylngys14" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventSunCreate.cs" id="4"]
+[ext_resource type="Resource" uid="uid://cokjxfmopi6nm" path="res://Asset/Anime/Character/Plant/Chapter2/IceSunShroom/Config/TowerDefensePlantIceSunShroom.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://bv7l7yawooum8" path="res://Asset/Anime/Character/Plant/Chapter2/IceSunShroom/IceSunShroom.tscn" id="6"]
+
+[sub_resource type="Resource" id="Resource_vlst4"]
+script = ExtResource("4")
+num = 15.0
+mustForzen = true
+byCamp = true
+metadata/_custom_type_script = "uid://cewg6ylngys14"
+
+[node name="TowerDefensePlantIceSunShroom" unique_id=102782379 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+eventList = [SubResource("Resource_vlst4")]
+sleepAnimeClip = "Sleep"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/IceSunShroom")
+Custom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="IceSunShroom" parent="SpriteGroup/TransformPoint" index="0" unique_id=975813963 instance=ExtResource("6")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0

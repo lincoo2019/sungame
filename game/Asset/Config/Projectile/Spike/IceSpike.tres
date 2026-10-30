@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://bn6pywq66rwed"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_fce5x"]
+[ext_resource type="PackedScene" uid="uid://dagsgt51n5sl6" path="res://Asset/Config/Projectile/Spike/Sprite/IceSpike/ProjectileIceSpike.tscn" id="2_fce5x"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_libkh"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="3_efirk"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="3_re2jj"]
+[ext_resource type="PackedScene" uid="uid://br7muxuvxx77s" path="res://Asset/Anime/Splat/Spike/SpikeSplats.tscn" id="4_libkh"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_wyc78"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="5_re2jj"]
+
+[sub_resource type="Resource" id="Resource_ov40h"]
+script = ExtResource("3_re2jj")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_6y8nc"]
+script = ExtResource("4_wyc78")
+buffList = Array[ExtResource("2_libkh")]([SubResource("Resource_ov40h")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("3_efirk")
+name = "IceSpike"
+projectileScene = ExtResource("2_fce5x")
+splatSceneType = "Sprite"
+splatScene = ExtResource("4_libkh")
+hitCharacterEventList = Array[ExtResource("1_fce5x")]([SubResource("Resource_6y8nc")])
+hitBody = true
+damageFlags = 2
+fireMethodFlags = 5
+collisionFlags = 1
+catapultHeight = 400.0

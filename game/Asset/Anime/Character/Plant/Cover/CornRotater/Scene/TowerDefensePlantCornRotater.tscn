@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c8n50n0y5q4st"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://04vrgx0afvg3" path="res://Asset/Anime/Character/Plant/Cover/CornRotater/Scene/TowerDefensePlantCornRotaterComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://ctf41v3vhpgup" path="res://Asset/Anime/Character/Plant/Cover/CornRotater/Scene/TowerDefensePlantCornRotater.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c8n5yl8w3m2qr" path="res://Asset/Anime/Character/Plant/Cover/CornRotater/Config/TowerDefensePlantCornRotater.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://c8n61b2a7s6uv" path="res://Asset/Anime/Character/Plant/Cover/CornRotater/CornRotater.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantCornRotater" unique_id=1103907929 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+fireInterval = 3.0
+HitBoxDefinition = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/CornRotater")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(0, 47)
+scale = Vector2(0.821918, 0.77551)
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="CornRotater" parent="SpriteGroup/TransformPoint" index="0" unique_id=1275436636 instance=ExtResource("6")]
+position = Vector2(0, -30)
+clip = "Idle"
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+mediaReplace = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/CornRotater" index="0" unique_id=297775065]
+position = Vector2(-47.308575, -15.87635)
+scale = Vector2(0.7999878, 0.7999878)
+script = ExtResource("7")
+followSlotId = 23
+drawLayerId = 23
+offset = Vector2(-5, -5)
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/CornRotater/AdobeAnimateSlot" index="0" unique_id=1147487645]
+position = Vector2(14.1167, 12.9167)

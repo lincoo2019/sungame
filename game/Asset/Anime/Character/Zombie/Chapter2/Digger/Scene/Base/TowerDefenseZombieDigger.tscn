@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://blb4s0qnt2u0m"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cc60wmsllb64g" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/Scene/Base/TowerDefenseZombieDigger.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://di8lcmtflvg0g" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/Scene/Base/TowerDefenseZombieDiggerStateMachine.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b2sthdtkau025" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/Config/TowerDefenseZombieDigger.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dybp4l4xkgwff" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/DamagePoint/Config/ZombieDiggerDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://ckrwasaouv8e1" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/Armor/Config/ZombieDiggerArmorHardHat.tres" id="7"]
+[ext_resource type="Resource" uid="uid://dhatm2qs8qero" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/DamagePoint/Config/ZombieDiggerDamagePointHead.tres" id="8"]
+[ext_resource type="Resource" uid="uid://be1ppc3g7ejxi" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/Armor/Config/ZombieDiggerArmorPick.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://c1q1kwxvyt7jh" path="res://Asset/Anime/Character/Zombie/Chapter2/Digger/Sprite/Base/ZombieDigger.tscn" id="10"]
+
+[node name="TowerDefenseZombieDigger" unique_id=28680171 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+walkSpeedScale = 0.5
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieDigger")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieDigger/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"HardHat": ExtResource("7"),
+"Head": ExtResource("8"),
+"Pick": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieDigger/ArmSlot"),
+"HardHat": NodePath("SpriteGroup/TransformPoint/ZombieDigger/HardHatSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieDigger/HeadSlot"),
+"Pick": NodePath("SpriteGroup/TransformPoint/ZombieDigger/PickSlot")
+}
+currentArmor = ["HardHat", "Pick"]
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(6.000001, 42)
+scale = Vector2(1.0697676, 1.1666667)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieDigger" parent="SpriteGroup/TransformPoint" index="0" unique_id=924573585 instance=ExtResource("10")]
+position = Vector2(-12, -33)
+clip = "Idle"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieDigger" index="0" unique_id=142744396]
+drawLayerId = -2
+position = Vector2(-20.094238, -41.47677)
+rotation = -0.003499434
+scale = Vector2(0.79964787, 0.79964787)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieDigger" index="1" unique_id=2010994946]
+position = Vector2(0.83426666, 4.57819)
+rotation = 0.0703339
+scale = Vector2(0.79975307, 0.7997612)
+
+[node name="HardHatSlot" parent="SpriteGroup/TransformPoint/ZombieDigger" index="2" unique_id=2034846501]
+position = Vector2(-16.688095, -57.495712)
+rotation = 0.05846504
+scale = Vector2(0.79946345, 0.79946345)
+
+[node name="PickSlot" parent="SpriteGroup/TransformPoint/ZombieDigger" index="3" unique_id=764984938]
+position = Vector2(-30.12802, 7.179186)
+rotation = 0.078458175
+scale = Vector2(0.79942834, 0.79942834)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieDigger" index="4" unique_id=2145813569]
+position = Vector2(-62, 10)
+
+[editable path="SpriteGroup/TransformPoint/ZombieDigger"]

@@ -1,0 +1,304 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://Prefab/GUI/LevelEditor/MapEditor/PacketBank/LevelEditorPacketBank.tscn" id="1_runtime_packet_bank"]
+
+[sub_resource type="StyleBoxFlat" id="StyleOverview"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.105, 0.11, 1)
+border_color = Color(0.298, 0.303, 0.307, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="PacketBankVisualEditorLayout" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="ResourceFieldsPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleOverview")
+
+[node name="ResourceFields" type="HBoxContainer" parent="ResourceFieldsPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="ResourceNameLabel" type="Label" parent="ResourceFieldsPanel/ResourceFields"]
+layout_mode = 2
+text = "资源名称"
+
+[node name="ResourceNameEdit" type="LineEdit" parent="ResourceFieldsPanel/ResourceFields"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "卡牌库资源名称"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="ResourceFieldsPanel/ResourceFields"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "仅当前场景使用"
+
+[node name="GamePreviewPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 480)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleOverview")
+
+[node name="GamePreviewLayout" type="VBoxContainer" parent="GamePreviewPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="GamePreviewPanel/GamePreviewLayout"]
+layout_mode = 2
+text = "游戏选卡界面"
+horizontal_alignment = 1
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="GamePreviewPanel/GamePreviewLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="GamePreviewPanel/GamePreviewLayout/ViewportContainer"]
+size = Vector2i(1080, 540)
+render_target_update_mode = 4
+handle_input_locally = true
+
+[node name="RuntimePacketBank" parent="GamePreviewPanel/GamePreviewLayout/ViewportContainer/Viewport" instance=ExtResource("1_runtime_packet_bank")]
+unique_name_in_owner = true
+offset_right = 1080.0
+offset_bottom = 600.0
+
+[node name="OverviewPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleOverview")
+
+[node name="OverviewLayout" type="VBoxContainer" parent="OverviewPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="SummaryLabel" type="Label" parent="OverviewPanel/OverviewLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CategoryPresets" type="HBoxContainer" parent="OverviewPanel/OverviewLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="WhiteButton" type="Button" parent="OverviewPanel/OverviewLayout/CategoryPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "White"
+
+[node name="GoldButton" type="Button" parent="OverviewPanel/OverviewLayout/CategoryPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Gold"
+
+[node name="DiamondButton" type="Button" parent="OverviewPanel/OverviewLayout/CategoryPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Diamond"
+
+[node name="ColourButton" type="Button" parent="OverviewPanel/OverviewLayout/CategoryPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Colour"
+
+[node name="StarButton" type="Button" parent="OverviewPanel/OverviewLayout/CategoryPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Star"
+
+[node name="OriginalButton" type="Button" parent="OverviewPanel/OverviewLayout/CategoryPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Original"
+
+[node name="ItemButton" type="Button" parent="OverviewPanel/OverviewLayout/CategoryPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Item"
+
+[node name="GraveStoneButton" type="Button" parent="OverviewPanel/OverviewLayout/CategoryPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "GraveStone"
+
+[node name="ZombieButton" type="Button" parent="OverviewPanel/OverviewLayout/CategoryPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Zombie"
+
+[node name="PoolPreviewHost" type="VBoxContainer" parent="OverviewPanel/OverviewLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Split" type="HFlowContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="CategoryPanel" type="VBoxContainer" parent="Split"]
+custom_minimum_size = Vector2(250, 420)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Split/CategoryPanel"]
+layout_mode = 2
+text = "分类"
+
+[node name="CategorySummaryLabel" type="Label" parent="Split/CategoryPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Controls" type="HBoxContainer" parent="Split/CategoryPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="CategoryNameLineEdit" type="LineEdit" parent="Split/CategoryPanel/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "分类 Key"
+
+[node name="AddCategoryButton" type="Button" parent="Split/CategoryPanel/Controls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "添加"
+
+[node name="RemoveCategoryButton" type="Button" parent="Split/CategoryPanel/Controls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "删除"
+
+[node name="CategoryList" type="ItemList" parent="Split/CategoryPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PacketPanel" type="VBoxContainer" parent="Split"]
+custom_minimum_size = Vector2(400, 420)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Split/PacketPanel"]
+layout_mode = 2
+text = "卡片"
+
+[node name="PacketSummaryLabel" type="Label" parent="Split/PacketPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AddRow" type="HBoxContainer" parent="Split/PacketPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="PacketKeyLineEdit" type="LineEdit" parent="Split/PacketPanel/AddRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "卡片 saveKey"
+
+[node name="PacketPickerHost" type="HBoxContainer" parent="Split/PacketPanel/AddRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ChoosePacketButton" type="Button" parent="Split/PacketPanel/AddRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "选择卡片"
+
+[node name="AddPacketButton" type="Button" parent="Split/PacketPanel/AddRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "加入"
+
+[node name="RemovePacketButton" type="Button" parent="Split/PacketPanel/AddRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "移除"
+
+[node name="PacketUpButton" type="Button" parent="Split/PacketPanel/AddRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "上移"
+
+[node name="PacketDownButton" type="Button" parent="Split/PacketPanel/AddRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "下移"
+
+[node name="Body" type="HBoxContainer" parent="Split/PacketPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="PacketList" type="ItemList" parent="Split/PacketPanel/Body"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PacketGridScroll" type="ScrollContainer" parent="Split/PacketPanel/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="PacketGrid" type="GridContainer" parent="Split/PacketPanel/Body/PacketGridScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 4

@@ -1,0 +1,105 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://1nm4qs5j3lto"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbglc127qw1jb" path="res://Resource/TowerDefense/Collision/AabbRay2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="5"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="6"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="7"]
+[ext_resource type="Resource" uid="uid://c003c2tr0eqsn" path="res://Asset/Anime/Character/Plant/Chapter9/StarRobot/Scene/TowerDefensePlantStarRobotExplodeDefinition.tres" id="8"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="9"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="10"]
+
+[sub_resource type="Resource" id="Fire_AabbRay2DResource_upper_forward"]
+script = ExtResource("2")
+LocalTransform = Transform2D(0.8660254, -0.5, 0.5, 0.8660254, 0, 0)
+
+[sub_resource type="Resource" id="Fire_AabbRay2DResource_up"]
+script = ExtResource("2")
+LocalTransform = Transform2D(-4.371139e-08, -1, 1, -4.371139e-08, 0, 0)
+
+[sub_resource type="Resource" id="Fire_AabbRay2DResource_backward"]
+script = ExtResource("2")
+LocalTransform = Transform2D(-1, -8.742278e-08, 8.742278e-08, -1, 0, 0)
+
+[sub_resource type="Resource" id="Fire_AabbRay2DResource_down"]
+script = ExtResource("2")
+LocalTransform = Transform2D(-4.371139e-08, 1, -1, -4.371139e-08, 0, 0)
+
+[sub_resource type="Resource" id="Fire_AabbRay2DResource_lower_forward"]
+script = ExtResource("2")
+LocalTransform = Transform2D(0.8660254, 0.5, -0.5, 0.8660254, 0, 0)
+
+[sub_resource type="Resource" id="Fire_Resource_e52c1"]
+script = ExtResource("3")
+projectileName = &"StarRobot"
+baseDamage = 40.0
+fireMethodFlags = 5
+catapultHeight = 400.0
+
+[sub_resource type="Resource" id="Fire_Resource_fps0"]
+script = ExtResource("4")
+projectileData = SubResource("Fire_Resource_e52c1")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Fire_Resource_oa3sm"]
+script = ExtResource("5")
+projectile = SubResource("Fire_Resource_fps0")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Fire_Resource_yw10e"]
+script = ExtResource("6")
+speed = 500.0
+dir = 330.0
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Fire_Resource_tbpd2"]
+script = ExtResource("6")
+firePosId = 1
+speed = 500.0
+dir = 270.0
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Fire_Resource_xeuep"]
+script = ExtResource("6")
+firePosId = 2
+speed = 500.0
+dir = 180.0
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Fire_Resource_i1bev"]
+script = ExtResource("6")
+firePosId = 3
+speed = 500.0
+dir = 90.0
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Fire_Resource_71l0o"]
+script = ExtResource("6")
+firePosId = 4
+speed = 500.0
+dir = 30.0
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="FireDefinition"]
+script = ExtResource("7")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/FireMarker"), NodePath("SpriteGroup/TransformPoint/FireMarker2"), NodePath("SpriteGroup/TransformPoint/FireMarker3"), NodePath("SpriteGroup/TransformPoint/FireMarker4"), NodePath("SpriteGroup/TransformPoint/FireMarker5")]
+spritePath = NodePath("SpriteGroup/TransformPoint/StarRobot")
+checkRayResources = [SubResource("Fire_AabbRay2DResource_upper_forward"), SubResource("Fire_AabbRay2DResource_up"), SubResource("Fire_AabbRay2DResource_backward"), SubResource("Fire_AabbRay2DResource_down"), SubResource("Fire_AabbRay2DResource_lower_forward")]
+fireIntervalBase = 3.0
+fireInterval = 3.0
+fireCheckList = [SubResource("Fire_Resource_oa3sm")]
+fireProjectileList = [SubResource("Fire_Resource_yw10e"), SubResource("Fire_Resource_tbpd2"), SubResource("Fire_Resource_xeuep"), SubResource("Fire_Resource_i1bev"), SubResource("Fire_Resource_71l0o")]
+checkAllLine = true
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter9.starrobot"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]
+
+[resource]
+script = ExtResource("10")
+ParentSet = ExtResource("9")
+Components = [SubResource("FireDefinition"), ExtResource("8")]

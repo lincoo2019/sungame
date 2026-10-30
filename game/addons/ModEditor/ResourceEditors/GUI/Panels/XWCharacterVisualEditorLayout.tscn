@@ -1,0 +1,317 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+
+[sub_resource type="World2D" id="World2D_preview"]
+
+[sub_resource type="StyleBoxFlat" id="StylePreview"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.105, 0.11, 1)
+border_color = Color(0.298, 0.302, 0.306, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="CharacterVisualEditorLayout" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PreviewPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(720, 430)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StylePreview")
+
+[node name="PreviewLayout" type="VBoxContainer" parent="PreviewPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="PreviewPanel/PreviewLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="PreviewNameLabel" type="Label" parent="PreviewPanel/PreviewLayout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="PreviewCategoryLabel" type="Label" parent="PreviewPanel/PreviewLayout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 2
+
+[node name="PreviewStack" type="Control" parent="PreviewPanel/PreviewLayout"]
+custom_minimum_size = Vector2(700, 340)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+clip_contents = true
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="PreviewPanel/PreviewLayout/PreviewStack"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+tooltip_text = "拖拽移动角色，滚轮缩放；这里运行的是完整游戏角色场景"
+
+[node name="CharacterViewport" type="SubViewport" parent="PreviewPanel/PreviewLayout/PreviewStack/ViewportContainer"]
+unique_name_in_owner = true
+world_2d = SubResource("World2D_preview")
+transparent_bg = true
+disable_3d = true
+size = Vector2i(720, 340)
+render_target_update_mode = 4
+
+[node name="GameBackground" type="TextureRect" parent="PreviewPanel/PreviewLayout/PreviewStack/ViewportContainer/CharacterViewport"]
+unique_name_in_owner = true
+offset_right = 720.0
+offset_bottom = 340.0
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="GroundShade" type="ColorRect" parent="PreviewPanel/PreviewLayout/PreviewStack/ViewportContainer/CharacterViewport"]
+unique_name_in_owner = true
+offset_top = 250.0
+offset_right = 720.0
+offset_bottom = 340.0
+mouse_filter = 2
+color = Color(0.08, 0.12, 0.04, 0.2)
+
+[node name="PreviewRoot" type="Node2D" parent="PreviewPanel/PreviewLayout/PreviewStack/ViewportContainer/CharacterViewport"]
+unique_name_in_owner = true
+z_index = 64
+position = Vector2(360, 258)
+
+[node name="PreviewStatusLabel" type="Label" parent="PreviewPanel/PreviewLayout/PreviewStack"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = -12.0
+offset_bottom = 38.0
+grow_horizontal = 2
+mouse_filter = 2
+text = "正在加载完整游戏角色场景…"
+horizontal_alignment = 1
+
+[node name="PreviewToolbar" type="HBoxContainer" parent="PreviewPanel/PreviewLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HealthLabel" type="Label" parent="PreviewPanel/PreviewLayout/PreviewToolbar"]
+layout_mode = 2
+text = "游戏内生命状态"
+
+[node name="HealthSlider" type="HSlider" parent="PreviewPanel/PreviewLayout/PreviewToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+step = 1.0
+value = 100.0
+tooltip_text = "直接驱动角色受伤点、护甲和自定义外观显示"
+
+[node name="HealthValueLabel" type="Label" parent="PreviewPanel/PreviewLayout/PreviewToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[node name="ResetViewButton" type="Button" parent="PreviewPanel/PreviewLayout/PreviewToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "复位视图"
+
+[node name="Stats" type="HBoxContainer" parent="PreviewPanel/PreviewLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="HitpointsLabel" type="Label" parent="PreviewPanel/PreviewLayout/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="PacketLabel" type="Label" parent="PreviewPanel/PreviewLayout/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="ModeLabel" type="Label" parent="PreviewPanel/PreviewLayout/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="ResourceLabel" type="Label" parent="PreviewPanel/PreviewLayout/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+
+[node name="Fields" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="BasicHost" type="VBoxContainer" parent="Fields"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ComponentPanel" type="VBoxContainer" parent="Fields"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="ComponentTitle" type="Label" parent="Fields/ComponentPanel"]
+layout_mode = 2
+text = "角色组件"
+
+[node name="ComponentListTitle" type="Label" parent="Fields/ComponentPanel"]
+layout_mode = 2
+text = "组件列表"
+
+[node name="ComponentList" type="ItemList" parent="Fields/ComponentPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(145, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "componentList"
+
+[node name="ComponentPatchTitle" type="Label" parent="Fields/ComponentPanel"]
+layout_mode = 2
+text = "组件补丁"
+
+[node name="ComponentPatchList" type="ItemList" parent="Fields/ComponentPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(145, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "componentPatch"
+
+[node name="EventTitle" type="Label" parent="Fields/ComponentPanel"]
+layout_mode = 2
+text = "事件与属性变化"
+
+[node name="EventGrid" type="GridContainer" parent="Fields/ComponentPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="SpawnBox" type="VBoxContainer" parent="Fields/ComponentPanel/EventGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Fields/ComponentPanel/EventGrid/SpawnBox"]
+layout_mode = 2
+text = "生成事件"
+
+[node name="SpawnEventList" type="ItemList" parent="Fields/ComponentPanel/EventGrid/SpawnBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(145, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DieBox" type="VBoxContainer" parent="Fields/ComponentPanel/EventGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Fields/ComponentPanel/EventGrid/DieBox"]
+layout_mode = 2
+text = "死亡事件"
+
+[node name="DieEventList" type="ItemList" parent="Fields/ComponentPanel/EventGrid/DieBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(145, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ChangeBox" type="VBoxContainer" parent="Fields/ComponentPanel/EventGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Fields/ComponentPanel/EventGrid/ChangeBox"]
+layout_mode = 2
+text = "属性变化"
+
+[node name="PropertyChangeList" type="ItemList" parent="Fields/ComponentPanel/EventGrid/ChangeBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(145, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ComponentHint" type="Label" parent="Fields/ComponentPanel/EventGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "组件支持继承、禁用、替换、新增和排序；子资源可在文件系统资源树中继续编辑。"
+autowrap_mode = 2
+
+[node name="OverridePanel" type="VBoxContainer" parent="Fields"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Fields/OverridePanel"]
+layout_mode = 2
+text = "继承 / 覆盖差异"
+
+[node name="Description" type="Label" parent="Fields/OverridePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "原版值 / Mod 值 / 是否覆盖"
+
+[node name="OverrideDiffTree" type="Tree" parent="Fields/OverridePanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(330, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+column_titles_visible = true

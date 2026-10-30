@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://brpldn5n50hoq"]
+
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="1"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="3"]
+
+[sub_resource type="Resource" id="State_root"]
+script = ExtResource("1")
+StableId = "potato.root"
+DisplayName = &"Root"
+Kind = 1
+InitialChildId = "potato.idle"
+
+[sub_resource type="Resource" id="State_idle"]
+script = ExtResource("1")
+StableId = "potato.idle"
+DisplayName = &"Idle"
+ParentId = "potato.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_ready"]
+script = ExtResource("1")
+StableId = "potato.ready"
+DisplayName = &"Ready"
+ParentId = "potato.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_rise"]
+script = ExtResource("1")
+StableId = "potato.rise"
+DisplayName = &"Rise"
+ParentId = "potato.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_charge"]
+script = ExtResource("1")
+StableId = "potato.charge"
+DisplayName = &"Charge"
+ParentId = "potato.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_idle"]
+script = ExtResource("2")
+StableId = "potato.to_idle"
+SourceStateId = "potato.root"
+TargetStateId = "potato.idle"
+EventName = &"ToIdle"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_ready"]
+script = ExtResource("2")
+StableId = "potato.to_ready"
+SourceStateId = "potato.root"
+TargetStateId = "potato.ready"
+EventName = &"ToReady"
+DeclarationOrder = 1
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_rise"]
+script = ExtResource("2")
+StableId = "potato.to_rise"
+SourceStateId = "potato.root"
+TargetStateId = "potato.rise"
+EventName = &"ToRise"
+DeclarationOrder = 2
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_charge"]
+script = ExtResource("2")
+StableId = "potato.to_charge"
+SourceStateId = "potato.root"
+TargetStateId = "potato.charge"
+EventName = &"ToCharge"
+DeclarationOrder = 3
+GuardDefinition = null
+
+[resource]
+script = ExtResource("3")
+DefinitionId = "builtin.component.potato"
+BaseDefinition = null
+RootStateId = "potato.root"
+States = [SubResource("State_root"), SubResource("State_idle"), SubResource("State_ready"), SubResource("State_rise"), SubResource("State_charge")]
+Transitions = [SubResource("Transition_idle"), SubResource("Transition_ready"), SubResource("Transition_rise"), SubResource("Transition_charge")]

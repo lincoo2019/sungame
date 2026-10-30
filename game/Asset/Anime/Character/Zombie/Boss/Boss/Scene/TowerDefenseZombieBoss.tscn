@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://06dihw6axrmt"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://d21r0f6sv7l6j" path="res://Asset/Anime/Character/Zombie/Boss/Boss/Scene/TowerDefenseZombieBossComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://b0d7n0nsoln81" path="res://Asset/Anime/Character/Zombie/Boss/Boss/Scene/TowerDefenseZombieBoss.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x1268_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://mqau6hibekin" path="res://Asset/Anime/Character/Zombie/Boss/Boss/Scene/TowerDefenseZombieBossStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://cjovkbqlwb6xj" path="res://Asset/Anime/Character/Zombie/Boss/Boss/Config/TowerDefenseZombieBoss.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://u74xheopqedo" path="res://Asset/Anime/Character/Zombie/Boss/Boss/ZombieBoss.tscn" id="7"]
+
+[node name="TowerDefenseZombieBoss" unique_id=1383326017 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+garlicReplace = "Zombie_sleep_head.png"
+waterHeight = 20.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieBoss")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieBoss/HeadSlot")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieBoss" parent="SpriteGroup/TransformPoint" index="0" unique_id=1425198720 instance=ExtResource("7")]
+position = Vector2(-12, -33)
+clip = "Enter"
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="Driver" parent="SpriteGroup/TransformPoint/ZombieBoss" index="0" unique_id=1496605057]
+clip = "Idle"
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+followParentSpriteLayerId = 33
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieBoss" index="2" unique_id=2124984946]
+drawLayerId = -2
+position = Vector2(-181.98529, -147.54814)
+rotation = -0.004533819
+scale = Vector2(0.7964276, 0.7964276)
+
+[node name="Arm" parent="SpriteGroup/TransformPoint/ZombieBoss/ArmNode" parent_id_path=PackedInt32Array(1425198720, 1256741544) index="0" unique_id=2121246328]
+clip = "Enter"
+layerVisible = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="RV" parent="SpriteGroup/TransformPoint/ZombieBoss/RVNode" parent_id_path=PackedInt32Array(1425198720, 1449686969) index="0" unique_id=1810349455]
+clip = "Enter"
+layerVisible = [false, false, false, false, false, false, false, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[editable path="SpriteGroup/TransformPoint/ZombieBoss"]

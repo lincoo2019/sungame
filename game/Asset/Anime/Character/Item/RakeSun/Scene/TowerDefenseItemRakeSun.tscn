@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dbp6denu4nsl1"]
+
+[ext_resource type="PackedScene" uid="uid://uawo0nxcj2ji" path="res://Prefab/TowerDefense/Character/TowerDefenseItem.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://0767dmx8ny2" path="res://Asset/Anime/Character/Item/RakeSun/Scene/TowerDefenseItemRakeSunComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://dki7gkfp0i1xq" path="res://Asset/Anime/Character/Item/RakeSun/Scene/TowerDefenseItemRakeSun.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d3shen3aipn06" path="res://Asset/Anime/Character/Item/RakeSun/Config/TowerDefenseItemRakeSun.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://dot3sw46ogyiy" path="res://Asset/Anime/Character/Item/RakeSun/RakeSun.tscn" id="5"]
+
+[node name="TowerDefenseItemRakeSun" node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+z_index = -13
+script = ExtResource("3")
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/RakeSun")
+itemLayer = 2
+
+[node name="TransformPoint" parent="SpriteGroup" index="1"]
+position = Vector2(0, 37)
+
+[node name="RakeSun" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("5")]
+position = Vector2(0, -37)
+trueFrameRate = 30.0
+
+[node name="ShadowSprite" parent="." index="3"]
+visible = false
+position = Vector2(12, 36)

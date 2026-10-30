@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://c73f1gkmmso7m"]
+
+[ext_resource type="Material" uid="uid://bb1mmnpft2snt" path="res://Prefab/Particles/Splats/SnowPeaSplats/SnowPeaSplats.tres" id="1_y78qp"]
+[ext_resource type="Texture2D" uid="uid://03220anjller" path="res://Asset/Anime/Particles/Splats/SnowPeaSplats.png" id="2_qia8c"]
+[ext_resource type="Script" uid="uid://cmjj5ejt1ranr" path="res://Extends/Particles/GPUParticles2DOnece.cs" id="3_4tgqu"]
+[ext_resource type="Texture2D" uid="uid://do8krmh5eitod" path="res://Asset/Anime/Particles/Splats/SnowPeaParticles.png" id="4_widsg"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cfr3t"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6fwcf"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="SnowPeaSplats" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_cfr3t")
+emitting = false
+amount = 4
+texture = ExtResource("2_qia8c")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = ExtResource("1_y78qp")
+script = ExtResource("3_4tgqu")
+
+[node name="PeaParticles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_6fwcf")
+emitting = false
+amount = 6
+texture = ExtResource("4_widsg")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = ExtResource("1_y78qp")

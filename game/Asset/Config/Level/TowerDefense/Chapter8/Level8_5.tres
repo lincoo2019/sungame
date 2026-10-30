@@ -1,0 +1,8121 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://cu2d5p8o0rxf3"]
+
+[ext_resource type="Script" uid="uid://brksssc7xyo1f" path="res://Registry/Battle/Feature/ConveyorBelt/Resource/TowerDefenseConveyorPacketConfig.cs" id="1_3n42k"]
+[ext_resource type="Script" uid="uid://crdubirc3xofm" path="res://Resource/TowerDefense/Level/Packet/TowerDefenseLevelPacketConfig.cs" id="2_cv2vh"]
+[ext_resource type="Script" uid="uid://ba76j1qc1ehmt" path="res://Registry/Battle/Feature/Event/Resource/TowerDefenseLevelEventBase.cs" id="2_ujpd2"]
+[ext_resource type="Script" uid="uid://clcbxx5mw8t6c" path="res://Registry/Battle/Feature/Event/Resource/Gravestone/TowerDefenseLevelEventGravestoneCreateRandom.cs" id="3_42nqi"]
+[ext_resource type="Script" uid="uid://dla1ah513q1dx" path="res://Resource/TowerDefense/Conveyor/TowerDefenseConveyorConfig.cs" id="3_cbvsf"]
+[ext_resource type="Script" uid="uid://dbpqspbkam44d" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.cs" id="4_25n8o"]
+[ext_resource type="Script" uid="uid://d24ct07qv74kq" path="res://Registry/Battle/Feature/ConveyorBelt/Resource/Event/TowerDefenseConveyorEventBase.cs" id="4_kpb20"]
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/Chapter8/Level8_5.json" id="5_8hmev"]
+[ext_resource type="Script" uid="uid://elndp7rr41y0" path="res://Registry/Battle/Feature/LookStar/Resource/TowerDefenseLevelLookStarCheckConfig.cs" id="5_itfjc"]
+[ext_resource type="Script" uid="uid://ge6chewkhjqd" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.cs" id="6_iykkp"]
+[ext_resource type="Script" uid="uid://d17gywmt3g3lb" path="res://Resource/TowerDefense/Level/PreSpawn/TowerDefenseLevelPreSpawnConfig.cs" id="7_3n42k"]
+[ext_resource type="Script" uid="uid://dfj86l56q1n8g" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.cs" id="8_cv2vh"]
+[ext_resource type="Script" uid="uid://blrb5liskebi6" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.cs" id="9_cbvsf"]
+[ext_resource type="Script" uid="uid://br6kawt7m03sc" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelDynamicConfig.cs" id="10_kpb20"]
+[ext_resource type="Script" uid="uid://ctvkmai1q8sa6" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.cs" id="11_8hmev"]
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="12_oyrgk"]
+[ext_resource type="Script" uid="uid://b33l7l1ecdbk2" path="res://Resource/TowerDefense/Character/Override/Property/TowerDefenseCharacterPropertyChangeConfig.cs" id="13_purik"]
+[ext_resource type="Script" uid="uid://6sg1n152234o" path="res://Resource/TowerDefense/Character/Override/TowerDefenseCharacterOverride.cs" id="14_b3ks1"]
+[ext_resource type="Script" uid="uid://c67uxwpu4jftb" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.cs" id="15_ogb66"]
+[ext_resource type="Script" uid="uid://cikc5vwojvfpa" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnDynamicConfig.cs" id="16_oeqv6"]
+[ext_resource type="Script" uid="uid://d1wvq2gegjubw" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelGridSpawnConfig.cs" id="17_jaex4"]
+[ext_resource type="Script" uid="uid://gc0ev0pebyep" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnConfig.cs" id="18_uw0th"]
+[ext_resource type="Script" uid="uid://ropn2dvhv67s" path="res://Registry/Battle/Feature/Event/Resource/Gravestone/TowerDefenseLevelEventGravestoneSpawnZombie.cs" id="19_hs0fc"]
+[ext_resource type="Script" uid="uid://don8l8h7c4i56" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventPacketCreate.cs" id="23_oyrgk"]
+[ext_resource type="Script" uid="uid://ky0rohwug6p1" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventPacketSpawn.cs" id="24_purik"]
+
+[sub_resource type="Resource" id="Resource_b3ks1"]
+script = ExtResource("1_3n42k")
+name = "PlantHammerLight"
+weight = 20
+maxNum = 3
+minNum = 1
+minMagnification = 3.0
+
+[sub_resource type="Resource" id="Resource_ogb66"]
+script = ExtResource("1_3n42k")
+name = "PlantPeashooterZ"
+weight = 30
+maxNum = 9
+minNum = 3
+minMagnification = 3.0
+
+[sub_resource type="Resource" id="Resource_oeqv6"]
+script = ExtResource("1_3n42k")
+name = "PlantGravebuster"
+weight = 50
+maxNum = 5
+minNum = 1
+minMagnification = 3.0
+
+[sub_resource type="Resource" id="Resource_jaex4"]
+script = ExtResource("1_3n42k")
+name = "PlantPot"
+weight = 20
+maxNum = 4
+minNum = 1
+minMagnification = 4.0
+
+[sub_resource type="Resource" id="Resource_uw0th"]
+script = ExtResource("3_cbvsf")
+interval = 4.0
+intervalIncreaseEvery = 2
+packetList = Array[ExtResource("1_3n42k")]([SubResource("Resource_b3ks1"), SubResource("Resource_ogb66"), SubResource("Resource_oeqv6"), SubResource("Resource_jaex4")])
+waveEvent = [Array[ExtResource("4_kpb20")]([]), Array[ExtResource("4_kpb20")]([]), Array[ExtResource("4_kpb20")]([]), Array[ExtResource("4_kpb20")]([])]
+
+[sub_resource type="Resource" id="Resource_hs0fc"]
+script = ExtResource("3_42nqi")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneDefault"]
+gravestoneNum = 6
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_jb3p5"]
+script = ExtResource("4_25n8o")
+
+[sub_resource type="Resource" id="Resource_0b672"]
+script = ExtResource("6_iykkp")
+
+[sub_resource type="Resource" id="Resource_ll0i3"]
+script = ExtResource("9_cbvsf")
+open = false
+
+[sub_resource type="Resource" id="Resource_r8g1u"]
+script = ExtResource("10_kpb20")
+
+[sub_resource type="Resource" id="Resource_i5qyx"]
+script = ExtResource("10_kpb20")
+
+[sub_resource type="Resource" id="Resource_4g1y1"]
+script = ExtResource("10_kpb20")
+
+[sub_resource type="Resource" id="Resource_cbekm"]
+script = ExtResource("10_kpb20")
+
+[sub_resource type="Resource" id="Resource_xurtt"]
+script = ExtResource("10_kpb20")
+
+[sub_resource type="Resource" id="Resource_3x2vc"]
+script = ExtResource("10_kpb20")
+
+[sub_resource type="Resource" id="Resource_l8mps"]
+script = ExtResource("10_kpb20")
+
+[sub_resource type="Resource" id="Resource_p0ui1"]
+script = ExtResource("14_b3ks1")
+
+[sub_resource type="Resource" id="Resource_nda5t"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_cdycy"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_rf3t6"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_cdycy")])
+
+[sub_resource type="Resource" id="Resource_lh0b6"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_rf3t6")
+
+[sub_resource type="Resource" id="Resource_0ttaj"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_lh0b6")])
+
+[sub_resource type="Resource" id="Resource_7vefl"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_0ttaj")
+
+[sub_resource type="Resource" id="Resource_qudxh"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_7vefl")])
+
+[sub_resource type="Resource" id="Resource_8s3op"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+override = SubResource("Resource_qudxh")
+
+[sub_resource type="Resource" id="Resource_n60pt"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_8s3op")])
+dynamic = SubResource("Resource_nda5t")
+
+[sub_resource type="Resource" id="Resource_yiv0c"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_er2dy"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_kulbh"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_er2dy")])
+
+[sub_resource type="Resource" id="Resource_162q4"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_kulbh")
+
+[sub_resource type="Resource" id="Resource_4es4w"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_162q4")])
+
+[sub_resource type="Resource" id="Resource_mq77j"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_4es4w")
+
+[sub_resource type="Resource" id="Resource_apxs3"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_mq77j")])
+
+[sub_resource type="Resource" id="Resource_smaqf"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 2
+override = SubResource("Resource_apxs3")
+
+[sub_resource type="Resource" id="Resource_lkl8n"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_smaqf")])
+dynamic = SubResource("Resource_yiv0c")
+
+[sub_resource type="Resource" id="Resource_gddni"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_gusmv"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_825ie"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_gusmv")])
+
+[sub_resource type="Resource" id="Resource_tsen7"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_825ie")
+
+[sub_resource type="Resource" id="Resource_wrpwd"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_tsen7")])
+
+[sub_resource type="Resource" id="Resource_o0w5l"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_wrpwd")
+
+[sub_resource type="Resource" id="Resource_jgrg2"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_o0w5l")])
+
+[sub_resource type="Resource" id="Resource_teay2"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+override = SubResource("Resource_jgrg2")
+
+[sub_resource type="Resource" id="Resource_0j0sb"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_twqbo"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_0j0sb")])
+
+[sub_resource type="Resource" id="Resource_86u4c"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_twqbo")
+
+[sub_resource type="Resource" id="Resource_r3k82"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_86u4c")])
+
+[sub_resource type="Resource" id="Resource_3q7hb"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_r3k82")
+
+[sub_resource type="Resource" id="Resource_ele00"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_3q7hb")])
+
+[sub_resource type="Resource" id="Resource_nhda6"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+override = SubResource("Resource_ele00")
+
+[sub_resource type="Resource" id="Resource_6n0lo"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_teay2"), SubResource("Resource_nhda6")])
+dynamic = SubResource("Resource_gddni")
+
+[sub_resource type="Resource" id="Resource_0vknk"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_rudh6"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_ki5mp"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_rudh6")])
+
+[sub_resource type="Resource" id="Resource_x7our"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_ki5mp")
+
+[sub_resource type="Resource" id="Resource_b2tb4"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_x7our")])
+
+[sub_resource type="Resource" id="Resource_4dksh"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_b2tb4")
+
+[sub_resource type="Resource" id="Resource_xeq55"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_4dksh")])
+
+[sub_resource type="Resource" id="Resource_hr4x3"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 2
+override = SubResource("Resource_xeq55")
+
+[sub_resource type="Resource" id="Resource_c7g63"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_wnutt"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_c7g63")])
+
+[sub_resource type="Resource" id="Resource_36d5y"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_wnutt")
+
+[sub_resource type="Resource" id="Resource_fnde6"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_36d5y")])
+
+[sub_resource type="Resource" id="Resource_gjq31"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_fnde6")
+
+[sub_resource type="Resource" id="Resource_0gwt3"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_gjq31")])
+
+[sub_resource type="Resource" id="Resource_wjjmx"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+override = SubResource("Resource_0gwt3")
+
+[sub_resource type="Resource" id="Resource_iy02d"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_hr4x3"), SubResource("Resource_wjjmx")])
+dynamic = SubResource("Resource_0vknk")
+
+[sub_resource type="Resource" id="Resource_wbrl6"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_7icbw"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_4qkp0"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_7icbw")])
+
+[sub_resource type="Resource" id="Resource_ogv0e"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_4qkp0")
+
+[sub_resource type="Resource" id="Resource_trfls"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_ogv0e")])
+
+[sub_resource type="Resource" id="Resource_3wihr"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_trfls")
+
+[sub_resource type="Resource" id="Resource_f1ex5"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_3wihr")])
+
+[sub_resource type="Resource" id="Resource_sq4e1"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+override = SubResource("Resource_f1ex5")
+
+[sub_resource type="Resource" id="Resource_qlf2m"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_ab7vl"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_qlf2m")])
+
+[sub_resource type="Resource" id="Resource_4d1i0"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_ab7vl")
+
+[sub_resource type="Resource" id="Resource_dqxjk"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_4d1i0")])
+
+[sub_resource type="Resource" id="Resource_7iqsw"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_dqxjk")
+
+[sub_resource type="Resource" id="Resource_i4x8q"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_7iqsw")])
+
+[sub_resource type="Resource" id="Resource_tj2tx"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+override = SubResource("Resource_i4x8q")
+
+[sub_resource type="Resource" id="Resource_jx4wh"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_f154h"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_jx4wh")])
+
+[sub_resource type="Resource" id="Resource_iut65"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_f154h")
+
+[sub_resource type="Resource" id="Resource_ws1pt"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_iut65")])
+
+[sub_resource type="Resource" id="Resource_ltrlj"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieSkeleton"
+override = SubResource("Resource_ws1pt")
+
+[sub_resource type="Resource" id="Resource_yq33c"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_sq4e1"), SubResource("Resource_tj2tx"), SubResource("Resource_ltrlj")])
+dynamic = SubResource("Resource_wbrl6")
+
+[sub_resource type="Resource" id="Resource_hw2cr"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_ylaq2"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_5f13f"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_ylaq2")])
+
+[sub_resource type="Resource" id="Resource_tjkrc"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_5f13f")
+
+[sub_resource type="Resource" id="Resource_xfm0g"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_tjkrc")])
+
+[sub_resource type="Resource" id="Resource_1a7kh"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_xfm0g")
+
+[sub_resource type="Resource" id="Resource_bo2aq"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_1a7kh")])
+
+[sub_resource type="Resource" id="Resource_64j12"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+override = SubResource("Resource_bo2aq")
+
+[sub_resource type="Resource" id="Resource_rwsyu"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_c87sm"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_rwsyu")])
+
+[sub_resource type="Resource" id="Resource_rofcc"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_c87sm")
+
+[sub_resource type="Resource" id="Resource_5e8ma"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_rofcc")])
+
+[sub_resource type="Resource" id="Resource_bwvqa"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_5e8ma")
+
+[sub_resource type="Resource" id="Resource_8nogi"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_bwvqa")])
+
+[sub_resource type="Resource" id="Resource_xtwly"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 2
+override = SubResource("Resource_8nogi")
+
+[sub_resource type="Resource" id="Resource_b5lpx"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_ljw6f"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_b5lpx")])
+
+[sub_resource type="Resource" id="Resource_hch28"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_ljw6f")
+
+[sub_resource type="Resource" id="Resource_odrhi"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_hch28")])
+
+[sub_resource type="Resource" id="Resource_hgiin"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieSkeleton"
+override = SubResource("Resource_odrhi")
+
+[sub_resource type="Resource" id="Resource_4yb27"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_64j12"), SubResource("Resource_xtwly"), SubResource("Resource_hgiin")])
+dynamic = SubResource("Resource_hw2cr")
+
+[sub_resource type="Resource" id="Resource_kdy1v"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_qejy1"]
+script = ExtResource("3_42nqi")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneDefault"]
+gravestoneNum = 4
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_spbd6"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_xwwax"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_spbd6")])
+
+[sub_resource type="Resource" id="Resource_4cqgj"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_xwwax")
+
+[sub_resource type="Resource" id="Resource_d5qyd"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_4cqgj")])
+
+[sub_resource type="Resource" id="Resource_xt22l"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_d5qyd")
+
+[sub_resource type="Resource" id="Resource_30ntf"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_xt22l")])
+
+[sub_resource type="Resource" id="Resource_as72s"]
+script = ExtResource("19_hs0fc")
+zombieNames = ["ZombieNormal", "ZombieNormalCone"]
+zombieNum = 3
+override = SubResource("Resource_30ntf")
+
+[sub_resource type="Resource" id="Resource_4rj46"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_1vr5a"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_4rj46")])
+
+[sub_resource type="Resource" id="Resource_rryp7"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_1vr5a")
+
+[sub_resource type="Resource" id="Resource_q5kty"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_rryp7")])
+
+[sub_resource type="Resource" id="Resource_1pnpl"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_q5kty")
+
+[sub_resource type="Resource" id="Resource_qw33i"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_1pnpl")])
+
+[sub_resource type="Resource" id="Resource_bnyw5"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+override = SubResource("Resource_qw33i")
+
+[sub_resource type="Resource" id="Resource_h8dpk"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_qfw5q"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_h8dpk")])
+
+[sub_resource type="Resource" id="Resource_s0xr8"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_qfw5q")
+
+[sub_resource type="Resource" id="Resource_i7hf1"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_s0xr8")])
+
+[sub_resource type="Resource" id="Resource_xauqh"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieSkeleton"
+override = SubResource("Resource_i7hf1")
+
+[sub_resource type="Resource" id="Resource_vr8n2"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_bnyw5"), SubResource("Resource_xauqh")])
+dynamic = SubResource("Resource_kdy1v")
+event = Array[ExtResource("2_ujpd2")]([SubResource("Resource_qejy1"), SubResource("Resource_as72s")])
+
+[sub_resource type="Resource" id="Resource_bnkc1"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_i43h2"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_7xp4c"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_i43h2")])
+
+[sub_resource type="Resource" id="Resource_4skwc"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_7xp4c")
+
+[sub_resource type="Resource" id="Resource_y1mgx"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_4skwc")])
+
+[sub_resource type="Resource" id="Resource_i2goy"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_y1mgx")
+
+[sub_resource type="Resource" id="Resource_ihp7j"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_i2goy")])
+
+[sub_resource type="Resource" id="Resource_2tdbm"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+num = 2
+override = SubResource("Resource_ihp7j")
+
+[sub_resource type="Resource" id="Resource_8m42q"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_c6g00"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_8m42q")])
+
+[sub_resource type="Resource" id="Resource_8upjc"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_c6g00")
+
+[sub_resource type="Resource" id="Resource_84n3k"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_8upjc")])
+
+[sub_resource type="Resource" id="Resource_q6gve"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_84n3k")
+
+[sub_resource type="Resource" id="Resource_i666c"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_q6gve")])
+
+[sub_resource type="Resource" id="Resource_ucf4h"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 2
+override = SubResource("Resource_i666c")
+
+[sub_resource type="Resource" id="Resource_dssva"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_hulgn"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_dssva")])
+
+[sub_resource type="Resource" id="Resource_yyo4o"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_hulgn")
+
+[sub_resource type="Resource" id="Resource_6uqaf"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_yyo4o")])
+
+[sub_resource type="Resource" id="Resource_y75t5"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_6uqaf")
+
+[sub_resource type="Resource" id="Resource_vkg6f"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_y75t5")])
+
+[sub_resource type="Resource" id="Resource_gqwn4"]
+script = ExtResource("18_uw0th")
+zombie = "ZombiePolevaulter"
+override = SubResource("Resource_vkg6f")
+
+[sub_resource type="Resource" id="Resource_y4rgu"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_2tdbm"), SubResource("Resource_ucf4h"), SubResource("Resource_gqwn4")])
+dynamic = SubResource("Resource_bnkc1")
+
+[sub_resource type="Resource" id="Resource_obppx"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_mn60e"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_k7i1w"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_mn60e")])
+
+[sub_resource type="Resource" id="Resource_i2jun"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_k7i1w")
+
+[sub_resource type="Resource" id="Resource_xte7c"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_i2jun")])
+
+[sub_resource type="Resource" id="Resource_8f5w4"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_xte7c")
+
+[sub_resource type="Resource" id="Resource_pmrq8"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_8f5w4")])
+
+[sub_resource type="Resource" id="Resource_kv0cq"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+override = SubResource("Resource_pmrq8")
+
+[sub_resource type="Resource" id="Resource_1yr1i"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_1xmdp"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_1yr1i")])
+
+[sub_resource type="Resource" id="Resource_kbbyx"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_1xmdp")
+
+[sub_resource type="Resource" id="Resource_ith16"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_kbbyx")])
+
+[sub_resource type="Resource" id="Resource_qbl7b"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_ith16")
+
+[sub_resource type="Resource" id="Resource_wfe73"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_qbl7b")])
+
+[sub_resource type="Resource" id="Resource_i1uvf"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 2
+override = SubResource("Resource_wfe73")
+
+[sub_resource type="Resource" id="Resource_x35bd"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_iu1b5"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_x35bd")])
+
+[sub_resource type="Resource" id="Resource_cqnwe"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_iu1b5")
+
+[sub_resource type="Resource" id="Resource_277j6"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_cqnwe")])
+
+[sub_resource type="Resource" id="Resource_6b75n"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_277j6")
+
+[sub_resource type="Resource" id="Resource_wtm8q"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_6b75n")])
+
+[sub_resource type="Resource" id="Resource_nbfqi"]
+script = ExtResource("18_uw0th")
+zombie = "ZombiePolevaulter"
+num = 2
+override = SubResource("Resource_wtm8q")
+
+[sub_resource type="Resource" id="Resource_j63cv"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_kv0cq"), SubResource("Resource_i1uvf"), SubResource("Resource_nbfqi")])
+dynamic = SubResource("Resource_obppx")
+
+[sub_resource type="Resource" id="Resource_irp51"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_3mxja"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_2inve"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_3mxja")])
+
+[sub_resource type="Resource" id="Resource_0gor8"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_2inve")
+
+[sub_resource type="Resource" id="Resource_o01iu"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_0gor8")])
+
+[sub_resource type="Resource" id="Resource_bomvy"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_o01iu")
+
+[sub_resource type="Resource" id="Resource_22lvi"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_bomvy")])
+
+[sub_resource type="Resource" id="Resource_8tmoj"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+num = 2
+override = SubResource("Resource_22lvi")
+
+[sub_resource type="Resource" id="Resource_5o8r8"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_toegt"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_5o8r8")])
+
+[sub_resource type="Resource" id="Resource_g11t0"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_toegt")
+
+[sub_resource type="Resource" id="Resource_qdqug"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_g11t0")])
+
+[sub_resource type="Resource" id="Resource_s06yi"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_qdqug")
+
+[sub_resource type="Resource" id="Resource_f5oiy"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_s06yi")])
+
+[sub_resource type="Resource" id="Resource_koqra"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 2
+override = SubResource("Resource_f5oiy")
+
+[sub_resource type="Resource" id="Resource_ogykr"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_t2tlp"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_ogykr")])
+
+[sub_resource type="Resource" id="Resource_y1530"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_t2tlp")
+
+[sub_resource type="Resource" id="Resource_1ira7"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_y1530")])
+
+[sub_resource type="Resource" id="Resource_qgnnn"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_1ira7")
+
+[sub_resource type="Resource" id="Resource_om6kp"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_qgnnn")])
+
+[sub_resource type="Resource" id="Resource_nm1p5"]
+script = ExtResource("18_uw0th")
+zombie = "ZombiePaper"
+override = SubResource("Resource_om6kp")
+
+[sub_resource type="Resource" id="Resource_xxq7o"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_ajwk2"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_xxq7o")])
+
+[sub_resource type="Resource" id="Resource_8c8sl"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_ajwk2")
+
+[sub_resource type="Resource" id="Resource_1wd0d"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_8c8sl")])
+
+[sub_resource type="Resource" id="Resource_nvfij"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieSkeleton"
+override = SubResource("Resource_1wd0d")
+
+[sub_resource type="Resource" id="Resource_ijdkq"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_8tmoj"), SubResource("Resource_koqra"), SubResource("Resource_nm1p5"), SubResource("Resource_nvfij")])
+dynamic = SubResource("Resource_irp51")
+
+[sub_resource type="Resource" id="Resource_c3mmg"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_7hbrq"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_npw0b"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_7hbrq")])
+
+[sub_resource type="Resource" id="Resource_8s25a"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_npw0b")
+
+[sub_resource type="Resource" id="Resource_il0qr"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_8s25a")])
+
+[sub_resource type="Resource" id="Resource_rfdcs"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_il0qr")
+
+[sub_resource type="Resource" id="Resource_0lpua"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_rfdcs")])
+
+[sub_resource type="Resource" id="Resource_s80hh"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 2
+override = SubResource("Resource_0lpua")
+
+[sub_resource type="Resource" id="Resource_jwbd6"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_0lpjs"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_jwbd6")])
+
+[sub_resource type="Resource" id="Resource_4jp7p"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_0lpjs")
+
+[sub_resource type="Resource" id="Resource_raqco"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_4jp7p")])
+
+[sub_resource type="Resource" id="Resource_r70oi"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_raqco")
+
+[sub_resource type="Resource" id="Resource_kt0eo"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_r70oi")])
+
+[sub_resource type="Resource" id="Resource_udfus"]
+script = ExtResource("18_uw0th")
+zombie = "ZombiePaper"
+num = 2
+override = SubResource("Resource_kt0eo")
+
+[sub_resource type="Resource" id="Resource_j5u4w"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_qfbud"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_j5u4w")])
+
+[sub_resource type="Resource" id="Resource_jyd5g"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_qfbud")
+
+[sub_resource type="Resource" id="Resource_yrns1"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_jyd5g")])
+
+[sub_resource type="Resource" id="Resource_m44i1"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieSkeleton"
+override = SubResource("Resource_yrns1")
+
+[sub_resource type="Resource" id="Resource_1fgng"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_o1mss"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_1fgng")])
+
+[sub_resource type="Resource" id="Resource_ty2fn"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_o1mss")
+
+[sub_resource type="Resource" id="Resource_4mqy5"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_ty2fn")])
+
+[sub_resource type="Resource" id="Resource_yvgg3"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_4mqy5")
+
+[sub_resource type="Resource" id="Resource_mjum3"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_yvgg3")])
+
+[sub_resource type="Resource" id="Resource_vrbog"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+override = SubResource("Resource_mjum3")
+
+[sub_resource type="Resource" id="Resource_g2xg8"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_s80hh"), SubResource("Resource_udfus"), SubResource("Resource_m44i1"), SubResource("Resource_vrbog")])
+dynamic = SubResource("Resource_c3mmg")
+
+[sub_resource type="Resource" id="Resource_6elog"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_8osn2"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_dkuj8"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_8osn2")])
+
+[sub_resource type="Resource" id="Resource_soi5u"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_dkuj8")
+
+[sub_resource type="Resource" id="Resource_2qapd"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_soi5u")])
+
+[sub_resource type="Resource" id="Resource_velip"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_2qapd")
+
+[sub_resource type="Resource" id="Resource_o6mt7"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_velip")])
+
+[sub_resource type="Resource" id="Resource_tcqvm"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 2
+override = SubResource("Resource_o6mt7")
+
+[sub_resource type="Resource" id="Resource_m2ime"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_1je3d"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_m2ime")])
+
+[sub_resource type="Resource" id="Resource_yn5p8"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_1je3d")
+
+[sub_resource type="Resource" id="Resource_gd6ry"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_yn5p8")])
+
+[sub_resource type="Resource" id="Resource_33q7d"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_gd6ry")
+
+[sub_resource type="Resource" id="Resource_t4bys"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_33q7d")])
+
+[sub_resource type="Resource" id="Resource_sx3f8"]
+script = ExtResource("18_uw0th")
+zombie = "ZombiePaper"
+num = 2
+override = SubResource("Resource_t4bys")
+
+[sub_resource type="Resource" id="Resource_s4mlk"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_p72jc"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_s4mlk")])
+
+[sub_resource type="Resource" id="Resource_iu8ah"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_p72jc")
+
+[sub_resource type="Resource" id="Resource_skvqi"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_iu8ah")])
+
+[sub_resource type="Resource" id="Resource_wgrpe"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieSkeleton"
+num = 2
+override = SubResource("Resource_skvqi")
+
+[sub_resource type="Resource" id="Resource_pbw17"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_tcqvm"), SubResource("Resource_sx3f8"), SubResource("Resource_wgrpe")])
+dynamic = SubResource("Resource_6elog")
+
+[sub_resource type="Resource" id="Resource_rjccl"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_ec6xu"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_7w6o3"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_ec6xu")])
+
+[sub_resource type="Resource" id="Resource_87n82"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_7w6o3")
+
+[sub_resource type="Resource" id="Resource_nad7n"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_87n82")])
+
+[sub_resource type="Resource" id="Resource_21bb0"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_nad7n")
+
+[sub_resource type="Resource" id="Resource_fbjfa"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_21bb0")])
+
+[sub_resource type="Resource" id="Resource_2yuyh"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 2
+override = SubResource("Resource_fbjfa")
+
+[sub_resource type="Resource" id="Resource_v26ug"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_4gcik"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_v26ug")])
+
+[sub_resource type="Resource" id="Resource_afd0k"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_4gcik")
+
+[sub_resource type="Resource" id="Resource_oo746"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_afd0k")])
+
+[sub_resource type="Resource" id="Resource_m2shx"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_oo746")
+
+[sub_resource type="Resource" id="Resource_66yhq"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_m2shx")])
+
+[sub_resource type="Resource" id="Resource_efcna"]
+script = ExtResource("18_uw0th")
+zombie = "ZombiePolevaulter"
+override = SubResource("Resource_66yhq")
+
+[sub_resource type="Resource" id="Resource_pmrr4"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_2cnf7"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_pmrr4")])
+
+[sub_resource type="Resource" id="Resource_bfa65"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_2cnf7")
+
+[sub_resource type="Resource" id="Resource_ihgap"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_bfa65")])
+
+[sub_resource type="Resource" id="Resource_mrmqc"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieSkeleton"
+override = SubResource("Resource_ihgap")
+
+[sub_resource type="Resource" id="Resource_p1bdu"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_umgnn"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_p1bdu")])
+
+[sub_resource type="Resource" id="Resource_3aujj"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_umgnn")
+
+[sub_resource type="Resource" id="Resource_u41di"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_3aujj")])
+
+[sub_resource type="Resource" id="Resource_ki3w5"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_u41di")
+
+[sub_resource type="Resource" id="Resource_vp0hh"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_ki3w5")])
+
+[sub_resource type="Resource" id="Resource_dbcq3"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+override = SubResource("Resource_vp0hh")
+
+[sub_resource type="Resource" id="Resource_l3y07"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_t8bg5"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_l3y07")])
+
+[sub_resource type="Resource" id="Resource_qfm64"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_t8bg5")
+
+[sub_resource type="Resource" id="Resource_ml2i4"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_qfm64")])
+
+[sub_resource type="Resource" id="Resource_id8hp"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNecromancer"
+override = SubResource("Resource_ml2i4")
+
+[sub_resource type="Resource" id="Resource_pn45l"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_2yuyh"), SubResource("Resource_efcna"), SubResource("Resource_mrmqc"), SubResource("Resource_dbcq3"), SubResource("Resource_id8hp")])
+dynamic = SubResource("Resource_rjccl")
+
+[sub_resource type="Resource" id="Resource_kwbwn"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_8dh7i"]
+script = ExtResource("3_42nqi")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneDefault"]
+gravestoneNum = 4
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_egphm"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_mrvph"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_egphm")])
+
+[sub_resource type="Resource" id="Resource_k1gfn"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_mrvph")
+
+[sub_resource type="Resource" id="Resource_tiub7"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_k1gfn")])
+
+[sub_resource type="Resource" id="Resource_qpm08"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_tiub7")
+
+[sub_resource type="Resource" id="Resource_gj07e"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_qpm08")])
+
+[sub_resource type="Resource" id="Resource_ba1ng"]
+script = ExtResource("19_hs0fc")
+zombieNames = ["ZombieNormal", "ZombieNormalCone", "ZombiePaper", "ZombiePolevaulter"]
+zombieNum = 4
+override = SubResource("Resource_gj07e")
+
+[sub_resource type="Resource" id="Resource_m55ay"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_81d4d"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_m55ay")])
+
+[sub_resource type="Resource" id="Resource_gr64b"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_81d4d")
+
+[sub_resource type="Resource" id="Resource_wswj4"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_gr64b")])
+
+[sub_resource type="Resource" id="Resource_wnh16"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_wswj4")
+
+[sub_resource type="Resource" id="Resource_giw8d"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_wnh16")])
+
+[sub_resource type="Resource" id="Resource_wk282"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 2
+override = SubResource("Resource_giw8d")
+
+[sub_resource type="Resource" id="Resource_k7w3q"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_w0faf"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_k7w3q")])
+
+[sub_resource type="Resource" id="Resource_x7clw"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_w0faf")
+
+[sub_resource type="Resource" id="Resource_jkoym"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_x7clw")])
+
+[sub_resource type="Resource" id="Resource_joxuo"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieSkeleton"
+num = 2
+override = SubResource("Resource_jkoym")
+
+[sub_resource type="Resource" id="Resource_6742l"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_lfhbh"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_6742l")])
+
+[sub_resource type="Resource" id="Resource_j6ikn"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_lfhbh")
+
+[sub_resource type="Resource" id="Resource_3vyqe"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_j6ikn")])
+
+[sub_resource type="Resource" id="Resource_j1h74"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_3vyqe")
+
+[sub_resource type="Resource" id="Resource_0vguk"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_j1h74")])
+
+[sub_resource type="Resource" id="Resource_ori7y"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+num = 2
+override = SubResource("Resource_0vguk")
+
+[sub_resource type="Resource" id="Resource_emvea"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_ik0at"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_emvea")])
+
+[sub_resource type="Resource" id="Resource_5igjm"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_ik0at")
+
+[sub_resource type="Resource" id="Resource_fy8kw"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_5igjm")])
+
+[sub_resource type="Resource" id="Resource_svjx0"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNecromancer"
+override = SubResource("Resource_fy8kw")
+
+[sub_resource type="Resource" id="Resource_jxoau"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_wk282"), SubResource("Resource_joxuo"), SubResource("Resource_ori7y"), SubResource("Resource_svjx0")])
+dynamic = SubResource("Resource_kwbwn")
+event = Array[ExtResource("2_ujpd2")]([SubResource("Resource_8dh7i"), SubResource("Resource_ba1ng")])
+
+[sub_resource type="Resource" id="Resource_nwu5q"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_qnsjh"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_sx4m8"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_qnsjh")])
+
+[sub_resource type="Resource" id="Resource_8xfh5"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_sx4m8")
+
+[sub_resource type="Resource" id="Resource_mjr3m"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_8xfh5")])
+
+[sub_resource type="Resource" id="Resource_443xy"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_mjr3m")
+
+[sub_resource type="Resource" id="Resource_mpr8i"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_443xy")])
+
+[sub_resource type="Resource" id="Resource_xrgtp"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 3
+override = SubResource("Resource_mpr8i")
+
+[sub_resource type="Resource" id="Resource_m42ev"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_8hbie"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_m42ev")])
+
+[sub_resource type="Resource" id="Resource_7eltb"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_8hbie")
+
+[sub_resource type="Resource" id="Resource_h1wc5"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_7eltb")])
+
+[sub_resource type="Resource" id="Resource_u4m2o"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieSkeleton"
+num = 3
+override = SubResource("Resource_h1wc5")
+
+[sub_resource type="Resource" id="Resource_767l3"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_1hojh"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_767l3")])
+
+[sub_resource type="Resource" id="Resource_45ck2"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_1hojh")
+
+[sub_resource type="Resource" id="Resource_phmpv"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_45ck2")])
+
+[sub_resource type="Resource" id="Resource_i7xrk"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_phmpv")
+
+[sub_resource type="Resource" id="Resource_r8f0f"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_i7xrk")])
+
+[sub_resource type="Resource" id="Resource_tr6vp"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+num = 2
+override = SubResource("Resource_r8f0f")
+
+[sub_resource type="Resource" id="Resource_p3yyr"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_a5qiw"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_p3yyr")])
+
+[sub_resource type="Resource" id="Resource_hs8pn"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_a5qiw")
+
+[sub_resource type="Resource" id="Resource_n3iu1"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_hs8pn")])
+
+[sub_resource type="Resource" id="Resource_rllbo"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_n3iu1")
+
+[sub_resource type="Resource" id="Resource_sa4sp"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_rllbo")])
+
+[sub_resource type="Resource" id="Resource_sdcam"]
+script = ExtResource("18_uw0th")
+zombie = "ZombiePaper"
+num = 2
+override = SubResource("Resource_sa4sp")
+
+[sub_resource type="Resource" id="Resource_jhjoh"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_xrgtp"), SubResource("Resource_u4m2o"), SubResource("Resource_tr6vp"), SubResource("Resource_sdcam")])
+dynamic = SubResource("Resource_nwu5q")
+
+[sub_resource type="Resource" id="Resource_jo5ru"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_xbq5y"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_r558p"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_xbq5y")])
+
+[sub_resource type="Resource" id="Resource_7a21r"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_r558p")
+
+[sub_resource type="Resource" id="Resource_m50xw"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_7a21r")])
+
+[sub_resource type="Resource" id="Resource_gf2ic"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_m50xw")
+
+[sub_resource type="Resource" id="Resource_tonxc"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_gf2ic")])
+
+[sub_resource type="Resource" id="Resource_5nklt"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 3
+override = SubResource("Resource_tonxc")
+
+[sub_resource type="Resource" id="Resource_uja82"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_cvdig"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_uja82")])
+
+[sub_resource type="Resource" id="Resource_v8g2q"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_cvdig")
+
+[sub_resource type="Resource" id="Resource_awi54"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_v8g2q")])
+
+[sub_resource type="Resource" id="Resource_kqfvc"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_awi54")
+
+[sub_resource type="Resource" id="Resource_d4pio"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_kqfvc")])
+
+[sub_resource type="Resource" id="Resource_agwdi"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+num = 2
+override = SubResource("Resource_d4pio")
+
+[sub_resource type="Resource" id="Resource_kuc3p"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_af8d0"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_kuc3p")])
+
+[sub_resource type="Resource" id="Resource_upsdm"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_af8d0")
+
+[sub_resource type="Resource" id="Resource_r84jj"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_upsdm")])
+
+[sub_resource type="Resource" id="Resource_dumfe"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_r84jj")
+
+[sub_resource type="Resource" id="Resource_ynelt"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_dumfe")])
+
+[sub_resource type="Resource" id="Resource_etky3"]
+script = ExtResource("18_uw0th")
+zombie = "ZombiePolevaulter"
+num = 2
+override = SubResource("Resource_ynelt")
+
+[sub_resource type="Resource" id="Resource_t7tck"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_pyo8q"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_t7tck")])
+
+[sub_resource type="Resource" id="Resource_2kwsp"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_pyo8q")
+
+[sub_resource type="Resource" id="Resource_ie602"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_2kwsp")])
+
+[sub_resource type="Resource" id="Resource_p8lir"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_ie602")
+
+[sub_resource type="Resource" id="Resource_lvpsk"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_p8lir")])
+
+[sub_resource type="Resource" id="Resource_k4dfk"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieGargantuar"
+override = SubResource("Resource_lvpsk")
+
+[sub_resource type="Resource" id="Resource_44fnx"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_5nklt"), SubResource("Resource_agwdi"), SubResource("Resource_etky3"), SubResource("Resource_k4dfk")])
+dynamic = SubResource("Resource_jo5ru")
+
+[sub_resource type="Resource" id="Resource_p6p8j"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_s8jwf"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_gm3p6"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_s8jwf")])
+
+[sub_resource type="Resource" id="Resource_1fjsg"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_gm3p6")
+
+[sub_resource type="Resource" id="Resource_7qcft"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_1fjsg")])
+
+[sub_resource type="Resource" id="Resource_gnms3"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_7qcft")
+
+[sub_resource type="Resource" id="Resource_brahw"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_gnms3")])
+
+[sub_resource type="Resource" id="Resource_j7ysr"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 3
+override = SubResource("Resource_brahw")
+
+[sub_resource type="Resource" id="Resource_pcvb7"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_eh01l"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_pcvb7")])
+
+[sub_resource type="Resource" id="Resource_cklqg"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_eh01l")
+
+[sub_resource type="Resource" id="Resource_igpf1"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_cklqg")])
+
+[sub_resource type="Resource" id="Resource_kxwtt"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_igpf1")
+
+[sub_resource type="Resource" id="Resource_0opkt"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_kxwtt")])
+
+[sub_resource type="Resource" id="Resource_ddw40"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+num = 2
+override = SubResource("Resource_0opkt")
+
+[sub_resource type="Resource" id="Resource_rosg2"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_bn86h"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_rosg2")])
+
+[sub_resource type="Resource" id="Resource_htr7p"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_bn86h")
+
+[sub_resource type="Resource" id="Resource_ugn5d"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_htr7p")])
+
+[sub_resource type="Resource" id="Resource_pd3tc"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_ugn5d")
+
+[sub_resource type="Resource" id="Resource_obs6k"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_pd3tc")])
+
+[sub_resource type="Resource" id="Resource_37y31"]
+script = ExtResource("18_uw0th")
+zombie = "ZombiePolevaulter"
+num = 2
+override = SubResource("Resource_obs6k")
+
+[sub_resource type="Resource" id="Resource_4ntrv"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_qnvcs"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_4ntrv")])
+
+[sub_resource type="Resource" id="Resource_s033m"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_qnvcs")
+
+[sub_resource type="Resource" id="Resource_th5d0"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_s033m")])
+
+[sub_resource type="Resource" id="Resource_d102q"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_th5d0")
+
+[sub_resource type="Resource" id="Resource_6ngr2"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_d102q")])
+
+[sub_resource type="Resource" id="Resource_n6e8j"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieFootballBlack"
+override = SubResource("Resource_6ngr2")
+
+[sub_resource type="Resource" id="Resource_q1ork"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_8rc2y"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_q1ork")])
+
+[sub_resource type="Resource" id="Resource_51w5v"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_8rc2y")
+
+[sub_resource type="Resource" id="Resource_58430"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_51w5v")])
+
+[sub_resource type="Resource" id="Resource_nqj4a"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieSkeleton"
+num = 2
+override = SubResource("Resource_58430")
+
+[sub_resource type="Resource" id="Resource_mc0br"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_j7ysr"), SubResource("Resource_ddw40"), SubResource("Resource_37y31"), SubResource("Resource_n6e8j"), SubResource("Resource_nqj4a")])
+dynamic = SubResource("Resource_p6p8j")
+
+[sub_resource type="Resource" id="Resource_bcxj3"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_fwyv3"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_v6t37"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_fwyv3")])
+
+[sub_resource type="Resource" id="Resource_d5m4g"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_v6t37")
+
+[sub_resource type="Resource" id="Resource_bfco0"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_d5m4g")])
+
+[sub_resource type="Resource" id="Resource_1w3jx"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_bfco0")
+
+[sub_resource type="Resource" id="Resource_yy3l7"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_1w3jx")])
+
+[sub_resource type="Resource" id="Resource_5x11n"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 3
+override = SubResource("Resource_yy3l7")
+
+[sub_resource type="Resource" id="Resource_g1s67"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_8yhpe"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_g1s67")])
+
+[sub_resource type="Resource" id="Resource_1tx4t"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_8yhpe")
+
+[sub_resource type="Resource" id="Resource_y6ki2"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_1tx4t")])
+
+[sub_resource type="Resource" id="Resource_4ld6w"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_y6ki2")
+
+[sub_resource type="Resource" id="Resource_6djxh"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_4ld6w")])
+
+[sub_resource type="Resource" id="Resource_y1y1f"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+num = 2
+override = SubResource("Resource_6djxh")
+
+[sub_resource type="Resource" id="Resource_71kb1"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_b7bbn"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_71kb1")])
+
+[sub_resource type="Resource" id="Resource_vy7va"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_b7bbn")
+
+[sub_resource type="Resource" id="Resource_w10cv"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_vy7va")])
+
+[sub_resource type="Resource" id="Resource_221nb"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_w10cv")
+
+[sub_resource type="Resource" id="Resource_2uhcq"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_221nb")])
+
+[sub_resource type="Resource" id="Resource_4gtdh"]
+script = ExtResource("18_uw0th")
+zombie = "ZombiePolevaulter"
+num = 2
+override = SubResource("Resource_2uhcq")
+
+[sub_resource type="Resource" id="Resource_m64io"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_gbppn"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_m64io")])
+
+[sub_resource type="Resource" id="Resource_qmh0u"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_gbppn")
+
+[sub_resource type="Resource" id="Resource_2r71n"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_qmh0u")])
+
+[sub_resource type="Resource" id="Resource_p34q0"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_2r71n")
+
+[sub_resource type="Resource" id="Resource_p7ade"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_p34q0")])
+
+[sub_resource type="Resource" id="Resource_vmklf"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieFootballBlack"
+override = SubResource("Resource_p7ade")
+
+[sub_resource type="Resource" id="Resource_sx5p7"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_iv2oj"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_sx5p7")])
+
+[sub_resource type="Resource" id="Resource_lqtf2"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_iv2oj")
+
+[sub_resource type="Resource" id="Resource_gvw8q"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_lqtf2")])
+
+[sub_resource type="Resource" id="Resource_scrbs"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNecromancer"
+override = SubResource("Resource_gvw8q")
+
+[sub_resource type="Resource" id="Resource_pd56o"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_5x11n"), SubResource("Resource_y1y1f"), SubResource("Resource_4gtdh"), SubResource("Resource_vmklf"), SubResource("Resource_scrbs")])
+dynamic = SubResource("Resource_bcxj3")
+
+[sub_resource type="Resource" id="Resource_ix4do"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_228ee"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_pxtsu"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_228ee")])
+
+[sub_resource type="Resource" id="Resource_6xt0g"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_pxtsu")
+
+[sub_resource type="Resource" id="Resource_815k5"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_6xt0g")])
+
+[sub_resource type="Resource" id="Resource_vgd0t"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_815k5")
+
+[sub_resource type="Resource" id="Resource_yolgt"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_vgd0t")])
+
+[sub_resource type="Resource" id="Resource_jc4ig"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 3
+override = SubResource("Resource_yolgt")
+
+[sub_resource type="Resource" id="Resource_yywv7"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_qqrsq"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_yywv7")])
+
+[sub_resource type="Resource" id="Resource_i3pig"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_qqrsq")
+
+[sub_resource type="Resource" id="Resource_cva12"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_i3pig")])
+
+[sub_resource type="Resource" id="Resource_tepjd"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_cva12")
+
+[sub_resource type="Resource" id="Resource_xsow3"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_tepjd")])
+
+[sub_resource type="Resource" id="Resource_mx66f"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+num = 2
+override = SubResource("Resource_xsow3")
+
+[sub_resource type="Resource" id="Resource_vx47p"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_6r5ck"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_vx47p")])
+
+[sub_resource type="Resource" id="Resource_txrkw"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_6r5ck")
+
+[sub_resource type="Resource" id="Resource_jm6qb"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_txrkw")])
+
+[sub_resource type="Resource" id="Resource_fycc2"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_jm6qb")
+
+[sub_resource type="Resource" id="Resource_p1pvs"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_fycc2")])
+
+[sub_resource type="Resource" id="Resource_fhmgf"]
+script = ExtResource("18_uw0th")
+zombie = "ZombiePaper"
+num = 2
+override = SubResource("Resource_p1pvs")
+
+[sub_resource type="Resource" id="Resource_it8fw"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_aqj4n"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_it8fw")])
+
+[sub_resource type="Resource" id="Resource_fopy0"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_aqj4n")
+
+[sub_resource type="Resource" id="Resource_63pfn"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_fopy0")])
+
+[sub_resource type="Resource" id="Resource_15jiu"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_63pfn")
+
+[sub_resource type="Resource" id="Resource_ytlk0"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_15jiu")])
+
+[sub_resource type="Resource" id="Resource_de6xs"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieGargantuar"
+override = SubResource("Resource_ytlk0")
+
+[sub_resource type="Resource" id="Resource_ay13m"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_lt55b"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_ay13m")])
+
+[sub_resource type="Resource" id="Resource_p085p"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_lt55b")
+
+[sub_resource type="Resource" id="Resource_bjari"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_p085p")])
+
+[sub_resource type="Resource" id="Resource_u3c82"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieSkeleton"
+num = 2
+override = SubResource("Resource_bjari")
+
+[sub_resource type="Resource" id="Resource_bbvv5"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_jc4ig"), SubResource("Resource_mx66f"), SubResource("Resource_fhmgf"), SubResource("Resource_de6xs"), SubResource("Resource_u3c82")])
+dynamic = SubResource("Resource_ix4do")
+
+[sub_resource type="Resource" id="Resource_81oiv"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_ymbhg"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_w30g4"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_ymbhg")])
+
+[sub_resource type="Resource" id="Resource_kwrl6"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_w30g4")
+
+[sub_resource type="Resource" id="Resource_k6ok3"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_kwrl6")])
+
+[sub_resource type="Resource" id="Resource_8tx5n"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_k6ok3")
+
+[sub_resource type="Resource" id="Resource_wg61e"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_8tx5n")])
+
+[sub_resource type="Resource" id="Resource_dnd6h"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 3
+override = SubResource("Resource_wg61e")
+
+[sub_resource type="Resource" id="Resource_f666w"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_o7nod"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_f666w")])
+
+[sub_resource type="Resource" id="Resource_7mbwb"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_o7nod")
+
+[sub_resource type="Resource" id="Resource_ipf5a"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_7mbwb")])
+
+[sub_resource type="Resource" id="Resource_nrt7b"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_ipf5a")
+
+[sub_resource type="Resource" id="Resource_qhauj"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_nrt7b")])
+
+[sub_resource type="Resource" id="Resource_h4eng"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormalCone"
+num = 2
+override = SubResource("Resource_qhauj")
+
+[sub_resource type="Resource" id="Resource_fb640"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_f4ujd"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_fb640")])
+
+[sub_resource type="Resource" id="Resource_la167"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_f4ujd")
+
+[sub_resource type="Resource" id="Resource_bsre2"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_la167")])
+
+[sub_resource type="Resource" id="Resource_h6kdr"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNecromancer"
+num = 2
+override = SubResource("Resource_bsre2")
+
+[sub_resource type="Resource" id="Resource_8lo2e"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_h0mqr"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_8lo2e")])
+
+[sub_resource type="Resource" id="Resource_h31l2"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_h0mqr")
+
+[sub_resource type="Resource" id="Resource_rbr8y"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_h31l2")])
+
+[sub_resource type="Resource" id="Resource_ks5lf"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_rbr8y")
+
+[sub_resource type="Resource" id="Resource_godxy"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_ks5lf")])
+
+[sub_resource type="Resource" id="Resource_3fi26"]
+script = ExtResource("18_uw0th")
+zombie = "ZombiePaper"
+num = 2
+override = SubResource("Resource_godxy")
+
+[sub_resource type="Resource" id="Resource_tjtjq"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_dnd6h"), SubResource("Resource_h4eng"), SubResource("Resource_h6kdr"), SubResource("Resource_3fi26")])
+dynamic = SubResource("Resource_81oiv")
+
+[sub_resource type="Resource" id="Resource_t3mlp"]
+script = ExtResource("16_oeqv6")
+
+[sub_resource type="Resource" id="Resource_g4x0d"]
+script = ExtResource("3_42nqi")
+gravestoneNames = ["GraveStoneTarget", "GraveStoneDefault"]
+gravestoneNum = 4
+gravestonePos = Vector4i(6, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_iwt4g"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_n4tlh"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_iwt4g")])
+
+[sub_resource type="Resource" id="Resource_uoe4s"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_n4tlh")
+
+[sub_resource type="Resource" id="Resource_g7uto"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_uoe4s")])
+
+[sub_resource type="Resource" id="Resource_5tvr7"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_g7uto")
+
+[sub_resource type="Resource" id="Resource_o8vc3"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_5tvr7")])
+
+[sub_resource type="Resource" id="Resource_tqoya"]
+script = ExtResource("19_hs0fc")
+zombieNames = ["ZombieNormal", "ZombieNormalCone", "ZombiePaper", "ZombiePolevaulter"]
+zombieNum = 6
+override = SubResource("Resource_o8vc3")
+
+[sub_resource type="Resource" id="Resource_up2yu"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_6i7s5"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_up2yu")])
+
+[sub_resource type="Resource" id="Resource_ohd4i"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_6i7s5")
+
+[sub_resource type="Resource" id="Resource_mio7c"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_ohd4i")])
+
+[sub_resource type="Resource" id="Resource_wast7"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_mio7c")
+
+[sub_resource type="Resource" id="Resource_mytry"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_wast7")])
+
+[sub_resource type="Resource" id="Resource_dijyw"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieNormal"
+num = 3
+override = SubResource("Resource_mytry")
+
+[sub_resource type="Resource" id="Resource_da6jq"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_ukkc3"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_da6jq")])
+
+[sub_resource type="Resource" id="Resource_hcvgx"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_ukkc3")
+
+[sub_resource type="Resource" id="Resource_6rr2e"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_hcvgx")])
+
+[sub_resource type="Resource" id="Resource_fli2x"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_6rr2e")
+
+[sub_resource type="Resource" id="Resource_gxe5g"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_fli2x")])
+
+[sub_resource type="Resource" id="Resource_cqsle"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieGargantuar"
+override = SubResource("Resource_gxe5g")
+
+[sub_resource type="Resource" id="Resource_jxjam"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_gfyqg"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_jxjam")])
+
+[sub_resource type="Resource" id="Resource_ag57u"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_gfyqg")
+
+[sub_resource type="Resource" id="Resource_qk01l"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_ag57u")])
+
+[sub_resource type="Resource" id="Resource_xi52q"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieSkeleton"
+num = 2
+override = SubResource("Resource_qk01l")
+
+[sub_resource type="Resource" id="Resource_k7mwo"]
+script = ExtResource("23_oyrgk")
+usePacketBank = true
+categoryName = "White"
+
+[sub_resource type="Resource" id="Resource_dfuuc"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_k7mwo")])
+
+[sub_resource type="Resource" id="Resource_o2jdm"]
+script = ExtResource("24_purik")
+packetName = "GraveStoneDefault"
+byCamp = true
+characterOverride = SubResource("Resource_dfuuc")
+
+[sub_resource type="Resource" id="Resource_ufla1"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_o2jdm")])
+
+[sub_resource type="Resource" id="Resource_m6hx0"]
+script = ExtResource("24_purik")
+packetName = "ZombieSkeleton"
+byCamp = true
+characterOverride = SubResource("Resource_ufla1")
+
+[sub_resource type="Resource" id="Resource_ty4rf"]
+script = ExtResource("14_b3ks1")
+dieEvent = Array[ExtResource("12_oyrgk")]([SubResource("Resource_m6hx0")])
+
+[sub_resource type="Resource" id="Resource_rty8p"]
+script = ExtResource("18_uw0th")
+zombie = "ZombieFootballBlack"
+override = SubResource("Resource_ty4rf")
+
+[sub_resource type="Resource" id="Resource_6y8l7"]
+script = ExtResource("15_ogb66")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("18_uw0th")]([SubResource("Resource_dijyw"), SubResource("Resource_cqsle"), SubResource("Resource_xi52q"), SubResource("Resource_rty8p")])
+dynamic = SubResource("Resource_t3mlp")
+event = Array[ExtResource("2_ujpd2")]([SubResource("Resource_g4x0d"), SubResource("Resource_tqoya")])
+
+[sub_resource type="Resource" id="Resource_qtskj"]
+script = ExtResource("11_8hmev")
+flagWaveInterval = 7
+maxNextWaveHealthPercentage = 0.3
+minNextWaveHealthPercentage = 0.15
+spawnColStart = 10.0
+spawnOverride = SubResource("Resource_p0ui1")
+dynamic = Array[ExtResource("10_kpb20")]([null, null, null, null, null, null, null, SubResource("Resource_r8g1u"), SubResource("Resource_i5qyx"), SubResource("Resource_4g1y1"), SubResource("Resource_cbekm"), SubResource("Resource_xurtt"), SubResource("Resource_3x2vc"), SubResource("Resource_l8mps")])
+wave = Array[ExtResource("15_ogb66")]([SubResource("Resource_n60pt"), SubResource("Resource_lkl8n"), SubResource("Resource_6n0lo"), SubResource("Resource_iy02d"), SubResource("Resource_yq33c"), SubResource("Resource_4yb27"), SubResource("Resource_vr8n2"), SubResource("Resource_y4rgu"), SubResource("Resource_j63cv"), SubResource("Resource_ijdkq"), SubResource("Resource_g2xg8"), SubResource("Resource_pbw17"), SubResource("Resource_pn45l"), SubResource("Resource_jxoau"), SubResource("Resource_jhjoh"), SubResource("Resource_44fnx"), SubResource("Resource_mc0br"), SubResource("Resource_pd56o"), SubResource("Resource_bbvv5"), SubResource("Resource_tjtjq"), SubResource("Resource_6y8l7")])
+
+[resource]
+script = ExtResource("8_cv2vh")
+data = ExtResource("5_8hmev")
+featureData = Dictionary[StringName, Dictionary]({
+&"BGM": {
+"BackgroundMusic": "Loonboon"
+},
+&"Brain": {},
+&"Camera": {},
+&"ConveyorBelt": {
+&"Interval": 4.0,
+&"IntervalIncreaseEvery": 2,
+&"IntervalMagnification": 0.5,
+&"Packet": [{
+&"MaxMagnification": 0.1,
+&"MaxNum": 3,
+&"MinMagnification": 3.0,
+&"MinNum": 1,
+&"Name": "PlantHammerLight",
+&"Weight": 20
+}, {
+&"MaxMagnification": 0.1,
+&"MaxNum": 9,
+&"MinMagnification": 3.0,
+&"MinNum": 3,
+&"Name": "PlantPeashooterZ",
+&"Weight": 30
+}, {
+&"MaxMagnification": 0.1,
+&"MaxNum": 5,
+&"MinMagnification": 3.0,
+&"MinNum": 1,
+&"Name": "PlantGravebuster",
+&"Weight": 50
+}, {
+&"MaxMagnification": 0.1,
+&"MaxNum": 4,
+&"MinMagnification": 4.0,
+&"MinNum": 1,
+&"Name": "PlantPot",
+&"Weight": 20
+}],
+&"PacketPrioritySpawnList": [],
+&"Type": "Default",
+&"WaveEvent": [[], [], [], []]
+},
+&"Event": {
+"EventInit": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneDefault"],
+"GravestoneNum": 6.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"EventReady": [],
+"EventStart": []
+},
+&"Map": {
+"MapName": "UndeadVillageLawn"
+},
+&"Mower": {},
+&"NpcTalk": {
+"TalkName": "Level8_5Talk"
+},
+&"PacketPick": {},
+&"PreSpawn": {
+"Packet": []
+},
+&"Progress": {},
+&"ScreenEffect": {
+"PacketBankMethod": 3,
+"StormOpen": false
+},
+&"Shovel": {},
+&"Sun": {
+"Begin": 300.0,
+"MovingMethod": "Land",
+"Open": false,
+"SpawnInterval": 12.0,
+"SpawnNum": 50.0
+},
+&"Wave": {
+"BeginCol": 20.0,
+"Dynamic": [{}, {}, {}, {}, {}, {}, {}],
+"FlagWaveInterval": 7.0,
+"FlagZombie": "ZombieFlag",
+"MaxNextWaveHealthPercentage": 0.3,
+"MinNextWaveHealthPercentage": 0.15,
+"SpawnColEnd": 20.0,
+"SpawnColStart": 10.0,
+"SpawnOverride": {},
+"Wave": [{
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneDefault"],
+"GravestoneNum": 4.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}, {
+"EventName": "GravestoneSpawnZombie",
+"Value": {
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"ZombieNames": ["ZombieNormal", "ZombieNormalCone"],
+"ZombieNum": 3.0
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePolevaulter"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePolevaulter"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePaper"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePaper"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePaper"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePolevaulter"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNecromancer"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneDefault"],
+"GravestoneNum": 4.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}, {
+"EventName": "GravestoneSpawnZombie",
+"Value": {
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"ZombieNames": ["ZombieNormal", "ZombieNormalCone", "ZombiePaper", "ZombiePolevaulter"],
+"ZombieNum": 4.0
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNecromancer"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePaper"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePolevaulter"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieGargantuar"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePolevaulter"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePolevaulter"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNecromancer"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePaper"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNecromancer"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePaper"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneDefault"],
+"GravestoneNum": 4.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}, {
+"EventName": "GravestoneSpawnZombie",
+"Value": {
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"ZombieNames": ["ZombieNormal", "ZombieNormalCone", "ZombiePaper", "ZombiePolevaulter"],
+"ZombieNum": 6.0
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieFootballBlack"
+}]
+}]
+}
+})
+processName = &"Wave"
+processData = {
+"BeginCol": 20.0,
+"Dynamic": [{}, {}, {}, {}, {}, {}, {}],
+"FlagWaveInterval": 7.0,
+"FlagZombie": "ZombieFlag",
+"MaxNextWaveHealthPercentage": 0.3,
+"MinNextWaveHealthPercentage": 0.15,
+"MowerUse": true,
+"SpawnColEnd": 20.0,
+"SpawnColStart": 10.0,
+"SpawnOverride": {},
+"StormOpen": false,
+"Wave": [{
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneDefault"],
+"GravestoneNum": 4.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}, {
+"EventName": "GravestoneSpawnZombie",
+"Value": {
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"ZombieNames": ["ZombieNormal", "ZombieNormalCone"],
+"ZombieNum": 3.0
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePolevaulter"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePolevaulter"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePaper"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePaper"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePaper"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePolevaulter"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNecromancer"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneDefault"],
+"GravestoneNum": 4.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}, {
+"EventName": "GravestoneSpawnZombie",
+"Value": {
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"ZombieNames": ["ZombieNormal", "ZombieNormalCone", "ZombiePaper", "ZombiePolevaulter"],
+"ZombieNum": 4.0
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNecromancer"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePaper"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePolevaulter"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieGargantuar"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePolevaulter"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePolevaulter"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieFootballBlack"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNecromancer"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePaper"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormalCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNecromancer"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombiePaper"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["GraveStoneTarget", "GraveStoneDefault"],
+"GravestoneNum": 4.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}, {
+"EventName": "GravestoneSpawnZombie",
+"Value": {
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"ZombieNames": ["ZombieNormal", "ZombieNormalCone", "ZombiePaper", "ZombiePolevaulter"],
+"ZombieNum": 6.0
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieNormal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieGargantuar"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieSkeleton"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Override": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketSpawn",
+"Value": {
+"ByCamp": true,
+"CharacterOverride": {
+"DieEvent": [{
+"EventName": "PacketCreate",
+"Value": {
+"AliveTime": 15.0,
+"CategoryName": "White",
+"PacketBankName": "GeneralPlant",
+"UseCost": false,
+"UsePacketBank": true
+}
+}]
+},
+"PacketName": "GraveStoneDefault",
+"Percentage": 1.0
+}
+}]
+},
+"PacketName": "ZombieSkeleton",
+"Percentage": 1.0
+}
+}]
+},
+"Zombie": "ZombieFootballBlack"
+}]
+}]
+}
+talk = "Level8_5Talk"
+map = "UndeadVillageLawn"
+backgroundMusic = "Loonboon"
+firstRewardType = 1
+firstRewardValue = "PlantPumpLantern"
+eventInit = Array[ExtResource("2_ujpd2")]([SubResource("Resource_hs0fc")])
+packetBankMethod = 3
+sunManager = SubResource("Resource_ll0i3")
+fogManager = SubResource("Resource_jb3p5")
+lookStarManager = SubResource("Resource_0b672")
+waveManager = SubResource("Resource_qtskj")
+conveyorData = SubResource("Resource_uw0th")
+name = "Level8_5"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "PLAYERS_MORDEN_UNDEADVILLAGE_LEVEL_NAME"
+levelNumber = 5
+homeWorld = 1
+metadata/_custom_type_script = "uid://dfj86l56q1n8g"

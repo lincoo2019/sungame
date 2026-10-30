@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://ktnk5e3qm2sw"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_5olcu"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_v6br7"]
+[ext_resource type="PackedScene" uid="uid://ec3mpcjtptum" path="res://Asset/Config/Projectile/Pea/Sprite/MegaFirePea/MegaFirePea.tscn" id="2_y22k7"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="3_5olcu"]
+[ext_resource type="Script" uid="uid://bqyxask6qffq7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFireHit.cs" id="3_n45yi"]
+[ext_resource type="PackedScene" uid="uid://cqk5e8gyrn284" path="res://Prefab/Particles/Splats/MegaFireSplats/MegaFireSplats.tscn" id="4_r64de"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_t6i4v"]
+
+[sub_resource type="Resource" id="Resource_b48xk"]
+script = ExtResource("3_n45yi")
+metadata/_custom_type_script = "uid://bqyxask6qffq7"
+
+[sub_resource type="Resource" id="Resource_f1gd0"]
+script = ExtResource("4_t6i4v")
+buffList = Array[ExtResource("2_v6br7")]([SubResource("Resource_b48xk")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("3_5olcu")
+name = "MegaFirePea"
+baseDamage = 80.0
+projectileScene = ExtResource("2_y22k7")
+splatAudio = "Ignite"
+splatScene = ExtResource("4_r64de")
+hitTargetEventList = Array[ExtResource("1_5olcu")]([SubResource("Resource_f1gd0")])
+hitBody = true
+useRange = true
+rangeSize = Vector2(0.5, 0.25)
+hitPesontage = 0.5
+isFire = true

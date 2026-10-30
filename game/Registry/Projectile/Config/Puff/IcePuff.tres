@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://bri8nop864q12"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_5b5me"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_bokdo"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="3_y1r41"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_rh1cs"]
+[ext_resource type="PackedScene" uid="uid://bhdtkj10cvald" path="res://Asset/Config/Projectile/Puff/Sprite/IcePuffShroom/ProjectilePuffShroomPuff.tscn" id="5_8setb"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="6_jluei"]
+[ext_resource type="PackedScene" uid="uid://d0wflke807f3r" path="res://Prefab/Particles/Splats/IcePuffSplats/IcePuffSplats.tscn" id="7_5b5me"]
+
+[sub_resource type="Resource" id="Resource_m37m2"]
+script = ExtResource("3_y1r41")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_flns6"]
+script = ExtResource("4_rh1cs")
+buffList = Array[ExtResource("2_bokdo")]([SubResource("Resource_m37m2")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("6_jluei")
+name = "IcePuff"
+projectileScene = ExtResource("5_8setb")
+splatScene = ExtResource("7_5b5me")
+hitCharacterEventList = Array[ExtResource("1_5b5me")]([SubResource("Resource_flns6")])

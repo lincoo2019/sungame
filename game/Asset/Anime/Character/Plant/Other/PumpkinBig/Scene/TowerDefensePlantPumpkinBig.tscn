@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://4fewx4yb22tf"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cl6xxr8eyoe4k" path="res://Asset/Anime/Character/Plant/Other/PumpkinBig/Scene/TowerDefensePlantPumpkinBig.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_176x33_At_47_0.tres" id="3"]
+[ext_resource type="Resource" uid="uid://d0bifi1f0n0qr" path="res://Asset/Anime/Character/Plant/Other/PumpkinBig/Config/TowerDefensePlantPumpkinBig.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://5rpy2vjngmx2" path="res://Asset/Anime/Character/Plant/Other/PumpkinBig/PumpkinBig.tscn" id="5"]
+
+[node name="TowerDefensePlantPumpkinBig" unique_id=1899595520 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+showHealthOffset = Vector2(0, 16)
+z_index = -10
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/PumpkinBig")
+PreviewDamagePointPersontage = 1.0
+itemLayer = 5
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="SpriteGroup" parent="." index="2" unique_id=1006029617]
+
+[node name="TransformPoint" parent="SpriteGroup" index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PumpkinBig" parent="SpriteGroup/TransformPoint" index="0" unique_id=1496728279 instance=ExtResource("5")]
+position = Vector2(0, -30)
+
+[node name="Back" parent="SpriteGroup/TransformPoint/PumpkinBig/Node2D" parent_id_path=PackedInt32Array(1496728279, 1631955423) index="0" unique_id=1115194778]
+
+[editable path="SpriteGroup/TransformPoint/PumpkinBig"]

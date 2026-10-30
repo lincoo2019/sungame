@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://bq4135ofciwi8"]
+
+[ext_resource type="Resource" uid="uid://d28ilpm3lyjt5" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefensePlantStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_fire"]
+script = ExtResource("2")
+StableId = "plant.cherry_mine.fire"
+DisplayName = &"Fire"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_fire"]
+script = ExtResource("3")
+StableId = "plant.cherry_mine.to_fire"
+SourceStateId = "character.root"
+TargetStateId = "plant.cherry_mine.fire"
+EventName = &"ToFire"
+DeclarationOrder = 3
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.plant.cherry_mine"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_fire")]
+Transitions = [SubResource("Transition_fire")]

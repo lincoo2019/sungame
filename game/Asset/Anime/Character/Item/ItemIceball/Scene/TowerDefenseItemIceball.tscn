@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dffdnb8hncvhx"]
+
+[ext_resource type="PackedScene" uid="uid://uawo0nxcj2ji" path="res://Prefab/TowerDefense/Character/TowerDefenseItem.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://b2moyd2dgcmlx" path="res://Asset/Anime/Character/Item/ItemIceball/Scene/TowerDefenseItemIceballComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bo22g5jfwjqea" path="res://Asset/Anime/Character/Item/ItemIceball/Scene/TowerDefenseItemIceball.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_n0p25_n25.tres" id="4"]
+[ext_resource type="Resource" uid="uid://oktsleus576p" path="res://Asset/Anime/Character/Item/ItemIceball/Config/TowerDefenseItemIceball.tres" id="5"]
+[ext_resource type="Texture2D" uid="uid://vpj33wv2dwp5" path="res://Asset/Anime/Particles/IceBall/IceballGroundParticles.png" id="6"]
+[ext_resource type="PackedScene" uid="uid://038q3qyyddoj" path="res://Asset/Anime/Character/Item/ItemIceball/ItemIceball.tscn" id="7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xtcu1"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_qy87d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7443181, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qy87d"]
+curve = SubResource("Curve_qy87d")
+
+[sub_resource type="Curve" id="Curve_xtcu1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sbdqc"]
+curve = SubResource("Curve_xtcu1")
+
+[sub_resource type="Curve" id="Curve_et45o"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2528409, 1), 0.0, 0.0, 0, 0, Vector2(0.7443181, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_et45o"]
+curve = SubResource("Curve_et45o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sbdqc"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 25, 1)
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_et45o")
+alpha_curve = SubResource("CurveTexture_qy87d")
+anim_offset_max = 1.0
+anim_offset_curve = SubResource("CurveTexture_sbdqc")
+
+[node name="TowerDefenseItemIceball" unique_id=239006865 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+z_index = -5
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+canCheckTarget = true
+idleAnimeClip = "Roll"
+sleepAnimeClip = "Roll"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ItemIceball")
+camp = 1
+itemLayer = 10
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=1695915390]
+material = SubResource("CanvasItemMaterial_xtcu1")
+position = Vector2(0, 23)
+amount = 24
+texture = ExtResource("6")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_sbdqc")
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=429682308]
+position = Vector2(0, 37)
+
+[node name="ItemIceball" parent="SpriteGroup/TransformPoint" index="0" unique_id=757804339 instance=ExtResource("7")]
+position = Vector2(0, -37)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ItemIceball" index="0" unique_id=732426060]
+position = Vector2(464.015, -79.03476)
+
+[node name="ShadowSprite" parent="." index="3" unique_id=1970894107]
+visible = false
+position = Vector2(12, 36)

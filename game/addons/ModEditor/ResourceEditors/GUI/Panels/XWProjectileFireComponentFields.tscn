@@ -1,0 +1,303 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/Resource/XWResourcePicker.tscn" id="1_picker"]
+
+[sub_resource type="StyleBoxFlat" id="StylePanel"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.055, 0.11, 0.085, 0.98)
+border_width_left = 3
+border_color = Color(0.42, 0.82, 0.36, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ProjectileFireComponentFields" type="PanelContainer"]
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StylePanel")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.94, 0.56, 1)
+theme_override_font_sizes/font_size = 18
+text = "子弹发射蓝图参数"
+
+[node name="CheckSection" type="VBoxContainer" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Header" type="Label" parent="Layout/CheckSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.9, 0.62, 1)
+text = "检测门：目标阵营与可发射子弹池"
+
+[node name="UseParentCollisionCheck" type="CheckButton" parent="Layout/CheckSection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "继承角色碰撞阵营"
+
+[node name="CollisionFlagsLabel" type="Label" parent="Layout/CheckSection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "自定义目标阵营"
+
+[node name="CollisionFlagsGrid" type="GridContainer" parent="Layout/CheckSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="CheckProjectilePicker" parent="Layout/CheckSection" instance=ExtResource("1_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OpenCheckProjectileButton" type="Button" parent="Layout/CheckSection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "进入子弹池蓝图"
+
+[node name="FireSection" type="VBoxContainer" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Header" type="Label" parent="Layout/FireSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.38, 1)
+text = "发射器：发射点、速度与轨迹方向"
+
+[node name="Grid" type="GridContainer" parent="Layout/FireSection"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="CheckProjectileIdLabel" type="Label" parent="Layout/FireSection/Grid"]
+layout_mode = 2
+text = "检测配置 ID"
+
+[node name="CheckProjectileIdSpinBox" type="SpinBox" parent="Layout/FireSection/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 9999.0
+step = 1.0
+
+[node name="FirePosIdLabel" type="Label" parent="Layout/FireSection/Grid"]
+layout_mode = 2
+text = "发射点 ID"
+
+[node name="FirePosIdSpinBox" type="SpinBox" parent="Layout/FireSection/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 9999.0
+step = 1.0
+
+[node name="SpeedLabel" type="Label" parent="Layout/FireSection/Grid"]
+layout_mode = 2
+text = "速度（px/s）"
+
+[node name="SpeedSpinBox" type="SpinBox" parent="Layout/FireSection/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -9999.0
+max_value = 9999.0
+step = 1.0
+
+[node name="DirectionLabel" type="Label" parent="Layout/FireSection/Grid"]
+layout_mode = 2
+text = "方向（度）"
+
+[node name="DirectionSpinBox" type="SpinBox" parent="Layout/FireSection/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -360.0
+max_value = 360.0
+step = 1.0
+
+[node name="OffsetLineLabel" type="Label" parent="Layout/FireSection/Grid"]
+layout_mode = 2
+text = "行偏移"
+
+[node name="OffsetLineSpinBox" type="SpinBox" parent="Layout/FireSection/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -20.0
+max_value = 20.0
+step = 1.0
+
+[node name="FireNumSkipLabel" type="Label" parent="Layout/FireSection/Grid"]
+layout_mode = 2
+text = "跳过发射次数"
+
+[node name="FireNumSkipSpinBox" type="SpinBox" parent="Layout/FireSection/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 9999.0
+step = 1.0
+
+[node name="FireEventNeedLabel" type="Label" parent="Layout/FireSection/Grid"]
+layout_mode = 2
+text = "需要的发射事件"
+
+[node name="FireEventNeedLineEdit" type="LineEdit" parent="Layout/FireSection/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "留空表示不限制"
+
+[node name="ProjectileFlipCheck" type="CheckButton" parent="Layout/FireSection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "水平翻转子弹"
+
+[node name="SingleSection" type="VBoxContainer" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Header" type="Label" parent="Layout/SingleSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.84, 1, 1)
+text = "单发子弹池"
+
+[node name="SingleProjectileDataPicker" parent="Layout/SingleSection" instance=ExtResource("1_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OpenSingleProjectileButton" type="Button" parent="Layout/SingleSection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "进入子弹创建数据"
+
+[node name="WeightSection" type="VBoxContainer" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Header" type="Label" parent="Layout/WeightSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.7, 1, 1)
+text = "权重子弹池：直接编辑分支概率"
+
+[node name="AverageWeightCheck" type="CheckButton" parent="Layout/WeightSection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "所有有效分支等概率"
+
+[node name="DefaultProjectileLabel" type="Label" parent="Layout/WeightSection"]
+layout_mode = 2
+text = "无可用分支时的默认子弹"
+
+[node name="WeightDefaultProjectileDataPicker" parent="Layout/WeightSection" instance=ExtResource("1_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OpenDefaultProjectileButton" type="Button" parent="Layout/WeightSection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "进入默认子弹创建数据"
+
+[node name="WeightList" type="ItemList" parent="Layout/WeightSection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 132)
+layout_mode = 2
+size_flags_horizontal = 3
+select_mode = 0
+allow_reselect = true
+
+[node name="WeightActions" type="HBoxContainer" parent="Layout/WeightSection"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="AddWeightButton" type="Button" parent="Layout/WeightSection/WeightActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "新增"
+
+[node name="DuplicateWeightButton" type="Button" parent="Layout/WeightSection/WeightActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "复制"
+
+[node name="RemoveWeightButton" type="Button" parent="Layout/WeightSection/WeightActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "删除"
+
+[node name="MoveWeightUpButton" type="Button" parent="Layout/WeightSection/WeightActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "上移"
+
+[node name="MoveWeightDownButton" type="Button" parent="Layout/WeightSection/WeightActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "下移"
+
+[node name="WeightItemSection" type="VBoxContainer" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Header" type="Label" parent="Layout/WeightItemSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.74, 0.48, 1)
+text = "权重分支条目"
+
+[node name="WeightItemProjectilePicker" parent="Layout/WeightItemSection" instance=ExtResource("1_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OpenWeightItemProjectileButton" type="Button" parent="Layout/WeightItemSection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "进入分支子弹池"
+
+[node name="WeightRow" type="HBoxContainer" parent="Layout/WeightItemSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/WeightItemSection/WeightRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "分支权重"
+
+[node name="WeightSpinBox" type="SpinBox" parent="Layout/WeightItemSection/WeightRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -9999.0
+max_value = 9999.0
+step = 0.1
+
+[node name="SafetyHint" type="Label" parent="Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.4, 1)
+text = "预览只读取资源与计算概率，不调用 FireComponent、随机选择、命中事件或伤害逻辑。"
+autowrap_mode = 2

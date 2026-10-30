@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://82lpyrio71xr"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Cover/CobCannon/Scene/TowerDefensePlantCobCannonComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://4b6jaq0vqxhh" path="res://Asset/Anime/Character/Plant/Cover/CobCannon/Scene/TowerDefensePlantCobCannon.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_124x33_At_39_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cpkqnx3dso3d6" path="res://Asset/Anime/Character/Plant/Cover/CobCannon/Config/TowerDefensePlantCobCannon.tres" id="5"]
+[ext_resource type="Texture2D" uid="uid://c07s22oke4426" path="res://Asset/Texture/Character/Effect/CobCannonTarget.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://bsd6indlsqwpy" path="res://Asset/Config/Projectile/CobCannon/CobCannonCob/CobCannonCob.png" id="7"]
+[ext_resource type="PackedScene" uid="uid://b8i2k44hmduhl" path="res://Asset/Anime/Character/Plant/Cover/CobCannon/CobCannon.tscn" id="8"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="9"]
+
+[node name="TowerDefensePlantCobCannon" unique_id=1914587403 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+showHealthOffset = Vector2(39, 0)
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+restTime = 35.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/CobCannon")
+
+[node name="CobCannonTarget" type="Sprite2D" parent="." index="0" unique_id=1711920377]
+visible = false
+z_index = 2048
+position = Vector2(81, 0)
+texture = ExtResource("6")
+
+[node name="CobCannon" type="Sprite2D" parent="." index="1" unique_id=1307829338]
+visible = false
+position = Vector2(-16.950737, -42.097046)
+scale = Vector2(0.81784856, 0.786798)
+texture = ExtResource("7")
+centered = false
+
+[node name="ShadowSprite" parent="." index="2" unique_id=1970894107]
+position = Vector2(36.5, 30)
+scale = Vector2(1.8488373, 1)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(39, 30)
+
+[node name="CobCannon" parent="SpriteGroup/TransformPoint" index="0" unique_id=1128723220 instance=ExtResource("8")]
+position = Vector2(-39, -30)
+clip = "Idle"
+
+[node name="ProjectileSlot" type="Node2D" parent="SpriteGroup/TransformPoint/CobCannon" index="0" unique_id=1815139906]
+unique_name_in_owner = true
+position = Vector2(-16.675877, -43.19649)
+scale = Vector2(0.8131764, 0.7902483)
+script = ExtResource("9")
+followSlotId = 8
+drawLayerId = 8
+metadata/_custom_type_script = "uid://hd68vjdh2w02"

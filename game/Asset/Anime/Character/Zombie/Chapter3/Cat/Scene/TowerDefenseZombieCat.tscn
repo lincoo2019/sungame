@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b6tbbejwbvdg8"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter3/Cat/Scene/TowerDefenseZombieCatComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://dbm2jkfcwhm7i" path="res://Asset/Anime/Character/Zombie/Chapter3/Cat/Scene/TowerDefenseZombieCat.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dl4xu43gud4kw" path="res://Asset/Anime/Character/Zombie/Chapter3/Cat/Config/TowerDefenseZombieCat.tres" id="5"]
+[ext_resource type="Resource" uid="uid://c0147kc5fcxl4" path="res://Asset/Anime/Character/Zombie/Chapter3/Cat/DamagePoint/Config/ZombieCatDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dgg872pfvmu24" path="res://Asset/Anime/Character/Zombie/Chapter3/Cat/Armor/Config/ZombieCatArmorCatHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://c80hae4pcvn70" path="res://Asset/Anime/Character/Zombie/Chapter3/Cat/DamagePoint/Config/ZombieCatDamagePointHead.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://dcf1p7q68go8q" path="res://Asset/Anime/Character/Zombie/Chapter3/Cat/ZombieCat.tscn" id="9"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="10"]
+
+[node name="TowerDefenseZombieCat" unique_id=1710898476 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 2
+projectileName = "Spike"
+walkSpeedScale = 2.0
+swimAnimeClip = "Swim"
+attackWaterAnimeClip = "SwimEat"
+dieWaterAnimeClip = "SwimDeath"
+garlicReplace = "Zombie_football_head.png"
+waterHeight = 10.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieCat")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieCat/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"CatHelmet": ExtResource("7"),
+"Head": ExtResource("8")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieCat/ArmSlot"),
+"CatHelmet": NodePath("SpriteGroup/TransformPoint/ZombieCat/HelmentSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieCat/HeadSlot")
+}
+currentArmor = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(9, 37)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieCat" parent="SpriteGroup/TransformPoint" index="0" unique_id=193311717 instance=ExtResource("9")]
+position = Vector2(-12, -33)
+trueFrameRate = 180.0
+Animation/MediaReplace/Zombie_Cat_helmet.png = "res://Asset/AtlasSource/Armor/Texture/Character/Armor/CatHelmet/ZombieCatHelmet1.png"
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieCat" index="0"]
+drawLayerId = -2
+position = Vector2(-13.282454, -54.967834)
+rotation = -0.04143221
+scale = Vector2(0.7995804, 0.7995804)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieCat" index="1"]
+position = Vector2(-34.04541, -15.365522)
+rotation = -0.13666806
+scale = Vector2(0.7985089, 0.7985089)
+
+[node name="HelmentSlot" parent="SpriteGroup/TransformPoint/ZombieCat" index="2"]
+position = Vector2(-8.859974, -56.486046)
+rotation = -0.074031696
+scale = Vector2(0.7994711, 0.7994711)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieCat" index="3"]
+position = Vector2(-92.11429, -20)
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/ZombieCat" index="4" unique_id=890835227]
+script = ExtResource("10")
+followSlotId = 30
+Layer = 30
+drawLayerId = 30
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieCat/AdobeAnimateSlot" index="0" unique_id=691386694]
+position = Vector2(12.5628, 21.476)
+
+[editable path="SpriteGroup/TransformPoint/ZombieCat"]

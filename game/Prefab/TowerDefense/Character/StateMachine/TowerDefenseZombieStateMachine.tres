@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://cktl6q1og62xd"]
+
+[ext_resource type="Resource" uid="uid://bf2vg1k12uswl" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseCharacterStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_zombie_garlic"]
+script = ExtResource("2")
+StableId = "zombie.garlic"
+DisplayName = &"Garlic"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_zombie_walk"]
+script = ExtResource("2")
+StableId = "zombie.walk"
+DisplayName = &"Walk"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_zombie_attack"]
+script = ExtResource("2")
+StableId = "zombie.attack"
+DisplayName = &"Attack"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_zombie_die"]
+script = ExtResource("2")
+StableId = "zombie.die"
+DisplayName = &"Die"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_to_walk"]
+script = ExtResource("3")
+StableId = "zombie.to_walk"
+SourceStateId = "character.root"
+TargetStateId = "zombie.walk"
+EventName = &"ToWalk"
+DeclarationOrder = 3
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_attack"]
+script = ExtResource("3")
+StableId = "zombie.to_attack"
+SourceStateId = "character.root"
+TargetStateId = "zombie.attack"
+EventName = &"ToAttack"
+DeclarationOrder = 4
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_garlic"]
+script = ExtResource("3")
+StableId = "zombie.to_garlic"
+SourceStateId = "character.root"
+TargetStateId = "zombie.garlic"
+EventName = &"ToGarlic"
+DeclarationOrder = 5
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_die"]
+script = ExtResource("3")
+StableId = "zombie.to_die"
+SourceStateId = "character.root"
+TargetStateId = "zombie.die"
+EventName = &"ToDie"
+DeclarationOrder = 6
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.zombie"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_zombie_garlic"), SubResource("State_zombie_walk"), SubResource("State_zombie_attack"), SubResource("State_zombie_die")]
+Transitions = [SubResource("Transition_to_walk"), SubResource("Transition_to_attack"), SubResource("Transition_to_garlic"), SubResource("Transition_to_die")]

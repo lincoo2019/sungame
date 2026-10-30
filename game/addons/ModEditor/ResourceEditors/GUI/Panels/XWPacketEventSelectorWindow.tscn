@@ -1,0 +1,338 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWPacketEventSelectorWindow.cs" id="1_selector"]
+
+[sub_resource type="StyleBoxFlat" id="Style_window"]
+bg_color = Color(0.045, 0.065, 0.052, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.34, 0.55, 0.22, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="Style_header"]
+bg_color = Color(0.08, 0.17, 0.1, 1)
+border_width_bottom = 2
+border_color = Color(0.37, 0.6, 0.22, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_search"]
+bg_color = Color(0.022, 0.038, 0.03, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28, 0.44, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 13.0
+content_margin_right = 13.0
+
+[sub_resource type="StyleBoxFlat" id="Style_catalog"]
+bg_color = Color(0.025, 0.04, 0.032, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.34, 0.15, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_preview"]
+bg_color = Color(0.065, 0.095, 0.07, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.27, 0.42, 0.19, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_glyph"]
+bg_color = Color(0.18, 0.31, 0.1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.62, 0.83, 0.25, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="Style_badge"]
+bg_color = Color(0.19, 0.34, 0.11, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+content_margin_left = 9.0
+content_margin_top = 3.0
+content_margin_right = 9.0
+content_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="Style_footer"]
+bg_color = Color(0.03, 0.047, 0.036, 1)
+border_width_top = 1
+border_color = Color(0.22, 0.35, 0.16, 1)
+
+[node name="PacketEventSelectorWindow" type="Window"]
+title = "卡牌事件拼图"
+initial_position = 1
+size = Vector2i(960, 640)
+min_size = Vector2i(780, 520)
+exclusive = true
+transient = true
+visible = false
+script = ExtResource("1_selector")
+
+[node name="WindowSurface" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("Style_window")
+
+[node name="RootVBox" type="VBoxContainer" parent="WindowSurface"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Header" type="PanelContainer" parent="WindowSurface/RootVBox"]
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_header")
+
+[node name="HeaderMargin" type="MarginContainer" parent="WindowSurface/RootVBox/Header"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 11
+
+[node name="HeaderRow" type="HBoxContainer" parent="WindowSurface/RootVBox/Header/HeaderMargin"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="TitleStack" type="VBoxContainer" parent="WindowSurface/RootVBox/Header/HeaderMargin/HeaderRow"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="WindowSurface/RootVBox/Header/HeaderMargin/HeaderRow/TitleStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 1, 0.82, 1)
+theme_override_font_sizes/font_size = 23
+text = "卡牌事件拼图"
+
+[node name="SubtitleLabel" type="Label" parent="WindowSurface/RootVBox/Header/HeaderMargin/HeaderRow/TitleStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.59, 0.73, 0.51, 1)
+text = "选择事件模块，添加后继续编辑参数"
+
+[node name="SearchEdit" type="LineEdit" parent="WindowSurface/RootVBox/Header/HeaderMargin/HeaderRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("Style_search")
+placeholder_text = "搜索事件名、类名或来源…"
+clear_button_enabled = true
+
+[node name="BodyMargin" type="MarginContainer" parent="WindowSurface/RootVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="BodySplit" type="HSplitContainer" parent="WindowSurface/RootVBox/BodyMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 600
+
+[node name="CatalogPanel" type="PanelContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Style_catalog")
+
+[node name="CatalogMargin" type="MarginContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/CatalogPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CatalogStack" type="VBoxContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/CatalogPanel/CatalogMargin"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="CatalogCaption" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/CatalogPanel/CatalogMargin/CatalogStack"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.82, 0.5, 1)
+text = "事件目录 · 单击预览 · 双击添加"
+
+[node name="ChoiceScroll" type="ScrollContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/CatalogPanel/CatalogMargin/CatalogStack"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="ChoiceList" type="VBoxContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/CatalogPanel/CatalogMargin/CatalogStack/ChoiceScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="EmptyState" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/CatalogPanel/CatalogMargin/CatalogStack"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.56, 0.67, 0.52, 1)
+text = "没有符合条件的事件拼图"
+horizontal_alignment = 1
+
+[node name="PreviewPanel" type="PanelContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_preview")
+
+[node name="PreviewMargin" type="MarginContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="PreviewScroll" type="ScrollContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="PreviewStack" type="VBoxContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="PreviewCaption" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.72, 0.5, 1)
+text = "事件拼图预览"
+
+[node name="GlyphFrame" type="PanelContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("Style_glyph")
+
+[node name="PreviewGlyph" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack/GlyphFrame"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 1, 0.64, 1)
+theme_override_font_sizes/font_size = 21
+text = "◆"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EventNameLabel" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 1, 0.86, 1)
+theme_override_font_sizes/font_size = 20
+text = "选择一个事件"
+autowrap_mode = 2
+
+[node name="SourceBadge" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.84, 0.95, 0.66, 1)
+theme_override_styles/normal = SubResource("Style_badge")
+text = "尚未选择"
+
+[node name="ClassNameLabel" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.76, 0.63, 1)
+text = "类名 —"
+autowrap_mode = 2
+
+[node name="AssemblyLabel" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.66, 0.52, 1)
+text = "程序集 —"
+autowrap_mode = 2
+
+[node name="DetailLabel" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.83, 0.72, 1)
+text = "事件将在卡牌按下或完成种植时执行。"
+autowrap_mode = 2
+
+[node name="Spacer" type="Control" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PreviewHint" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.49, 0.61, 0.46, 1)
+text = "内置与 Mod 脚本统一显示；添加后会立即跳转到事件参数编辑。"
+autowrap_mode = 2
+
+[node name="Footer" type="PanelContainer" parent="WindowSurface/RootVBox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_footer")
+
+[node name="FooterMargin" type="MarginContainer" parent="WindowSurface/RootVBox/Footer"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 10
+
+[node name="FooterRow" type="HBoxContainer" parent="WindowSurface/RootVBox/Footer/FooterMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StatusLabel" type="Label" parent="WindowSurface/RootVBox/Footer/FooterMargin/FooterRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.58, 0.7, 0.54, 1)
+text = "正在读取游戏与 Mod 事件…"
+
+[node name="CancelButton" type="Button" parent="WindowSurface/RootVBox/Footer/FooterMargin/FooterRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 42)
+layout_mode = 2
+text = "取消"
+
+[node name="ConfirmButton" type="Button" parent="WindowSurface/RootVBox/Footer/FooterMargin/FooterRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(148, 42)
+layout_mode = 2
+disabled = true
+text = "添加此事件"

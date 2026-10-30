@@ -1,0 +1,226 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.055, 0.06, 0.07, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28, 0.32, 0.38, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edit"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.075, 0.085, 0.105, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.46, 0.58, 0.8)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="AwardSettlementVisualPreview" type="PanelContainer"]
+custom_minimum_size = Vector2(760, 540)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "奖励结算窗口预览"
+
+[node name="Status" type="Label" parent="Layout/Header"]
+layout_mode = 2
+text = "背景 / 展示图 / 拾取图标"
+horizontal_alignment = 2
+
+[node name="Preview" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(720, 350)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+clip_contents = true
+
+[node name="Background" type="TextureRect" parent="Layout/Preview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Dim" type="ColorRect" parent="Layout/Preview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.16)
+mouse_filter = 2
+
+[node name="Image" type="TextureRect" parent="Layout/Preview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 90.0
+offset_top = 28.0
+offset_right = -90.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PickupIconFrame" type="PanelContainer" parent="Layout/Preview"]
+custom_minimum_size = Vector2(84, 84)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -102.0
+offset_right = 102.0
+offset_bottom = -18.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="PickupIcon" type="TextureRect" parent="Layout/Preview/PickupIconFrame"]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EmptyHint" type="Label" parent="Layout/Preview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "从下方素材插槽选择结算背景、展示图和拾取图标"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="DirectEditPanel" type="PanelContainer" parent="Layout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_edit")
+
+[node name="EditLayout" type="VBoxContainer" parent="Layout/DirectEditPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ResourceRow" type="HBoxContainer" parent="Layout/DirectEditPanel/EditLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ResourceNameLabel" type="Label" parent="Layout/DirectEditPanel/EditLayout/ResourceRow"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+text = "资源名称"
+vertical_alignment = 1
+
+[node name="ResourceNameEdit" type="LineEdit" parent="Layout/DirectEditPanel/EditLayout/ResourceRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "例如：冒险模式通关奖励"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="Layout/DirectEditPanel/EditLayout/ResourceRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "场景内独立副本"
+
+[node name="EditSlots" type="GridContainer" parent="Layout/DirectEditPanel/EditLayout"]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+columns = 3
+
+[node name="BackgroundSlot" type="VBoxContainer" parent="Layout/DirectEditPanel/EditLayout/EditSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="Layout/DirectEditPanel/EditLayout/EditSlots/BackgroundSlot"]
+layout_mode = 2
+text = "结算背景"
+horizontal_alignment = 1
+
+[node name="BackgroundPickerHost" type="HBoxContainer" parent="Layout/DirectEditPanel/EditLayout/EditSlots/BackgroundSlot"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hint" type="Label" parent="Layout/DirectEditPanel/EditLayout/EditSlots/BackgroundSlot"]
+layout_mode = 2
+text = "铺满整个结算窗口"
+horizontal_alignment = 1
+
+[node name="ImageSlot" type="VBoxContainer" parent="Layout/DirectEditPanel/EditLayout/EditSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="Layout/DirectEditPanel/EditLayout/EditSlots/ImageSlot"]
+layout_mode = 2
+text = "奖励展示图"
+horizontal_alignment = 1
+
+[node name="ImagePickerHost" type="HBoxContainer" parent="Layout/DirectEditPanel/EditLayout/EditSlots/ImageSlot"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hint" type="Label" parent="Layout/DirectEditPanel/EditLayout/EditSlots/ImageSlot"]
+layout_mode = 2
+text = "显示在画面中央"
+horizontal_alignment = 1
+
+[node name="TextureSlot" type="VBoxContainer" parent="Layout/DirectEditPanel/EditLayout/EditSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="Layout/DirectEditPanel/EditLayout/EditSlots/TextureSlot"]
+layout_mode = 2
+text = "拾取图标"
+horizontal_alignment = 1
+
+[node name="TexturePickerHost" type="HBoxContainer" parent="Layout/DirectEditPanel/EditLayout/EditSlots/TextureSlot"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hint" type="Label" parent="Layout/DirectEditPanel/EditLayout/EditSlots/TextureSlot"]
+layout_mode = 2
+text = "显示在左下角图标框"
+horizontal_alignment = 1

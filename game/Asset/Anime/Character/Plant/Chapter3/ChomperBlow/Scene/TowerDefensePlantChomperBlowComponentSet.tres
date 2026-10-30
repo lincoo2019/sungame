@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://dx48k8y23opxk"]
+
+[ext_resource type="Resource" path="res://Script/Component/TowerDefense/Character/BloverComponent/Definitions/ChomperBlowBloverComponentDefinition.tres" id="1"]
+[ext_resource type="Resource" uid="uid://ctkqs23dymeg3" path="res://Script/Component/TowerDefense/Character/ChomperComponent/Definitions/ChomperBlowDefinition.tres" id="2"]
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="3"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="4"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="5"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="6"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="7"]
+
+[sub_resource type="SegmentShape2D" id="Attack0_SegmentShape2D_ue5jv"]
+b = Vector2(100, 0)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_attack_check"]
+script = ExtResource("4")
+Geometry = SubResource("Attack0_SegmentShape2D_ue5jv")
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("5")
+attackType = "Chomp"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_attack_check")]
+checkIntreval = 1
+checkGrid = false
+checkLine = true
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.chapter3.chomperblow.scene.towerdefenseplantchomperblow.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("3")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("7")
+ParentSet = ExtResource("6")
+Components = [ExtResource("1"), ExtResource("2"), SubResource("Attack0_Definition")]

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dmqpgu2xi6vck"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://w4sxp8oh5ukl" path="res://Asset/Anime/Character/Plant/Chapter0/SplitPea/Scene/TowerDefensePlantSplitPeaComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://ctyjhhknuttpt" path="res://Asset/Anime/Character/Plant/Chapter0/SplitPea/Scene/TowerDefensePlantSplitPea.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="5"]
+[ext_resource type="Resource" uid="uid://bv1r3ys5cpy6p" path="res://Asset/Anime/Character/Plant/Chapter0/SplitPea/Config/TowerDefensePlantSplitPea.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://dipw5e6crv87d" path="res://Asset/Anime/Character/Plant/Chapter0/SplitPea/SplitPea.tscn" id="7"]
+
+[sub_resource type="Resource" id="Resource_f1541"]
+script = ExtResource("5")
+projectileName = &"Pea"
+catapultHeight = 400.0
+
+[node name="TowerDefensePlantSplitPea" unique_id=308605277 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 2
+projectileData = SubResource("Resource_f1541")
+idleAnimeClip = "BodyIdle"
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/SplitPea")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="SplitPea" parent="SpriteGroup/TransformPoint" index="0" unique_id=1024258225 instance=ExtResource("7")]
+position = Vector2(0, -30)
+
+[node name="HeadRight" parent="SpriteGroup/TransformPoint/SplitPea" index="0" unique_id=900106335]
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SplitPea/HeadRight" index="0" unique_id=633281648]
+position = Vector2(29.84394, -17.42045)
+scale = Vector2(0.5, 0.536442)
+
+[node name="HeadLeft" parent="SpriteGroup/TransformPoint/SplitPea" index="1" unique_id=1007453509]
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SplitPea/HeadLeft" index="0" unique_id=1601072264]
+position = Vector2(-43.172844, -18.790949)
+scale = Vector2(0.557777, 0.606751)
+skew = -0.0360675
+
+[editable path="SpriteGroup/TransformPoint/SplitPea"]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/XWInspectorPropertyEditorBase.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/GUI/Editor/Dictionary/XWInspectorPropertyEditorDictionary.cs" id="2_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dict"]
+bg_color = Color(0.1254902, 0.14509805, 0.1764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.20392157, 0.34901962, 0.54509807, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dictitem"]
+
+[node name="XWInspectorPropertyEditorDictionary" instance=ExtResource("1_base")]
+node_paths = PackedStringArray("PropertyEditorPath")
+script = ExtResource("2_script")
+PropertyEditorPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/DictButton")
+
+[node name="DictButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Dictionary( 大小 0 )"
+
+[node name="EditContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer" index="1"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dict")
+
+[node name="VboxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/EditContainer"]
+layout_mode = 2
+
+[node name="EditorContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/EditContainer/VboxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/EditContainer/VboxContainer"]
+layout_mode = 2
+
+[node name="NewKeyRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/EditContainer/VboxContainer"]
+layout_mode = 2
+
+[node name="NewKeyContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/EditContainer/VboxContainer/NewKeyRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dictitem")
+
+[node name="KeyTypeButton" type="Button" parent="MarginContainer/VBoxContainer/EditContainer/VboxContainer/NewKeyRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+
+[node name="NewValueRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/EditContainer/VboxContainer"]
+layout_mode = 2
+
+[node name="NewValueContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/EditContainer/VboxContainer/NewValueRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dictitem")
+
+[node name="ValueTypeButton" type="Button" parent="MarginContainer/VBoxContainer/EditContainer/VboxContainer/NewValueRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/EditContainer/VboxContainer"]
+layout_mode = 2
+
+[node name="AddButton" type="Button" parent="MarginContainer/VBoxContainer/EditContainer/VboxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "添加元素"

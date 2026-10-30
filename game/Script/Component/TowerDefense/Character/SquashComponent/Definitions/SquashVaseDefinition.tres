@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="SquashComponentDefinition" format=3 uid="uid://odvrq5lfug8f"]
+
+[ext_resource type="Resource" uid="uid://025uaeehbpbt" path="res://Script/Component/TowerDefense/Character/SquashComponent/SquashComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="3"]
+[ext_resource type="Script" uid="uid://cqaro720rm783" path="res://Script/Component/TowerDefense/Character/SquashComponent/SquashComponentDefinition.cs" id="4"]
+
+[sub_resource type="RectangleShape2D" id="CheckGeometry"]
+size = Vector2(80, 33)
+
+[sub_resource type="Resource" id="CheckShape"]
+script = ExtResource("2")
+Geometry = SubResource("CheckGeometry")
+
+[sub_resource type="Resource" id="HurtEvent"]
+script = ExtResource("3")
+num = 1800.0
+
+[resource]
+script = ExtResource("4")
+spritePath = NodePath("SpriteGroup/TransformPoint/SquashVase")
+checkShape = SubResource("CheckShape")
+eventList = [SubResource("HurtEvent")]
+checkAliveCharacter = true
+ComponentTypeId = "SquashComponent"
+DefinitionId = "builtin.component.squash.plant.squash_vase"
+InstanceId = "character.squash"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"SquashComponent"]

@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://db6bnpj2emujp"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dv8kh4mxrn7od" path="res://Asset/Anime/Character/Plant/Cover/FireSnowPeaG/Scene/TowerDefensePlantFireSnowPeaG.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="3"]
+[ext_resource type="Resource" uid="uid://cfj223qhvow1p" path="res://Asset/Anime/Character/Plant/Cover/FireSnowPeaG/Scene/TowerDefensePlantFireSnowPeaGComponentSet.tres" id="4"]
+[ext_resource type="Resource" uid="uid://yq4glax2qlmr" path="res://Asset/Anime/Character/Plant/Cover/FireSnowPeaG/Config/TowerDefensePlantFireSnowPeaG.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://bj2desx6xuijt" path="res://Asset/Anime/Character/Plant/Cover/FireSnowPeaG/FireSnowPeaG.tscn" id="6"]
+
+[node name="TowerDefensePlantFireSnowPeaG" unique_id=308605277 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+fireInterval = 1.5
+fireNum = 4
+HitBoxDefinition = ExtResource("3")
+ComponentSet = ExtResource("4")
+idleAnimeClip = "BodyIdle"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/FireSnowPeaG")
+damagePart = {}
+damagePartSlot = {}
+currentArmor = []
+currentCustom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="FireSnowPeaG" parent="SpriteGroup/TransformPoint" index="0" unique_id=1024258225 instance=ExtResource("6")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+mediaReplace = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+
+[node name="HeadRight" parent="SpriteGroup/TransformPoint/FireSnowPeaG" index="0" unique_id=464878418 node_paths=PackedStringArray("parentSprite")]
+position = Vector2(-2.6104584, 4.01548)
+trueFrameRate = 180.0
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false]
+parentSprite = NodePath("..")
+followParentSpriteLayerId = 8
+insertLayerId = 8
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/FireSnowPeaG/HeadRight" index="0" unique_id=633281648]
+position = Vector2(30, -17.629)
+scale = Vector2(0.5, 0.536442)
+
+[node name="HeadLeft" parent="SpriteGroup/TransformPoint/FireSnowPeaG" index="1" unique_id=75205624 node_paths=PackedStringArray("parentSprite")]
+position = Vector2(-2.6104584, 4.01548)
+trueFrameRate = 180.0
+layerVisible = [true, true, true, true, true, true, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false]
+parentSprite = NodePath("..")
+followParentSpriteLayerId = 8
+insertLayerId = 8
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/FireSnowPeaG/HeadLeft" index="0" unique_id=1601072264]
+position = Vector2(-43.5499, -18.4622)
+scale = Vector2(0.557777, 0.606751)
+skew = -0.0360675
+
+[editable path="SpriteGroup/TransformPoint/FireSnowPeaG"]

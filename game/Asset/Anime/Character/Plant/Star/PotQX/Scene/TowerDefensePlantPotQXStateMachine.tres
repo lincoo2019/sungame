@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://16ute55r4o0h"]
+
+[ext_resource type="Resource" uid="uid://d28ilpm3lyjt5" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefensePlantStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_open"]
+script = ExtResource("2")
+StableId = "plant.pot_qx.open"
+DisplayName = &"Open"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_close"]
+script = ExtResource("2")
+StableId = "plant.pot_qx.close"
+DisplayName = &"Close"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_open"]
+script = ExtResource("3")
+StableId = "plant.pot_qx.to_open"
+SourceStateId = "character.root"
+TargetStateId = "plant.pot_qx.open"
+EventName = &"ToOpen"
+DeclarationOrder = 2
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_close"]
+script = ExtResource("3")
+StableId = "plant.pot_qx.to_close"
+SourceStateId = "character.root"
+TargetStateId = "plant.pot_qx.close"
+EventName = &"ToClose"
+DeclarationOrder = 3
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_character_component"]
+script = ExtResource("3")
+StableId = "character.to_component"
+SourceStateId = "character.root"
+TargetStateId = "character.component"
+EventName = &"ToComponent"
+DeclarationOrder = 4
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.plant.pot_qx"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_open"), SubResource("State_close")]
+Transitions = [SubResource("Transition_open"), SubResource("Transition_close"), SubResource("Transition_character_component")]

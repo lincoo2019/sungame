@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cb1yjsw2kdtdd"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://c85bk84n1hnpg" path="res://Asset/Anime/Character/Zombie/Challenge/GargantuarZamboni/Scene/RedEyes/TowerDefenseZombieGargantuarZamboniRedEyesComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://cpyge6em6cr8o" path="res://Asset/Anime/Character/Zombie/Challenge/GargantuarZamboni/Scene/RedEyes/TowerDefenseZombieGargantuarZamboniRedEyes.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_154x66_At_26_n1.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c58bnohl4cju" path="res://Asset/Anime/Character/Zombie/Challenge/GargantuarZamboni/Config/TowerDefenseZombieGargantuarZamboniRedEyes.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://bxdsagmvfokjl" path="res://Asset/Anime/Character/Zombie/Challenge/GargantuarZamboni/Sprite/Base/ZombieGargantuarZamboni.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://c64t5qco6f0gu" path="res://Prefab/Particles/Smoke/ZamboniSmoke/ZamboniSmoke.tscn" id="7"]
+
+[node name="TowerDefenseZombieGargantuarZamboniRedEyes" unique_id=366376726 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+walkAnimeClip = "Drive"
+swimAnimeClip = "Drive"
+attackAnimeClip = "Drive"
+dieAnimeClip = "Wheelie"
+dieWaterAnimeClip = "Wheelie"
+waterHeight = 25.0
+idleAnimeClip = "Drive"
+sleepAnimeClip = "Drive"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarZamboniRedEyes")
+PreviewDamagePointPersontage = 1.0
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(49.9999, 45)
+scale = Vector2(3.7907, 1.44444)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(54, 40)
+
+[node name="ZombieGargantuarZamboniRedEyes" parent="SpriteGroup/TransformPoint" index="0" unique_id=488060240 instance=ExtResource("6")]
+position = Vector2(-54, -40)
+Animation/MediaReplace/Zombie_gargantuar_head.png = "res://Asset/AtlasSource/DamagePoint/Anime/Character/Zombie/Chapter1/Gargantuar/DamagePoint/Zombie_gargantuar_head_redeye.png"
+Animation/MediaReplace/Zombie_zamboni_1.png = "res://Asset/AtlasSource/DamagePoint/Anime/Character/Zombie/Chapter2/Zamboni/DamagePoint/Zombie_zamboni_1.png"
+Animation/MediaReplace/Zombie_zamboni_2.png = "res://Asset/AtlasSource/DamagePoint/Anime/Character/Zombie/Chapter2/Zamboni/DamagePoint/Zombie_zamboni_2.png"
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieGargantuarZamboniRedEyes" index="0" unique_id=585285097]
+position = Vector2(-69.906944, -20)
+
+[node name="IceCapMarker" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieGargantuarZamboniRedEyes" index="1" unique_id=943832127]
+unique_name_in_owner = true
+position = Vector2(116, 50)
+
+[node name="ZamboniSmoke" parent="SpriteGroup/TransformPoint" index="1" unique_id=539228001 instance=ExtResource("7")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-67, -82)
+scale = Vector2(1.5, 1.5)

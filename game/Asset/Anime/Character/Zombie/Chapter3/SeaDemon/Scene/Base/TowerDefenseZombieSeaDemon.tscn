@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bynx17tp44ayo"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cyeihweiuwa7q" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/Scene/Base/TowerDefenseZombieSeaDemonComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://cpc6k1gqcon36" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/Scene/Base/TowerDefenseZombieSeaDemon.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_n1p5_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://btevvn1bpr0uq" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/Scene/Base/TowerDefenseZombieSeaDemonStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://ov0p8peemmbu" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/Config/TowerDefenseZombieSeaDemon.tres" id="6"]
+[ext_resource type="Resource" uid="uid://5pbudhad0osw" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/DamagePoint/Config/ZombieSeaDemonDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://dtkw884fntese" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/Armor/Config/ZombieSeaDemonArmorBlackHelmet.tres" id="8"]
+[ext_resource type="Resource" uid="uid://d0rb5yqixtlf1" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/DamagePoint/Config/ZombieSeaDemonDamagePointHead.tres" id="9"]
+[ext_resource type="Resource" uid="uid://bddo786kv1fq5" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/Armor/Config/ZombieSeaDemonArmorHelmet.tres" id="10"]
+[ext_resource type="Resource" uid="uid://bnafstq8gupyf" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/Armor/Config/ZombieSeaDemonArmorSpecialHelmet.tres" id="11"]
+[ext_resource type="PackedScene" uid="uid://sftmgg4oomkw" path="res://Asset/Anime/Character/Zombie/Chapter3/SeaDemon/ZombieSeaDemon.tscn" id="12"]
+
+[node name="TowerDefenseZombieSeaDemon" unique_id=1765198358 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+walkSpeedScale = 1.5
+useAttackDps = false
+inSwimAnimeClip = "Jump"
+swimAnimeClip = "Swim"
+outSwimAnimeClip = "OutWater"
+attackAnimeClip = "Attack"
+attackWaterAnimeClip = "SwimAttack"
+dieWaterAnimeClip = "SwimDeath"
+waterHeight = 25.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"BlackHelmet": ExtResource("8"),
+"Head": ExtResource("9"),
+"Helmet": ExtResource("10"),
+"SpecialHelmet": ExtResource("11")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieSeaDemon/HeadSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieSeaDemon" parent="SpriteGroup/TransformPoint" index="0" unique_id=1356036582 instance=ExtResource("12")]
+position = Vector2(0, -33)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieSeaDemon" index="0" unique_id=142145272]
+drawLayerId = -2
+position = Vector2(-19.73294, -59.746937)
+rotation = -0.02495867
+scale = Vector2(0.7999238, 0.7999238)
+Layer = 10
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieSeaDemon" index="1" unique_id=1219770226]
+position = Vector2(-0.26173496, -2.366929)
+rotation = -0.022524083
+scale = Vector2(0.79988307, 0.79988307)
+Layer = 13
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieSeaDemon" index="2" unique_id=900757971]
+position = Vector2(-40.050003, -40)
+Layer = 1

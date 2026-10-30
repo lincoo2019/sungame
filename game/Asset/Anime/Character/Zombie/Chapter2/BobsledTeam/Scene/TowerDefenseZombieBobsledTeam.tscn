@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b4637cytmmauc"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter2/BobsledTeam/Scene/TowerDefenseZombieBobsledTeamComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://kmi5g7dicd5s" path="res://Asset/Anime/Character/Zombie/Chapter2/BobsledTeam/Scene/TowerDefenseZombieBobsledTeam.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_154x33_At_26_n1.tres" id="4"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter2/BobsledTeam/Config/TowerDefenseZombieBobsledTeam.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://bifij0iwf2sjl" path="res://Asset/Anime/Character/Zombie/Chapter2/BobsledTeam/ZombieBobsledTeam.tscn" id="6"]
+
+[node name="TowerDefenseZombieBobsledTeam" node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+walkAnimeClip = "Intact"
+attackAnimeClip = "Intact"
+dieAnimeClip = "Broken"
+dieWaterAnimeClip = "Broken"
+idleAnimeClip = "Intact"
+sleepAnimeClip = "Intact"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieBobsledVehicle")
+slowSpeed = 60.0
+iceSpeed = 60.0
+requiresIce = true
+createsIce = false
+crushesPlants = false
+usesEntryChoreography = true
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(12, 33)
+
+[node name="ZombieBobsledVehicle" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("6")]
+position = Vector2(-12, 16)
+
+[node name="IceCapMarker" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieBobsledVehicle" index="4"]
+unique_name_in_owner = true
+position = Vector2(40, 53)
+
+[node name="ShadowSprite" parent="." index="3"]
+position = Vector2(18, 45)
+scale = Vector2(3, 1.45)
+
+[editable path="SpriteGroup/TransformPoint/ZombieBobsledVehicle"]

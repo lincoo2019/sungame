@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b3fgceywot4q4"]
+
+[ext_resource type="Script" uid="uid://c3esig5bxrgk1" path="res://Asset/Config/Map/Roof/Day/TowerDefenseMapRoof.cs" id="1_ygk1p"]
+[ext_resource type="Texture2D" uid="uid://cii42nqs2xs2g" path="res://Asset/Config/Map/Roof/Day/TowerDefenseMapRoofGradient.tres" id="2_75n12"]
+[ext_resource type="Texture2D" uid="uid://cpfgunps7onpb" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Roof/Roof.jpg" id="3_ygk1p"]
+[ext_resource type="Texture2D" uid="uid://bbbiwhq1ib7vi" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Stripe.png" id="4_56l36"]
+[ext_resource type="Texture2D" uid="uid://j3ifp3elg8ak" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/FrontlawnFloor.png" id="5_8ixrt"]
+[ext_resource type="Texture2D" uid="uid://bsr0qehg7lbyy" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/FrontlawnDoor.png" id="6_64vwf"]
+
+[node name="TowerDefenseMapRoof" type="Node2D" node_paths=PackedStringArray("stripe")]
+script = ExtResource("1_ygk1p")
+stripe = NodePath("Stripe")
+canvasModulateGradient = ExtResource("2_75n12")
+
+[node name="Roof" type="Sprite2D" parent="."]
+scale = Vector2(1, 1)
+texture = ExtResource("3_ygk1p")
+centered = false
+
+[node name="Stripe" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(494, 70)
+scale = Vector2(2, 2)
+texture = ExtResource("4_56l36")
+centered = false
+
+[node name="RoofFloor" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(101, 296)
+scale = Vector2(1, 0.99857143)
+texture = ExtResource("5_8ixrt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="RoofDoor" type="Sprite2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(101, 297)
+scale = Vector2(1, 0.99857143)
+texture = ExtResource("6_64vwf")

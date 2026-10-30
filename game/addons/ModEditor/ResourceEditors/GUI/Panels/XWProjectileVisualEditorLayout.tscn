@@ -1,0 +1,191 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+
+[sub_resource type="StyleBoxFlat" id="StylePreview"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.105, 0.11, 1)
+border_color = Color(0.298, 0.302, 0.306, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleChange"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.095, 0.1, 0.11, 1)
+border_color = Color(0.294, 0.298, 0.306, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="ProjectileVisualEditorLayout" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PreviewPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(720, 410)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StylePreview")
+
+[node name="PreviewLayout" type="VBoxContainer" parent="PreviewPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="Header" type="HBoxContainer" parent="PreviewPanel/PreviewLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProjectileNameLabel" type="Label" parent="PreviewPanel/PreviewLayout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SceneLabel" type="Label" parent="PreviewPanel/PreviewLayout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+horizontal_alignment = 2
+
+[node name="PreviewStack" type="Control" parent="PreviewPanel/PreviewLayout"]
+custom_minimum_size = Vector2(700, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+clip_contents = true
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="PreviewPanel/PreviewLayout/PreviewStack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="ProjectileViewport" type="SubViewport" parent="PreviewPanel/PreviewLayout/PreviewStack/ViewportContainer"]
+unique_name_in_owner = true
+transparent_bg = true
+disable_3d = true
+size = Vector2i(720, 300)
+render_target_update_mode = 4
+
+[node name="GameBackground" type="TextureRect" parent="PreviewPanel/PreviewLayout/PreviewStack/ViewportContainer/ProjectileViewport"]
+offset_right = 720.0
+offset_bottom = 300.0
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="PreviewRoot" type="Node2D" parent="PreviewPanel/PreviewLayout/PreviewStack/ViewportContainer/ProjectileViewport"]
+unique_name_in_owner = true
+position = Vector2(120, 218)
+
+[node name="TargetRoot" type="Node2D" parent="PreviewPanel/PreviewLayout/PreviewStack/ViewportContainer/ProjectileViewport"]
+unique_name_in_owner = true
+position = Vector2(602, 232)
+
+[node name="ImpactRoot" type="Node2D" parent="PreviewPanel/PreviewLayout/PreviewStack/ViewportContainer/ProjectileViewport"]
+unique_name_in_owner = true
+position = Vector2(552, 190)
+
+[node name="PlaybackToolbar" type="HBoxContainer" parent="PreviewPanel/PreviewLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PlayButton" type="Button" parent="PreviewPanel/PreviewLayout/PlaybackToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "播放命中"
+
+[node name="TimelineSlider" type="HSlider" parent="PreviewPanel/PreviewLayout/PlaybackToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+tooltip_text = "拖动查看真实子弹场景飞行和命中效果"
+
+[node name="PlaybackStatusLabel" type="Label" parent="PreviewPanel/PreviewLayout/PlaybackToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "等待发射"
+horizontal_alignment = 2
+
+[node name="Fields" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="CoreHost" type="VBoxContainer" parent="Fields"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HitHost" type="VBoxContainer" parent="Fields"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ChangePanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleChange")
+
+[node name="ChangeLayout" type="VBoxContainer" parent="ChangePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="ChangeHeader" type="HBoxContainer" parent="ChangePanel/ChangeLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="ChangePanel/ChangeLayout/ChangeHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ProjectileChange 子弹变化"
+
+[node name="RefreshButton" type="Button" parent="ChangePanel/ChangeLayout/ChangeHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "重新扫描 Resources/ProjectileChanges"
+text = "刷新"
+
+[node name="ChangeHint" type="Label" parent="ChangePanel/ChangeLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+
+[node name="ProjectileChangeList" type="ItemList" parent="ChangePanel/ChangeLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(720, 92)
+layout_mode = 2
+size_flags_horizontal = 3

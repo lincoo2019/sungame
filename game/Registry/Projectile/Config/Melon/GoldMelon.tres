@@ -1,0 +1,135 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://d2k53yfebjg4o"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_dugqa"]
+[ext_resource type="Script" uid="uid://c6ovvn8q5kckw" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventLuckyDraw.cs" id="2_0my33"]
+[ext_resource type="Script" uid="uid://oyenqoyf1ff5" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventLuckyDrawItem.cs" id="2_d7dl5"]
+[ext_resource type="PackedScene" uid="uid://be4wbndtyposh" path="res://Asset/Config/Projectile/Melon/Sprite/GoldMelon/ProjectileGoldMelon.tscn" id="2_dugqa"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="3_ls06p"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="3_yb65k"]
+[ext_resource type="PackedScene" uid="uid://c78e2034paimu" path="res://Prefab/Particles/Splats/GoldMelonpultSplats/GoldMelonpultSplats.tscn" id="4_0my33"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="4_45b6h"]
+[ext_resource type="Script" uid="uid://dc0owkndbeue" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventProjectileCreate.cs" id="5_1ol3j"]
+[ext_resource type="Script" uid="uid://cewg6ylngys14" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventSunCreate.cs" id="6_yb65k"]
+[ext_resource type="Script" uid="uid://cf1l1xfed2qhn" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventArmorClear.cs" id="7_1ol3j"]
+[ext_resource type="Script" uid="uid://b5ce7buqehatj" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHypnoses.cs" id="7_45b6h"]
+
+[sub_resource type="Resource" id="Resource_wpb3v"]
+script = ExtResource("4_45b6h")
+projectileName = &"Melon"
+baseDamage = 80.0
+damageFlags = 2
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_vq8qr"]
+script = ExtResource("5_1ol3j")
+projectileData = SubResource("Resource_wpb3v")
+createNum = 1
+createGridToRange = Vector4i(0, 0, 0, 0)
+createSpeedToRange = Vector2(0, 0)
+useFall = true
+metadata/_custom_type_script = "uid://dc0owkndbeue"
+
+[sub_resource type="Resource" id="Resource_k8hro"]
+script = ExtResource("2_d7dl5")
+_event = SubResource("Resource_vq8qr")
+weight = 50.0
+metadata/_custom_type_script = "uid://oyenqoyf1ff5"
+
+[sub_resource type="Resource" id="Resource_d7dl5"]
+script = ExtResource("4_45b6h")
+projectileName = &"WinterMelon"
+baseDamage = 80.0
+damageFlags = 2
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_yb65k"]
+script = ExtResource("5_1ol3j")
+projectileData = SubResource("Resource_d7dl5")
+createNum = 1
+createGridToRange = Vector4i(0, 0, 0, 0)
+createSpeedToRange = Vector2(0, 0)
+useFall = true
+metadata/_custom_type_script = "uid://dc0owkndbeue"
+
+[sub_resource type="Resource" id="Resource_45b6h"]
+script = ExtResource("2_d7dl5")
+_event = SubResource("Resource_yb65k")
+weight = 30.0
+metadata/_custom_type_script = "uid://oyenqoyf1ff5"
+
+[sub_resource type="Resource" id="Resource_1ol3j"]
+script = ExtResource("4_45b6h")
+projectileName = &"CoinGold"
+baseDamage = 500.0
+collisionFlags = 43
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_7e4xe"]
+script = ExtResource("5_1ol3j")
+projectileData = SubResource("Resource_1ol3j")
+createNum = 1
+createGridToRange = Vector4i(0, 0, 0, 0)
+createSpeedToRange = Vector2(0, 0)
+useFall = true
+metadata/_custom_type_script = "uid://dc0owkndbeue"
+
+[sub_resource type="Resource" id="Resource_ljif8"]
+script = ExtResource("2_d7dl5")
+_event = SubResource("Resource_7e4xe")
+weight = 10.0
+metadata/_custom_type_script = "uid://oyenqoyf1ff5"
+
+[sub_resource type="Resource" id="Resource_v1ou0"]
+script = ExtResource("6_yb65k")
+num = 50.0
+byCamp = true
+metadata/_custom_type_script = "uid://cewg6ylngys14"
+
+[sub_resource type="Resource" id="Resource_igfld"]
+script = ExtResource("2_d7dl5")
+_event = SubResource("Resource_v1ou0")
+weight = 6.0
+metadata/_custom_type_script = "uid://oyenqoyf1ff5"
+
+[sub_resource type="Resource" id="Resource_ehqcg"]
+script = ExtResource("7_1ol3j")
+metadata/_custom_type_script = "uid://cf1l1xfed2qhn"
+
+[sub_resource type="Resource" id="Resource_fgudh"]
+script = ExtResource("2_d7dl5")
+_event = SubResource("Resource_ehqcg")
+weight = 3.0
+metadata/_custom_type_script = "uid://oyenqoyf1ff5"
+
+[sub_resource type="Resource" id="Resource_x88l2"]
+script = ExtResource("7_45b6h")
+metadata/_custom_type_script = "uid://b5ce7buqehatj"
+
+[sub_resource type="Resource" id="Resource_we7sl"]
+script = ExtResource("2_d7dl5")
+_event = SubResource("Resource_x88l2")
+metadata/_custom_type_script = "uid://oyenqoyf1ff5"
+
+[sub_resource type="Resource" id="Resource_tognw"]
+script = ExtResource("2_0my33")
+eventList = Array[ExtResource("2_d7dl5")]([SubResource("Resource_k8hro"), SubResource("Resource_45b6h"), SubResource("Resource_ljif8"), SubResource("Resource_igfld"), SubResource("Resource_fgudh"), SubResource("Resource_we7sl")])
+metadata/_custom_type_script = "uid://c6ovvn8q5kckw"
+
+[resource]
+script = ExtResource("3_ls06p")
+name = "GoldMelon"
+baseDamage = 160.0
+projectileScene = ExtResource("2_dugqa")
+splatAudio = "MelonImpact"
+splatScene = ExtResource("4_0my33")
+hitTargetEventList = Array[ExtResource("1_dugqa")]([SubResource("Resource_tognw")])
+rotateScale = 5.0
+hitBody = true
+useRange = true
+rangeSize = Vector2(0.5, 1)

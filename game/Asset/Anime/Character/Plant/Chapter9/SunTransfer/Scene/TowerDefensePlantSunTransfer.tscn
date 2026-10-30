@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dprvr0umh72x6"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter9/SunTransfer/Scene/TowerDefensePlantSunTransferComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://wwm71yic20av" path="res://Asset/Anime/Character/Plant/Chapter9/SunTransfer/Scene/TowerDefensePlantSunTransfer.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_40p5x64_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c2ss3hlv0j2td" path="res://Asset/Anime/Character/Plant/Chapter9/SunTransfer/Scene/TowerDefensePlantSunTransferStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://gaqn1buyv680" path="res://Asset/Anime/Character/Plant/Chapter9/SunTransfer/Config/TowerDefensePlantSunTransfer.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://dxfjln3buayve" path="res://Asset/Anime/Character/Plant/Chapter9/SunTransfer/SunTransfer.tscn" id="7"]
+
+[node name="TowerDefensePlantSunTransfer" unique_id=725297710 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/SunTransfer")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="SunTransfer" parent="SpriteGroup/TransformPoint" index="0" unique_id=1358737542 instance=ExtResource("7")]
+position = Vector2(0, -30)
+trueFrameRate = 30.0

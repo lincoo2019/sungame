@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh52k7mi2sqxe"]
+
+[ext_resource type="PackedScene" uid="uid://nx2prtbxim66" path="res://Prefab/GUI/DialogBox/DialogBoxGeneral/DialogPopup.tscn" id="1_aurwv"]
+[ext_resource type="Script" uid="uid://c73l77dmi7qcb" path="res://Prefab/GUI/DialogBox/DialogBoxGeneral/DialogBoxShopCantSale/DialogBoxShopCantSale.cs" id="2_8sfkh"]
+[ext_resource type="PackedScene" uid="uid://bml60wmq62jay" path="res://Prefab/GUI/Button/MainButton.tscn" id="3_n8nng"]
+
+[node name="DialogBoxShopCantSale" node_paths=PackedStringArray("dragControl") instance=ExtResource("1_aurwv")]
+script = ExtResource("2_8sfkh")
+dragControl = NodePath("Layer/Control")
+
+[node name="Control" parent="Layer" index="0"]
+offset_top = 176.0
+offset_bottom = -176.0
+
+[node name="MarginContainer2" parent="Layer/Control" index="0"]
+offset_top = -128.0
+offset_bottom = 128.0
+
+[node name="TextLabel" parent="Layer/Control/MarginContainer2/MarginContainer/CenterContainer" index="0"]
+text = "[center][font_size=24]资金不足[/font_size][/center]
+[center][font_size=16]你现在还买不起这个物品。[/font_size][/center]
+[center][font_size=16]去杀僵尸赚取更多钱币[/font_size][/center]"
+
+[node name="ButtonContainer" parent="Layer/Control" index="1"]
+offset_left = -180.0
+offset_top = 28.016
+offset_right = 168.0
+offset_bottom = 74.016
+
+[node name="TrueButton" parent="Layer/Control/ButtonContainer" index="0" instance=ExtResource("3_n8nng")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "确定"
+

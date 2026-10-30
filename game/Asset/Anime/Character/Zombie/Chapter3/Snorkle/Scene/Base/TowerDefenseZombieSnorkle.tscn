@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bhy0fus6g5evj"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cca4wrk8vwrrl" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Scene/Base/TowerDefenseZombieSnorkle.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://b1w66hcooinge" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Config/TowerDefenseZombieSnorkle.tres" id="4"]
+[ext_resource type="Resource" uid="uid://co537d8wk2trx" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/DamagePoint/Config/ZombieSnorkleDamagePointArm.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dswwhb2lomp7n" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorBlackHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://csk4e2hffpd8y" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/DamagePoint/Config/ZombieSnorkleDamagePointHead.tres" id="7"]
+[ext_resource type="Resource" uid="uid://dat20ya1dcy8c" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorHelmet.tres" id="8"]
+[ext_resource type="Resource" uid="uid://d2ou8b5l3dpji" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorSpecialHelmet.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://bkrcpah82r3ie" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Sprite/Base/ZombieSnorkle.tscn" id="10"]
+
+[node name="TowerDefenseZombieSnorkle" unique_id=1926337199 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+walkSpeedScale = 1.5
+inSwimAnimeClip = "Jump"
+swimAnimeClip = "Swim"
+attackWaterAnimeClip = "SwimEat"
+dieWaterAnimeClip = "SwimDeath"
+waterHeight = -5.0
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieSnorkle")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieSnorkle/HeadSlot")
+damagePart = {
+"Arm": ExtResource("5"),
+"BlackHelmet": ExtResource("6"),
+"Head": ExtResource("7"),
+"Helmet": ExtResource("8"),
+"SpecialHelmet": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieSnorkle/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieSnorkle/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieSnorkle/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieSnorkle/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieSnorkle/HeadSlot")
+}
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieSnorkle" parent="SpriteGroup/TransformPoint" index="0" unique_id=1551396594 instance=ExtResource("10")]
+position = Vector2(-12, -33)
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieSnorkle" index="0"]
+drawLayerId = -2
+position = Vector2(-14.353813, -50.56871)
+rotation = -0.061048493
+scale = Vector2(0.7971152, 0.7987214)
+skew = 0.00028073788
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieSnorkle" index="1"]
+position = Vector2(17.161772, -0.7394495)
+rotation = -0.37087944
+scale = Vector2(0.79797596, 0.79797596)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieSnorkle" index="2"]
+position = Vector2(-63.6, -20)
+scale = Vector2(1.00041, 1.00041)
+
+[editable path="SpriteGroup/TransformPoint/ZombieSnorkle"]

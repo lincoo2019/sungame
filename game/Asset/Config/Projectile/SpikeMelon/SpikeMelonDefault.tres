@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://d1wm4plghaf6a"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_pv53s"]
+[ext_resource type="PackedScene" uid="uid://bshbr6o1rfytt" path="res://Asset/Config/Projectile/SpikeMelon/Sprite/SpikeMelon/ProjectileSpikeMelon.tscn" id="2_4m1tv"]
+[ext_resource type="Script" uid="uid://ky0rohwug6p1" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventPacketSpawn.cs" id="2_rk363"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="3_f6jfn"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="4_lsio5"]
+[ext_resource type="PackedScene" uid="uid://ct3aai4g57k2g" path="res://Prefab/Particles/Splats/SpikeMelonpultSplats/SpikeMelonpultSplats.tscn" id="4_rk363"]
+
+[sub_resource type="Resource" id="Resource_f6jfn"]
+script = ExtResource("2_rk363")
+packetName = "PlantCaltropMelon"
+percentage = 0.4
+byCamp = true
+metadata/_custom_type_script = "uid://ky0rohwug6p1"
+
+[sub_resource type="Resource" id="Resource_j0u50"]
+script = ExtResource("2_rk363")
+packetName = "PlantCaltropMelon"
+dieSpawn = true
+byCamp = true
+metadata/_custom_type_script = "uid://ky0rohwug6p1"
+
+[resource]
+script = ExtResource("4_lsio5")
+name = "SpikeMelon"
+baseDamage = 100.0
+projectileScene = ExtResource("2_4m1tv")
+splatAudio = "MelonImpact"
+splatScene = ExtResource("4_rk363")
+hitTargetEventList = Array[ExtResource("1_pv53s")]([SubResource("Resource_f6jfn"), SubResource("Resource_j0u50")])
+hitGroundEventList = Array[ExtResource("1_pv53s")]([SubResource("Resource_f6jfn"), SubResource("Resource_j0u50")])
+rotateScale = 5.0
+useRange = true
+rangeSize = Vector2(0.5, 1.25)
+damageFlags = 2
+fireMethodFlags = 2
+collisionFlags = 43
+catapultHeight = 600.0

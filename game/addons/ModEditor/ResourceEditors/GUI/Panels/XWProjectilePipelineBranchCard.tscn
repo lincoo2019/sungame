@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="StyleBoxFlat" id="StyleBranch"]
+content_margin_left = 9.0
+content_margin_top = 9.0
+content_margin_right = 9.0
+content_margin_bottom = 9.0
+bg_color = Color(0.055, 0.09, 0.12, 0.98)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.22, 0.64, 0.86, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="ProjectilePipelineBranchCard" type="PanelContainer"]
+custom_minimum_size = Vector2(154, 116)
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBranch")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Header" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="Preview" type="TextureRect" parent="Layout/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(38, 38)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ProjectileName" type="Label" parent="Layout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.62, 0.87, 1, 1)
+text = "未配置子弹"
+autowrap_mode = 2
+
+[node name="WeightSpinBox" type="SpinBox" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -9999.0
+max_value = 9999.0
+step = 0.1
+prefix = "权重 "
+visible = false
+
+[node name="Actions" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="SelectButton" type="Button" parent="Layout/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "选择"
+visible = false
+
+[node name="OpenButton" type="Button" parent="Layout/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "打开"
+visible = false
+vertical_alignment = 1
+
+[node name="Probability" type="Label" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.36, 1)
+text = "概率：--"
+
+[node name="Warning" type="Label" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.45, 0.34, 1)
+text = "等待配置"
+autowrap_mode = 2

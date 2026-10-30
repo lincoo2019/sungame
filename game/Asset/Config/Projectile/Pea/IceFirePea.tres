@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://btw4jfxc7lwoe"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_nb8lo"]
+[ext_resource type="PackedScene" uid="uid://btv02lfwnomhx" path="res://Asset/Config/Projectile/Pea/Sprite/IceFirePea/IceFirePea.tscn" id="2_nb8lo"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_s8e3c"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="3_jfolo"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="3_k6l70"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_tjn60"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="5_jfolo"]
+[ext_resource type="PackedScene" uid="uid://dxdsva0xl5qtd" path="res://Prefab/Particles/Splats/IceFireSplats/IceFireSplats.tscn" id="7_s8e3c"]
+
+[sub_resource type="Resource" id="Resource_7coxx"]
+script = ExtResource("3_jfolo")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_70j13"]
+script = ExtResource("4_tjn60")
+buffList = Array[ExtResource("2_s8e3c")]([SubResource("Resource_7coxx")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("3_k6l70")
+name = "IceFirePea"
+baseDamage = 40.0
+projectileScene = ExtResource("2_nb8lo")
+splatSceneType = "Sprite"
+splatAudio = "Ignite"
+splatScene = ExtResource("7_s8e3c")
+hitCharacterEventList = Array[ExtResource("1_nb8lo")]([SubResource("Resource_70j13")])
+hitBody = true
+useRange = true
+rangeSize = Vector2(0.5, 0.25)
+collisionFlags = 1
+catapultHeight = 400.0

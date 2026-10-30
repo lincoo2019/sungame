@@ -1,0 +1,112 @@
+[gd_resource type="Resource" script_class="FireComponentDefinition" format=3 uid="uid://c13dhgggl6iho"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbglc127qw1jb" path="res://Resource/TowerDefense/Collision/AabbRay2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://bi6p43no6bcyx" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeightItem.cs" id="5"]
+[ext_resource type="Script" uid="uid://6pte6bht2hgs" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeight.cs" id="6"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="7"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="8"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="9"]
+
+[sub_resource type="Resource" id="AabbRay2DResource_AabbRayProbe"]
+script = ExtResource("2")
+
+[sub_resource type="Resource" id="AabbRay2DResource_AabbRayProbe2"]
+script = ExtResource("2")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, -76)
+
+[sub_resource type="Resource" id="AabbRay2DResource_AabbRayProbe3"]
+script = ExtResource("2")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, 76)
+
+[sub_resource type="Resource" id="Resource_dc5wn"]
+script = ExtResource("3")
+projectileName = &"PeaBomb"
+baseDamage = 40.0
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Resource_0x1in"]
+script = ExtResource("3")
+projectileName = &"PeaBomb"
+baseDamage = 40.0
+hitChestsScale = 3.0
+overrideHitChestsScale = true
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Resource_mrqpg"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_0x1in")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_1oqkj"]
+script = ExtResource("5")
+projectileResource = SubResource("Resource_mrqpg")
+weight = 0.7
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Resource_vel41"]
+script = ExtResource("3")
+projectileName = &"CaskPea"
+baseDamage = 80.0
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Resource_ygcsc"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_vel41")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_ggj7m"]
+script = ExtResource("5")
+projectileResource = SubResource("Resource_ygcsc")
+weight = 0.3
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Resource_jg844"]
+script = ExtResource("6")
+projectileData = SubResource("Resource_dc5wn")
+projectileWeight = [SubResource("Resource_1oqkj"), SubResource("Resource_ggj7m")]
+metadata/_custom_type_script = "uid://6pte6bht2hgs"
+
+[sub_resource type="Resource" id="Resource_mamtp"]
+script = ExtResource("7")
+projectile = SubResource("Resource_jg844")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Resource_ni8it"]
+script = ExtResource("8")
+offsetLine = -1
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_6ulip"]
+script = ExtResource("8")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_vw4sq"]
+script = ExtResource("8")
+offsetLine = 1
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[resource]
+script = ExtResource("9")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/PiratePeater/Head2/Marker2D")]
+spritePath = NodePath("SpriteGroup/TransformPoint/PiratePeater/Head2")
+spliceSpritePaths = [NodePath("SpriteGroup/TransformPoint/PiratePeater/Head1"), NodePath("SpriteGroup/TransformPoint/PiratePeater/Head3")]
+checkRayResources = [SubResource("AabbRay2DResource_AabbRayProbe"), SubResource("AabbRay2DResource_AabbRayProbe2"), SubResource("AabbRay2DResource_AabbRayProbe3")]
+fireAnimeClipsArray = ["HeadFire2"]
+fireAnimeClips = "HeadFire3"
+fireAnimeTimeScale = 2.0
+spliceIdleAnimeClips = "HeadIdle3"
+isSpliceSprite = true
+spliceSpriteFireAnimeClipsList = ["HeadFire2", "HeadFire1"]
+spliceSpriteIdleAnimeClipsList = ["HeadIdle2", "HeadIdle1"]
+fireCheckList = [SubResource("Resource_mamtp")]
+fireProjectileList = [SubResource("Resource_ni8it"), SubResource("Resource_6ulip"), SubResource("Resource_vw4sq")]
+checkAllLine = true
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter7.pirate_peater"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]

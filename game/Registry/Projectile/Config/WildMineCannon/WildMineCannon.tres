@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://bygest48gm4ey"]
+
+[ext_resource type="PackedScene" uid="uid://cyq4gej3xjkwg" path="res://Asset/Config/Projectile/PotatoCobCannonCob/PotatoCobCannonCob/PotatoCobCannonCob.tscn" id="1_rxxnm"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="2_yglnf"]
+[ext_resource type="Script" uid="uid://gamkqf42ibv3" path="res://Registry/Projectile/Config/WildMineCannon/WildMineCannonLandingEvent.cs" id="3_s6oek"]
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="4_cm54k"]
+[ext_resource type="PackedScene" uid="uid://dqcu2ycvf4u72" path="res://Prefab/Particles/Explosion/MineExplosion/MineExplosion.tscn" id="5_lpl4r"]
+[ext_resource type="Script" uid="uid://bt7fis5jparcx" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.cs" id="6_w1mhq"]
+
+[sub_resource type="Resource" id="Resource_wildmine_hurt"]
+script = ExtResource("6_w1mhq")
+type = "Mine"
+num = 1800.0
+metadata/_custom_type_script = "uid://bt7fis5jparcx"
+
+[sub_resource type="Resource" id="Resource_u187q"]
+script = ExtResource("3_s6oek")
+packetName = "PlantPotatoMine"
+explosionEffect = ExtResource("5_lpl4r")
+explosionAudio = "MineExplosion"
+explosionSize = Vector2(1, 0.25)
+explosionEvents = Array[ExtResource("4_cm54k")]([SubResource("Resource_wildmine_hurt")])
+metadata/_custom_type_script = "uid://gamkqf42ibv3"
+
+[resource]
+script = ExtResource("2_yglnf")
+name = "WildMineCannon"
+baseDamage = 0.0
+hitGroundEventList = Array[ExtResource("4_cm54k")]([SubResource("Resource_u187q")])
+splatAudio = ""
+scale = Vector2(0.6, 0.6)
+projectileScene = ExtResource("1_rxxnm")

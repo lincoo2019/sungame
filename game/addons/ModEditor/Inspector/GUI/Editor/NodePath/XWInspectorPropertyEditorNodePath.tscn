@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/XWInspectorPropertyEditorBase.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/GUI/Editor/NodePath/XWInspectorPropertyEditorNodePath.cs" id="2_script"]
+
+[node name="XWInspectorPropertyEditorNodePath" node_paths=PackedStringArray("PropertyEditorPath") instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+PropertyEditorPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/NodePathContainer")
+
+[node name="NodePathContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/NodePathContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+select_all_on_focus = true
+
+[node name="SelectNodePathButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/NodePathContainer" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "选择节点"
+flat = true

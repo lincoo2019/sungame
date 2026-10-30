@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://x6sh214k8vuv"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cmjeq7j26kor3" path="res://Asset/Anime/Character/Zombie/Chapter9/Robot/Scene/TowerDefenseZombieRobot.cs" id="2"]
+[ext_resource type="Script" uid="uid://bt7fis5jparcx" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://wdbm7g0pqrse" path="res://Asset/Anime/Character/Zombie/Chapter9/Robot/Config/TowerDefenseZombieRobot.tres" id="5"]
+[ext_resource type="Resource" uid="uid://b33m75piek0ix" path="res://Asset/Anime/Character/Zombie/Chapter9/Robot/DamagePoint/Config/ZombieRobotDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dc0e8cmwbqor" path="res://Asset/Anime/Character/Zombie/Chapter9/Robot/DamagePoint/Config/ZombieRobotDamagePointHead.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://cacakahgmp18h" path="res://Asset/Anime/Character/Zombie/Chapter9/Robot/ZombieRobot.tscn" id="8"]
+
+[sub_resource type="Resource" id="Resource_diq34"]
+script = ExtResource("3")
+num = 500.0
+metadata/_custom_type_script = "uid://bt7fis5jparcx"
+
+[node name="TowerDefenseZombieRobot" unique_id=963184311 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+eventList = [SubResource("Resource_diq34")]
+walkAnimeClip = "Walk1&Walk2"
+swimAnimeClip = "Swim"
+dieAnimeClip = "Death1&Death2&Superlongdeath"
+dieWaterAnimeClip = "Waterdeath"
+waterHeight = 25.0
+HitBoxDefinition = ExtResource("4")
+idleAnimeClip = "Idle1&Idle2"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieRobot")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieRobot/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"Head": ExtResource("7")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieRobot/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieRobot/HeadSlot")
+}
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieRobot" parent="SpriteGroup/TransformPoint" index="0" unique_id=424815276 instance=ExtResource("8")]
+position = Vector2(-12, -33)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieRobot" index="0" unique_id=588359294]
+position = Vector2(-4.27915, -50.481956)
+rotation = 0.096716106
+scale = Vector2(0.7989293, 0.7989293)
+drawLayerId = -2
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieRobot" index="1" unique_id=621681943]
+position = Vector2(8.2464075, -0.81264687)
+rotation = 0.051452536
+scale = Vector2(0.79785043, 0.79785043)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieRobot" index="2" unique_id=2122383465]
+position = Vector2(-39.201363, -35.04246)
+rotation = 0.01598537
+scale = Vector2(0.7999339, 0.7999339)
+
+[editable path="SpriteGroup/TransformPoint/ZombieRobot"]

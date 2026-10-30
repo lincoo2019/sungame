@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ExplodeComponentDefinition" format=3 uid="uid://bevg7n4u0q1ar"]
+
+[ext_resource type="Resource" uid="uid://64l72hop5ev2" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://cn7y3781yd18v" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventGarlic.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="3"]
+[ext_resource type="Script" uid="uid://b3ws8dbxgchm3" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponentDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="Resource_w8hdm"]
+script = ExtResource("2")
+metadata/_custom_type_script = "uid://cn7y3781yd18v"
+
+[sub_resource type="RectangleShape2D" id="ExplodePreviewRectangle"]
+size = Vector2(240, 294)
+
+[sub_resource type="Resource" id="ExplodePreviewShape"]
+script = ExtResource("3")
+Geometry = SubResource("ExplodePreviewRectangle")
+
+[resource]
+script = ExtResource("4")
+explodeMethod = "Line"
+explodeAudio = ""
+explodeEvent = [SubResource("Resource_w8hdm")]
+explodeEffect = null
+explodeShape = SubResource("ExplodePreviewShape")
+explodeJalaNum = 500.0
+explodeJalaOffset = [0]
+cameraShakeUse = false
+ComponentTypeId = "ExplodeComponent"
+DefinitionId = "builtin.component.explode.asset.anime.character.plant.other.garlictallnut.scene.towerdefenseplantgarlictallnut.tscn"
+InstanceId = "character.explode"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"ExplodeComponent"]

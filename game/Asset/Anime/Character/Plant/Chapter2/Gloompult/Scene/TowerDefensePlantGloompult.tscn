@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://btm2phyyoibdk"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://bpal3w84l01ir" path="res://Asset/Anime/Character/Plant/Chapter2/Gloompult/Scene/TowerDefensePlantGloompultComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bi2e3wtltdo76" path="res://Asset/Anime/Character/Plant/Chapter2/Gloompult/Scene/TowerDefensePlantGloompult.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dyatu8exuiso7" path="res://Asset/Anime/Character/Plant/Chapter2/Gloompult/Config/TowerDefensePlantGloompult.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://dbmne3onxa3v1" path="res://Asset/Anime/Character/Plant/Chapter2/Gloompult/Gloompult.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantGloompult" unique_id=768541785 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 3.0
+fireNum = 1
+sleepAnimeClip = "Sleep"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/Gloompult")
+Custom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="Gloompult" parent="SpriteGroup/TransformPoint" index="0" unique_id=1958753958 instance=ExtResource("6")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/Gloompult" index="0" unique_id=276219698]
+script = ExtResource("7")
+followSlotId = 27
+Layer = 27
+drawLayerId = 27
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/Gloompult/AdobeAnimateSlot" index="0" unique_id=950958906]
+position = Vector2(16.1994, 11.0961)

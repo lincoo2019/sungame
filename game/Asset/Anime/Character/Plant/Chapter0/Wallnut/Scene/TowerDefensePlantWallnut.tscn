@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cc3eup5kd355o"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://br3ingi0nm14c" path="res://Asset/Anime/Character/Plant/Chapter0/Wallnut/Scene/TowerDefensePlantWallnut.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_40p5x64_At_0_0.tres" id="3"]
+[ext_resource type="Resource" uid="uid://cfun4xnjhs8dc" path="res://Asset/Anime/Character/Plant/Chapter0/Wallnut/Config/TowerDefensePlantWallnut.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://boocp7vnh24m5" path="res://Asset/Anime/Character/Plant/Chapter0/Wallnut/Wallnut.tscn" id="5"]
+
+[node name="TowerDefensePlantWallnut" node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/Wallnut")
+PreviewDamagePointPersontage = 1.0
+
+[node name="TransformPoint" parent="SpriteGroup" index="1"]
+position = Vector2(0, 30)
+
+[node name="Wallnut" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("5")]
+position = Vector2(0, -30)
+trueFrameRate = 30.0
+Animation/MediaReplace/Wallnut_body.png = "res://Asset/AtlasSource/DamagePoint/Anime/Character/Plant/Chapter1/Firenut/DamagePoint/WallnutBody.png"
+
+[node name="ShadowSprite" parent="." index="3"]
+position = Vector2(0, 30)

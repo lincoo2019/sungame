@@ -1,0 +1,166 @@
+[gd_resource type="Resource" script_class="FireComponentDefinition" format=3 uid="uid://bjmaar28tc573"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://bi6p43no6bcyx" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeightItem.cs" id="5"]
+[ext_resource type="Script" uid="uid://6pte6bht2hgs" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeight.cs" id="6"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="7"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="8"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="9"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mig1w"]
+b = Vector2(2000, 0)
+
+[sub_resource type="Resource" id="AabbShape2DResource_fire_area"]
+script = ExtResource("2")
+Geometry = SubResource("SegmentShape2D_mig1w")
+
+[sub_resource type="Resource" id="Resource_l2hld"]
+script = ExtResource("3")
+projectileName = &"SnowPea"
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+overrideCatapultHeight = true
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_d53f0"]
+script = ExtResource("3")
+projectileName = &"Butter"
+baseDamage = 40.0
+damageFlags = 2
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+overrideCatapultHeight = true
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_qa56g"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_d53f0")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_imuqv"]
+script = ExtResource("5")
+projectileResource = SubResource("Resource_qa56g")
+weight = 0.25
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Resource_3o2jt"]
+script = ExtResource("3")
+projectileName = &"SnowPea"
+baseDamage = 20.0
+damageFlags = 2
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+overrideCatapultHeight = true
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_vyp1e"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_3o2jt")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_kb0o0"]
+script = ExtResource("5")
+projectileResource = SubResource("Resource_vyp1e")
+weight = 0.75
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Resource_c50u6"]
+script = ExtResource("6")
+projectileData = SubResource("Resource_l2hld")
+projectileWeight = [SubResource("Resource_imuqv"), SubResource("Resource_kb0o0")]
+metadata/_custom_type_script = "uid://6pte6bht2hgs"
+
+[sub_resource type="Resource" id="Resource_y31kf"]
+script = ExtResource("7")
+projectile = SubResource("Resource_c50u6")
+useParentCollision = false
+collisionFlags = 43
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Resource_g03mw"]
+script = ExtResource("3")
+projectileName = &"SnowPea"
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_pm0vh"]
+script = ExtResource("3")
+projectileName = &"Butter"
+baseDamage = 40.0
+damageFlags = 2
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_ss75l"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_pm0vh")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_qtb3k"]
+script = ExtResource("5")
+projectileResource = SubResource("Resource_ss75l")
+weight = 0.25
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Resource_2j3rf"]
+script = ExtResource("3")
+projectileName = &"SnowPea"
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_poonj"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_2j3rf")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_334hd"]
+script = ExtResource("5")
+projectileResource = SubResource("Resource_poonj")
+weight = 0.75
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Resource_g2h5c"]
+script = ExtResource("6")
+projectileData = SubResource("Resource_g03mw")
+projectileWeight = [SubResource("Resource_qtb3k"), SubResource("Resource_334hd")]
+metadata/_custom_type_script = "uid://6pte6bht2hgs"
+
+[sub_resource type="Resource" id="Resource_1bony"]
+script = ExtResource("7")
+projectile = SubResource("Resource_g2h5c")
+useParentCollision = false
+collisionFlags = 1
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Resource_3w88d"]
+script = ExtResource("8")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_ry5vm"]
+script = ExtResource("8")
+checkProjectileId = 1
+firePosId = 1
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[resource]
+script = ExtResource("9")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/SnowCornpult/AdobeAnimateSlot/Marker2D"), NodePath("SpriteGroup/TransformPoint/SnowCornpult/AdobeAnimateSlot2/Marker2D")]
+spritePath = NodePath("SpriteGroup/TransformPoint/SnowCornpult")
+checkShapeResources = [SubResource("AabbShape2DResource_fire_area")]
+fireAnimeTimeScale = 3.0
+fireIntervalBase = 2.0
+fireInterval = 2.0
+fireCheckList = [SubResource("Resource_y31kf"), SubResource("Resource_1bony")]
+fireProjectileList = [SubResource("Resource_3w88d"), SubResource("Resource_ry5vm")]
+useCollisionEveryPos = true
+readyConfirmProjectile = true
+checkHeight = false
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.other.snow_cornpult"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]

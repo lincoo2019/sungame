@@ -1,0 +1,883 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://bjhhwgb6wnqy7"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/Chapter4/Level4_4D.json" id="1_hdxvf"]
+[ext_resource type="Script" uid="uid://ba76j1qc1ehmt" path="res://Registry/Battle/Feature/Event/Resource/TowerDefenseLevelEventBase.cs" id="2_f0p1e"]
+[ext_resource type="Script" uid="uid://dbpqspbkam44d" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.cs" id="3_5rjjy"]
+[ext_resource type="Script" uid="uid://d17gywmt3g3lb" path="res://Resource/TowerDefense/Level/PreSpawn/TowerDefenseLevelPreSpawnConfig.cs" id="4_xx704"]
+[ext_resource type="Script" uid="uid://dfj86l56q1n8g" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.cs" id="5_8opvn"]
+[ext_resource type="Script" uid="uid://blrb5liskebi6" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.cs" id="6_714dq"]
+[ext_resource type="Script" uid="uid://br6kawt7m03sc" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelDynamicConfig.cs" id="7_nk06m"]
+[ext_resource type="Script" uid="uid://ctvkmai1q8sa6" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.cs" id="8_u5cbo"]
+[ext_resource type="Script" uid="uid://c67uxwpu4jftb" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.cs" id="9_tsbnx"]
+[ext_resource type="Script" uid="uid://cikc5vwojvfpa" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnDynamicConfig.cs" id="10_qn1fq"]
+[ext_resource type="Script" uid="uid://gc0ev0pebyep" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnConfig.cs" id="11_oylsx"]
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="12_xovjh"]
+
+[sub_resource type="Resource" id="Resource_f0p1e"]
+script = ExtResource("3_5rjjy")
+open = true
+beginColumn = 7
+
+[sub_resource type="Resource" id="Resource_5rjjy"]
+script = ExtResource("6_714dq")
+open = false
+
+[sub_resource type="Resource" id="Resource_xx704"]
+script = ExtResource("7_nk06m")
+pointIncrementPerWave = -10
+startingPoints = -50
+startingWave = 3
+zombiePool = Array[String](["ZombieNormal"])
+
+[sub_resource type="Resource" id="Resource_8opvn"]
+script = ExtResource("7_nk06m")
+pointIncrementPerWave = -10
+startingPoints = -50
+startingWave = 4
+zombiePool = Array[String](["ZombieNormal"])
+
+[sub_resource type="Resource" id="Resource_714dq"]
+script = ExtResource("7_nk06m")
+pointIncrementPerWave = -5
+startingPoints = -100
+startingWave = 5
+zombiePool = Array[String](["ZombieNormal"])
+
+[sub_resource type="Resource" id="Resource_nk06m"]
+script = ExtResource("7_nk06m")
+
+[sub_resource type="Resource" id="Resource_u5cbo"]
+script = ExtResource("7_nk06m")
+pointIncrementPerWave = 20
+startingPoints = 20
+startingWave = 5
+zombiePool = Array[String](["ZombieNormal"])
+
+[sub_resource type="Resource" id="Resource_tsbnx"]
+script = ExtResource("7_nk06m")
+pointIncrementPerWave = 40
+startingPoints = 40
+startingWave = 4
+zombiePool = Array[String](["ZombieNormal"])
+
+[sub_resource type="Resource" id="Resource_qn1fq"]
+script = ExtResource("7_nk06m")
+pointIncrementPerWave = 60
+startingPoints = 60
+startingWave = 3
+zombiePool = Array[String](["ZombieNormal"])
+
+[sub_resource type="Resource" id="Resource_oylsx"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_xovjh"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+
+[sub_resource type="Resource" id="Resource_yi0cn"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_xovjh")])
+dynamic = SubResource("Resource_oylsx")
+
+[sub_resource type="Resource" id="Resource_8fcoq"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_irxvx"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+
+[sub_resource type="Resource" id="Resource_j1b5j"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_irxvx")])
+dynamic = SubResource("Resource_8fcoq")
+
+[sub_resource type="Resource" id="Resource_3bcxf"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_7evl3"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+
+[sub_resource type="Resource" id="Resource_mgtgx"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+
+[sub_resource type="Resource" id="Resource_hks4n"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_7evl3"), SubResource("Resource_mgtgx")])
+dynamic = SubResource("Resource_3bcxf")
+
+[sub_resource type="Resource" id="Resource_n7bf0"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_nrp0f"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+
+[sub_resource type="Resource" id="Resource_hdynr"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+
+[sub_resource type="Resource" id="Resource_i6tsj"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+
+[sub_resource type="Resource" id="Resource_m7582"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_nrp0f"), SubResource("Resource_hdynr"), SubResource("Resource_i6tsj")])
+dynamic = SubResource("Resource_n7bf0")
+
+[sub_resource type="Resource" id="Resource_tnsui"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_i5cws"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 2
+
+[sub_resource type="Resource" id="Resource_c6r3x"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+
+[sub_resource type="Resource" id="Resource_svt2b"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_ucblu"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_i5cws"), SubResource("Resource_c6r3x"), SubResource("Resource_svt2b")])
+dynamic = SubResource("Resource_tnsui")
+
+[sub_resource type="Resource" id="Resource_tk4ne"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_u3r3e"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 3
+
+[sub_resource type="Resource" id="Resource_pl656"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 2
+
+[sub_resource type="Resource" id="Resource_jh5pu"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_u3r3e"), SubResource("Resource_pl656")])
+dynamic = SubResource("Resource_tk4ne")
+
+[sub_resource type="Resource" id="Resource_4a7fj"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_2k51m"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 3
+
+[sub_resource type="Resource" id="Resource_wtjtk"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+
+[sub_resource type="Resource" id="Resource_6vqky"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+
+[sub_resource type="Resource" id="Resource_nsgd0"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_stac1"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+
+[sub_resource type="Resource" id="Resource_bpkgr"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_rywgy"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_2k51m"), SubResource("Resource_wtjtk"), SubResource("Resource_6vqky"), SubResource("Resource_nsgd0"), SubResource("Resource_stac1"), SubResource("Resource_bpkgr")])
+dynamic = SubResource("Resource_4a7fj")
+
+[sub_resource type="Resource" id="Resource_gnhw2"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_3hiue"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 3
+
+[sub_resource type="Resource" id="Resource_sisyt"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+
+[sub_resource type="Resource" id="Resource_toj3x"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+
+[sub_resource type="Resource" id="Resource_5vbse"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+
+[sub_resource type="Resource" id="Resource_2mcac"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_dbl3w"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+
+[sub_resource type="Resource" id="Resource_oisju"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDigger"
+
+[sub_resource type="Resource" id="Resource_djrq3"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_3hiue"), SubResource("Resource_sisyt"), SubResource("Resource_toj3x"), SubResource("Resource_5vbse"), SubResource("Resource_2mcac"), SubResource("Resource_dbl3w"), SubResource("Resource_oisju")])
+dynamic = SubResource("Resource_gnhw2")
+
+[sub_resource type="Resource" id="Resource_lmrv1"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_t6ndu"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 2
+
+[sub_resource type="Resource" id="Resource_n8jif"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 2
+
+[sub_resource type="Resource" id="Resource_63ex4"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+
+[sub_resource type="Resource" id="Resource_f61qf"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+
+[sub_resource type="Resource" id="Resource_20wxg"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_trxhg"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+
+[sub_resource type="Resource" id="Resource_viu4l"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_aqvqk"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_t6ndu"), SubResource("Resource_n8jif"), SubResource("Resource_63ex4"), SubResource("Resource_f61qf"), SubResource("Resource_20wxg"), SubResource("Resource_trxhg"), SubResource("Resource_viu4l")])
+dynamic = SubResource("Resource_lmrv1")
+
+[sub_resource type="Resource" id="Resource_en72g"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_cbhph"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 2
+
+[sub_resource type="Resource" id="Resource_w3h1w"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 3
+
+[sub_resource type="Resource" id="Resource_82s0l"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+
+[sub_resource type="Resource" id="Resource_3p3do"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+
+[sub_resource type="Resource" id="Resource_2q20q"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+
+[sub_resource type="Resource" id="Resource_bakoi"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_j27nw"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+
+[sub_resource type="Resource" id="Resource_3nx4a"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDigger"
+
+[sub_resource type="Resource" id="Resource_pyaln"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_cbhph"), SubResource("Resource_w3h1w"), SubResource("Resource_82s0l"), SubResource("Resource_3p3do"), SubResource("Resource_2q20q"), SubResource("Resource_bakoi"), SubResource("Resource_j27nw"), SubResource("Resource_3nx4a")])
+dynamic = SubResource("Resource_en72g")
+
+[sub_resource type="Resource" id="Resource_vl0y7"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_tkw6k"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 2
+
+[sub_resource type="Resource" id="Resource_yrel1"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 2
+
+[sub_resource type="Resource" id="Resource_vpg7g"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+
+[sub_resource type="Resource" id="Resource_geuhh"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+num = 2
+
+[sub_resource type="Resource" id="Resource_0x0ot"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+
+[sub_resource type="Resource" id="Resource_65hma"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+
+[sub_resource type="Resource" id="Resource_p861f"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_jp0km"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_tkw6k"), SubResource("Resource_yrel1"), SubResource("Resource_vpg7g"), SubResource("Resource_geuhh"), SubResource("Resource_0x0ot"), SubResource("Resource_65hma"), SubResource("Resource_p861f")])
+dynamic = SubResource("Resource_vl0y7")
+
+[sub_resource type="Resource" id="Resource_a8hnv"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_tqnc5"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 4
+
+[sub_resource type="Resource" id="Resource_p3nfj"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 2
+
+[sub_resource type="Resource" id="Resource_u13jm"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+num = 2
+
+[sub_resource type="Resource" id="Resource_lg32s"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+
+[sub_resource type="Resource" id="Resource_a8wj4"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+num = 2
+
+[sub_resource type="Resource" id="Resource_mr6rq"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+num = 2
+
+[sub_resource type="Resource" id="Resource_1gilt"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_x2h58"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDigger"
+
+[sub_resource type="Resource" id="Resource_inqnq"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_tqnc5"), SubResource("Resource_p3nfj"), SubResource("Resource_u13jm"), SubResource("Resource_lg32s"), SubResource("Resource_a8wj4"), SubResource("Resource_mr6rq"), SubResource("Resource_1gilt"), SubResource("Resource_x2h58")])
+dynamic = SubResource("Resource_a8hnv")
+
+[sub_resource type="Resource" id="Resource_eak8i"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_g11a0"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 3
+
+[sub_resource type="Resource" id="Resource_t2w1o"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+num = 3
+
+[sub_resource type="Resource" id="Resource_tk2af"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 2
+
+[sub_resource type="Resource" id="Resource_48i3e"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+
+[sub_resource type="Resource" id="Resource_45arx"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+
+[sub_resource type="Resource" id="Resource_kwbwp"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDigger"
+
+[sub_resource type="Resource" id="Resource_7es4p"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_g11a0"), SubResource("Resource_t2w1o"), SubResource("Resource_tk2af"), SubResource("Resource_48i3e"), SubResource("Resource_45arx"), SubResource("Resource_kwbwp")])
+dynamic = SubResource("Resource_eak8i")
+
+[sub_resource type="Resource" id="Resource_ffee1"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_ut33c"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 3
+
+[sub_resource type="Resource" id="Resource_0ydnb"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 2
+
+[sub_resource type="Resource" id="Resource_n7rpl"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+num = 2
+
+[sub_resource type="Resource" id="Resource_viukt"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+num = 4
+
+[sub_resource type="Resource" id="Resource_ll8kh"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+num = 3
+
+[sub_resource type="Resource" id="Resource_itxnc"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+
+[sub_resource type="Resource" id="Resource_x23io"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+num = 3
+
+[sub_resource type="Resource" id="Resource_oh6rl"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_pr4vd"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDigger"
+num = 2
+
+[sub_resource type="Resource" id="Resource_4a723"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_ut33c"), SubResource("Resource_0ydnb"), SubResource("Resource_n7rpl"), SubResource("Resource_viukt"), SubResource("Resource_ll8kh"), SubResource("Resource_itxnc"), SubResource("Resource_x23io"), SubResource("Resource_oh6rl"), SubResource("Resource_pr4vd")])
+dynamic = SubResource("Resource_ffee1")
+
+[sub_resource type="Resource" id="Resource_rrvhm"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_2o4wi"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 3
+
+[sub_resource type="Resource" id="Resource_vavo2"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 2
+
+[sub_resource type="Resource" id="Resource_lbfn6"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+
+[sub_resource type="Resource" id="Resource_esviq"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+
+[sub_resource type="Resource" id="Resource_4yodc"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+num = 3
+
+[sub_resource type="Resource" id="Resource_0pluj"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+
+[sub_resource type="Resource" id="Resource_67ncy"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+
+[sub_resource type="Resource" id="Resource_dnn8e"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_560hl"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDigger"
+num = 2
+
+[sub_resource type="Resource" id="Resource_k2x01"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_2o4wi"), SubResource("Resource_vavo2"), SubResource("Resource_lbfn6"), SubResource("Resource_esviq"), SubResource("Resource_4yodc"), SubResource("Resource_0pluj"), SubResource("Resource_67ncy"), SubResource("Resource_dnn8e"), SubResource("Resource_560hl")])
+dynamic = SubResource("Resource_rrvhm")
+
+[sub_resource type="Resource" id="Resource_x28kr"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_8ul8i"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 3
+
+[sub_resource type="Resource" id="Resource_hx7u3"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 2
+
+[sub_resource type="Resource" id="Resource_s4mtn"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+
+[sub_resource type="Resource" id="Resource_up3eg"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+
+[sub_resource type="Resource" id="Resource_aq5cy"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+num = 2
+
+[sub_resource type="Resource" id="Resource_oqxnq"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+
+[sub_resource type="Resource" id="Resource_lrtaq"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+
+[sub_resource type="Resource" id="Resource_2qjyf"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_g4ydx"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDigger"
+num = 2
+
+[sub_resource type="Resource" id="Resource_vci0d"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_8ul8i"), SubResource("Resource_hx7u3"), SubResource("Resource_s4mtn"), SubResource("Resource_up3eg"), SubResource("Resource_aq5cy"), SubResource("Resource_oqxnq"), SubResource("Resource_lrtaq"), SubResource("Resource_2qjyf"), SubResource("Resource_g4ydx")])
+dynamic = SubResource("Resource_x28kr")
+
+[sub_resource type="Resource" id="Resource_ff8br"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_ek3x1"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 3
+
+[sub_resource type="Resource" id="Resource_v4xe1"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 2
+
+[sub_resource type="Resource" id="Resource_hn1ig"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+num = 2
+
+[sub_resource type="Resource" id="Resource_dqkjy"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+num = 4
+
+[sub_resource type="Resource" id="Resource_1y8s5"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+num = 3
+
+[sub_resource type="Resource" id="Resource_twoqv"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+
+[sub_resource type="Resource" id="Resource_i0vhb"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+num = 3
+
+[sub_resource type="Resource" id="Resource_a1q80"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_owpw7"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDigger"
+num = 2
+
+[sub_resource type="Resource" id="Resource_ogo6l"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_ek3x1"), SubResource("Resource_v4xe1"), SubResource("Resource_hn1ig"), SubResource("Resource_dqkjy"), SubResource("Resource_1y8s5"), SubResource("Resource_twoqv"), SubResource("Resource_i0vhb"), SubResource("Resource_a1q80"), SubResource("Resource_owpw7")])
+dynamic = SubResource("Resource_ff8br")
+
+[sub_resource type="Resource" id="Resource_dwh3a"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_yrvfn"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 3
+
+[sub_resource type="Resource" id="Resource_8gvan"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 2
+
+[sub_resource type="Resource" id="Resource_g0ta3"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+
+[sub_resource type="Resource" id="Resource_b364u"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+
+[sub_resource type="Resource" id="Resource_g7epj"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+num = 3
+
+[sub_resource type="Resource" id="Resource_5agw4"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+
+[sub_resource type="Resource" id="Resource_8vcdc"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+
+[sub_resource type="Resource" id="Resource_4l8vo"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_maxhy"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDigger"
+num = 2
+
+[sub_resource type="Resource" id="Resource_8xaer"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_yrvfn"), SubResource("Resource_8gvan"), SubResource("Resource_g0ta3"), SubResource("Resource_b364u"), SubResource("Resource_g7epj"), SubResource("Resource_5agw4"), SubResource("Resource_8vcdc"), SubResource("Resource_4l8vo"), SubResource("Resource_maxhy")])
+dynamic = SubResource("Resource_dwh3a")
+
+[sub_resource type="Resource" id="Resource_l381w"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_s1lfc"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 3
+
+[sub_resource type="Resource" id="Resource_yvccx"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 2
+
+[sub_resource type="Resource" id="Resource_0tesr"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+num = 2
+
+[sub_resource type="Resource" id="Resource_556fl"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+num = 4
+
+[sub_resource type="Resource" id="Resource_erw72"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+num = 3
+
+[sub_resource type="Resource" id="Resource_d6af1"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+
+[sub_resource type="Resource" id="Resource_54iaw"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+num = 3
+
+[sub_resource type="Resource" id="Resource_1xxj4"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_td4aw"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDigger"
+num = 2
+
+[sub_resource type="Resource" id="Resource_jfh3p"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_s1lfc"), SubResource("Resource_yvccx"), SubResource("Resource_0tesr"), SubResource("Resource_556fl"), SubResource("Resource_erw72"), SubResource("Resource_d6af1"), SubResource("Resource_54iaw"), SubResource("Resource_1xxj4"), SubResource("Resource_td4aw")])
+dynamic = SubResource("Resource_l381w")
+
+[sub_resource type="Resource" id="Resource_jldef"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_t6cqf"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 3
+
+[sub_resource type="Resource" id="Resource_udmlv"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 2
+
+[sub_resource type="Resource" id="Resource_ax7yx"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+
+[sub_resource type="Resource" id="Resource_eb8mk"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+num = 2
+
+[sub_resource type="Resource" id="Resource_g3gqv"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+num = 3
+
+[sub_resource type="Resource" id="Resource_7ynqk"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+
+[sub_resource type="Resource" id="Resource_kpakh"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+
+[sub_resource type="Resource" id="Resource_aspxg"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+
+[sub_resource type="Resource" id="Resource_dymgf"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDigger"
+num = 2
+
+[sub_resource type="Resource" id="Resource_lcdh4"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_t6cqf"), SubResource("Resource_udmlv"), SubResource("Resource_ax7yx"), SubResource("Resource_eb8mk"), SubResource("Resource_g3gqv"), SubResource("Resource_7ynqk"), SubResource("Resource_kpakh"), SubResource("Resource_aspxg"), SubResource("Resource_dymgf")])
+dynamic = SubResource("Resource_jldef")
+
+[sub_resource type="Resource" id="Resource_lxved"]
+script = ExtResource("10_qn1fq")
+
+[sub_resource type="Resource" id="Resource_agblc"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormal"
+num = 3
+
+[sub_resource type="Resource" id="Resource_mkcd0"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalCone"
+num = 2
+
+[sub_resource type="Resource" id="Resource_ni58c"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieMagnetic"
+num = 3
+
+[sub_resource type="Resource" id="Resource_hj4qm"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieFootball"
+num = 4
+
+[sub_resource type="Resource" id="Resource_gwrto"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+num = 3
+
+[sub_resource type="Resource" id="Resource_xx4k3"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDuck"
+num = 4
+
+[sub_resource type="Resource" id="Resource_u3wi0"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieLadder"
+num = 4
+
+[sub_resource type="Resource" id="Resource_mcbft"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieNormalBucket"
+num = 3
+
+[sub_resource type="Resource" id="Resource_jno88"]
+script = ExtResource("11_oylsx")
+zombie = "ZombieDigger"
+num = 4
+
+[sub_resource type="Resource" id="Resource_sq7qa"]
+script = ExtResource("9_tsbnx")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+spawn = Array[ExtResource("11_oylsx")]([SubResource("Resource_agblc"), SubResource("Resource_mkcd0"), SubResource("Resource_ni58c"), SubResource("Resource_hj4qm"), SubResource("Resource_gwrto"), SubResource("Resource_xx4k3"), SubResource("Resource_u3wi0"), SubResource("Resource_mcbft"), SubResource("Resource_jno88")])
+dynamic = SubResource("Resource_lxved")
+
+[sub_resource type="Resource" id="Resource_mt3pg"]
+script = ExtResource("8_u5cbo")
+flagWaveInterval = 7
+maxNextWaveHealthPercentage = 0.25
+minNextWaveHealthPercentage = 0.3
+spawnColStart = 10.0
+dynamic = Array[ExtResource("7_nk06m")]([null, null, null, null, null, null, null, SubResource("Resource_xx704"), SubResource("Resource_8opvn"), SubResource("Resource_714dq"), SubResource("Resource_nk06m"), SubResource("Resource_u5cbo"), SubResource("Resource_tsbnx"), SubResource("Resource_qn1fq")])
+wave = Array[ExtResource("9_tsbnx")]([SubResource("Resource_yi0cn"), SubResource("Resource_j1b5j"), SubResource("Resource_hks4n"), SubResource("Resource_m7582"), SubResource("Resource_ucblu"), SubResource("Resource_jh5pu"), SubResource("Resource_rywgy"), SubResource("Resource_djrq3"), SubResource("Resource_aqvqk"), SubResource("Resource_pyaln"), SubResource("Resource_jp0km"), SubResource("Resource_inqnq"), SubResource("Resource_7es4p"), SubResource("Resource_4a723"), SubResource("Resource_k2x01"), SubResource("Resource_vci0d"), SubResource("Resource_ogo6l"), SubResource("Resource_8xaer"), SubResource("Resource_jfh3p"), SubResource("Resource_lcdh4"), SubResource("Resource_sq7qa")])
+
+[resource]
+script = ExtResource("5_8opvn")
+data = ExtResource("1_hdxvf")
+name = "Level4_4"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "PLAYERS_MORDEN_BACKYARD_NIGHT_LEVEL_NAME"
+levelNumber = 4
+homeWorld = 1
+map = "BackyardNight"
+backgroundMusic = "BackyardNight"
+firstRewardType = 2
+firstRewardValue = "ShovelMagnet"
+sunManager = SubResource("Resource_5rjjy")
+fogManager = SubResource("Resource_f0p1e")
+waveManager = SubResource("Resource_mt3pg")
+PacketBank/Name = "GeneralPlant"
+metadata/_custom_type_script = "uid://dfj86l56q1n8g"

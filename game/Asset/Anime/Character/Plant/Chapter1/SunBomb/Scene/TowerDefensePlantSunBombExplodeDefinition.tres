@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="ExplodeComponentDefinition" format=3 uid="uid://c17k5v80olwlt"]
+
+[ext_resource type="Resource" uid="uid://64l72hop5ev2" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponentStateMachine.tres" id="1"]
+[ext_resource type="PackedScene" uid="uid://b73i0bacl5jnh" path="res://Prefab/Particles/Explosion/SunBombExplosion/SunBombExplosion.tscn" id="2"]
+[ext_resource type="Script" uid="uid://bt7fis5jparcx" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.cs" id="3"]
+[ext_resource type="Script" uid="uid://cewg6ylngys14" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventSunCreate.cs" id="4"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="5"]
+[ext_resource type="Script" uid="uid://b3ws8dbxgchm3" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponentDefinition.cs" id="6"]
+
+[sub_resource type="Resource" id="Resource_hs6c2"]
+script = ExtResource("3")
+metadata/_custom_type_script = "uid://bt7fis5jparcx"
+
+[sub_resource type="Resource" id="Resource_5kq55"]
+script = ExtResource("4")
+dieCreate = true
+byCamp = true
+metadata/_custom_type_script = "uid://cewg6ylngys14"
+
+[sub_resource type="RectangleShape2D" id="ExplodePreviewRectangle"]
+size = Vector2(240, 294)
+
+[sub_resource type="Resource" id="ExplodePreviewShape"]
+script = ExtResource("5")
+Geometry = SubResource("ExplodePreviewRectangle")
+
+[resource]
+script = ExtResource("6")
+spritePath = NodePath("SpriteGroup/TransformPoint/SunBomb")
+explodeEvent = [SubResource("Resource_hs6c2"), SubResource("Resource_5kq55")]
+explodeEffect = ExtResource("2")
+explodeShape = SubResource("ExplodePreviewShape")
+ComponentTypeId = "ExplodeComponent"
+DefinitionId = "builtin.component.explode.asset.anime.character.plant.chapter1.sunbomb.scene.towerdefenseplantsunbomb.tscn"
+InstanceId = "character.explode"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"ExplodeComponent"]

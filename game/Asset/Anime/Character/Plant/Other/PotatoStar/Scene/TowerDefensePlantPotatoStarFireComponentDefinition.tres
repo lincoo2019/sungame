@@ -1,0 +1,132 @@
+[gd_resource type="Resource" script_class="FireComponentDefinition" format=3 uid="uid://cjga505foyqpr"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbglc127qw1jb" path="res://Resource/TowerDefense/Collision/AabbRay2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://bi6p43no6bcyx" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeightItem.cs" id="5"]
+[ext_resource type="Script" uid="uid://6pte6bht2hgs" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeight.cs" id="6"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="7"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="8"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="9"]
+
+[sub_resource type="Resource" id="AabbRay2DResource_upper_forward"]
+script = ExtResource("2")
+LocalTransform = Transform2D(0.8660254, -0.5, 0.5, 0.8660254, 0, 0)
+
+[sub_resource type="Resource" id="AabbRay2DResource_up"]
+script = ExtResource("2")
+LocalTransform = Transform2D(-4.371139e-08, -1, 1, -4.371139e-08, 0, 0)
+
+[sub_resource type="Resource" id="AabbRay2DResource_backward"]
+script = ExtResource("2")
+LocalTransform = Transform2D(-1, -8.742278e-08, 8.742278e-08, -1, 0, 0)
+
+[sub_resource type="Resource" id="AabbRay2DResource_down"]
+script = ExtResource("2")
+LocalTransform = Transform2D(-4.371139e-08, 1, -1, -4.371139e-08, 0, 0)
+
+[sub_resource type="Resource" id="AabbRay2DResource_lower_forward"]
+script = ExtResource("2")
+LocalTransform = Transform2D(0.8660254, 0.5, -0.5, 0.8660254, 0, 0)
+
+[sub_resource type="Resource" id="Resource_iypsh"]
+script = ExtResource("3")
+projectileName = &"PotatoStar"
+baseDamage = 40.0
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Resource_11hdx"]
+script = ExtResource("3")
+projectileName = &"SmallPotato"
+baseDamage = 500.0
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Resource_xu7ep"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_11hdx")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_q4c4p"]
+script = ExtResource("5")
+projectileResource = SubResource("Resource_xu7ep")
+weight = 0.1
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Resource_ehog8"]
+script = ExtResource("3")
+projectileName = &"PotatoStar"
+baseDamage = 40.0
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Resource_3voe6"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_ehog8")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_j1ugu"]
+script = ExtResource("5")
+projectileResource = SubResource("Resource_3voe6")
+weight = 0.9
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Resource_r4xsg"]
+script = ExtResource("6")
+projectileData = SubResource("Resource_iypsh")
+projectileWeight = [SubResource("Resource_q4c4p"), SubResource("Resource_j1ugu")]
+metadata/_custom_type_script = "uid://6pte6bht2hgs"
+
+[sub_resource type="Resource" id="Resource_2ewij"]
+script = ExtResource("7")
+projectile = SubResource("Resource_r4xsg")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Resource_26xg7"]
+script = ExtResource("8")
+speed = 500.0
+dir = 330.0
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_v8f3j"]
+script = ExtResource("8")
+firePosId = 1
+speed = 500.0
+dir = 270.0
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_xlld2"]
+script = ExtResource("8")
+firePosId = 2
+speed = 500.0
+dir = 180.0
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_1ehsu"]
+script = ExtResource("8")
+firePosId = 3
+speed = 500.0
+dir = 90.0
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_tvgd6"]
+script = ExtResource("8")
+firePosId = 4
+speed = 500.0
+dir = 30.0
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[resource]
+script = ExtResource("9")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/FireMarker"), NodePath("SpriteGroup/TransformPoint/FireMarker2"), NodePath("SpriteGroup/TransformPoint/FireMarker3"), NodePath("SpriteGroup/TransformPoint/FireMarker4"), NodePath("SpriteGroup/TransformPoint/FireMarker5")]
+spritePath = NodePath("SpriteGroup/TransformPoint/SeaStar")
+checkRayResources = [SubResource("AabbRay2DResource_upper_forward"), SubResource("AabbRay2DResource_up"), SubResource("AabbRay2DResource_backward"), SubResource("AabbRay2DResource_down"), SubResource("AabbRay2DResource_lower_forward")]
+fireAnimeTimeScale = 3.0
+fireCheckList = [SubResource("Resource_2ewij")]
+fireProjectileList = [SubResource("Resource_26xg7"), SubResource("Resource_v8f3j"), SubResource("Resource_xlld2"), SubResource("Resource_1ehsu"), SubResource("Resource_tvgd6")]
+checkAllLine = true
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.other.potato_star"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]

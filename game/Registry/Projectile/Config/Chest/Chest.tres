@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://cb1sw3g4k75uv"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_jyeri"]
+[ext_resource type="Script" uid="uid://ce1i8olrvxerv" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHitBack.cs" id="2_lxb2t"]
+[ext_resource type="Script" uid="uid://bj5pfd0xrphk7" path="res://Resource/TowerDefense/Character/Event/Special/TowerDefenseCharacterEventExplodeProjectileFromMetaData.cs" id="3_hdnrt"]
+[ext_resource type="PackedScene" uid="uid://geg3f83r7bsx" path="res://Asset/Config/Projectile/Chest/Sprite/Chest/ProjectileChest.tscn" id="4_6x132"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="5_2c61n"]
+[ext_resource type="PackedScene" uid="uid://dgksig5vvlsf4" path="res://Asset/Anime/Effect/ChestBroke/ChestBroke.tscn" id="6_db18q"]
+
+[sub_resource type="Resource" id="Resource_8mecq"]
+script = ExtResource("2_lxb2t")
+length = 0.15
+time = 0.1
+metadata/_custom_type_script = "uid://ce1i8olrvxerv"
+
+[sub_resource type="Resource" id="Resource_4awnx"]
+script = ExtResource("3_hdnrt")
+metadata/_custom_type_script = "uid://bj5pfd0xrphk7"
+
+[resource]
+script = ExtResource("5_2c61n")
+name = "Chest"
+baseDamage = 100.0
+projectileScene = ExtResource("4_6x132")
+splatAudio = "Bonk"
+splatScene = ExtResource("6_db18q")
+hitTargetEventList = Array[ExtResource("1_jyeri")]([SubResource("Resource_8mecq"), SubResource("Resource_4awnx")])

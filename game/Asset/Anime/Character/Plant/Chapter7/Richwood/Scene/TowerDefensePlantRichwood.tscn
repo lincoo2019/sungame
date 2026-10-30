@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://igfoxjkdxyno"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter7/Richwood/Scene/TowerDefensePlantRichwoodComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://dgncn3oxmvq68" path="res://Asset/Anime/Character/Plant/Chapter7/Richwood/Scene/TowerDefensePlantRichwood.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dns0v1fmrosh1" path="res://Asset/Anime/Character/Plant/Chapter7/Richwood/Config/TowerDefensePlantRichwood.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://hawv0gtvdf0q" path="res://Asset/Anime/Character/Plant/Chapter7/Richwood/Richwood.tscn" id="6"]
+
+[sub_resource type="Gradient" id="Gradient_7kd5i"]
+offsets = PackedFloat32Array(0, 0.346154, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.952991, 0.952991, 0.952991, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7kd5i"]
+gradient = SubResource("Gradient_7kd5i")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[node name="TowerDefensePlantRichwood" unique_id=719510977 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/Richwood")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="Richwood" parent="SpriteGroup/TransformPoint" index="0" unique_id=786808173 instance=ExtResource("6")]
+position = Vector2(0, -30)
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint" index="1" unique_id=1608422796]
+position = Vector2(4, -57)
+
+[node name="Light" type="PointLight2D" parent="." index="7" unique_id=1537701450]
+unique_name_in_owner = true
+visible = false
+color = Color(0.545098, 1, 1, 1)
+energy = 0.35
+texture = SubResource("GradientTexture2D_7kd5i")

@@ -1,0 +1,862 @@
+[gd_scene format=3 uid="uid://b8m0d1t72dscn"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/SceneEditor/2D/GUI/XW2DSceneEditor.cs" id="1_editor"]
+[ext_resource type="Script" path="res://addons/ModEditor/SceneEditor/2D/GUI/XW2DViewport.cs" id="2_viewport"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ToolSelect.svg" id="4_select"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ToolMove.svg" id="5_move"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ToolRotate.svg" id="6_rotate"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ToolScale.svg" id="7_scale"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ListSelect.svg" id="8_list_select"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/EditPivot.svg" id="9_pivot"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ToolPan.svg" id="10_pan"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/Ruler.svg" id="11_ruler"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/Path2D.svg" id="25_path"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/Polygon2D.svg" id="26_polygon"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Object.svg" id="12_object"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/Snap.svg" id="13_snap"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/SnapGrid.svg" id="14_snap_grid"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/GuiTabMenuHl.svg" id="15_menu"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Lock.svg" id="16_lock"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Unlock.svg" id="17_unlock"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/Group.svg" id="18_group"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/Ungroup.svg" id="19_ungroup"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/Bone.svg" id="20_bone"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/CenterView.svg" id="21_center"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ZoomLess.svg" id="22_zoom_less"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ZoomReset.svg" id="23_zoom_reset"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ZoomMore.svg" id="24_zoom_more"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ControlAlignTopLeft.svg" id="27_layout_top_left"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ControlAlignCenter.svg" id="28_layout_center"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ControlAlignFullRect.svg" id="29_layout_full"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ControlAlignHCenterWide.svg" id="30_layout_hwide"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ControlAlignVCenterWide.svg" id="31_layout_vwide"]
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/XWDirectPropertySurface.cs" id="32_direct_surface"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ArrowLeft.svg" id="33_grow_left"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ArrowRight.svg" id="34_grow_right"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ArrowUp.svg" id="35_grow_up"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ArrowDown.svg" id="36_grow_down"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ControlAlignCenterLeft.svg" id="37_align_left"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ControlAlignCenterRight.svg" id="38_align_right"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ControlAlignCenterTop.svg" id="39_align_top"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/ControlAlignCenterBottom.svg" id="40_align_bottom"]
+[ext_resource type="Script" path="res://addons/ModEditor/SceneEditor/2D/Animation/XW2DAnimationTimelinePanel.cs" id="41_animation_panel"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/AnimationPlayer.svg" id="42_animation"]
+[ext_resource type="Script" path="res://addons/ModEditor/SceneEditor/2D/Grid/XW2DGridSettingsPanel.cs" id="43_grid_settings"]
+
+[node name="XW2DSceneEditor" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_editor")
+
+[node name="MainVBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="SceneTabBar" type="TabBar" parent="MainVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+tab_close_display_policy = 1
+
+[node name="Toolbar" type="HFlowContainer" parent="MainVBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 2
+
+[node name="SelectButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "选择模式"
+toggle_mode = true
+flat = true
+icon = ExtResource("4_select")
+
+[node name="MoveButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "移动模式"
+toggle_mode = true
+flat = true
+icon = ExtResource("5_move")
+
+[node name="RotateButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "旋转模式"
+toggle_mode = true
+flat = true
+icon = ExtResource("6_rotate")
+
+[node name="ScaleButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "缩放模式"
+toggle_mode = true
+flat = true
+icon = ExtResource("7_scale")
+
+[node name="ListSelectButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "列表选择"
+toggle_mode = true
+flat = true
+icon = ExtResource("8_list_select")
+
+[node name="PivotButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "编辑轴心"
+toggle_mode = true
+flat = true
+icon = ExtResource("9_pivot")
+
+[node name="PanButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "平移模式"
+toggle_mode = true
+flat = true
+icon = ExtResource("10_pan")
+
+[node name="RulerButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "标尺模式"
+toggle_mode = true
+flat = true
+icon = ExtResource("11_ruler")
+
+[node name="PathButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "路径工具"
+toggle_mode = true
+flat = true
+icon = ExtResource("25_path")
+
+[node name="PolygonButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "多边形工具"
+toggle_mode = true
+flat = true
+icon = ExtResource("26_polygon")
+
+[node name="ToolSeparator1" type="VSeparator" parent="MainVBox/Toolbar"]
+layout_mode = 2
+
+[node name="LocalSpaceButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "局部坐标（拖动时按 Shift 约束到所选节点的局部轴）"
+toggle_mode = true
+flat = true
+icon = ExtResource("12_object")
+
+[node name="SmartSnapButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "智能吸附"
+toggle_mode = true
+flat = true
+icon = ExtResource("13_snap")
+
+[node name="GridSnapButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "网格吸附"
+toggle_mode = true
+flat = true
+icon = ExtResource("14_snap_grid")
+
+[node name="SnapConfigMenu" type="MenuButton" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "吸附选项"
+flat = true
+icon = ExtResource("15_menu")
+
+[node name="ToolSeparator2" type="VSeparator" parent="MainVBox/Toolbar"]
+layout_mode = 2
+
+[node name="LockButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "锁定所选项"
+flat = true
+icon = ExtResource("16_lock")
+
+[node name="UnlockButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "解锁所选项"
+flat = true
+icon = ExtResource("17_unlock")
+
+[node name="GroupButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "分组所选项"
+flat = true
+icon = ExtResource("18_group")
+
+[node name="UngroupButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "取消所选分组"
+flat = true
+icon = ExtResource("19_ungroup")
+
+[node name="SkeletonMenu" type="MenuButton" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "骨骼选项"
+flat = true
+icon = ExtResource("20_bone")
+
+[node name="AnimationTimelineButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 28)
+layout_mode = 2
+tooltip_text = "展开或收起 2D 动画时间轴"
+toggle_mode = true
+flat = true
+icon = ExtResource("42_animation")
+
+[node name="ToolSeparator3" type="VSeparator" parent="MainVBox/Toolbar"]
+layout_mode = 2
+
+[node name="CenterViewButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "居中所选项"
+flat = true
+icon = ExtResource("21_center")
+
+[node name="ViewMenu" type="MenuButton" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "视图选项"
+flat = true
+icon = ExtResource("15_menu")
+
+[node name="ToolbarSpacer" type="Control" parent="MainVBox/Toolbar"]
+visible = false
+layout_mode = 2
+
+[node name="MousePositionLabel" type="Label" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(86, 0)
+layout_mode = 2
+text = "0, 0"
+horizontal_alignment = 2
+
+[node name="ZoomOutButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "缩小"
+flat = true
+icon = ExtResource("22_zoom_less")
+
+[node name="ZoomLabel" type="Label" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(52, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ZoomResetButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "重置缩放"
+flat = true
+icon = ExtResource("23_zoom_reset")
+
+[node name="ZoomInButton" type="Button" parent="MainVBox/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+tooltip_text = "放大"
+flat = true
+icon = ExtResource("24_zoom_more")
+
+[node name="TransformDirectPanel" type="PanelContainer" parent="MainVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+
+[node name="DirectTransformRow" type="HFlowContainer" parent="MainVBox/TransformDirectPanel"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 4
+
+[node name="TransformSelectionLabel" type="Label" parent="MainVBox/TransformDirectPanel/DirectTransformRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(132, 0)
+layout_mode = 2
+text = "未选择 2D 节点"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="AllPropertiesButton" type="Button" parent="MainVBox/TransformDirectPanel/DirectTransformRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(78, 28)
+layout_mode = 2
+tooltip_text = "在 2D 主工作区打开所选节点的全部属性拼图"
+text = "属性"
+icon = ExtResource("12_object")
+
+[node name="PositionLabel" type="Label" parent="MainVBox/TransformDirectPanel/DirectTransformRow"]
+layout_mode = 2
+text = "位置"
+vertical_alignment = 1
+
+[node name="PositionXSpin" type="SpinBox" parent="MainVBox/TransformDirectPanel/DirectTransformRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(78, 0)
+layout_mode = 2
+min_value = -100000.0
+max_value = 100000.0
+allow_greater = true
+allow_lesser = true
+suffix = " X"
+
+[node name="PositionYSpin" type="SpinBox" parent="MainVBox/TransformDirectPanel/DirectTransformRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(78, 0)
+layout_mode = 2
+min_value = -100000.0
+max_value = 100000.0
+allow_greater = true
+allow_lesser = true
+suffix = " Y"
+
+[node name="RotationLabel" type="Label" parent="MainVBox/TransformDirectPanel/DirectTransformRow"]
+layout_mode = 2
+text = "旋转"
+vertical_alignment = 1
+
+[node name="RotationSpin" type="SpinBox" parent="MainVBox/TransformDirectPanel/DirectTransformRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+min_value = -36000.0
+max_value = 36000.0
+step = 0.1
+allow_greater = true
+allow_lesser = true
+suffix = "°"
+
+[node name="ScaleLabel" type="Label" parent="MainVBox/TransformDirectPanel/DirectTransformRow"]
+layout_mode = 2
+text = "缩放"
+vertical_alignment = 1
+
+[node name="ScaleXSpin" type="SpinBox" parent="MainVBox/TransformDirectPanel/DirectTransformRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+min_value = -1000.0
+max_value = 1000.0
+step = 0.01
+allow_greater = true
+allow_lesser = true
+suffix = " X"
+
+[node name="ScaleYSpin" type="SpinBox" parent="MainVBox/TransformDirectPanel/DirectTransformRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+min_value = -1000.0
+max_value = 1000.0
+step = 0.01
+allow_greater = true
+allow_lesser = true
+suffix = " Y"
+
+[node name="ControlFields" type="HBoxContainer" parent="MainVBox/TransformDirectPanel/DirectTransformRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SizeLabel" type="Label" parent="MainVBox/TransformDirectPanel/DirectTransformRow/ControlFields"]
+layout_mode = 2
+text = "尺寸"
+vertical_alignment = 1
+
+[node name="SizeXSpin" type="SpinBox" parent="MainVBox/TransformDirectPanel/DirectTransformRow/ControlFields"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+max_value = 100000.0
+allow_greater = true
+suffix = " W"
+
+[node name="SizeYSpin" type="SpinBox" parent="MainVBox/TransformDirectPanel/DirectTransformRow/ControlFields"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+max_value = 100000.0
+allow_greater = true
+suffix = " H"
+
+[node name="PivotLabel" type="Label" parent="MainVBox/TransformDirectPanel/DirectTransformRow/ControlFields"]
+layout_mode = 2
+text = "轴心"
+vertical_alignment = 1
+
+[node name="PivotXSpin" type="SpinBox" parent="MainVBox/TransformDirectPanel/DirectTransformRow/ControlFields"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+min_value = -100000.0
+max_value = 100000.0
+allow_greater = true
+allow_lesser = true
+suffix = " X"
+
+[node name="PivotYSpin" type="SpinBox" parent="MainVBox/TransformDirectPanel/DirectTransformRow/ControlFields"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+min_value = -100000.0
+max_value = 100000.0
+allow_greater = true
+allow_lesser = true
+suffix = " Y"
+
+[node name="SelectionLayoutPanel" type="PanelContainer" parent="MainVBox"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+tooltip_text = "多选排版：以画布世界边界对齐或等距分布，锁定节点不会被修改"
+
+[node name="SelectionLayoutFlow" type="HFlowContainer" parent="MainVBox/SelectionLayoutPanel"]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 2
+
+[node name="SelectionLayoutLabel" type="Label" parent="MainVBox/SelectionLayoutPanel/SelectionLayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(104, 30)
+layout_mode = 2
+text = "多选排版"
+vertical_alignment = 1
+
+[node name="AlignSelectionLeftButton" type="Button" parent="MainVBox/SelectionLayoutPanel/SelectionLayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 30)
+layout_mode = 2
+tooltip_text = "左对齐"
+flat = true
+icon = ExtResource("37_align_left")
+
+[node name="AlignSelectionHorizontalCenterButton" type="Button" parent="MainVBox/SelectionLayoutPanel/SelectionLayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 30)
+layout_mode = 2
+tooltip_text = "水平居中对齐"
+flat = true
+icon = ExtResource("28_layout_center")
+
+[node name="AlignSelectionRightButton" type="Button" parent="MainVBox/SelectionLayoutPanel/SelectionLayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 30)
+layout_mode = 2
+tooltip_text = "右对齐"
+flat = true
+icon = ExtResource("38_align_right")
+
+[node name="AlignSelectionTopButton" type="Button" parent="MainVBox/SelectionLayoutPanel/SelectionLayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 30)
+layout_mode = 2
+tooltip_text = "顶部对齐"
+flat = true
+icon = ExtResource("39_align_top")
+
+[node name="AlignSelectionVerticalCenterButton" type="Button" parent="MainVBox/SelectionLayoutPanel/SelectionLayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 30)
+layout_mode = 2
+tooltip_text = "垂直居中对齐"
+flat = true
+icon = ExtResource("28_layout_center")
+
+[node name="AlignSelectionBottomButton" type="Button" parent="MainVBox/SelectionLayoutPanel/SelectionLayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 30)
+layout_mode = 2
+tooltip_text = "底部对齐"
+flat = true
+icon = ExtResource("40_align_bottom")
+
+[node name="DistributeSelectionHorizontalButton" type="Button" parent="MainVBox/SelectionLayoutPanel/SelectionLayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 30)
+layout_mode = 2
+tooltip_text = "水平等距分布"
+flat = true
+icon = ExtResource("30_layout_hwide")
+
+[node name="DistributeSelectionVerticalButton" type="Button" parent="MainVBox/SelectionLayoutPanel/SelectionLayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 30)
+layout_mode = 2
+tooltip_text = "垂直等距分布"
+flat = true
+icon = ExtResource("31_layout_vwide")
+
+[node name="ControlLayoutPanel" type="PanelContainer" parent="MainVBox"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 66)
+layout_mode = 2
+tooltip_text = "Control 布局：锚点、偏移、增长方向与常用可视预设"
+
+[node name="LayoutFlow" type="HFlowContainer" parent="MainVBox/ControlLayoutPanel"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 3
+
+[node name="LayoutLabel" type="Label" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+custom_minimum_size = Vector2(70, 28)
+layout_mode = 2
+text = "Control 布局"
+vertical_alignment = 1
+
+[node name="PresetTopLeftButton" type="Button" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "左上角"
+flat = true
+icon = ExtResource("27_layout_top_left")
+
+[node name="PresetCenterButton" type="Button" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "居中"
+flat = true
+icon = ExtResource("28_layout_center")
+
+[node name="PresetFullRectButton" type="Button" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "铺满父级"
+flat = true
+icon = ExtResource("29_layout_full")
+
+[node name="PresetHCenterWideButton" type="Button" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "水平铺开并垂直居中"
+flat = true
+icon = ExtResource("30_layout_hwide")
+
+[node name="PresetVCenterWideButton" type="Button" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "垂直铺开并水平居中"
+flat = true
+icon = ExtResource("31_layout_vwide")
+
+[node name="AnchorLabel" type="Label" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+custom_minimum_size = Vector2(34, 28)
+layout_mode = 2
+text = "锚点"
+vertical_alignment = 1
+
+[node name="AnchorLeftSpin" type="SpinBox" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 28)
+layout_mode = 2
+min_value = -10.0
+max_value = 10.0
+step = 0.01
+allow_greater = true
+allow_lesser = true
+suffix = " L"
+
+[node name="AnchorTopSpin" type="SpinBox" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 28)
+layout_mode = 2
+min_value = -10.0
+max_value = 10.0
+step = 0.01
+allow_greater = true
+allow_lesser = true
+suffix = " T"
+
+[node name="AnchorRightSpin" type="SpinBox" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 28)
+layout_mode = 2
+min_value = -10.0
+max_value = 10.0
+step = 0.01
+allow_greater = true
+allow_lesser = true
+suffix = " R"
+
+[node name="AnchorBottomSpin" type="SpinBox" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 28)
+layout_mode = 2
+min_value = -10.0
+max_value = 10.0
+step = 0.01
+allow_greater = true
+allow_lesser = true
+suffix = " B"
+
+[node name="OffsetLabel" type="Label" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+custom_minimum_size = Vector2(34, 28)
+layout_mode = 2
+text = "偏移"
+vertical_alignment = 1
+
+[node name="OffsetLeftSpin" type="SpinBox" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(78, 28)
+layout_mode = 2
+min_value = -100000.0
+max_value = 100000.0
+allow_greater = true
+allow_lesser = true
+suffix = " L"
+
+[node name="OffsetTopSpin" type="SpinBox" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(78, 28)
+layout_mode = 2
+min_value = -100000.0
+max_value = 100000.0
+allow_greater = true
+allow_lesser = true
+suffix = " T"
+
+[node name="OffsetRightSpin" type="SpinBox" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(78, 28)
+layout_mode = 2
+min_value = -100000.0
+max_value = 100000.0
+allow_greater = true
+allow_lesser = true
+suffix = " R"
+
+[node name="OffsetBottomSpin" type="SpinBox" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(78, 28)
+layout_mode = 2
+min_value = -100000.0
+max_value = 100000.0
+allow_greater = true
+allow_lesser = true
+suffix = " B"
+
+[node name="GrowHorizontalLabel" type="Label" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+custom_minimum_size = Vector2(46, 28)
+layout_mode = 2
+text = "横向增长"
+vertical_alignment = 1
+
+[node name="GrowHorizontalOption" type="OptionButton" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(72, 28)
+layout_mode = 2
+
+[node name="GrowHorizontalSegments" type="HBoxContainer" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="GrowHorizontalBegin" type="Button" parent="MainVBox/ControlLayoutPanel/LayoutFlow/GrowHorizontalSegments"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(38, 28)
+layout_mode = 2
+tooltip_text = "从左侧起点增长"
+toggle_mode = true
+icon = ExtResource("33_grow_left")
+expand_icon = true
+
+[node name="GrowHorizontalBoth" type="Button" parent="MainVBox/ControlLayoutPanel/LayoutFlow/GrowHorizontalSegments"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(46, 28)
+layout_mode = 2
+tooltip_text = "向左右两侧增长"
+toggle_mode = true
+text = "↔"
+
+[node name="GrowHorizontalEnd" type="Button" parent="MainVBox/ControlLayoutPanel/LayoutFlow/GrowHorizontalSegments"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(38, 28)
+layout_mode = 2
+tooltip_text = "向右侧终点增长"
+toggle_mode = true
+icon = ExtResource("34_grow_right")
+expand_icon = true
+
+[node name="GrowVerticalLabel" type="Label" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+custom_minimum_size = Vector2(46, 28)
+layout_mode = 2
+text = "纵向增长"
+vertical_alignment = 1
+
+[node name="GrowVerticalOption" type="OptionButton" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(72, 28)
+layout_mode = 2
+
+[node name="GrowVerticalSegments" type="HBoxContainer" parent="MainVBox/ControlLayoutPanel/LayoutFlow"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="GrowVerticalBegin" type="Button" parent="MainVBox/ControlLayoutPanel/LayoutFlow/GrowVerticalSegments"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(38, 28)
+layout_mode = 2
+tooltip_text = "从顶部起点增长"
+toggle_mode = true
+icon = ExtResource("35_grow_up")
+expand_icon = true
+
+[node name="GrowVerticalBoth" type="Button" parent="MainVBox/ControlLayoutPanel/LayoutFlow/GrowVerticalSegments"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(46, 28)
+layout_mode = 2
+tooltip_text = "向上下两侧增长"
+toggle_mode = true
+text = "↕"
+
+[node name="GrowVerticalEnd" type="Button" parent="MainVBox/ControlLayoutPanel/LayoutFlow/GrowVerticalSegments"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(38, 28)
+layout_mode = 2
+tooltip_text = "向底部终点增长"
+toggle_mode = true
+icon = ExtResource("36_grow_down")
+expand_icon = true
+
+[node name="CanvasTimelineSplit" type="VSplitContainer" parent="MainVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(500)
+split_offset = 500
+collapsed = true
+
+[node name="WorkspaceTabs" type="TabContainer" parent="MainVBox/CanvasTimelineSplit"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Canvas" type="Control" parent="MainVBox/CanvasTimelineSplit/WorkspaceTabs"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Viewport2D" type="Control" parent="MainVBox/CanvasTimelineSplit/WorkspaceTabs/Canvas"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_viewport")
+
+[node name="AllProperties" type="ScrollContainer" parent="MainVBox/CanvasTimelineSplit/WorkspaceTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+metadata/_tab_index = 1
+
+[node name="NodeDirectPropertySurface" type="PanelContainer" parent="MainVBox/CanvasTimelineSplit/WorkspaceTabs/AllProperties"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("32_direct_surface")
+
+[node name="SceneAnimationTimelinePanel" type="PanelContainer" parent="MainVBox/CanvasTimelineSplit"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("41_animation_panel")
+
+[node name="GridSettingsPopup" type="PopupPanel" parent="."]
+unique_name_in_owner = true
+initial_position = 1
+size = Vector2i(900, 720)
+min_size = Vector2i(720, 560)
+
+[node name="GridSettingsPanel" type="PanelContainer" parent="GridSettingsPopup"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("43_grid_settings")
+
+[node name="ViewportContextMenu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+
+[node name="UnsavedSceneCloseDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "未保存的 2D 场景"
+initial_position = 1
+size = Vector2i(480, 180)
+min_size = Vector2i(440, 160)
+ok_button_text = "保存并关闭"
+cancel_button_text = "取消"
+dialog_text = "当前场景仍有未保存的修改。"

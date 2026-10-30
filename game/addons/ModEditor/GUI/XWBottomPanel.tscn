@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8m0d1t7bottom1"]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Layout/XWDockContainer.tscn" id="0_dock"]
+[ext_resource type="Script" path="res://addons/ModEditor/GUI/XWBottomPanel.cs" id="1_bottom"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Pin.svg" id="2_pin"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ExpandBottomDock.svg" id="3_expand"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/GuiTabMenuHl.svg" id="4_layout"]
+
+[node name="XWBottomPanel" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_bottom")
+
+[node name="Toolbar" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 24)
+
+[node name="PinButton" type="Button" parent="Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "固定面板"
+toggle_mode = true
+flat = true
+text = ""
+icon = ExtResource("2_pin")
+
+[node name="ExpandButton" type="Button" parent="Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "展开/折叠面板"
+toggle_mode = true
+flat = true
+text = ""
+icon = ExtResource("3_expand")
+
+[node name="HSpacer" type="Control" parent="Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ToasterContainer" type="HBoxContainer" parent="Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LayoutButton" type="MenuButton" parent="Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "面板布局"
+flat = true
+text = ""
+icon = ExtResource("4_layout")
+
+[node name="ContentContainer" parent="." instance=ExtResource("0_dock")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+tabs_position = 1

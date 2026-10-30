@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://6y0001gfd6ld"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Challenge/JacksonX/Scene/TowerDefenseZombieJacksonXComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://vaiuwrseurtx" path="res://Asset/Anime/Character/Zombie/Challenge/JacksonX/Scene/TowerDefenseZombieJacksonX.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://rnlcvkmboegl" path="res://Asset/Anime/Character/Zombie/Challenge/JacksonX/Config/TowerDefenseZombieJacksonX.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dgwhlrqd61on0" path="res://Asset/Anime/Character/Zombie/Challenge/JacksonX/DamagePoint/Config/ZombieJacksonXDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dkdqvcgv3qo3g" path="res://Asset/Anime/Character/Zombie/Challenge/JacksonX/Armor/Config/ZombieJacksonXArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cj7bxwmpgpgaf" path="res://Asset/Anime/Character/Zombie/Challenge/JacksonX/Armor/Config/ZombieJacksonXArmorBucket.tres" id="8"]
+[ext_resource type="Resource" uid="uid://cyhsykyhqs7nf" path="res://Asset/Anime/Character/Zombie/Challenge/JacksonX/Armor/Config/ZombieJacksonXArmorCone.tres" id="9"]
+[ext_resource type="Resource" uid="uid://djwqryxw1au2j" path="res://Asset/Anime/Character/Zombie/Challenge/JacksonX/DamagePoint/Config/ZombieJacksonXDamagePointHead.tres" id="10"]
+[ext_resource type="Resource" uid="uid://da02rrtl3ewuy" path="res://Asset/Anime/Character/Zombie/Challenge/JacksonX/Armor/Config/ZombieJacksonXArmorHelmet.tres" id="11"]
+[ext_resource type="Resource" uid="uid://btsxo1akxja7g" path="res://Asset/Anime/Character/Zombie/Challenge/JacksonX/Armor/Config/ZombieJacksonXArmorSpecialHelmet.tres" id="12"]
+[ext_resource type="Texture2D" uid="uid://dw20amg6idui7" path="res://Asset/Texture/Character/Effect/Spotlight2.png" id="13"]
+[ext_resource type="PackedScene" uid="uid://bvhgybgifjsxr" path="res://Asset/Anime/Character/Zombie/Challenge/JacksonX/ZombieJacksonX.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="15"]
+[ext_resource type="Texture2D" uid="uid://deadkw1wbm3aw" path="res://Asset/Texture/Character/Effect/Spotlight.png" id="16"]
+
+[node name="TowerDefenseZombieJacksonX" unique_id=352235970 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieJacksonX/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+garlicReplace = "Zombie_jackson_head.png"
+waterHeight = 25.0
+idleAnimeClip = "MoonWalk"
+sleepAnimeClip = "MoonWalk"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieJacksonX")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieJacksonX/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Bucket": ExtResource("8"),
+"Cone": ExtResource("9"),
+"Head": ExtResource("10"),
+"Helmet": ExtResource("11"),
+"SpecialHelmet": ExtResource("12")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieJacksonX/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieJacksonX/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieJacksonX/HeadSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieJacksonX/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieJacksonX/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieJacksonX/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieJacksonX/HeadSlot")
+}
+currentArmor = []
+
+[node name="Spotlight2" type="Sprite2D" parent="BackEffectNode" parent_id_path=PackedInt32Array(1929493585) index="0" unique_id=453678311]
+unique_name_in_owner = true
+visible = false
+position = Vector2(14, 33)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("13")
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieJacksonX" parent="SpriteGroup/TransformPoint" index="0" unique_id=167035635 instance=ExtResource("14")]
+position = Vector2(-12, -33)
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieJacksonX" index="0" unique_id=1298672615]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieJacksonX" index="1" unique_id=200256709]
+drawLayerId = -2
+position = Vector2(-14.861068, -50.20421)
+rotation = 0.21603465
+scale = Vector2(0.79936165, 0.79936165)
+Layer = 15
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieJacksonX" index="2" unique_id=342129334]
+position = Vector2(3.6681542, -3.1748219)
+rotation = 0.02898093
+scale = Vector2(0.7987085, 0.7987085)
+Layer = 21
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieJacksonX" index="3" unique_id=643924071]
+position = Vector2(-109.42357, -38.25)
+Layer = 1
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=804703124 instance=ExtResource("15")]
+visible = false
+position = Vector2(-6, -44)
+trueFrameRate = 180.0
+
+[node name="Spotlight" type="Sprite2D" parent="FrontEffectNode" parent_id_path=PackedInt32Array(1161662400) index="0" unique_id=797258185]
+unique_name_in_owner = true
+visible = false
+position = Vector2(17, -200)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("16")
+
+[editable path="SpriteGroup/TransformPoint/ZombieJacksonX"]

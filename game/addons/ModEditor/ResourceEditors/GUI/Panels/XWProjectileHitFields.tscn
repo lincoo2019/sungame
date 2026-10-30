@@ -1,0 +1,361 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="StyleBoxFlat" id="StyleHit"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.095, 0.075, 0.045, 0.98)
+border_width_left = 3
+border_color = Color(0.94, 0.62, 0.18, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ProjectileHitFields" type="PanelContainer"]
+custom_minimum_size = Vector2(430, 0)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleHit")
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.38, 1)
+theme_override_font_sizes/font_size = 18
+text = "轨迹与命中"
+
+[node name="FlagsSection" type="VBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="DamageFlagsLabel" type="Label" parent="Content/FlagsSection"]
+layout_mode = 2
+text = "伤害目标"
+
+[node name="DamageFlagsGrid" type="GridContainer" parent="Content/FlagsSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="FireMethodFlagsLabel" type="Label" parent="Content/FlagsSection"]
+layout_mode = 2
+text = "飞行方式"
+
+[node name="FireMethodFlagsGrid" type="GridContainer" parent="Content/FlagsSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="CollisionFlagsLabel" type="Label" parent="Content/FlagsSection"]
+layout_mode = 2
+text = "碰撞阵营"
+
+[node name="CollisionFlagsGrid" type="GridContainer" parent="Content/FlagsSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="CatapultHeightRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/CatapultHeightRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "抛物线高度"
+vertical_alignment = 1
+
+[node name="CatapultHeightSpinBox" type="SpinBox" parent="Content/CatapultHeightRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 4000.0
+step = 1.0
+
+[node name="TrackIntervalRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/TrackIntervalRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "追踪间隔"
+vertical_alignment = 1
+
+[node name="TrackIntervalSpinBox" type="SpinBox" parent="Content/TrackIntervalRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 9999.0
+step = 1.0
+
+[node name="BehaviorRow" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RotateFollowVelocityCheck" type="CheckButton" parent="Content/BehaviorRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "旋转跟随速度"
+
+[node name="HitBodyCheck" type="CheckButton" parent="Content/BehaviorRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "直接命中本体"
+
+[node name="IsFireCheck" type="CheckButton" parent="Content/BehaviorRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "火焰子弹"
+
+[node name="RangeSeparator" type="HSeparator" parent="Content"]
+layout_mode = 2
+
+[node name="RangeTitle" type="Label" parent="Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+text = "命中范围"
+
+[node name="RangeTypeRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/RangeTypeRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "范围类型"
+vertical_alignment = 1
+
+[node name="RangeTypeOption" type="OptionButton" parent="Content/RangeTypeRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RangeTypeSegments" type="HFlowContainer" parent="Content/RangeTypeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="UseRangeCheck" type="CheckButton" parent="Content/RangeTypeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "启用"
+
+[node name="RangeSizeRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Content/RangeSizeRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "范围大小"
+vertical_alignment = 1
+
+[node name="XLabel" type="Label" parent="Content/RangeSizeRow"]
+layout_mode = 2
+text = "X"
+vertical_alignment = 1
+
+[node name="RangeSizeXSpinBox" type="SpinBox" parent="Content/RangeSizeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.01
+
+[node name="YLabel" type="Label" parent="Content/RangeSizeRow"]
+layout_mode = 2
+text = "Y"
+vertical_alignment = 1
+
+[node name="RangeSizeYSpinBox" type="SpinBox" parent="Content/RangeSizeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.01
+
+[node name="HitPercentageRow" type="HBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/HitPercentageRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "命中比例"
+vertical_alignment = 1
+
+[node name="HitPercentageSpinBox" type="SpinBox" parent="Content/HitPercentageRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[node name="PenetrateSeparator" type="HSeparator" parent="Content"]
+layout_mode = 2
+
+[node name="PenetrateSection" type="VBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="Content/PenetrateSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+text = "穿透与返回"
+
+[node name="PenetrateNumRow" type="HBoxContainer" parent="Content/PenetrateSection"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/PenetrateSection/PenetrateNumRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "穿透数量"
+vertical_alignment = 1
+
+[node name="PenetrateNumSpinBox" type="SpinBox" parent="Content/PenetrateSection/PenetrateNumRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 9999.0
+step = 1.0
+
+[node name="PenetrateOverBackCheck" type="CheckButton" parent="Content/PenetrateSection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "穿透后返回"
+
+[node name="BackOutGroundCheck" type="CheckButton" parent="Content/PenetrateSection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "返回过程离地"
+
+[node name="BackDurationRow" type="HBoxContainer" parent="Content/PenetrateSection"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/PenetrateSection/BackDurationRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "返回时间"
+vertical_alignment = 1
+
+[node name="BackDurationSpinBox" type="SpinBox" parent="Content/PenetrateSection/BackDurationRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 9999.0
+step = 0.1
+
+[node name="ProjectileFlagSummary" type="Label" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.77, 0.52, 1)
+autowrap_mode = 2
+
+[node name="ProjectileRangeSummary" type="Label" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.77, 0.52, 1)
+autowrap_mode = 2
+
+[node name="EventsSeparator" type="HSeparator" parent="Content"]
+layout_mode = 2
+
+[node name="EventsTitle" type="Label" parent="Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+text = "命中事件与轨迹方法 · 双击进入"
+
+[node name="EventLists" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="TargetBox" type="VBoxContainer" parent="Content/EventLists"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Content/EventLists/TargetBox"]
+layout_mode = 2
+text = "目标"
+
+[node name="HitTargetEventList" type="ItemList" parent="Content/EventLists/TargetBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CharacterBox" type="VBoxContainer" parent="Content/EventLists"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Content/EventLists/CharacterBox"]
+layout_mode = 2
+text = "角色"
+
+[node name="HitCharacterEventList" type="ItemList" parent="Content/EventLists/CharacterBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GroundBox" type="VBoxContainer" parent="Content/EventLists"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Content/EventLists/GroundBox"]
+layout_mode = 2
+text = "地面"
+
+[node name="HitGroundEventList" type="ItemList" parent="Content/EventLists/GroundBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BehaviorsBox" type="VBoxContainer" parent="Content/EventLists"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Content/EventLists/BehaviorsBox"]
+layout_mode = 2
+text = "轨迹"
+
+[node name="BehaviorsList" type="ItemList" parent="Content/EventLists/BehaviorsBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

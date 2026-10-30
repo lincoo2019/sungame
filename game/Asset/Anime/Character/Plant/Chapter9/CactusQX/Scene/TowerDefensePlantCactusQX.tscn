@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dt2ymfanekx85"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://c7bjuxr1k4pl6" path="res://Asset/Anime/Character/Plant/Chapter9/CactusQX/Scene/TowerDefensePlantCactusQXComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://br4u1b2wigwgo" path="res://Asset/Anime/Character/Plant/Chapter9/CactusQX/Scene/TowerDefensePlantCactusQX.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_64x33_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b8cqx7ka6mpq1" path="res://Asset/Anime/Character/Plant/Chapter9/CactusQX/Scene/TowerDefensePlantCactusQXStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://bl2rorqw5fky7" path="res://Asset/Anime/Character/Plant/Chapter9/CactusQX/Config/TowerDefensePlantCactusQX.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://wbjg5k2ecoa7" path="res://Asset/Anime/Character/Plant/Chapter9/CactusQX/CactusQX.tscn" id="7"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="8"]
+
+[node name="TowerDefensePlantCactusQX" unique_id=2074302875 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+fireInterval = 2.0
+fireNum = 1
+projectileName = "SpikeQX"
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+showHealthOffset = Vector2(0, 16)
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/CactusQX")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="CactusQX" parent="SpriteGroup/TransformPoint" index="0" unique_id=1525986993 instance=ExtResource("7")]
+position = Vector2(0, -30)
+clip = "Idle"
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/CactusQX" index="0" unique_id=329461081]
+position = Vector2(8.450001, -15.288897)
+rotation = 0.040517554
+scale = Vector2(0.80121225, 0.81535065)
+skew = -0.04051757
+script = ExtResource("8")
+followSlotId = 13
+drawLayerId = 13
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/CactusQX/AdobeAnimateSlot" index="0" unique_id=266636916]
+position = Vector2(8.166895, 6.420537)
+
+[editable path="SpriteGroup/TransformPoint/CactusQX"]

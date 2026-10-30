@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c21yb5jg56dmb"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cd0s4rdkmso06" path="res://Asset/Anime/Character/Plant/Star/PumpSled/Scene/TowerDefensePlantPumpSled.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_176x33_At_47_0.tres" id="3"]
+[ext_resource type="Script" uid="uid://bqyxask6qffq7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFireHit.cs" id="4"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="5"]
+[ext_resource type="Resource" uid="uid://rhxlp8nrs3gm" path="res://Asset/Anime/Character/Plant/Star/PumpSled/Config/TowerDefensePlantPumpSled.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://44myj5i4skmr" path="res://Asset/Anime/Character/Plant/Star/PumpSled/PumpSled.tscn" id="7"]
+
+[sub_resource type="Resource" id="Resource_pt03q"]
+script = ExtResource("4")
+metadata/_custom_type_script = "uid://bqyxask6qffq7"
+
+[sub_resource type="Resource" id="Resource_pc1ib"]
+script = ExtResource("5")
+buffList = [SubResource("Resource_pt03q")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[node name="TowerDefensePlantPumpSled" unique_id=1899595520 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+showHealthOffset = Vector2(0, 16)
+z_index = -10
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+allEventList = [SubResource("Resource_pc1ib")]
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/PumpSled")
+PreviewDamagePointPersontage = 1.0
+itemLayer = 5
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="SpriteGroup" parent="." index="2" unique_id=1006029617]
+
+[node name="TransformPoint" parent="SpriteGroup" index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PumpSled" parent="SpriteGroup/TransformPoint" index="0" unique_id=1496728279 instance=ExtResource("7")]
+position = Vector2(0, -30)
+
+[node name="Back" parent="SpriteGroup/TransformPoint/PumpSled/Node2D" parent_id_path=PackedInt32Array(1496728279, 1631955423) index="0" unique_id=1115194778]
+
+[editable path="SpriteGroup/TransformPoint/PumpSled"]

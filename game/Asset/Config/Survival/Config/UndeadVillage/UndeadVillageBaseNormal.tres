@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://bsdppdb3q1hf1"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/UndeadVillage/UndeadVillageBaseNormal.json" id="1_mscto"]
+[ext_resource type="Script" uid="uid://huks85pqdgqb" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalConfig.cs" id="2_8b2g2"]
+[ext_resource type="Script" uid="uid://bru304ldtwq3e" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.cs" id="3_m4hj2"]
+
+[sub_resource type="Resource" id="Resource_rk4y4"]
+script = ExtResource("3_m4hj2")
+_round = 1
+zombieList = ["ZombieNormalBucket", "ZombieSkeleton", "ZombieJackson"]
+
+[sub_resource type="Resource" id="Resource_iqolo"]
+script = ExtResource("3_m4hj2")
+_round = 2
+zombieList = ["ZombieNecromancer", "ZombieDigger", "ZombieImpDiggerSpike", "ZombieNecromancerG"]
+
+[resource]
+script = ExtResource("2_8b2g2")
+json = ExtResource("1_mscto")
+roundLimit = 3
+pointIncrementPerWave = 100
+pointIncrementPerBigWave = 150
+pointIncrementPerRound = 400
+pointMax = 60000
+pointBigWaveScale = 0.5
+zombiePoolRoundAdd = Array[ExtResource("3_m4hj2")]([SubResource("Resource_rk4y4"), SubResource("Resource_iqolo")])
+metadata/_custom_type_script = "uid://huks85pqdgqb"

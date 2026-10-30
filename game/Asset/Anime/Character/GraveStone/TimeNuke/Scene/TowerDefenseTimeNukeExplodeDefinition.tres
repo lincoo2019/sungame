@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ExplodeComponentDefinition" format=3 uid="uid://bboceuafedw45"]
+
+[ext_resource type="PackedScene" uid="uid://0hfxonqijrv0" path="res://Prefab/Particles/Explosion/DoomShroomExplosion/DoomShroomExplosion.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bt7fis5jparcx" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.cs" id="2"]
+[ext_resource type="Script" uid="uid://b3ws8dbxgchm3" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponentDefinition.cs" id="3"]
+
+[sub_resource type="Resource" id="Resource_explode"]
+script = ExtResource("2")
+metadata/_custom_type_script = "uid://bt7fis5jparcx"
+
+[resource]
+script = ExtResource("3")
+spritePath = NodePath("SpriteGroup/TransformPoint/TimeNuke")
+explodeAnimeTimeScale = 3.0
+explodeAudio = "ExplodeDoomShroom"
+explodeEvent = [SubResource("Resource_explode")]
+explodeEffect = ExtResource("1")
+explodeShape = null
+explodeRange = Vector2(2.5, 2.5)
+screenColorBlinkUse = true
+craterCreateUse = true
+ComponentTypeId = "ExplodeComponent"
+DefinitionId = "builtin.component.explode.gravestone.timenuke"
+InstanceId = "character.explode"
+WireIndex = 0
+StateMachineDefinition = null
+LegacyNodeNames = [&"ExplodeComponent"]

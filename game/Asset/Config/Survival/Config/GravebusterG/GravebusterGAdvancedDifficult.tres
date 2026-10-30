@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://cxs37tvl06r2n"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/GravebusterG/GravebusterGAdvancedDifficult.json" id="1_r6ixn"]
+[ext_resource type="Script" uid="uid://huks85pqdgqb" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalConfig.cs" id="2_6u57h"]
+[ext_resource type="Script" uid="uid://bru304ldtwq3e" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.cs" id="3_tai1n"]
+
+[sub_resource type="Resource" id="Resource_djxof"]
+script = ExtResource("3_tai1n")
+_round = 1
+zombieList = ["ZombiePaper", "ZombieSleeper", "ZombieNormalScreendoor"]
+
+[sub_resource type="Resource" id="Resource_kvga3"]
+script = ExtResource("3_tai1n")
+_round = 2
+zombieList = ["ZombieFootball", "ZombieJackson", "ZombiePolestriker", "ZombiePolevaulter"]
+
+[sub_resource type="Resource" id="Resource_dhm3t"]
+script = ExtResource("3_tai1n")
+_round = 3
+zombieList = ["ZombieLadder", "ZombiePogo", "ZombieShadow", "ZombieDisco", "ZombieImpSnail"]
+
+[sub_resource type="Resource" id="Resource_8wypu"]
+script = ExtResource("3_tai1n")
+_round = 4
+zombieList = ["ZombieFootballBlack", "ZombieShieldArmor", "ZombieMagnetic", "ZombieBed", "ZombieJackbox", "ZombieAxe", "ZombieZamboni", "ZombieGargantuar", "ZombiePogoJackson", "ZombiePaperball", "ZombieJacksonX", "ZombiePogoball", "ZombieGargantuarArmed"]
+
+[resource]
+script = ExtResource("2_6u57h")
+json = ExtResource("1_r6ixn")
+roundLimit = 5
+roundDayNightChange = true
+pointIncrementPerWave = 100
+pointIncrementPerBigWave = 150
+pointMax = 50000
+pointBigWaveScale = 0.5
+zombiePoolBase = ["ZombieNormal", "ZombieNormalCone", "ZombieNormalBucket"]
+zombiePoolRoundAdd = Array[ExtResource("3_tai1n")]([SubResource("Resource_djxof"), SubResource("Resource_kvga3"), SubResource("Resource_dhm3t"), SubResource("Resource_8wypu")])
+metadata/_custom_type_script = "uid://huks85pqdgqb"

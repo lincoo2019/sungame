@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://hgaw24g0tqnp"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/Zombotany/ZombotanyAdvancedNormal.json" id="1_75vh4"]
+[ext_resource type="Script" uid="uid://huks85pqdgqb" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalConfig.cs" id="2_bhptk"]
+[ext_resource type="Script" uid="uid://bru304ldtwq3e" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.cs" id="3_8rr5k"]
+
+[sub_resource type="Resource" id="Resource_js6tr"]
+script = ExtResource("3_8rr5k")
+_round = 1
+zombieList = ["ZombieNormalWallnut", "ZombieNormalSnowPea"]
+
+[sub_resource type="Resource" id="Resource_bmnu6"]
+script = ExtResource("3_8rr5k")
+_round = 2
+zombieList = ["ZombieNormalPeaShooter", "ZombieNormalIcenut", "ZombieNormalSunflower"]
+
+[sub_resource type="Resource" id="Resource_pvpiq"]
+script = ExtResource("3_8rr5k")
+_round = 3
+zombieList = ["ZombieImpSeaShroom", "ZombieImpPuffShroom", "ZombieImpSunShroom", "ZombieSnorkleTanglekelp"]
+
+[sub_resource type="Resource" id="Resource_84ggi"]
+script = ExtResource("3_8rr5k")
+_round = 4
+zombieList = ["ZombieNormalGatlingPea", "ZombieNormalTallnut", "ZombieZamboniGatlingPea", "ZombieDolphinriderGatlingPea"]
+
+[resource]
+script = ExtResource("2_bhptk")
+json = ExtResource("1_75vh4")
+roundLimit = 5
+pointIncrementPerWave = 100
+pointIncrementPerBigWave = 150
+pointIncrementPerRound = 500
+pointMax = 50000
+pointBigWaveScale = 0.5
+zombiePoolBase = ["ZombieNormalPeaShooterSingle"]
+zombiePoolRoundAdd = Array[ExtResource("3_8rr5k")]([SubResource("Resource_js6tr"), SubResource("Resource_bmnu6"), SubResource("Resource_pvpiq"), SubResource("Resource_84ggi")])
+metadata/_custom_type_script = "uid://huks85pqdgqb"

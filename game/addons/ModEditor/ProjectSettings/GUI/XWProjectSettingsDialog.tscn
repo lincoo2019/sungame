@@ -1,0 +1,232 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8m0d1projectsettings"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ProjectSettings/GUI/XWProjectSettingsDialog.cs" id="1_settings"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/Translation.svg" id="2_language"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/WorldEnvironment.svg" id="3_globe"]
+
+[node name="XWProjectSettingsDialog" type="ConfirmationDialog"]
+title = "项目设置"
+initial_position = 1
+size = Vector2i(720, 560)
+min_size = Vector2i(560, 440)
+ok_button_text = "保存"
+cancel_button_text = "取消"
+script = ExtResource("1_settings")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "项目设置"
+
+[node name="Tabs" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="模组工程" type="ScrollContainer" parent="VBoxContainer/Tabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ProjectMargin" type="MarginContainer" parent="VBoxContainer/Tabs/模组工程"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ProjectGrid" type="GridContainer" parent="VBoxContainer/Tabs/模组工程/ProjectMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 8
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+layout_mode = 2
+text = "项目名称"
+
+[node name="NameEdit" type="LineEdit" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "输入 Mod 项目名称"
+
+[node name="VersionLabel" type="Label" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+layout_mode = 2
+text = "版本"
+
+[node name="VersionEdit" type="LineEdit" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "例如 1.0.0"
+
+[node name="AuthorLabel" type="Label" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+layout_mode = 2
+text = "作者"
+
+[node name="AuthorEdit" type="LineEdit" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "输入作者名称"
+
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+layout_mode = 2
+text = "描述"
+
+[node name="DescriptionEdit" type="TextEdit" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "输入 Mod 描述"
+wrap_mode = 1
+
+[node name="ProjectPathLabel" type="Label" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+layout_mode = 2
+text = "项目目录"
+
+[node name="ProjectPathEdit" type="LineEdit" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+
+[node name="ProjectFileLabel" type="Label" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+layout_mode = 2
+text = "项目文件"
+
+[node name="ProjectFileEdit" type="LineEdit" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+
+[node name="ExportPathLabel" type="Label" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+layout_mode = 2
+text = "默认导出目录"
+
+[node name="ExportPathRow" type="HBoxContainer" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="ExportPathEdit" type="LineEdit" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid/ExportPathRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "选择默认导出目录"
+
+[node name="ExportBrowseButton" type="Button" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid/ExportPathRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "浏览..."
+
+[node name="GamePathLabel" type="Label" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+layout_mode = 2
+text = "游戏目录"
+
+[node name="GamePathRow" type="HBoxContainer" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="GamePathEdit" type="LineEdit" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid/GamePathRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "选择游戏根目录"
+
+[node name="GameBrowseButton" type="Button" parent="VBoxContainer/Tabs/模组工程/ProjectMargin/ProjectGrid/GamePathRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "浏览..."
+
+[node name="编辑器" type="MarginContainer" parent="VBoxContainer/Tabs"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="EditorGrid" type="GridContainer" parent="VBoxContainer/Tabs/编辑器"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 8
+
+[node name="AutoSaveLabel" type="Label" parent="VBoxContainer/Tabs/编辑器/EditorGrid"]
+layout_mode = 2
+text = "自动保存间隔（秒）"
+
+[node name="AutoSaveSpin" type="SpinBox" parent="VBoxContainer/Tabs/编辑器/EditorGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 3600.0
+step = 30.0
+value = 300.0
+
+[node name="ShowToastsLabel" type="Label" parent="VBoxContainer/Tabs/编辑器/EditorGrid"]
+layout_mode = 2
+text = "显示提示消息"
+
+[node name="ShowToastsCheck" type="CheckBox" parent="VBoxContainer/Tabs/编辑器/EditorGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "启用"
+
+[node name="LanguageLabel" type="Label" parent="VBoxContainer/Tabs/编辑器/EditorGrid"]
+layout_mode = 2
+text = "语言"
+
+[node name="LanguageOption" type="OptionButton" parent="VBoxContainer/Tabs/编辑器/EditorGrid"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LanguageSegments" type="HBoxContainer" parent="VBoxContainer/Tabs/编辑器/EditorGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="ChineseLanguageButton" type="Button" parent="VBoxContainer/Tabs/编辑器/EditorGrid/LanguageSegments"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "简体中文界面"
+toggle_mode = true
+button_pressed = true
+text = "简体中文"
+icon = ExtResource("2_language")
+
+[node name="EnglishLanguageButton" type="Button" parent="VBoxContainer/Tabs/编辑器/EditorGrid/LanguageSegments"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "英语界面"
+toggle_mode = true
+text = "英语"
+icon = ExtResource("3_globe")
+
+[node name="ExportDirDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "选择默认导出目录"
+file_mode = 2
+access = 2
+
+[node name="GameDirDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "选择游戏目录"
+file_mode = 2
+access = 2

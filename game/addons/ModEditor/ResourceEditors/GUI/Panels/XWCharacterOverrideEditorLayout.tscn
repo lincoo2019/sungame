@@ -1,0 +1,534 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+
+[sub_resource type="World2D" id="World2D_override"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_outer"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.035, 0.052, 0.039, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.255, 0.42, 0.18, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_context"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+bg_color = Color(0.075, 0.13, 0.075, 1)
+border_width_bottom = 2
+border_color = Color(0.37, 0.61, 0.22, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_stage"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.025, 0.033, 0.025, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.46, 0.58, 0.27, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_card"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.065, 0.082, 0.061, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.22, 0.32, 0.17, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="CharacterOverrideEditorLayout" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 620)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBox_outer")
+
+[node name="Root" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="ContextPanel" type="PanelContainer" parent="Root"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_context")
+
+[node name="ContextRow" type="HFlowContainer" parent="Root/ContextPanel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ContextStack" type="VBoxContainer" parent="Root/ContextPanel/ContextRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Root/ContextPanel/ContextRow/ContextStack"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 1, 0.75, 1)
+theme_override_font_sizes/font_size = 22
+text = "角色覆盖实验场"
+
+[node name="OverrideContextLabel" type="Label" parent="Root/ContextPanel/ContextRow/ContextStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.69, 0.82, 0.61, 1)
+text = "正在解析关卡中的基础角色……"
+text_overrun_behavior = 3
+
+[node name="OverrideSourceLabel" type="Label" parent="Root/ContextPanel/ContextRow/ContextStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.63, 0.48, 1)
+text = "来源：—"
+text_overrun_behavior = 3
+
+[node name="SelectBaseCharacterButton" type="Button" parent="Root/ContextPanel/ContextRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(170, 48)
+layout_mode = 2
+text = "选择基础角色"
+tooltip_text = "从游戏角色/卡片图鉴中选择本覆盖资源的预览对象"
+
+[node name="StagePanel" type="PanelContainer" parent="Root"]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBox_stage")
+
+[node name="StageVBox" type="VBoxContainer" parent="Root/StagePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="StageHeader" type="HFlowContainer" parent="Root/StagePanel/StageVBox"]
+layout_mode = 2
+
+[node name="StageHint" type="Label" parent="Root/StagePanel/StageVBox/StageHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.89, 0.66, 1)
+text = "同场景对照 · 左键拖拽镜头 · 滚轮缩放"
+
+[node name="ZoomLabel" type="Label" parent="Root/StagePanel/StageVBox/StageHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100%"
+
+[node name="ResetViewButton" type="Button" parent="Root/StagePanel/StageVBox/StageHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "复位视图"
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="Root/StagePanel/StageVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+tooltip_text = "拖拽平移，滚轮缩放；左侧为原角色，右侧为覆盖后的实时效果"
+
+[node name="OverrideViewport" type="SubViewport" parent="Root/StagePanel/StageVBox/ViewportContainer"]
+unique_name_in_owner = true
+world_2d = SubResource("World2D_override")
+transparent_bg = true
+disable_3d = true
+size = Vector2i(900, 350)
+render_target_update_mode = 4
+
+[node name="GameBackground" type="TextureRect" parent="Root/StagePanel/StageVBox/ViewportContainer/OverrideViewport"]
+unique_name_in_owner = true
+offset_right = 900.0
+offset_bottom = 350.0
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="GroundShade" type="ColorRect" parent="Root/StagePanel/StageVBox/ViewportContainer/OverrideViewport"]
+unique_name_in_owner = true
+offset_top = 255.0
+offset_right = 900.0
+offset_bottom = 350.0
+mouse_filter = 2
+color = Color(0.04, 0.08, 0.02, 0.18)
+
+[node name="Divider" type="ColorRect" parent="Root/StagePanel/StageVBox/ViewportContainer/OverrideViewport"]
+offset_left = 449.0
+offset_top = 38.0
+offset_right = 451.0
+offset_bottom = 328.0
+mouse_filter = 2
+color = Color(0.9, 0.96, 0.64, 0.38)
+
+[node name="OriginalLabel" type="Label" parent="Root/StagePanel/StageVBox/ViewportContainer/OverrideViewport"]
+offset_left = 122.0
+offset_top = 12.0
+offset_right = 328.0
+offset_bottom = 44.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.92, 0.96, 0.86, 1)
+theme_override_font_sizes/font_size = 19
+text = "原角色"
+horizontal_alignment = 1
+
+[node name="OverriddenLabel" type="Label" parent="Root/StagePanel/StageVBox/ViewportContainer/OverrideViewport"]
+offset_left = 572.0
+offset_top = 12.0
+offset_right = 778.0
+offset_bottom = 44.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.87, 0.42, 1)
+theme_override_font_sizes/font_size = 19
+text = "覆盖后"
+horizontal_alignment = 1
+
+[node name="PreviewCameraRoot" type="Node2D" parent="Root/StagePanel/StageVBox/ViewportContainer/OverrideViewport"]
+unique_name_in_owner = true
+
+[node name="BaseCharacterRoot" type="Node2D" parent="Root/StagePanel/StageVBox/ViewportContainer/OverrideViewport/PreviewCameraRoot"]
+unique_name_in_owner = true
+position = Vector2(225, 270)
+
+[node name="OverriddenCharacterRoot" type="Node2D" parent="Root/StagePanel/StageVBox/ViewportContainer/OverrideViewport/PreviewCameraRoot"]
+unique_name_in_owner = true
+position = Vector2(675, 270)
+
+[node name="PreviewStatusLabel" type="Label" parent="Root/StagePanel/StageVBox/ViewportContainer/OverrideViewport"]
+unique_name_in_owner = true
+offset_left = 140.0
+offset_top = 150.0
+offset_right = 760.0
+offset_bottom = 204.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.58, 1)
+theme_override_font_sizes/font_size = 17
+text = "选择基础角色后显示游戏内对照"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="EditorColumns" type="HFlowContainer" parent="Root"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="ParameterCard" type="PanelContainer" parent="Root/EditorColumns"]
+custom_minimum_size = Vector2(410, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBox_card")
+
+[node name="ParameterVBox" type="VBoxContainer" parent="Root/EditorColumns/ParameterCard"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 1, 0.75, 1)
+theme_override_font_sizes/font_size = 18
+text = "覆盖效果"
+
+[node name="ParameterGrid" type="GridContainer" parent="Root/EditorColumns/ParameterCard/ParameterVBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 7
+columns = 3
+
+[node name="InvisibleLabel" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+text = "隐身"
+
+[node name="InvisibleCheck" type="CheckButton" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "覆盖后隐藏"
+
+[node name="InvisibleHint" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.68, 0.5, 1)
+text = "轮廓仍可编辑"
+
+[node name="ScaleLabel" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+text = "模型缩放"
+
+[node name="ScaleSpinBox" type="SpinBox" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 8.0
+step = 0.05
+value = -1.0
+suffix = " ×"
+
+[node name="ScaleHint" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.68, 0.5, 1)
+text = "-1 沿用原值"
+
+[node name="HitpointScaleLabel" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+text = "生命倍率"
+
+[node name="HitpointScaleSpinBox" type="SpinBox" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 100.0
+step = 0.05
+value = -1.0
+suffix = " ×"
+
+[node name="HitpointScaleHint" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.68, 0.5, 1)
+text = "-1 沿用原值"
+
+[node name="WalkSpeedLabel" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+text = "行走速度"
+
+[node name="WalkSpeedRange" type="HBoxContainer" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WalkSpeedMinSpinBox" type="SpinBox" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid/WalkSpeedRange"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+min_value = -1.0
+max_value = 20.0
+step = 0.05
+value = -1.0
+
+[node name="Separator" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid/WalkSpeedRange"]
+layout_mode = 2
+text = "—"
+
+[node name="WalkSpeedMaxSpinBox" type="SpinBox" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid/WalkSpeedRange"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+min_value = -1.0
+max_value = 20.0
+step = 0.05
+value = -1.0
+
+[node name="WalkSpeedHint" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.68, 0.5, 1)
+text = "稳定显示中点"
+
+[node name="AnimeSpeedLabel" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+text = "动画速度"
+
+[node name="AnimeSpeedRange" type="HBoxContainer" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimeSpeedMinSpinBox" type="SpinBox" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid/AnimeSpeedRange"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+min_value = -1.0
+max_value = 20.0
+step = 0.05
+value = -1.0
+
+[node name="Separator" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid/AnimeSpeedRange"]
+layout_mode = 2
+text = "—"
+
+[node name="AnimeSpeedMaxSpinBox" type="SpinBox" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid/AnimeSpeedRange"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 0)
+layout_mode = 2
+min_value = -1.0
+max_value = 20.0
+step = 0.05
+value = -1.0
+
+[node name="AnimeSpeedHint" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.68, 0.5, 1)
+text = "稳定显示中点"
+
+[node name="MowerLabel" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+text = "可推动小推车"
+
+[node name="CanMowerMoveCheck" type="CheckButton" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "允许"
+
+[node name="MowerHint" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox/ParameterGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.68, 0.5, 1)
+text = "状态徽章预览"
+
+[node name="EffectSummaryLabel" type="Label" parent="Root/EditorColumns/ParameterCard/ParameterVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.83, 0.42, 1)
+text = "覆盖效果：等待基础角色"
+autowrap_mode = 2
+
+[node name="DetailsCard" type="PanelContainer" parent="Root/EditorColumns"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBox_card")
+
+[node name="DetailsVBox" type="VBoxContainer" parent="Root/EditorColumns/DetailsCard"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 7
+
+[node name="Title" type="Label" parent="Root/EditorColumns/DetailsCard/DetailsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 1, 0.75, 1)
+theme_override_font_sizes/font_size = 18
+text = "属性变化与事件"
+
+[node name="PropertyToolbar" type="HBoxContainer" parent="Root/EditorColumns/DetailsCard/DetailsVBox"]
+layout_mode = 2
+
+[node name="PropertyTitle" type="Label" parent="Root/EditorColumns/DetailsCard/DetailsVBox/PropertyToolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "角色属性变化"
+
+[node name="AddPropertyChangeButton" type="Button" parent="Root/EditorColumns/DetailsCard/DetailsVBox/PropertyToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ 新增"
+
+[node name="DuplicatePropertyChangeButton" type="Button" parent="Root/EditorColumns/DetailsCard/DetailsVBox/PropertyToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "复制"
+
+[node name="MovePropertyChangeUpButton" type="Button" parent="Root/EditorColumns/DetailsCard/DetailsVBox/PropertyToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "↑"
+tooltip_text = "上移选中的属性变化"
+
+[node name="MovePropertyChangeDownButton" type="Button" parent="Root/EditorColumns/DetailsCard/DetailsVBox/PropertyToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "↓"
+tooltip_text = "下移选中的属性变化"
+
+[node name="RemovePropertyChangeButton" type="Button" parent="Root/EditorColumns/DetailsCard/DetailsVBox/PropertyToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除"
+
+[node name="SelectedPropertyEditor" type="GridContainer" parent="Root/EditorColumns/DetailsCard/DetailsVBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="PropertyNameLabel" type="Label" parent="Root/EditorColumns/DetailsCard/DetailsVBox/SelectedPropertyEditor"]
+layout_mode = 2
+text = "属性名"
+
+[node name="PropertyNameLineEdit" type="LineEdit" parent="Root/EditorColumns/DetailsCard/DetailsVBox/SelectedPropertyEditor"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "例如 timeScale"
+clear_button_enabled = true
+
+[node name="PropertyValueLabel" type="Label" parent="Root/EditorColumns/DetailsCard/DetailsVBox/SelectedPropertyEditor"]
+layout_mode = 2
+text = "属性值"
+
+[node name="PropertyValueRow" type="HBoxContainer" parent="Root/EditorColumns/DetailsCard/DetailsVBox/SelectedPropertyEditor"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="PropertyValueLineEdit" type="LineEdit" parent="Root/EditorColumns/DetailsCard/DetailsVBox/SelectedPropertyEditor/PropertyValueRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "按当前类型解析；向量写作 X, Y"
+
+[node name="PropertyValueTypeLabel" type="Label" parent="Root/EditorColumns/DetailsCard/DetailsVBox/SelectedPropertyEditor/PropertyValueRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.53, 0.76, 0.91, 1)
+text = "类型：空值"
+horizontal_alignment = 2
+
+[node name="PropertyChangeList" type="ItemList" parent="Root/EditorColumns/DetailsCard/DetailsVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(380, 135)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+allow_reselect = true
+allow_rmb_select = true
+
+[node name="PropertyHint" type="Label" parent="Root/EditorColumns/DetailsCard/DetailsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.68, 0.5, 1)
+text = "双击一项进入单条属性变化工作台"
+
+[node name="SafetySummaryLabel" type="Label" parent="Root/EditorColumns/DetailsCard/DetailsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.72, 0.37, 1)
+text = "安全预览：不会执行生成事件和死亡事件"
+autowrap_mode = 2
+
+[node name="SaveStateLabel" type="Label" parent="Root/EditorColumns/DetailsCard/DetailsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.53, 0.76, 0.91, 1)
+text = "预览已就绪"

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c105wmgpcm3br"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter0/SunFlower/Scene/TowerDefensePlantSunFlowerComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://dd2kox55wkmk6" path="res://Asset/Anime/Character/Plant/Chapter0/SunFlower/Scene/TowerDefensePlantSunFlower.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bfu24j4tcoduc" path="res://Asset/Anime/Character/Plant/Chapter0/SunFlower/Config/TowerDefensePlantSunFlower.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://cr8mehnwhnl36" path="res://Asset/Anime/Character/Plant/Chapter0/SunFlower/SunFlower.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantSunFlower" unique_id=773252184 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+produceInterval = 25.0
+sunNum = 25
+produceType = "Sun"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/SunFlower")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="SunFlower" parent="SpriteGroup/TransformPoint" index="0" unique_id=1155473962 instance=ExtResource("6")]
+position = Vector2(0, -30)
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/SunFlower" index="0" unique_id=1279487374]
+script = ExtResource("7")
+followSlotId = 28
+Layer = 28
+drawLayerId = 28
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SunFlower/AdobeAnimateSlot" index="0" unique_id=755822239]
+position = Vector2(29.2062, 23.8581)

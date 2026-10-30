@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dxvjv6aun3k18"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://fwvdevsd5p2g" path="res://Asset/Anime/Character/Plant/Cover/SpikeRock/Scene/TowerDefensePlantSpikeRockComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://kkt57b8jrnib" path="res://Asset/Anime/Character/Plant/Cover/SpikeRock/Scene/TowerDefensePlantSpikeRock.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://4enramyj04ec" path="res://Asset/Anime/Character/Plant/Cover/SpikeRock/Config/TowerDefensePlantSpikeRock.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://4ul18bgo1tat" path="res://Asset/Anime/Character/Plant/Cover/SpikeRock/SpikeRock.tscn" id="6"]
+
+[node name="TowerDefensePlantSpikeRock" unique_id=191101652 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+z_index = -13
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+attack = 20.0
+fireInterval = 0.75
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/SpikeRock")
+itemLayer = 2
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(0, 30)
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 37)
+
+[node name="SpikeRock" parent="SpriteGroup/TransformPoint" index="0" unique_id=1131666612 instance=ExtResource("6")]
+position = Vector2(0, -24)

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://byee3s263f1rj"]
+
+[ext_resource type="Script" uid="uid://dcwvpasljupd7" path="res://Resource/TowerDefense/Character/Buff/LightArea/LightArea.cs" id="1_63tg0"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="AabbShape2DResource"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4k8kg"]
+radius = 200.0
+
+[sub_resource type="Resource" id="AabbShape2DResource_light"]
+script = ExtResource("AabbShape2DResource")
+Geometry = SubResource("CircleShape2D_4k8kg")
+LocalTransform = Transform2D(0.99999994, 0, 0, 0.99999994, 0, 0)
+
+[node name="LightArea" type="Node2D" unique_id=1020506015]
+script = ExtResource("1_63tg0")
+ShapeResources = Array[ExtResource("AabbShape2DResource")]([SubResource("AabbShape2DResource_light")])
+collision_layer = 8
+collision_mask = 0

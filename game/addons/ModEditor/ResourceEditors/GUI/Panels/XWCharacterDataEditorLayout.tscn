@@ -1,0 +1,380 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWCharacterDataVisualPreview.tscn" id="1_preview"]
+
+[sub_resource type="StyleBoxFlat" id="StyleHeader"]
+content_margin_left = 14.0
+content_margin_top = 12.0
+content_margin_right = 14.0
+content_margin_bottom = 12.0
+bg_color = Color(0.055, 0.075, 0.096, 1)
+border_color = Color(0.24, 0.53, 0.43, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleIdentity"]
+content_margin_left = 10.0
+content_margin_top = 9.0
+content_margin_right = 10.0
+content_margin_bottom = 9.0
+bg_color = Color(0.074, 0.102, 0.126, 1)
+border_color = Color(0.16, 0.29, 0.34, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleList"]
+content_margin_left = 11.0
+content_margin_top = 11.0
+content_margin_right = 11.0
+content_margin_bottom = 11.0
+bg_color = Color(0.058, 0.072, 0.087, 1)
+border_color = Color(0.18, 0.32, 0.29, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleEditor"]
+content_margin_left = 11.0
+content_margin_top = 11.0
+content_margin_right = 11.0
+content_margin_bottom = 11.0
+bg_color = Color(0.064, 0.071, 0.082, 1)
+border_color = Color(0.30, 0.34, 0.22, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleToolbar"]
+content_margin_left = 8.0
+content_margin_top = 7.0
+content_margin_right = 8.0
+content_margin_bottom = 7.0
+bg_color = Color(0.083, 0.094, 0.108, 1)
+border_color = Color(0.19, 0.23, 0.26, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleEditorWell"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.038, 0.045, 0.055, 0.92)
+border_color = Color(0.13, 0.17, 0.20, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleStatusChip"]
+content_margin_left = 7.0
+content_margin_top = 4.0
+content_margin_right = 7.0
+content_margin_bottom = 4.0
+bg_color = Color(0.08, 0.19, 0.15, 1)
+border_color = Color(0.21, 0.53, 0.38, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="CharacterDataEditorLayout" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleHeader")
+
+[node name="HeaderLayout" type="VBoxContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TitleRow" type="HBoxContainer" parent="Header/HeaderLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SectionIcon" type="Label" parent="Header/HeaderLayout/TitleRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.49, 0.91, 0.65, 1)
+theme_override_font_sizes/font_size = 19
+text = "◆"
+
+[node name="SummaryLabel" type="Label" parent="Header/HeaderLayout/TitleRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.88, 0.96, 0.91, 1)
+theme_override_font_sizes/font_size = 17
+
+[node name="SaveStatusChip" type="PanelContainer" parent="Header/HeaderLayout/TitleRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleStatusChip")
+
+[node name="SaveStatusLabel" type="Label" parent="Header/HeaderLayout/TitleRow/SaveStatusChip"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.59, 0.95, 0.72, 1)
+text = "● 已同步"
+horizontal_alignment = 1
+
+[node name="ResourceIdentityCard" type="PanelContainer" parent="Header/HeaderLayout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleIdentity")
+
+[node name="IdentityLayout" type="VBoxContainer" parent="Header/HeaderLayout/ResourceIdentityCard"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="IdentityTopRow" type="HBoxContainer" parent="Header/HeaderLayout/ResourceIdentityCard/IdentityLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ResourceNameLabel" type="Label" parent="Header/HeaderLayout/ResourceIdentityCard/IdentityLayout/IdentityTopRow"]
+layout_mode = 2
+text = "资源名称"
+
+[node name="ResourceNameEdit" type="LineEdit" parent="Header/HeaderLayout/ResourceIdentityCard/IdentityLayout/IdentityTopRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "在这里直接命名当前资源"
+clear_button_enabled = true
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="Header/HeaderLayout/ResourceIdentityCard/IdentityLayout/IdentityTopRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "场景内独立副本"
+tooltip_text = "开启后，资源会随所属场景保存独立状态"
+
+[node name="IdentityBottomRow" type="HBoxContainer" parent="Header/HeaderLayout/ResourceIdentityCard/IdentityLayout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TypeCaption" type="Label" parent="Header/HeaderLayout/ResourceIdentityCard/IdentityLayout/IdentityBottomRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.62, 0.68, 1)
+text = "类型"
+
+[node name="ResourceTypeLabel" type="Label" parent="Header/HeaderLayout/ResourceIdentityCard/IdentityLayout/IdentityBottomRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.87, 0.91, 1)
+text = "CharacterData"
+
+[node name="PathCaption" type="Label" parent="Header/HeaderLayout/ResourceIdentityCard/IdentityLayout/IdentityBottomRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.62, 0.68, 1)
+text = "路径"
+
+[node name="ResourcePathLabel" type="Label" parent="Header/HeaderLayout/ResourceIdentityCard/IdentityLayout/IdentityBottomRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.64, 0.69, 0.72, 1)
+text = "res://"
+text_overrun_behavior = 3
+tooltip_text = "当前资源保存路径"
+
+[node name="CacheSummaryLabel" type="Label" parent="Header/HeaderLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.60, 0.68, 0.70, 1)
+autowrap_mode = 2
+
+[node name="VisualPreview" parent="." instance=ExtResource("1_preview")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Split" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="ListPanel" type="PanelContainer" parent="Split"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(330, 430)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleList")
+
+[node name="ListLayout" type="VBoxContainer" parent="Split/ListPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="EntryTitle" type="Label" parent="Split/ListPanel/ListLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.66, 0.95, 0.76, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="EntryDescription" type="Label" parent="Split/ListPanel/ListLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.58, 0.66, 0.68, 1)
+autowrap_mode = 2
+
+[node name="ToolbarPanel" type="PanelContainer" parent="Split/ListPanel/ListLayout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleToolbar")
+
+[node name="Toolbar" type="HBoxContainer" parent="Split/ListPanel/ListLayout/ToolbarPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="AddButton" type="Button" parent="Split/ListPanel/ListLayout/ToolbarPanel/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+text = "＋ 新增"
+tooltip_text = "新增一个配置条目"
+
+[node name="DuplicateButton" type="Button" parent="Split/ListPanel/ListLayout/ToolbarPanel/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "⧉"
+tooltip_text = "复制当前条目"
+
+[node name="MoveUpButton" type="Button" parent="Split/ListPanel/ListLayout/ToolbarPanel/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "▲"
+tooltip_text = "上移当前条目"
+
+[node name="MoveDownButton" type="Button" parent="Split/ListPanel/ListLayout/ToolbarPanel/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "▼"
+tooltip_text = "下移当前条目"
+
+[node name="ToolbarSpacer" type="Control" parent="Split/ListPanel/ListLayout/ToolbarPanel/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RemoveButton" type="Button" parent="Split/ListPanel/ListLayout/ToolbarPanel/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "－ 删除"
+tooltip_text = "删除当前条目"
+
+[node name="EntryList" type="ItemList" parent="Split/ListPanel/ListLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(306, 280)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+allow_reselect = true
+allow_rmb_select = true
+tooltip_text = "选择条目后在右侧画面中直接编辑全部属性"
+
+[node name="EditorPanel" type="PanelContainer" parent="Split"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(540, 430)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch_ratio = 2.0
+theme_override_styles/panel = SubResource("StyleEditor")
+
+[node name="EntryEditorHost" type="VBoxContainer" parent="Split/EditorPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="EditorHeader" type="HBoxContainer" parent="Split/EditorPanel/EntryEditorHost"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EditorSectionTitle" type="Label" parent="Split/EditorPanel/EntryEditorHost/EditorHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.93, 0.86, 0.57, 1)
+theme_override_font_sizes/font_size = 16
+text = "视觉属性面板"
+
+[node name="DirectEditBadge" type="Label" parent="Split/EditorPanel/EntryEditorHost/EditorHeader"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.47, 0.88, 0.62, 1)
+text = "● 直接编辑"
+
+[node name="EditorWell" type="PanelContainer" parent="Split/EditorPanel/EntryEditorHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleEditorWell")
+
+[node name="EntryEditorScroll" type="ScrollContainer" parent="Split/EditorPanel/EntryEditorHost/EditorWell"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ScrollContents" type="VBoxContainer" parent="Split/EditorPanel/EntryEditorHost/EditorWell/EntryEditorScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="EntryEditorContentHost" type="VBoxContainer" parent="Split/EditorPanel/EntryEditorHost/EditorWell/EntryEditorScroll/ScrollContents"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="StandaloneEditorHost" type="VBoxContainer" parent="Split/EditorPanel/EntryEditorHost/EditorWell/EntryEditorScroll/ScrollContents"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+visible = false

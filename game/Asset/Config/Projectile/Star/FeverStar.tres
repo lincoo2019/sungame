@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://ta7jct0ah6xa"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_e7gdp"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_gt2fb"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="3_w2n53"]
+[ext_resource type="Script" uid="uid://dp2pqwer6loc1" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffRedHeat.cs" id="3_wtafk"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="4_peexu"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_v7xnx"]
+[ext_resource type="Script" uid="uid://c55feeuvm3ss" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionRandom.cs" id="5_4jtda"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="6_fsdx2"]
+[ext_resource type="PackedScene" uid="uid://cg25a133r74jk" path="res://Asset/Config/Projectile/Star/FeverStar/FeverStar.tscn" id="6_i1s0f"]
+
+[sub_resource type="Resource" id="Resource_plqsj"]
+script = ExtResource("3_wtafk")
+metadata/_custom_type_script = "uid://dp2pqwer6loc1"
+
+[sub_resource type="Resource" id="Resource_h2l3b"]
+script = ExtResource("4_v7xnx")
+buffList = Array[ExtResource("2_gt2fb")]([SubResource("Resource_plqsj")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Resource_ajr8q"]
+script = ExtResource("5_4jtda")
+eventList = Array[ExtResource("1_e7gdp")]([SubResource("Resource_h2l3b")])
+percentage = 0.1
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[resource]
+script = ExtResource("3_w2n53")
+name = "FireStarF"
+isStar = true
+baseDamage = 40.0
+projectileScene = ExtResource("6_i1s0f")
+projectileObject = 379
+splatScene = ExtResource("4_peexu")
+hitCharacterEventList = Array[ExtResource("1_e7gdp")]([SubResource("Resource_ajr8q")])
+damageFlags = 7
+collisionFlags = 1
+catapultHeight = 400.0

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cjajvaqfblr0g"]
+
+[ext_resource type="Script" uid="uid://tg3rnalhd4ux" path="res://Asset/Config/Map/Frontlawn/Scene/NightDeep/TowerDefenseMapFrontlawnNightDeep.cs" id="1_bl4as"]
+[ext_resource type="Texture2D" uid="uid://xju3adrn4dx3" path="res://Asset/Config/Map/Frontlawn/Scene/NightDeep/TowerDefenseMapFrontlawnNightDeepGradient.tres" id="2_s1j3j"]
+[ext_resource type="Texture2D" uid="uid://gs2gvgb4id47" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/FrontlawnNightDeep.jpg" id="3_bl4as"]
+[ext_resource type="Texture2D" uid="uid://cdaabuc2vghs7" path="res://Asset/Config/Map/General/LightTexture.tres" id="4_m8hty"]
+[ext_resource type="Texture2D" uid="uid://bbbiwhq1ib7vi" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Stripe.png" id="5_kqx55"]
+[ext_resource type="Script" uid="uid://b5ar37hp0yfwu" path="res://Extends/PointLight2D/PointLight2DFollowMudulate.cs" id="6_um6ab"]
+[ext_resource type="Texture2D" uid="uid://mv675nq6gi64" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/FromtlawnNightDeepFloor.png" id="7_s1j3j"]
+[ext_resource type="Texture2D" uid="uid://bs07wv0ua20em" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/FrontlawnNightDoor.png" id="8_0qs6n"]
+
+[node name="TowerDefenseMapFrontlawnNightDeep" type="Node2D" node_paths=PackedStringArray("stripe")]
+modulate = Color(1, 0.988235, 0.988235, 1)
+script = ExtResource("1_bl4as")
+stripe = NodePath("Stripe")
+canvasModulateGradient = ExtResource("2_s1j3j")
+
+[node name="FrontlawnNightDeep" type="Sprite2D" parent="."]
+scale = Vector2(1, 1)
+texture = ExtResource("3_bl4as")
+centered = false
+
+[node name="PointLight2DFollowMudulate" type="PointLight2D" parent="." node_paths=PackedStringArray("followNode")]
+position = Vector2(371.5, 300)
+scale = Vector2(0.496667, 0.4)
+color = Color(1, 0.988235, 0.988235, 1)
+range_layer_max = 512
+texture = ExtResource("4_m8hty")
+script = ExtResource("6_um6ab")
+followNode = NodePath("..")
+saveEnergy = 1.0
+
+[node name="Stripe" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(494, 70)
+scale = Vector2(2, 2)
+texture = ExtResource("5_kqx55")
+centered = false
+
+[node name="FrontlawnFloor" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(100, 298)
+scale = Vector2(1, 0.99857143)
+texture = ExtResource("7_s1j3j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer"]
+unique_name_in_owner = true
+color = Color(0.67451, 0.67451, 0.67451, 1)
+
+[node name="FrontlawnDoor" type="Sprite2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(101, 297)
+scale = Vector2(1, 0.99857143)
+texture = ExtResource("8_0qs6n")

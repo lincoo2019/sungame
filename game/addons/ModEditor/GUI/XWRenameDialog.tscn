@@ -1,0 +1,107 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8m0renamedlg001"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/GUI/XWRenameDialog.cs" id="1_rename"]
+
+[node name="XWRenameDialog" type="ConfirmationDialog"]
+title = "重命名"
+initial_position = 1
+size = Vector2i(500, 600)
+min_size = Vector2i(500, 600)
+script = ExtResource("1_rename")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="SearchReplaceGrid" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="SearchLabel" type="Label" parent="VBoxContainer/SearchReplaceGrid"]
+layout_mode = 2
+text = "搜索:"
+
+[node name="SearchEdit" type="LineEdit" parent="VBoxContainer/SearchReplaceGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "搜索文本"
+
+[node name="ReplaceLabel" type="Label" parent="VBoxContainer/SearchReplaceGrid"]
+layout_mode = 2
+text = "替换:"
+
+[node name="ReplaceEdit" type="LineEdit" parent="VBoxContainer/SearchReplaceGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "替换文本"
+
+[node name="RegexCheck" type="CheckBox" parent="VBoxContainer/SearchReplaceGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "正则表达式"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/SearchReplaceGrid"]
+layout_mode = 2
+
+[node name="PrefixSuffixGrid" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="PrefixLabel" type="Label" parent="VBoxContainer/PrefixSuffixGrid"]
+layout_mode = 2
+text = "前缀:"
+
+[node name="PrefixEdit" type="LineEdit" parent="VBoxContainer/PrefixSuffixGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "前缀"
+
+[node name="SuffixLabel" type="Label" parent="VBoxContainer/PrefixSuffixGrid"]
+layout_mode = 2
+text = "后缀:"
+
+[node name="SuffixEdit" type="LineEdit" parent="VBoxContainer/PrefixSuffixGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "后缀"
+
+[node name="CounterGrid" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="CounterStartLabel" type="Label" parent="VBoxContainer/CounterGrid"]
+layout_mode = 2
+text = "计数器起始:"
+
+[node name="CounterStart" type="SpinBox" parent="VBoxContainer/CounterGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 9999.0
+
+[node name="CounterStepLabel" type="Label" parent="VBoxContainer/CounterGrid"]
+layout_mode = 2
+text = "计数器步长:"
+
+[node name="CounterStep" type="SpinBox" parent="VBoxContainer/CounterGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="CounterPaddingLabel" type="Label" parent="VBoxContainer/CounterGrid"]
+layout_mode = 2
+text = "填充位数:"
+
+[node name="CounterPadding" type="SpinBox" parent="VBoxContainer/CounterGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 10.0
+
+[node name="PreviewLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "预览:"
+
+[node name="PreviewList" type="ItemList" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3

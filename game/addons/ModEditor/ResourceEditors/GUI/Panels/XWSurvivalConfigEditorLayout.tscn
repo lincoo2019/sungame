@@ -1,0 +1,498 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleHeader"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.07, 0.12, 0.08, 0.98)
+border_width_left = 3
+border_color = Color(0.42, 0.84, 0.3, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleStage"]
+bg_color = Color(0.02, 0.04, 0.025, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.26, 0.56, 0.22, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleCard"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.055, 0.07, 0.06, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.34, 0.23, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleMeter"]
+bg_color = Color(0.06, 0.13, 0.07, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56, 0.9, 0.32, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="SurvivalConfigEditor" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleHeader")
+
+[node name="Layout" type="HBoxContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Header/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.72, 1, 0.62, 1)
+theme_override_font_sizes/font_size = 20
+text = "生存模式 · 草坪规则设计台"
+vertical_alignment = 1
+
+[node name="JsonSourceButton" type="Button" parent="Header/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 38)
+layout_mode = 2
+text = "JSON 来源：未设置"
+
+[node name="RunPreviewButton" type="Button" parent="Header/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 38)
+layout_mode = 2
+text = "打开独立预览"
+
+[node name="Stage" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 310)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleStage")
+
+[node name="Content" type="Control" parent="Stage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="Stage/Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+mouse_filter = 2
+
+[node name="Viewport" type="SubViewport" parent="Stage/Content/ViewportContainer"]
+transparent_bg = true
+disable_3d = true
+size = Vector2i(960, 310)
+render_target_update_mode = 4
+gui_disable_input = true
+
+[node name="Background" type="TextureRect" parent="Stage/Content/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+offset_right = 960.0
+offset_bottom = 310.0
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ZombieRoot" type="Node2D" parent="Stage/Content/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+
+[node name="StageTop" type="HBoxContainer" parent="Stage/Content"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 18.0
+offset_top = 12.0
+offset_right = -18.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="PreviewRoundLabel" type="Label" parent="Stage/Content/StageTop"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.48, 1)
+theme_override_font_sizes/font_size = 24
+text = "轮次 0 / 无尽"
+vertical_alignment = 1
+
+[node name="PreviewTimeLabel" type="Label" parent="Stage/Content/StageTop"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.38, 1)
+theme_override_font_sizes/font_size = 22
+text = "白天"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Stage/Content/StageTop"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PoolStatusLabel" type="Label" parent="Stage/Content/StageTop"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.96, 0.7, 1)
+text = "当前僵尸池 0 种"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PointMeter" type="PanelContainer" parent="Stage/Content"]
+layout_mode = 1
+anchors_preset = 12
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_top = -66.0
+offset_right = 310.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleMeter")
+
+[node name="Layout" type="VBoxContainer" parent="Stage/Content/PointMeter"]
+layout_mode = 2
+
+[node name="PointLabel" type="Label" parent="Stage/Content/PointMeter/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "生成点数 0 / 0"
+horizontal_alignment = 1
+
+[node name="PointProgress" type="ProgressBar" parent="Stage/Content/PointMeter/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 20)
+layout_mode = 2
+show_percentage = false
+
+[node name="PreviewBar" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="RoundLabel" type="Label" parent="PreviewBar"]
+layout_mode = 2
+text = "预览轮次"
+vertical_alignment = 1
+
+[node name="PreviewRoundSpin" type="SpinBox" parent="PreviewBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 9999.0
+
+[node name="WaveLabel" type="Label" parent="PreviewBar"]
+layout_mode = 2
+text = "已经过波次"
+vertical_alignment = 1
+
+[node name="PreviewWaveSpin" type="SpinBox" parent="PreviewBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+max_value = 99999.0
+
+[node name="PreviewBigWaveCheck" type="CheckBox" parent="PreviewBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "下一波按大波点数"
+
+[node name="ResetPreviewButton" type="Button" parent="PreviewBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "重置预览"
+
+[node name="NextWavePreviewButton" type="Button" parent="PreviewBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "下一波"
+
+[node name="NextRoundPreviewButton" type="Button" parent="PreviewBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "下一轮"
+
+[node name="RuleRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="RoundRules" type="PanelContainer" parent="RuleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleCard")
+
+[node name="Layout" type="VBoxContainer" parent="RuleRow/RoundRules"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="RuleRow/RoundRules/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 17
+text = "轮次与昼夜规则"
+
+[node name="LimitRow" type="HBoxContainer" parent="RuleRow/RoundRules/Layout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RuleRow/RoundRules/Layout/LimitRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "最大轮次"
+vertical_alignment = 1
+
+[node name="RoundLimitSpin" type="SpinBox" parent="RuleRow/RoundRules/Layout/LimitRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+min_value = -1.0
+max_value = 9999.0
+step = 1.0
+
+[node name="EndlessCheck" type="CheckBox" parent="RuleRow/RoundRules/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "无尽模式（轮次不封顶）"
+
+[node name="DayNightCheck" type="CheckBox" parent="RuleRow/RoundRules/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "每轮切换白天 / 黑夜"
+
+[node name="PointRules" type="PanelContainer" parent="RuleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleCard")
+
+[node name="Layout" type="VBoxContainer" parent="RuleRow/PointRules"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="RuleRow/PointRules/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.34, 1)
+theme_override_font_sizes/font_size = 17
+text = "出怪点数经济"
+
+[node name="Grid" type="GridContainer" parent="RuleRow/PointRules/Layout"]
+layout_mode = 2
+columns = 4
+
+[node name="BeginLabel" type="Label" parent="RuleRow/PointRules/Layout/Grid"]
+layout_mode = 2
+text = "开局点数"
+[node name="PointBeginSpin" type="SpinBox" parent="RuleRow/PointRules/Layout/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+max_value = 100000000.0
+[node name="MaxLabel" type="Label" parent="RuleRow/PointRules/Layout/Grid"]
+layout_mode = 2
+text = "点数上限"
+[node name="PointMaxSpin" type="SpinBox" parent="RuleRow/PointRules/Layout/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+max_value = 100000000.0
+[node name="WaveLabel" type="Label" parent="RuleRow/PointRules/Layout/Grid"]
+layout_mode = 2
+text = "每波增加"
+[node name="PointWaveSpin" type="SpinBox" parent="RuleRow/PointRules/Layout/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+max_value = 100000000.0
+[node name="BigWaveLabel" type="Label" parent="RuleRow/PointRules/Layout/Grid"]
+layout_mode = 2
+text = "大波增加"
+[node name="PointBigWaveSpin" type="SpinBox" parent="RuleRow/PointRules/Layout/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+max_value = 100000000.0
+[node name="RoundLabel" type="Label" parent="RuleRow/PointRules/Layout/Grid"]
+layout_mode = 2
+text = "每轮增加"
+[node name="PointRoundSpin" type="SpinBox" parent="RuleRow/PointRules/Layout/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+max_value = 100000000.0
+[node name="ScaleLabel" type="Label" parent="RuleRow/PointRules/Layout/Grid"]
+layout_mode = 2
+text = "大波倍率"
+[node name="BigWaveScaleSpin" type="SpinBox" parent="RuleRow/PointRules/Layout/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+step = 0.05
+
+[node name="PoolRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="BasePool" type="PanelContainer" parent="PoolRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleCard")
+
+[node name="Layout" type="VBoxContainer" parent="PoolRow/BasePool"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Header" type="HBoxContainer" parent="PoolRow/BasePool/Layout"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PoolRow/BasePool/Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.65, 0.92, 0.56, 1)
+theme_override_font_sizes/font_size = 17
+text = "开局基础僵尸池"
+
+[node name="AddBaseZombieButton" type="Button" parent="PoolRow/BasePool/Layout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "从图鉴添加"
+
+[node name="BaseZombieList" type="ItemList" parent="PoolRow/BasePool/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+allow_reselect = true
+
+[node name="Actions" type="HBoxContainer" parent="PoolRow/BasePool/Layout"]
+layout_mode = 2
+[node name="RemoveBaseZombieButton" type="Button" parent="PoolRow/BasePool/Layout/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "移除"
+[node name="MoveBaseZombieUpButton" type="Button" parent="PoolRow/BasePool/Layout/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "上移"
+[node name="MoveBaseZombieDownButton" type="Button" parent="PoolRow/BasePool/Layout/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "下移"
+
+[node name="RoundPool" type="PanelContainer" parent="PoolRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleCard")
+
+[node name="Layout" type="VBoxContainer" parent="PoolRow/RoundPool"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Header" type="HBoxContainer" parent="PoolRow/RoundPool/Layout"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PoolRow/RoundPool/Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.68, 0.86, 1, 1)
+theme_override_font_sizes/font_size = 17
+text = "轮次解锁僵尸组"
+
+[node name="AddRoundAddButton" type="Button" parent="PoolRow/RoundPool/Layout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "新建轮次组"
+
+[node name="RoundAddList" type="ItemList" parent="PoolRow/RoundPool/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+allow_reselect = true
+
+[node name="Actions" type="HBoxContainer" parent="PoolRow/RoundPool/Layout"]
+layout_mode = 2
+[node name="OpenRoundAddButton" type="Button" parent="PoolRow/RoundPool/Layout/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "进入草坪编辑"
+[node name="RemoveRoundAddButton" type="Button" parent="PoolRow/RoundPool/Layout/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "移除"
+[node name="MoveRoundAddUpButton" type="Button" parent="PoolRow/RoundPool/Layout/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "上移"
+[node name="MoveRoundAddDownButton" type="Button" parent="PoolRow/RoundPool/Layout/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "下移"
+
+[node name="StatusLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.94, 0.84, 1)
+text = "草坪预览只读取配置，不执行出怪、攻击、随机或结算逻辑。"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="JsonSourceDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "选择生存模式 JSON 来源"
+initial_position = 1
+size = Vector2i(900, 620)
+min_size = Vector2i(700, 480)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json ; JSON 资源")

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://c5ght81mahcna"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_jdyal"]
+[ext_resource type="Script" uid="uid://bd5g4jl55mlr3" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventCoinCreate.cs" id="2_xpmbw"]
+[ext_resource type="PackedScene" uid="uid://1trog3uqr2n" path="res://Asset/Anime/Effect/Coin/Silver/CoinSilver.tscn" id="3_tei57"]
+[ext_resource type="Script" uid="uid://c55feeuvm3ss" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionRandom.cs" id="3_xpmbw"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="4_qg5ud"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="4_tei57"]
+
+[sub_resource type="Resource" id="Resource_1xs2o"]
+script = ExtResource("2_xpmbw")
+collect = true
+metadata/_custom_type_script = "uid://bd5g4jl55mlr3"
+
+[sub_resource type="Resource" id="Resource_tei57"]
+script = ExtResource("3_xpmbw")
+eventList = Array[ExtResource("1_jdyal")]([SubResource("Resource_1xs2o")])
+percentage = 0.08
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[resource]
+script = ExtResource("4_qg5ud")
+name = "CoinSilver"
+baseDamage = 100.0
+projectileScene = ExtResource("3_tei57")
+projectileObject = 364
+splatSceneType = "Sprite"
+hitTargetEventList = Array[ExtResource("1_jdyal")]([SubResource("Resource_tei57")])
+fireMethodFlags = 32
+collisionFlags = 11
+catapultHeight = 400.0
+penetrateNum = 10000

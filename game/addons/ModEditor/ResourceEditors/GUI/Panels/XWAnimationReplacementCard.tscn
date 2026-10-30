@@ -1,0 +1,209 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWAnimationReplacementCard.cs" id="1_script"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Remove.svg" id="2_remove"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Folder.svg" id="3_folder"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot"]
+bg_color = Color(0.08, 0.13, 0.075, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.32, 0.46, 0.25, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_texture"]
+bg_color = Color(0.045, 0.11, 0.135, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.43, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_empty"]
+bg_color = Color(0.055, 0.075, 0.058, 0.82)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.27, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="AnimationReplacementCard" type="Control"]
+custom_minimum_size = Vector2(280, 116)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="SlotPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Margin" type="MarginContainer" parent="SlotPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Row" type="HBoxContainer" parent="SlotPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SlotThumbnail" type="TextureRect" parent="SlotPanel/Margin/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 82)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Content" type="VBoxContainer" parent="SlotPanel/Margin/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SlotName" type="Label" parent="SlotPanel/Margin/Row/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 1, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "媒体槽位"
+text_overrun_behavior = 3
+
+[node name="SlotMediaId" type="Label" parent="SlotPanel/Margin/Row/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.61, 0.75, 0.55, 1)
+text = "媒体 #1"
+
+[node name="SlotLayers" type="Label" parent="SlotPanel/Margin/Row/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.75, 0.34, 1)
+text = "图层"
+text_overrun_behavior = 3
+
+[node name="SlotRemoveButton" type="Button" parent="SlotPanel/Margin/Row/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("2_remove")
+text = "移除"
+
+[node name="TexturePanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_texture")
+
+[node name="Margin" type="MarginContainer" parent="TexturePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Content" type="VBoxContainer" parent="TexturePanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TexturePreview" type="TextureRect" parent="TexturePanel/Margin/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 92)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureName" type="Label" parent="TexturePanel/Margin/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.66, 0.9, 1, 1)
+text = "#1 纹理"
+text_overrun_behavior = 3
+
+[node name="Actions" type="HBoxContainer" parent="TexturePanel/Margin/Content"]
+layout_mode = 2
+
+[node name="TextureReplaceButton" type="Button" parent="TexturePanel/Margin/Content/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("3_folder")
+text = "更换"
+
+[node name="TextureRemoveButton" type="Button" parent="TexturePanel/Margin/Content/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("2_remove")
+text = "移除"
+
+[node name="EmptyPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_empty")
+
+[node name="Margin" type="MarginContainer" parent="EmptyPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Row" type="HBoxContainer" parent="EmptyPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="EmptyGlyph" type="Label" parent="EmptyPanel/Margin/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 0.95, 0.5, 1)
+theme_override_font_sizes/font_size = 30
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="VBoxContainer" parent="EmptyPanel/Margin/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EmptyTitle" type="Label" parent="EmptyPanel/Margin/Row/Text"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "空状态"
+
+[node name="EmptySubtitle" type="Label" parent="EmptyPanel/Margin/Row/Text"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.65, 0.5, 1)
+text = "说明"
+autowrap_mode = 2

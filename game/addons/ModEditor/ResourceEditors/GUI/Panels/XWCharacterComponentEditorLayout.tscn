@@ -1,0 +1,655 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/godot_state_charts/VisualEditor/StateMachineGraphEditorSurface.tscn" id="1_state_surface"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ResourceCharacter.svg" id="2_character"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Signals.svg" id="3_event"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/MainPlay.svg" id="4_play"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Reload.svg" id="5_reload"]
+
+[sub_resource type="StyleBoxFlat" id="StyleRoot"]
+bg_color = Color(0.025, 0.035, 0.045, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleHeader"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.048, 0.075, 0.087, 1)
+border_color = Color(0.20, 0.58, 0.42, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleLibrary"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.045, 0.062, 0.073, 1)
+border_color = Color(0.15, 0.34, 0.30, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleWorkbench"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.052, 0.058, 0.070, 1)
+border_color = Color(0.34, 0.31, 0.16, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StylePreview"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.042, 0.057, 0.066, 1)
+border_color = Color(0.18, 0.36, 0.47, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleToolbar"]
+content_margin_left = 7.0
+content_margin_top = 6.0
+content_margin_right = 7.0
+content_margin_bottom = 6.0
+bg_color = Color(0.067, 0.080, 0.091, 1)
+border_color = Color(0.15, 0.20, 0.23, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleCanvas"]
+bg_color = Color(0.018, 0.025, 0.030, 1)
+border_color = Color(0.10, 0.18, 0.21, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleStatus"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.07, 0.18, 0.14, 1)
+border_color = Color(0.20, 0.51, 0.36, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StylePrimaryButton"]
+bg_color = Color(0.13, 0.42, 0.27, 1)
+border_color = Color(0.31, 0.72, 0.46, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleDangerButton"]
+bg_color = Color(0.30, 0.10, 0.09, 1)
+border_color = Color(0.67, 0.27, 0.20, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="CharacterComponentEditorLayout" type="PanelContainer"]
+custom_minimum_size = Vector2(420, 360)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleRoot")
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RootLayout" type="VBoxContainer" parent="RootMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Header" type="PanelContainer" parent="RootMargin/RootLayout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleHeader")
+
+[node name="HeaderFlow" type="HFlowContainer" parent="RootMargin/RootLayout/Header"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 5
+
+[node name="ComponentBadge" type="Label" parent="RootMargin/RootLayout/Header/HeaderFlow"]
+custom_minimum_size = Vector2(36, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.95, 0.65, 1)
+theme_override_font_sizes/font_size = 22
+text = "◆"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HeaderText" type="VBoxContainer" parent="RootMargin/RootLayout/Header/HeaderFlow"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 1
+
+[node name="Title" type="Label" parent="RootMargin/RootLayout/Header/HeaderFlow/HeaderText"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.97, 0.91, 1)
+theme_override_font_sizes/font_size = 18
+text = "角色组件装配台"
+
+[node name="Subtitle" type="Label" parent="RootMargin/RootLayout/Header/HeaderFlow/HeaderText"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.53, 0.68, 0.66, 1)
+theme_override_font_sizes/font_size = 12
+text = "组件拼图 · 直接属性 · 游戏预览 · 事件沙盘"
+
+[node name="ResourceNameEdit" type="LineEdit" parent="RootMargin/RootLayout/Header/HeaderFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 34)
+layout_mode = 2
+placeholder_text = "组件集名称"
+clear_button_enabled = true
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="RootMargin/RootLayout/Header/HeaderFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "场景独立"
+
+[node name="EditorStatusChip" type="PanelContainer" parent="RootMargin/RootLayout/Header/HeaderFlow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleStatus")
+
+[node name="EditorStatusLabel" type="Label" parent="RootMargin/RootLayout/Header/HeaderFlow/EditorStatusChip"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.61, 0.96, 0.73, 1)
+text = "已同步"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectionToolbar" type="PanelContainer" parent="RootMargin/RootLayout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleToolbar")
+
+[node name="SelectionFlow" type="HFlowContainer" parent="RootMargin/RootLayout/SelectionToolbar"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 5
+
+[node name="SelectedComponentIcon" type="TextureRect" parent="RootMargin/RootLayout/SelectionToolbar/SelectionFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SelectedComponentLabel" type="Label" parent="RootMargin/RootLayout/SelectionToolbar/SelectionFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.88, 0.56, 1)
+text = "选择一个组件开始直接编辑"
+vertical_alignment = 1
+
+[node name="ComponentSourceBadge" type="Label" parent="RootMargin/RootLayout/SelectionToolbar/SelectionFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(52, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.53, 0.77, 0.91, 1)
+text = "本地"
+vertical_alignment = 1
+
+[node name="OverrideComponentButton" type="Button" parent="RootMargin/RootLayout/SelectionToolbar/SelectionFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "◆ 覆盖"
+
+[node name="RemoveComponentButton" type="Button" parent="RootMargin/RootLayout/SelectionToolbar/SelectionFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleDangerButton")
+text = "× 移除"
+
+[node name="RestoreComponentButton" type="Button" parent="RootMargin/RootLayout/SelectionToolbar/SelectionFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "↶ 恢复"
+
+[node name="CharacterWorkbenchPages" type="TabContainer" parent="RootMargin/RootLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="GamePreviewPage" type="MarginContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages"]
+layout_mode = 2
+metadata/_tab_name = "游戏预览与事件沙盘"
+theme_override_constants/margin_top = 6
+
+[node name="PreviewPanel" type="PanelContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StylePreview")
+
+[node name="PreviewLayout" type="VBoxContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 7
+
+[node name="PreviewHeaderFlow" type="HFlowContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout"]
+layout_mode = 2
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 5
+
+[node name="PreviewTitle" type="Label" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/PreviewHeaderFlow"]
+custom_minimum_size = Vector2(220, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.63, 0.86, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "游戏内组件预览"
+vertical_alignment = 1
+
+[node name="PreviewCharacterVisualButton" type="Button" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/PreviewHeaderFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(188, 42)
+layout_mode = 2
+icon = ExtResource("2_character")
+icon_max_width = 30
+expand_icon = true
+text = "选择角色场景"
+tooltip_text = "打开带图标和场景缩略的角色资源卡库"
+
+[node name="ResetPreviewButton" type="Button" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/PreviewHeaderFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+icon = ExtResource("5_reload")
+icon_max_width = 24
+expand_icon = true
+text = "重建预览"
+
+[node name="PreviewFrame" type="PanelContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleCanvas")
+
+[node name="PreviewViewportContainer" type="SubViewportContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/PreviewFrame"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="ComponentPreviewViewport" type="SubViewport" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/PreviewFrame/PreviewViewportContainer"]
+unique_name_in_owner = true
+size = Vector2i(760, 360)
+render_target_update_mode = 4
+handle_input_locally = true
+
+[node name="PreviewWorld" type="Node2D" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/PreviewFrame/PreviewViewportContainer/ComponentPreviewViewport"]
+unique_name_in_owner = true
+position = Vector2(380, 270)
+
+[node name="PreviewBackdrop" type="ColorRect" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/PreviewFrame/PreviewViewportContainer/ComponentPreviewViewport"]
+offset_right = 760.0
+offset_bottom = 360.0
+mouse_filter = 2
+color = Color(0.055, 0.10, 0.085, 1)
+show_behind_parent = true
+
+[node name="PreviewHint" type="Label" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/PreviewFrame/PreviewViewportContainer/ComponentPreviewViewport"]
+unique_name_in_owner = true
+offset_left = 100.0
+offset_top = 145.0
+offset_right = 660.0
+offset_bottom = 215.0
+theme_override_colors/font_color = Color(0.49, 0.69, 0.62, 1)
+text = "选择角色卡后在这里装载真实组件运行时"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PreviewStatusLabel" type="Label" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.63, 0.77, 0.76, 1)
+text = "等待组件预览"
+text_overrun_behavior = 3
+
+[node name="EventSimulator" type="VBoxContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="EventTitle" type="Label" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/EventSimulator"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.80, 0.43, 1)
+text = "事件沙盘"
+
+[node name="EventFlow" type="HFlowContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/EventSimulator"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 5
+
+[node name="EventTypeVisualButton" type="Button" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/EventSimulator/EventFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(170, 42)
+layout_mode = 2
+icon = ExtResource("3_event")
+icon_max_width = 28
+expand_icon = true
+text = "伤害事件"
+
+[node name="EventNameEdit" type="LineEdit" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/EventSimulator/EventFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "自定义 Mod 事件名（可选）"
+
+[node name="EventValueEdit" type="SpinBox" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/EventSimulator/EventFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 42)
+layout_mode = 2
+max_value = 100000.0
+value = 20.0
+allow_greater = true
+
+[node name="SimulateEventButton" type="Button" parent="RootMargin/RootLayout/CharacterWorkbenchPages/GamePreviewPage/PreviewPanel/PreviewLayout/EventSimulator/EventFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.80, 1)
+icon = ExtResource("4_play")
+icon_max_width = 26
+expand_icon = true
+text = "发送事件"
+
+[node name="DirectPropertyPage" type="MarginContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages"]
+layout_mode = 2
+metadata/_tab_name = "直接属性"
+theme_override_constants/margin_top = 6
+
+[node name="WorkbenchPanel" type="PanelContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/DirectPropertyPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleWorkbench")
+
+[node name="WorkbenchLayout" type="VBoxContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/DirectPropertyPage/WorkbenchPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="DirectPropertyHint" type="Label" parent="RootMargin/RootLayout/CharacterWorkbenchPages/DirectPropertyPage/WorkbenchPanel/WorkbenchLayout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.82, 0.60, 1)
+text = "通用属性拼图卡：内置组件与未知 Mod 组件均在这里直接编辑"
+autowrap_mode = 2
+
+[node name="ComponentPropertyScroll" type="ScrollContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/DirectPropertyPage/WorkbenchPanel/WorkbenchLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ComponentPropertyHost" type="VBoxContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/DirectPropertyPage/WorkbenchPanel/WorkbenchLayout/ComponentPropertyScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 7
+
+[node name="ComponentLibraryPage" type="MarginContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages"]
+layout_mode = 2
+metadata/_tab_name = "组件库"
+theme_override_constants/margin_top = 6
+
+[node name="LibraryPanel" type="PanelContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleLibrary")
+
+[node name="LibraryLayout" type="VBoxContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="LibraryTitleFlow" type="HFlowContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout"]
+layout_mode = 2
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 5
+
+[node name="LibraryTitle" type="Label" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout/LibraryTitleFlow"]
+custom_minimum_size = Vector2(180, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.64, 0.94, 0.76, 1)
+theme_override_font_sizes/font_size = 15
+text = "组件拼图卡库"
+vertical_alignment = 1
+
+[node name="LibraryCountLabel" type="Label" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout/LibraryTitleFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48, 0.65, 0.63, 1)
+text = "0 张"
+
+[node name="AddComponentButton" type="Button" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout/LibraryTitleFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 1, 0.91, 1)
+theme_override_styles/normal = SubResource("StylePrimaryButton")
+text = "+ 装入选中组件卡"
+
+[node name="ComponentLibrarySearch" type="LineEdit" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+placeholder_text = "搜索图标、类型或能力…"
+clear_button_enabled = true
+
+[node name="TypeGridScroll" type="ScrollContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="ComponentTypeGrid" type="HFlowContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout/TypeGridScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="CompositionTabs" type="TabContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InheritanceMap" type="MarginContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout/CompositionTabs"]
+layout_mode = 2
+metadata/_tab_name = "继承图"
+theme_override_constants/margin_top = 5
+
+[node name="InheritanceTree" type="Tree" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout/CompositionTabs/InheritanceMap"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+hide_root = true
+
+[node name="EffectiveComponents" type="MarginContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout/CompositionTabs"]
+layout_mode = 2
+metadata/_tab_name = "生效组件"
+theme_override_constants/margin_top = 5
+
+[node name="EffectiveComponentList" type="ItemList" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout/CompositionTabs/EffectiveComponents"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+fixed_icon_size = Vector2i(30, 30)
+
+[node name="LocalComponents" type="MarginContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout/CompositionTabs"]
+layout_mode = 2
+metadata/_tab_name = "本地组件"
+theme_override_constants/margin_top = 5
+
+[node name="LocalComponentList" type="ItemList" parent="RootMargin/RootLayout/CharacterWorkbenchPages/ComponentLibraryPage/LibraryPanel/LibraryLayout/CompositionTabs/LocalComponents"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+fixed_icon_size = Vector2i(30, 30)
+
+[node name="PuzzleConfigPage" type="MarginContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages"]
+layout_mode = 2
+metadata/_tab_name = "拼图蓝图"
+theme_override_constants/margin_top = 6
+
+[node name="StateMachineEditorHost" type="PanelContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/PuzzleConfigPage"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleCanvas")
+
+[node name="StateMachineStack" type="VBoxContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/PuzzleConfigPage/StateMachineEditorHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="StateMachineToolbar" type="HFlowContainer" parent="RootMargin/RootLayout/CharacterWorkbenchPages/PuzzleConfigPage/StateMachineEditorHost/StateMachineStack"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 5
+
+[node name="StateMachineStatus" type="Label" parent="RootMargin/RootLayout/CharacterWorkbenchPages/PuzzleConfigPage/StateMachineEditorHost/StateMachineStack/StateMachineToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "尚未配置状态机"
+vertical_alignment = 1
+
+[node name="CreateStateMachineButton" type="Button" parent="RootMargin/RootLayout/CharacterWorkbenchPages/PuzzleConfigPage/StateMachineEditorHost/StateMachineStack/StateMachineToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ 新建蓝图"
+
+[node name="ChooseStateMachineButton" type="Button" parent="RootMargin/RootLayout/CharacterWorkbenchPages/PuzzleConfigPage/StateMachineEditorHost/StateMachineStack/StateMachineToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择资源"
+
+[node name="ClearStateMachineButton" type="Button" parent="RootMargin/RootLayout/CharacterWorkbenchPages/PuzzleConfigPage/StateMachineEditorHost/StateMachineStack/StateMachineToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "清除"
+
+[node name="StateMachineGraphEditorSurface" parent="RootMargin/RootLayout/CharacterWorkbenchPages/PuzzleConfigPage/StateMachineEditorHost/StateMachineStack" instance=ExtResource("1_state_surface")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EventTypePickerPopup" type="PopupPanel" parent="."]
+unique_name_in_owner = true
+initial_position = 2
+size = Vector2i(600, 310)
+min_size = Vector2i(380, 220)
+
+[node name="PopupMargin" type="MarginContainer" parent="EventTypePickerPopup"]
+offset_right = 600.0
+offset_bottom = 310.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PopupLayout" type="VBoxContainer" parent="EventTypePickerPopup/PopupMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PopupTitle" type="Label" parent="EventTypePickerPopup/PopupMargin/PopupLayout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.45, 1)
+theme_override_font_sizes/font_size = 16
+text = "选择事件图形卡"
+
+[node name="PopupScroll" type="ScrollContainer" parent="EventTypePickerPopup/PopupMargin/PopupLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="EventTypeVisualGrid" type="HFlowContainer" parent="EventTypePickerPopup/PopupMargin/PopupLayout/PopupScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 7

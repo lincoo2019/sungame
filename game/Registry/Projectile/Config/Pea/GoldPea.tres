@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://bc1ifskbpetrr"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_tws5l"]
+[ext_resource type="Script" uid="uid://cr5nwpwl6677g" path="res://Resource/TowerDefense/Attack/AttackConfig.cs" id="2_6efrp"]
+[ext_resource type="Script" uid="uid://eughsv2mxyyl" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurtWithConfig.cs" id="3_ste8p"]
+[ext_resource type="PackedScene" uid="uid://doy0lwdy2wlmj" path="res://Asset/Config/Projectile/Pea/Sprite/GoldPea/ProjectileGoldPea.tscn" id="4_vv8wn"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="5_tws5l"]
+[ext_resource type="PackedScene" uid="uid://cc80ittetqubs" path="res://Prefab/Particles/Splats/GoldPeaSplats/GoldPeaSplats.tscn" id="6_fstyd"]
+
+[sub_resource type="Resource" id="Resource_fstyd"]
+script = ExtResource("2_6efrp")
+armorAttackScale = 10.0
+
+[sub_resource type="Resource" id="Resource_3y035"]
+script = ExtResource("3_ste8p")
+AttackConfig = SubResource("Resource_fstyd")
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[resource]
+script = ExtResource("5_tws5l")
+name = "GoldPea"
+projectileScene = ExtResource("4_vv8wn")
+splatScene = ExtResource("6_fstyd")
+hitTargetEventList = Array[ExtResource("1_tws5l")]([SubResource("Resource_3y035")])
+hitBody = true

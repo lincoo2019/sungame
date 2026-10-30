@@ -1,0 +1,277 @@
+[gd_scene format=3 uid="uid://u3bg1snrdknl"]
+
+[ext_resource type="Script" uid="uid://t40kdn3d6ul1" path="res://Registry/Battle/Feature/ConveyorBelt/ConveyorBelt/ConveyorBeltManager.cs" id="1_cbm"]
+[ext_resource type="Texture2D" uid="uid://ddglfhcpxg451" path="res://Asset/Texture/TowerDefense/ConveyorBelt/ConveyorBeltBackdrop.png" id="2_cbm"]
+[ext_resource type="Shader" uid="uid://wk0w3tgag3ju" path="res://Registry/Battle/Feature/ConveyorBelt/ConveyorBelt/ConveyorBelt.gdshader" id="3_cbm"]
+[ext_resource type="Texture2D" uid="uid://dbyiqyhraff1b" path="res://Asset/Texture/TowerDefense/ConveyorBelt/ConveyorBelt.png" id="4_cbm"]
+[ext_resource type="Texture2D" uid="uid://b622sgilxiuad" path="res://Asset/Texture/TowerDefense/SeedBank/SunBankMobile.png" id="5_cbm"]
+[ext_resource type="FontFile" uid="uid://b70va62wc3lp2" path="res://Asset/Font/fzcq.ttf" id="6_cbm"]
+[ext_resource type="Texture2D" uid="uid://du78t3kqekq1k" path="res://Asset/Texture/TowerDefense/SeedBank/SunBank.png" id="7_cbm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6rq3"]
+shader = ExtResource("3_cbm")
+shader_parameter/_length = 600.0
+shader_parameter/speed = 0.06
+shader_parameter/time = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nm0a0"]
+shader = ExtResource("3_cbm")
+shader_parameter/_length = 600.0
+shader_parameter/speed = 0.06
+shader_parameter/time = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nia6q"]
+shader = ExtResource("3_cbm")
+shader_parameter/_length = 600.0
+shader_parameter/speed = 0.06
+shader_parameter/time = 0.0
+
+[node name="ConveyorBeltManager" type="Control" unique_id=852507663]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cbm")
+
+[node name="PCConveyorBeltContainer" type="HBoxContainer" parent="." unique_id=1742808121]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 781.0
+theme_override_constants/separation = 0
+
+[node name="PCConveyorBeltSunBarTexture" type="TextureRect" parent="PCConveyorBeltContainer" unique_id=901234567]
+unique_name_in_owner = true
+visible = false
+light_mask = 0
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+texture = ExtResource("7_cbm")
+
+[node name="PCConveyorBeltSunLabel" type="Label" parent="PCConveyorBeltContainer/PCConveyorBeltSunBarTexture" unique_id=901234568]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 9.0
+offset_top = 60.0
+offset_right = 68.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_cbm")
+theme_override_font_sizes/font_size = 16
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PCControl" type="Control" parent="PCConveyorBeltContainer" unique_id=665513276]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(781, 0)
+layout_mode = 2
+
+[node name="ConveyorBelt" type="PanelContainer" parent="PCConveyorBeltContainer/PCControl" unique_id=160075459]
+light_mask = 0
+layout_mode = 0
+offset_right = 781.0
+offset_bottom = 86.0
+
+[node name="ConveyorBeltRectPC" type="NinePatchRect" parent="PCConveyorBeltContainer/PCControl/ConveyorBelt" unique_id=439046897]
+unique_name_in_owner = true
+light_mask = 0
+custom_minimum_size = Vector2(518, 86)
+layout_mode = 2
+texture = ExtResource("2_cbm")
+patch_margin_left = 16
+patch_margin_top = 8
+patch_margin_right = 20
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+
+[node name="ConveyorClipPC" type="Control" parent="PCConveyorBeltContainer/PCControl" unique_id=708659667]
+light_mask = 0
+texture_filter = 1
+clip_contents = true
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 774.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="ScaleNode" type="Control" parent="PCConveyorBeltContainer/PCControl/ConveyorClipPC" unique_id=1567886188]
+light_mask = 0
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Belt" type="TextureRect" parent="PCConveyorBeltContainer/PCControl/ConveyorClipPC/ScaleNode" unique_id=1562029795]
+unique_name_in_owner = true
+light_mask = 0
+texture_filter = 1
+material = SubResource("ShaderMaterial_s6rq3")
+layout_mode = 0
+offset_left = -4.0
+offset_top = 59.0
+offset_right = 859.0
+offset_bottom = 165.0
+texture = ExtResource("4_cbm")
+
+[node name="PacketContainer" type="Control" parent="PCConveyorBeltContainer/PCControl/ConveyorClipPC/ScaleNode" unique_id=1718006125]
+unique_name_in_owner = true
+light_mask = 0
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 34.0
+offset_right = 747.0
+offset_bottom = 34.0
+
+[node name="MobileConveyorBeltContainer" type="VBoxContainer" parent="." unique_id=1148990750]
+unique_name_in_owner = true
+layout_mode = 0
+mouse_filter = 2
+
+[node name="MobileControl" type="Control" parent="MobileConveyorBeltContainer" unique_id=1179997532]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 600)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MobileConveyorBeltContainer/MobileControl" unique_id=1599996766]
+layout_mode = 0
+theme_override_constants/separation = 110
+
+[node name="MobileConveyorBelt1" type="Control" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer" unique_id=1239460787]
+layout_mode = 2
+
+[node name="ConveyorBelt" type="PanelContainer" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer/MobileConveyorBelt1" unique_id=221391243]
+light_mask = 0
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 600.0
+
+[node name="ConveyorBeltRectMobile1" type="NinePatchRect" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer/MobileConveyorBelt1/ConveyorBelt" unique_id=1080663805]
+unique_name_in_owner = true
+light_mask = 0
+custom_minimum_size = Vector2(110, 86)
+layout_mode = 2
+texture = ExtResource("2_cbm")
+patch_margin_left = 16
+patch_margin_top = 8
+patch_margin_right = 20
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+
+[node name="ConveyorClipMobile1" type="Control" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer/MobileConveyorBelt1" unique_id=240519252]
+light_mask = 0
+texture_filter = 1
+clip_contents = true
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 103.0
+offset_bottom = 593.0
+mouse_filter = 2
+
+[node name="ScaleNode" type="Control" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer/MobileConveyorBelt1/ConveyorClipMobile1" unique_id=1075831546]
+light_mask = 0
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="MobileBelt1" type="Sprite2D" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer/MobileConveyorBelt1/ConveyorClipMobile1/ScaleNode" unique_id=284868197]
+unique_name_in_owner = true
+light_mask = 0
+texture_filter = 1
+material = SubResource("ShaderMaterial_nm0a0")
+position = Vector2(-36.9999, 295.734)
+rotation = 1.57079
+scale = Vector2(1.19237, 1)
+texture = ExtResource("4_cbm")
+
+[node name="MobilePacketContainer1" type="Control" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer/MobileConveyorBelt1/ConveyorClipMobile1/ScaleNode" unique_id=1544380361]
+unique_name_in_owner = true
+light_mask = 0
+anchors_preset = 0
+offset_left = 49.0
+offset_top = 16.0
+offset_right = 49.0
+offset_bottom = 530.0
+
+[node name="MobileConveyorBelt2" type="Control" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer" unique_id=533534655]
+layout_mode = 2
+
+[node name="ConveyorBelt" type="PanelContainer" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer/MobileConveyorBelt2" unique_id=1622800766]
+light_mask = 0
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 600.0
+
+[node name="ConveyorBeltRectMobile2" type="NinePatchRect" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer/MobileConveyorBelt2/ConveyorBelt" unique_id=367524021]
+unique_name_in_owner = true
+light_mask = 0
+custom_minimum_size = Vector2(110, 86)
+layout_mode = 2
+texture = ExtResource("2_cbm")
+patch_margin_left = 16
+patch_margin_top = 8
+patch_margin_right = 20
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+
+[node name="ConveyorClipMobile2" type="Control" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer/MobileConveyorBelt2" unique_id=1895553097]
+light_mask = 0
+texture_filter = 1
+clip_contents = true
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 103.0
+offset_bottom = 593.0
+mouse_filter = 2
+
+[node name="ScaleNode" type="Control" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer/MobileConveyorBelt2/ConveyorClipMobile2" unique_id=1237674622]
+light_mask = 0
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="MobileBelt2" type="Sprite2D" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer/MobileConveyorBelt2/ConveyorClipMobile2/ScaleNode" unique_id=396161380]
+unique_name_in_owner = true
+light_mask = 0
+texture_filter = 1
+material = SubResource("ShaderMaterial_nia6q")
+position = Vector2(-36.9999, 295.734)
+rotation = 1.57079
+scale = Vector2(1.19237, 1)
+texture = ExtResource("4_cbm")
+
+[node name="MobilePacketContainer2" type="Control" parent="MobileConveyorBeltContainer/MobileControl/HBoxContainer/MobileConveyorBelt2/ConveyorClipMobile2/ScaleNode" unique_id=1357247512]
+unique_name_in_owner = true
+light_mask = 0
+anchors_preset = 0
+offset_left = 49.0
+offset_top = 16.0
+offset_right = 49.0
+offset_bottom = 530.0
+
+[node name="MobileConveyorBeltSunBarTexture" type="TextureRect" parent="." unique_id=1446999279]
+unique_name_in_owner = true
+visible = false
+light_mask = 0
+layout_mode = 0
+offset_left = 220.0
+offset_right = 351.0
+offset_bottom = 55.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("5_cbm")
+
+[node name="MobileConveyorBeltSunLabel" type="Label" parent="MobileConveyorBeltSunBarTexture" unique_id=101644860]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 54.0
+offset_top = 18.0
+offset_right = 113.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_cbm")
+theme_override_font_sizes/font_size = 16
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1

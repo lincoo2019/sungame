@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://b3icmd3v6kju8"]
+
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="3"]
+[ext_resource type="Resource" uid="uid://wdtnueoluch" path="res://Asset/Anime/Character/Zombie/Chapter3/Dolphinrider/Scene/TowerDefenseZombieDolphinriderGatlingPeaFireComponentDefinition.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c1i5ib2qopguv" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefenseZombieComponentSet.tres" id="5"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="6"]
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("2")
+attackType = "Smash"
+useParentHitBox = true
+checkLine = true
+checkVase = true
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.zombie.chapter3.dolphinrider.scene.towerdefensezombiedolphinridergatlingpea.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"AttackComponent"]
+
+[sub_resource type="RectangleShape2D" id="AttackCollisionGeometry_0"]
+size = Vector2(85, 76)
+
+[sub_resource type="Resource" id="AttackCollisionShape_0"]
+script = ExtResource("3")
+Geometry = SubResource("AttackCollisionGeometry_0")
+LocalTransform = Transform2D(1, 0, 0, 1, -20, 0)
+
+[sub_resource type="Resource" id="Attack1_Definition"]
+script = ExtResource("2")
+checkShapeResources = [SubResource("AttackCollisionShape_0")]
+checkIntreval = 0
+useCheckAreaGridColumn = true
+checkLine = true
+checkTall = true
+checkBowling = true
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.zombie.chapter3.dolphinrider.scene.towerdefensezombiedolphinridergatlingpea.1"
+InstanceId = "character.attack.1"
+WireIndex = 1
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"AttackComponent2"]
+
+[resource]
+script = ExtResource("6")
+ParentSet = ExtResource("5")
+Components = [SubResource("Attack0_Definition"), SubResource("Attack1_Definition"), ExtResource("4")]

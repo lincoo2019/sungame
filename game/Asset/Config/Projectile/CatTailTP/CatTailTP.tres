@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://us01d0i3s0ll"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_event"]
+[ext_resource type="PackedScene" uid="uid://dsiddd6sgknyo" path="res://Asset/Config/Projectile/CatTailTP/Sprite/CatTailTP/ProjectileCatTailTP.tscn" id="2_scene"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="3_script"]
+[ext_resource type="PackedScene" uid="uid://br7muxuvxx77s" path="res://Asset/Anime/Splat/Spike/SpikeSplats.tscn" id="4_splat"]
+[ext_resource type="Script" uid="uid://bh0cbi3at2b7r" path="res://Resource/TowerDefense/Character/Event/Special/TowerDefenseCharacterEventTeleport.cs" id="5_event"]
+[ext_resource type="PackedScene" uid="uid://raace2icgtyv" path="res://Asset/Anime/Effect/TeleportTX/TeleportTX.tscn" id="6_teleport"]
+[ext_resource type="PackedScene" uid="uid://djvfnrjg7vtqn" path="res://Prefab/Particles/Imitater/ImitaterCloud.tscn" id="7_cloud"]
+
+[sub_resource type="Resource" id="Resource_eventteleport"]
+script = ExtResource("5_event")
+teleportEffectScene = ExtResource("6_teleport")
+eraseEffectScene = ExtResource("7_cloud")
+bossDamage = 500.0
+hpPercentDamage = 0.05
+eraseHpRatio = 0.1
+teleportLength = 1
+metadata/_custom_type_script = "uid://bh0cbi3at2b7r"
+
+[resource]
+script = ExtResource("3_script")
+name = "CatTailTP"
+projectileScene = ExtResource("2_scene")
+splatScene = ExtResource("4_splat")
+hitTargetEventList = Array[ExtResource("1_event")]([SubResource("Resource_eventteleport")])
+hitBody = true

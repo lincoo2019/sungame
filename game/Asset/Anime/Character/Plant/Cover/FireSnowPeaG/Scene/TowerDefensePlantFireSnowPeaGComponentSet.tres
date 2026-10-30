@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://cfj223qhvow1p"]
+
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Cover/FireSnowPeaG/Scene/ComponentDefinition/TowerDefensePlantFireSnowPeaGMousePressComponentDefinition.tres" id="1"]
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="2"]
+[ext_resource type="Script" uid="uid://bbglc127qw1jb" path="res://Resource/TowerDefense/Collision/AabbRay2DResource.cs" id="3"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="4"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="5"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="6"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="7"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="8"]
+[ext_resource type="Resource" uid="uid://bh11mgswkogvw" path="res://Asset/Anime/Character/Plant/Cover/FireSnowPeaG/Scene/TowerDefensePlantFireSnowPeaGFogAreaComponentDefinition.tres" id="9"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="10"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="11"]
+
+[sub_resource type="Resource" id="Fire_AabbRay2DResource_forward"]
+script = ExtResource("3")
+
+[sub_resource type="Resource" id="Fire_AabbRay2DResource_backward"]
+script = ExtResource("3")
+TargetPosition = Vector2(-2000, 0)
+
+[sub_resource type="Resource" id="Fire_Resource_o4vt0"]
+script = ExtResource("4")
+projectileName = &"FirePea"
+baseDamage = 40.0
+catapultHeight = 400.0
+
+[sub_resource type="Resource" id="Fire_Resource_fps0"]
+script = ExtResource("5")
+projectileData = SubResource("Fire_Resource_o4vt0")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Fire_Resource_7ehi4"]
+script = ExtResource("6")
+projectile = SubResource("Fire_Resource_fps0")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Fire_Resource_df78f"]
+script = ExtResource("4")
+projectileName = &"SnowPea"
+catapultHeight = 400.0
+
+[sub_resource type="Resource" id="Fire_Resource_fps1"]
+script = ExtResource("5")
+projectileData = SubResource("Fire_Resource_df78f")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Fire_Resource_k8xeu"]
+script = ExtResource("6")
+projectile = SubResource("Fire_Resource_fps1")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Fire_Resource_tsixd"]
+script = ExtResource("7")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Fire_Resource_t4u3c"]
+script = ExtResource("7")
+checkProjectileId = 1
+firePosId = 1
+speed = -300.0
+projectileFlip = true
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="FireDefinition"]
+script = ExtResource("8")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/FireSnowPeaG/HeadRight/Marker2D"), NodePath("SpriteGroup/TransformPoint/FireSnowPeaG/HeadLeft/Marker2D")]
+spritePath = NodePath("SpriteGroup/TransformPoint/FireSnowPeaG/HeadRight")
+spliceSpritePaths = [NodePath("SpriteGroup/TransformPoint/FireSnowPeaG/HeadLeft")]
+checkRayResources = [SubResource("Fire_AabbRay2DResource_forward"), SubResource("Fire_AabbRay2DResource_backward")]
+fireEventName = "flame_fire"
+fireAnimeClipsArray = ["FlameHeadFire"]
+fireAnimeClips = "FlameHeadFire"
+fireAnimeTimeScale = 6.0
+spliceIdleAnimeClips = "FlameHeadIdle"
+isSpliceSprite = true
+spliceSpriteFireAnimeClipsList = ["CodeHeadFire"]
+spliceSpriteIdleAnimeClipsList = ["CodeHeadIdle"]
+fireNum = 4
+fireCheckList = [SubResource("Fire_Resource_7ehi4"), SubResource("Fire_Resource_k8xeu")]
+fireProjectileList = [SubResource("Fire_Resource_tsixd"), SubResource("Fire_Resource_t4u3c")]
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.cover.firesnowpeag"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("2")
+LegacyNodeNames = [&"FireComponent"]
+
+[resource]
+script = ExtResource("11")
+ParentSet = ExtResource("10")
+Components = [ExtResource("1"), SubResource("FireDefinition"), ExtResource("9")]

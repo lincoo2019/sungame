@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://d143tk85iven1"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://ba3j4ye1hqbel" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Scene/TowerDefenseZombieBalloonJackson.cs" id="2"]
+[ext_resource type="Resource" uid="uid://cyprveo3kbgg6" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Scene/TowerDefenseZombieBalloonJacksonStateMachine.tres" id="3"]
+[ext_resource type="Resource" uid="uid://iw7eaclskbyn" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Config/TowerDefenseZombieBalloonJackson.tres" id="4"]
+[ext_resource type="Resource" uid="uid://u2nidy0npqhy" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/DamagePoint/Config/ZombieBalloonJacksonDamagePointArm.tres" id="5"]
+[ext_resource type="Resource" uid="uid://c0njxblkh001" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Armor/Config/ZombieBalloonArmorBlackHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://c0njxbuck001" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Armor/Config/ZombieBalloonArmorBucket.tres" id="7"]
+[ext_resource type="Resource" uid="uid://c0njxcone001" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Armor/Config/ZombieBalloonArmorCone.tres" id="8"]
+[ext_resource type="Resource" uid="uid://cy73x65gjhaki" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/DamagePoint/Config/ZombieBalloonJacksonDamagePointHead.tres" id="9"]
+[ext_resource type="Resource" uid="uid://c0njxhelm001" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Armor/Config/ZombieBalloonArmorHelmet.tres" id="10"]
+[ext_resource type="Resource" uid="uid://c0njxspch001" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/Armor/Config/ZombieBalloonArmorSpecialHelmet.tres" id="11"]
+[ext_resource type="PackedScene" uid="uid://dkcf0cugt6oq1" path="res://Asset/Anime/Character/Zombie/Other/BalloonJackson/ZombieBalloonJackson.tscn" id="12"]
+
+[node name="TowerDefenseZombieBalloonJackson" unique_id=576246726 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+MainStateMachineDefinition = ExtResource("3")
+walkSpeedScale = 1.5
+waterHeight = 30.0
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieBalloonJackson")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieBalloonJackson/HeadSlot")
+damagePart = {
+"Arm": ExtResource("5"),
+"BlackHelmet": ExtResource("6"),
+"Bucket": ExtResource("7"),
+"Cone": ExtResource("8"),
+"Head": ExtResource("9"),
+"Helmet": ExtResource("10"),
+"SpecialHelmet": ExtResource("11")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieBalloonJackson/ArmSlot"),
+"BlackHelmet": null,
+"Bucket": null,
+"Cone": null,
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieBalloonJackson/HeadSlot"),
+"Helmet": null,
+"SpecialHelmet": null
+}
+currentArmor = ["Balloon"]
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieBalloonJackson" parent="SpriteGroup/TransformPoint" index="0" unique_id=1736038134 instance=ExtResource("12")]
+position = Vector2(-4, -29)
+clip = "Idle"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, true]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="PropellerSlot" parent="SpriteGroup/TransformPoint/ZombieBalloonJackson" index="0" unique_id=1607868200]
+position = Vector2(-38.15, -67.45)
+rotation = 0.14504917
+scale = Vector2(0.79959553, 0.79959553)
+
+[node name="Propeller" parent="SpriteGroup/TransformPoint/ZombieBalloonJackson/PropellerSlot" index="0" unique_id=1699280741]
+clip = "propeller"
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieBalloonJackson" index="1" unique_id=1985479468]
+drawLayerId = -2
+position = Vector2(-28.50518, -37.54539)
+rotation = 0.14004867
+scale = Vector2(0.7995445, 0.7995445)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieBalloonJackson" index="2" unique_id=1351243799]
+position = Vector2(-6.020023, -1.9631252)
+rotation = 0.16452003
+scale = Vector2(0.5993068, 0.5993068)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieBalloonJackson" index="3" unique_id=497382904]
+position = Vector2(-12.209999, -60)
+
+[editable path="SpriteGroup/TransformPoint/ZombieBalloonJackson"]

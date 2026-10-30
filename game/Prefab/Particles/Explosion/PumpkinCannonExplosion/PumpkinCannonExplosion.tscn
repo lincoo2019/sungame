@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://q3mewkbjcbor"]
+
+[ext_resource type="Texture2D" uid="uid://c8v0bd0qyhe3h" path="res://Asset/Anime/Particles/Explosion/PumpkinCannonParticles.png" id="1_87ibe"]
+[ext_resource type="Material" uid="uid://csdpplgqylxso" path="res://Prefab/Particles/Explosion/PumpkinCannonExplosion/PumpkinCannonExplosionParticles.tres" id="2_emyn7"]
+[ext_resource type="Script" uid="uid://cmjj5ejt1ranr" path="res://Extends/Particles/GPUParticles2DOnece.cs" id="3_4drrf"]
+[ext_resource type="Texture2D" uid="uid://b4u3qwsflev86" path="res://Asset/Anime/Particles/Explosion/PumpkinCannonMashed.png" id="4_87ibe"]
+[ext_resource type="Texture2D" uid="uid://dfwmsl0l4uyc0" path="res://Asset/Anime/Particles/Explosion/ExplosionSpudow.png" id="5_krkp7"]
+[ext_resource type="Script" uid="uid://bqmg0cppaywlr" path="res://Extends/Sprite2D/Sprite2DEffect.cs" id="6_of2an"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jbvug"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_ec5d3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.755738, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_q26dj"]
+curve = SubResource("Curve_ec5d3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h3b8v"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_q26dj")
+
+[node name="PumpkinCannonExplosion" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_jbvug")
+emitting = false
+amount = 16
+texture = ExtResource("1_87ibe")
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+draw_order = 0
+process_material = ExtResource("2_emyn7")
+script = ExtResource("3_4drrf")
+
+[node name="Sprite2D2" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(2, 0)
+emitting = false
+amount = 1
+texture = ExtResource("4_87ibe")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_h3b8v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(13, -76)
+texture = ExtResource("5_krkp7")
+offset = Vector2(-1.2180378, 0.15570286)
+script = ExtResource("6_of2an")
+shake = true
+metadata/_custom_type_script = "uid://bqmg0cppaywlr"

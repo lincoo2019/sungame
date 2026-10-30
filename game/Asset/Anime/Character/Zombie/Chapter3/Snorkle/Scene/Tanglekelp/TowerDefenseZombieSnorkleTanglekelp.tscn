@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dleaie050fgsu"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://7smc37qcohln" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Scene/Tanglekelp/TowerDefenseZombieSnorkleTanglekelpComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://b1tgaskvgp7qp" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Scene/Tanglekelp/TowerDefenseZombieSnorkleTanglekelp.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dttcrdemlbbs4" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Config/TowerDefenseZombieSnorkleTanglekelp.tres" id="5"]
+[ext_resource type="Resource" uid="uid://co537d8wk2trx" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/DamagePoint/Config/ZombieSnorkleDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dswwhb2lomp7n" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://csk4e2hffpd8y" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/DamagePoint/Config/ZombieSnorkleDamagePointHead.tres" id="8"]
+[ext_resource type="Resource" uid="uid://dat20ya1dcy8c" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorHelmet.tres" id="9"]
+[ext_resource type="Resource" uid="uid://d2ou8b5l3dpji" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorSpecialHelmet.tres" id="10"]
+[ext_resource type="PackedScene" uid="uid://cr570ka6ktqxh" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Sprite/Tanglekelp/ZombieSnorkleTanglekelp.tscn" id="11"]
+
+[node name="TowerDefenseZombieSnorkleTanglekelp" unique_id=351134899 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+walkSpeedScale = 1.5
+inSwimAnimeClip = "Jump"
+swimAnimeClip = "Swim"
+attackWaterAnimeClip = "SwimEat"
+dieWaterAnimeClip = "SwimDeath"
+waterHeight = -10.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieSnorkleTanglekelp")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieSnorkleTanglekelp/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Head": ExtResource("8"),
+"Helmet": ExtResource("9"),
+"SpecialHelmet": ExtResource("10")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieSnorkleTanglekelp/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieSnorkleTanglekelp/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieSnorkleTanglekelp/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieSnorkleTanglekelp/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieSnorkleTanglekelp/HeadSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieSnorkleTanglekelp" parent="SpriteGroup/TransformPoint" index="0" unique_id=1835885393 instance=ExtResource("11")]
+position = Vector2(-12, -33)
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieSnorkleTanglekelp" index="0" unique_id=42789994]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieSnorkleTanglekelp" index="1" unique_id=434785775]
+drawLayerId = -2
+position = Vector2(-18.418549, -46.41754)
+rotation = -0.23950675
+scale = Vector2(0.7966689, 0.7986589)
+skew = 0.0014055967
+Layer = 13
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieSnorkleTanglekelp" index="2" unique_id=1753800985]
+position = Vector2(16.567295, -0.1312809)
+rotation = -0.36377338
+scale = Vector2(0.7978947, 0.7978947)
+Layer = 19
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieSnorkleTanglekelp" index="3" unique_id=77759218]
+position = Vector2(-103.066666, 0)
+Layer = 1

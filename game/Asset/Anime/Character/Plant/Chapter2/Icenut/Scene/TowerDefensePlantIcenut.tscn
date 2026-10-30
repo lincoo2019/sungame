@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://7wnpkj5hcgc5"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://d36xio2ar4k8r" path="res://Asset/Anime/Character/Plant/Chapter2/Icenut/Scene/TowerDefensePlantIcenutComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://o6wpx3haf5uw" path="res://Asset/Anime/Character/Plant/Chapter2/Icenut/Scene/TowerDefensePlantIcenut.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_40p5x66_At_0_0.tres" id="4"]
+[ext_resource type="Script" uid="uid://cw2vrb8rkj87m" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFrozen.cs" id="5"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="6"]
+[ext_resource type="Resource" uid="uid://bi8v4wp04yjdn" path="res://Asset/Anime/Character/Plant/Chapter2/Icenut/Config/TowerDefensePlantIcenut.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://b7cyx74xpcs6u" path="res://Asset/Anime/Character/Plant/Chapter2/Icenut/Icenut.tscn" id="8"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="9"]
+
+[sub_resource type="Resource" id="Resource_dgir2"]
+script = ExtResource("5")
+metadata/_custom_type_script = "uid://cw2vrb8rkj87m"
+
+[sub_resource type="Resource" id="Resource_8i7ps"]
+script = ExtResource("6")
+buffList = [SubResource("Resource_dgir2")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[node name="TowerDefensePlantIcenut" unique_id=2013069021 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 2
+projectileName = "SnowPea"
+eventList = [SubResource("Resource_8i7ps")]
+config = ExtResource("7")
+sprite = NodePath("SpriteGroup/TransformPoint/Icenut")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="Icenut" parent="SpriteGroup/TransformPoint" index="0" unique_id=1918457727 instance=ExtResource("8")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/Icenut" index="0" unique_id=689754981]
+script = ExtResource("9")
+followSlotId = 16
+drawLayerId = 16
+useScale = false
+useSkew = false
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="FireMarker" type="Marker2D" parent="SpriteGroup/TransformPoint/Icenut/AdobeAnimateSlot" index="0" unique_id=265088206]
+position = Vector2(6.65701, 8.30442)

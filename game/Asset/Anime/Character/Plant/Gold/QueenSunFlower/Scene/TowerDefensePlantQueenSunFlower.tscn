@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c3tobm6a1a3p6"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://bcm01ubia41aa" path="res://Asset/Anime/Character/Plant/Gold/QueenSunFlower/Scene/TowerDefensePlantQueenSunFlowerComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://daatoyku8gtgt" path="res://Asset/Anime/Character/Plant/Gold/QueenSunFlower/Scene/TowerDefensePlantQueenSunFlower.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="5"]
+[ext_resource type="PackedScene" uid="uid://fjtony2sxpu5" path="res://Prefab/Particles/Splats/FireSplats/TowerDefenseEffectSpriteFireSplats.tscn" id="6"]
+[ext_resource type="Script" uid="uid://c1lx1e88q31ww" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventCreateEffect.cs" id="7"]
+[ext_resource type="Script" uid="uid://bqyxask6qffq7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFireHit.cs" id="8"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="9"]
+[ext_resource type="Resource" uid="uid://draura8w6tda8" path="res://Asset/Anime/Character/Plant/Gold/QueenSunFlower/Config/TowerDefensePlantQueenSunFlower.tres" id="10"]
+[ext_resource type="PackedScene" uid="uid://xw5sgh635or8" path="res://Asset/Anime/Character/Plant/Gold/QueenSunFlower/QueenSunFlower.tscn" id="11"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="12"]
+
+[sub_resource type="Resource" id="Resource_qxxii"]
+script = ExtResource("5")
+num = 40.0
+damageFlags = 6
+collisionFlags = 27
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[sub_resource type="Resource" id="Resource_eia3h"]
+script = ExtResource("7")
+effectScene = ExtResource("6")
+metadata/_custom_type_script = "uid://c1lx1e88q31ww"
+
+[sub_resource type="Resource" id="Resource_1l2cn"]
+script = ExtResource("8")
+metadata/_custom_type_script = "uid://bqyxask6qffq7"
+
+[sub_resource type="Resource" id="Resource_lujgt"]
+script = ExtResource("9")
+buffList = [SubResource("Resource_1l2cn")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[node name="TowerDefensePlantQueenSunFlower" unique_id=1931296407 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+eventList = [SubResource("Resource_qxxii"), SubResource("Resource_eia3h")]
+allEventList = [SubResource("Resource_lujgt")]
+attackInterval = 3.0
+fireInterval = 3.0
+fireNum = 6
+produceInterval = 25.0
+sunNum = 150
+projectileName = "FirePea"
+config = ExtResource("10")
+sprite = NodePath("SpriteGroup/TransformPoint/QueenSunFlower")
+Custom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="QueenSunFlower" parent="SpriteGroup/TransformPoint" index="0" unique_id=1281222331 instance=ExtResource("11")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/QueenSunFlower" index="0" unique_id=1212139382]
+script = ExtResource("12")
+followSlotId = 29
+Layer = 29
+drawLayerId = 29
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/QueenSunFlower/AdobeAnimateSlot" index="0" unique_id=1719736783]
+position = Vector2(29.2504, 20.3659)

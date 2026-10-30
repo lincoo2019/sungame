@@ -1,0 +1,170 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.065, 0.072, 0.085, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.22, 0.29, 0.37, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="FallingObjectWeightItemPreview" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 360)
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HFlowContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "单项掉落权重预览"
+
+[node name="Status" type="Label" parent="Layout/Header"]
+layout_mode = 2
+horizontal_alignment = 2
+
+[node name="DirectEditPanel" type="PanelContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Fields" type="VBoxContainer" parent="Layout/DirectEditPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="ResourceRow" type="HFlowContainer" parent="Layout/DirectEditPanel/Fields"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="ResourceNameLabel" type="Label" parent="Layout/DirectEditPanel/Fields/ResourceRow"]
+layout_mode = 2
+text = "资源名称"
+vertical_alignment = 1
+
+[node name="ResourceNameEdit" type="LineEdit" parent="Layout/DirectEditPanel/Fields/ResourceRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "例如：金币掉落项"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="Layout/DirectEditPanel/Fields/ResourceRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "场景本地资源"
+
+[node name="WeightRow" type="HFlowContainer" parent="Layout/DirectEditPanel/Fields"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="ObjectLabel" type="Label" parent="Layout/DirectEditPanel/Fields/WeightRow"]
+layout_mode = 2
+text = "掉落对象"
+vertical_alignment = 1
+
+[node name="ObjectLibraryHost" type="VBoxContainer" parent="Layout/DirectEditPanel/Fields/WeightRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WeightLabel" type="Label" parent="Layout/DirectEditPanel/Fields/WeightRow"]
+layout_mode = 2
+text = "权重"
+vertical_alignment = 1
+
+[node name="WeightSpinBox" type="SpinBox" parent="Layout/DirectEditPanel/Fields/WeightRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+max_value = 999999.0
+value = 100.0
+rounded = true
+
+[node name="EmptyCheckBox" type="CheckBox" parent="Layout/DirectEditPanel/Fields/WeightRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "空掉落"
+
+[node name="ComparisonRow" type="HFlowContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Layout/ComparisonRow"]
+layout_mode = 2
+text = "预览对照权重"
+
+[node name="ComparisonWeight" type="SpinBox" parent="Layout/ComparisonRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+min_value = 1.0
+max_value = 100000.0
+value = 100.0
+
+[node name="Probability" type="ProgressBar" parent="Layout/ComparisonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+show_percentage = false
+
+[node name="ProbabilityLabel" type="Label" parent="Layout/ComparisonRow"]
+custom_minimum_size = Vector2(92, 0)
+layout_mode = 2
+text = "概率 50.0%"
+horizontal_alignment = 2
+
+[node name="DropButton" type="Button" parent="Layout/ComparisonRow"]
+layout_mode = 2
+text = "生成掉落"
+
+[node name="GameStage" type="Control" parent="Layout"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+clip_contents = true
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="Layout/GameStage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="Layout/GameStage/ViewportContainer"]
+transparent_bg = true
+disable_3d = true
+size = Vector2i(720, 300)
+render_target_update_mode = 4
+
+[node name="GameBackground" type="TextureRect" parent="Layout/GameStage/ViewportContainer/Viewport"]
+offset_right = 720.0
+offset_bottom = 300.0
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="DropRoot" type="Node2D" parent="Layout/GameStage/ViewportContainer/Viewport"]
+unique_name_in_owner = true

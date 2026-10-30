@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://c71jksu6ruutv"]
+
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Item/SnowBall/Scene/ComponentDefinition/TowerDefenseItemSnowBallMousePressComponentDefinition.tres" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Item/SnowBall/Scene/TowerDefenseItemSnowBallMoveComponentDefinition.tres" id="2"]
+[ext_resource type="Resource" uid="uid://dfm5r4mn8aoo6" path="res://Script/Component/TowerDefense/Character/BowlingComponent/BowlingComponentStateMachine.tres" id="3"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="4"]
+[ext_resource type="Script" uid="uid://ce1i8olrvxerv" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHitBack.cs" id="5"]
+[ext_resource type="Script" uid="uid://cghdgwf4bcxx7" path="res://Script/Component/TowerDefense/Character/BowlingComponent/BowlingComponentDefinition.cs" id="6"]
+[ext_resource type="Resource" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefenseItemWaterEnvironmentComponentSet.tres" id="7"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="8"]
+
+[sub_resource type="Resource" id="HurtEvent"]
+script = ExtResource("4")
+num = 200.0
+
+[sub_resource type="Resource" id="HitBackEvent"]
+script = ExtResource("5")
+length = 0.25
+
+[sub_resource type="Resource" id="BowlingDefinition"]
+script = ExtResource("6")
+rollXVelocityMax = -300.0
+rollXVelocityMin = -400.0
+selfRotateUse = true
+useParentHitBox = true
+hitEvent = [SubResource("HurtEvent"), SubResource("HitBackEvent")]
+hitLineUse = true
+hitLineBackUse = true
+edgeReboundUse = true
+fallCoinUse = false
+spritePath = NodePath("SpriteGroup/TransformPoint/ItemSnowBall")
+ComponentTypeId = "BowlingComponent"
+DefinitionId = "builtin.component.bowling.item.snow_ball"
+InstanceId = "character.bowling"
+WireIndex = 0
+InitiallyAlive = false
+StateMachineDefinition = ExtResource("3")
+LegacyNodeNames = [&"BowlingComponent"]
+
+[resource]
+script = ExtResource("8")
+ParentSet = ExtResource("7")
+Components = [ExtResource("1"), ExtResource("2"), SubResource("BowlingDefinition")]

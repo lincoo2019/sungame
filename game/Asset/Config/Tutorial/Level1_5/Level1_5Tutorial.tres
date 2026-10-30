@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="TutorialConfig" format=3 uid="uid://fqk4jcnpqvwe"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Tutorial/Level1_5/Level1_5Tutorial.json" id="1_uw03y"]
+[ext_resource type="Script" uid="uid://ciasl1r6mxl1w" path="res://Core/TutorialManager/Resource/TutorialConfig.cs" id="2_lmhvd"]
+[ext_resource type="Script" uid="uid://do4exfdrtmgkl" path="res://Core/TutorialManager/Resource/TutorialStep/TutorialStepConfig.cs" id="3_rt71p"]
+[ext_resource type="Script" uid="uid://fn1fkec8nrfp" path="res://Core/BroadCastManager/Resource/BroadCastConfig.cs" id="4_ryqy4"]
+[ext_resource type="Script" uid="uid://be2wh4w4lt5ej" path="res://Core/TutorialManager/Resource/TutorialCondition/TutorialConditionConfig.cs" id="5_8verh"]
+[ext_resource type="Script" uid="uid://dw7rfoxp8o3wl" path="res://Resource/Tutorial/Condition/TutorialConditionCheckCharaterNum.cs" id="6_lpdg6"]
+
+[sub_resource type="Resource" id="Resource_uw03y"]
+script = ExtResource("4_ryqy4")
+broadCastString = "LEVEL1_5_BROADCAST_1"
+
+[sub_resource type="Resource" id="Resource_riicy"]
+script = ExtResource("6_lpdg6")
+characterName = "PlantSunflowerPea"
+method = "<="
+num = 0
+
+[sub_resource type="Resource" id="Resource_87qrj"]
+script = ExtResource("3_rt71p")
+broadCastUse = true
+broadCastConfig = SubResource("Resource_uw03y")
+conditionList = Array[ExtResource("5_8verh")]([SubResource("Resource_riicy")])
+
+[resource]
+script = ExtResource("2_lmhvd")
+data = ExtResource("1_uw03y")
+step = Array[ExtResource("3_rt71p")]([SubResource("Resource_87qrj")])
+metadata/_custom_type_script = "uid://ciasl1r6mxl1w"

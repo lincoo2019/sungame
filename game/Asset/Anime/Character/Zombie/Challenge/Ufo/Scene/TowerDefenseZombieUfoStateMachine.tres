@@ -1,0 +1,106 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://bcgej0iwt7jq4"]
+
+[ext_resource type="Resource" uid="uid://cktl6q1og62xd" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseZombieStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_ufo_fly"]
+script = ExtResource("2")
+StableId = "zombie.ufo.fly"
+DisplayName = &"Fly"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_ufo_fly_attack"]
+script = ExtResource("2")
+StableId = "zombie.ufo.fly_attack"
+DisplayName = &"FlyAttack"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_ufo_land"]
+script = ExtResource("2")
+StableId = "zombie.ufo.land"
+DisplayName = &"Land"
+ParentId = "character.root"
+
+[sub_resource type="Resource" id="State_ufo_land_idle"]
+script = ExtResource("2")
+StableId = "zombie.ufo.land_idle"
+DisplayName = &"LandIdle"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_ufo_open"]
+script = ExtResource("2")
+StableId = "zombie.ufo.open"
+DisplayName = &"Open"
+ParentId = "character.root"
+
+[sub_resource type="Resource" id="State_ufo_fly_up"]
+script = ExtResource("2")
+StableId = "zombie.ufo.fly_up"
+DisplayName = &"FlyUp"
+ParentId = "character.root"
+
+[sub_resource type="Resource" id="Transition_ufo_to_fly"]
+script = ExtResource("3")
+StableId = "zombie.ufo.to_fly"
+SourceStateId = "character.root"
+TargetStateId = "zombie.ufo.fly"
+EventName = &"ToFly"
+DeclarationOrder = 7
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_ufo_to_fly_attack"]
+script = ExtResource("3")
+StableId = "zombie.ufo.to_fly_attack"
+SourceStateId = "character.root"
+TargetStateId = "zombie.ufo.fly_attack"
+EventName = &"ToFlyAttack"
+DeclarationOrder = 8
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_ufo_to_land"]
+script = ExtResource("3")
+StableId = "zombie.ufo.to_land"
+SourceStateId = "character.root"
+TargetStateId = "zombie.ufo.land"
+EventName = &"ToLand"
+DeclarationOrder = 9
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_ufo_to_land_idle"]
+script = ExtResource("3")
+StableId = "zombie.ufo.to_land_idle"
+SourceStateId = "character.root"
+TargetStateId = "zombie.ufo.land_idle"
+EventName = &"ToLandIdle"
+DeclarationOrder = 10
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_ufo_to_open"]
+script = ExtResource("3")
+StableId = "zombie.ufo.to_open"
+SourceStateId = "character.root"
+TargetStateId = "zombie.ufo.open"
+EventName = &"ToOpen"
+DeclarationOrder = 11
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_ufo_to_fly_up"]
+script = ExtResource("3")
+StableId = "zombie.ufo.to_fly_up"
+SourceStateId = "character.root"
+TargetStateId = "zombie.ufo.fly_up"
+EventName = &"ToFlyUp"
+DeclarationOrder = 12
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.zombie.ufo"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_ufo_fly"), SubResource("State_ufo_fly_attack"), SubResource("State_ufo_land"), SubResource("State_ufo_land_idle"), SubResource("State_ufo_open"), SubResource("State_ufo_fly_up")]
+Transitions = [SubResource("Transition_ufo_to_fly"), SubResource("Transition_ufo_to_fly_attack"), SubResource("Transition_ufo_to_land"), SubResource("Transition_ufo_to_land_idle"), SubResource("Transition_ufo_to_open"), SubResource("Transition_ufo_to_fly_up")]

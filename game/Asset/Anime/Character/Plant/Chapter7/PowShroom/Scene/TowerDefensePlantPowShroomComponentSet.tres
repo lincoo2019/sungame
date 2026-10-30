@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://bbq631bjb7p3c"]
+
+[ext_resource type="Resource" uid="uid://ihlktkfd35hh" path="res://Script/Component/TowerDefense/Character/CannonComponent/Definitions/PowShroomDefinition.tres" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter7/PowShroom/Scene/ComponentDefinition/TowerDefensePlantPowShroomMousePressComponentDefinition.tres" id="2"]
+[ext_resource type="Resource" uid="uid://bwrq5tyc61xf4" path="res://Asset/Anime/Character/Plant/Chapter7/PowShroom/Scene/TowerDefensePlantPowShroomFireComponentDefinition.tres" id="3"]
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="4"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="5"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="6"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="7"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="8"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="9"]
+
+[sub_resource type="SegmentShape2D" id="Attack0_SegmentShape2D_o5pol"]
+b = Vector2(100, 0)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_attack_check"]
+script = ExtResource("5")
+Geometry = SubResource("Attack0_SegmentShape2D_o5pol")
+
+[sub_resource type="Resource" id="Attack0_Resource_2up1c"]
+script = ExtResource("6")
+num = 40.0
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("7")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_attack_check")]
+spritePath = NodePath("SpriteGroup/TransformPoint/PowShroom")
+attackAnimeClipsArray = ["Fire"]
+attackAnimeClips = "Fire"
+attackEventName = "fire"
+attackAnimeTimeScale = 3.0
+attackIntervalBase = 2.0
+attackInterval = 2.0
+eventList = [SubResource("Attack0_Resource_2up1c")]
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.chapter7.powshroom.scene.towerdefenseplantpowshroom.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("4")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("9")
+ParentSet = ExtResource("8")
+Components = [ExtResource("1"), ExtResource("2"), ExtResource("3"), SubResource("Attack0_Definition")]

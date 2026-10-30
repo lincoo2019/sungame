@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWLevelGameCanvas.cs" id="1_script"]
+[ext_resource type="PackedScene" path="res://Prefab/GUI/LevelEditor/MapEditor/LevelEditorMapEditor.tscn" id="2_runtime_map_editor"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stage"]
+bg_color = Color(0.025, 0.03, 0.04, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.16, 0.22, 0.29, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="LevelGameCanvas" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 520)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+script = ExtResource("1_script")
+
+[node name="Header" type="HFlowContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "关卡游戏画布"
+
+[node name="MapLabel" type="Label" parent="Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "地图：未加载"
+
+[node name="ReloadButton" type="Button" parent="Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 34)
+layout_mode = 2
+tooltip_text = "放弃画面中尚未写回的摆放，重新读取关卡资源"
+text = "从资源重载"
+
+[node name="CommitButton" type="Button" parent="Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 34)
+layout_mode = 2
+tooltip_text = "把当前游戏画面中的植物、僵尸和花瓶位置写回 preSpawnList"
+text = "写回画面布局"
+
+[node name="StageFrame" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 440)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_stage")
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="StageFrame"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="StageFrame/ViewportContainer"]
+size = Vector2i(1080, 600)
+render_target_update_mode = 4
+handle_input_locally = true
+
+[node name="RuntimeMapEditor" parent="StageFrame/ViewportContainer/Viewport" instance=ExtResource("2_runtime_map_editor")]
+unique_name_in_owner = true
+isolatedPreviewMode = true
+
+[node name="Status" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "在画面中的卡牌库选择单位并放置到格子；使用铲子直接删除。"
+horizontal_alignment = 1
+autowrap_mode = 2

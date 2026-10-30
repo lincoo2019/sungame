@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dral054wqsme5"]
+
+[ext_resource type="PackedScene" uid="uid://o7sgb44iah6m" path="res://Prefab/TowerDefense/Base/TowerDefenseGroundItemBase.tscn" id="1_y7skc"]
+[ext_resource type="Script" uid="uid://f8hl1vkqslky" path="res://Registry/Battle/Feature/Portal/Object/TowerDefensePortal.cs" id="2_aahc2"]
+[ext_resource type="Script" uid="uid://daabbarea2d01" path="res://Core/TowerDefenseManager/SubSystem/AabbArea2D.cs" id="aabb_area"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="AabbShape2DResource"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghxs0"]
+size = Vector2(12, 33)
+
+[sub_resource type="Resource" id="AabbShape2DResource_hit_box_1"]
+script = ExtResource("AabbShape2DResource")
+Geometry = SubResource("RectangleShape2D_ghxs0")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkuse"]
+size = Vector2(12, 33)
+
+[sub_resource type="Resource" id="AabbShape2DResource_hit_box_2"]
+script = ExtResource("AabbShape2DResource")
+Geometry = SubResource("RectangleShape2D_bkuse")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="TowerDefensePortal" unique_id=1512592500 instance=ExtResource("1_y7skc")]
+z_index = 10
+script = ExtResource("2_aahc2")
+gridPos = Vector2i(-1, 0)
+itemLayer = 10
+
+[node name="ProtalNode1" type="Node2D" parent="." index="0" unique_id=57262659]
+unique_name_in_owner = true
+
+[node name="HitBox1" type="Node2D" parent="ProtalNode1" index="0" unique_id=1313668140]
+script = ExtResource("aabb_area")
+ShapeResources = Array[ExtResource("AabbShape2DResource")]([SubResource("AabbShape2DResource_hit_box_1")])
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 3
+monitorable = false
+
+[node name="ProtalNode2" type="Node2D" parent="." index="1" unique_id=2084177113]
+unique_name_in_owner = true
+
+[node name="HitBox2" type="Node2D" parent="ProtalNode2" index="0" unique_id=77963684]
+script = ExtResource("aabb_area")
+ShapeResources = Array[ExtResource("AabbShape2DResource")]([SubResource("AabbShape2DResource_hit_box_2")])
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 3
+monitorable = false

@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://do8d0mninq68y"]
+
+[ext_resource type="Resource" uid="uid://bvjgd1q22ya8s" path="res://Script/Component/TowerDefense/Character/ChangeProjectile/Definitions/FireOffset3Definition.tres" id="1"]
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="2"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="3"]
+[ext_resource type="Script" uid="uid://d1fsh2su8nbl0" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventBowlingHurt.cs" id="4"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="5"]
+[ext_resource type="Resource" uid="uid://ce21bwfk8x763" path="res://Asset/Anime/Character/Plant/Chapter1/Firenut/Scene/TowerDefensePlantFirenutFogAreaComponentDefinition.tres" id="6"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="7"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="8"]
+
+[sub_resource type="RectangleShape2D" id="Attack0_RectangleShape2D_gscv0"]
+size = Vector2(67, 82)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_attack_area"]
+script = ExtResource("3")
+Geometry = SubResource("Attack0_RectangleShape2D_gscv0")
+LocalTransform = Transform2D(1, 0, 0, 1, 1.5, -5)
+
+[sub_resource type="Resource" id="Attack0_Resource_qs60v"]
+script = ExtResource("4")
+metadata/_custom_type_script = "uid://d1fsh2su8nbl0"
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("5")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_attack_area")]
+eventList = [SubResource("Attack0_Resource_qs60v")]
+checkGrid = false
+checkLine = true
+checkGravestone = false
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.chapter1.firenut.scene.towerdefenseplantfirenut.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("2")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("8")
+ParentSet = ExtResource("7")
+Components = [ExtResource("1"), SubResource("Attack0_Definition"), ExtResource("6")]

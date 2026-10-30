@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cpf7lkdxe0w5b"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Challenge/Portal/Scene/TowerDefenseZombiePortalComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://ct0gr8dhy1d7q" path="res://Asset/Anime/Character/Zombie/Challenge/Portal/Scene/TowerDefenseZombiePortal.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_5_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://66yhfy6lia8p" path="res://Asset/Anime/Character/Zombie/Challenge/Portal/Config/TowerDefenseZombiePortal.tres" id="5"]
+[ext_resource type="Resource" uid="uid://bx7kk01icsmw3" path="res://Asset/Anime/Character/Zombie/Challenge/Portal/DamagePoint/Config/ZombiePortalDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://bonxgtveaqwrj" path="res://Asset/Anime/Character/Zombie/Challenge/Portal/DamagePoint/Config/ZombiePortalDamagePointHead.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cwnwct4llobgt" path="res://Asset/Anime/Character/Zombie/Challenge/Portal/Armor/Config/ZombiePortalArmorHelmetPortal.tres" id="8"]
+[ext_resource type="Resource" uid="uid://dcw3ayqsbibjo" path="res://Asset/Anime/Character/Zombie/Challenge/Portal/Armor/Config/ZombiePortalArmorPortal.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://drm8l23pa3xo5" path="res://Asset/Anime/Character/Zombie/Challenge/Portal/ZombiePortal.tscn" id="10"]
+
+[node name="TowerDefenseZombiePortal" unique_id=196070422 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+walkAnimeClip = "Walk&Walk2"
+swimAnimeClip = "Swim"
+dieAnimeClip = "Death&Death2"
+dieWaterAnimeClip = "WaterDeath"
+waterHeight = 25.0
+idleAnimeClip = "Idle&Idle2"
+sleepAnimeClip = "Idle&Idle2"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombiePortal")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombiePortal/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"Head": ExtResource("7"),
+"HelmetPortal": ExtResource("8"),
+"Portal": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombiePortal/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombiePortal/HeadSlot"),
+"HelmetPortal": NodePath("SpriteGroup/TransformPoint/ZombiePortal/HelmetPortalSlot"),
+"Portal": NodePath("SpriteGroup/TransformPoint/ZombiePortal/PortalSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombiePortal" parent="SpriteGroup/TransformPoint" index="0" unique_id=580848539 instance=ExtResource("10")]
+position = Vector2(-12, -33)
+Animation/MediaReplace/Zombie_portal1.png = "res://Asset/AtlasSource/Armor/Texture/Character/Armor/Portal/ZombiePortal1.png"
+Animation/MediaReplace/Zombie_portal_helmet.png = "res://Asset/AtlasSource/Armor/Texture/Character/Armor/HelmetPortal/ZombieHelmetPortal.png"
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombiePortal" index="0" unique_id=486872282]
+drawLayerId = -2
+position = Vector2(-6.8866463, -52.062782)
+rotation = 0.042472687
+scale = Vector2(0.79925257, 0.79925257)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombiePortal" index="1" unique_id=468311533]
+position = Vector2(6.3643265, -2.1241913)
+rotation = 0.14762694
+scale = Vector2(0.79845834, 0.79845834)
+
+[node name="HelmetPortalSlot" parent="SpriteGroup/TransformPoint/ZombiePortal" index="2" unique_id=2130362940]
+position = Vector2(-8.338472, -56.815926)
+rotation = 0.0032833903
+scale = Vector2(0.79997885, 0.79997885)
+
+[node name="PortalSlot" parent="SpriteGroup/TransformPoint/ZombiePortal" index="3" unique_id=1553519275]
+position = Vector2(-15.675802, -2.4629402)
+rotation = 0.000882135
+scale = Vector2(0.79917693, 0.79917693)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombiePortal" index="4" unique_id=194606596]
+position = Vector2(-29.383692, -40)
+
+[editable path="SpriteGroup/TransformPoint/ZombiePortal"]

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cgnqtngoowvch"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cab076h6pye8j" path="res://Asset/Anime/Character/Zombie/Chapter10/MagicYeti/Scene/TowerDefenseZombieMagicYeti.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://1pfevs3xogcw" path="res://Asset/Anime/Character/Zombie/Chapter10/MagicYeti/Scene/TowerDefenseZombieMagicYetiStateMachine.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b0cyk8nssw5u4" path="res://Asset/Anime/Character/Zombie/Chapter10/MagicYeti/Config/TowerDefenseZombieMagicYeti.tres" id="5"]
+[ext_resource type="Resource" uid="uid://di7vehyj46mpe" path="res://Asset/Anime/Character/Zombie/Chapter10/MagicYeti/DamagePoint/Config/ZombieMagicYetiDamagePointHead.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://qvovyiiw1es7" path="res://Asset/Anime/Character/Zombie/Chapter10/MagicYeti/ZombieMagicYeti.tscn" id="7"]
+
+[node name="TowerDefenseZombieMagicYeti" unique_id=1758679974 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+walkSpeedScale = 0.25
+HitBoxDefinition = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieMagicYeti")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieMagicYeti/HeadSlot")
+damagePart = {
+"Head": ExtResource("6")
+}
+damagePartSlot = {
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieMagicYeti/HeadSlot")
+}
+currentArmor = []
+currentCustom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(6, 38)
+scale = Vector2(1.25, 1.25)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieMagicYeti" parent="SpriteGroup/TransformPoint" index="0" unique_id=2020338469 instance=ExtResource("7")]
+position = Vector2(-12, -45)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieMagicYeti" index="0" unique_id=1404164438]
+drawLayerId = -2

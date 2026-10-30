@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/GUI/Editor/Resource/XWResourcePicker.cs" id="1_script"]
+
+[node name="XWResourcePicker" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+script = ExtResource("1_script")
+
+[node name="MakeUniqueButton" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "设为唯一资源"
+flat = true
+
+[node name="AssignButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+expand_icon = true
+
+[node name="PreviewRect" type="TextureRect" parent="AssignButton"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="QuickLoadButton" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "快速加载资源"
+flat = true
+
+[node name="EditButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "检查资源"
+toggle_mode = true
+flat = true
+
+[node name="MenuPopup" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+theme_override_constants/icon_max_width = 32
+
+[node name="LoadResourceDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "加载资源"
+initial_position = 1
+size = Vector2i(700, 500)
+min_size = Vector2i(620, 420)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.tres, *.res ; Resources", "*.png, *.jpg, *.jpeg, *.webp, *.svg ; Images", "*.wav, *.ogg, *.mp3 ; Audio")
+
+[node name="QuickLoadResourceDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "快速加载"
+initial_position = 1
+size = Vector2i(700, 500)
+min_size = Vector2i(620, 420)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.tres, *.res ; Resources", "*.png, *.jpg, *.jpeg, *.webp, *.svg ; Images", "*.wav, *.ogg, *.mp3 ; Audio")
+
+[node name="SaveResourceAsDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "另存为"
+initial_position = 1
+size = Vector2i(700, 500)
+min_size = Vector2i(620, 420)
+file_mode = 4
+access = 2
+filters = PackedStringArray("*.tres ; Godot Text Resource", "*.res ; Godot Binary Resource")

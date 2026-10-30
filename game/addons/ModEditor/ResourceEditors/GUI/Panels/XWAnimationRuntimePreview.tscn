@@ -1,0 +1,929 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/AdobeAnimateEditor/Inspector/AdobeAnimateInspectorPreview.tscn" id="1_inspector_preview"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWPacketSpawnEntryRangeControl.tscn" id="2_range_control"]
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWAnimationFrameTimeline.cs" id="3_frame_timeline"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Add.svg" id="4_add"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Save.svg" id="5_save"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Reload.svg" id="6_reload"]
+
+[sub_resource type="World2D" id="World2D_preview"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stage"]
+bg_color = Color(0.025, 0.038, 0.03, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.52, 0.24, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toolbar"]
+bg_color = Color(0.045, 0.068, 0.052, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_status"]
+bg_color = Color(0.05, 0.075, 0.055, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.22, 0.36, 0.18, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+content_margin_left = 10.0
+content_margin_top = 6.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_replacement"]
+bg_color = Color(0.035, 0.055, 0.042, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.36, 0.58, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.32)
+shadow_size = 5
+
+[node name="AnimationRuntimePreview" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="TitleRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="TitleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 1, 0.68, 1)
+theme_override_font_sizes/font_size = 21
+text = "游戏动画预览"
+
+[node name="RuntimeBadge" type="Label" parent="TitleRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.8, 0.35, 1)
+text = "  AdobeAnimateSprite 实机渲染  "
+
+[node name="PlaybackStateLabel" type="Label" parent="TitleRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.66, 1, 0.48, 1)
+text = "播放中 · 全部动画 · 范围 0-0"
+horizontal_alignment = 2
+text_overrun_behavior = 3
+tooltip_text = "来自真实 AdobeAnimateSprite 的当前播放、Clip 和帧范围状态"
+
+[node name="FrameLabel" type="Label" parent="TitleRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(110, 0)
+text = "帧 0 / 0"
+horizontal_alignment = 2
+
+[node name="StageLayout" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offset = 760
+drag_area_highlight_in_editor = true
+
+[node name="PreviewHost" type="VBoxContainer" parent="StageLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RuntimeInspectorPreview" parent="StageLayout/PreviewHost" instance=ExtResource("1_inspector_preview")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LoadingPanel" type="PanelContainer" parent="StageLayout/PreviewHost"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_stage")
+
+[node name="LoadingLabel" type="Label" parent="StageLayout/PreviewHost/LoadingPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 0.84, 0.72, 1)
+theme_override_font_sizes/font_size = 18
+text = "正在后台加载完整动画..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DirectSettingsPanel" type="PanelContainer" parent="StageLayout"]
+custom_minimum_size = Vector2(330, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_status")
+
+[node name="SettingsMargin" type="MarginContainer" parent="StageLayout/DirectSettingsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="Settings" type="VBoxContainer" parent="StageLayout/DirectSettingsPanel/SettingsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Title" type="Label" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 1, 0.68, 1)
+theme_override_font_sizes/font_size = 18
+text = "动画舞台设置"
+
+[node name="Help" type="Label" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.72, 0.56, 1)
+text = "直接修改资源并同步左侧实机动画"
+
+[node name="ResourcePathLabel" type="Label" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.46, 0.58, 0.47, 1)
+text = "资源路径"
+text_overrun_behavior = 3
+
+[node name="NameLabel" type="Label" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings"]
+layout_mode = 2
+text = "资源名称"
+
+[node name="ResourceNameEdit" type="LineEdit" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "动画资源名称"
+select_all_on_focus = true
+
+[node name="DatLabel" type="Label" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings"]
+layout_mode = 2
+text = "动画数据文件"
+
+[node name="DatFileButton" type="Button" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+text = "选择 Adobe Animate DAT"
+text_overrun_behavior = 3
+tooltip_text = "选择与当前动画资源配套的 DAT 文件"
+
+[node name="FrameGrid" type="GridContainer" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings"]
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+
+[node name="FrameRateLabel" type="Label" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings/FrameGrid"]
+layout_mode = 2
+text = "帧率"
+
+[node name="FrameRateSpinBox" type="SpinBox" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings/FrameGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+min_value = 0.1
+max_value = 240.0
+step = 0.01
+suffix = " FPS"
+
+[node name="FrameScaleLabel" type="Label" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings/FrameGrid"]
+layout_mode = 2
+text = "帧缩放"
+
+[node name="FrameScaleSpinBox" type="SpinBox" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings/FrameGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+min_value = 1.0
+max_value = 100.0
+step = 1.0
+suffix = " x"
+
+[node name="FrameMaxLabel" type="Label" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings/FrameGrid"]
+layout_mode = 2
+text = "总帧数"
+
+[node name="FrameMaxSpinBox" type="SpinBox" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings/FrameGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+min_value = 1.0
+max_value = 100000.0
+step = 1.0
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "作为场景本地资源"
+
+[node name="ReloadButton" type="Button" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+text = "重新读取 DAT 并刷新动画"
+
+[node name="DirectSummaryLabel" type="Label" parent="StageLayout/DirectSettingsPanel/SettingsMargin/Settings"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.76, 0.58, 1)
+text = "0 帧 · 0 图层 · 0 Clip"
+autowrap_mode = 2
+
+[node name="ReplacementLibraryPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_replacement")
+
+[node name="Margin" type="MarginContainer" parent="ReplacementLibraryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="Workbench" type="VBoxContainer" parent="ReplacementLibraryPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="HFlowContainer" parent="ReplacementLibraryPanel/Margin/Workbench"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="Title" type="Label" parent="ReplacementLibraryPanel/Margin/Workbench/Header"]
+custom_minimum_size = Vector2(260, 38)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.88, 1, 0.72, 1)
+theme_override_font_sizes/font_size = 19
+text = "动画媒体替换工坊"
+vertical_alignment = 1
+
+[node name="AddReplacementSlotButton" type="Button" parent="ReplacementLibraryPanel/Margin/Workbench/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(142, 38)
+layout_mode = 2
+icon = ExtResource("4_add")
+text = "替换图层槽位"
+tooltip_text = "从动画媒体缩略图库中创建一个可替换槽位"
+
+[node name="AddExtraTextureButton" type="Button" parent="ReplacementLibraryPanel/Margin/Workbench/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(142, 38)
+layout_mode = 2
+icon = ExtResource("4_add")
+text = "附加替换纹理"
+tooltip_text = "从当前 Mod 或游戏资源中选择一张替换纹理"
+
+[node name="ReplacementSaveButton" type="Button" parent="ReplacementLibraryPanel/Margin/Workbench/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 38)
+layout_mode = 2
+icon = ExtResource("5_save")
+text = "保存"
+tooltip_text = "保存当前动画资源及替换配置"
+
+[node name="ReplacementReloadButton" type="Button" parent="ReplacementLibraryPanel/Margin/Workbench/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 38)
+layout_mode = 2
+icon = ExtResource("6_reload")
+text = "重载"
+tooltip_text = "放弃未保存修改并从磁盘重新载入动画资源"
+
+[node name="ReplacementSummaryLabel" type="Label" parent="ReplacementLibraryPanel/Margin/Workbench"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.82, 0.56, 1)
+text = "0 个媒体槽位 · 0 张附加纹理"
+
+[node name="SlotHeader" type="Label" parent="ReplacementLibraryPanel/Margin/Workbench"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.79, 0.37, 1)
+theme_override_font_sizes/font_size = 16
+text = "媒体替换槽位 · 点击卡片缩略图识别来源图层"
+
+[node name="ReplacementSlotCards" type="HFlowContainer" parent="ReplacementLibraryPanel/Margin/Workbench"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 116)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="TextureHeader" type="Label" parent="ReplacementLibraryPanel/Margin/Workbench"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.88, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "附加媒体纹理库 · 可直接选择、更换或移除"
+
+[node name="ExtraTextureCards" type="HFlowContainer" parent="ReplacementLibraryPanel/Margin/Workbench"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 136)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="ReplacementStatusLabel" type="Label" parent="ReplacementLibraryPanel/Margin/Workbench"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.66, 0.9, 0.53, 1)
+text = "替换配置直接写入当前动画资源，并进入全局 Undo/Redo。"
+autowrap_mode = 2
+
+[node name="ClipEditorPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_status")
+
+[node name="ClipEditorMargin" type="MarginContainer" parent="ClipEditorPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="ClipEditor" type="VBoxContainer" parent="ClipEditorPanel/ClipEditorMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 1, 0.68, 1)
+theme_override_font_sizes/font_size = 18
+text = "Clip 可视时间线"
+
+[node name="AddClipButton" type="Button" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(104, 36)
+layout_mode = 2
+text = "＋ 创建 Clip"
+
+[node name="DeleteClipButton" type="Button" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 36)
+layout_mode = 2
+text = "删除 Clip"
+
+[node name="Body" type="HSplitContainer" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor"]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 270
+
+[node name="ClipList" type="ItemList" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 190)
+layout_mode = 2
+size_flags_vertical = 3
+select_mode = 0
+allow_reselect = true
+
+[node name="Edit" type="VBoxContainer" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="NameRow" type="HBoxContainer" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body/Edit"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="NameLabel" type="Label" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body/Edit/NameRow"]
+layout_mode = 2
+text = "Clip 名称"
+
+[node name="ClipNameEdit" type="LineEdit" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body/Edit/NameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "输入可读的 Clip 名称"
+select_all_on_focus = true
+
+[node name="ShiftEarlierButton" type="Button" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body/Edit/NameRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 34)
+layout_mode = 2
+text = "◀ 1 帧"
+tooltip_text = "保持时长，将整个 Clip 向前移动 1 帧"
+
+[node name="ShiftLaterButton" type="Button" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body/Edit/NameRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 34)
+layout_mode = 2
+text = "1 帧 ▶"
+tooltip_text = "保持时长，将整个 Clip 向后移动 1 帧"
+
+[node name="ClipRangeControl" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body/Edit" instance=ExtResource("2_range_control")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(420, 92)
+layout_mode = 2
+
+[node name="ExactRange" type="GridContainer" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body/Edit"]
+layout_mode = 2
+columns = 4
+theme_override_constants/h_separation = 8
+
+[node name="StartLabel" type="Label" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body/Edit/ExactRange"]
+layout_mode = 2
+text = "起始帧"
+
+[node name="ClipStartSpinBox" type="SpinBox" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body/Edit/ExactRange"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+step = 1.0
+
+[node name="EndLabel" type="Label" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body/Edit/ExactRange"]
+layout_mode = 2
+text = "结束帧（含）"
+
+[node name="ClipEndSpinBox" type="SpinBox" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body/Edit/ExactRange"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+step = 1.0
+
+[node name="ClipEditStatusLabel" type="Label" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor/Body/Edit"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.88, 0.52, 1)
+text = "选择 Clip 后可直接拖动两端、输入精确帧或整体平移。"
+autowrap_mode = 2
+
+[node name="PackedDataSafetyLabel" type="Label" parent="ClipEditorPanel/ClipEditorMargin/ClipEditor"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.72, 0.32, 1)
+text = "帧级编辑会同步更新所有关联 Packed 数组。重新导入 DAT 会覆盖当前手工帧编辑，执行前会明确确认。"
+autowrap_mode = 2
+
+[node name="FrameTimelinePanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_status")
+
+[node name="FrameTimelineMargin" type="MarginContainer" parent="FrameTimelinePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="FrameTimelineStack" type="VBoxContainer" parent="FrameTimelinePanel/FrameTimelineMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="FrameTimelineHeader" type="HBoxContainer" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.82, 1, 0.68, 1)
+theme_override_font_sizes/font_size = 18
+text = "帧级动画时间轴"
+
+[node name="TimelineSemanticsBadge" type="Label" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.8, 0.35, 1)
+text = "  每格 = 该帧的完整 Slice 状态  "
+tooltip_text = "这里不把空格误称为稀疏补间关键帧；DAT 在每一帧保存完整 Slice 状态。"
+
+[node name="AddKeyframeButton" type="Button" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineHeader"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 36)
+layout_mode = 2
+text = "＋"
+tooltip_text = "在当前播放帧添加：优先复制相邻帧同 Slice"
+
+[node name="DuplicateKeyframeButton" type="Button" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineHeader"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 36)
+layout_mode = 2
+text = "⧉"
+tooltip_text = "复制选中帧状态到下一帧"
+
+[node name="DeleteKeyframeButton" type="Button" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineHeader"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 36)
+layout_mode = 2
+text = "✕"
+tooltip_text = "删除选中 Slice 的当前帧状态"
+
+[node name="MoveKeyframeEarlierButton" type="Button" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineHeader"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 36)
+layout_mode = 2
+text = "◀"
+tooltip_text = "选中帧状态前移 1 帧"
+
+[node name="MoveKeyframeLaterButton" type="Button" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineHeader"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(42, 36)
+layout_mode = 2
+text = "▶"
+tooltip_text = "选中帧状态后移 1 帧"
+
+[node name="FrameTimelineBody" type="HSplitContainer" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack"]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 850
+
+[node name="FrameTimelineScroll" type="ScrollContainer" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody"]
+custom_minimum_size = Vector2(620, 290)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 2
+
+[node name="FrameTimeline" type="Control" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/FrameTimelineScroll"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(620, 280)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("3_frame_timeline")
+
+[node name="KeyframePropertyPanel" type="PanelContainer" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody"]
+custom_minimum_size = Vector2(330, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_toolbar")
+
+[node name="KeyframePropertyMargin" type="MarginContainer" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 9
+
+[node name="KeyframeProperties" type="VBoxContainer" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="SelectedKeyframeLabel" type="Label" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.82, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+text = "选择黄色菱形帧状态"
+autowrap_mode = 2
+
+[node name="MediaRow" type="HBoxContainer" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MediaThumbnail" type="TextureRect" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/MediaRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+tooltip_text = "选中媒体的图集切片"
+
+[node name="MediaStack" type="VBoxContainer" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/MediaRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MediaLabel" type="Label" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/MediaRow/MediaStack"]
+layout_mode = 2
+text = "媒体切片"
+
+[node name="MediaOption" type="OptionButton" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/MediaRow/MediaStack"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+
+[node name="LayerLabel" type="Label" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties"]
+layout_mode = 2
+text = "图层轨道"
+
+[node name="LayerOption" type="OptionButton" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+
+[node name="TransformGrid" type="GridContainer" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties"]
+layout_mode = 2
+columns = 4
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 5
+
+[node name="PositionLabel" type="Label" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/TransformGrid"]
+layout_mode = 2
+text = "位置"
+
+[node name="PositionXSpinBox" type="SpinBox" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/TransformGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+min_value = -100000.0
+max_value = 100000.0
+step = 0.01
+prefix = "X "
+editable = false
+
+[node name="PositionSpacer" type="Control" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/TransformGrid"]
+layout_mode = 2
+
+[node name="PositionYSpinBox" type="SpinBox" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/TransformGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+min_value = -100000.0
+max_value = 100000.0
+step = 0.01
+prefix = "Y "
+editable = false
+
+[node name="RotationLabel" type="Label" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/TransformGrid"]
+layout_mode = 2
+text = "旋转"
+
+[node name="RotationSpinBox" type="SpinBox" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/TransformGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+min_value = -3600.0
+max_value = 3600.0
+step = 0.01
+suffix = "°"
+editable = false
+
+[node name="SkewLabel" type="Label" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/TransformGrid"]
+layout_mode = 2
+text = "倾斜"
+
+[node name="SkewSpinBox" type="SpinBox" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/TransformGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+min_value = -360.0
+max_value = 360.0
+step = 0.01
+suffix = "°"
+editable = false
+
+[node name="ScaleLabel" type="Label" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/TransformGrid"]
+layout_mode = 2
+text = "缩放"
+
+[node name="ScaleXSpinBox" type="SpinBox" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/TransformGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+min_value = -1000.0
+max_value = 1000.0
+step = 0.01
+prefix = "X "
+editable = false
+
+[node name="ScaleSpacer" type="Control" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/TransformGrid"]
+layout_mode = 2
+
+[node name="ScaleYSpinBox" type="SpinBox" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/TransformGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+min_value = -1000.0
+max_value = 1000.0
+step = 0.01
+prefix = "Y "
+editable = false
+
+[node name="AlphaRow" type="HBoxContainer" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AlphaLabel" type="Label" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/AlphaRow"]
+layout_mode = 2
+text = "透明度"
+
+[node name="AlphaSlider" type="HSlider" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/AlphaRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 1.0
+editable = false
+
+[node name="AlphaPercentLabel" type="Label" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties/AlphaRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[node name="KeyframeEditStatusLabel" type="Label" parent="FrameTimelinePanel/FrameTimelineMargin/FrameTimelineStack/FrameTimelineBody/KeyframePropertyPanel/KeyframePropertyMargin/KeyframeProperties"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.76, 0.58, 1)
+text = "点击菱形选择；水平拖拽可移动到目标帧。"
+autowrap_mode = 2
+
+[node name="ToolbarPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_toolbar")
+
+[node name="Toolbar" type="HBoxContainer" parent="ToolbarPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="ClipOption" type="OptionButton" parent="ToolbarPanel/Toolbar"]
+custom_minimum_size = Vector2(170, 36)
+layout_mode = 2
+tooltip_text = "选择游戏动画 Clip"
+
+[node name="PreviousButton" type="Button" parent="ToolbarPanel/Toolbar"]
+layout_mode = 2
+tooltip_text = "跳到上一帧"
+text = "◀"
+
+[node name="PlayButton" type="Button" parent="ToolbarPanel/Toolbar"]
+custom_minimum_size = Vector2(76, 36)
+layout_mode = 2
+tooltip_text = "运行或暂停真实动画节点"
+text = "播放"
+
+[node name="NextButton" type="Button" parent="ToolbarPanel/Toolbar"]
+layout_mode = 2
+tooltip_text = "跳到下一帧"
+text = "▶"
+
+[node name="FrameSlider" type="HSlider" parent="ToolbarPanel/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 1.0
+tooltip_text = "拖动查看真实游戏帧"
+
+[node name="FrameSpinBox" type="SpinBox" parent="ToolbarPanel/Toolbar"]
+custom_minimum_size = Vector2(82, 36)
+layout_mode = 2
+step = 1.0
+tooltip_text = "输入游戏帧"
+
+[node name="ZoomOption" type="OptionButton" parent="ToolbarPanel/Toolbar"]
+custom_minimum_size = Vector2(92, 36)
+layout_mode = 2
+tooltip_text = "预览缩放"
+item_count = 5
+popup/item_0/text = "适应"
+popup/item_0/id = 0
+popup/item_1/text = "50%"
+popup/item_1/id = 50
+popup/item_2/text = "100%"
+popup/item_2/id = 100
+popup/item_3/text = "200%"
+popup/item_3/id = 200
+popup/item_4/text = "400%"
+popup/item_4/id = 400
+
+[node name="CheckerButton" type="CheckButton" parent="ToolbarPanel/Toolbar"]
+layout_mode = 2
+tooltip_text = "显示透明棋盘背景"
+button_pressed = true
+text = "网格"
+
+[node name="ResetViewButton" type="Button" parent="ToolbarPanel/Toolbar"]
+layout_mode = 2
+tooltip_text = "按动画真实边界适应视口"
+text = "适应"
+
+[node name="CanvasPanel" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(620, 390)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_stage")
+
+[node name="Stack" type="Control" parent="CanvasPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+clip_contents = true
+
+[node name="CheckerBackdrop" type="Control" parent="CanvasPanel/Stack"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="CanvasPanel/Stack"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="CanvasPanel/Stack/ViewportContainer"]
+unique_name_in_owner = true
+world_2d = SubResource("World2D_preview")
+transparent_bg = true
+disable_3d = true
+gui_disable_input = true
+size = Vector2i(960, 540)
+render_target_update_mode = 4
+
+[node name="PreviewRoot" type="Node2D" parent="CanvasPanel/Stack/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+position = Vector2(480, 270)
+
+[node name="PreviewCanvas" type="Control" parent="CanvasPanel/Stack"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="StatusLabel" type="Label" parent="."]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 0.84, 0.72, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_status")
+autowrap_mode = 2
+
+[node name="AtlasLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.64, 0.52, 1)
+
+[node name="DatFileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "选择 Adobe Animate DAT"
+initial_position = 2
+size = Vector2i(920, 620)
+ok_button_text = "选择"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.dat ; Adobe Animate DAT")
+
+[node name="ReimportConfirmDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "重新导入会覆盖手工帧编辑"
+initial_position = 2
+size = Vector2i(620, 260)
+ok_button_text = "建立可撤销快照并重新导入"
+cancel_button_text = "保留当前帧"
+dialog_text = "当前动画含有手工帧编辑。重新导入 DAT 将覆盖这些内容，但会先建立可由全局 Undo/Redo 恢复的完整快照。"
+
+[node name="ReplacementReloadConfirmDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "从磁盘重载替换配置"
+initial_position = 2
+size = Vector2i(560, 220)
+ok_button_text = "放弃未保存修改并重载"
+cancel_button_text = "继续编辑"
+dialog_text = "这会重新载入整个动画资源，尚未保存的槽位、纹理、Clip 与关键帧修改都会丢失。"

@@ -1,0 +1,470 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://Prefab/TowerDefense/GUI/InGame/Packet/TowerDefenseInGamePacketShow.tscn" id="1_packet"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="2_lawn"]
+
+[sub_resource type="StyleBoxFlat" id="Style_header"]
+bg_color = Color(0.075, 0.09, 0.065, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43, 0.57, 0.24, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxFlat" id="Style_game"]
+bg_color = Color(0.045, 0.032, 0.018, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.37, 0.29, 0.13, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_seedbank"]
+bg_color = Color(0.12, 0.08, 0.035, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.53, 0.39, 0.16, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_fields"]
+bg_color = Color(0.045, 0.052, 0.04, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.21, 0.27, 0.16, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 12.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxFlat" id="Style_trigger"]
+bg_color = Color(0.25, 0.37, 0.13, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.62, 0.79, 0.33, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="PacketEventVisualEditorLayout" type="VBoxContainer"]
+custom_minimum_size = Vector2(780, 650)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_header")
+
+[node name="HeaderRow" type="HBoxContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Header/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "卡牌事件预演"
+
+[node name="EventType" type="Label" parent="Header/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.93, 0.56, 1)
+text = "CardActionBehaviorDefinition"
+
+[node name="GameFrame" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(760, 342)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Style_game")
+
+[node name="Stage" type="Control" parent="GameFrame"]
+layout_mode = 2
+clip_contents = true
+
+[node name="Lawn" type="TextureRect" parent="GameFrame/Stage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_lawn")
+expand_mode = 1
+stretch_mode = 6
+modulate = Color(0.46, 0.46, 0.4, 1)
+
+[node name="Shade" type="ColorRect" parent="GameFrame/Stage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.018, 0.01, 0.38)
+
+[node name="SeedBank" type="PanelContainer" parent="GameFrame/Stage"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 42.0
+offset_right = 728.0
+offset_bottom = 278.0
+theme_override_styles/panel = SubResource("Style_seedbank")
+
+[node name="CurrentCaption" type="Label" parent="GameFrame/Stage"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 58.0
+offset_right = 278.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 17
+text = "事件触发前"
+horizontal_alignment = 1
+
+[node name="ResultCaption" type="Label" parent="GameFrame/Stage"]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 58.0
+offset_right = 648.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 17
+text = "事件触发后"
+horizontal_alignment = 1
+
+[node name="Arrow" type="Label" parent="GameFrame/Stage"]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 132.0
+offset_right = 414.0
+offset_bottom = 188.0
+theme_override_colors/font_color = Color(0.91, 0.78, 0.34, 1)
+theme_override_font_sizes/font_size = 34
+text = "➜"
+horizontal_alignment = 1
+
+[node name="CurrentCardRoot" type="Control" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 190.0
+offset_top = 145.0
+offset_right = 190.0
+offset_bottom = 145.0
+
+[node name="CurrentPacket" parent="GameFrame/Stage/CurrentCardRoot" instance=ExtResource("1_packet")]
+unique_name_in_owner = true
+process_mode = 4
+scale = Vector2(2.4, 2.4)
+only_draw = true
+use_cost = false
+set_pc_layout = true
+
+[node name="CurrentName" type="Label" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 92.0
+offset_top = 244.0
+offset_right = 286.0
+offset_bottom = 270.0
+text = "当前卡牌"
+horizontal_alignment = 1
+
+[node name="ResultCardRoot" type="Control" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 560.0
+offset_top = 145.0
+offset_right = 560.0
+offset_bottom = 145.0
+
+[node name="ResultPacket" parent="GameFrame/Stage/ResultCardRoot" instance=ExtResource("1_packet")]
+unique_name_in_owner = true
+process_mode = 4
+scale = Vector2(2.4, 2.4)
+only_draw = true
+use_cost = false
+set_pc_layout = true
+
+[node name="ResultName" type="Label" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 462.0
+offset_top = 244.0
+offset_right = 656.0
+offset_bottom = 270.0
+text = "结果卡牌"
+horizontal_alignment = 1
+
+[node name="DeletionStamp" type="Label" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 462.0
+offset_top = 130.0
+offset_right = 658.0
+offset_bottom = 184.0
+theme_override_colors/font_color = Color(1, 0.32, 0.22, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 30
+text = "已移出种子栏"
+horizontal_alignment = 1
+
+[node name="Outcome" type="Label" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 50.0
+offset_top = 292.0
+offset_right = 710.0
+offset_bottom = 329.0
+theme_override_colors/font_color = Color(0.96, 0.92, 0.7, 1)
+text = "调整模拟状态后，点击“触发卡牌事件”"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SimulationControls" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="CostLabel" type="Label" parent="SimulationControls"]
+layout_mode = 2
+text = "初始费用"
+vertical_alignment = 1
+
+[node name="InitialCost" type="SpinBox" parent="SimulationControls"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 99999.0
+value = 100.0
+
+[node name="CooldownLabel" type="Label" parent="SimulationControls"]
+layout_mode = 2
+text = "总冷却秒数"
+vertical_alignment = 1
+
+[node name="CooldownDuration" type="SpinBox" parent="SimulationControls"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.1
+max_value = 9999.0
+step = 0.1
+value = 7.5
+
+[node name="UsesLabel" type="Label" parent="SimulationControls"]
+layout_mode = 2
+text = "模拟第几次使用"
+vertical_alignment = 1
+
+[node name="SimulatedUses" type="SpinBox" parent="SimulationControls"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 9999.0
+value = 1.0
+
+[node name="Spacer" type="Control" parent="SimulationControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResetButton" type="Button" parent="SimulationControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "重置画面"
+
+[node name="TriggerButton" type="Button" parent="SimulationControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(148, 36)
+layout_mode = 2
+theme_override_styles/normal = SubResource("Style_trigger")
+text = "触发卡牌事件"
+
+[node name="FieldsPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_fields")
+
+[node name="Fields" type="VBoxContainer" parent="FieldsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="FormHint" type="Label" parent="FieldsPanel/Fields"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 0.82, 0.61, 1)
+text = "事件参数直接在种子栏结果旁编辑；预演不会调用 Execute。"
+autowrap_mode = 2
+
+[node name="ResourceFields" type="GridContainer" parent="FieldsPanel/Fields"]
+layout_mode = 2
+columns = 4
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+
+[node name="ResourceNameLabel" type="Label" parent="FieldsPanel/Fields/ResourceFields"]
+layout_mode = 2
+text = "资源名称"
+
+[node name="ResourceNameEdit" type="LineEdit" parent="FieldsPanel/Fields/ResourceFields"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "用于识别这条卡牌事件"
+
+[node name="LocalToSceneLabel" type="Label" parent="FieldsPanel/Fields/ResourceFields"]
+layout_mode = 2
+text = "场景内唯一"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="FieldsPanel/Fields/ResourceFields"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "随场景本地化"
+
+[node name="BaseFields" type="HBoxContainer" parent="FieldsPanel/Fields"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FieldsPanel/Fields/BaseFields"]
+layout_mode = 2
+text = "该事件没有内置可视参数；自定义 Mod 字段仍可在右侧检查器编辑。"
+
+[node name="ChangeCostFields" type="GridContainer" parent="FieldsPanel/Fields"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+columns = 4
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+
+[node name="MethodLabel" type="Label" parent="FieldsPanel/Fields/ChangeCostFields"]
+layout_mode = 2
+text = "费用运算"
+
+[node name="CostMethod" type="OptionButton" parent="FieldsPanel/Fields/ChangeCostFields"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "加法 ADD"
+popup/item_0/id = 0
+popup/item_1/text = "乘法 MULTIPLY"
+popup/item_1/id = 1
+
+[node name="CostMethodVisualChoices" type="HFlowContainer" parent="FieldsPanel/Fields/ChangeCostFields"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="ValueLabel" type="Label" parent="FieldsPanel/Fields/ChangeCostFields"]
+layout_mode = 2
+text = "运算值"
+
+[node name="CostValue" type="SpinBox" parent="FieldsPanel/Fields/ChangeCostFields"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -999999.0
+max_value = 999999.0
+step = 0.05
+
+[node name="MinLabel" type="Label" parent="FieldsPanel/Fields/ChangeCostFields"]
+layout_mode = 2
+text = "最低费用（-1 不限）"
+
+[node name="CostMin" type="SpinBox" parent="FieldsPanel/Fields/ChangeCostFields"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -1.0
+max_value = 999999.0
+value = -1.0
+
+[node name="MaxLabel" type="Label" parent="FieldsPanel/Fields/ChangeCostFields"]
+layout_mode = 2
+text = "最高费用（-1 不限）"
+
+[node name="CostMax" type="SpinBox" parent="FieldsPanel/Fields/ChangeCostFields"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -1.0
+max_value = 999999.0
+value = -1.0
+
+[node name="CooldownFields" type="HBoxContainer" parent="FieldsPanel/Fields"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FieldsPanel/Fields/CooldownFields"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "触发后把当前冷却计时器设置为（秒）"
+
+[node name="CooldownValue" type="SpinBox" parent="FieldsPanel/Fields/CooldownFields"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -99999.0
+max_value = 99999.0
+step = 0.1
+
+[node name="ChangePacketFields" type="GridContainer" parent="FieldsPanel/Fields"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+columns = 4
+theme_override_constants/h_separation = 8
+
+[node name="ConfigLabel" type="Label" parent="FieldsPanel/Fields/ChangePacketFields"]
+layout_mode = 2
+text = "替换卡牌配置"
+
+[node name="LevelPacketConfigPickerHost" type="HBoxContainer" parent="FieldsPanel/Fields/ChangePacketFields"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="FieldsPanel/Fields/ChangePacketFields"]
+layout_mode = 2
+text = "替换卡牌 saveKey"
+
+[node name="PacketName" type="LineEdit" parent="FieldsPanel/Fields/ChangePacketFields"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "例如 PlantPeashooter"
+
+[node name="CountLabel" type="Label" parent="FieldsPanel/Fields/ChangePacketFields"]
+layout_mode = 2
+text = "第几次使用后替换"
+
+[node name="ReplaceCount" type="SpinBox" parent="FieldsPanel/Fields/ChangePacketFields"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 9999.0
+value = 1.0

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://btwth2jb1wvew"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://bd67mqpe11v7w" path="res://Asset/Anime/Character/Zombie/Chapter8/Ghost/Scene/TowerDefenseZombieGhostComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://c6fj8f5fgji40" path="res://Asset/Anime/Character/Zombie/Chapter8/Ghost/Scene/TowerDefenseZombieGhost.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_64x33_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c8y2d81s5m1on" path="res://Asset/Anime/Character/Zombie/Chapter8/Ghost/Config/TowerDefenseZombieGhost.tres" id="5"]
+[ext_resource type="Resource" uid="uid://bfhkhnm6rcoa8" path="res://Asset/Anime/Character/Zombie/Chapter8/Ghost/DamagePoint/Config/ZombieGhostDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cnjefvlhi83kd" path="res://Asset/Anime/Character/Zombie/Chapter8/Ghost/DamagePoint/Config/ZombieGhostDamagePointHead.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://btuwn0sft8ehd" path="res://Asset/Anime/Character/Zombie/Chapter8/Ghost/ZombieGhost.tscn" id="8"]
+
+[node name="TowerDefenseZombieGhost" unique_id=2016841854 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieGhost")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieGhost/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"Head": ExtResource("7")
+}
+PreviewDamagePointPersontage = 1.0
+DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieGhost/ArmSlot")
+DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieGhost/HeadSlot")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieGhost" parent="SpriteGroup/TransformPoint" index="0" unique_id=957327467 instance=ExtResource("8")]
+position = Vector2(-12, -33)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieGhost" index="0" unique_id=1239486802]
+drawLayerId = -2
+position = Vector2(-14.934406, -45.616264)
+rotation = 0.0
+scale = Vector2(0.7999878, 0.7999878)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieGhost" index="1" unique_id=1324770709]
+position = Vector2(3.9967527, 2.0533676)
+rotation = -0.05270765
+scale = Vector2(0.79976445, 0.79976445)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieGhost" index="2" unique_id=40988141]
+position = Vector2(-44.1338, -40)

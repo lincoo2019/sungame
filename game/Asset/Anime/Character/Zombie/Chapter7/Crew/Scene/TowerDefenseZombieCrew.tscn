@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bqf0ub05yb53b"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://bpgqfb05n5cu4" path="res://Asset/Anime/Character/Zombie/Chapter7/Crew/Scene/TowerDefenseZombieCrewComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://b10wqpiuidju3" path="res://Asset/Anime/Character/Zombie/Chapter7/Crew/Scene/TowerDefenseZombieCrew.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://th40jtwwmfuw" path="res://Asset/Anime/Character/Zombie/Chapter7/Crew/Config/TowerDefenseZombieCrew.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dm1w5ghdwjvt7" path="res://Asset/Anime/Character/Zombie/Chapter7/Crew/DamagePoint/Config/ZombieCrewDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://br7yf0n6rqsnw" path="res://Asset/Anime/Character/Zombie/Chapter7/Crew/DamagePoint/Config/ZombieCrewDamagePointHead.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://ctwkjs73mkj6b" path="res://Asset/Anime/Character/Zombie/Chapter7/Crew/ZombieCrew.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="9"]
+
+[node name="TowerDefenseZombieCrew" unique_id=1383326017 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieCrew/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+garlicReplace = "Zombie_crew_head.png"
+waterHeight = 20.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieCrew")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieCrew/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"Head": ExtResource("7")
+}
+PreviewDamagePointPersontage = 1.0
+DamagePartSlot/Arm = NodePath("SpriteGroup/TransformPoint/ZombieCrew/ArmSlot")
+DamagePartSlot/Head = NodePath("SpriteGroup/TransformPoint/ZombieCrew/HeadSlot")
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieCrew" parent="SpriteGroup/TransformPoint" index="0" unique_id=1822556584 instance=ExtResource("8")]
+position = Vector2(-12, -33)
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieCrew" index="0" unique_id=1696571383]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieCrew" index="1" unique_id=609777607]
+drawLayerId = -2
+position = Vector2(-14.225849, -51.22528)
+rotation = 0.0
+scale = Vector2(0.7999878, 0.79997253)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieCrew" index="2" unique_id=1898284269]
+position = Vector2(6.4645786, -0.41248512)
+rotation = 0.009019391
+scale = Vector2(0.7999689, 0.7999842)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieCrew" index="3" unique_id=1814973803]
+position = Vector2(-2.8690987, -40)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=120382807 instance=ExtResource("9")]
+visible = false
+position = Vector2(-5, -37)
+trueFrameRate = 180.0
+
+[editable path="SpriteGroup/TransformPoint/ZombieCrew"]

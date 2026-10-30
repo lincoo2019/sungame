@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://gqbxt48cannr"]
+
+[ext_resource type="Resource" uid="uid://bf2vg1k12uswl" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseCharacterStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_timebomb_ready"]
+script = ExtResource("2")
+StableId = "timebomb.ready"
+DisplayName = &"Ready"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_timebomb_to_ready"]
+script = ExtResource("3")
+StableId = "timebomb.to_ready"
+SourceStateId = "character.root"
+TargetStateId = "timebomb.ready"
+EventName = &"ToReady"
+DeclarationOrder = 7
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.gravestone.timebomb"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_timebomb_ready")]
+Transitions = [SubResource("Transition_timebomb_to_ready")]

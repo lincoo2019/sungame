@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://bxgkigcqyict4"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_ypfrq"]
+[ext_resource type="Script" uid="uid://ky0rohwug6p1" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventPacketSpawn.cs" id="2_m3rgy"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="3_bk83j"]
+[ext_resource type="PackedScene" uid="uid://qwdnsaywv4ol" path="res://Asset/Config/Projectile/Magnet/Sprite/Magnet/ProjectileMagnet.tscn" id="3_ffqoo"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="3_nv8kj"]
+
+[sub_resource type="Resource" id="Resource_ffqoo"]
+script = ExtResource("2_m3rgy")
+packetName = "ItemMagnet"
+byCamp = true
+metadata/_custom_type_script = "uid://ky0rohwug6p1"
+
+[sub_resource type="Resource" id="Resource_m3rgy"]
+script = ExtResource("2_m3rgy")
+packetName = "ItemMagnet"
+byCamp = true
+metadata/_custom_type_script = "uid://ky0rohwug6p1"
+
+[resource]
+script = ExtResource("3_bk83j")
+name = "Magnet"
+baseDamage = 60.0
+projectileScene = ExtResource("3_ffqoo")
+hitTargetEventList = Array[ExtResource("1_ypfrq")]([SubResource("Resource_m3rgy")])
+hitGroundEventList = Array[ExtResource("1_ypfrq")]([SubResource("Resource_ffqoo")])
+rotateScale = 5.0
+damageFlags = 10
+fireMethodFlags = 2
+collisionFlags = 43
+catapultHeight = 400.0

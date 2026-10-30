@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/GUI/Editor/XWInspectorPropertyEditorBase.cs" id="1_base"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/IconReload.svg" id="2_reload"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_panel"]
+
+[node name="XWInspectorPropertyEditorBase" type="PanelContainer" node_paths=PackedStringArray("PropertyEditorPath")]
+custom_minimum_size = Vector2(0, 28)
+offset_right = 189.0
+offset_bottom = 28.0
+size_flags_horizontal = 3
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_panel")
+script = ExtResource("1_base")
+PropertyEditorPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PropertyEditor")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="InformationContainner" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="PropertyNameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/InformationContainner"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "属性名"
+vertical_alignment = 1
+
+[node name="ResetButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/InformationContainner"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("2_reload")
+flat = true
+
+[node name="PropertyEditor" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4

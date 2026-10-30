@@ -1,0 +1,729 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8m0d1t7scrpt1"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ScriptEditor/GUI/XWScriptEditor.cs" id="1_script"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ScriptEditor/GUI/XWCodeEdit.tscn" id="2_code"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/GraphEdit.svg" id="3_blueprint"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/StatusWarning.svg" id="4_warning"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/FileList.svg" id="5_diff"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Reload.svg" id="6_reload"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Save.svg" id="7_save"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Debugging/GUI/XWModDebugWorkbench.tscn" id="8_debug_workbench"]
+
+[node name="XWScriptEditor" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_script")
+
+[node name="MainVBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MenuBar" type="HFlowContainer" parent="MainVBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 2
+
+[node name="FileMenuBtn" type="MenuButton" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+flat = true
+text = "文件"
+
+[node name="SearchMenuBtn" type="MenuButton" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+flat = true
+text = "搜索"
+
+[node name="GoToMenuBtn" type="MenuButton" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+flat = true
+text = "跳转"
+
+[node name="MenuVSep" type="VSeparator" parent="MainVBox/MenuBar"]
+layout_mode = 2
+
+[node name="DefinitionButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "跳转到定义（F12）"
+flat = true
+text = "定义"
+
+[node name="ReferencesButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "查找当前 Mod 中的引用（Shift+F12）"
+flat = true
+text = "引用"
+
+[node name="RenameButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "安全重命名当前 Mod 中的符号（F2）"
+flat = true
+text = "改名"
+
+[node name="RenameUndoButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+tooltip_text = "撤销上一次项目重命名（Ctrl+Alt+Z）"
+flat = true
+text = "↶"
+
+[node name="RenameRedoButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+tooltip_text = "重做上一次项目重命名（Ctrl+Alt+Y）"
+flat = true
+text = "↷"
+
+[node name="FormatButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+tooltip_text = "格式化文档或选区（Shift+Alt+F）"
+flat = true
+text = "≡ 格式化"
+
+[node name="QuickFixButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "应用当前诊断的快速修复（Ctrl+.）"
+flat = true
+text = "修复"
+
+[node name="CompileButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "编译当前 Mod 的 C# 脚本"
+flat = true
+text = "构建"
+
+[node name="ValidateButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+tooltip_text = "立即检查当前脚本"
+flat = true
+text = "检查"
+
+[node name="PreviousProblemButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+tooltip_text = "上一个问题（Shift+F8）"
+flat = true
+text = "上一处"
+
+[node name="NextProblemButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+tooltip_text = "下一个问题（F8）"
+flat = true
+text = "下一处"
+
+[node name="OpenBlueprintButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+tooltip_text = "打开可视化 API 拼图工作区"
+flat = true
+text = "API 拼图"
+
+[node name="OverflowMenuBtn" type="MenuButton" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 0)
+layout_mode = 2
+tooltip_text = "更多脚本工具"
+flat = true
+text = "⋯"
+
+[node name="CompileVSep" type="VSeparator" parent="MainVBox/MenuBar"]
+layout_mode = 2
+
+[node name="DebugStartButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "后台编译、加载并启动当前 Mod 调试程序集"
+flat = true
+text = "▶ 调试"
+
+[node name="DebugStopButton" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "停止并卸载当前 Mod 调试程序集"
+disabled = true
+flat = true
+text = "■"
+
+[node name="DebugStatusLabel" type="Label" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "调试会话状态"
+text = "● 离线"
+
+[node name="DebugWorkbenchToggle" type="Button" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "显示或隐藏调用栈与变量监视工作台"
+toggle_mode = true
+flat = true
+text = "调试台"
+
+[node name="ScriptNameLabel" type="Label" parent="MainVBox/MenuBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+clip_text = true
+text = "未打开文件"
+
+[node name="ContentSplit" type="HSplitContainer" parent="MainVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offset = 200
+
+[node name="LeftPanel" type="VBoxContainer" parent="MainVBox/ContentSplit"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScriptFilter" type="LineEdit" parent="MainVBox/ContentSplit/LeftPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "过滤脚本..."
+
+[node name="ScriptList" type="ItemList" parent="MainVBox/ContentSplit/LeftPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RightPanel" type="VBoxContainer" parent="MainVBox/ContentSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScriptTabBar" type="TabBar" parent="MainVBox/ContentSplit/RightPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+tab_close_display_policy = 1
+
+[node name="GeneratedBlueprintBar" type="PanelContainer" parent="MainVBox/ContentSplit/RightPanel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="GeneratedMargin" type="MarginContainer" parent="MainVBox/ContentSplit/RightPanel/GeneratedBlueprintBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 6
+
+[node name="GeneratedRow" type="HBoxContainer" parent="MainVBox/ContentSplit/RightPanel/GeneratedBlueprintBar/GeneratedMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="GeneratedBlueprintIcon" type="TextureRect" parent="MainVBox/ContentSplit/RightPanel/GeneratedBlueprintBar/GeneratedMargin/GeneratedRow"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+texture = ExtResource("3_blueprint")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GeneratedLabels" type="VBoxContainer" parent="MainVBox/ContentSplit/RightPanel/GeneratedBlueprintBar/GeneratedMargin/GeneratedRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 1
+
+[node name="GeneratedBlueprintStatusLabel" type="Label" parent="MainVBox/ContentSplit/RightPanel/GeneratedBlueprintBar/GeneratedMargin/GeneratedRow/GeneratedLabels"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "蓝图生成代码 · 只读"
+
+[node name="GeneratedBlueprintSourceLabel" type="Label" parent="MainVBox/ContentSplit/RightPanel/GeneratedBlueprintBar/GeneratedMargin/GeneratedRow/GeneratedLabels"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "请返回源蓝图修改逻辑，然后重新生成。"
+text_overrun_behavior = 3
+
+[node name="ReturnToBlueprintButton" type="Button" parent="MainVBox/ContentSplit/RightPanel/GeneratedBlueprintBar/GeneratedMargin/GeneratedRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(138, 38)
+layout_mode = 2
+tooltip_text = "打开生成此 C# 文件的源蓝图"
+icon = ExtResource("3_blueprint")
+text = "返回源蓝图"
+
+[node name="ExternalConflictBar" type="PanelContainer" parent="MainVBox/ContentSplit/RightPanel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+tooltip_text = "磁盘内容与编辑器缓冲区均会保留，选择处理方式前不会覆盖文件"
+
+[node name="ConflictMargin" type="MarginContainer" parent="MainVBox/ContentSplit/RightPanel/ExternalConflictBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 6
+
+[node name="ConflictRow" type="HFlowContainer" parent="MainVBox/ContentSplit/RightPanel/ExternalConflictBar/ConflictMargin"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 4
+
+[node name="ConflictIcon" type="TextureRect" parent="MainVBox/ContentSplit/RightPanel/ExternalConflictBar/ConflictMargin/ConflictRow"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+texture = ExtResource("4_warning")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ConflictLabels" type="VBoxContainer" parent="MainVBox/ContentSplit/RightPanel/ExternalConflictBar/ConflictMargin/ConflictRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 1
+
+[node name="ExternalConflictTitleLabel" type="Label" parent="MainVBox/ContentSplit/RightPanel/ExternalConflictBar/ConflictMargin/ConflictRow/ConflictLabels"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "检测到外部修改 · 尚未写入磁盘"
+
+[node name="ExternalConflictDetailLabel" type="Label" parent="MainVBox/ContentSplit/RightPanel/ExternalConflictBar/ConflictMargin/ConflictRow/ConflictLabels"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "编辑器缓冲区和磁盘版本均已保留"
+text_overrun_behavior = 3
+
+[node name="ViewExternalDiffButton" type="Button" parent="MainVBox/ContentSplit/RightPanel/ExternalConflictBar/ConflictMargin/ConflictRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+tooltip_text = "并排查看编辑器缓冲区与当前磁盘内容"
+icon = ExtResource("5_diff")
+text = "查看差异"
+
+[node name="ReloadExternalButton" type="Button" parent="MainVBox/ContentSplit/RightPanel/ExternalConflictBar/ConflictMargin/ConflictRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+tooltip_text = "放弃当前缓冲区修改并载入磁盘版本"
+icon = ExtResource("6_reload")
+text = "重新载入"
+
+[node name="OverwriteExternalButton" type="Button" parent="MainVBox/ContentSplit/RightPanel/ExternalConflictBar/ConflictMargin/ConflictRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+tooltip_text = "明确使用编辑器缓冲区原子替换当前磁盘版本"
+icon = ExtResource("7_save")
+text = "覆盖磁盘"
+
+[node name="SaveConflictCopyButton" type="Button" parent="MainVBox/ContentSplit/RightPanel/ExternalConflictBar/ConflictMargin/ConflictRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 36)
+layout_mode = 2
+tooltip_text = "把编辑器缓冲区另存为新的 C# 文件，保留当前磁盘版本"
+icon = ExtResource("7_save")
+text = "另存副本"
+
+[node name="SearchBar" type="PanelContainer" parent="MainVBox/ContentSplit/RightPanel"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 68)
+layout_mode = 2
+
+[node name="SearchMargin" type="MarginContainer" parent="MainVBox/ContentSplit/RightPanel/SearchBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 5
+
+[node name="SearchRows" type="VBoxContainer" parent="MainVBox/ContentSplit/RightPanel/SearchBar/SearchMargin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="FindRow" type="HFlowContainer" parent="MainVBox/ContentSplit/RightPanel/SearchBar/SearchMargin/SearchRows"]
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 3
+
+[node name="SearchInput" type="LineEdit" parent="MainVBox/ContentSplit/RightPanel/SearchBar/SearchMargin/SearchRows/FindRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "查找代码…"
+caret_blink = true
+select_all_on_focus = true
+
+[node name="SearchMatchLabel" type="Label" parent="MainVBox/ContentSplit/RightPanel/SearchBar/SearchMargin/SearchRows/FindRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+text = "0 / 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SearchPreviousButton" type="Button" parent="MainVBox/ContentSplit/RightPanel/SearchBar/SearchMargin/SearchRows/FindRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "上一个匹配（Shift+Enter）"
+text = "↑"
+
+[node name="SearchNextButton" type="Button" parent="MainVBox/ContentSplit/RightPanel/SearchBar/SearchMargin/SearchRows/FindRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "下一个匹配（Enter）"
+text = "↓"
+
+[node name="SearchCaseButton" type="CheckButton" parent="MainVBox/ContentSplit/RightPanel/SearchBar/SearchMargin/SearchRows/FindRow"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "区分大小写"
+text = "Aa"
+
+[node name="SearchWholeButton" type="CheckButton" parent="MainVBox/ContentSplit/RightPanel/SearchBar/SearchMargin/SearchRows/FindRow"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "仅完整单词"
+text = "词"
+
+[node name="SearchCloseButton" type="Button" parent="MainVBox/ContentSplit/RightPanel/SearchBar/SearchMargin/SearchRows/FindRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "关闭查找"
+flat = true
+text = "×"
+
+[node name="ReplaceRow" type="HFlowContainer" parent="MainVBox/ContentSplit/RightPanel/SearchBar/SearchMargin/SearchRows"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 3
+
+[node name="ReplaceInput" type="LineEdit" parent="MainVBox/ContentSplit/RightPanel/SearchBar/SearchMargin/SearchRows/ReplaceRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "替换为…"
+caret_blink = true
+
+[node name="ReplaceNextButton" type="Button" parent="MainVBox/ContentSplit/RightPanel/SearchBar/SearchMargin/SearchRows/ReplaceRow"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "替换当前匹配并跳到下一个"
+text = "替换 →"
+
+[node name="ReplaceAllButton" type="Button" parent="MainVBox/ContentSplit/RightPanel/SearchBar/SearchMargin/SearchRows/ReplaceRow"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "一次撤销即可恢复全部替换"
+text = "全部"
+
+[node name="EditorSplit" type="VSplitContainer" parent="MainVBox/ContentSplit/RightPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="XWCodeEdit" parent="MainVBox/ContentSplit/RightPanel/EditorSplit" instance=ExtResource("2_code")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DiagnosticsPanel" type="PanelContainer" parent="MainVBox/ContentSplit/RightPanel/EditorSplit"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="DiagnosticsVBox" type="VBoxContainer" parent="MainVBox/ContentSplit/RightPanel/EditorSplit/DiagnosticsPanel"]
+layout_mode = 2
+
+[node name="DiagnosticsHeader" type="HBoxContainer" parent="MainVBox/ContentSplit/RightPanel/EditorSplit/DiagnosticsPanel/DiagnosticsVBox"]
+layout_mode = 2
+
+[node name="DiagnosticsTitle" type="Label" parent="MainVBox/ContentSplit/RightPanel/EditorSplit/DiagnosticsPanel/DiagnosticsVBox/DiagnosticsHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "诊断"
+
+[node name="DiagnosticsCopyButton" type="Button" parent="MainVBox/ContentSplit/RightPanel/EditorSplit/DiagnosticsPanel/DiagnosticsVBox/DiagnosticsHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "复制所选警告/错误"
+disabled = true
+text = "复制"
+
+[node name="DiagnosticsList" type="ItemList" parent="MainVBox/ContentSplit/RightPanel/EditorSplit/DiagnosticsPanel/DiagnosticsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+allow_reselect = true
+
+[node name="DebugWorkbench" parent="MainVBox/ContentSplit/RightPanel" instance=ExtResource("8_debug_workbench")]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="StatusBar" type="HBoxContainer" parent="MainVBox/ContentSplit/RightPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="LineColLabel" type="Label" parent="MainVBox/ContentSplit/RightPanel/StatusBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "行 0, 列 0"
+
+[node name="DiagnosticsLabel" type="Label" parent="MainVBox/ContentSplit/RightPanel/StatusBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 2
+text = "0 错误，0 警告"
+
+[node name="NewFileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "新建 C# 脚本"
+initial_position = 1
+size = Vector2i(600, 400)
+min_size = Vector2i(520, 360)
+file_mode = 4
+access = 2
+filters = PackedStringArray("*.cs ; C# Script")
+
+[node name="OpenFileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "打开 C# 脚本"
+initial_position = 1
+size = Vector2i(600, 400)
+min_size = Vector2i(520, 360)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.cs ; C# Script")
+
+[node name="SaveAsDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "另存为..."
+initial_position = 1
+size = Vector2i(600, 400)
+min_size = Vector2i(520, 360)
+file_mode = 4
+access = 2
+filters = PackedStringArray("*.cs ; C# Script")
+
+[node name="UnsavedChangesDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "未保存的修改"
+initial_position = 1
+size = Vector2i(460, 170)
+min_size = Vector2i(420, 150)
+ok_button_text = "保存并关闭"
+cancel_button_text = "取消"
+dialog_text = "当前脚本仍有未保存的修改。"
+
+[node name="GoToLineDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "跳转到行"
+initial_position = 1
+size = Vector2i(360, 130)
+min_size = Vector2i(320, 120)
+ok_button_text = "跳转"
+dialog_text = "输入目标行号"
+
+[node name="GoToLineMargin" type="MarginContainer" parent="GoToLineDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 36.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GoToLineSpin" type="SpinBox" parent="GoToLineDialog/GoToLineMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 1.0
+value = 1.0
+allow_greater = false
+allow_lesser = false
+update_on_text_changed = true
+
+[node name="DiagnosticsContextMenu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+
+[node name="ExternalConflictDiffWindow" type="Window" parent="."]
+unique_name_in_owner = true
+title = "C# 外部修改差异"
+initial_position = 1
+size = Vector2i(1040, 640)
+min_size = Vector2i(720, 420)
+visible = false
+
+[node name="DiffMargin" type="MarginContainer" parent="ExternalConflictDiffWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DiffSplit" type="HSplitContainer" parent="ExternalConflictDiffWindow/DiffMargin"]
+layout_mode = 2
+split_offset = 505
+
+[node name="EditorVersion" type="VBoxContainer" parent="ExternalConflictDiffWindow/DiffMargin/DiffSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EditorVersionLabel" type="Label" parent="ExternalConflictDiffWindow/DiffMargin/DiffSplit/EditorVersion"]
+layout_mode = 2
+text = "编辑器缓冲区（未写入）"
+
+[node name="ExternalConflictEditorText" type="TextEdit" parent="ExternalConflictDiffWindow/DiffMargin/DiffSplit/EditorVersion"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+editable = false
+wrap_mode = 1
+
+[node name="DiskVersion" type="VBoxContainer" parent="ExternalConflictDiffWindow/DiffMargin/DiffSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DiskVersionLabel" type="Label" parent="ExternalConflictDiffWindow/DiffMargin/DiffSplit/DiskVersion"]
+layout_mode = 2
+text = "磁盘版本（外部修改）"
+
+[node name="ExternalConflictDiskText" type="TextEdit" parent="ExternalConflictDiffWindow/DiffMargin/DiffSplit/DiskVersion"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+editable = false
+wrap_mode = 1
+
+[node name="ReferencesWindow" type="Window" parent="."]
+unique_name_in_owner = true
+title = "符号引用"
+initial_position = 1
+size = Vector2i(720, 460)
+min_size = Vector2i(560, 320)
+visible = false
+
+[node name="ReferencesVBox" type="VBoxContainer" parent="ReferencesWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReferencesHeader" type="Label" parent="ReferencesWindow/ReferencesVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择一项跳转到对应代码"
+
+[node name="ReferencesList" type="ItemList" parent="ReferencesWindow/ReferencesVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+allow_reselect = true
+
+[node name="RenameDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "安全重命名"
+initial_position = 1
+size = Vector2i(620, 430)
+min_size = Vector2i(520, 360)
+ok_button_text = "确认并写入工程"
+dialog_text = "重命名只会修改当前 Mod 工程，可由“撤销重命名”完整恢复。"
+
+[node name="RenameMargin" type="MarginContainer" parent="RenameDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 74.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RenameVBox" type="VBoxContainer" parent="RenameDialog/RenameMargin"]
+layout_mode = 2
+
+[node name="RenameInput" type="LineEdit" parent="RenameDialog/RenameMargin/RenameVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "新的 C# 标识符"
+caret_blink = true
+
+[node name="RenamePreviewLabel" type="RichTextLabel" parent="RenameDialog/RenameMargin/RenameVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+fit_content = false
+scroll_active = true
+bbcode_enabled = true
+text = "正在分析当前符号…"
+
+[node name="SymbolInfoPopup" type="PopupPanel" parent="."]
+unique_name_in_owner = true
+size = Vector2i(520, 160)
+
+[node name="SymbolInfoMargin" type="MarginContainer" parent="SymbolInfoPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SymbolInfoLabel" type="RichTextLabel" parent="SymbolInfoPopup/SymbolInfoMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_content = false
+bbcode_enabled = true
+
+[node name="QuickFixPopup" type="PopupMenu" parent="."]
+unique_name_in_owner = true

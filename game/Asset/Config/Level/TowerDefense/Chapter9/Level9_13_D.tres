@@ -1,0 +1,741 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://bibcye3jtdsb1"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/Chapter9/Level9_13_D.json" id="1_yr20a"]
+[ext_resource type="Script" uid="uid://ba76j1qc1ehmt" path="res://Registry/Battle/Feature/Event/Resource/TowerDefenseLevelEventBase.cs" id="2_leul6"]
+[ext_resource type="Script" uid="uid://dbpqspbkam44d" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.cs" id="3_18ru2"]
+[ext_resource type="Script" uid="uid://elndp7rr41y0" path="res://Registry/Battle/Feature/LookStar/Resource/TowerDefenseLevelLookStarCheckConfig.cs" id="4_mhf71"]
+[ext_resource type="Script" uid="uid://ge6chewkhjqd" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.cs" id="5_6oevj"]
+[ext_resource type="Script" uid="uid://crdubirc3xofm" path="res://Resource/TowerDefense/Level/Packet/TowerDefenseLevelPacketConfig.cs" id="6_mkm5q"]
+[ext_resource type="Script" uid="uid://d17gywmt3g3lb" path="res://Resource/TowerDefense/Level/PreSpawn/TowerDefenseLevelPreSpawnConfig.cs" id="7_6lmda"]
+[ext_resource type="Script" uid="uid://dfj86l56q1n8g" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.cs" id="11_9o2et"]
+[ext_resource type="Script" uid="uid://blrb5liskebi6" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.cs" id="12_npsy3"]
+[ext_resource type="Script" uid="uid://br6kawt7m03sc" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelDynamicConfig.cs" id="13_ghtq6"]
+[ext_resource type="Script" uid="uid://ctvkmai1q8sa6" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.cs" id="14_ed4xj"]
+[ext_resource type="Script" uid="uid://c67uxwpu4jftb" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.cs" id="15_u955y"]
+
+[sub_resource type="Resource" id="Resource_87of6"]
+script = ExtResource("3_18ru2")
+
+[sub_resource type="Resource" id="Resource_21hkn"]
+script = ExtResource("5_6oevj")
+
+[sub_resource type="Resource" id="Resource_evsq5"]
+script = ExtResource("6_mkm5q")
+packetName = "PlantCornpultGene"
+
+[sub_resource type="Resource" id="Resource_sw27g"]
+script = ExtResource("12_npsy3")
+
+[sub_resource type="Resource" id="Resource_q8wua"]
+script = ExtResource("14_ed4xj")
+flagWaveInterval = 5
+dynamic = Array[ExtResource("13_ghtq6")]([])
+
+[resource]
+script = ExtResource("11_9o2et")
+data = ExtResource("1_yr20a")
+featureData = Dictionary[StringName, Dictionary]({
+&"BGM": {
+"BackgroundMusic": "RoofNight"
+},
+&"Brain": {},
+&"Camera": {},
+&"Event": {
+"EventInit": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["CloneTank"],
+"GravestoneNum": 1.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}, {
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["CloneTank"],
+"GravestoneNum": 1.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"EventReady": [],
+"EventStart": []
+},
+&"Map": {
+"MapName": "LaboratoryRuins"
+},
+&"Mower": {},
+&"NpcTalk": {
+"TalkName": "Level9_13Talk"
+},
+&"PacketBank": {
+"PacketBankName": "GeneralPlant"
+},
+&"PacketPick": {},
+&"PreSpawn": {
+"Packet": []
+},
+&"Progress": {},
+&"SeedBank": {
+"ColdDownStart": true,
+"ColdDownUse": true,
+"Method": "CHOOSE",
+"Packet": [{
+"PacketName": "PlantCornpultGene"
+}],
+"PlantColumn": false
+},
+&"Shovel": {},
+&"Sun": {
+"Begin": 200.0,
+"MovingMethod": "Land",
+"Open": true,
+"SpawnInterval": 12.0,
+"SpawnNum": 15.0,
+"Type": "Jala"
+},
+&"Wave": {
+"BeginCol": 20.0,
+"Dynamic": [{}, {}, {}, {}, {}, {}, {}],
+"FlagWaveInterval": 7.0,
+"FlagZombie": "ZombieFlag",
+"MaxNextWaveHealthPercentage": 0.3,
+"MinNextWaveHealthPercentage": 0.15,
+"SpawnColEnd": 20.0,
+"SpawnColStart": 10.0,
+"SpawnOverride": {},
+"Wave": [{
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImp"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImp"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImp"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackbox"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImpCone"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["CloneTank"],
+"GravestoneNum": 2.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImp"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImp"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackbox"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackGene"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieMagnetic"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImp"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["CloneTank"],
+"GravestoneNum": 2.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImp"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombiePaperball"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombiePortal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackGene"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieLadder"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImp"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackbox"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImp"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImpCone"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["CloneTank"],
+"GravestoneNum": 1.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 7.0,
+"y": 1.0,
+"z": 7.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePaperball"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackGene"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieMagnetic"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImp"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieUfo"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["CloneTank"],
+"GravestoneNum": 1.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 7.0,
+"y": 1.0,
+"z": 7.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieLadder"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieImp"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieMagnetic"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieUfo"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackbox"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePaperball"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieUfo"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImp"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["CloneTank"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePaperball"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieLadder"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieJackbox"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombiePaperball"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieMagnetic"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieLadder"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieImp"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImpCone"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackGene"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePaperball"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImp"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["CloneTank"],
+"GravestoneNum": 1.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 7.0,
+"y": 1.0,
+"z": 7.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieLadder"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackbox"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackGene"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePaperball"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombiePortal"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackbox"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieLadder"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieMagnetic"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieImp"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImpCone"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [{
+"EventName": "GravestoneCreateRandom",
+"Value": {
+"GravestoneNames": ["CloneTank"],
+"GravestoneNum": 3.0,
+"GravestonePos": {
+"w": 5.0,
+"x": 6.0,
+"y": 1.0,
+"z": 9.0
+}
+}
+}],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombiePaperball"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackbox"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieLadder"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImp"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackGene"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieJackbox"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieLadder"
+}, {
+"Line": -1.0,
+"Num": 5.0,
+"Zombie": "ZombieImp"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieUfo"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieJackGene"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombiePortal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieJackbox"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombiePaperball"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombieLadder"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImp"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieMagnetic"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieJackGene"
+}, {
+"Line": -1.0,
+"Num": 1.0,
+"Zombie": "ZombiePortal"
+}]
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"Spawn": [{
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombieImp"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieImpCone"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieJackbox"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieUfo"
+}, {
+"Line": -1.0,
+"Num": 4.0,
+"Zombie": "ZombiePaperball"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieLadder"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombieJackGene"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieRobot"
+}, {
+"Line": -1.0,
+"Num": 2.0,
+"Zombie": "ZombieMagnetic"
+}, {
+"Line": -1.0,
+"Num": 3.0,
+"Zombie": "ZombiePortal"
+}]
+}]
+}
+})
+processName = &"Wave"
+processData = {
+"MowerUse": true
+}
+map = ""
+backgroundMusic = ""
+firstRewardType = 1
+firstRewardValue = "PlantCornpultGene"
+sunManager = SubResource("Resource_sw27g")
+fogManager = SubResource("Resource_87of6")
+lookStarManager = SubResource("Resource_21hkn")
+waveManager = SubResource("Resource_q8wua")
+packetBankList = [SubResource("Resource_evsq5")]
+PacketBank/Name = "GeneralPlant"
+name = "Level9_13"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "PLAYERS_MORDEN_EXPERIMENTALBASE_LEVEL_NAME"
+levelNumber = 13
+homeWorld = 1
+metadata/_custom_type_script = "uid://dfj86l56q1n8g"

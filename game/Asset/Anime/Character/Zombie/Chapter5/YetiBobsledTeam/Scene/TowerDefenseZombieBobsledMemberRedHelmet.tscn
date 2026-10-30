@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://kmsps2ht4ujo"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="2"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiBobsledTeam/Config/TowerDefenseZombieBobsledMemberRedHelmet.tres" id="3"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiBobsledTeam/Armor/Config/ZombieBobsledMemberRedHelmetArmorHelmet.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://bech26pjacuso" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiBobsledTeam/ZombieBobsledMemberRedHelmet.tscn" id="5"]
+
+[node name="TowerDefenseZombieBobsledMemberRedHelmet" node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+HitBoxDefinition = ExtResource("2")
+walkAnimeClip = "Walk"
+attackAnimeClip = "Eat"
+dieAnimeClip = "Death"
+dieWaterAnimeClip = "Death"
+idleAnimeClip = "Idle"
+sleepAnimeClip = "Idle"
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieBobsledMemberRedHelmet")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieBobsledMemberRedHelmet/HeadSlot")
+damagePart = {
+"Helmet": ExtResource("4")
+}
+damagePartSlot = {
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieBobsledMemberRedHelmet/HelmentSlot")
+}
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(12, 33)
+
+[node name="ZombieBobsledMemberRedHelmet" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("5")]
+position = Vector2(-12, -33)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieBobsledMemberRedHelmet" index="0"]
+drawLayerId = -2
+
+[node name="ShadowSprite" parent="." index="3"]
+position = Vector2(9, 37)
+
+[editable path="SpriteGroup/TransformPoint/ZombieBobsledMemberRedHelmet"]

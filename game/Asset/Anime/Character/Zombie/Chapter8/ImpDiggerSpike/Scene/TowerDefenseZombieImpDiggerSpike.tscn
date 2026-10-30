@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://rgfyqefmimo3"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dmvuanwp8sale" path="res://Asset/Anime/Character/Zombie/Chapter8/ImpDiggerSpike/Scene/TowerDefenseZombieImpDiggerSpike.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://di07ubop4nuc3" path="res://Asset/Anime/Character/Zombie/Chapter8/ImpDiggerSpike/Scene/TowerDefenseZombieImpDiggerSpikeStateMachine.tres" id="4"]
+[ext_resource type="Resource" uid="uid://d3267tj63bo6b" path="res://Asset/Anime/Character/Zombie/Chapter8/ImpDiggerSpike/Config/TowerDefenseZombieImpDiggerSpike.tres" id="5"]
+[ext_resource type="Resource" uid="uid://cox3cfq33hstp" path="res://Asset/Anime/Character/Zombie/Chapter8/ImpDiggerSpike/DamagePoint/Config/ZombieImpDiggerSpikeDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dsdebyl3ps4np" path="res://Asset/Anime/Character/Zombie/Chapter8/ImpDiggerSpike/Armor/Config/ZombieImpDiggerSpikeArmorHardHat.tres" id="7"]
+[ext_resource type="Resource" uid="uid://nkimf03krnw0" path="res://Asset/Anime/Character/Zombie/Chapter8/ImpDiggerSpike/DamagePoint/Config/ZombieImpDiggerSpikeDamagePointHead.tres" id="8"]
+[ext_resource type="Resource" uid="uid://bdkhwpwmtyyn" path="res://Asset/Anime/Character/Zombie/Chapter8/ImpDiggerSpike/Armor/Config/ZombieImpDiggerSpikeArmorPick.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://cp0h15drgq18c" path="res://Asset/Anime/Character/Zombie/Chapter8/ImpDiggerSpike/ZombieImpDiggerSpike.tscn" id="10"]
+
+[node name="TowerDefenseZombieImpDiggerSpike" unique_id=28680171 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+walkSpeedScale = 0.5
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieImpDiggerSpike")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieImpDiggerSpike/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"HardHat": ExtResource("7"),
+"Head": ExtResource("8"),
+"Pick": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieImpDiggerSpike/ArmSlot"),
+"HardHat": NodePath("SpriteGroup/TransformPoint/ZombieImpDiggerSpike/HardHatSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieImpDiggerSpike/HeadSlot"),
+"Pick": NodePath("SpriteGroup/TransformPoint/ZombieImpDiggerSpike/PickSlot")
+}
+currentArmor = ["HardHat", "Pick"]
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(6.000001, 42)
+scale = Vector2(1.0697676, 1.1666667)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieImpDiggerSpike" parent="SpriteGroup/TransformPoint" index="0" unique_id=924573585 instance=ExtResource("10")]
+position = Vector2(-12, -33)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieImpDiggerSpike" index="0" unique_id=142744396]
+drawLayerId = -2
+position = Vector2(-4.003809, 19.471693)
+rotation = -0.005820406
+scale = Vector2(0.99914634, 0.99914634)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieImpDiggerSpike" index="1" unique_id=2010994946]
+position = Vector2(-0.16440201, 43.64338)
+rotation = -0.60460955
+scale = Vector2(0.84700924, 0.9063373)
+
+[node name="HardHatSlot" parent="SpriteGroup/TransformPoint/ZombieImpDiggerSpike" index="2" unique_id=2034846501]
+position = Vector2(-1.9095917, 0.3812027)
+rotation = 0.07906735
+scale = Vector2(0.89981, 0.89981)
+
+[node name="PickSlot" parent="SpriteGroup/TransformPoint/ZombieImpDiggerSpike" index="3" unique_id=764984938]
+position = Vector2(13.044403, 40.27799)
+rotation = -0.6177315
+scale = Vector2(0.8466563, 0.9059584)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieImpDiggerSpike" index="4" unique_id=2145813569]
+position = Vector2(-62, 10)
+
+[editable path="SpriteGroup/TransformPoint/ZombieImpDiggerSpike"]

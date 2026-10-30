@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://dfu5hhxhsvvkg"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_evt"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_buff"]
+[ext_resource type="Script" uid="uid://c4cnj7r56bj3k" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffDizziness.cs" id="3_dizzy"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_addbuff"]
+[ext_resource type="PackedScene" uid="uid://rj8us2uluvzik" path="res://Prefab/Particles/Splats/IronStarSplats/IronStarSplats.tscn" id="5_splat"]
+[ext_resource type="PackedScene" uid="uid://d0yae07kl1vn5" path="res://Registry/Projectile/Config/StarIron/Sprite/StarIron/ProjectileStarIron.tscn" id="6_sprite"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="7_cfg"]
+
+[sub_resource type="Resource" id="Resource_dizzy"]
+script = ExtResource("3_dizzy")
+time = 1.0
+metadata/_custom_type_script = "uid://c4cnj7r56bj3k"
+
+[sub_resource type="Resource" id="Resource_addbuff"]
+script = ExtResource("4_addbuff")
+buffList = Array[ExtResource("2_buff")]([SubResource("Resource_dizzy")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("7_cfg")
+name = "StarIron"
+isStar = true
+baseDamage = 40.0
+projectileScene = ExtResource("6_sprite")
+splatAudio = "ExplodeCherrybomb"
+splatScene = ExtResource("5_splat")
+hitCharacterEventList = Array[ExtResource("1_evt")]([SubResource("Resource_addbuff")])
+rotateScale = 2.0
+rangeType = "Bomb"
+useRange = true
+rangeSize = Vector2(1.5, 1.5)
+hitPesontage = 1.0

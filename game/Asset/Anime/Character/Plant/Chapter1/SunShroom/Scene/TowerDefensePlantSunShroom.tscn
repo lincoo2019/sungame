@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cyiixbl3ko2d6"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter1/SunShroom/Scene/TowerDefensePlantSunShroomComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://c866p3sbrarnk" path="res://Asset/Anime/Character/Plant/Chapter1/SunShroom/Scene/TowerDefensePlantSunShroom.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cyletqaqlcq1l" path="res://Asset/Anime/Character/Plant/Chapter1/SunShroom/Config/TowerDefensePlantSunShroom.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://4eejky1qkkhp" path="res://Asset/Anime/Character/Plant/Chapter1/SunShroom/SunShroom.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantSunShroom" unique_id=1569103491 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+produceInterval = 25.0
+sunNum = 25
+growUpTime = 60.0
+growUpSunNum = 50
+produceType = "Sun"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/SunShroom")
+Custom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="SunShroom" parent="SpriteGroup/TransformPoint" index="0" unique_id=247068838 instance=ExtResource("6")]
+position = Vector2(0, -30)
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/SunShroom" index="0" unique_id=1674590822]
+script = ExtResource("7")
+followSlotId = 32
+Layer = 32
+drawLayerId = 32
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SunShroom/AdobeAnimateSlot" index="0" unique_id=1484245472]
+position = Vector2(29.2062, 23.8581)

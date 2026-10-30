@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://vj3haxa0yv87"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://4v34ks5gyv16" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Scene/Wallnut/TowerDefenseZombieNormalWallnut.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://drkq4ihnpln1c" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Config/TowerDefenseZombieNormalWallnut.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bj7i58sh5mr24" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalPlantWallnutDamagePointArm.tres" id="5"]
+[ext_resource type="Resource" uid="uid://clvqblkq2jo2l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBlackHelmet.tres" id="6"]
+[ext_resource type="Resource" uid="uid://d4b68a6hw3c2d" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBucket.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cfim36uopws7u" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorCone.tres" id="8"]
+[ext_resource type="Resource" uid="uid://c7nx2fl3rq01m" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalPlantDamagePointHead.tres" id="9"]
+[ext_resource type="Resource" uid="uid://byth0yfgejk1l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorHelmet.tres" id="10"]
+[ext_resource type="Resource" uid="uid://dmgd4ygng30xn" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorScreendoor.tres" id="11"]
+[ext_resource type="Resource" uid="uid://cryuyu1d8jqbt" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorSpecialHelmet.tres" id="12"]
+[ext_resource type="PackedScene" uid="uid://bobrmuicfvc3a" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Sprite/Wallnut/ZombieNormalWallnut.tscn" id="13"]
+
+[node name="TowerDefenseZombieNormalWallnut" unique_id=1869435741 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+walkAnimeClip = "Walk1&Walk2"
+swimAnimeClip = "Swim"
+dieAnimeClip = "Death1&Death2"
+dieWaterAnimeClip = "Waterdeath"
+waterHeight = 25.0
+idleAnimeClip = "Idle1&Idle2"
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieNormalWallnut")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieNormalWallnut/HeadSlot")
+damagePart = {
+"Arm": ExtResource("5"),
+"BlackHelmet": ExtResource("6"),
+"Bucket": ExtResource("7"),
+"Cone": ExtResource("8"),
+"Head": ExtResource("9"),
+"Helmet": ExtResource("10"),
+"Screendoor": ExtResource("11"),
+"SpecialHelmet": ExtResource("12")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieNormalWallnut/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalWallnut/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieNormalWallnut/BucketSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieNormalWallnut/ConeSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieNormalWallnut/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalWallnut/HeadSlot"),
+"Screendoor": NodePath("SpriteGroup/TransformPoint/ZombieNormalWallnut/ScreendoorSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalWallnut/HeadSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieNormalWallnut" parent="SpriteGroup/TransformPoint" index="0" unique_id=1423924492 instance=ExtResource("13")]
+position = Vector2(-12, -33)
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieNormalWallnut" index="0" unique_id=1491904057]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWallnut" index="1" unique_id=838125608]
+drawLayerId = -2
+position = Vector2(-15.058483, -43.87799)
+rotation = -0.17081973
+scale = Vector2(0.7994113, 0.7994113)
+Layer = 8
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWallnut" index="2" unique_id=513344227]
+position = Vector2(7.243952, 2.7211657)
+rotation = -0.13424471
+scale = Vector2(0.799632, 0.799632)
+Layer = 31
+
+[node name="ConeSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWallnut" index="3" unique_id=1246110024]
+position = Vector2(-20.393066, -78.87714)
+rotation = -0.25464687
+scale = Vector2(0.7953623, 0.7953623)
+offset = Vector2(25, 17)
+Layer = 22
+
+[node name="BucketSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWallnut" index="4" unique_id=1079498045]
+position = Vector2(-20.383831, -72.03077)
+rotation = -0.28491956
+scale = Vector2(0.7977449, 0.7977449)
+offset = Vector2(34, 15)
+Layer = 23
+
+[node name="ScreendoorSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWallnut" index="5" unique_id=58156734]
+position = Vector2(-16.22163, 2.2244148)
+rotation = -0.09619353
+scale = Vector2(0.7984784, 0.7984784)
+Layer = 25
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieNormalWallnut" index="6" unique_id=1899350916]
+Layer = 1
+
+[editable path="SpriteGroup/TransformPoint/ZombieNormalWallnut"]

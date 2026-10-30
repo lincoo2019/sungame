@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8m0quickopen01"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/GUI/XWQuickOpenDialog.cs" id="1_quick"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/FileList.svg" id="2_all"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Script.svg" id="3_script"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/PackedScene.svg" id="4_scene"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/FileThumbnail.svg" id="5_resource"]
+
+[node name="XWQuickOpenDialog" type="ConfirmationDialog"]
+title = "快速打开"
+initial_position = 1
+size = Vector2i(620, 470)
+min_size = Vector2i(420, 320)
+ok_button_text = "打开"
+script = ExtResource("1_quick")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="FilterHBox" type="HFlowContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+
+[node name="TypeFilter" type="OptionButton" parent="VBoxContainer/FilterHBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="TypeChips" type="HBoxContainer" parent="VBoxContainer/FilterHBox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="AllTypeChip" type="Button" parent="VBoxContainer/FilterHBox/TypeChips"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "显示全部文件"
+toggle_mode = true
+button_pressed = true
+text = "全部"
+icon = ExtResource("2_all")
+
+[node name="ScriptTypeChip" type="Button" parent="VBoxContainer/FilterHBox/TypeChips"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "只显示 C# 脚本"
+toggle_mode = true
+text = "脚本"
+icon = ExtResource("3_script")
+
+[node name="SceneTypeChip" type="Button" parent="VBoxContainer/FilterHBox/TypeChips"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "只显示场景"
+toggle_mode = true
+text = "场景"
+icon = ExtResource("4_scene")
+
+[node name="ResourceTypeChip" type="Button" parent="VBoxContainer/FilterHBox/TypeChips"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "只显示资源"
+toggle_mode = true
+text = "资源"
+icon = ExtResource("5_resource")
+
+[node name="SearchLine" type="LineEdit" parent="VBoxContainer/FilterHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "搜索文件..."
+
+[node name="ResultCount" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 个结果"
+
+[node name="ResultList" type="ItemList" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PageBar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="PreviousPageButton" type="Button" parent="VBoxContainer/PageBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "上一页"
+
+[node name="PageLabel" type="Label" parent="VBoxContainer/PageBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "第 1 / 1 页"
+horizontal_alignment = 1
+
+[node name="NextPageButton" type="Button" parent="VBoxContainer/PageBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "下一页"

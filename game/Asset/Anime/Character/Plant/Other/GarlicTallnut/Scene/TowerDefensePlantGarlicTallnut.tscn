@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://s22njiwgfl0v"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://d1fie66tskvhk" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffPoisoning.cs" id="2"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="3"]
+[ext_resource type="Script" uid="uid://c55feeuvm3ss" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionRandom.cs" id="4"]
+[ext_resource type="Script" uid="uid://b8rialbjr540d" path="res://Script/Component/TowerDefense/Character/PeriodicAreaEventComponent/PeriodicAreaEventComponentDefinition.cs" id="5"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Other/GarlicTallnut/Scene/TowerDefensePlantGarlicTallnutComponentSet.tres" id="6"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="7"]
+[ext_resource type="Script" uid="uid://bql6x0pw1nvbi" path="res://Asset/Anime/Character/Plant/Other/GarlicTallnut/Scene/TowerDefensePlantGarlicTallnut.cs" id="8"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_72x90_At_0_n5.tres" id="9"]
+[ext_resource type="Resource" uid="uid://cc0rpttpequ15" path="res://Asset/Anime/Character/Plant/Other/GarlicTallnut/Config/TowerDefensePlantGarlicTallnut.tres" id="10"]
+[ext_resource type="PackedScene" uid="uid://bvfy3ilfs73hh" path="res://Asset/Anime/Character/Plant/Other/GarlicTallnut/GarlicTallnut.tscn" id="11"]
+
+[sub_resource type="Resource" id="Resource_3wj7i"]
+script = ExtResource("2")
+time = 3.0
+metadata/_custom_type_script = "uid://d1fie66tskvhk"
+
+[sub_resource type="Resource" id="Resource_sc4bk"]
+script = ExtResource("3")
+buffList = [SubResource("Resource_3wj7i")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Resource_t3fii"]
+script = ExtResource("4")
+eventList = [SubResource("Resource_sc4bk")]
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[sub_resource type="Resource" id="PeriodicDefinition"]
+script = ExtResource("5")
+eventList = [SubResource("Resource_t3fii")]
+targetEffectScene = null
+checkShape = null
+ComponentTypeId = "PeriodicAreaEventComponent"
+DefinitionId = "builtin.component.periodic_area_event.garlic_tallnut"
+InstanceId = "character.periodic_area_event"
+WireIndex = 0
+StateMachineDefinition = null
+LegacyNodeNames = [&"PeriodicAreaEventComponent"]
+
+[sub_resource type="Resource" id="PeriodicComponentSet"]
+script = ExtResource("7")
+ParentSet = ExtResource("6")
+Components = [SubResource("PeriodicDefinition")]
+
+[node name="TowerDefensePlantGarlicTallnut" unique_id=1249247228 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = SubResource("PeriodicComponentSet")
+script = ExtResource("8")
+HitBoxDefinition = ExtResource("9")
+config = ExtResource("10")
+sprite = NodePath("SpriteGroup/TransformPoint/GarlicTallnut")
+PreviewDamagePointPersontage = 1.0
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 35)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="GarlicTallnut" parent="SpriteGroup/TransformPoint" index="0" unique_id=689272902 instance=ExtResource("11")]
+position = Vector2(0, -30)

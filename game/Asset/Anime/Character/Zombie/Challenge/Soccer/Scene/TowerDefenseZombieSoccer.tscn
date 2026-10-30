@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dshryn1u5nq72"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://b5jnhuu37sqg6" path="res://Asset/Anime/Character/Zombie/Challenge/Soccer/Scene/TowerDefenseZombieSoccerComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bo70phmlk83jo" path="res://Asset/Anime/Character/Zombie/Challenge/Soccer/Scene/TowerDefenseZombieSoccer.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_5_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bhquhi1mr02x" path="res://Asset/Anime/Character/Zombie/Challenge/Soccer/Config/TowerDefenseZombieSoccer.tres" id="5"]
+[ext_resource type="Resource" uid="uid://rwrux4pkh3r4" path="res://Asset/Anime/Character/Zombie/Challenge/Soccer/DamagePoint/Config/ZombieSoccerDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://c4pp6on3xk7b6" path="res://Asset/Anime/Character/Zombie/Challenge/Soccer/DamagePoint/Config/ZombieSoccerDamagePointHead.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://de77h0d6x54ns" path="res://Asset/Anime/Character/Zombie/Challenge/Soccer/ZombieSoccer.tscn" id="8"]
+
+[node name="TowerDefenseZombieSoccer" unique_id=196070422 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+walkSpeedScale = 2.0
+walkAnimeClip = "Walk1"
+swimAnimeClip = "Swim"
+attackAnimeClip = "Eat1"
+dieWaterAnimeClip = "Waterdeath"
+waterHeight = 25.0
+HitBoxDefinition = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieSoccer")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieSoccer/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"Head": ExtResource("7")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieSoccer/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieSoccer/HeadSlot")
+}
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieSoccer" parent="SpriteGroup/TransformPoint" index="0" unique_id=580848539 instance=ExtResource("8")]
+position = Vector2(-12, -33)
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false]
+mediaReplace = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieSoccer" index="0" unique_id=486872282]
+position = Vector2(-3.8762264, -41.27735)
+rotation = -0.063606836
+scale = Vector2(0.7997495, 0.7997495)
+followSlotId = 17
+drawLayerId = -2
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieSoccer" index="1" unique_id=468311533]
+position = Vector2(28.460094, -11.608319)
+rotation = -0.04474616
+scale = Vector2(0.79985595, 0.79985595)
+
+[editable path="SpriteGroup/TransformPoint/ZombieSoccer"]

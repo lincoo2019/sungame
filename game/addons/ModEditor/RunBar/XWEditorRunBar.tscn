@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8m0runbar001"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/RunBar/XWEditorRunBar.cs" id="1_runbar"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/MainPlay.svg" id="2_play"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Pause.svg" id="3_pause"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Stop.svg" id="4_stop"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/PlayScene.svg" id="5_playscene"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/PlayCustom.svg" id="6_playcustom"]
+
+[node name="XWEditorRunBar" type="HBoxContainer"]
+theme_override_constants/separation = 2
+script = ExtResource("1_runbar")
+
+[node name="ProfilerIndicator" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+flat = true
+text = "性能"
+
+[node name="MainPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MainHBox" type="HBoxContainer" parent="MainPanel"]
+layout_mode = 2
+
+[node name="PlayBtn" type="Button" parent="MainPanel/MainHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "运行主场景 (F5)"
+toggle_mode = true
+icon = ExtResource("2_play")
+
+[node name="PauseBtn" type="Button" parent="MainPanel/MainHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "暂停运行 (F7)"
+disabled = true
+toggle_mode = true
+icon = ExtResource("3_pause")
+
+[node name="StopBtn" type="Button" parent="MainPanel/MainHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "停止运行 (F8)"
+disabled = true
+icon = ExtResource("4_stop")
+
+[node name="RemoteBtn" type="MenuButton" parent="MainPanel/MainHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "远程调试"
+
+[node name="PlaySceneBtn" type="Button" parent="MainPanel/MainHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "运行当前场景 (F6)"
+toggle_mode = true
+icon = ExtResource("5_playscene")
+
+[node name="PlayCustomBtn" type="Button" parent="MainPanel/MainHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "运行自定义场景 (Ctrl+Shift+F5)"
+toggle_mode = true
+icon = ExtResource("6_playcustom")

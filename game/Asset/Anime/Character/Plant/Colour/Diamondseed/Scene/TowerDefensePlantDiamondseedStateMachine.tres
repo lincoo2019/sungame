@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://c5c6pkhabfs6c"]
+
+[ext_resource type="Resource" uid="uid://d28ilpm3lyjt5" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefensePlantStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_prepare"]
+script = ExtResource("2")
+StableId = "plant.diamondseed.prepare"
+DisplayName = &"Prepare"
+ParentId = "character.root"
+
+[sub_resource type="Resource" id="Transition_prepare"]
+script = ExtResource("3")
+StableId = "plant.diamondseed.to_prepare"
+SourceStateId = "character.root"
+TargetStateId = "plant.diamondseed.prepare"
+EventName = &"ToPrepare"
+DeclarationOrder = 3
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.plant.diamondseed"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_prepare")]
+Transitions = [SubResource("Transition_prepare")]

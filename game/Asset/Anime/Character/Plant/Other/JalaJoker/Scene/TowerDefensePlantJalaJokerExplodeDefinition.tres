@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="ExplodeComponentDefinition" format=3 uid="uid://by2uwrd37wk5t"]
+
+[ext_resource type="Resource" uid="uid://64l72hop5ev2" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://cyitbexj6bhrt" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffButter.cs" id="2"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="4"]
+[ext_resource type="Script" uid="uid://b3ws8dbxgchm3" path="res://Script/Component/TowerDefense/Character/ExplodeComponent/ExplodeComponentDefinition.cs" id="5"]
+
+[sub_resource type="Resource" id="Resource_wkh1v"]
+script = ExtResource("2")
+time = 4.0
+splatTexture = null
+metadata/_custom_type_script = "uid://cyitbexj6bhrt"
+
+[sub_resource type="Resource" id="Resource_l82hl"]
+script = ExtResource("3")
+buffList = [SubResource("Resource_wkh1v")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="RectangleShape2D" id="ExplodePreviewRectangle"]
+size = Vector2(240, 294)
+
+[sub_resource type="Resource" id="ExplodePreviewShape"]
+script = ExtResource("4")
+Geometry = SubResource("ExplodePreviewRectangle")
+
+[resource]
+script = ExtResource("5")
+spritePath = NodePath("SpriteGroup/TransformPoint/JalaJoker")
+explodeAnimeTimeScale = 1.25
+explodeMethod = "Cross"
+explodeAudio = ""
+explodeEvent = [SubResource("Resource_l82hl")]
+explodeEffect = null
+explodeShape = SubResource("ExplodePreviewShape")
+explodeJalaOffset = [0]
+ComponentTypeId = "ExplodeComponent"
+DefinitionId = "builtin.component.explode.asset.anime.character.plant.other.jalajoker.scene.towerdefenseplantjalajoker.tscn"
+InstanceId = "character.explode"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"ExplodeComponent"]

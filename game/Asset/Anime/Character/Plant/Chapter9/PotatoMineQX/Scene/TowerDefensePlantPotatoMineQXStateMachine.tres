@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://dbv1h2y8dlb8m"]
+
+[ext_resource type="Resource" uid="uid://d28ilpm3lyjt5" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefensePlantStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_down"]
+script = ExtResource("2")
+StableId = "plant.potatomine_qx.down"
+DisplayName = &"Down"
+ParentId = "character.root"
+
+[sub_resource type="Resource" id="State_down_idle"]
+script = ExtResource("2")
+StableId = "plant.potatomine_qx.down_idle"
+DisplayName = &"DownIdle"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_up"]
+script = ExtResource("2")
+StableId = "plant.potatomine_qx.up"
+DisplayName = &"Up"
+ParentId = "character.root"
+
+[sub_resource type="Resource" id="Transition_to_down"]
+script = ExtResource("3")
+StableId = "plant.potatomine_qx.to_down"
+SourceStateId = "character.root"
+TargetStateId = "plant.potatomine_qx.down"
+EventName = &"ToDown"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_down_idle"]
+script = ExtResource("3")
+StableId = "plant.potatomine_qx.to_down_idle"
+SourceStateId = "plant.potatomine_qx.down"
+TargetStateId = "plant.potatomine_qx.down_idle"
+EventName = &"ToDownIdle"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_up"]
+script = ExtResource("3")
+StableId = "plant.potatomine_qx.to_up"
+SourceStateId = "plant.potatomine_qx.down_idle"
+TargetStateId = "plant.potatomine_qx.up"
+EventName = &"ToUp"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_revived"]
+script = ExtResource("3")
+StableId = "plant.potatomine_qx.to_revived"
+SourceStateId = "plant.potatomine_qx.up"
+TargetStateId = "plant.plant"
+EventName = &"ToRevived"
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.plant.potatomine_qx"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_down"), SubResource("State_down_idle"), SubResource("State_up")]
+Transitions = [SubResource("Transition_to_down"), SubResource("Transition_to_down_idle"), SubResource("Transition_to_up"), SubResource("Transition_to_revived")]

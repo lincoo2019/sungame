@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://2vh1csqbvbqx"]
+
+[ext_resource type="Script" uid="uid://cf32pisk7ji7n" path="res://Registry/Battle/Feature/SeedBank/Control/TowerDefenseInGameSeedBank.cs" id="1_75gic"]
+[ext_resource type="Texture2D" uid="uid://c2ihkj4xv50hg" path="res://Asset/Texture/TowerDefense/SeedBank/SeedBank.png" id="2_e6d7d"]
+[ext_resource type="Texture2D" uid="uid://du78t3kqekq1k" path="res://Asset/Texture/TowerDefense/SeedBank/SunBank.png" id="2_vela7"]
+[ext_resource type="FontFile" uid="uid://b70va62wc3lp2" path="res://Asset/Font/fzcq.ttf" id="3_1bd6t"]
+[ext_resource type="Texture2D" uid="uid://b622sgilxiuad" path="res://Asset/Texture/TowerDefense/SeedBank/SunBankMobile.png" id="7_4fwvk"]
+[ext_resource type="PackedScene" uid="uid://cpgpfiekj6ien" path="res://Prefab/TowerDefense/GUI/InGame/PlantfoodBank/TowerDefensePlantfoodBank.tscn" id="7_4qol8"]
+
+[node name="TowerDefenseInGameSeedBank" type="Control" unique_id=79199311]
+light_mask = 0
+custom_minimum_size = Vector2(446, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_top = -88.0
+offset_bottom = -88.0
+script = ExtResource("1_75gic")
+
+[node name="Packet" type="Control" parent="." unique_id=2000567771]
+light_mask = 0
+anchors_preset = 0
+
+[node name="PCControl" type="Control" parent="Packet" unique_id=909899096]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ItemContainer" type="HBoxContainer" parent="Packet/PCControl" unique_id=1043093715]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_right = 446.0
+offset_bottom = 87.0
+
+[node name="SunBankTexture" type="TextureRect" parent="Packet/PCControl/ItemContainer" unique_id=1810158192]
+unique_name_in_owner = true
+visible = false
+light_mask = 0
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+texture = ExtResource("2_vela7")
+
+[node name="SeedContainer" type="MarginContainer" parent="Packet/PCControl/ItemContainer" unique_id=869822665]
+unique_name_in_owner = true
+light_mask = 0
+custom_minimum_size = Vector2(446, 87)
+layout_mode = 2
+
+[node name="SeedBankTexture" type="NinePatchRect" parent="Packet/PCControl/ItemContainer/SeedContainer" unique_id=1776412894]
+unique_name_in_owner = true
+light_mask = 0
+custom_minimum_size = Vector2(140, 87)
+layout_mode = 2
+texture = ExtResource("2_e6d7d")
+patch_margin_left = 79
+patch_margin_top = 9
+patch_margin_right = 11
+patch_margin_bottom = 9
+
+[node name="MarginContainer" type="MarginContainer" parent="Packet/PCControl/ItemContainer/SeedContainer" unique_id=945394131]
+light_mask = 0
+layout_mode = 2
+theme_override_constants/margin_left = 78
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 11
+
+[node name="PacketSlotContainer" type="HBoxContainer" parent="Packet/PCControl/ItemContainer/SeedContainer/MarginContainer" unique_id=202644322]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+
+[node name="PacketContainer" type="HBoxContainer" parent="Packet/PCControl/ItemContainer/SeedContainer/MarginContainer" unique_id=1542636437]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+
+[node name="SunLabel" type="Label" parent="Packet/PCControl" unique_id=831824336]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 9.0
+offset_top = 60.0
+offset_right = 68.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_1bd6t")
+theme_override_font_sizes/font_size = 16
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MobileControl" type="Control" parent="Packet" unique_id=1467613937]
+unique_name_in_owner = true
+anchors_preset = 0
+
+[node name="MobileItemContainer" type="HBoxContainer" parent="Packet/MobileControl" unique_id=185953939]
+unique_name_in_owner = true
+visible = false
+light_mask = 0
+layout_mode = 1
+offset_right = 555.0
+offset_bottom = 609.0
+mouse_filter = 2
+
+[node name="MobileSeedContainer" type="MarginContainer" parent="Packet/MobileControl/MobileItemContainer" unique_id=1561375573]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Packet/MobileControl/MobileItemContainer/MobileSeedContainer" unique_id=763511138]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Packet/MobileControl/MobileItemContainer/MobileSeedContainer/VBoxContainer" unique_id=1430152651]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="Packet/MobileControl/MobileItemContainer/MobileSeedContainer/VBoxContainer/HBoxContainer" unique_id=842632529]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="MobileSunBarTexture" type="TextureRect" parent="Packet/MobileControl/MobileItemContainer/MobileSeedContainer/VBoxContainer/HBoxContainer" unique_id=1906262612]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("7_4fwvk")
+
+[node name="MobileSunLabel" type="Label" parent="Packet/MobileControl/MobileItemContainer/MobileSeedContainer/VBoxContainer/HBoxContainer/MobileSunBarTexture" unique_id=921059570]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 54.0
+offset_top = 18.0
+offset_right = 113.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_1bd6t")
+theme_override_font_sizes/font_size = 16
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MobileISeedContanin" type="MarginContainer" parent="Packet/MobileControl/MobileItemContainer/MobileSeedContainer/VBoxContainer" unique_id=9705058]
+unique_name_in_owner = true
+light_mask = 0
+custom_minimum_size = Vector2(194, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="MobilePacketSlotContainer" type="VFlowContainer" parent="Packet/MobileControl/MobileItemContainer/MobileSeedContainer/VBoxContainer/MobileISeedContanin" unique_id=910982143]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 552)
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+
+[node name="MobilePacketContainer" type="VFlowContainer" parent="Packet/MobileControl/MobileItemContainer/MobileSeedContainer/VBoxContainer/MobileISeedContanin" unique_id=1270422571]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 552)
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+
+[node name="PlantfoodBank" parent="." unique_id=1367277658 instance=ExtResource("7_4qol8")]
+visible = false
+layout_mode = 0
+offset_left = 19.0
+offset_top = 934.0
+offset_right = 19.0
+offset_bottom = 934.0

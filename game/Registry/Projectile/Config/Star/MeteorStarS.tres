@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://d1fk03omxb8b8"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_cpwjd"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_fhwm5"]
+[ext_resource type="Script" uid="uid://c4cnj7r56bj3k" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffDizziness.cs" id="3_emdn6"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_bh1xn"]
+[ext_resource type="PackedScene" uid="uid://c6wv7m4n3ie6l" path="res://Asset/Config/Projectile/MeteorStar/Sprite/MeteorStarS/MeteorStarS.tscn" id="5_c4iho"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="6_g4xg8"]
+[ext_resource type="PackedScene" uid="uid://cyybr1v2luar5" path="res://Prefab/Particles/Splats/MeteorStarSSplats/MeteorStarSSplats.tscn" id="7_cpwjd"]
+
+[sub_resource type="Resource" id="Resource_svy7c"]
+script = ExtResource("3_emdn6")
+metadata/_custom_type_script = "uid://c4cnj7r56bj3k"
+
+[sub_resource type="Resource" id="Resource_4vwxy"]
+script = ExtResource("4_bh1xn")
+buffList = Array[ExtResource("2_fhwm5")]([SubResource("Resource_svy7c")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("6_g4xg8")
+name = "MeteorStarS"
+isStar = true
+baseDamage = 200.0
+scale = Vector2(0.6, 0.6)
+projectileScene = ExtResource("5_c4iho")
+splatScene = ExtResource("7_cpwjd")
+hitCharacterEventList = Array[ExtResource("1_cpwjd")]([SubResource("Resource_4vwxy")])
+rangeType = "Bomb"
+useRange = true
+rangeSize = Vector2(1.5, 1)
+hitPesontage = 1.0

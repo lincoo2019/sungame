@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ch2ysy2khufj4"]
+
+[ext_resource type="Texture2D" uid="uid://dv5x6ax2qiod0" path="res://Asset/Anime/Particles/Explosion/ExplosionCloud.png" id="1"]
+[ext_resource type="Material" uid="uid://d4l20uduef1ys" path="res://Prefab/Particles/Explosion/CariExplosion/CariExplosion.tres" id="2"]
+[ext_resource type="Script" uid="uid://cmjj5ejt1ranr" path="res://Extends/Particles/GPUParticles2DOnece.cs" id="3"]
+[ext_resource type="Texture2D" uid="uid://bat1kkww4i4a" path="res://Asset/Anime/Particles/Part/Zomboss_particles.png" id="4"]
+[ext_resource type="Material" uid="uid://cuk8oulamuld3" path="res://Prefab/Particles/Explosion/CariExplosion/CariExplosionPart.tres" id="5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pvbux"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[node name="CariExplosion" type="GPUParticles2D" unique_id=1001662013]
+emitting = false
+amount = 12
+texture = ExtResource("1")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+draw_order = 0
+process_material = ExtResource("2")
+script = ExtResource("3")
+
+[node name="CariExplosionPart" type="GPUParticles2D" parent="." unique_id=32337934]
+material = SubResource("CanvasItemMaterial_pvbux")
+emitting = false
+texture = ExtResource("4")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+draw_order = 0
+process_material = ExtResource("5")

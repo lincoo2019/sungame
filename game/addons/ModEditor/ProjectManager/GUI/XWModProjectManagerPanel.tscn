@@ -1,0 +1,176 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccxwmodprojectmanager"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ProjectManager/GUI/XWModProjectManagerPanel.cs" id="1_project_manager"]
+
+[node name="XWModProjectManagerPanel" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_project_manager")
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="RootHBox" type="HBoxContainer" parent="RootMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Sidebar" type="VBoxContainer" parent="RootMargin/RootHBox"]
+custom_minimum_size = Vector2(188, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="RootMargin/RootHBox/Sidebar"]
+layout_mode = 2
+text = "PVZ Mod 制作器"
+
+[node name="Subtitle" type="Label" parent="RootMargin/RootHBox/Sidebar"]
+layout_mode = 2
+text = "选择工程后进入编辑器"
+
+[node name="SidebarSeparator" type="HSeparator" parent="RootMargin/RootHBox/Sidebar"]
+layout_mode = 2
+
+[node name="NewProjectButton" type="Button" parent="RootMargin/RootHBox/Sidebar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "新建 Mod"
+
+[node name="OpenProjectButton" type="Button" parent="RootMargin/RootHBox/Sidebar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "打开 Mod"
+
+[node name="RefreshProjectsButton" type="Button" parent="RootMargin/RootHBox/Sidebar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "刷新列表"
+
+[node name="RemoveMissingButton" type="Button" parent="RootMargin/RootHBox/Sidebar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "移除缺失"
+
+[node name="SidebarSpacer" type="Control" parent="RootMargin/RootHBox/Sidebar"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Hint" type="Label" parent="RootMargin/RootHBox/Sidebar"]
+layout_mode = 2
+text = "工程文件为 .pvzmodeproject"
+autowrap_mode = 3
+
+[node name="VSeparator" type="VSeparator" parent="RootMargin/RootHBox"]
+layout_mode = 2
+
+[node name="MainVBox" type="VBoxContainer" parent="RootMargin/RootHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="HeaderRow" type="HBoxContainer" parent="RootMargin/RootHBox/MainVBox"]
+layout_mode = 2
+
+[node name="ProjectListTitle" type="Label" parent="RootMargin/RootHBox/MainVBox/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "最近工程"
+
+[node name="OpenSelectedProjectButton" type="Button" parent="RootMargin/RootHBox/MainVBox/HeaderRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 30)
+layout_mode = 2
+text = "进入工程"
+
+[node name="ProjectListPanel" type="PanelContainer" parent="RootMargin/RootHBox/MainVBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ProjectList" type="Tree" parent="RootMargin/RootHBox/MainVBox/ProjectListPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+hide_root = true
+columns = 3
+column_titles_visible = true
+
+[node name="EmptyHintLabel" type="Label" parent="RootMargin/RootHBox/MainVBox/ProjectListPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -12.0
+offset_right = 132.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "还没有最近工程"
+horizontal_alignment = 1
+
+[node name="ProjectDetails" type="PanelContainer" parent="RootMargin/RootHBox/MainVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 138)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DetailsMargin" type="MarginContainer" parent="RootMargin/RootHBox/MainVBox/ProjectDetails"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="DetailsVBox" type="VBoxContainer" parent="RootMargin/RootHBox/MainVBox/ProjectDetails/DetailsMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="ProjectNameLabel" type="Label" parent="RootMargin/RootHBox/MainVBox/ProjectDetails/DetailsMargin/DetailsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未选择工程"
+
+[node name="ProjectPathLabel" type="Label" parent="RootMargin/RootHBox/MainVBox/ProjectDetails/DetailsMargin/DetailsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+autowrap_mode = 3
+
+[node name="ProjectMetaLabel" type="Label" parent="RootMargin/RootHBox/MainVBox/ProjectDetails/DetailsMargin/DetailsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+
+[node name="ProjectDescriptionLabel" type="RichTextLabel" parent="RootMargin/RootHBox/MainVBox/ProjectDetails/DetailsMargin/DetailsVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = false
+text = "从左侧新建或打开一个 Mod 工程。"
+fit_content = true

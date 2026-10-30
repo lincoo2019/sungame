@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://daty14yh4hllo"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://1h4xdlxv2uo" path="res://Asset/Anime/Character/Plant/Chapter5/PotSpike/Scene/TowerDefensePlantPotSpikeComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://du5xyhkup0see" path="res://Asset/Anime/Character/Plant/Chapter5/PotSpike/Scene/TowerDefensePlantPotSpike.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bwhwe8slabrk6" path="res://Asset/Anime/Character/Plant/Chapter5/PotSpike/Config/TowerDefensePlantPotSpike.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://6n0aqina3cfx" path="res://Asset/Anime/Character/Plant/Chapter5/PotSpike/PotSpike.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantPotSpike" unique_id=1131399036 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+showHealthOffset = Vector2(0, 30)
+z_index = -13
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+attack = 20.0
+fireInterval = 1.5
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/PotSpike")
+PreviewDamagePointPersontage = 1.0
+Custom = []
+itemLayer = 2
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 47)
+scale = Vector2(0.821918, 0.77551)
+texture = null
+
+[node name="SpriteGroup" parent="." index="2" unique_id=1006029617]
+
+[node name="TransformPoint" parent="SpriteGroup" index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PotSpike" parent="SpriteGroup/TransformPoint" index="0" unique_id=1570488658 instance=ExtResource("6")]
+position = Vector2(0, -26)
+Animation/LayerVisible/AnimeClips = true
+Animation/LayerVisible/AnimeEvents = true
+Animation/LayerVisible/_Pot_shadow = true
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/PotSpike" index="0" unique_id=997215796]
+script = ExtResource("7")
+followSlotId = 14
+Layer = 14
+drawLayerId = 14
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/PotSpike/AdobeAnimateSlot" index="0" unique_id=408638487]
+position = Vector2(45.8757, -0.7678649)

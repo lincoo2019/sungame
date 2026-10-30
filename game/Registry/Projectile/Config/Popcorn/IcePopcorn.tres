@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://c6ptm818ai0jq"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_fwcyv"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_uwoa0"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="3_7m631"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="3_nuj8w"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_0kjqk"]
+[ext_resource type="PackedScene" uid="uid://cxsee7hi4vgk3" path="res://Asset/Config/Projectile/Popcorn/Sprite/IcePopcorn/ProjectileIcePopcorn.tscn" id="5_72g6r"]
+[ext_resource type="PackedScene" uid="uid://bvyltpxxmsmip" path="res://Prefab/Particles/Splats/IcePopcornSplats/IcePopcornSplats.tscn" id="7_nuj8w"]
+
+[sub_resource type="Resource" id="Resource_xhkqo"]
+script = ExtResource("3_nuj8w")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_qahr1"]
+script = ExtResource("4_0kjqk")
+buffList = Array[ExtResource("2_uwoa0")]([SubResource("Resource_xhkqo")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("3_7m631")
+name = "IcePopcorn"
+baseDamage = 40.0
+projectileScene = ExtResource("5_72g6r")
+splatScene = ExtResource("7_nuj8w")
+hitCharacterEventList = Array[ExtResource("1_fwcyv")]([SubResource("Resource_qahr1")])
+rotateScale = 5.0
+useRange = true
+rangeSize = Vector2(1, 1)
+hitPesontage = 0.5

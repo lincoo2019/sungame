@@ -1,0 +1,427 @@
+[gd_scene format=3 uid="uid://cifuwbh5763gi"]
+
+[ext_resource type="Script" uid="uid://dj1ghd2otsktm" path="res://Prefab/GUI/LevelEditor/InformationEditor/LevelEditorInformationEditor.cs" id="1_px33h"]
+[ext_resource type="Texture2D" uid="uid://dwwg5awviq8g2" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="2_kh33u"]
+[ext_resource type="Texture2D" uid="uid://biewbfqqa138j" path="res://Asset/Texture/GUI/LevelEditor/LevelEditorMapShowBox.png" id="2_u2c56"]
+
+[node name="LevelEditorInformationEditor" type="Control" unique_id=279805746]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_px33h")
+
+[node name="CommandContainer" type="MarginContainer" parent="." unique_id=323408994]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -529.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 70
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CommandContainer" unique_id=1706708915]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer" unique_id=1600620483]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="TextContainer" type="VBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer" unique_id=1763657386]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LevelNumberContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=1710329922]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/LevelNumberContainer" unique_id=915329587]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "关卡编号"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelNumberSpinBox" type="SpinBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/LevelNumberContainer" unique_id=849557125]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+
+[node name="LevelNameContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=201226142]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/LevelNameContainer" unique_id=1437760325]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "关卡名"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelNameLineEdit" type="LineEdit" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/LevelNameContainer" unique_id=1803046783]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "文本中填入{LevelNumber}可以获取当前关卡编号"
+mouse_filter = 1
+theme_override_font_sizes/font_size = 16
+text = "PLAYERS_MORDEN_LEVEL_NAME"
+context_menu_enabled = false
+caret_blink = true
+
+[node name="LevelDescriptionContainer" type="VBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=1256670616]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/LevelDescriptionContainer" unique_id=814510556]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "关卡进入介绍"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelDescriptionTextEdit" type="TextEdit" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/LevelDescriptionContainer" unique_id=1125627516]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "文本中填入{UserName}可以获取玩家当前名称"
+mouse_filter = 1
+theme_override_font_sizes/font_size = 16
+text = "PLAYERS_TRIP_TO_MODERN"
+context_menu_enabled = false
+caret_blink = true
+
+[node name="HomeWorldContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=443980548]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/HomeWorldContainer" unique_id=1016608946]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "主世界"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HomeWorldOptionButton" type="OptionButton" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/HomeWorldContainer" unique_id=978968985]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="MapContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=408017607]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/MapContainer" unique_id=869047910]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "地图"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MapOptionButton" type="OptionButton" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/MapContainer" unique_id=733102497]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_font_sizes/font_size = 16
+allow_reselect = true
+
+[node name="BgmContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=1722944004]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/BgmContainer" unique_id=1343353823]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "背景音乐"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BgmOptionButton" type="OptionButton" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/BgmContainer" unique_id=1958176568]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_font_sizes/font_size = 16
+allow_reselect = true
+
+[node name="TalkContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=493205097]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/TalkContainer" unique_id=1170740050]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "Npc对话预设"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TalkOptionButton" type="OptionButton" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/TalkContainer" unique_id=2087609595]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_font_sizes/font_size = 16
+allow_reselect = true
+
+[node name="TalkCheckBox" type="CheckBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/TalkContainer" unique_id=138885898]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+text = "启用自定义"
+
+[node name="TutorialContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=515976557]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/TutorialContainer" unique_id=256978048]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "教程预设"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutorialOptionButton" type="OptionButton" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/TutorialContainer" unique_id=132972595]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_font_sizes/font_size = 16
+allow_reselect = true
+
+[node name="TutorialCheckBox" type="CheckBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/TutorialContainer" unique_id=77652523]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+text = "启用自定义"
+
+[node name="FinishMethodContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=2060292640]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/FinishMethodContainer" unique_id=164429261]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "游戏模式"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinishMethodOptionButton" type="OptionButton" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/FinishMethodContainer" unique_id=2104888497]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_font_sizes/font_size = 16
+allow_reselect = true
+
+[node name="StormOpenContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=1078788825]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/StormOpenContainer" unique_id=176894697]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "暴风雨"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StormOpenCheckBox" type="CheckBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/StormOpenContainer" unique_id=1030857359]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="FogUseContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=294626333]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/FogUseContainer" unique_id=1558658374]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "使用雾效"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FogUseCheckBox" type="CheckBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/FogUseContainer" unique_id=451729279]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="FogBeginColumnContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/FogUseContainer" unique_id=383413300]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/FogUseContainer/FogBeginColumnContainer" unique_id=1580298131]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "起始位置"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FogBeginColumnSpinBox" type="SpinBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/FogUseContainer/FogBeginColumnContainer" unique_id=640459624]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+value = 6.0
+
+[node name="MowerUseContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=476336613]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/MowerUseContainer" unique_id=205063535]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "使用小推车"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MowerUseCheckBox" type="CheckBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/MowerUseContainer" unique_id=1748714972]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="VaseShuffleContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=827184030]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/VaseShuffleContainer" unique_id=575823640]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "打乱罐子"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VaseShuffleCheckBox" type="CheckBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/VaseShuffleContainer" unique_id=1302894845]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="IZMShuffleContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=284444077]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/IZMShuffleContainer" unique_id=1010712584]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "打乱植物排列"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IZMShuffleCheckBox" type="CheckBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/IZMShuffleContainer" unique_id=1693886855]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="MapShow" type="Control" parent="." unique_id=97635789]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="LevelEditorMapShowBox" type="TextureRect" parent="MapShow" unique_id=1802220110]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -520.0
+offset_top = 48.0
+offset_right = -73.0
+offset_bottom = 487.0
+texture = ExtResource("2_u2c56")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="MapShow/LevelEditorMapShowBox" unique_id=1678798534]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.719
+anchor_top = 0.453
+anchor_right = 0.719
+anchor_bottom = 0.453
+offset_left = -273.393
+offset_top = 137.133
+offset_right = 70.607
+offset_bottom = 209.133
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "地图预览"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MapMask" type="ColorRect" parent="MapShow/LevelEditorMapShowBox" unique_id=255842900]
+show_behind_parent = true
+clip_children = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -399.0
+offset_top = 48.0
+offset_right = -47.0
+offset_bottom = 314.0
+
+[node name="MapTexture" type="TextureRect" parent="MapShow/LevelEditorMapShowBox/MapMask" unique_id=1155585967]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1)
+texture = ExtResource("2_kh33u")
+expand_mode = 1
+stretch_mode = 6

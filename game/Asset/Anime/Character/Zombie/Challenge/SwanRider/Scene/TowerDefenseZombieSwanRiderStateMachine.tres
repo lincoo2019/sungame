@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://chv0nfuwypaq5"]
+
+[ext_resource type="Resource" uid="uid://cktl6q1og62xd" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseZombieStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_swan_rider_fly"]
+script = ExtResource("2")
+StableId = "zombie.swan_rider.fly"
+DisplayName = &"Fly"
+ParentId = "character.root"
+ProcessFlags = 1
+
+[sub_resource type="Resource" id="Transition_swan_rider_to_fly"]
+script = ExtResource("3")
+StableId = "zombie.swan_rider.to_fly"
+SourceStateId = "character.root"
+TargetStateId = "zombie.swan_rider.fly"
+EventName = &"ToFly"
+DeclarationOrder = 7
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.zombie.swan_rider"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_swan_rider_fly")]
+Transitions = [SubResource("Transition_swan_rider_to_fly")]

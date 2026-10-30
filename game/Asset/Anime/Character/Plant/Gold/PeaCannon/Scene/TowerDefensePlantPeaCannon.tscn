@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://b01uvqvfa2ggr"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Gold/PeaCannon/Scene/TowerDefensePlantPeaCannonComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bjx26o54dtkh1" path="res://Asset/Anime/Character/Plant/Gold/PeaCannon/Scene/TowerDefensePlantPeaCannon.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_124x33_At_39_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cxppa7fuiut8o" path="res://Asset/Anime/Character/Plant/Gold/PeaCannon/Config/TowerDefensePlantPeaCannon.tres" id="5"]
+[ext_resource type="Texture2D" uid="uid://c07s22oke4426" path="res://Asset/Texture/Character/Effect/CobCannonTarget.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://x0jtib2i581c" path="res://Asset/Config/Projectile/PeaCobCannon/PeaCobCannonCob/PeaCobCannonCob.png" id="7"]
+[ext_resource type="PackedScene" uid="uid://bt6vbbu8yts5v" path="res://Asset/Anime/Character/Plant/Gold/PeaCannon/PeaCannon.tscn" id="8"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="9"]
+
+[node name="TowerDefensePlantPeaCannon" unique_id=1914587403 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+showHealthOffset = Vector2(39, 0)
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+restTime = 30.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/PeaCannon")
+Custom = []
+
+[node name="CobCannonTarget" type="Sprite2D" parent="." index="0" unique_id=1711920377]
+visible = false
+z_index = 2048
+position = Vector2(81, 0)
+texture = ExtResource("6")
+
+[node name="PeaCannonCob" type="Sprite2D" parent="." index="1" unique_id=1307829338]
+visible = false
+position = Vector2(-30.681, -70.939926)
+scale = Vector2(0.8804222, 0.8537193)
+texture = ExtResource("7")
+centered = false
+
+[node name="ShadowSprite" parent="." index="2" unique_id=1970894107]
+position = Vector2(36.5, 30)
+scale = Vector2(1.8488373, 1)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(39, 30)
+
+[node name="PeaCannon" parent="SpriteGroup/TransformPoint" index="0" unique_id=1128723220 instance=ExtResource("8")]
+position = Vector2(-39, -30)
+
+[node name="ProjectileSlot" type="Node2D" parent="SpriteGroup/TransformPoint/PeaCannon" index="0" unique_id=1815139906]
+unique_name_in_owner = true
+script = ExtResource("9")
+followSlotId = 11
+Layer = 11
+drawLayerId = 11
+metadata/_custom_type_script = "uid://hd68vjdh2w02"

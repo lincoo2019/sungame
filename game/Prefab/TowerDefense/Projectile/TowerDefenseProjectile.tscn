@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dyrv5jg4hiu2l"]
+
+[ext_resource type="Script" uid="uid://bciu2oejdcy5p" path="res://Prefab/TowerDefense/Projectile/TowerDefenseProjectile.cs" id="1_tddjy"]
+[ext_resource type="Texture2D" uid="uid://c1jocs3s84m21" path="res://Asset/Texture/Character/Effect/Shadow.png" id="2_o8nwt"]
+[ext_resource type="Script" uid="uid://daabbarea2d01" path="res://Core/TowerDefenseManager/SubSystem/AabbArea2D.cs" id="aabb_area"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vcl4b"]
+radius = 15.0
+
+[node name="TowerDefenseProjectile" type="Node2D" unique_id=116637043]
+physics_interpolation_mode = 1
+z_index = -6
+script = ExtResource("1_tddjy")
+itemLayer = 9
+
+[node name="ProjectileBodyNode" type="Node2D" parent="." unique_id=966297897]
+unique_name_in_owner = true
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=758079478]
+unique_name_in_owner = true
+physics_interpolation_mode = 2
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+z_index = -10
+position = Vector2(0, 18)
+texture = ExtResource("2_o8nwt")
+
+[node name="HitBox" type="Node2D" parent="." unique_id=1648387442]
+unique_name_in_owner = true
+process_mode = 4
+physics_interpolation_mode = 1
+light_mask = 0
+script = ExtResource("aabb_area")
+collision_layer = 2
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1685064743]
+shape = SubResource("CircleShape2D_vcl4b")

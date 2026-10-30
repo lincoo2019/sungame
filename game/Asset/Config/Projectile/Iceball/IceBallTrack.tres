@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://cnqnrdh8vmnvb"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_iksnc"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_42pxw"]
+[ext_resource type="Script" uid="uid://cw2vrb8rkj87m" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFrozen.cs" id="3_p3yxl"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_y7ceq"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="6_iksnc"]
+[ext_resource type="PackedScene" uid="uid://bgc317fuflyqj" path="res://Prefab/Particles/Explosion/IceBallExplosion/IceBallExplosion.tscn" id="6_lrn23"]
+[ext_resource type="PackedScene" uid="uid://p30xslel80fv" path="res://Asset/Config/Projectile/Iceball/Sprite/Iceball/ProjectileIceBall.tscn" id="7_0bxy7"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="8_vrla7"]
+
+[sub_resource type="Resource" id="Resource_wpmip"]
+script = ExtResource("3_p3yxl")
+time = 3.0
+metadata/_custom_type_script = "uid://cw2vrb8rkj87m"
+
+[sub_resource type="Resource" id="Resource_myh71"]
+script = ExtResource("4_y7ceq")
+buffList = Array[ExtResource("2_42pxw")]([SubResource("Resource_wpmip")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("8_vrla7")
+name = "IceBall"
+baseDamage = 100.0
+projectileScene = ExtResource("7_0bxy7")
+splatAudio = "ExplodeCherrybomb"
+hitEffect = ExtResource("6_lrn23")
+hitCharacterEventList = Array[ExtResource("1_iksnc")]([SubResource("Resource_myh71")])
+rotateScale = 5.0
+hitBody = true
+rangeType = "Bomb"
+useRange = true
+rangeSize = Vector2(1.5, 1.5)
+hitPesontage = 1.0
+damageFlags = 2
+fireMethodFlags = 32
+collisionFlags = 11
+catapultHeight = 400.0

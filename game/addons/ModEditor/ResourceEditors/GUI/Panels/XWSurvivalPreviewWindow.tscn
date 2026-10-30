@@ -1,0 +1,208 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWSurvivalPreviewWindow.cs" id="1_script"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="2_lawn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stage"]
+bg_color = Color(0.08, 0.15, 0.1, 1)
+
+[node name="SurvivalRuntimePreviewWindow" type="Window"]
+title = "生存模式运行预览"
+initial_position = 1
+size = Vector2i(900, 620)
+min_size = Vector2i(720, 500)
+transient = true
+script = ExtResource("1_script")
+
+[node name="PreviewScroll" type="ScrollContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="Layout" type="VBoxContainer" parent="PreviewScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="PreviewScroll/Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "生存模式轮次模拟"
+
+[node name="Stage" type="PanelContainer" parent="PreviewScroll/Layout"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_stage")
+
+[node name="Content" type="Control" parent="PreviewScroll/Layout/Stage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="PreviewScroll/Layout/Stage/Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="PreviewScroll/Layout/Stage/Content/ViewportContainer"]
+transparent_bg = true
+disable_3d = true
+size = Vector2i(900, 280)
+render_target_update_mode = 2
+
+[node name="GameBackground" type="TextureRect" parent="PreviewScroll/Layout/Stage/Content/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+offset_right = 900.0
+offset_bottom = 280.0
+mouse_filter = 2
+texture = ExtResource("2_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ZombieRoot" type="Node2D" parent="PreviewScroll/Layout/Stage/Content/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+
+[node name="Counters" type="HBoxContainer" parent="PreviewScroll/Layout/Stage/Content"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 70.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Round" type="Label" parent="PreviewScroll/Layout/Stage/Content/Counters"]
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "轮次 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoundSeparator" type="VSeparator" parent="PreviewScroll/Layout/Stage/Content/Counters"]
+layout_mode = 2
+
+[node name="Wave" type="Label" parent="PreviewScroll/Layout/Stage/Content/Counters"]
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "波次 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaveSeparator" type="VSeparator" parent="PreviewScroll/Layout/Stage/Content/Counters"]
+layout_mode = 2
+
+[node name="Time" type="Label" parent="PreviewScroll/Layout/Stage/Content/Counters"]
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "白天"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointLabel" type="Label" parent="PreviewScroll/Layout/Stage/Content"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
+
+[node name="PointProgress" type="ProgressBar" parent="PreviewScroll/Layout/Stage/Content"]
+custom_minimum_size = Vector2(560, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -34.0
+offset_right = 280.0
+grow_horizontal = 2
+grow_vertical = 0
+show_percentage = false
+
+[node name="Selector" type="HBoxContainer" parent="PreviewScroll/Layout"]
+layout_mode = 2
+alignment = 1
+
+[node name="RoundTitle" type="Label" parent="PreviewScroll/Layout/Selector"]
+layout_mode = 2
+text = "轮次"
+
+[node name="RoundSpin" type="SpinBox" parent="PreviewScroll/Layout/Selector"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+max_value = 999.0
+
+[node name="WaveTitle" type="Label" parent="PreviewScroll/Layout/Selector"]
+layout_mode = 2
+text = "已经过波次"
+
+[node name="WaveSpin" type="SpinBox" parent="PreviewScroll/Layout/Selector"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 9999.0
+
+[node name="BigWaveCheck" type="CheckBox" parent="PreviewScroll/Layout/Selector"]
+layout_mode = 2
+text = "下一波为大波"
+
+[node name="ZombiePoolTitle" type="Label" parent="PreviewScroll/Layout"]
+layout_mode = 2
+text = "当前僵尸池"
+
+[node name="ZombiePoolScroll" type="ScrollContainer" parent="PreviewScroll/Layout"]
+custom_minimum_size = Vector2(0, 105)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ZombiePool" type="HFlowContainer" parent="PreviewScroll/Layout/ZombiePoolScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RoundAddsTitle" type="Label" parent="PreviewScroll/Layout"]
+layout_mode = 2
+text = "轮次解锁预览"
+
+[node name="RoundAddsScroll" type="ScrollContainer" parent="PreviewScroll/Layout"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RoundAdds" type="HFlowContainer" parent="PreviewScroll/Layout/RoundAddsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Controls" type="HBoxContainer" parent="PreviewScroll/Layout"]
+layout_mode = 2
+alignment = 1
+
+[node name="ResetButton" type="Button" parent="PreviewScroll/Layout/Controls"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+text = "重置"
+
+[node name="NextWaveButton" type="Button" parent="PreviewScroll/Layout/Controls"]
+custom_minimum_size = Vector2(110, 36)
+layout_mode = 2
+text = "下一波"
+
+[node name="NextRoundButton" type="Button" parent="PreviewScroll/Layout/Controls"]
+custom_minimum_size = Vector2(110, 36)
+layout_mode = 2
+text = "下一轮"

@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="TowerDefensePlantConfig" format=3 uid="uid://bwhwe8slabrk6"]
+
+[ext_resource type="Resource" uid="uid://cuyera7ctghcf" path="res://Asset/Anime/Character/Plant/Chapter5/PotSpike/Custom/PotSpikeCoustomData.tres" id="1"]
+[ext_resource type="Script" uid="uid://dw32w1qy2lp10" path="res://Resource/General/Character/DamagePoint/CharacterDamagePointConfig.cs" id="2"]
+[ext_resource type="Script" uid="uid://glu4fym1t3ns" path="res://Resource/General/Character/DamagePoint/CharacterDamagePointData.cs" id="3"]
+[ext_resource type="Script" uid="uid://deeto5x21j3q" path="res://Resource/TowerDefense/Character/Config/TowerDefensePlantConfig.cs" id="4"]
+
+[sub_resource type="Resource" id="Resource_bqbud"]
+script = ExtResource("2")
+damagePointName = "Damage0"
+damagePersontage = 1.0
+animeEffect = null
+isDrop = false
+replaceMediaName = &"Wallnut_body.png"
+replaceMediaTexturePath = "res://Asset/AtlasSource/DamagePoint/Anime/Character/Plant/Chapter1/Firenut/DamagePoint/WallnutBody.png"
+damageAudio = ""
+metadata/_custom_type_script = "uid://dw32w1qy2lp10"
+
+[sub_resource type="Resource" id="Resource_hcpsk"]
+script = ExtResource("2")
+damagePointName = "Damage1"
+damagePersontage = 0.666
+animeEffect = null
+isDrop = false
+replaceMediaName = &"Wallnut_body.png"
+replaceMediaTexturePath = "res://Asset/AtlasSource/DamagePoint/Anime/Character/Plant/Chapter1/Firenut/DamagePoint/WallnutCracked1.png"
+damageAudio = ""
+metadata/_custom_type_script = "uid://dw32w1qy2lp10"
+
+[sub_resource type="Resource" id="Resource_1yxcu"]
+script = ExtResource("2")
+damagePointName = "Damage2"
+damagePersontage = 0.333
+animeEffect = null
+isDrop = false
+replaceMediaName = &"Wallnut_body.png"
+replaceMediaTexturePath = "res://Asset/AtlasSource/DamagePoint/Anime/Character/Plant/Chapter1/Firenut/DamagePoint/WallnutCracked2.png"
+damageAudio = ""
+metadata/_custom_type_script = "uid://dw32w1qy2lp10"
+
+[sub_resource type="Resource" id="Resource_l0bt2"]
+script = ExtResource("3")
+damagePointList = [SubResource("Resource_bqbud"), SubResource("Resource_hcpsk"), SubResource("Resource_1yxcu")]
+damagePointDictionary = {
+"Damage0": {
+"Close": [],
+"Config": SubResource("Resource_bqbud"),
+"Open": []
+},
+"Damage1": {
+"Close": [],
+"Config": SubResource("Resource_hcpsk"),
+"Open": []
+},
+"Damage2": {
+"Close": [],
+"Config": SubResource("Resource_1yxcu"),
+"Open": []
+}
+}
+metadata/_custom_type_script = "uid://glu4fym1t3ns"
+
+[resource]
+script = ExtResource("4")
+izm2Fliter = true
+name = "PlantPotSpike"
+spikeHurt = 300.0
+height = 0
+damagePointData = SubResource("Resource_l0bt2")
+armorData = null
+customData = ExtResource("1")
+ashScene = null
+homeWorld = 1
+cost = 75
+packetCooldown = 7.5
+plantGridType = [2, 1, 10]
+plantGridOverrideType = 6
+collisionFlags = 9
+maskFlags = 8
+physiqueTypeFlags = 18

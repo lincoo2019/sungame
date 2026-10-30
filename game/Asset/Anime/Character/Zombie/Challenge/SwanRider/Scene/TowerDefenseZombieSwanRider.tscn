@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dykruf1ynyydf"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://ef5jjc81mk30" path="res://Asset/Anime/Character/Zombie/Challenge/SwanRider/Scene/TowerDefenseZombieSwanRiderComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://mfaegankgt46" path="res://Asset/Anime/Character/Zombie/Challenge/SwanRider/Scene/TowerDefenseZombieSwanRider.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_64x33_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://chv0nfuwypaq5" path="res://Asset/Anime/Character/Zombie/Challenge/SwanRider/Scene/TowerDefenseZombieSwanRiderStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://bo682qdbchokh" path="res://Asset/Anime/Character/Zombie/Challenge/SwanRider/Config/TowerDefenseZombieSwanRider.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://4m0sixsbcnom" path="res://Asset/Anime/Character/Zombie/Challenge/SwanRider/ZombieSwanRider.tscn" id="7"]
+
+[node name="TowerDefenseZombieSwanRider" unique_id=2016841854 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+walkSpeedScale = 1.5
+inSwimAnimeClip = "Jump"
+swimAnimeClip = "Swim"
+outSwimAnimeClip = "OutWater"
+attackAnimeClip = ""
+waterHeight = 25.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieSwanRider")
+PreviewDamagePointPersontage = 1.0
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieSwanRider" parent="SpriteGroup/TransformPoint" index="0" unique_id=957327467 instance=ExtResource("7")]
+position = Vector2(-12, -33)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieSwanRider" index="0" unique_id=40988141]
+position = Vector2(-44.1338, -40)

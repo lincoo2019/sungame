@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://rpjdq2sskhcc"]
+
+[ext_resource type="Script" uid="uid://ctlttv33bqjgt" path="res://Prefab/GUI/DialogBox/DailyChallenge/DailyChallenge.cs" id="1_6iu1t"]
+[ext_resource type="Texture2D" uid="uid://c855vjpdgvpr" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengeBG.png" id="2_t8wvf"]
+[ext_resource type="PackedScene" uid="uid://cpx5fm80mnnd5" path="res://Prefab/GUI/DialogBox/DailyChallenge/Calendar/Calendar.tscn" id="3_biv7q"]
+[ext_resource type="PackedScene" uid="uid://bml60wmq62jay" path="res://Prefab/GUI/Button/MainButton.tscn" id="4_cmuwq"]
+[ext_resource type="Texture2D" uid="uid://d0smlukjcx1r6" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengeCloseButton.png" id="4_pnal8"]
+[ext_resource type="Texture2D" uid="uid://5lvxpd7jaoc4" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengeCloseButtonPress.png" id="5_2xnoy"]
+[ext_resource type="Texture2D" uid="uid://becxfsjmy31td" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengePlayButton.png" id="5_4kjp0"]
+[ext_resource type="Texture2D" uid="uid://c3mh3bdn1qs1k" path="res://Asset/Texture/GUI/DailyChallenge/DailyChallengePlayButtonPress.png" id="6_pnal8"]
+[ext_resource type="FontFile" uid="uid://bibg4dobk6vpn" path="res://Asset/Font/fzjz.ttf" id="7_2xnoy"]
+[ext_resource type="PackedScene" uid="uid://bgkuthysw0876" path="res://Prefab/GUI/Button/NinePatchButtonBase/NinePatchButtonBase.tscn" id="10_8dhey"]
+[ext_resource type="Texture2D" uid="uid://cq4qjqgaghw66" path="res://Asset/Texture/GUI/General/Special/Present.png" id="11_wlufi"]
+[ext_resource type="Texture2D" uid="uid://begay4jmpjc5w" path="res://Asset/Texture/GUI/General/Special/PresentOpen.png" id="12_nkp1f"]
+
+[node name="DailyChallenge" type="Control" unique_id=832713661 node_paths=PackedStringArray("dragControl")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6iu1t")
+dragControl = NodePath("Layer/BackgroundTexture")
+metadata/_custom_type_script = "uid://dxpykggmmyrhl"
+
+[node name="Layer" type="CanvasLayer" parent="." unique_id=247146260]
+layer = 100
+
+[node name="ColorRect" type="ColorRect" parent="Layer" unique_id=1857991578]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="BackgroundTexture" type="TextureRect" parent="Layer" unique_id=234575010]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -486.0
+offset_top = -364.0
+offset_right = 486.0
+offset_bottom = 364.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.675, 0.675)
+pivot_offset = Vector2(486, 364)
+texture = ExtResource("2_t8wvf")
+
+[node name="TextLabel" type="Label" parent="Layer/BackgroundTexture" unique_id=277174591]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 299.0
+offset_right = 665.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("7_2xnoy")
+theme_override_font_sizes/font_size = 48
+text = "每日挑战"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinishLabel" type="RichTextLabel" parent="Layer/BackgroundTexture" unique_id=1916534477]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 78.0
+offset_top = 525.0
+offset_right = 318.0
+offset_bottom = 563.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "本月已完成挑战[color=red]4[/color]天"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AwardLabel" type="RichTextLabel" parent="Layer/BackgroundTexture" unique_id=1342334621]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 630.0
+offset_top = 525.0
+offset_right = 870.0
+offset_bottom = 563.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "当天还需要通过[color=red]{0}[/color]关"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" type="TextureButton" parent="Layer/BackgroundTexture" unique_id=1437726815]
+layout_mode = 0
+offset_left = 877.111
+offset_top = 18.8148
+offset_right = 920.111
+offset_bottom = 58.8148
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_pnal8")
+texture_pressed = ExtResource("5_2xnoy")
+texture_hover = ExtResource("5_2xnoy")
+
+[node name="PlayButton" parent="Layer/BackgroundTexture" unique_id=1291100490 instance=ExtResource("4_cmuwq")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 289.0
+offset_top = 609.0
+offset_right = 675.0
+offset_bottom = 694.0
+texture_normal = ExtResource("5_4kjp0")
+texture_pressed = ExtResource("6_pnal8")
+texture_hover = ExtResource("6_pnal8")
+text = "选择关卡"
+
+[node name="TextLabel" parent="Layer/BackgroundTexture/PlayButton" index="0" unique_id=1596121434]
+offset_right = 376.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("7_2xnoy")
+theme_override_font_sizes/font_size = 48
+text = "选择关卡"
+
+[node name="Calendar" parent="Layer/BackgroundTexture" unique_id=120348659 instance=ExtResource("3_biv7q")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 98.0
+offset_top = 74.0
+offset_right = -124.0
+offset_bottom = -216.0
+
+[node name="AwardButton" parent="Layer/BackgroundTexture" unique_id=296319007 instance=ExtResource("10_8dhey")]
+layout_mode = 0
+offset_left = 374.889
+offset_top = 479.556
+offset_right = 474.889
+offset_bottom = 579.556
+mouse_default_cursor_shape = 2
+text = "累计奖励"
+normalTexture = ExtResource("11_wlufi")
+pressedTexture = ExtResource("12_nkp1f")
+hoverTexture = ExtResource("12_nkp1f")
+
+[node name="NinePatchTexture" parent="Layer/BackgroundTexture/AwardButton" index="0" unique_id=880330122]
+texture = ExtResource("11_wlufi")
+
+[node name="LabelText" parent="Layer/BackgroundTexture/AwardButton/CenterContainer" parent_id_path=PackedInt32Array(296319007, 1230502882) index="0" unique_id=1606057322]
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 5
+text = "累计奖励"
+
+[editable path="Layer/BackgroundTexture/PlayButton"]
+[editable path="Layer/BackgroundTexture/AwardButton"]

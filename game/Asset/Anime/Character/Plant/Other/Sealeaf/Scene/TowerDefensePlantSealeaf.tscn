@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bghtliovltp51"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://dmq3j0pi2eh8d" path="res://Asset/Anime/Character/Plant/Other/Sealeaf/Scene/TowerDefensePlantSealeafComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://r6og8gk4ug1l" path="res://Asset/Anime/Character/Plant/Other/Sealeaf/Scene/TowerDefensePlantSealeaf.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="5"]
+[ext_resource type="Resource" uid="uid://bwq74j007vxj3" path="res://Asset/Anime/Character/Plant/Other/Sealeaf/Config/TowerDefensePlantSealeaf.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://65bk1iqw72tu" path="res://Asset/Anime/Character/Plant/Other/Sealeaf/Sealeaf.tscn" id="7"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="8"]
+
+[sub_resource type="Resource" id="Resource_50fbc"]
+script = ExtResource("5")
+projectileName = &"Puff"
+catapultHeight = 400.0
+
+[node name="TowerDefensePlantSealeaf" unique_id=432662411 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+showHealthOffset = Vector2(0, 30)
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 1
+projectileData = SubResource("Resource_50fbc")
+config = ExtResource("6")
+sleepAnimeClip = "Sleep"
+sprite = NodePath("SpriteGroup/TransformPoint/Sealeaf")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+z_index = -10
+position = Vector2(0, 24)
+scale = Vector2(0.821918, 0.77551)
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="Sealeaf" parent="SpriteGroup/TransformPoint" index="0" unique_id=1974136355 instance=ExtResource("7")]
+position = Vector2(0, -30)
+offset = Vector2(-40, -18.411245)
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/Sealeaf" index="0" unique_id=663617539]
+script = ExtResource("8")
+followSlotId = 7
+Layer = 7
+drawLayerId = 7
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/Sealeaf/AdobeAnimateSlot" index="0" unique_id=397128645]
+position = Vector2(10.015534, 5.702739)

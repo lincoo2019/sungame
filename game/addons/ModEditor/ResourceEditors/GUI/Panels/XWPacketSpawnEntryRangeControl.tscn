@@ -1,0 +1,142 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWPacketSpawnEntryRangeControl.cs" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="Style_handle_min"]
+bg_color = Color(0.55, 0.84, 0.22, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.83, 1, 0.46, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="Style_handle_max"]
+bg_color = Color(0.96, 0.65, 0.16, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.9, 0.42, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="Style_toggle"]
+bg_color = Color(0.08, 0.11, 0.055, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.43, 0.16, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="Style_toggle_pressed"]
+bg_color = Color(0.3, 0.46, 0.12, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.75, 0.92, 0.34, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="PacketSpawnEntryRangeControl" type="Control"]
+custom_minimum_size = Vector2(260, 126)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 3
+
+[node name="TitleLabel" type="Label" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.94, 0.61, 1)
+text = "区间"
+
+[node name="RangeTrack" type="Control" parent="Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+mouse_default_cursor_shape = 6
+
+[node name="MinimumHandle" type="PanelContainer" parent="Layout/RangeTrack"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 26)
+layout_mode = 0
+offset_right = 18.0
+offset_bottom = 26.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_handle_min")
+
+[node name="MaximumHandle" type="PanelContainer" parent="Layout/RangeTrack"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 26)
+layout_mode = 0
+offset_left = 242.0
+offset_right = 260.0
+offset_bottom = 26.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_handle_max")
+
+[node name="Values" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="MinimumValue" type="Label" parent="Layout/Values"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.75, 0.94, 0.52, 1)
+text = "0"
+
+[node name="MaximumValue" type="Label" parent="Layout/Values"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.8, 0.36, 1)
+text = "1"
+horizontal_alignment = 2
+
+[node name="UnlimitedControls" type="HBoxContainer" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="UnlimitedMinimum" type="CheckButton" parent="Layout/UnlimitedControls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("Style_toggle")
+theme_override_styles/pressed = SubResource("Style_toggle_pressed")
+text = "最少无限制"
+
+[node name="UnlimitedMaximum" type="CheckButton" parent="Layout/UnlimitedControls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("Style_toggle")
+theme_override_styles/pressed = SubResource("Style_toggle_pressed")
+text = "最多无限制"

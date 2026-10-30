@@ -1,0 +1,316 @@
+[gd_scene format=3 uid="uid://ct3n6fw6u3k08"]
+
+[ext_resource type="Script" uid="uid://caxpbjtdkbjvv" path="res://Prefab/GUI/LevelEditor/OnlineLevel/LevelEditorOnlineLevel.cs" id="1_aomp8"]
+[ext_resource type="FontFile" uid="uid://coqskwlqtnypf" path="res://Asset/Font/fzkt.ttf" id="2_7anf3"]
+[ext_resource type="PackedScene" uid="uid://cdnyb8d1qw7g4" path="res://Prefab/GUI/Button/SpriteBrightButton/SpriteBrightButton.tscn" id="4_a8y72"]
+[ext_resource type="Shader" uid="uid://bi8x813unwm5l" path="res://Asset/Shader/ShaderBright.gdshader" id="5_f70bv"]
+[ext_resource type="Texture2D" uid="uid://dh3hltqj5p55x" path="res://Asset/Texture/GUI/General/General/NextButton.png" id="6_86ien"]
+[ext_resource type="PackedScene" uid="uid://bml60wmq62jay" path="res://Prefab/GUI/Button/MainButton.tscn" id="7_a8y72"]
+[ext_resource type="PackedScene" uid="uid://bgkuthysw0876" path="res://Prefab/GUI/Button/NinePatchButtonBase/NinePatchButtonBase.tscn" id="7_f70bv"]
+[ext_resource type="Texture2D" uid="uid://dk2k8imp6huep" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeEnter.png" id="8_86ien"]
+[ext_resource type="Texture2D" uid="uid://c3w1gsfm0f7nt" path="res://Asset/Texture/GUI/OnlineLevelExchange/OnlineLevelExchangeEnterHover.png" id="9_iwtrw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_86ien"]
+shader = ExtResource("5_f70bv")
+shader_parameter/brightStrength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iwtrw"]
+shader = ExtResource("5_f70bv")
+shader_parameter/brightStrength = 0.0
+
+[node name="LevelEditorOnlineLevel" type="Control" unique_id=941444518]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aomp8")
+
+[node name="Label" type="Label" parent="." unique_id=1195456536]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.0
+offset_top = 7.0
+offset_right = 225.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 48
+text = "在线关卡"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AuthorNameLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -410.0
+offset_top = 76.0
+offset_right = 410.0
+offset_bottom = 114.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.843, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="StatusLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 128.0
+offset_right = -80.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PageLabel" type="Label" parent="." unique_id=445353050]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = 217.0
+offset_right = 56.0
+offset_bottom = 249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_7anf3")
+theme_override_font_sizes/font_size = 16
+text = "第1页，共1页"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreCustomButton" parent="PageLabel" unique_id=1972977615 instance=ExtResource("4_a8y72")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_86ien")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -24.0
+offset_right = -50.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_86ien")
+flip_h = true
+
+[node name="NextCustomButton" parent="PageLabel" unique_id=350430345 instance=ExtResource("4_a8y72")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_iwtrw")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 66.0
+offset_top = -24.0
+offset_right = 126.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_86ien")
+
+[node name="LevelContainer" type="MarginContainer" parent="." unique_id=2088625150]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 128.0
+offset_right = -80.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LevelContainer" unique_id=554646819]
+layout_mode = 2
+
+[node name="OnlineLevelContainer" type="HFlowContainer" parent="LevelContainer/ScrollContainer" unique_id=1026944736]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+last_wrap_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1071946571]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -410.0
+offset_top = -231.0
+offset_right = 410.0
+offset_bottom = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelIdLineEdit" type="LineEdit" parent="HBoxContainer" unique_id=667795981]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 20
+placeholder_text = "输入关卡ID或关键字"
+
+[node name="EnterLevelButton" parent="HBoxContainer" unique_id=2029373213 instance=ExtResource("7_a8y72")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "进入关卡"
+
+[node name="SearchLevelButton" parent="HBoxContainer" unique_id=1590863531 instance=ExtResource("7_a8y72")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "搜索关卡"
+
+[node name="TypeOptionButton" type="OptionButton" parent="HBoxContainer" unique_id=1149536879]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+selected = 0
+item_count = 8
+popup/item_0/text = "所有类型"
+popup/item_0/id = 0
+popup/item_1/text = "常规模式"
+popup/item_1/id = 1
+popup/item_2/text = "砸罐子"
+popup/item_2/id = 2
+popup/item_3/text = "我是僵尸"
+popup/item_3/id = 3
+popup/item_4/text = "我是僵尸冒险"
+popup/item_4/id = 4
+popup/item_5/text = "生存"
+popup/item_5/id = 5
+popup/item_6/text = "无尽"
+popup/item_6/id = 6
+popup/item_7/text = "运气关"
+popup/item_7/id = 7
+
+[node name="TagsOptionButton" type="OptionButton" parent="HBoxContainer" unique_id=1409536879]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+item_count = 1
+selected = 0
+popup/item_0/text = "标签"
+popup/item_0/id = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1279719488]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = 248.0
+offset_right = 111.0
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JumpPageToSpinBox" type="SpinBox" parent="HBoxContainer2" unique_id=1265760574]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="JumpPageToButton" parent="HBoxContainer2" unique_id=1976092425 instance=ExtResource("7_a8y72")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "跳转页数"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="." unique_id=491566032]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.485
+anchor_top = 0.5
+anchor_right = 0.485
+anchor_bottom = 0.5
+offset_left = -523.8
+offset_top = 172.0
+offset_right = 556.2
+offset_bottom = 212.0
+alignment = 1
+
+[node name="MyCollectionButton" parent="HBoxContainer3" unique_id=709115340 instance=ExtResource("7_f70bv")]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "我的收藏"
+downSfx = "ButtonPress"
+
+[node name="SmartRecommendationButton" parent="HBoxContainer3" unique_id=1975137336 instance=ExtResource("7_f70bv")]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "智能推荐"
+downSfx = "ButtonPress"
+
+[node name="OfficialRecommendationButton" parent="HBoxContainer3" unique_id=82034477 instance=ExtResource("7_f70bv")]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "官方推荐"
+downSfx = "ButtonPress"
+
+[node name="SortByTimeButton" parent="HBoxContainer3" unique_id=1366216130 instance=ExtResource("7_f70bv")]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "按时间排序"
+downSfx = "ButtonPress"
+
+[node name="SortByNumberOfPlayedButton" parent="HBoxContainer3" unique_id=473850254 instance=ExtResource("7_f70bv")]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "按游玩次数排序"
+downSfx = "ButtonPress"
+
+[node name="ExchangeButton" type="TextureButton" parent="." unique_id=888589382]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -232.0
+offset_top = -93.0
+offset_right = -16.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_86ien")
+texture_pressed = ExtResource("9_iwtrw")
+texture_hover = ExtResource("9_iwtrw")

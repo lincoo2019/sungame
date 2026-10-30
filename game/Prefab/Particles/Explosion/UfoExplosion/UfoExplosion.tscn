@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dtj82qyey3wx5"]
+
+[ext_resource type="Texture2D" uid="uid://dv5x6ax2qiod0" path="res://Asset/Anime/Particles/Explosion/ExplosionCloud.png" id="1_f1pwq"]
+[ext_resource type="Material" uid="uid://dkejaks0hfaup" path="res://Prefab/Particles/Explosion/UfoExplosion/UfoExplosion.tres" id="2_o3jr0"]
+[ext_resource type="Script" uid="uid://cmjj5ejt1ranr" path="res://Extends/Particles/GPUParticles2DOnece.cs" id="3_frgrj"]
+[ext_resource type="Texture2D" uid="uid://b701t2nceypd4" path="res://Prefab/Particles/Explosion/UfoExplosion/ZombieUfoBreakPart.png" id="4_87koh"]
+[ext_resource type="Material" uid="uid://c6nfh4n533vat" path="res://Prefab/Particles/Explosion/UfoExplosion/UfoExplosionPart.tres" id="5_f1pwq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pvbux"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[node name="UfoExplosion" type="GPUParticles2D" unique_id=116728682]
+emitting = false
+amount = 12
+texture = ExtResource("1_f1pwq")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+draw_order = 0
+process_material = ExtResource("2_o3jr0")
+script = ExtResource("3_frgrj")
+
+[node name="UfoExplosionPart" type="GPUParticles2D" parent="." unique_id=1078716261]
+material = SubResource("CanvasItemMaterial_pvbux")
+emitting = false
+amount = 16
+texture = ExtResource("4_87koh")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+draw_order = 0
+process_material = ExtResource("5_f1pwq")

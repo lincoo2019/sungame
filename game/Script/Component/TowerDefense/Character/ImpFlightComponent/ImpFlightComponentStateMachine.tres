@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://dsr48bkwpo5hy"]
+
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="1"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="3"]
+
+[sub_resource type="Resource" id="State_imp_flight_root"]
+script = ExtResource("1")
+StableId = "imp_flight.root"
+DisplayName = &"Root"
+Kind = 1
+InitialChildId = "imp_flight.idle"
+
+[sub_resource type="Resource" id="State_imp_flight_idle"]
+script = ExtResource("1")
+StableId = "imp_flight.idle"
+DisplayName = &"Idle"
+ParentId = "imp_flight.root"
+
+[sub_resource type="Resource" id="State_imp_flight_fly"]
+script = ExtResource("1")
+StableId = "imp_flight.fly"
+DisplayName = &"Fly"
+ParentId = "imp_flight.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_imp_flight_land"]
+script = ExtResource("1")
+StableId = "imp_flight.land"
+DisplayName = &"Land"
+ParentId = "imp_flight.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_to_idle"]
+script = ExtResource("2")
+StableId = "imp_flight.to_idle"
+SourceStateId = "imp_flight.root"
+TargetStateId = "imp_flight.idle"
+EventName = &"ToIdle"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_fly"]
+script = ExtResource("2")
+StableId = "imp_flight.to_fly"
+SourceStateId = "imp_flight.root"
+TargetStateId = "imp_flight.fly"
+EventName = &"ToFly"
+DeclarationOrder = 1
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_land"]
+script = ExtResource("2")
+StableId = "imp_flight.to_land"
+SourceStateId = "imp_flight.root"
+TargetStateId = "imp_flight.land"
+EventName = &"ToLand"
+DeclarationOrder = 2
+GuardDefinition = null
+
+[resource]
+script = ExtResource("3")
+DefinitionId = "builtin.component.imp_flight"
+BaseDefinition = null
+RootStateId = "imp_flight.root"
+States = [SubResource("State_imp_flight_root"), SubResource("State_imp_flight_idle"), SubResource("State_imp_flight_fly"), SubResource("State_imp_flight_land")]
+Transitions = [SubResource("Transition_to_idle"), SubResource("Transition_to_fly"), SubResource("Transition_to_land")]

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="CannonComponentDefinition" format=3 uid="uid://ihlktkfd35hh"]
+
+[ext_resource type="Resource" uid="uid://46ujlqoyppkf" path="res://Script/Component/TowerDefense/Character/CannonComponent/CannonComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="2"]
+[ext_resource type="Script" uid="uid://d3fmni7lxh6ds" path="res://Script/Component/TowerDefense/Character/CannonComponent/CannonComponentDefinition.cs" id="3"]
+
+[sub_resource type="Resource" id="Projectile"]
+script = ExtResource("2")
+projectileName = &"PowShroom"
+baseDamage = 1000.0
+damageFlags = 7
+collisionFlags = 63
+
+[resource]
+script = ExtResource("3")
+mode = "Line"
+projectileData = SubResource("Projectile")
+projectileLineMarkerPath = NodePath("SpriteGroup/TransformPoint/PowShroom/AdobeAnimateSlot/Marker2D")
+spritePath = NodePath("SpriteGroup/TransformPoint/PowShroom")
+fireReadyEventName = ""
+fireEventName = "fire_pow"
+restAnimeClips = "Loading"
+chargeAnimeClips = "Reload"
+fireAnimeClips = "Pow"
+fireAnimeTimeScale = 3.0
+ComponentTypeId = "CannonComponent"
+DefinitionId = "builtin.component.cannon.pow_shroom"
+InstanceId = "character.cannon"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"CannonComponent"]

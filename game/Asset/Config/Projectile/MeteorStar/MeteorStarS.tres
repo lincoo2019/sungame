@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://cwk3h7d2o7x8x"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_2svli"]
+[ext_resource type="PackedScene" uid="uid://c6wv7m4n3ie6l" path="res://Asset/Config/Projectile/MeteorStar/Sprite/MeteorStarS/MeteorStarS.tscn" id="2_2svli"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_qihse"]
+[ext_resource type="Script" uid="uid://c4cnj7r56bj3k" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffDizziness.cs" id="3_bhs7i"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="3_weknk"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_p2f7m"]
+[ext_resource type="PackedScene" uid="uid://ucvdsxlip8tv" path="res://Prefab/Particles/Splats/MeteorStarSSplats/TowerDefenseEffectParticlesMeteorStarSSplats.tscn" id="4_wirgc"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="5_bhs7i"]
+
+[sub_resource type="Resource" id="Resource_svy7c"]
+script = ExtResource("3_bhs7i")
+metadata/_custom_type_script = "uid://c4cnj7r56bj3k"
+
+[sub_resource type="Resource" id="Resource_4vwxy"]
+script = ExtResource("4_p2f7m")
+buffList = Array[ExtResource("2_qihse")]([SubResource("Resource_svy7c")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("3_weknk")
+name = "MeteorStarS"
+isStar = true
+scale = Vector2(0.4, 0.4)
+baseDamage = 200.0
+projectileScene = ExtResource("2_2svli")
+splatScene = ExtResource("4_wirgc")
+hitCharacterEventList = Array[ExtResource("1_2svli")]([SubResource("Resource_4vwxy")])
+rangeType = "Bomb"
+useRange = true
+rangeSize = Vector2(1.65, 1.5)
+hitPesontage = 1.0
+damageFlags = 2
+collisionFlags = 63
+catapultHeight = 400.0

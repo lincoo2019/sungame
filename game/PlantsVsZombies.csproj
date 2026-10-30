@@ -1,0 +1,65 @@
+<Project Sdk="Godot.NET.Sdk/4.7.2">
+  <PropertyGroup>
+    <AssemblyName>PlantsVsZombies</AssemblyName>
+    <EnableDynamicLoading>False</EnableDynamicLoading>
+    <!-- Godot 从 .godot/mono/temp/bin/<Config>/ 加载游戏程序集，依赖必须一并复制到那里，
+         否则运行时报 FileNotFoundException（Microsoft.Extensions.Logging.Abstractions 等）。 -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Nullable>enable</Nullable>
+    <TargetFramework>net90</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>13.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <!-- 反编译产生的开发用测试脚手架（Test/Tests）同样带有反编译残留，且不是游戏运行时
+         的一部分，这里排除出编译；否则会因 CS0165/CS4004/CS0019 等无法构建。 -->
+    <Compile Remove="Test/**" />
+    <Compile Remove="Tests/**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="ZLogger" Version="2.0.0" />
+    <PackageReference Include="ZString" Version="1.0.0" />
+    <!--The following packages are not referenced by the assembly and may be source generators. Including these may cause build errors.-->
+    <!--<PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.2" />
+-->
+    <!--<PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="9.0.17" />-->
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>_mono_referenced_assemblies\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis">
+      <HintPath>_mono_referenced_assemblies\Microsoft.CodeAnalysis.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <!--The following references were not added to the project file because they are automatically added by the Godot SDK.-->
+    <!--
+<Reference Include="GodotSharp">
+  <HintPath>..\..\Downloads\植物大战僵尸杂交版0.29\data_PlantsVsZombies_windows_x86_64\GodotSharp.dll</HintPath>
+</Reference>
+-->
+    <!--The following references were not added to the project file because they are part of the package references above.-->
+    <!--
+<Reference Include="ZLogger">
+  <HintPath>..\..\Downloads\植物大战僵尸杂交版0.29\data_PlantsVsZombies_windows_x86_64\ZLogger.dll</HintPath>
+</Reference>
+<Reference Include="Microsoft.CodeAnalysis.CSharp">
+  <HintPath>..\..\Downloads\植物大战僵尸杂交版0.29\data_PlantsVsZombies_windows_x86_64\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+</Reference>
+<Reference Include="ZString">
+  <HintPath>..\..\Downloads\植物大战僵尸杂交版0.29\data_PlantsVsZombies_windows_x86_64\ZString.dll</HintPath>
+</Reference>
+<Reference Include="Microsoft.Extensions.Logging">
+  <HintPath>..\..\Downloads\植物大战僵尸杂交版0.29\data_PlantsVsZombies_windows_x86_64\Microsoft.Extensions.Logging.dll</HintPath>
+</Reference>
+-->
+  </ItemGroup>
+</Project>

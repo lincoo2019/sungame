@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://f2frhrsjpmbm"]
+
+[ext_resource type="PackedScene" uid="uid://jm05awl7yeg" path="res://Prefab/TowerDefense/Character/TowerDefenseGravestone.tscn" id="1"]
+[ext_resource type="Script" uid="uid://e1120v5ei05q" path="res://Asset/Anime/Character/GraveStone/TimeBomb/Scene/TowerDefenseTimeBomb.cs" id="2"]
+[ext_resource type="Resource" uid="uid://gqbxt48cannr" path="res://Asset/Anime/Character/GraveStone/TimeBomb/Scene/TowerDefenseTimeBombStateMachine.tres" id="3"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/GraveStone/TimeBomb/Scene/TowerDefenseTimeBombComponentSet.tres" id="4"]
+[ext_resource type="Resource" uid="uid://d0gk5q6v7xsji" path="res://Asset/Anime/Character/GraveStone/TimeBomb/Config/TowerDefenseTimeBomb.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://csdejmwofqmqn" path="res://Asset/Anime/Character/GraveStone/TimeBomb/TimeBomb.tscn" id="6"]
+
+[node name="TowerDefenseTimeBomb" unique_id=993489319 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+countdownTime = 60.0
+readyDuration = 1.5
+rise = false
+MainStateMachineDefinition = ExtResource("3")
+ComponentSet = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/TimeBomb")
+camp = 2
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(12, 36)
+scale = Vector2(1.826, 1.565)
+
+[node name="TimeBomb" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=1313846696 instance=ExtResource("6")]
+scale = Vector2(1, 1)
+offset = Vector2(-40, -50)

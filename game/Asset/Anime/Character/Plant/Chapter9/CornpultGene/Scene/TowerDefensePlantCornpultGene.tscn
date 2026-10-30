@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bq1glpxckmuii"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bwe3i54uu6ic4" path="res://Asset/Anime/Character/Plant/Chapter9/CornpultGene/Scene/TowerDefensePlantCornpultGene.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="3"]
+[ext_resource type="Resource" uid="uid://dsya8t2g32s5b" path="res://Asset/Anime/Character/Plant/Chapter9/CornpultGene/Scene/TowerDefensePlantCornpultGeneComponentSet.tres" id="4"]
+[ext_resource type="Resource" uid="uid://t6ye3t6xhhij" path="res://Asset/Anime/Character/Plant/Chapter9/CornpultGene/Config/TowerDefensePlantCornpultGene.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://b548k0d2c63yv" path="res://Asset/Anime/Character/Plant/Chapter9/CornpultGene/CornpultGene.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantCornpultGene" unique_id=1482652883 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+fireInterval = 3.0
+fireNum = 1
+HitBoxDefinition = ExtResource("3")
+ComponentSet = ExtResource("4")
+idleAnimeClip = "Idle&FullIdle"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/CornpultGene")
+damagePart = {}
+damagePartSlot = {}
+currentArmor = []
+currentCustom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="CornpultGene" parent="SpriteGroup/TransformPoint" index="0" unique_id=2002974393 instance=ExtResource("6")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/CornpultGene" index="0" unique_id=1502255889]
+position = Vector2(-54.553314, -41.34105)
+rotation = 0.2155834
+scale = Vector2(0.5985867, 0.5985867)
+script = ExtResource("7")
+followSlotId = 5
+drawLayerId = 5
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/CornpultGene/AdobeAnimateSlot" index="0" unique_id=1542043747]
+position = Vector2(27.579376, 12.483154)

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://f15oqo6he76x"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_khuwx"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_xhbpm"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="3_oc5bi"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_w4mac"]
+[ext_resource type="PackedScene" uid="uid://dagsgt51n5sl6" path="res://Asset/Config/Projectile/Spike/Sprite/IceSpike/ProjectileIceSpike.tscn" id="5_a5oby"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="6_khuwx"]
+[ext_resource type="PackedScene" uid="uid://br7muxuvxx77s" path="res://Asset/Anime/Splat/Spike/SpikeSplats.tscn" id="7_xcyxn"]
+
+[sub_resource type="Resource" id="Resource_ov40h"]
+script = ExtResource("3_oc5bi")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_6y8nc"]
+script = ExtResource("4_w4mac")
+buffList = Array[ExtResource("2_xhbpm")]([SubResource("Resource_ov40h")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("6_khuwx")
+name = "IceSpike"
+projectileScene = ExtResource("5_a5oby")
+splatScene = ExtResource("7_xcyxn")
+hitCharacterEventList = Array[ExtResource("1_khuwx")]([SubResource("Resource_6y8nc")])
+hitBody = true

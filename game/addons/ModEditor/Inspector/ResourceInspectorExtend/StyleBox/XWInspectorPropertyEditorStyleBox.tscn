@@ -1,0 +1,181 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/XWInspectorPropertyEditorBase.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/ResourceInspectorExtend/StyleBox/XWInspectorPropertyEditorStyleBox.cs" id="2_script"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/Resource/XWResourcePicker.tscn" id="3_picker"]
+
+[node name="XWInspectorPropertyEditorStyleBox" node_paths=PackedStringArray("PropertyEditorPath") instance=ExtResource("1_base")]
+custom_minimum_size = Vector2(0, 250)
+script = ExtResource("2_script")
+PropertyEditorPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor")
+
+[node name="StyleBoxEditor" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 242)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="StyleBoxPreview" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 82)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FlatControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="FlatColorGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/FlatControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="BgColorLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/FlatControls/FlatColorGrid"]
+custom_minimum_size = Vector2(72, 26)
+layout_mode = 2
+text = "背景"
+vertical_alignment = 1
+
+[node name="BgColorPicker" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/FlatControls/FlatColorGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BorderColorLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/FlatControls/FlatColorGrid"]
+custom_minimum_size = Vector2(72, 26)
+layout_mode = 2
+text = "边框"
+vertical_alignment = 1
+
+[node name="BorderColorPicker" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/FlatControls/FlatColorGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FlatValueGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/FlatControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="BorderWidthLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/FlatControls/FlatValueGrid"]
+custom_minimum_size = Vector2(72, 26)
+layout_mode = 2
+text = "边宽"
+vertical_alignment = 1
+
+[node name="BorderWidthSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/FlatControls/FlatValueGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(66, 26)
+layout_mode = 2
+max_value = 256.0
+
+[node name="CornerRadiusLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/FlatControls/FlatValueGrid"]
+custom_minimum_size = Vector2(72, 26)
+layout_mode = 2
+text = "圆角"
+vertical_alignment = 1
+
+[node name="CornerRadiusSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/FlatControls/FlatValueGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(66, 26)
+layout_mode = 2
+max_value = 256.0
+
+[node name="TextureControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="TexturePicker" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/TextureControls" instance=ExtResource("3_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/TextureControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="TextureMarginLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/TextureControls/TextureGrid"]
+custom_minimum_size = Vector2(72, 26)
+layout_mode = 2
+text = "九宫格"
+vertical_alignment = 1
+
+[node name="TextureMarginSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/TextureControls/TextureGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 512.0
+
+[node name="ModulateColorLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/TextureControls/TextureGrid"]
+custom_minimum_size = Vector2(72, 26)
+layout_mode = 2
+text = "调制"
+vertical_alignment = 1
+
+[node name="ModulateColorPicker" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/TextureControls/TextureGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="LineGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/LineControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="LineColorLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/LineControls/LineGrid"]
+custom_minimum_size = Vector2(72, 26)
+layout_mode = 2
+text = "线色"
+vertical_alignment = 1
+
+[node name="LineColorPicker" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/LineControls/LineGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ThicknessLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/LineControls/LineGrid"]
+custom_minimum_size = Vector2(72, 26)
+layout_mode = 2
+text = "粗细"
+vertical_alignment = 1
+
+[node name="ThicknessSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/LineControls/LineGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 256.0
+
+[node name="CheckRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="DrawCenterCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/CheckRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+text = "绘制中心"
+
+[node name="VerticalCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/StyleBoxEditor/CheckRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+text = "垂直线"

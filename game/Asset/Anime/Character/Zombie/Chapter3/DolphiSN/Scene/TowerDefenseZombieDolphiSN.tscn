@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cq4efh0o8v0t4"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://b23op5rrx8361" path="res://Asset/Anime/Character/Zombie/Chapter3/DolphiSN/Scene/TowerDefenseZombieDolphiSNComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://b06k56jgqdy36" path="res://Asset/Anime/Character/Zombie/Chapter3/DolphiSN/Scene/TowerDefenseZombieDolphiSN.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter3/DolphiSN/Scene/TowerDefenseZombieDolphiSNStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://5qp0sucqm25k" path="res://Asset/Anime/Character/Zombie/Chapter3/DolphiSN/Config/TowerDefenseZombieDolphiSN.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cpuqht16ogdp1" path="res://Asset/Anime/Character/Zombie/Chapter3/DolphiSN/DamagePoint/Config/ZombieDolphiSNDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://eifcfut3500l" path="res://Asset/Anime/Character/Zombie/Chapter3/DolphiSN/Armor/Config/ZombieDolphiSNArmorBlackHelmet.tres" id="8"]
+[ext_resource type="Resource" uid="uid://tn0rqmu0hls8" path="res://Asset/Anime/Character/Zombie/Chapter3/DolphiSN/DamagePoint/Config/ZombieDolphiSNDamagePointHead.tres" id="9"]
+[ext_resource type="Resource" uid="uid://bof0858kkm25y" path="res://Asset/Anime/Character/Zombie/Chapter3/DolphiSN/Armor/Config/ZombieDolphiSNArmorHelmet.tres" id="10"]
+[ext_resource type="Resource" uid="uid://dew76sbkg8vur" path="res://Asset/Anime/Character/Zombie/Chapter3/DolphiSN/Armor/Config/ZombieDolphiSNArmorSpecialHelmet.tres" id="11"]
+[ext_resource type="PackedScene" uid="uid://cfrrf6mqs3hhy" path="res://Asset/Anime/Character/Zombie/Chapter3/DolphiSN/ZombieDolphiSN.tscn" id="12"]
+
+[node name="TowerDefenseZombieDolphiSN" unique_id=135162129 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+walkSpeedScale = 1.5
+inSwimAnimeClipScale = 0.5
+useAttackDps = false
+walkAnimeClip = "DolphinWalk"
+inSwimAnimeClip = "JumpInWater"
+swimAnimeClip = "SwimWalk"
+attackAnimeClip = "DolphinAttack"
+attackWaterAnimeClip = "SwimEat"
+dieAnimeClip = "DolphinDeath"
+dieWaterAnimeClip = "SwimDeath"
+waterHeight = -5.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"BlackHelmet": ExtResource("8"),
+"Head": ExtResource("9"),
+"Helmet": ExtResource("10"),
+"SpecialHelmet": ExtResource("11")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieDolphinrider/HeadSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieDolphinrider" parent="SpriteGroup/TransformPoint" index="0" unique_id=606252056 instance=ExtResource("12")]
+position = Vector2(-12, -33)
+trueFrameRate = 180.0
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinrider" index="0"]
+drawLayerId = -2
+position = Vector2(-25.8493, -44.869324)
+rotation = -0.022758972
+scale = Vector2(0.75188076, 0.75188076)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinrider" index="1"]
+position = Vector2(21.108614, -10.9446945)
+rotation = -0.019237231
+scale = Vector2(0.79983675, 0.79983675)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinrider" index="2"]
+position = Vector2(-99.2, -12)
+scale = Vector2(1.00041, 1.00041)
+
+[editable path="SpriteGroup/TransformPoint/ZombieDolphinrider"]

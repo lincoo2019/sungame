@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dcgirlfhj0rfq"]
+
+[ext_resource type="PackedScene" uid="uid://be74ryvl4k6y7" path="res://Prefab/TowerDefense/Character/TowerDefenseZombieGargantuarBase.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://bc78gi0ddod15" path="res://Asset/Anime/Character/Zombie/Chapter7/GargantuarDigger/Scene/TowerDefenseZombieGargantuarDiggerComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://dq7o7ff4m5ia" path="res://Asset/Anime/Character/Zombie/Chapter7/GargantuarDigger/Scene/TowerDefenseZombieGargantuarDigger.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_59x70_At_n1p5_n6p5.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dms280nr3tcls" path="res://Asset/Anime/Character/Zombie/Chapter7/GargantuarDigger/Scene/TowerDefenseZombieGargantuarDiggerStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://1pdvnv5no5p" path="res://Asset/Anime/Character/Zombie/Chapter7/GargantuarDigger/Config/TowerDefenseZombieGargantuarDigger.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dpx8iia408p2f" path="res://Asset/Anime/Character/Zombie/Chapter7/GargantuarDigger/Armor/Config/ZombieGargantuarDiggerArmorHardHat.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://1tmyhwrvi5us" path="res://Asset/Anime/Character/Zombie/Chapter7/GargantuarDigger/ZombieGargantuarDigger.tscn" id="8"]
+
+[node name="TowerDefenseZombieGargantuar" unique_id=1423825708 node_paths=PackedStringArray("impSpawnSlot", "sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+impName = "ZombieImpDigger"
+impSpawnSlot = NodePath("SpriteGroup/TransformPoint/ZombieGargantuar/ImpSlot")
+impFilter = "Zombie_imp_jaw&Zombie_imp_head&Zombie_imp_body1&Zombie_imp_body2&Zombie_imp_outerleg_upper&Zombie_imp_outerleg_lower&Zombie_imp_outerleg_foot&Zombie_imp_innerleg_upper&Zombie_imp_innerleg_lower&Zombie_imp_innerleg_foot&Zombie_imp_innerarm_upper&Zombie_imp_outerarm_lower&Zombie_imp_outerarm_upper&Zombie_imp_innerarm_lower&Zombie_gargantuar_whiterope&Zombie_duckytube&Zombie_imp_head1&Zombie_imp_head2"
+impFliters = ["Zombie_imp_jaw", "Zombie_imp_head", "Zombie_imp_body1", "Zombie_imp_body2", "Zombie_imp_outerleg_upper", "Zombie_imp_outerleg_lower", "Zombie_imp_outerleg_foot", "Zombie_imp_innerleg_upper", "Zombie_imp_innerleg_lower", "Zombie_imp_innerleg_foot", "Zombie_imp_innerarm_upper", "Zombie_imp_outerarm_lower", "Zombie_imp_outerarm_upper", "Zombie_imp_innerarm_lower", "Zombie_gargantuar_whiterope", "Zombie_duckytube", "Zombie_imp_head1", "Zombie_imp_head2"]
+walkSpeedScale = 0.4
+dieWaterAnimeClip = "WaterDeath"
+waterHeight = 85.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieGargantuar")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieGargantuar/HeadSlot")
+damagePart = {
+"HardHat": ExtResource("7")
+}
+damagePartSlot = {
+"HardHat": NodePath("SpriteGroup/TransformPoint/ZombieGargantuar/HardHatSlot")
+}
+currentArmor = ["HardHat"]
+
+[node name="ZombieGargantuar" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=941168180 instance=ExtResource("8")]
+position = Vector2(-12, -36)
+Animation/MediaReplace/Zombie_digger_hardhat.png = "res://Asset/AtlasSource/Armor/Texture/Character/Armor/HardHat/ZombieHardHat1.png"
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieGargantuar" index="0" unique_id=157877954]
+drawLayerId = -2
+position = Vector2(-50.026955, -86.782394)
+rotation = 0.050716113
+scale = Vector2(0.999512, 0.999512)
+Layer = 33
+
+[node name="HardHatSlot" parent="SpriteGroup/TransformPoint/ZombieGargantuar" index="1" unique_id=2106598719]
+position = Vector2(-44.12415, -104.04646)
+rotation = 0.043978382
+scale = Vector2(1.119898, 1.119898)
+Layer = 38
+
+[node name="PickSlot" parent="SpriteGroup/TransformPoint/ZombieGargantuar" index="2" unique_id=1785890343]
+position = Vector2(-94.249115, 15.53717)
+rotation = -0.43898717
+scale = Vector2(0.998128, 0.998128)
+Layer = 42
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieGargantuar" index="3" unique_id=1733528802]
+position = Vector2(-52.31923, -10)
+Layer = 1
+
+[node name="ImpSlot" parent="SpriteGroup/TransformPoint/ZombieGargantuar" index="4" unique_id=2140360787]
+position = Vector2(44.18376, -113.56315)
+rotation = -0.0048173903
+scale = Vector2(0.97684014, 1.0138195)
+skew = -0.05848992
+Layer = 21

@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/XWInspectorPropertyEditorBase.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/ResourceInspectorExtend/Resource/XWInspectorPropertyEditorResourceSummary.cs" id="2_script"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/Resource/XWResourcePicker.tscn" id="3_picker"]
+
+[node name="XWInspectorPropertyEditorResourceSummary" node_paths=PackedStringArray("PropertyEditorPath") instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+PropertyEditorPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary")
+
+[node name="ResourceSummary" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="PickerRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ResourcePicker" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PickerRow" instance=ExtResource("3_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OpenInspectorButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PickerRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 24)
+layout_mode = 2
+tooltip_text = "在可视化资源编辑器中打开"
+text = "可视编辑"
+
+[node name="RefreshButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PickerRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(46, 24)
+layout_mode = 2
+tooltip_text = "刷新资源属性"
+text = "刷新"
+
+[node name="PreviewPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 210)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PreviewMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PreviewPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 4
+
+[node name="PreviewContent" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PreviewPanel/PreviewMargin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PreviewRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PreviewPanel/PreviewMargin/PreviewContent"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PreviewTexture" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PreviewPanel/PreviewMargin/PreviewContent/PreviewRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_filter = 1
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PreviewInfo" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PreviewPanel/PreviewMargin/PreviewContent/PreviewRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="SummaryLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PreviewPanel/PreviewMargin/PreviewContent/PreviewRow/PreviewInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 3
+text = "空资源"
+
+[node name="AudioButtons" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PreviewPanel/PreviewMargin/PreviewContent/PreviewRow/PreviewInfo"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PreviewPanel/PreviewMargin/PreviewContent/PreviewRow/PreviewInfo/AudioButtons"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(54, 24)
+layout_mode = 2
+text = "试听"
+
+[node name="StopButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PreviewPanel/PreviewMargin/PreviewContent/PreviewRow/PreviewInfo/AudioButtons"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(54, 24)
+layout_mode = 2
+text = "停止"
+
+[node name="PropertyTreeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PreviewPanel/PreviewMargin/PreviewContent"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "资源属性"
+
+[node name="ResourcePropertyTree" type="Tree" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary/PreviewPanel/PreviewMargin/PreviewContent"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 118)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+column_titles_visible = true
+hide_root = true
+
+[node name="AudioPreviewPlayer" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/HBoxContainer/ResourceSummary"]
+unique_name_in_owner = true

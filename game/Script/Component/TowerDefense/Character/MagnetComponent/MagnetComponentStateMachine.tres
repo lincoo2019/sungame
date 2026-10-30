@@ -1,0 +1,99 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://b1wm86anngnv1"]
+
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="1"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="3"]
+
+[sub_resource type="Resource" id="State_root"]
+script = ExtResource("1")
+StableId = "magnet.root"
+DisplayName = &"Root"
+Kind = 1
+InitialChildId = "magnet.idle"
+
+[sub_resource type="Resource" id="State_idle"]
+script = ExtResource("1")
+StableId = "magnet.idle"
+DisplayName = &"Idle"
+ParentId = "magnet.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_begin"]
+script = ExtResource("1")
+StableId = "magnet.begin"
+DisplayName = &"Begin"
+ParentId = "magnet.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_shoot"]
+script = ExtResource("1")
+StableId = "magnet.shoot"
+DisplayName = &"Shoot"
+ParentId = "magnet.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_end"]
+script = ExtResource("1")
+StableId = "magnet.end"
+DisplayName = &"End"
+ParentId = "magnet.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_no_active"]
+script = ExtResource("1")
+StableId = "magnet.no_active"
+DisplayName = &"NoActive"
+ParentId = "magnet.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_idle"]
+script = ExtResource("2")
+StableId = "magnet.to_idle"
+SourceStateId = "magnet.root"
+TargetStateId = "magnet.idle"
+EventName = &"ToIdle"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_begin"]
+script = ExtResource("2")
+StableId = "magnet.to_begin"
+SourceStateId = "magnet.root"
+TargetStateId = "magnet.begin"
+EventName = &"ToBegin"
+DeclarationOrder = 1
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_shoot"]
+script = ExtResource("2")
+StableId = "magnet.to_shoot"
+SourceStateId = "magnet.root"
+TargetStateId = "magnet.shoot"
+EventName = &"ToShoot"
+DeclarationOrder = 2
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_end"]
+script = ExtResource("2")
+StableId = "magnet.to_end"
+SourceStateId = "magnet.root"
+TargetStateId = "magnet.end"
+EventName = &"ToEnd"
+DeclarationOrder = 3
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_no_active"]
+script = ExtResource("2")
+StableId = "magnet.to_no_active"
+SourceStateId = "magnet.root"
+TargetStateId = "magnet.no_active"
+EventName = &"ToNoActive"
+DeclarationOrder = 4
+GuardDefinition = null
+
+[resource]
+script = ExtResource("3")
+DefinitionId = "builtin.component.magnet"
+BaseDefinition = null
+RootStateId = "magnet.root"
+States = [SubResource("State_root"), SubResource("State_idle"), SubResource("State_begin"), SubResource("State_shoot"), SubResource("State_end"), SubResource("State_no_active")]
+Transitions = [SubResource("Transition_idle"), SubResource("Transition_begin"), SubResource("Transition_shoot"), SubResource("Transition_end"), SubResource("Transition_no_active")]

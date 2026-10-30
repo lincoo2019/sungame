@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://d0xjjmtyhmoao"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/TreasureIslandFrontLawn/TreasureIslandFrontLawnBaseNormal.json" id="1_qblu5"]
+[ext_resource type="Script" uid="uid://huks85pqdgqb" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalConfig.cs" id="2_2p88b"]
+[ext_resource type="Script" uid="uid://bru304ldtwq3e" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.cs" id="3_27xhc"]
+
+[sub_resource type="Resource" id="Resource_hi2gr"]
+script = ExtResource("3_27xhc")
+_round = 1
+zombieList = ["ZombieNormalBucket", "ZombieAxe", "ZombieFarmer"]
+
+[sub_resource type="Resource" id="Resource_mb3xn"]
+script = ExtResource("3_27xhc")
+_round = 2
+zombieList = ["ZombieFatGold", "ZombieDiamond", "ZombieMerchant"]
+
+[resource]
+script = ExtResource("2_2p88b")
+json = ExtResource("1_qblu5")
+roundLimit = 3
+roundDayNightChange = true
+pointIncrementPerWave = 80
+pointIncrementPerBigWave = 120
+pointIncrementPerRound = 400
+pointMax = 50000
+pointBigWaveScale = 0.5
+zombiePoolRoundAdd = Array[ExtResource("3_27xhc")]([SubResource("Resource_hi2gr"), SubResource("Resource_mb3xn")])
+metadata/_custom_type_script = "uid://huks85pqdgqb"

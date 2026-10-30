@@ -1,0 +1,384 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://Prefab/TowerDefense/GUI/InGame/Packet/TowerDefenseInGamePacketShow.tscn" id="1_packet"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="2_lawn"]
+
+[sub_resource type="StyleBoxFlat" id="Style_header"]
+bg_color = Color(0.075, 0.09, 0.065, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.43, 0.57, 0.24, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxFlat" id="Style_game"]
+bg_color = Color(0.045, 0.032, 0.018, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.37, 0.29, 0.13, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_seedbank"]
+bg_color = Color(0.12, 0.08, 0.035, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.53, 0.39, 0.16, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_fields"]
+bg_color = Color(0.045, 0.052, 0.04, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.21, 0.27, 0.16, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 12.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxFlat" id="Style_apply"]
+bg_color = Color(0.25, 0.37, 0.13, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.62, 0.79, 0.33, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="PacketCostRuleVisualEditorLayout" type="VBoxContainer"]
+custom_minimum_size = Vector2(780, 650)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_header")
+
+[node name="HeaderRow" type="HBoxContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Header/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "卡牌费用规则演算台"
+
+[node name="RuleKeyBadge" type="Label" parent="Header/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.93, 0.56, 1)
+text = "未命名规则"
+
+[node name="GameFrame" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(760, 330)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Style_game")
+
+[node name="Stage" type="Control" parent="GameFrame"]
+layout_mode = 2
+clip_contents = true
+
+[node name="Lawn" type="TextureRect" parent="GameFrame/Stage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_lawn")
+expand_mode = 1
+stretch_mode = 6
+modulate = Color(0.46, 0.46, 0.4, 1)
+
+[node name="Shade" type="ColorRect" parent="GameFrame/Stage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.018, 0.01, 0.38)
+
+[node name="SeedBank" type="PanelContainer" parent="GameFrame/Stage"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 38.0
+offset_right = 728.0
+offset_bottom = 266.0
+theme_override_styles/panel = SubResource("Style_seedbank")
+
+[node name="CurrentCaption" type="Label" parent="GameFrame/Stage"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 52.0
+offset_right = 286.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 17
+text = "修正规则应用前"
+horizontal_alignment = 1
+
+[node name="ResultCaption" type="Label" parent="GameFrame/Stage"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 52.0
+offset_right = 656.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 17
+text = "修正规则应用后"
+horizontal_alignment = 1
+
+[node name="Arrow" type="Label" parent="GameFrame/Stage"]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 126.0
+offset_right = 414.0
+offset_bottom = 182.0
+theme_override_colors/font_color = Color(0.91, 0.78, 0.34, 1)
+theme_override_font_sizes/font_size = 34
+text = "➜"
+horizontal_alignment = 1
+
+[node name="CurrentCardRoot" type="Control" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 190.0
+offset_top = 139.0
+offset_right = 190.0
+offset_bottom = 139.0
+
+[node name="CurrentPacket" parent="GameFrame/Stage/CurrentCardRoot" instance=ExtResource("1_packet")]
+unique_name_in_owner = true
+process_mode = 4
+scale = Vector2(2.4, 2.4)
+only_draw = true
+use_cost = false
+set_pc_layout = true
+
+[node name="CurrentName" type="Label" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 92.0
+offset_top = 232.0
+offset_right = 286.0
+offset_bottom = 258.0
+text = "费用 100"
+horizontal_alignment = 1
+
+[node name="ResultCardRoot" type="Control" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 560.0
+offset_top = 139.0
+offset_right = 560.0
+offset_bottom = 139.0
+
+[node name="ResultPacket" parent="GameFrame/Stage/ResultCardRoot" instance=ExtResource("1_packet")]
+unique_name_in_owner = true
+process_mode = 4
+scale = Vector2(2.4, 2.4)
+only_draw = true
+use_cost = false
+set_pc_layout = true
+
+[node name="ResultName" type="Label" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 462.0
+offset_top = 232.0
+offset_right = 656.0
+offset_bottom = 258.0
+text = "费用 100"
+horizontal_alignment = 1
+
+[node name="RuleState" type="Label" parent="GameFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 50.0
+offset_top = 280.0
+offset_right = 710.0
+offset_bottom = 318.0
+theme_override_colors/font_color = Color(0.96, 0.92, 0.7, 1)
+text = "调整卡牌类型与费用规则后，点击“应用费用规则”"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SimulationControls" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CostLabel" type="Label" parent="SimulationControls"]
+layout_mode = 2
+text = "原始费用"
+vertical_alignment = 1
+
+[node name="InitialCost" type="SpinBox" parent="SimulationControls"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -999999.0
+max_value = 999999.0
+value = 100.0
+
+[node name="TypeLabel" type="Label" parent="SimulationControls"]
+layout_mode = 2
+text = "卡框类型"
+vertical_alignment = 1
+
+[node name="PacketType" type="OptionButton" parent="SimulationControls"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+
+[node name="PacketTypeVisualChoices" type="HFlowContainer" parent="SimulationControls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="CanChangeCost" type="CheckBox" parent="SimulationControls"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "允许增加费用"
+
+[node name="Spacer" type="Control" parent="SimulationControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResetButton" type="Button" parent="SimulationControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "重置画面"
+
+[node name="ApplyButton" type="Button" parent="SimulationControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(148, 36)
+layout_mode = 2
+theme_override_styles/normal = SubResource("Style_apply")
+text = "应用费用规则"
+
+[node name="FieldsPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_fields")
+
+[node name="Fields" type="VBoxContainer" parent="FieldsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Hint" type="Label" parent="FieldsPanel/Fields"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 0.82, 0.61, 1)
+text = "选中哪种卡框，就直接修改该卡框对应的费用值；预演只计算结果，不改动游戏种子栏。"
+autowrap_mode = 2
+
+[node name="ResourceFields" type="HBoxContainer" parent="FieldsPanel/Fields"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ResourceNameLabel" type="Label" parent="FieldsPanel/Fields/ResourceFields"]
+layout_mode = 2
+text = "规则资源名"
+vertical_alignment = 1
+
+[node name="ResourceNameEdit" type="LineEdit" parent="FieldsPanel/Fields/ResourceFields"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "用于在资源库中识别此费用规则"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="FieldsPanel/Fields/ResourceFields"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "本地到场景"
+tooltip_text = "启用后，此资源在场景实例中保持独立副本"
+
+[node name="RuleFields" type="GridContainer" parent="FieldsPanel/Fields"]
+layout_mode = 2
+columns = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 7
+
+[node name="MethodLabel" type="Label" parent="FieldsPanel/Fields/RuleFields"]
+layout_mode = 2
+text = "修正方式"
+
+[node name="Method" type="OptionButton" parent="FieldsPanel/Fields/RuleFields"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Increase"
+popup/item_0/id = 0
+popup/item_1/text = "Decrease"
+popup/item_1/id = 1
+popup/item_2/text = "Set"
+popup/item_2/id = 2
+
+[node name="MethodVisualChoices" type="HFlowContainer" parent="FieldsPanel/Fields/RuleFields"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="AmountLabel" type="Label" parent="FieldsPanel/Fields/RuleFields"]
+layout_mode = 2
+text = "当前卡框数值"
+
+[node name="Amount" type="SpinBox" parent="FieldsPanel/Fields/RuleFields"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -999999.0
+max_value = 999999.0
+value = 25.0
+
+[node name="KeyLabel" type="Label" parent="FieldsPanel/Fields/RuleFields"]
+layout_mode = 2
+text = "规则键"
+
+[node name="Key" type="LineEdit" parent="FieldsPanel/Fields/RuleFields"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "用于添加和移除规则"
+
+[node name="LockCost" type="CheckBox" parent="FieldsPanel/Fields/RuleFields"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加后锁定后续增费"
+
+[node name="Skip" type="CheckBox" parent="FieldsPanel/Fields/RuleFields"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "应用后跳过剩余规则"

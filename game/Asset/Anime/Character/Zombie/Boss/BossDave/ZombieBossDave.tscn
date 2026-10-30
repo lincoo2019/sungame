@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://b8w8wgjf8efe0"]
+
+[ext_resource type="Script" uid="uid://m4qk6f53taq4" path="res://Asset/Anime/Character/Zombie/Boss/BossDave/ZombieBossDave.cs" id="1"]
+[ext_resource type="Resource" uid="uid://c2ocq3yll2qbg" path="res://Asset/Anime/Character/Zombie/Boss/BossDave/ZombieBossDave.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://cf6qwt2ii2x5t" path="res://Asset/Anime/Character/Zombie/Boss/BossDave/ZombieBossDriverDave.tscn" id="3"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="4"]
+[ext_resource type="PackedScene" uid="uid://dlufumffvuvsf" path="res://Asset/Anime/Character/Zombie/Boss/Boss/Effect/HeadSmoke/HeadSmoke.tscn" id="5"]
+[ext_resource type="Script" uid="uid://bbl2u67agiyca" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimatePart.cs" id="6"]
+[ext_resource type="Script" uid="uid://dsllmwohf1rth" path="res://Extends/AdobeAnimateSprite/AdobeAnimateSpriteBase.cs" id="7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hfvcw"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="ZombieBossDave" type="Node2D" unique_id=1425198720]
+script = ExtResource("1")
+flashAnimeData = ExtResource("2")
+offset = Vector2(-700, -300)
+trueFrameRate = 180.0
+blendTimeInit = 0.5
+clip = "Enter"
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true]
+mediaReplace = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+metadata/_custom_type_script = "uid://dsllmwohf1rth"
+
+[node name="Driver" parent="." unique_id=1156575322 node_paths=PackedStringArray("parentSprite") instance=ExtResource("3")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-183.03851, -109.56662)
+rotation = -0.017010327
+offset = Vector2(43.245, -81.06)
+useFollowVisible = true
+parentSprite = NodePath("..")
+followParentSpriteLayerId = 45
+insertLayerId = 45
+
+[node name="HeadSlot" type="Node2D" parent="." unique_id=2124984946]
+visible = false
+position = Vector2(-181.98529, -147.54814)
+rotation = -0.004533819
+scale = Vector2(0.7964276, 0.7964276)
+script = ExtResource("4")
+followSlotId = 46
+drawLayerId = 46
+useFollowVisible = true
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="HeadSmoke1" parent="HeadSlot" unique_id=1105852844 instance=ExtResource("5")]
+unique_name_in_owner = true
+visible = false
+material = SubResource("CanvasItemMaterial_hfvcw")
+position = Vector2(133.28668, 33.958927)
+
+[node name="HeadSprite" type="Node2D" parent="HeadSlot" unique_id=1952079215]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("6")
+externalAtlasTexturePath = "res://Asset/AtlasSource/DamagePoint/Anime/Character/Zombie/Boss/BossDave/DamagePoint/Zombie_bossDave_head.png"
+externalAtlasCentered = false
+metadata/_custom_type_script = "uid://bbl2u67agiyca"
+metadata/_adobe_animate_managed_sprite2d = true
+metadata/_adobe_animate_managed_sprite2d_visible = true
+
+[node name="HeadSmoke2" parent="HeadSlot" unique_id=520094602 instance=ExtResource("5")]
+unique_name_in_owner = true
+visible = false
+material = SubResource("CanvasItemMaterial_hfvcw")
+position = Vector2(208.63277, 58.696754)
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="HeadSmoke3" parent="HeadSlot" unique_id=1939935610 instance=ExtResource("5")]
+unique_name_in_owner = true
+visible = false
+material = SubResource("CanvasItemMaterial_hfvcw")
+position = Vector2(195.75726, 30.419098)
+
+[node name="BallSpawnMarker" type="Marker2D" parent="HeadSlot" unique_id=548931742]
+unique_name_in_owner = true
+position = Vector2(70.0898, 208.544)
+
+[node name="ArmNode" type="Node2D" parent="." unique_id=1256741544]
+unique_name_in_owner = true
+
+[node name="Arm" type="Node2D" parent="ArmNode" unique_id=2121246328 node_paths=PackedStringArray("parentSprite")]
+unique_name_in_owner = true
+z_index = 1000
+script = ExtResource("7")
+flashAnimeData = ExtResource("2")
+offset = Vector2(-700, -300)
+trueFrameRate = 180.0
+clip = "Enter"
+layerVisible = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false]
+mediaReplace = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+parentSprite = NodePath("../..")
+metadata/_custom_type_script = "uid://dsllmwohf1rth"
+
+[node name="ArmSlot" type="Node2D" parent="ArmNode/Arm" unique_id=1957174166]
+visible = false
+skew = 0.053401828
+script = ExtResource("4")
+followSlotId = 49
+drawLayerId = 49
+useFollowVisible = true
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="SpawnMarker" type="Marker2D" parent="ArmNode/Arm/ArmSlot" unique_id=2147279915]
+unique_name_in_owner = true
+position = Vector2(36.215164, 124.02479)
+
+[node name="RVNode" type="Node2D" parent="." unique_id=1449686969]
+unique_name_in_owner = true
+visible = false
+
+[node name="RV" type="Node2D" parent="RVNode" unique_id=1810349455 node_paths=PackedStringArray("parentSprite")]
+unique_name_in_owner = true
+z_index = 1000
+script = ExtResource("7")
+flashAnimeData = ExtResource("2")
+offset = Vector2(-700, -300)
+trueFrameRate = 180.0
+clip = "Enter"
+layerVisible = [false, false, false, false, false, false, false, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+mediaReplace = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+parentSprite = NodePath("../..")
+metadata/_custom_type_script = "uid://dsllmwohf1rth"

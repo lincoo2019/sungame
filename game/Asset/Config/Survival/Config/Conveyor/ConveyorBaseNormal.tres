@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://c778ydnyeekon"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/Conveyor/ConveyorBaseNormal.json" id="1_ufnvy"]
+[ext_resource type="Script" uid="uid://huks85pqdgqb" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalConfig.cs" id="2_o57lj"]
+[ext_resource type="Script" uid="uid://bru304ldtwq3e" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.cs" id="3_awgbo"]
+
+[sub_resource type="Resource" id="Resource_s7ukw"]
+script = ExtResource("3_awgbo")
+_round = 1
+zombieList = ["ZombieNormalBucket", "ZombiePaper"]
+
+[sub_resource type="Resource" id="Resource_xcpo0"]
+script = ExtResource("3_awgbo")
+_round = 2
+zombieList = ["ZombieNormalScreendoor", "ZombieJackson", "ZombiePolevaulter"]
+
+[resource]
+script = ExtResource("2_o57lj")
+json = ExtResource("1_ufnvy")
+roundLimit = 3
+pointIncrementPerWave = 30
+pointIncrementPerBigWave = 50
+pointIncrementPerRound = 60
+pointMax = 50000
+pointBigWaveScale = 0.5
+zombiePoolRoundAdd = Array[ExtResource("3_awgbo")]([SubResource("Resource_s7ukw"), SubResource("Resource_xcpo0")])
+metadata/_custom_type_script = "uid://huks85pqdgqb"

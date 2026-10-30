@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://btwsxknkdy5k1"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cytwexrd3cvhw" path="res://Asset/Anime/Character/Zombie/Puzzle/Gardener/Scene/TowerDefenseZombieGardenerComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://b0n2ne3tbw0ey" path="res://Asset/Anime/Character/Zombie/Puzzle/Gardener/Scene/TowerDefenseZombieGardener.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_5_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bnhsktyta1hby" path="res://Asset/Anime/Character/Zombie/Puzzle/Gardener/Config/TowerDefenseZombieGardener.tres" id="5"]
+[ext_resource type="Resource" uid="uid://bcpmv33p00uux" path="res://Asset/Anime/Character/Zombie/Puzzle/Gardener/DamagePoint/Config/ZombieGardenerDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cwon5f00r0tal" path="res://Asset/Anime/Character/Zombie/Puzzle/Gardener/Armor/Config/ZombieGardenerArmorBarrow.tres" id="7"]
+[ext_resource type="Resource" uid="uid://bq6wg36y82ixx" path="res://Asset/Anime/Character/Zombie/Puzzle/Gardener/Armor/Config/ZombieGardenerArmorHat.tres" id="8"]
+[ext_resource type="Resource" uid="uid://c8gi63su76o8t" path="res://Asset/Anime/Character/Zombie/Puzzle/Gardener/DamagePoint/Config/ZombieGardenerDamagePointHead.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://bk6m4m1jswcug" path="res://Asset/Anime/Character/Zombie/Puzzle/Gardener/ZombieGardener.tscn" id="10"]
+
+[node name="TowerDefenseZombieGardener" unique_id=78892328 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+useAttackDps = false
+walkAnimeClip = "LadderWalk"
+swimAnimeClip = "LadderWalk"
+attackAnimeClip = "LadderEat"
+garlicReplace = "Zombie_ladder_head.png"
+waterHeight = 20.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieGardener")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieGardener/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"Barrow": ExtResource("7"),
+"HatGardener": ExtResource("8"),
+"Head": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieGardener/ArmSlot"),
+"Barrow": NodePath("SpriteGroup/TransformPoint/ZombieGardener/BarrowSlot"),
+"HatGardener": NodePath("SpriteGroup/TransformPoint/ZombieGardener/HatSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieGardener/HeadSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieGardener" parent="SpriteGroup/TransformPoint" index="0" unique_id=689642938 instance=ExtResource("10")]
+position = Vector2(-12, -33)
+Animation/LayerVisible/anim_change = false
+Animation/LayerVisible/anim_change_pole = false
+Animation/LayerVisible/anim_change_wheel = false
+Animation/LayerVisible/anim_hat = false
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieGardener" index="0" unique_id=733247958]
+drawLayerId = -2
+position = Vector2(-16.308945, -46.158905)
+rotation = -0.18942268
+scale = Vector2(0.8489373, 0.8489373)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieGardener" index="1" unique_id=799096346]
+position = Vector2(5.826817, 1.3232918)
+rotation = 0.5366992
+scale = Vector2(0.8543271, 0.92523724)
+
+[node name="HatSlot" parent="SpriteGroup/TransformPoint/ZombieGardener" index="2" unique_id=1726748396]
+position = Vector2(-20.640823, -61.16461)
+rotation = -0.18854563
+scale = Vector2(0.7999541, 0.7999541)
+
+[node name="BarrowSlot" parent="SpriteGroup/TransformPoint/ZombieGardener" index="3" unique_id=2036585225]
+position = Vector2(-45.691692, 27.591118)
+rotation = 0.016308213
+scale = Vector2(0.7999982, 0.7999982)
+
+[node name="PotSlot" parent="SpriteGroup/TransformPoint/ZombieGardener" index="4" unique_id=2107950634]
+position = Vector2(-55.825302, -25.57152)
+rotation = 0.0
+scale = Vector2(0.79999816, 0.79999816)
+useRotate = false
+
+[node name="PotNode" type="Node2D" parent="SpriteGroup/TransformPoint/ZombieGardener/PotSlot" index="0" unique_id=1770325425]
+unique_name_in_owner = true
+z_index = 5
+position = Vector2(12.672905, 5.8578577)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieGardener" index="5" unique_id=235134826]
+position = Vector2(-19.112, -9.199997)
+scale = Vector2(1.000412, 1.000412)
+
+[node name="Barrow" type="Node2D" parent="." index="5" unique_id=246808215]
+
+[node name="PlantNode" type="Node2D" parent="." index="8" unique_id=471039814]
+unique_name_in_owner = true
+scale = Vector2(-1, 1)
+
+[editable path="SpriteGroup/TransformPoint/ZombieGardener"]

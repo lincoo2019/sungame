@@ -1,0 +1,160 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://c35n73fkp26ld"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bd5g4jl55mlr3" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventCoinCreate.cs" id="2"]
+[ext_resource type="Script" uid="uid://c55feeuvm3ss" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionRandom.cs" id="3"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="4"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="5"]
+[ext_resource type="Script" uid="uid://bi6p43no6bcyx" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeightItem.cs" id="6"]
+[ext_resource type="Script" uid="uid://6pte6bht2hgs" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeight.cs" id="7"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="8"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="9"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="10"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="11"]
+
+[sub_resource type="Resource" id="Fire_Resource_kutpb"]
+script = ExtResource("2")
+collect = true
+metadata/_custom_type_script = "uid://bd5g4jl55mlr3"
+
+[sub_resource type="Resource" id="Fire_Resource_x0ar7"]
+script = ExtResource("3")
+eventList = [SubResource("Fire_Resource_kutpb")]
+percentage = 0.08
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[sub_resource type="Resource" id="Fire_Resource_wy8fc"]
+script = ExtResource("4")
+projectileName = &"CoinSilver"
+baseDamage = 100.0
+overrideHitTargetEvent = true
+hitTargetEventList = [SubResource("Fire_Resource_x0ar7")]
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Fire_Resource_u42e2"]
+script = ExtResource("2")
+num = 1000.0
+collect = true
+metadata/_custom_type_script = "uid://bd5g4jl55mlr3"
+
+[sub_resource type="Resource" id="Fire_Resource_0o3wd"]
+script = ExtResource("3")
+eventList = [SubResource("Fire_Resource_u42e2")]
+percentage = 0.08
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[sub_resource type="Resource" id="Fire_Resource_5mtgo"]
+script = ExtResource("4")
+projectileName = &"CoinDiamond"
+baseDamage = 1000.0
+collisionFlags = 3
+fireMethodFlags = 32
+overrideHitTargetEvent = true
+hitTargetEventList = [SubResource("Fire_Resource_0o3wd")]
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Fire_Resource_e6vur"]
+script = ExtResource("5")
+projectileData = SubResource("Fire_Resource_5mtgo")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Fire_Resource_gua3y"]
+script = ExtResource("6")
+projectileResource = SubResource("Fire_Resource_e6vur")
+weight = 0.05
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Fire_Resource_ws6ai"]
+script = ExtResource("2")
+num = 50.0
+collect = true
+metadata/_custom_type_script = "uid://bd5g4jl55mlr3"
+
+[sub_resource type="Resource" id="Fire_Resource_eoomj"]
+script = ExtResource("3")
+eventList = [SubResource("Fire_Resource_ws6ai")]
+percentage = 0.08
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[sub_resource type="Resource" id="Fire_Resource_jpnei"]
+script = ExtResource("4")
+projectileName = &"CoinGold"
+baseDamage = 500.0
+collisionFlags = 11
+fireMethodFlags = 32
+overrideHitTargetEvent = true
+hitTargetEventList = [SubResource("Fire_Resource_eoomj")]
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Fire_Resource_g81go"]
+script = ExtResource("5")
+projectileData = SubResource("Fire_Resource_jpnei")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Fire_Resource_xc4ic"]
+script = ExtResource("6")
+projectileResource = SubResource("Fire_Resource_g81go")
+weight = 0.35
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Fire_Resource_p8m37"]
+script = ExtResource("2")
+collect = true
+metadata/_custom_type_script = "uid://bd5g4jl55mlr3"
+
+[sub_resource type="Resource" id="Fire_Resource_s450g"]
+script = ExtResource("3")
+eventList = [SubResource("Fire_Resource_p8m37")]
+percentage = 0.08
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[sub_resource type="Resource" id="Fire_Resource_jrhbj"]
+script = ExtResource("4")
+projectileName = &"CoinSilver"
+baseDamage = 100.0
+collisionFlags = 11
+fireMethodFlags = 32
+overrideHitTargetEvent = true
+hitTargetEventList = [SubResource("Fire_Resource_s450g")]
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Fire_Resource_ysorm"]
+script = ExtResource("5")
+projectileData = SubResource("Fire_Resource_jrhbj")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Fire_Resource_8lmwp"]
+script = ExtResource("6")
+projectileResource = SubResource("Fire_Resource_ysorm")
+weight = 0.6
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Fire_Resource_jg5af"]
+script = ExtResource("7")
+projectileData = SubResource("Fire_Resource_wy8fc")
+projectileWeight = [SubResource("Fire_Resource_gua3y"), SubResource("Fire_Resource_xc4ic"), SubResource("Fire_Resource_8lmwp")]
+metadata/_custom_type_script = "uid://6pte6bht2hgs"
+
+[sub_resource type="Resource" id="Fire_Resource_m1wmd"]
+script = ExtResource("8")
+projectile = SubResource("Fire_Resource_jg5af")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="FireDefinition"]
+script = ExtResource("9")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/PlantMarigoldG/AdobeAnimateSlot/Marker2D")]
+fireInterval = 6.0
+fireNum = 8
+fireCheckList = [SubResource("Fire_Resource_m1wmd")]
+checkAllLine = true
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.diamond.marigoldg"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]
+
+[resource]
+script = ExtResource("11")
+ParentSet = ExtResource("10")
+Components = [SubResource("FireDefinition")]

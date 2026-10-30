@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://dyiioxn38m4hj"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_fc2y5"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_sl657"]
+[ext_resource type="Script" uid="uid://gn58p3e7knxr" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffHypnoses.cs" id="3_1ac08"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_kqrpt"]
+[ext_resource type="PackedScene" uid="uid://6uxqb8okhca1" path="res://Asset/Config/Projectile/Puff/Sprite/HypnoPuff/HypnoPuff.tscn" id="5_im1c3"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="6_xbgow"]
+[ext_resource type="PackedScene" uid="uid://dj5uavekcsu6g" path="res://Prefab/Particles/Splats/PuffSplats/PuffSplats.tscn" id="7_elgyf"]
+
+[sub_resource type="Resource" id="Resource_bbn5i"]
+script = ExtResource("3_1ac08")
+time = 15.0
+metadata/_custom_type_script = "uid://gn58p3e7knxr"
+
+[sub_resource type="Resource" id="Resource_0a74n"]
+script = ExtResource("4_kqrpt")
+buffList = Array[ExtResource("2_sl657")]([SubResource("Resource_bbn5i")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("6_xbgow")
+name = "HypnoPuff"
+projectileScene = ExtResource("5_im1c3")
+splatScene = ExtResource("7_elgyf")
+hitTargetEventList = Array[ExtResource("1_fc2y5")]([SubResource("Resource_0a74n")])

@@ -1,0 +1,483 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://lj7bipebepfe"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/IZM2/Chapter2/IZM2_Level2_6.json" id="1_nutw0"]
+[ext_resource type="Script" uid="uid://ba76j1qc1ehmt" path="res://Registry/Battle/Feature/Event/Resource/TowerDefenseLevelEventBase.cs" id="2_kmmpy"]
+[ext_resource type="Script" uid="uid://dqt6kisfsqpdb" path="res://Registry/Battle/Feature/Event/Resource/Map/TowerDefenseLevelEventCurrentMapFunctionExecute.cs" id="3_wgg82"]
+[ext_resource type="Script" uid="uid://dbpqspbkam44d" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.cs" id="4_kg8ku"]
+[ext_resource type="Script" uid="uid://elndp7rr41y0" path="res://Registry/Battle/Feature/LookStar/Resource/TowerDefenseLevelLookStarCheckConfig.cs" id="5_qpnkj"]
+[ext_resource type="Script" uid="uid://ge6chewkhjqd" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.cs" id="6_kybon"]
+[ext_resource type="Script" uid="uid://d17gywmt3g3lb" path="res://Resource/TowerDefense/Level/PreSpawn/TowerDefenseLevelPreSpawnConfig.cs" id="7_rot07"]
+[ext_resource type="Script" uid="uid://dfj86l56q1n8g" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.cs" id="8_fnq7q"]
+[ext_resource type="Script" uid="uid://blrb5liskebi6" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.cs" id="9_53bww"]
+[ext_resource type="Script" uid="uid://br6kawt7m03sc" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelDynamicConfig.cs" id="10_2mr0r"]
+[ext_resource type="Script" uid="uid://ctvkmai1q8sa6" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.cs" id="11_dhh6h"]
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="12_7mvcf"]
+[ext_resource type="Script" uid="uid://b33l7l1ecdbk2" path="res://Resource/TowerDefense/Character/Override/Property/TowerDefenseCharacterPropertyChangeConfig.cs" id="13_dmi24"]
+[ext_resource type="Script" uid="uid://6sg1n152234o" path="res://Resource/TowerDefense/Character/Override/TowerDefenseCharacterOverride.cs" id="14_6u2tt"]
+[ext_resource type="Script" uid="uid://c67uxwpu4jftb" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.cs" id="15_aoasn"]
+[ext_resource type="Script" uid="uid://cikc5vwojvfpa" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnDynamicConfig.cs" id="16_43gl2"]
+[ext_resource type="Script" uid="uid://d1wvq2gegjubw" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelGridSpawnConfig.cs" id="17_q6hoo"]
+[ext_resource type="Script" uid="uid://gc0ev0pebyep" path="res://Resource/TowerDefense/Level/Spawn/TowerDefenseLevelSpawnConfig.cs" id="18_rdcpk"]
+
+[sub_resource type="Resource" id="Resource_kmmpy"]
+script = ExtResource("3_wgg82")
+functionName = "UseStripe"
+value = [5.0]
+
+[sub_resource type="Resource" id="Resource_wgg82"]
+script = ExtResource("4_kg8ku")
+
+[sub_resource type="Resource" id="Resource_kg8ku"]
+script = ExtResource("6_kybon")
+
+[sub_resource type="Resource" id="Resource_qpnkj"]
+script = ExtResource("9_53bww")
+type = "Brain"
+
+[sub_resource type="Resource" id="Resource_kybon"]
+script = ExtResource("10_2mr0r")
+
+[sub_resource type="Resource" id="Resource_rot07"]
+script = ExtResource("10_2mr0r")
+
+[sub_resource type="Resource" id="Resource_fnq7q"]
+script = ExtResource("10_2mr0r")
+
+[sub_resource type="Resource" id="Resource_53bww"]
+script = ExtResource("10_2mr0r")
+
+[sub_resource type="Resource" id="Resource_2mr0r"]
+script = ExtResource("10_2mr0r")
+
+[sub_resource type="Resource" id="Resource_dhh6h"]
+script = ExtResource("10_2mr0r")
+
+[sub_resource type="Resource" id="Resource_7mvcf"]
+script = ExtResource("10_2mr0r")
+
+[sub_resource type="Resource" id="Resource_dmi24"]
+script = ExtResource("14_6u2tt")
+
+[sub_resource type="Resource" id="Resource_6u2tt"]
+script = ExtResource("16_43gl2")
+
+[sub_resource type="Resource" id="Resource_aoasn"]
+script = ExtResource("17_q6hoo")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(1, 2)
+
+[sub_resource type="Resource" id="Resource_43gl2"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(6, 5)
+
+[sub_resource type="Resource" id="Resource_q6hoo"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunShroomO"
+gridPos = Vector2i(4, 4)
+
+[sub_resource type="Resource" id="Resource_rdcpk"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunFlower"
+gridPos = Vector2i(5, 5)
+
+[sub_resource type="Resource" id="Resource_62alc"]
+script = ExtResource("15_aoasn")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+gridSpawn = Array[ExtResource("17_q6hoo")]([SubResource("Resource_aoasn"), SubResource("Resource_43gl2"), SubResource("Resource_q6hoo"), SubResource("Resource_rdcpk")])
+dynamic = SubResource("Resource_6u2tt")
+
+[sub_resource type="Resource" id="Resource_ochgs"]
+script = ExtResource("16_43gl2")
+
+[sub_resource type="Resource" id="Resource_n7xbp"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(5, 5)
+
+[sub_resource type="Resource" id="Resource_smerd"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunShroomO"
+gridPos = Vector2i(3, 4)
+
+[sub_resource type="Resource" id="Resource_uwui2"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunShroomO"
+gridPos = Vector2i(4, 1)
+
+[sub_resource type="Resource" id="Resource_omya1"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunFlower"
+gridPos = Vector2i(2, 4)
+
+[sub_resource type="Resource" id="Resource_r0j0m"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 2)
+
+[sub_resource type="Resource" id="Resource_1y81a"]
+script = ExtResource("15_aoasn")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+gridSpawn = Array[ExtResource("17_q6hoo")]([SubResource("Resource_n7xbp"), SubResource("Resource_smerd"), SubResource("Resource_uwui2"), SubResource("Resource_omya1"), SubResource("Resource_r0j0m")])
+dynamic = SubResource("Resource_ochgs")
+
+[sub_resource type="Resource" id="Resource_t1qkn"]
+script = ExtResource("16_43gl2")
+
+[sub_resource type="Resource" id="Resource_dr805"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(6, 1)
+
+[sub_resource type="Resource" id="Resource_p036d"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 3)
+
+[sub_resource type="Resource" id="Resource_p4fte"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunShroomO"
+gridPos = Vector2i(2, 5)
+
+[sub_resource type="Resource" id="Resource_obdt1"]
+script = ExtResource("17_q6hoo")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(2, 2)
+
+[sub_resource type="Resource" id="Resource_4lw3t"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunFlower"
+gridPos = Vector2i(4, 1)
+
+[sub_resource type="Resource" id="Resource_qe65r"]
+script = ExtResource("15_aoasn")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+gridSpawn = Array[ExtResource("17_q6hoo")]([SubResource("Resource_dr805"), SubResource("Resource_p036d"), SubResource("Resource_p4fte"), SubResource("Resource_obdt1"), SubResource("Resource_4lw3t")])
+dynamic = SubResource("Resource_t1qkn")
+
+[sub_resource type="Resource" id="Resource_yu4gp"]
+script = ExtResource("16_43gl2")
+
+[sub_resource type="Resource" id="Resource_h1hbm"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffPot"
+gridPos = Vector2i(1, 4)
+
+[sub_resource type="Resource" id="Resource_qpcqa"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffPot"
+gridPos = Vector2i(3, 1)
+
+[sub_resource type="Resource" id="Resource_utnaf"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunShroomO"
+gridPos = Vector2i(1, 3)
+
+[sub_resource type="Resource" id="Resource_8x480"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunShroomO"
+gridPos = Vector2i(3, 2)
+
+[sub_resource type="Resource" id="Resource_1nkih"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(3, 3)
+
+[sub_resource type="Resource" id="Resource_givhm"]
+script = ExtResource("15_aoasn")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+gridSpawn = Array[ExtResource("17_q6hoo")]([SubResource("Resource_h1hbm"), SubResource("Resource_qpcqa"), SubResource("Resource_utnaf"), SubResource("Resource_8x480"), SubResource("Resource_1nkih")])
+dynamic = SubResource("Resource_yu4gp")
+
+[sub_resource type="Resource" id="Resource_yro1k"]
+script = ExtResource("16_43gl2")
+
+[sub_resource type="Resource" id="Resource_r63ro"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPeaShooter"
+gridPos = Vector2i(4, 3)
+
+[sub_resource type="Resource" id="Resource_ufjt7"]
+script = ExtResource("17_q6hoo")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(1, 2)
+
+[sub_resource type="Resource" id="Resource_1has0"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(6, 1)
+
+[sub_resource type="Resource" id="Resource_bilcm"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffPot"
+gridPos = Vector2i(3, 2)
+
+[sub_resource type="Resource" id="Resource_1ip8h"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(3, 5)
+
+[sub_resource type="Resource" id="Resource_v20xv"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunShroomO"
+gridPos = Vector2i(2, 5)
+
+[sub_resource type="Resource" id="Resource_mjjda"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunShroomO"
+gridPos = Vector2i(3, 1)
+
+[sub_resource type="Resource" id="Resource_yoaf8"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffPot"
+gridPos = Vector2i(3, 5)
+
+[sub_resource type="Resource" id="Resource_d5ojc"]
+script = ExtResource("15_aoasn")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+gridSpawn = Array[ExtResource("17_q6hoo")]([SubResource("Resource_r63ro"), SubResource("Resource_ufjt7"), SubResource("Resource_1has0"), SubResource("Resource_bilcm"), SubResource("Resource_1ip8h"), SubResource("Resource_v20xv"), SubResource("Resource_mjjda"), SubResource("Resource_yoaf8")])
+dynamic = SubResource("Resource_yro1k")
+
+[sub_resource type="Resource" id="Resource_q3186"]
+script = ExtResource("16_43gl2")
+
+[sub_resource type="Resource" id="Resource_icnbg"]
+script = ExtResource("17_q6hoo")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(1, 1)
+
+[sub_resource type="Resource" id="Resource_exk2y"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunShroomO"
+gridPos = Vector2i(5, 3)
+
+[sub_resource type="Resource" id="Resource_b2iuf"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(6, 3)
+
+[sub_resource type="Resource" id="Resource_x3tr7"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffPot"
+gridPos = Vector2i(6, 3)
+
+[sub_resource type="Resource" id="Resource_xn7py"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(4, 5)
+
+[sub_resource type="Resource" id="Resource_wisuc"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(5, 1)
+
+[sub_resource type="Resource" id="Resource_6gyi2"]
+script = ExtResource("15_aoasn")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+gridSpawn = Array[ExtResource("17_q6hoo")]([SubResource("Resource_icnbg"), SubResource("Resource_exk2y"), SubResource("Resource_b2iuf"), SubResource("Resource_x3tr7"), SubResource("Resource_xn7py"), SubResource("Resource_wisuc")])
+dynamic = SubResource("Resource_q3186")
+
+[sub_resource type="Resource" id="Resource_cfcho"]
+script = ExtResource("16_43gl2")
+
+[sub_resource type="Resource" id="Resource_to4km"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPeaShooter"
+gridPos = Vector2i(4, 5)
+
+[sub_resource type="Resource" id="Resource_ks5m3"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunFlower"
+gridPos = Vector2i(1, 5)
+
+[sub_resource type="Resource" id="Resource_l5f1k"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(3, 2)
+
+[sub_resource type="Resource" id="Resource_l4vpj"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(6, 3)
+
+[sub_resource type="Resource" id="Resource_uh6hm"]
+script = ExtResource("17_q6hoo")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(1, 4)
+
+[sub_resource type="Resource" id="Resource_wdvuq"]
+script = ExtResource("15_aoasn")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+gridSpawn = Array[ExtResource("17_q6hoo")]([SubResource("Resource_to4km"), SubResource("Resource_ks5m3"), SubResource("Resource_l5f1k"), SubResource("Resource_l4vpj"), SubResource("Resource_uh6hm")])
+dynamic = SubResource("Resource_cfcho")
+
+[sub_resource type="Resource" id="Resource_7prfj"]
+script = ExtResource("16_43gl2")
+
+[sub_resource type="Resource" id="Resource_t2htj"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(2, 4)
+
+[sub_resource type="Resource" id="Resource_6o3y5"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(1, 1)
+
+[sub_resource type="Resource" id="Resource_maxqx"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunFlower"
+gridPos = Vector2i(3, 2)
+
+[sub_resource type="Resource" id="Resource_vmkje"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPeaShooterSingle"
+gridPos = Vector2i(1, 5)
+
+[sub_resource type="Resource" id="Resource_2hwa5"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunShroomO"
+gridPos = Vector2i(3, 3)
+
+[sub_resource type="Resource" id="Resource_1dfxo"]
+script = ExtResource("15_aoasn")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+gridSpawn = Array[ExtResource("17_q6hoo")]([SubResource("Resource_t2htj"), SubResource("Resource_6o3y5"), SubResource("Resource_maxqx"), SubResource("Resource_vmkje"), SubResource("Resource_2hwa5")])
+dynamic = SubResource("Resource_7prfj")
+
+[sub_resource type="Resource" id="Resource_0uk1e"]
+script = ExtResource("16_43gl2")
+
+[sub_resource type="Resource" id="Resource_bsj5c"]
+script = ExtResource("17_q6hoo")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(1, 4)
+
+[sub_resource type="Resource" id="Resource_wxre2"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunShroomO"
+gridPos = Vector2i(2, 2)
+
+[sub_resource type="Resource" id="Resource_qvq7m"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunShroomO"
+gridPos = Vector2i(2, 4)
+
+[sub_resource type="Resource" id="Resource_tku1s"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(5, 1)
+
+[sub_resource type="Resource" id="Resource_afn4n"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffPot"
+gridPos = Vector2i(5, 2)
+
+[sub_resource type="Resource" id="Resource_b5i30"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffPot"
+gridPos = Vector2i(4, 5)
+
+[sub_resource type="Resource" id="Resource_on0n6"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffPot"
+gridPos = Vector2i(4, 3)
+
+[sub_resource type="Resource" id="Resource_dew7d"]
+script = ExtResource("15_aoasn")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+gridSpawn = Array[ExtResource("17_q6hoo")]([SubResource("Resource_bsj5c"), SubResource("Resource_wxre2"), SubResource("Resource_qvq7m"), SubResource("Resource_tku1s"), SubResource("Resource_afn4n"), SubResource("Resource_b5i30"), SubResource("Resource_on0n6")])
+dynamic = SubResource("Resource_0uk1e")
+
+[sub_resource type="Resource" id="Resource_t81x4"]
+script = ExtResource("16_43gl2")
+
+[sub_resource type="Resource" id="Resource_rbt87"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPeaShooter"
+gridPos = Vector2i(4, 2)
+
+[sub_resource type="Resource" id="Resource_vp2p8"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPeaShooter"
+gridPos = Vector2i(4, 4)
+
+[sub_resource type="Resource" id="Resource_nmu36"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunFlower"
+gridPos = Vector2i(2, 1)
+
+[sub_resource type="Resource" id="Resource_dx0ja"]
+script = ExtResource("17_q6hoo")
+packet = "PlantSunFlower"
+gridPos = Vector2i(3, 5)
+
+[sub_resource type="Resource" id="Resource_yv666"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(6, 1)
+
+[sub_resource type="Resource" id="Resource_3vslj"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffShroom"
+gridPos = Vector2i(6, 3)
+
+[sub_resource type="Resource" id="Resource_6h141"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffPot"
+gridPos = Vector2i(6, 1)
+
+[sub_resource type="Resource" id="Resource_tlxwh"]
+script = ExtResource("17_q6hoo")
+packet = "PlantPuffPot"
+gridPos = Vector2i(6, 3)
+
+[sub_resource type="Resource" id="Resource_usxng"]
+script = ExtResource("17_q6hoo")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(1, 2)
+
+[sub_resource type="Resource" id="Resource_6oioe"]
+script = ExtResource("17_q6hoo")
+packet = "PlantFumeShroom"
+gridPos = Vector2i(1, 5)
+
+[sub_resource type="Resource" id="Resource_2jbpt"]
+script = ExtResource("15_aoasn")
+dynamicPlantfood = Array[int]([0, 0, 0, 0, 0, 0, 0])
+gridSpawn = Array[ExtResource("17_q6hoo")]([SubResource("Resource_rbt87"), SubResource("Resource_vp2p8"), SubResource("Resource_nmu36"), SubResource("Resource_dx0ja"), SubResource("Resource_yv666"), SubResource("Resource_3vslj"), SubResource("Resource_6h141"), SubResource("Resource_tlxwh"), SubResource("Resource_usxng"), SubResource("Resource_6oioe")])
+dynamic = SubResource("Resource_t81x4")
+
+[sub_resource type="Resource" id="Resource_fh551"]
+script = ExtResource("11_dhh6h")
+flagZombieUse = false
+flagWaveInterval = 5
+maxNextWaveHealthPercentage = 0.2
+minNextWaveHealthPercentage = 0.3
+beginCol = 6.0
+spawnColStart = 10.0
+spawnOverride = SubResource("Resource_dmi24")
+dynamic = Array[ExtResource("10_2mr0r")]([null, null, null, null, null, null, null, SubResource("Resource_kybon"), SubResource("Resource_rot07"), SubResource("Resource_fnq7q"), SubResource("Resource_53bww"), SubResource("Resource_2mr0r"), SubResource("Resource_dhh6h"), SubResource("Resource_7mvcf")])
+wave = Array[ExtResource("15_aoasn")]([SubResource("Resource_62alc"), SubResource("Resource_1y81a"), SubResource("Resource_qe65r"), SubResource("Resource_givhm"), SubResource("Resource_d5ojc"), SubResource("Resource_6gyi2"), SubResource("Resource_wdvuq"), SubResource("Resource_1dfxo"), SubResource("Resource_dew7d"), SubResource("Resource_2jbpt")])
+
+[resource]
+script = ExtResource("8_fnq7q")
+data = ExtResource("1_nutw0")
+name = "IZM2_Level2_6"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "PLAYERS_MORDEN_IZM2_NIGHT_LEVEL_NAME"
+levelNumber = 6
+homeWorld = 1
+finishMethod = 4
+map = "FrontlawnNight"
+backgroundMusic = "FrontlawnNight"
+firstRewardType = 1
+firstRewardValue = "ZombieShieldArmor"
+eventInit = Array[ExtResource("2_kmmpy")]([SubResource("Resource_kmmpy")])
+sunManager = SubResource("Resource_qpnkj")
+fogManager = SubResource("Resource_wgg82")
+lookStarManager = SubResource("Resource_kg8ku")
+waveManager = SubResource("Resource_fh551")
+packetBank = "GeneralZombie"
+PacketBank/Name = "GeneralZombie"
+metadata/_custom_type_script = "uid://dfj86l56q1n8g"

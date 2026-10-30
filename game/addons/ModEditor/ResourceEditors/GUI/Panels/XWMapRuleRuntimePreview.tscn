@@ -1,0 +1,241 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.06, 0.068, 0.08, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.23, 0.3, 0.38, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="MapRuleRuntimePreview" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 480)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HFlowContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "地图规则运行预览"
+
+[node name="Status" type="Label" parent="Layout/Header"]
+layout_mode = 2
+horizontal_alignment = 2
+
+[node name="Split" type="HSplitContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offset = 430
+
+[node name="GameStage" type="Control" parent="Layout/Split"]
+custom_minimum_size = Vector2(420, 410)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+clip_contents = true
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="Layout/Split/GameStage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="Layout/Split/GameStage/ViewportContainer"]
+transparent_bg = true
+disable_3d = true
+size = Vector2i(430, 410)
+render_target_update_mode = 4
+
+[node name="GameBackground" type="TextureRect" parent="Layout/Split/GameStage/ViewportContainer/Viewport"]
+offset_right = 430.0
+offset_bottom = 410.0
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="BaselineRoot" type="Node2D" parent="Layout/Split/GameStage/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+position = Vector2(125, 310)
+
+[node name="ResultRoot" type="Node2D" parent="Layout/Split/GameStage/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+position = Vector2(315, 310)
+
+[node name="BeforeLabel" type="Label" parent="Layout/Split/GameStage"]
+layout_mode = 1
+offset_left = 55.0
+offset_top = 20.0
+offset_right = 195.0
+offset_bottom = 48.0
+text = "规则前"
+horizontal_alignment = 1
+
+[node name="AfterLabel" type="Label" parent="Layout/Split/GameStage"]
+layout_mode = 1
+offset_left = 245.0
+offset_top = 20.0
+offset_right = 385.0
+offset_bottom = 48.0
+text = "规则后"
+horizontal_alignment = 1
+
+[node name="Inputs" type="VBoxContainer" parent="Layout/Split"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 7
+
+[node name="PacketRow" type="HBoxContainer" parent="Layout/Split/Inputs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/Split/Inputs/PacketRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "测试卡牌类型"
+
+[node name="PacketType" type="OptionButton" parent="Layout/Split/Inputs/PacketRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PacketTypeCatalogButton" type="Button" parent="Layout/Split/Inputs/PacketRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "卡牌类型图鉴"
+tooltip_text = "打开可搜索卡牌类型图鉴"
+
+[node name="CharacterRow" type="HBoxContainer" parent="Layout/Split/Inputs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/Split/Inputs/CharacterRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "测试角色 key"
+
+[node name="CharacterName" type="LineEdit" parent="Layout/Split/Inputs/CharacterRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "输入 characterName"
+
+[node name="CooldownRow" type="HBoxContainer" parent="Layout/Split/Inputs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/Split/Inputs/CooldownRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "基础冷却"
+
+[node name="Value" type="SpinBox" parent="Layout/Split/Inputs/CooldownRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 100000.0
+step = 0.1
+value = 10.0
+
+[node name="SpeedRow" type="HBoxContainer" parent="Layout/Split/Inputs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/Split/Inputs/SpeedRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "基础速度"
+
+[node name="Value" type="SpinBox" parent="Layout/Split/Inputs/SpeedRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 100000.0
+step = 0.1
+value = 1.0
+
+[node name="HitpointsRow" type="HBoxContainer" parent="Layout/Split/Inputs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/Split/Inputs/HitpointsRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "基础生命"
+
+[node name="Value" type="SpinBox" parent="Layout/Split/Inputs/HitpointsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 1000000.0
+step = 1.0
+value = 100.0
+
+[node name="ScaleRow" type="HBoxContainer" parent="Layout/Split/Inputs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/Split/Inputs/ScaleRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "基础视觉缩放"
+
+[node name="Value" type="SpinBox" parent="Layout/Split/Inputs/ScaleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 100.0
+step = 0.05
+value = 1.0
+
+[node name="DpsRow" type="HBoxContainer" parent="Layout/Split/Inputs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/Split/Inputs/DpsRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "攻击 DPS"
+
+[node name="Value" type="SpinBox" parent="Layout/Split/Inputs/DpsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 1000000.0
+step = 1.0
+value = 20.0
+
+[node name="RunButton" type="Button" parent="Layout/Split/Inputs"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "重新计算运行结果"
+
+[node name="Result" type="Label" parent="Layout/Split/Inputs"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+text = "等待模拟"
+autowrap_mode = 2
+
+[node name="Validation" type="Label" parent="Layout/Split/Inputs"]
+layout_mode = 2
+text = "运行校验"
+autowrap_mode = 2

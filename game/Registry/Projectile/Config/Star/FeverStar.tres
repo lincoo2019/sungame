@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://c53m4d6qfuvjc"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_4jrts"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_bvruq"]
+[ext_resource type="Script" uid="uid://dp2pqwer6loc1" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffRedHeat.cs" id="3_1qp1l"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_7yyma"]
+[ext_resource type="Script" uid="uid://c55feeuvm3ss" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionRandom.cs" id="5_ybv8o"]
+[ext_resource type="PackedScene" uid="uid://cg25a133r74jk" path="res://Asset/Config/Projectile/Star/FeverStar/FeverStar.tscn" id="6_ctipt"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="7_ibf64"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="8_ee2ng"]
+
+[sub_resource type="Resource" id="Resource_plqsj"]
+script = ExtResource("3_1qp1l")
+metadata/_custom_type_script = "uid://dp2pqwer6loc1"
+
+[sub_resource type="Resource" id="Resource_h2l3b"]
+script = ExtResource("4_7yyma")
+buffList = Array[ExtResource("2_bvruq")]([SubResource("Resource_plqsj")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Resource_ajr8q"]
+script = ExtResource("5_ybv8o")
+eventList = Array[ExtResource("1_4jrts")]([SubResource("Resource_h2l3b")])
+percentage = 0.1
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[resource]
+script = ExtResource("7_ibf64")
+name = "FeverStar"
+isStar = true
+baseDamage = 40.0
+projectileScene = ExtResource("6_ctipt")
+splatScene = ExtResource("8_ee2ng")
+hitCharacterEventList = Array[ExtResource("1_4jrts")]([SubResource("Resource_ajr8q")])
+useRange = true
+isFire = true

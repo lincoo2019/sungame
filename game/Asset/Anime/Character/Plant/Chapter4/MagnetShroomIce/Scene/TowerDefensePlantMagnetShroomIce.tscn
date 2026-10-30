@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://ef2bfd2kc222"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://h0xennann7r4" path="res://Asset/Anime/Character/Plant/Chapter4/MagnetShroomIce/Scene/TowerDefensePlantMagnetShroomIceComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://btkofchp75kos" path="res://Asset/Anime/Character/Plant/Chapter4/MagnetShroomIce/Scene/TowerDefensePlantMagnetShroomIce.cs" id="3"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="4"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="5"]
+[ext_resource type="Resource" uid="uid://dpe5ne88jvoas" path="res://Asset/Anime/Character/Plant/Chapter4/MagnetShroomIce/Config/TowerDefensePlantMagnetShroomIce.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://okofxmaq4ov7" path="res://Asset/Anime/Character/Plant/Chapter4/MagnetShroomIce/MagnetShroomIce.tscn" id="7"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="8"]
+
+[sub_resource type="Resource" id="Resource_ty0cv"]
+script = ExtResource("4")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_xcmup"]
+script = ExtResource("5")
+buffList = [SubResource("Resource_ty0cv")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[node name="TowerDefensePlantMagnetShroomIce" unique_id=1387353806 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+drawEvent = [SubResource("Resource_xcmup")]
+breakDownTime = 15.0
+sleepAnimeClip = "sleep"
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/MagnetShroomIce")
+Custom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="MagnetShroomIce" parent="SpriteGroup/TransformPoint" index="0" unique_id=232626252 instance=ExtResource("7")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/MagnetShroomIce" index="0" unique_id=254073054]
+skew = 0.008858204
+script = ExtResource("8")
+followSlotId = 5
+offset = Vector2(65, 60)
+Layer = 5
+drawLayerId = 5
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/MagnetShroomIce/AdobeAnimateSlot" index="0" unique_id=794652257]
+position = Vector2(-6.975703, -19.742924)

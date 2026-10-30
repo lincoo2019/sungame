@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://di07ubop4nuc3"]
+
+[ext_resource type="Resource" uid="uid://cktl6q1og62xd" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseZombieStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_imp_digger_spike_dig"]
+script = ExtResource("2")
+StableId = "zombie.imp_digger_spike.dig"
+DisplayName = &"Dig"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_imp_digger_spike_drill"]
+script = ExtResource("2")
+StableId = "zombie.imp_digger_spike.drill"
+DisplayName = &"Drill"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_imp_digger_spike_land"]
+script = ExtResource("2")
+StableId = "zombie.imp_digger_spike.land"
+DisplayName = &"Land"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_imp_digger_spike_up"]
+script = ExtResource("2")
+StableId = "zombie.imp_digger_spike.up"
+DisplayName = &"Up"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_imp_digger_spike_to_dig"]
+script = ExtResource("3")
+StableId = "zombie.imp_digger_spike.to_dig"
+SourceStateId = "character.root"
+TargetStateId = "zombie.imp_digger_spike.dig"
+EventName = &"ToDig"
+DeclarationOrder = 7
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_imp_digger_spike_to_drill"]
+script = ExtResource("3")
+StableId = "zombie.imp_digger_spike.to_drill"
+SourceStateId = "character.root"
+TargetStateId = "zombie.imp_digger_spike.drill"
+EventName = &"ToDrill"
+DeclarationOrder = 8
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_imp_digger_spike_to_land"]
+script = ExtResource("3")
+StableId = "zombie.imp_digger_spike.to_land"
+SourceStateId = "character.root"
+TargetStateId = "zombie.imp_digger_spike.land"
+EventName = &"ToLand"
+DeclarationOrder = 9
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_imp_digger_spike_to_up"]
+script = ExtResource("3")
+StableId = "zombie.imp_digger_spike.to_up"
+SourceStateId = "character.root"
+TargetStateId = "zombie.imp_digger_spike.up"
+EventName = &"ToUp"
+DeclarationOrder = 10
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.zombie.imp_digger_spike"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_imp_digger_spike_dig"), SubResource("State_imp_digger_spike_drill"), SubResource("State_imp_digger_spike_land"), SubResource("State_imp_digger_spike_up")]
+Transitions = [SubResource("Transition_imp_digger_spike_to_dig"), SubResource("Transition_imp_digger_spike_to_drill"), SubResource("Transition_imp_digger_spike_to_land"), SubResource("Transition_imp_digger_spike_to_up")]

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bp08ye4ub27xf"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter4/Angel/Scene/TowerDefenseZombieAngelComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://cy2bpptac5bsu" path="res://Asset/Anime/Character/Zombie/Chapter4/Angel/Scene/TowerDefenseZombieAngel.cs" id="3"]
+[ext_resource type="Resource" uid="uid://b28ean0u2vqui" path="res://Asset/Anime/Character/Zombie/Chapter4/Angel/Scene/TowerDefenseZombieAngelStateMachine.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dkggwipajfvjr" path="res://Asset/Anime/Character/Zombie/Chapter4/Angel/Config/TowerDefenseZombieAngel.tres" id="5"]
+[ext_resource type="Resource" uid="uid://cxcdmb35axoi2" path="res://Asset/Anime/Character/Zombie/Chapter4/Angel/DamagePoint/Config/ZombieAngelDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://118v00kessps" path="res://Asset/Anime/Character/Zombie/Chapter4/Angel/DamagePoint/Config/ZombieAngelDamagePointHead.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://djeg6sixlvot5" path="res://Asset/Anime/Character/Zombie/Chapter4/Angel/ZombieAngel.tscn" id="8"]
+
+[node name="TowerDefenseZombieAngel" unique_id=802986838 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+walkSpeedScale = 1.5
+walkAnimeClip = "Idle"
+swimAnimeClip = "Idle"
+waterHeight = 30.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieAngel")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieAngel/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"Head": ExtResource("7")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieAngel/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieAngel/HeadSlot")
+}
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieAngel" parent="SpriteGroup/TransformPoint" index="0" unique_id=75931776 instance=ExtResource("8")]
+position = Vector2(-4, -29)
+clip = "Idle"
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieAngel" index="0" unique_id=534151127]
+drawLayerId = -2
+position = Vector2(-28.18033, -32.83372)
+rotation = 0.038912293
+scale = Vector2(0.79986703, 0.79986703)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieAngel" index="1" unique_id=1650772790]
+position = Vector2(-5.303755, 1.8057585)
+rotation = 0.045712326
+scale = Vector2(0.59980077, 0.59980077)
+
+[editable path="SpriteGroup/TransformPoint/ZombieAngel"]

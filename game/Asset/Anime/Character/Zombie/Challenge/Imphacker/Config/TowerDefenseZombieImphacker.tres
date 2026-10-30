@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="TowerDefenseZombieConfig" format=3 uid="uid://twfrdn30q4ro"]
+
+[ext_resource type="PackedScene" uid="uid://c467pgtq6nh5" path="res://Asset/Anime/Character/Zombie/Ash/Imp/ZombieImpAsh.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cikdgcy01df7f" path="res://Asset/Anime/Character/Zombie/Challenge/Imphacker/DamagePoint/Config/ZombieImphackerDamagePointArm.tres" id="2"]
+[ext_resource type="Resource" uid="uid://djudnqdkwl8wi" path="res://Asset/Anime/Character/Zombie/Challenge/Imphacker/DamagePoint/Config/ZombieImphackerDamagePointHead.tres" id="3"]
+[ext_resource type="Script" uid="uid://glu4fym1t3ns" path="res://Resource/General/Character/DamagePoint/CharacterDamagePointData.cs" id="4"]
+[ext_resource type="Script" uid="uid://dvtewieu2qn5h" path="res://Resource/TowerDefense/Character/Config/TowerDefenseZombieConfig.cs" id="5"]
+
+[sub_resource type="Resource" id="Resource_wovmq"]
+script = ExtResource("4")
+damagePointList = [ExtResource("2"), ExtResource("3")]
+damagePointDictionary = {
+"Arm": {
+"Close": ["Zombie_outerarm_lower"],
+"Config": ExtResource("2"),
+"Open": []
+},
+"Head": {
+"Close": ["anim_head1", "anim_head2"],
+"Config": ExtResource("3"),
+"Open": []
+}
+}
+fliterCloseAll = ["Zombie_outerarm_lower", "anim_head1", "anim_head2"]
+metadata/_custom_type_script = "uid://glu4fym1t3ns"
+
+[resource]
+script = ExtResource("5")
+physique = 1
+attack = 100.0
+name = "ZombieImphacker"
+hitpointsNearDeath = 200.0
+hitpoints = 600.0
+damagePointData = SubResource("Resource_wovmq")
+armorData = null
+customData = null
+ashScene = ExtResource("1")
+homeWorld = 1
+cost = 200
+plantGridType = [-1]
+maskFlags = 9

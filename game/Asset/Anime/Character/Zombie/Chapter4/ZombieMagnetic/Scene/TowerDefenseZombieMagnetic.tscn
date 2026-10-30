@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cs6k0lp1q4qxb"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cdpr31oj04lpp" path="res://Asset/Anime/Character/Zombie/Chapter4/ZombieMagnetic/Scene/TowerDefenseZombieMagneticComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://clthhe8j73w74" path="res://Asset/Anime/Character/Zombie/Chapter4/ZombieMagnetic/Scene/TowerDefenseZombieMagnetic.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_5_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cr6fk3bu5vvnd" path="res://Asset/Anime/Character/Zombie/Chapter4/ZombieMagnetic/Config/TowerDefenseZombieMagnetic.tres" id="5"]
+[ext_resource type="Resource" uid="uid://kcqwvhhl2wwu" path="res://Asset/Anime/Character/Zombie/Chapter4/ZombieMagnetic/DamagePoint/Config/ZombieMagneticDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://ctcv5jk1kegbu" path="res://Asset/Anime/Character/Zombie/Chapter4/ZombieMagnetic/DamagePoint/Config/ZombieMagneticDamagePointHead.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cc0cpwreibwx6" path="res://Asset/Anime/Character/Zombie/Chapter4/ZombieMagnetic/Armor/Config/ZombieMagneticArmorHelmetMagnet.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://b4i5dtfru3to7" path="res://Asset/Anime/Character/Zombie/Chapter4/ZombieMagnetic/ZombieMagnetic.tscn" id="9"]
+
+[node name="TowerDefenseZombieMagnetic" unique_id=1478338458 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+walkAnimeClip = "Walk1&Walk2"
+swimAnimeClip = "Swim"
+dieAnimeClip = "Death1&Death2"
+dieWaterAnimeClip = "Waterdeath"
+waterHeight = 25.0
+idleAnimeClip = "Idle1&Idle2"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieMagnetic")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieMagnetic/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"Head": ExtResource("7"),
+"HelmetMagnet": ExtResource("8")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieMagnetic/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieMagnetic/HeadSlot"),
+"HelmetMagnet": NodePath("SpriteGroup/TransformPoint/ZombieMagnetic/HelmetMagnetSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieMagnetic" parent="SpriteGroup/TransformPoint" index="0" unique_id=823004636 instance=ExtResource("9")]
+position = Vector2(-12, -33)
+Animation/LayerVisible/Zombie_body = false
+Animation/LayerVisible/anim_helmet = false
+Animation/LayerVisible/shock = false
+Animation/LayerVisible/wave1 = false
+Animation/LayerVisible/wave2 = false
+Animation/MediaReplace/Zombie_magnetic_helmet.png = "res://Asset/AtlasSource/Armor/Texture/Character/Armor/HelmetMagnet/ZombieHelmetMagnet1.png"
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieMagnetic" index="0" unique_id=1461523114]
+drawLayerId = -2
+position = Vector2(-7.091625, -52.10359)
+rotation = 0.039124433
+scale = Vector2(0.7992756, 0.7992756)
+Layer = 15
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieMagnetic" index="1" unique_id=1329219186]
+position = Vector2(6.249584, -2.1609917)
+rotation = 0.15090592
+scale = Vector2(0.7984997, 0.7984997)
+Layer = 26
+
+[node name="HelmetMagnetSlot" parent="SpriteGroup/TransformPoint/ZombieMagnetic" index="2" unique_id=753625821]
+position = Vector2(-7.3629856, -61.845215)
+rotation = 0.0
+scale = Vector2(0.7999878, 0.7999878)
+Layer = 23
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieMagnetic" index="3" unique_id=1324813203]
+position = Vector2(-10.1, -40)
+Layer = 1
+
+[editable path="SpriteGroup/TransformPoint/ZombieMagnetic"]

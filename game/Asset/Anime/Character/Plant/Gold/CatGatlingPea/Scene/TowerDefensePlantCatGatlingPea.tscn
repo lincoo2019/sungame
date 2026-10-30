@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://tkj8x5tfpmqa"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Gold/CatGatlingPea/Scene/TowerDefensePlantCatGatlingPeaComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://dkfmbo0d0vpp7" path="res://Asset/Anime/Character/Plant/Gold/CatGatlingPea/Scene/TowerDefensePlantCatGatlingPea.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bbbsjv4lis20r" path="res://Asset/Anime/Character/Plant/Gold/CatGatlingPea/Config/TowerDefensePlantCatGatlingPea.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://bofaiye2iu4ji" path="res://Asset/Anime/Character/Plant/Gold/CatGatlingPea/CatGatlingPea.tscn" id="6"]
+
+[node name="TowerDefensePlantCatGatlingPea" unique_id=902244887 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 4
+projectileName = "Star"
+idleAnimeClip = "BodyIdle"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/CatGatlingPea")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="CatGatlingPea" parent="SpriteGroup/TransformPoint" index="0" unique_id=367233608 instance=ExtResource("6")]
+position = Vector2(0, -30)
+
+[node name="Head" parent="SpriteGroup/TransformPoint/CatGatlingPea" index="0" unique_id=2102005653]
+position = Vector2(-59.094524, -66.81095)
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/CatGatlingPea/Head" index="0" unique_id=1953913023]
+position = Vector2(90.9552, 54)
+
+[node name="FireMarker" type="Marker2D" parent="SpriteGroup/TransformPoint" index="1" unique_id=13354147]
+position = Vector2(29.999998, -48)
+rotation = -0.5235988
+
+[node name="FireMarker2" type="Marker2D" parent="SpriteGroup/TransformPoint" index="2" unique_id=1299094420]
+position = Vector2(1, -58)
+rotation = -1.5707964
+
+[node name="FireMarker3" type="Marker2D" parent="SpriteGroup/TransformPoint" index="3" unique_id=949456782]
+position = Vector2(-33, -29)
+rotation = 3.1415927
+
+[node name="FireMarker4" type="Marker2D" parent="SpriteGroup/TransformPoint" index="4" unique_id=616445997]
+position = Vector2(9.536743e-07, 10.000002)
+rotation = 1.5707964
+
+[node name="FireMarker5" type="Marker2D" parent="SpriteGroup/TransformPoint" index="5" unique_id=213171395]
+position = Vector2(35, -6)
+rotation = 0.5235988
+
+[editable path="SpriteGroup/TransformPoint/CatGatlingPea"]

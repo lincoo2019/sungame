@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bm70jiwpho6x1"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cwprqi86mnpq3" path="res://Asset/Anime/Character/Zombie/Chapter9/JackGene/Scene/TowerDefenseZombieJackGene.cs" id="2"]
+[ext_resource type="Script" uid="uid://cg5hp7wratk2v" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventGeneExplode.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://df0nedfn4ayb0" path="res://Asset/Anime/Character/Zombie/Chapter9/JackGene/Scene/TowerDefenseZombieJackGeneStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dkdplexydpa2y" path="res://Asset/Anime/Character/Zombie/Chapter9/JackGene/Config/TowerDefenseZombieJackGene.tres" id="6"]
+[ext_resource type="Resource" uid="uid://d03jlndjifn10" path="res://Asset/Anime/Character/Zombie/Chapter9/JackGene/DamagePoint/Config/ZombieJackGeneDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://b3saplq2yxk8i" path="res://Asset/Anime/Character/Zombie/Chapter9/JackGene/DamagePoint/Config/ZombieJackGeneDamagePointHead.tres" id="8"]
+[ext_resource type="Resource" uid="uid://7d0t50ijdgpl" path="res://Asset/Anime/Character/Zombie/Chapter9/JackGene/Armor/Config/ZombieJackGeneArmorJackGenebox.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://b6tpfhxtn2mmw" path="res://Asset/Anime/Character/Zombie/Chapter9/JackGene/ZombieJackGene.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="11"]
+
+[sub_resource type="Resource" id="Resource_gene"]
+script = ExtResource("3")
+effectScene = null
+metadata/_custom_type_script = "uid://cg5hp7wq9tk2v"
+
+[node name="TowerDefenseZombieJackGene" unique_id=707227448 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+eventList = [SubResource("Resource_gene")]
+walkSpeedScale = 1.5
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieJackGene/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+waterHeight = 30.0
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieJackGene")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieJackGene/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"Head": ExtResource("8"),
+"JackGenebox": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieJackGene/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieJackGene/HeadSlot"),
+"JackGenebox": NodePath("SpriteGroup/TransformPoint/ZombieJackGene/JackboxSlot")
+}
+currentArmor = ["JackGenebox"]
+currentCustom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(12.6, 40)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(23, 44)
+
+[node name="ZombieJackGene" parent="SpriteGroup/TransformPoint" index="0" unique_id=2074973536 instance=ExtResource("10")]
+position = Vector2(-15, -50)
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieJackGene" index="0" unique_id=689780723]
+position = Vector2(-14.638727, -50.374306)
+rotation = -0.033056933
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieJackGene" index="1" unique_id=594168424]
+drawLayerId = -2
+position = Vector2(-21.966295, -52.13293)
+rotation = -0.070713185
+scale = Vector2(0.79969925, 0.79969925)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieJackGene" index="2" unique_id=745828890]
+position = Vector2(5.424223, -6.054206)
+rotation = -0.1940621
+scale = Vector2(0.7467872, 0.7467872)
+
+[node name="JackboxSlot" parent="SpriteGroup/TransformPoint/ZombieJackGene" index="3" unique_id=731500717]
+position = Vector2(-9.18466, -14.532743)
+rotation = -0.16574967
+scale = Vector2(0.670184, 0.670184)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=783003573 instance=ExtResource("11")]
+visible = false
+position = Vector2(-12, -58)
+offset = Vector2(-28, 18)
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = [true, true]
+mediaReplace = [null, null, null]
+mediaReplaceUse = [false, false, false]
+mediaReplaceAtlasPaths = ["", "", ""]
+
+[editable path="SpriteGroup/TransformPoint/ZombieJackGene"]

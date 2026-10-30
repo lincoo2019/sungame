@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://ky83ocmwsvci"]
+
+[ext_resource type="Script" uid="uid://bw326dgbnwj18" path="res://Core/CommandConsole/CommandConsole.cs" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0, 0, 0, 0.85)
+border_width_top = 2
+border_color = Color(0.4, 0.7, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input"]
+bg_color = Color(0.1, 0.1, 0.1, 0.9)
+border_width_bottom = 1
+border_color = Color(0.4, 0.7, 1, 0.6)
+
+[node name="CommandConsole" type="CanvasLayer" unique_id=1643053345]
+process_mode = 3
+layer = 200
+script = ExtResource("1_script")
+
+[node name="ConsolePanel" type="PanelContainer" parent="." unique_id=1318540134]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -320.0
+offset_right = -20.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="ConsolePanel" unique_id=2030831289]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HeaderBar" type="HBoxContainer" parent="ConsolePanel/VBox" unique_id=517575120]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="ConsolePanel/VBox/HeaderBar" unique_id=1090992870]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.4, 0.7, 1, 1)
+text = "═══ 指令控制台 ═══"
+horizontal_alignment = 1
+
+[node name="OutputLog" type="RichTextLabel" parent="ConsolePanel/VBox" unique_id=188340055]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+scroll_following = true
+
+[node name="HSeparator" type="HSeparator" parent="ConsolePanel/VBox" unique_id=1301970149]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_input")
+
+[node name="InputBar" type="HBoxContainer" parent="ConsolePanel/VBox" unique_id=1889714488]
+layout_mode = 2
+
+[node name="PromptLabel" type="Label" parent="ConsolePanel/VBox/InputBar" unique_id=2104033765]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.7, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = " > "
+
+[node name="InputLine" type="LineEdit" parent="ConsolePanel/VBox/InputBar" unique_id=863984197]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/caret_color = Color(0.4, 0.7, 1, 1)
+theme_override_font_sizes/font_size = 16
+placeholder_text = "输入指令... (Enter发送, Esc关闭, Tab补全)"
+caret_blink = true

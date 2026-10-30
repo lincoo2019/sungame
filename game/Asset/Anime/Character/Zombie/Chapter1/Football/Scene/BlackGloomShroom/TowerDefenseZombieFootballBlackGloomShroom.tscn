@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dhjljfscjp4jw"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://d1l555ggof3fs" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Scene/BlackGloomShroom/TowerDefenseZombieFootballBlackGloomShroomComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://csw6md7d8p33w" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Scene/BlackGloomShroom/TowerDefenseZombieFootballBlackGloomShroom.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cw43id6ynffo5" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Config/TowerDefenseZombieFootballBlackGloomShroom.tres" id="5"]
+[ext_resource type="Resource" uid="uid://b8w8htp4yuf7k" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/DamagePoint/Config/ZombieFootballDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://bdqvjthyoys55" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballGloomShroomArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://d0c6qmcgnjnb0" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/DamagePoint/Config/ZombieFootballDamagePointHead.tres" id="8"]
+[ext_resource type="Resource" uid="uid://dedieta5uv0ct" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Armor/Config/ZombieFootballGloomShroomArmorHelmet.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://co7x7udagux7a" path="res://Asset/Anime/Character/Zombie/Chapter1/Football/Sprite/BlackGloomShroom/ZombieFootballBlackGloomShroom.tscn" id="10"]
+
+[node name="TowerDefenseZombieFootballBlackGloomShroom" unique_id=598906549 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 2.0
+walkSpeedScale = 2.0
+swimAnimeClip = "Swim"
+dieWaterAnimeClip = "SwimDeath"
+garlicReplace = "Zombie_football_head.png"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Head": ExtResource("8"),
+"Helmet": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom/HelmentSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom/HelmentSlot")
+}
+currentArmor = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(9, 37)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieFootballBlackGloomShroom" parent="SpriteGroup/TransformPoint" index="0" unique_id=859133807 instance=ExtResource("10")]
+position = Vector2(-12, -33)
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom" index="0" unique_id=795001496]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom" index="1" unique_id=1859030246]
+drawLayerId = -2
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom" index="2" unique_id=1454029380]
+
+[node name="HelmentSlot" parent="SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom" index="3" unique_id=137893895]
+
+[editable path="SpriteGroup/TransformPoint/ZombieFootballBlackGloomShroom"]

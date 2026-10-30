@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://63db5j37npmh"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://bcap0xny2g35v" path="res://Asset/Anime/Character/Plant/Chapter10/PuffShroomElf/Scene/TowerDefensePlantPuffShroomElfComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://c23n40av8rflf" path="res://Asset/Anime/Character/Plant/Chapter10/PuffShroomElf/Scene/TowerDefensePlantPuffShroomElf.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cjqdojet3p647" path="res://Asset/Anime/Character/Plant/Chapter10/PuffShroomElf/Config/TowerDefensePlantPuffShroomElf.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://ctwpjtbuj6bga" path="res://Asset/Anime/Character/Plant/Chapter10/PuffShroomElf/PuffShroomElf.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantPuffShroomElf" node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 1
+projectileName = "PuffShroomElfPuff"
+sleepAnimeClip = "Sleep"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/PuffShroomElf")
+
+[node name="ShadowSprite" parent="." index="0"]
+position = Vector2(1, 20)
+scale = Vector2(0.5, 0.5)
+
+[node name="BackEffectNode" parent="." index="1"]
+visible = false
+
+[node name="SpriteGroup" parent="." index="2"]
+position = Vector2(0, 3)
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(0, 30)
+
+[node name="PuffShroomElf" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("6")]
+position = Vector2(0, -32)
+clip = "Idle"
+
+[node name="PuffShroomElfSlot" type="Node2D" parent="SpriteGroup/TransformPoint/PuffShroomElf" index="0"]
+script = ExtResource("7")
+followSlotId = 3
+drawLayerId = 3
+useScale = false
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/PuffShroomElf/PuffShroomElfSlot" index="0"]
+position = Vector2(4.5999985, 5.606098)

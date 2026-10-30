@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bkhbcqs4mr8ai"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cmcorvph2ok72" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Scene/TowerDefenseZombieAxeComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://c8haqr7dutwc0" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Scene/TowerDefenseZombieAxe.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c2sv3jm0ldudd" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Scene/TowerDefenseZombieAxeStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://crlxu7nn2kras" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Config/TowerDefenseZombieAxe.tres" id="6"]
+[ext_resource type="Resource" uid="uid://ccsadnxj1r2nw" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/DamagePoint/Config/ZombieAxeDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://dq1yfraxd288l" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorAxe.tres" id="8"]
+[ext_resource type="Resource" uid="uid://yvw45jwk4m42" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorBlackHelmet.tres" id="9"]
+[ext_resource type="Resource" uid="uid://u3oinlsw7w58" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorBucket.tres" id="10"]
+[ext_resource type="Resource" uid="uid://de4uav1ecgh01" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorCone.tres" id="11"]
+[ext_resource type="Resource" uid="uid://c5s7entg7tll" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/DamagePoint/Config/ZombieAxeDamagePointHead.tres" id="12"]
+[ext_resource type="Resource" uid="uid://c3vi037hqf3o1" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorHelmet.tres" id="13"]
+[ext_resource type="Resource" uid="uid://klkmmp4ljwgc" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/Armor/Config/ZombieAxeArmorSpecialHelmet.tres" id="14"]
+[ext_resource type="PackedScene" uid="uid://b0cbgf64rcjev" path="res://Asset/Anime/Character/Zombie/Challenge/Axe/ZombieAxe.tscn" id="15"]
+
+[node name="TowerDefenseZombieAxe" unique_id=1485644322 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+fireInterval = 3.0
+fireNum = 1
+projectileName = "Axe"
+useAttackDps = false
+swimAnimeClip = "Swim"
+attackAnimeClip = "Attack"
+attackWaterAnimeClip = "WaterAttack"
+dieWaterAnimeClip = "WaterDeath"
+waterHeight = 15.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieAxe")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"Axe": ExtResource("8"),
+"BlackHelmet": ExtResource("9"),
+"Bucket": ExtResource("10"),
+"Cone": ExtResource("11"),
+"Head": ExtResource("12"),
+"Helmet": ExtResource("13"),
+"SpecialHelmet": ExtResource("14")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieAxe/ArmSlot"),
+"Axe": NodePath("SpriteGroup/TransformPoint/ZombieAxe/AxeSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieAxe/HeadSlot")
+}
+currentArmor = ["Axe"]
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieAxe" parent="SpriteGroup/TransformPoint" index="0" unique_id=187105600 instance=ExtResource("15")]
+position = Vector2(-12, -33)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieAxe" index="0" unique_id=313735605]
+drawLayerId = -2
+position = Vector2(-21.957998, -48.76593)
+rotation = -0.02509827
+scale = Vector2(0.7405973, 0.7405973)
+Layer = 16
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieAxe" index="1" unique_id=449739607]
+position = Vector2(14.367545, 0.42752647)
+rotation = -0.2948981
+scale = Vector2(0.7358462, 0.7414997)
+skew = 0.030918717
+Layer = 20
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieAxe" index="2" unique_id=1629898313]
+visible = false
+Layer = 1
+
+[node name="AxeSlot" parent="SpriteGroup/TransformPoint/ZombieAxe" index="3" unique_id=1524035924]
+position = Vector2(-33.136383, 28.795734)
+rotation = 0.023195505
+scale = Vector2(0.79995686, 0.79995686)
+Layer = 5

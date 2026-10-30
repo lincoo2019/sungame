@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/XWInspectorPropertyEditorBase.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/GUI/Editor/Resource/XWInspectorPropertyEditorResource.cs" id="2_script"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/Resource/XWResourcePicker.tscn" id="3_picker"]
+
+[node name="XWInspectorPropertyEditorResource" node_paths=PackedStringArray("PropertyEditorPath") instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+PropertyEditorPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PickerContainer")
+
+[node name="PickerContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" index="2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="FoldButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/PickerContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "展开/折叠资源属性"
+flat = true
+
+[node name="ResourcePicker" parent="MarginContainer/VBoxContainer/HBoxContainer/PickerContainer" instance=ExtResource("3_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3

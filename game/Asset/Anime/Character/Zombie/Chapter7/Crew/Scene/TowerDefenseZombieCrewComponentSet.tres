@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://bpgqfb05n5cu4"]
+
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="3"]
+[ext_resource type="Resource" uid="uid://c1i5ib2qopguv" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefenseZombieComponentSet.tres" id="4"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="5"]
+
+[sub_resource type="RectangleShape2D" id="AttackCollisionGeometry_0"]
+size = Vector2(87, 33)
+
+[sub_resource type="Resource" id="AttackCollisionShape_0"]
+script = ExtResource("2")
+Geometry = SubResource("AttackCollisionGeometry_0")
+LocalTransform = Transform2D(1, 0, 0, 1, -17.5, -2)
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("3")
+checkShapeResources = [SubResource("AttackCollisionShape_0")]
+attackIntervalBase = 2.0
+attackInterval = 2.0
+checkGrid = false
+eatAudio = "ChompNife"
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.zombie.chapter7.crew.scene.towerdefensezombiecrew.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("5")
+ParentSet = ExtResource("4")
+Components = [SubResource("Attack0_Definition")]

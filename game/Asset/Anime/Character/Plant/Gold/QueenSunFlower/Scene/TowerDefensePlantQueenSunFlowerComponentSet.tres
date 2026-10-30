@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://bcm01ubia41aa"]
+
+[ext_resource type="Resource" path="res://Script/Component/TowerDefense/Character/ProduceComponent/Definitions/QueenSunFlowerProduceComponentDefinition.tres" id="1"]
+[ext_resource type="Resource" uid="uid://bvjgd1q22ya8s" path="res://Script/Component/TowerDefense/Character/ChangeProjectile/Definitions/FireOffset3Definition.tres" id="2"]
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="3"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="4"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="5"]
+[ext_resource type="Resource" uid="uid://bub0sey340hc7" path="res://Asset/Anime/Character/Plant/Gold/QueenSunFlower/Scene/TowerDefensePlantQueenSunFlowerFireComponentDefinition.tres" id="6"]
+[ext_resource type="Resource" uid="uid://btlwtux8xd8is" path="res://Asset/Anime/Character/Plant/Gold/QueenSunFlower/Scene/TowerDefensePlantQueenSunFlowerFogAreaComponentDefinition.tres" id="7"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="8"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="9"]
+
+[sub_resource type="RectangleShape2D" id="Attack0_RectangleShape2D_hikgt"]
+size = Vector2(73, 73)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_attack"]
+script = ExtResource("4")
+Geometry = SubResource("Attack0_RectangleShape2D_hikgt")
+LocalTransform = Transform2D(1, 0, 0, 1, -1.5, -0.5)
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("5")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_attack")]
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.gold.queensunflower.scene.towerdefenseplantqueensunflower.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("3")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("9")
+ParentSet = ExtResource("8")
+Components = [ExtResource("1"), ExtResource("2"), SubResource("Attack0_Definition"), ExtResource("6"), ExtResource("7")]

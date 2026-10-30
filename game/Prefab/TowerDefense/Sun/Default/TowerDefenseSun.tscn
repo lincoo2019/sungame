@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dk3bkihnh1i0l"]
+
+[ext_resource type="Script" uid="uid://bj28bdppo6apb" path="res://Prefab/TowerDefense/Sun/Default/TowerDefenseSun.cs" id="1_l2qho"]
+[ext_resource type="PackedScene" uid="uid://ojrnbatuty8x" path="res://Asset/Anime/Effect/Sun/Sun/Sun.tscn" id="2_cipkv"]
+[ext_resource type="PackedScene" uid="uid://bhh76tmil13cb" path="res://Script/Component/MoveComponent/MoveComponent.tscn" id="3_hxkni"]
+
+[node name="TowerDefenseSun" type="Node2D" unique_id=1374570053]
+physics_interpolation_mode = 1
+z_index = 1000
+script = ExtResource("1_l2qho")
+
+[node name="SunSprite" parent="." unique_id=1630903133 instance=ExtResource("2_cipkv")]
+unique_name_in_owner = true
+material = null
+trueFrameRate = 180.0
+
+[node name="MoveComponent" parent="SunSprite" unique_id=393137112 instance=ExtResource("3_hxkni")]
+unique_name_in_owner = true
+
+[node name="DieDownTimer" type="Timer" parent="." unique_id=1895783210]
+unique_name_in_owner = true
+wait_time = 15.0
+one_shot = true
+autostart = true

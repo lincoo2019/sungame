@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://dgcjunn5ih6e0"]
+
+[ext_resource type="Resource" uid="uid://dudy4jp044iy1" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseZombieGargantuarBaseStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_backup_gargantuar_dance"]
+script = ExtResource("2")
+StableId = "zombie.backup_gargantuar.dance"
+DisplayName = &"Dance"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_backup_gargantuar_to_dance"]
+script = ExtResource("3")
+StableId = "zombie.backup_gargantuar.to_dance"
+SourceStateId = "character.root"
+TargetStateId = "zombie.backup_gargantuar.dance"
+EventName = &"ToDance"
+DeclarationOrder = 8
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.zombie.backup_gargantuar"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_backup_gargantuar_dance")]
+Transitions = [SubResource("Transition_backup_gargantuar_to_dance")]

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://com84jod122g5"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://nt411no4y8kc" path="res://Asset/Anime/Character/Plant/Chapter0/Pumpkin/Scene/TowerDefensePlantPumpkin.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_64x33_At_0_0.tres" id="3"]
+[ext_resource type="Resource" uid="uid://dg4a4bap1kkts" path="res://Asset/Anime/Character/Plant/Chapter0/Pumpkin/Config/TowerDefensePlantPumpkin.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://cjnbqj3wah7l4" path="res://Asset/Anime/Character/Plant/Chapter0/Pumpkin/Pumpkin.tscn" id="5"]
+
+[node name="TowerDefensePlantPumpkin" unique_id=1899595520 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+showHealthOffset = Vector2(0, 16)
+z_index = -10
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/PumpkinFire")
+itemLayer = 5
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="SpriteGroup" parent="." index="2" unique_id=1006029617]
+
+[node name="TransformPoint" parent="SpriteGroup" index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PumpkinFire" parent="SpriteGroup/TransformPoint" index="0" unique_id=1496728279 instance=ExtResource("5")]
+position = Vector2(0, -30)
+clip = "Idle"
+layerVisible = [false, true, false]
+mediaReplaceAtlasPaths = ["", ""]
+mediaReplaceUse = [false, false]
+
+[node name="Back" parent="SpriteGroup/TransformPoint/PumpkinFire/Node2D" parent_id_path=PackedInt32Array(1496728279, 1631955423) index="0" unique_id=1115194778]
+clip = "Idle"
+layerVisible = [true, false, false]
+mediaReplaceAtlasPaths = ["", ""]
+mediaReplaceUse = [false, false]
+
+[editable path="SpriteGroup/TransformPoint/PumpkinFire"]

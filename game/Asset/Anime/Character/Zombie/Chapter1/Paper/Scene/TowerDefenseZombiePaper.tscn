@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://8ci5c6qlgv1w"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c5y3uel22ufe1" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Scene/TowerDefenseZombiePaper.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://lgtqcrtlm30s" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Scene/TowerDefenseZombiePaperStateMachine.tres" id="4"]
+[ext_resource type="Resource" uid="uid://3lmw15vhg42g" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Config/TowerDefenseZombiePaper.tres" id="5"]
+[ext_resource type="Resource" uid="uid://c2mqh3r8jnnma" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/DamagePoint/Config/ZombiePaperDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cf3lr2ru555q2" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Armor/Config/ZombiePaperArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://denwx2evnn8bk" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Armor/Config/ZombiePaperArmorBucket.tres" id="8"]
+[ext_resource type="Resource" uid="uid://bamb6imty1eih" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Armor/Config/ZombiePaperArmorCone.tres" id="9"]
+[ext_resource type="Resource" uid="uid://b2fo0h5w2lsk6" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/DamagePoint/Config/ZombiePaperDamagePointHead.tres" id="10"]
+[ext_resource type="Resource" uid="uid://dgy6npgxd3wcm" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Armor/Config/ZombiePaperArmorHelmet.tres" id="11"]
+[ext_resource type="Resource" uid="uid://c83m8nxr67g0c" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/Armor/Config/ZombiePaperArmorSpecialHelmet.tres" id="12"]
+[ext_resource type="PackedScene" uid="uid://drbscotikcmbv" path="res://Asset/Anime/Character/Zombie/Chapter1/Paper/ZombiePaper.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="14"]
+
+[node name="TowerDefenseZombiePaper" unique_id=734343335 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombiePaper/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+waterHeight = 20.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombiePaper")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Bucket": ExtResource("8"),
+"Cone": ExtResource("9"),
+"Head": ExtResource("10"),
+"Helmet": ExtResource("11"),
+"SpecialHelmet": ExtResource("12")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombiePaper/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombiePaper/HeadSlot")
+}
+currentArmor = ["Paper"]
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombiePaper" parent="SpriteGroup/TransformPoint" index="0" unique_id=552175161 instance=ExtResource("13")]
+position = Vector2(-16, -37)
+clip = "Idle"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "res://Asset/AtlasSource/Armor/Texture/Character/Armor/Paper/ZombiePaper1.png", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false]
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombiePaper" index="0" unique_id=1032916367]
+position = Vector2(-10.319496, -38.513157)
+rotation = -0.07512771
+clip = "Idle"
+layerVisible = [false, true, false]
+mediaReplaceAtlasPaths = ["", ""]
+mediaReplaceUse = [false, false]
+followParentSpriteLayerId = 12
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombiePaper" index="1" unique_id=1415550513]
+drawLayerId = -2
+position = Vector2(-14.015516, -40.408867)
+rotation = -0.27867758
+scale = Vector2(0.79857695, 0.79857695)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombiePaper" index="2" unique_id=1542697994]
+position = Vector2(9.27762, -0.8128052)
+rotation = -0.1722636
+scale = Vector2(0.6995205, 0.6995205)
+
+[node name="PaperSlot" parent="SpriteGroup/TransformPoint/ZombiePaper" index="3" unique_id=510406270]
+position = Vector2(-25.832891, 1.6327133)
+rotation = -0.02570264
+scale = Vector2(0.7015697, 0.7015697)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombiePaper" index="4" unique_id=981302551]
+position = Vector2(-40, -80)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=2036502769 instance=ExtResource("14")]
+visible = false
+position = Vector2(3, -36)
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = [true, true]
+mediaReplaceAtlasPaths = ["", "", ""]
+mediaReplaceUse = [false, false, false]
+
+[editable path="SpriteGroup/TransformPoint/ZombiePaper"]

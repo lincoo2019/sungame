@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://be34riwtnpipv"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://b5ys1a3tvvk2s" path="res://Asset/Anime/Character/Zombie/Chapter4/ZombieShark/Scene/TowerDefenseZombieSharkComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://i2tcy5sfpjdi" path="res://Asset/Anime/Character/Zombie/Chapter4/ZombieShark/Scene/TowerDefenseZombieShark.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://6t70okulm51r" path="res://Asset/Anime/Character/Zombie/Chapter4/ZombieShark/Scene/TowerDefenseZombieSharkStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://c1raof3lp8pp3" path="res://Asset/Anime/Character/Zombie/Chapter4/ZombieShark/Config/TowerDefenseZombieShark.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://c0mb4dvshoq5c" path="res://Asset/Anime/Character/Zombie/Chapter4/ZombieShark/ZombieShark.tscn" id="7"]
+
+[node name="TowerDefenseZombieShark" unique_id=921609159 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+walkSpeedScale = 1.5
+inSwimAnimeClipScale = 0.5
+inSwimAnimeClip = "JumpInWater"
+swimAnimeClip = "SwimRun"
+dieWaterAnimeClip = "SwimDeath"
+waterHeight = 47.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieShark")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieShark/HeadSlot")
+PreviewDamagePointPersontage = 1.0
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieShark" parent="SpriteGroup/TransformPoint" index="0" unique_id=351120585 instance=ExtResource("7")]
+position = Vector2(-12, -33)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieShark" index="0" unique_id=1453151653]
+drawLayerId = -2
+position = Vector2(-57.586258, -77.82281)
+rotation = -0.12130111
+scale = Vector2(0.7994744, 0.7994744)
+Layer = 25
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieShark" index="1" unique_id=1481934843]
+position = Vector2(-96, 18)
+Layer = 1
+
+[editable path="SpriteGroup/TransformPoint/ZombieShark"]

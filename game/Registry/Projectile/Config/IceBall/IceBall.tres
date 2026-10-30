@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://vvajtkade1ne"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_2jbma"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_b33pq"]
+[ext_resource type="Script" uid="uid://cw2vrb8rkj87m" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFrozen.cs" id="3_46v38"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_3fufo"]
+[ext_resource type="PackedScene" uid="uid://bgc317fuflyqj" path="res://Prefab/Particles/Explosion/IceBallExplosion/IceBallExplosion.tscn" id="5_4j3wi"]
+[ext_resource type="PackedScene" uid="uid://p30xslel80fv" path="res://Asset/Config/Projectile/Iceball/Sprite/Iceball/ProjectileIceBall.tscn" id="6_k0py1"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="7_tspdr"]
+
+[sub_resource type="Resource" id="Resource_wpmip"]
+script = ExtResource("3_46v38")
+time = 3.0
+metadata/_custom_type_script = "uid://cw2vrb8rkj87m"
+
+[sub_resource type="Resource" id="Resource_myh71"]
+script = ExtResource("4_3fufo")
+buffList = Array[ExtResource("2_b33pq")]([SubResource("Resource_wpmip")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("7_tspdr")
+name = "IceBall"
+projectileScene = ExtResource("6_k0py1")
+splatAudio = "ExplodeCherrybomb"
+hitEffect = ExtResource("5_4j3wi")
+hitCharacterEventList = Array[ExtResource("1_2jbma")]([SubResource("Resource_myh71")])
+blockHurt = 100.0
+rotateScale = 5.0
+hitBody = true
+rangeType = "Bomb"
+useRange = true
+rangeSize = Vector2(1.25, 1.25)
+hitPesontage = 1.0

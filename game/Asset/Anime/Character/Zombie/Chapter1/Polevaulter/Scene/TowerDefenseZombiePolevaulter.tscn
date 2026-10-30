@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dstextersxlyr"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://b6wvvej1p84pp" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Scene/TowerDefenseZombiePolevaulterComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://dspdbawv7ma3" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Scene/TowerDefenseZombiePolevaulter.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cy1vju36s4n1b" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Scene/TowerDefenseZombiePolevaulterStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dawtxqv6me74a" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Config/TowerDefenseZombiePolevaulter.tres" id="6"]
+[ext_resource type="Resource" uid="uid://bjbjruearyoqb" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/DamagePoint/Config/ZombiePolevaulterDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cfkg0xan7bx6p" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Armor/Config/ZombiePolevaulterArmorBlackHelmet.tres" id="8"]
+[ext_resource type="Resource" uid="uid://brwtai4qhefeg" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Armor/Config/ZombiePolevaulterArmorBucket.tres" id="9"]
+[ext_resource type="Resource" uid="uid://bldijc342sf01" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Armor/Config/ZombiePolevaulterArmorCone.tres" id="10"]
+[ext_resource type="Resource" uid="uid://2y1ybcqob0e" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/DamagePoint/Config/ZombiePolevaulterDamagePointHead.tres" id="11"]
+[ext_resource type="Resource" uid="uid://d3oopdudb7qik" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Armor/Config/ZombiePolevaulterArmorHelmet.tres" id="12"]
+[ext_resource type="Resource" uid="uid://cof14t5esjj1u" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/Armor/Config/ZombiePolevaulterArmorSpecialHelmet.tres" id="13"]
+[ext_resource type="PackedScene" uid="uid://0b2gtxc1y85q" path="res://Asset/Anime/Character/Zombie/Chapter1/Polevaulter/ZombiePolevaulter.tscn" id="14"]
+
+[node name="TowerDefenseZombiePolevaulter" unique_id=1896737604 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+swimAnimeClip = "SwimWalk"
+dieWaterAnimeClip = "SwimDeath"
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"BlackHelmet": ExtResource("8"),
+"Bucket": ExtResource("9"),
+"Cone": ExtResource("10"),
+"Head": ExtResource("11"),
+"Helmet": ExtResource("12"),
+"SpecialHelmet": ExtResource("13")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombiePolevaulter/HeadSlot")
+}
+currentArmor = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(12.6, 40)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(23, 44)
+
+[node name="ZombiePolevaulter" parent="SpriteGroup/TransformPoint" index="0" unique_id=651954961 instance=ExtResource("14")]
+position = Vector2(-23, -44)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombiePolevaulter" index="0" unique_id=3052127]
+drawLayerId = -2
+position = Vector2(-6.2388477, -52.397537)
+rotation = -0.006006027
+scale = Vector2(0.7999536, 0.7999536)
+Layer = 18
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombiePolevaulter" index="1" unique_id=1243341279]
+position = Vector2(8.485223, -4.1081934)
+rotation = -0.019566048
+scale = Vector2(0.79998785, 0.79998785)
+Layer = 24
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombiePolevaulter" index="2" unique_id=448628490]
+position = Vector2(-78, -18)
+Layer = 1
+
+[editable path="SpriteGroup/TransformPoint/ZombiePolevaulter"]

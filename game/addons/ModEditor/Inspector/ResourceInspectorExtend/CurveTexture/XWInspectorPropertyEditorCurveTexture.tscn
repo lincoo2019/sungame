@@ -1,0 +1,125 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/XWInspectorPropertyEditorBase.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/ResourceInspectorExtend/CurveTexture/XWInspectorPropertyEditorCurveTexture.cs" id="2_script"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/Resource/XWResourcePicker.tscn" id="3_picker"]
+
+[node name="XWInspectorPropertyEditorCurveTexture" node_paths=PackedStringArray("PropertyEditorPath") instance=ExtResource("1_base")]
+custom_minimum_size = Vector2(0, 238)
+script = ExtResource("2_script")
+PropertyEditorPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor")
+
+[node name="CurveTextureEditor" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 230)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="PreviewPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor"]
+custom_minimum_size = Vector2(0, 66)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurveTexturePreview" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/PreviewPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+texture_filter = 1
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SettingsGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="WidthLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/SettingsGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "宽度"
+vertical_alignment = 1
+
+[node name="WidthSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/SettingsGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(74, 26)
+layout_mode = 2
+min_value = 1.0
+max_value = 4096.0
+value = 256.0
+
+[node name="TextureModeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/SettingsGrid"]
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+text = "模式"
+vertical_alignment = 1
+
+[node name="TextureModeOption" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/SettingsGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SingleCurveControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurvePicker" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/SingleCurveControls" instance=ExtResource("3_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="XyzCurveControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="CurveXRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/XyzCurveControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="CurveXLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/XyzCurveControls/CurveXRow"]
+custom_minimum_size = Vector2(18, 28)
+layout_mode = 2
+text = "X"
+vertical_alignment = 1
+
+[node name="CurveXPicker" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/XyzCurveControls/CurveXRow" instance=ExtResource("3_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurveYRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/XyzCurveControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="CurveYLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/XyzCurveControls/CurveYRow"]
+custom_minimum_size = Vector2(18, 28)
+layout_mode = 2
+text = "Y"
+vertical_alignment = 1
+
+[node name="CurveYPicker" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/XyzCurveControls/CurveYRow" instance=ExtResource("3_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurveZRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/XyzCurveControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="CurveZLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/XyzCurveControls/CurveZRow"]
+custom_minimum_size = Vector2(18, 28)
+layout_mode = 2
+text = "Z"
+vertical_alignment = 1
+
+[node name="CurveZPicker" parent="MarginContainer/VBoxContainer/HBoxContainer/CurveTextureEditor/XyzCurveControls/CurveZRow" instance=ExtResource("3_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3

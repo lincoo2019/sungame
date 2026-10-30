@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://64l72hop5ev2"]
+
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="1"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="3"]
+
+[sub_resource type="Resource" id="State_explode_root"]
+script = ExtResource("1")
+StableId = "explode.root"
+DisplayName = &"Root"
+Kind = 1
+InitialChildId = "explode.idle"
+
+[sub_resource type="Resource" id="State_explode_idle"]
+script = ExtResource("1")
+StableId = "explode.idle"
+DisplayName = &"Idle"
+ParentId = "explode.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_explode_active"]
+script = ExtResource("1")
+StableId = "explode.explode"
+DisplayName = &"Explode"
+ParentId = "explode.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_to_idle"]
+script = ExtResource("2")
+StableId = "explode.to_idle"
+SourceStateId = "explode.root"
+TargetStateId = "explode.idle"
+EventName = &"ToIdle"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_explode"]
+script = ExtResource("2")
+StableId = "explode.to_explode"
+SourceStateId = "explode.root"
+TargetStateId = "explode.explode"
+EventName = &"ToExplode"
+DeclarationOrder = 1
+GuardDefinition = null
+
+[resource]
+script = ExtResource("3")
+DefinitionId = "builtin.component.explode"
+BaseDefinition = null
+RootStateId = "explode.root"
+States = [SubResource("State_explode_root"), SubResource("State_explode_idle"), SubResource("State_explode_active")]
+Transitions = [SubResource("Transition_to_idle"), SubResource("Transition_to_explode")]

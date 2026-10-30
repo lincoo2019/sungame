@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://di3l8jp6aetxy"]
+
+[ext_resource type="Resource" uid="uid://cktl6q1og62xd" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseZombieStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_discopaper_gasp"]
+script = ExtResource("2")
+StableId = "zombie.discopaper.gasp"
+DisplayName = &"Gasp"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_discopaper_point"]
+script = ExtResource("2")
+StableId = "zombie.discopaper.point"
+DisplayName = &"Point"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_discopaper_to_gasp"]
+script = ExtResource("3")
+StableId = "zombie.discopaper.to_gasp"
+SourceStateId = "character.root"
+TargetStateId = "zombie.discopaper.gasp"
+EventName = &"ToGasp"
+DeclarationOrder = 7
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_discopaper_to_point"]
+script = ExtResource("3")
+StableId = "zombie.discopaper.to_point"
+SourceStateId = "character.root"
+TargetStateId = "zombie.discopaper.point"
+EventName = &"ToPoint"
+DeclarationOrder = 8
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.zombie.discopaper"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_discopaper_gasp"), SubResource("State_discopaper_point")]
+Transitions = [SubResource("Transition_discopaper_to_gasp"), SubResource("Transition_discopaper_to_point")]

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c5iswdtotvshy"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://c1l6a03d7fk2u" path="res://Asset/Anime/Character/Plant/Chapter10/WildMine/Scene/TowerDefensePlantWildMineComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://7bhyqmgbkro2" path="res://Asset/Anime/Character/Plant/Chapter10/WildMine/Scene/TowerDefensePlantWildMine.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bgsklhaj3ibbi" path="res://Asset/Anime/Character/Plant/Chapter10/WildMine/Config/TowerDefensePlantWildMine.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://bria2jettr0fj" path="res://Asset/Anime/Character/Plant/Chapter10/WildMine/WildMine.tscn" id="6"]
+
+[node name="TowerDefensePlantWildMine" node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+readyTime = 15.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/WildMine")
+
+[node name="ShadowSprite" parent="." index="0"]
+visible = false
+
+[node name="SpriteGroup" parent="." index="2"]
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(0, 30)
+
+[node name="WildMine" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("6")]
+position = Vector2(0, -30)

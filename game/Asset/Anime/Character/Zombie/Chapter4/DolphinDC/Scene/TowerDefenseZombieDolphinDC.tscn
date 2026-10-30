@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://b6w8eus2s2fq"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://bw1243fxhbqqe" path="res://Asset/Anime/Character/Zombie/Chapter4/DolphinDC/Scene/TowerDefenseZombieDolphinDCComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://c0735hg51xtgm" path="res://Asset/Anime/Character/Zombie/Chapter4/DolphinDC/Scene/TowerDefenseZombieDolphinDC.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bvvvmdfhb1oij" path="res://Asset/Anime/Character/Zombie/Chapter4/DolphinDC/Scene/TowerDefenseZombieDolphinDCStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://bafl3u30txv2c" path="res://Asset/Anime/Character/Zombie/Chapter4/DolphinDC/Config/TowerDefenseZombieDolphinDC.tres" id="6"]
+[ext_resource type="Resource" uid="uid://063issa3q4tm" path="res://Asset/Anime/Character/Zombie/Chapter4/DolphinDC/DamagePoint/Config/ZombieDolphinDCDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://c8qxqcmdx6wj3" path="res://Asset/Anime/Character/Zombie/Chapter4/DolphinDC/DamagePoint/Config/ZombieDolphinDCDamagePointHead.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://yrst07pt6sah" path="res://Asset/Anime/Character/Zombie/Chapter4/DolphinDC/ZombieDolphinDC.tscn" id="9"]
+
+[node name="TowerDefenseZombieDolphinDC" unique_id=1792522526 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+walkSpeedScale = 1.5
+inSwimAnimeClipScale = 0.5
+useAttackDps = false
+walkAnimeClip = "DolphinWalk"
+inSwimAnimeClip = "JumpInWater"
+swimAnimeClip = "SwimWalk"
+attackAnimeClip = "DolphinAttack"
+attackWaterAnimeClip = "SwimEat"
+dieAnimeClip = "DolphinDeath"
+dieWaterAnimeClip = "SwimDeath"
+waterHeight = -10.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieDolphinDC")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieDolphinDC/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"Head": ExtResource("8")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieDolphinDC/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieDolphinDC/HeadSlot")
+}
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieDolphinDC" parent="SpriteGroup/TransformPoint" index="0" unique_id=300318078 instance=ExtResource("9")]
+position = Vector2(-12, -33)
+clip = "Idle"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinDC" index="0" unique_id=495288169]
+drawLayerId = -2
+position = Vector2(-28.100754, -41.101124)
+rotation = -0.04269674
+scale = Vector2(0.7997983, 0.7997983)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinDC" index="1" unique_id=1091629193]
+position = Vector2(20.414093, -10.41911)
+rotation = -0.036087006
+scale = Vector2(0.79970443, 0.79970443)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieDolphinDC" index="2" unique_id=205512757]
+position = Vector2(-64.16, 18)

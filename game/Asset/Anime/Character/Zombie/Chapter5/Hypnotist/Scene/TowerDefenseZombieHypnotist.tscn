@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://cv453qlm5cac1"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cxksuyc2xdwvx" path="res://Asset/Anime/Character/Zombie/Chapter5/Hypnotist/Scene/TowerDefenseZombieHypnotistComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://c30wph1kaabx" path="res://Asset/Anime/Character/Zombie/Chapter5/Hypnotist/Scene/TowerDefenseZombieHypnotist.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_56x38_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dvmn1efhk0cgn" path="res://Asset/Anime/Character/Zombie/Chapter5/Hypnotist/Scene/TowerDefenseZombieHypnotistStateMachine.tres" id="5"]
+[ext_resource type="Script" uid="uid://drqmuf5lddjue" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffSleep.cs" id="6"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="7"]
+[ext_resource type="Resource" uid="uid://ek0wrb78rceg" path="res://Asset/Anime/Character/Zombie/Chapter5/Hypnotist/Config/TowerDefenseZombieHypnotist.tres" id="8"]
+[ext_resource type="Shader" uid="uid://br5iva3fmqfl1" path="res://Asset/Anime/Character/Zombie/Chapter5/Bungi/BungiCord.gdshader" id="9"]
+[ext_resource type="Texture2D" uid="uid://cvtmjjavvcrbc" path="res://Asset/Anime/Character/Zombie/Chapter5/Bungi/BungeeCord.png" id="10"]
+[ext_resource type="PackedScene" uid="uid://dsq4y6nboo0kv" path="res://Asset/Anime/Character/Zombie/Chapter5/Hypnotist/ZombieHypnotist.tscn" id="11"]
+[ext_resource type="Texture2D" uid="uid://eqixfgca5lof" path="res://Asset/Anime/Character/Zombie/Chapter5/Hypnotist/HypnoTarget.png" id="12"]
+
+[sub_resource type="Resource" id="Resource_tqmuv"]
+script = ExtResource("6")
+time = 25.0
+metadata/_custom_type_script = "uid://drqmuf5lddjue"
+
+[sub_resource type="Resource" id="Resource_fkjgd"]
+script = ExtResource("7")
+buffList = [SubResource("Resource_tqmuv")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Resource_vqtda"]
+script = ExtResource("6")
+metadata/_custom_type_script = "uid://drqmuf5lddjue"
+
+[sub_resource type="Resource" id="Resource_mo4oh"]
+script = ExtResource("7")
+buffList = [SubResource("Resource_vqtda")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8d07x"]
+shader = ExtResource("9")
+shader_parameter/_length = 600.0
+
+[node name="TowerDefenseZombieHypnotist" unique_id=1189421615 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+singleEvent = [SubResource("Resource_fkjgd")]
+rangeEvent = [SubResource("Resource_mo4oh")]
+waterHeight = 25.0
+config = ExtResource("8")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieHypnotist")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieHypnotist/HeadSlot")
+forceLocalRenderDuringZMotion = true
+gravityUse = false
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+
+[node name="Cord" type="Sprite2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=507805243]
+texture_filter = 2
+texture_repeat = 2
+material = SubResource("ShaderMaterial_8d07x")
+position = Vector2(-1, -322)
+scale = Vector2(1, 9)
+texture = ExtResource("10")
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieHypnotist" parent="SpriteGroup/TransformPoint" index="0" unique_id=2000719119 instance=ExtResource("11")]
+position = Vector2(-12, -51)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieHypnotist" index="0" unique_id=163155969]
+drawLayerId = -2
+position = Vector2(-0.412426, -39.61841)
+Layer = 20
+
+[node name="BungeeTarget" type="Sprite2D" parent="FrontEffectNode" parent_id_path=PackedInt32Array(1161662400) index="0" unique_id=1513420334]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, 15)
+texture = ExtResource("12")

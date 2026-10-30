@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://b8m0d1t7x2kqp"]
+
+[ext_resource type="Script" uid="uid://bfwqkeb8gmp0" path="res://addons/ModEditor/ModEditorPanel.cs" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://b8m0d1t7dockc1" path="res://addons/ModEditor/Layout/XWDockContainer.tscn" id="2_dock"]
+[ext_resource type="PackedScene" uid="uid://b8m0d1t7title1" path="res://addons/ModEditor/GUI/XWEditorTitleBar.tscn" id="3_titlebar"]
+[ext_resource type="PackedScene" uid="uid://b8m0d1t7bottom1" path="res://addons/ModEditor/GUI/XWBottomPanel.tscn" id="4_bottom"]
+
+[node name="ModEditorPanel" type="PanelContainer" unique_id=376652499]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_main")
+
+[node name="LoadingOverlay" type="Control" parent="." unique_id=1368084976]
+unique_name_in_owner = true
+z_index = 1000
+layout_mode = 2
+
+[node name="LoadingBackground" type="ColorRect" parent="LoadingOverlay" unique_id=541957302]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.09, 0.11, 1)
+
+[node name="LoadingCenterContainer" type="CenterContainer" parent="LoadingOverlay" unique_id=561043011]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoadingCenter" type="VBoxContainer" parent="LoadingOverlay/LoadingCenterContainer" unique_id=848441249]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LoadingTitle" type="Label" parent="LoadingOverlay/LoadingCenterContainer/LoadingCenter" unique_id=1706263768]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "PVZ Mod 编辑器"
+horizontal_alignment = 1
+
+[node name="LoadingBar" type="ProgressBar" parent="LoadingOverlay/LoadingCenterContainer/LoadingCenter" unique_id=1225830225]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(480, 24)
+layout_mode = 2
+show_percentage = false
+
+[node name="LoadingLabel" type="Label" parent="LoadingOverlay/LoadingCenterContainer/LoadingCenter" unique_id=777999946]
+unique_name_in_owner = true
+layout_mode = 2
+text = "正在初始化..."
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1515827957]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TitleBar" parent="VBoxContainer" unique_id=1590785546 instance=ExtResource("3_titlebar")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer" unique_id=1274061325]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(280, -280)
+split_offset = 280
+
+[node name="LeftPanel" type="HSplitContainer" parent="VBoxContainer/HSplitContainer" unique_id=959445223]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="LeftCol" type="VSplitContainer" parent="VBoxContainer/HSplitContainer/LeftPanel" unique_id=1830850400]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(200)
+split_offset = 200
+
+[node name="LeftTopDock" parent="VBoxContainer/HSplitContainer/LeftPanel/LeftCol" unique_id=29470801 instance=ExtResource("2_dock")]
+unique_name_in_owner = true
+
+[node name="LeftBottomDock" parent="VBoxContainer/HSplitContainer/LeftPanel/LeftCol" unique_id=240868676 instance=ExtResource("2_dock")]
+unique_name_in_owner = true
+
+[node name="LeftColRight" type="VSplitContainer" parent="VBoxContainer/HSplitContainer/LeftPanel" unique_id=20438618]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(200)
+split_offset = 200
+
+[node name="LeftTopRightDock" parent="VBoxContainer/HSplitContainer/LeftPanel/LeftColRight" unique_id=735455949 instance=ExtResource("2_dock")]
+unique_name_in_owner = true
+visible = false
+
+[node name="LeftBottomRightDock" parent="VBoxContainer/HSplitContainer/LeftPanel/LeftColRight" unique_id=1894301150 instance=ExtResource("2_dock")]
+unique_name_in_owner = true
+visible = false
+
+[node name="CenterPanel" type="VSplitContainer" parent="VBoxContainer/HSplitContainer" unique_id=425274436]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterDock" parent="VBoxContainer/HSplitContainer/CenterPanel" unique_id=868168133 instance=ExtResource("2_dock")]
+unique_name_in_owner = true
+tabs_visible = false
+
+[node name="BottomPanel" parent="VBoxContainer/HSplitContainer/CenterPanel" unique_id=2072591262 instance=ExtResource("4_bottom")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RightPanel" type="TabContainer" parent="VBoxContainer/HSplitContainer" unique_id=1189431375]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+tab_alignment = 1
+
+[node name="RightCol" type="VSplitContainer" parent="VBoxContainer/HSplitContainer/RightPanel" unique_id=1928370636]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(200)
+split_offset = 200
+
+[node name="RightTopDock" parent="VBoxContainer/HSplitContainer/RightPanel/RightCol" unique_id=2084285713 instance=ExtResource("2_dock")]
+unique_name_in_owner = true
+
+[node name="RightBottomDock" parent="VBoxContainer/HSplitContainer/RightPanel/RightCol" unique_id=1702746456 instance=ExtResource("2_dock")]
+unique_name_in_owner = true
+visible = false
+
+[node name="RightColRight" type="VSplitContainer" parent="VBoxContainer/HSplitContainer/RightPanel" unique_id=95848905]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(200)
+split_offset = 200
+
+[node name="RightTopRightDock" parent="VBoxContainer/HSplitContainer/RightPanel/RightColRight" unique_id=1094064651 instance=ExtResource("2_dock")]
+unique_name_in_owner = true
+visible = false
+
+[node name="RightBottomRightDock" parent="VBoxContainer/HSplitContainer/RightPanel/RightColRight" unique_id=2006843534 instance=ExtResource("2_dock")]
+unique_name_in_owner = true
+visible = false

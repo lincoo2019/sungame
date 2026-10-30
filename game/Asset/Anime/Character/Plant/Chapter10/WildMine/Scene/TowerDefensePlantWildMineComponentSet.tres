@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://c1l6a03d7fk2u"]
+
+[ext_resource type="Resource" uid="uid://dtd6veng1dssb" path="res://Asset/Anime/Character/Plant/Chapter10/WildMine/Scene/TowerDefensePlantWildMinePotatoComponentDefinition.tres" id="1"]
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="2"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="3"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="4"]
+[ext_resource type="Resource" uid="uid://dhr4ahpuy2ag6" path="res://Asset/Anime/Character/Plant/Chapter10/WildMine/Scene/TowerDefensePlantWildMineExplodeDefinition.tres" id="5"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="6"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwyob"]
+size = Vector2(70, 49.5)
+
+[sub_resource type="Resource" id="Resource_eotpn"]
+script = ExtResource("3")
+Geometry = SubResource("RectangleShape2D_qwyob")
+LocalTransform = Transform2D(1, 0, 0, 1, -1, 0.75)
+
+[sub_resource type="Resource" id="Resource_h8jfv"]
+script = ExtResource("4")
+attackType = "Default"
+checkShapeResources = [SubResource("Resource_eotpn")]
+checkLine = true
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.chapter10.wildmine.scene.towerdefenseplantwildmine.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("2")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("7")
+ParentSet = ExtResource("6")
+Components = [ExtResource("1"), SubResource("Resource_h8jfv"), ExtResource("5")]

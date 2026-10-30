@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://csuikuln8gp0x"]
+
+[ext_resource type="Resource" uid="uid://cktl6q1og62xd" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseZombieStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_yeti_digger_dig"]
+script = ExtResource("2")
+StableId = "zombie.yeti_digger.dig"
+DisplayName = &"Dig"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_yeti_digger_drill"]
+script = ExtResource("2")
+StableId = "zombie.yeti_digger.drill"
+DisplayName = &"Drill"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_yeti_digger_land"]
+script = ExtResource("2")
+StableId = "zombie.yeti_digger.land"
+DisplayName = &"Land"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_yeti_digger_to_dig"]
+script = ExtResource("3")
+StableId = "zombie.yeti_digger.to_dig"
+SourceStateId = "character.root"
+TargetStateId = "zombie.yeti_digger.dig"
+EventName = &"ToDig"
+DeclarationOrder = 5
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_yeti_digger_to_drill"]
+script = ExtResource("3")
+StableId = "zombie.yeti_digger.to_drill"
+SourceStateId = "character.root"
+TargetStateId = "zombie.yeti_digger.drill"
+EventName = &"ToDrill"
+DeclarationOrder = 6
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_yeti_digger_to_land"]
+script = ExtResource("3")
+StableId = "zombie.yeti_digger.to_land"
+SourceStateId = "character.root"
+TargetStateId = "zombie.yeti_digger.land"
+EventName = &"ToLand"
+DeclarationOrder = 7
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_inherited_zombie_to_garlic"]
+script = ExtResource("3")
+StableId = "zombie.to_garlic"
+SourceStateId = "character.root"
+TargetStateId = "zombie.garlic"
+EventName = &"ToGarlic"
+DeclarationOrder = 8
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_inherited_zombie_to_die"]
+script = ExtResource("3")
+StableId = "zombie.to_die"
+SourceStateId = "character.root"
+TargetStateId = "zombie.die"
+EventName = &"ToDie"
+DeclarationOrder = 9
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.zombie.yeti_digger"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_yeti_digger_dig"), SubResource("State_yeti_digger_drill"), SubResource("State_yeti_digger_land")]
+Transitions = [SubResource("Transition_yeti_digger_to_dig"), SubResource("Transition_yeti_digger_to_drill"), SubResource("Transition_yeti_digger_to_land"), SubResource("Transition_inherited_zombie_to_garlic"), SubResource("Transition_inherited_zombie_to_die")]

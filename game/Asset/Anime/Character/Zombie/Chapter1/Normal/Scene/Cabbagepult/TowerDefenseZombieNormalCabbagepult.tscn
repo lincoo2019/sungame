@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://bpwyl2tbihcid"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Scene/Cabbagepult/TowerDefenseZombieNormalCabbagepultComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://b60kswp0arh48" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Scene/Cabbagepult/TowerDefenseZombieNormalCabbagepult.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b6h4xg0oas63b" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Config/TowerDefenseZombieNormalCabbagepult.tres" id="5"]
+[ext_resource type="Resource" uid="uid://chvyxpm81irbp" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://clvqblkq2jo2l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://d4b68a6hw3c2d" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBucket.tres" id="8"]
+[ext_resource type="Resource" uid="uid://cfim36uopws7u" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorCone.tres" id="9"]
+[ext_resource type="Resource" uid="uid://c7nx2fl3rq01m" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalPlantDamagePointHead.tres" id="10"]
+[ext_resource type="Resource" uid="uid://byth0yfgejk1l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorHelmet.tres" id="11"]
+[ext_resource type="Resource" uid="uid://dmgd4ygng30xn" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorScreendoor.tres" id="12"]
+[ext_resource type="Resource" uid="uid://cryuyu1d8jqbt" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorSpecialHelmet.tres" id="13"]
+[ext_resource type="PackedScene" uid="uid://fn8sq5aa1ico" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Sprite/Cabbagepult/ZombieNormalCabbagepult.tscn" id="14"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="15"]
+
+[node name="TowerDefenseZombieNormalCabbagepult" unique_id=712894744 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 3.0
+fireNum = 1
+projectileName = "Cabbage"
+walkAnimeClip = "Walk1&Walk2"
+swimAnimeClip = "Swim"
+dieAnimeClip = "Death1&Death2"
+dieWaterAnimeClip = "Waterdeath"
+waterHeight = 25.0
+idleAnimeClip = "Idle1&Idle2"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieNormalCabbagepult")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieNormalCabbagepult/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Bucket": ExtResource("8"),
+"Cone": ExtResource("9"),
+"Head": ExtResource("10"),
+"Helmet": ExtResource("11"),
+"Screendoor": ExtResource("12"),
+"SpecialHelmet": ExtResource("13")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieNormalCabbagepult/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalCabbagepult/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieNormalCabbagepult/BucketSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieNormalCabbagepult/ConeSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieNormalCabbagepult/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalCabbagepult/HeadSlot"),
+"Screendoor": NodePath("SpriteGroup/TransformPoint/ZombieNormalCabbagepult/ScreendoorSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalCabbagepult/HeadSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieNormalCabbagepult" parent="SpriteGroup/TransformPoint" index="0" unique_id=2005208045 instance=ExtResource("14")]
+position = Vector2(-12, -33)
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieNormalCabbagepult" index="0" unique_id=1447859647]
+
+[node name="ProjectileSlot" type="Node2D" parent="SpriteGroup/TransformPoint/ZombieNormalCabbagepult/Head" index="0" unique_id=1390652351]
+script = ExtResource("15")
+followSlotId = 4
+Layer = 4
+drawLayerId = 4
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieNormalCabbagepult/Head/ProjectileSlot" index="0" unique_id=103763636]
+position = Vector2(15.035131, 10.902994)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCabbagepult" index="1" unique_id=743571121]
+drawLayerId = -2
+position = Vector2(-14.907953, -44.815628)
+rotation = -0.059603833
+scale = Vector2(0.7998331, 0.7998331)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCabbagepult" index="2" unique_id=614180353]
+position = Vector2(4.180768, 1.9683399)
+rotation = -0.052746445
+scale = Vector2(0.7997771, 0.7997771)
+
+[node name="ConeSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCabbagepult" index="3" unique_id=802627952]
+position = Vector2(-8.544697, -70.50258)
+rotation = 0.012843489
+scale = Vector2(0.7992358, 0.7992358)
+
+[node name="BucketSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCabbagepult" index="4" unique_id=1107578253]
+position = Vector2(-13.674297, -59.871067)
+rotation = -0.056750786
+scale = Vector2(0.7998346, 0.7998346)
+
+[node name="ScreendoorSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCabbagepult" index="5" unique_id=1067547515]
+position = Vector2(-19.319647, 0.60549545)
+rotation = -0.021141551
+scale = Vector2(0.79992944, 0.79992944)
+
+[editable path="SpriteGroup/TransformPoint/ZombieNormalCabbagepult"]

@@ -1,0 +1,326 @@
+[gd_scene format=3 uid="uid://iw48s57cgwru"]
+
+[ext_resource type="Script" uid="uid://i03j118neejx" path="res://Prefab/GUI/LevelEditor/SeedbankEditor/LevelEditorSeedbankEditor.cs" id="1_sif5n"]
+[ext_resource type="PackedScene" uid="uid://r8uwdna1rkj0" path="res://Prefab/GUI/LevelEditor/SeedbankEditor/SeedBank/LevelEditorSeedbank.tscn" id="2_ahjff"]
+
+[node name="LevelEditorSeedbankEditor" type="Control" unique_id=2101377360]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_sif5n")
+
+[node name="LevelEditorSeedbank" parent="." unique_id=2144478785 instance=ExtResource("2_ahjff")]
+layout_mode = 0
+
+[node name="CommandContainer" type="MarginContainer" parent="." unique_id=2138385984]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 86.0
+offset_right = 274.0
+offset_bottom = 518.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CommandContainer" unique_id=598840081]
+layout_mode = 2
+scroll_deadzone = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer" unique_id=1917311087]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="TextContainer" type="VBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer" unique_id=2146585931]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlantColumnContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=760965109]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/PlantColumnContainer" unique_id=526347925]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "柱子模式"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlantColumnCheckBox" type="CheckBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/PlantColumnContainer" unique_id=25670898]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="MethodContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=657832935]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/MethodContainer" unique_id=308178375]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "卡牌库模式"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MethodOptionButton" type="OptionButton" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/MethodContainer" unique_id=1096749960]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 16
+selected = 0
+item_count = 5
+popup/item_0/text = "无"
+popup/item_0/id = 0
+popup/item_1/text = "选卡模式"
+popup/item_1/id = 1
+popup/item_2/text = "预选卡模式"
+popup/item_2/id = 2
+popup/item_3/text = "传送带模式"
+popup/item_3/id = 3
+popup/item_4/text = "种子雨模式"
+popup/item_4/id = 4
+
+[node name="PacketColdDownUseContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=1410407295]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/PacketColdDownUseContainer" unique_id=1140678382]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "启用卡牌冷却"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PacketColdDownUseCheckBox" type="CheckBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/PacketColdDownUseContainer" unique_id=183038508]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="PacketColdDownStartContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=1397164040]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/PacketColdDownStartContainer" unique_id=688044586]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "卡牌开局进入冷却"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PacketColdDownStartUseCheckBox" type="CheckBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/PacketColdDownStartContainer" unique_id=1277166320]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="ConveyorContainer" type="VBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=1421711639]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ConveyorIntervalContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/ConveyorContainer" unique_id=1645116334]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/ConveyorContainer/ConveyorIntervalContainer" unique_id=1631738653]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "传送带间隔"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConveyorIntervalSpinBox" type="SpinBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/ConveyorContainer/ConveyorIntervalContainer" unique_id=1465511081]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 100000.0
+value = 5.0
+suffix = "s"
+
+[node name="ConveyorTypeContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/ConveyorContainer" unique_id=857595106]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/ConveyorContainer/ConveyorTypeContainer" unique_id=290352389]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "传送带类型"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ConveyorTypeOptionButton" type="OptionButton" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/ConveyorContainer/ConveyorTypeContainer" unique_id=944452433]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 16
+selected = 0
+item_count = 2
+popup/item_0/text = "默认"
+popup/item_0/id = 0
+popup/item_1/text = "消耗阳光"
+popup/item_1/id = 1
+
+[node name="RainModeContainer" type="VBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=1531053585]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RainModeIntervalContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/RainModeContainer" unique_id=1016437655]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/RainModeContainer/RainModeIntervalContainer" unique_id=776676195]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "种子下落间隔"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RainModeIntervalSpinBox" type="SpinBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/RainModeContainer/RainModeIntervalContainer" unique_id=1948828601]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 100000.0
+value = 30.0
+suffix = "s"
+
+[node name="RainModeAliveTimeContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/RainModeContainer" unique_id=608214877]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/RainModeContainer/RainModeAliveTimeContainer" unique_id=928212216]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "种子存在时间"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RainModeAliveTimeSpinBox" type="SpinBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/RainModeContainer/RainModeAliveTimeContainer" unique_id=1849891000]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 100000.0
+value = 30.0
+suffix = "s"
+
+[node name="RainModeTypeContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/RainModeContainer" unique_id=1858932322]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/RainModeContainer/RainModeTypeContainer" unique_id=1887826364]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "种子雨类型"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RainModeTypeOptionButton" type="OptionButton" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/RainModeContainer/RainModeTypeContainer" unique_id=1166179475]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 16
+selected = 0
+item_count = 2
+popup/item_0/text = "默认"
+popup/item_0/id = 0
+popup/item_1/text = "消耗阳光"
+popup/item_1/id = 1
+
+[node name="SunContainer" type="VBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer" unique_id=153515889]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SunNumContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/SunContainer" unique_id=1765767921]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/SunContainer/SunNumContainer" unique_id=1816718659]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "初始阳光"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SunSpinBox" type="SpinBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/SunContainer/SunNumContainer" unique_id=1478864269]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 100000.0
+step = 25.0
+value = 300.0
+
+[node name="SunUseContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/SunContainer" unique_id=703871859]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/SunContainer/SunUseContainer" unique_id=1437166263]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "启用阳光掉落"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SunUseCheckBox" type="CheckBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/SunContainer/SunUseContainer" unique_id=519431916]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="SunManagerContainer" type="VBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/SunContainer" unique_id=1165697607]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SunSpawnIntervalContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/SunContainer/SunManagerContainer" unique_id=1101591193]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/SunContainer/SunManagerContainer/SunSpawnIntervalContainer" unique_id=1540190336]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "阳光掉落间隔"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SunSpawnIntervalSpinBox" type="SpinBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/SunContainer/SunManagerContainer/SunSpawnIntervalContainer" unique_id=1051495051]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 100000.0
+step = 0.5
+value = 12.0
+suffix = "s"
+
+[node name="SunSpawnNumContainer" type="HBoxContainer" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/SunContainer/SunManagerContainer" unique_id=1288839692]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/SunContainer/SunManagerContainer/SunSpawnNumContainer" unique_id=1411127027]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "每次掉落数量"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SunSpawnNumSpinBox" type="SpinBox" parent="CommandContainer/ScrollContainer/HBoxContainer/TextContainer/SunContainer/SunManagerContainer/SunSpawnNumContainer" unique_id=336009362]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1000.0
+step = 25.0
+value = 50.0

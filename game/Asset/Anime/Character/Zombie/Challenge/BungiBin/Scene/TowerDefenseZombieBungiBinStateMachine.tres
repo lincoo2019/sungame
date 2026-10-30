@@ -1,0 +1,111 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://46ixu2nnb00l"]
+
+[ext_resource type="Resource" uid="uid://cktl6q1og62xd" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseZombieStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_bungi_bin_drop"]
+script = ExtResource("2")
+StableId = "zombie.bungi_bin.drop"
+DisplayName = &"Drop"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_bungi_bin_grab"]
+script = ExtResource("2")
+StableId = "zombie.bungi_bin.grab"
+DisplayName = &"Grab"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_bungi_bin_rise"]
+script = ExtResource("2")
+StableId = "zombie.bungi_bin.rise"
+DisplayName = &"Rise"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_bungi_bin_down"]
+script = ExtResource("2")
+StableId = "zombie.bungi_bin.down"
+DisplayName = &"Down"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_bungi_bin_down_idle"]
+script = ExtResource("2")
+StableId = "zombie.bungi_bin.down_idle"
+DisplayName = &"DownIdle"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_bungi_bin_to_drop"]
+script = ExtResource("3")
+StableId = "zombie.bungi_bin.to_drop"
+SourceStateId = "character.root"
+TargetStateId = "zombie.bungi_bin.drop"
+EventName = &"ToDrop"
+DeclarationOrder = 5
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_bungi_bin_to_grab"]
+script = ExtResource("3")
+StableId = "zombie.bungi_bin.to_grab"
+SourceStateId = "character.root"
+TargetStateId = "zombie.bungi_bin.grab"
+EventName = &"ToGrab"
+DeclarationOrder = 6
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_bungi_bin_to_rise"]
+script = ExtResource("3")
+StableId = "zombie.bungi_bin.to_rise"
+SourceStateId = "character.root"
+TargetStateId = "zombie.bungi_bin.rise"
+EventName = &"ToRise"
+DeclarationOrder = 7
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_bungi_bin_to_down"]
+script = ExtResource("3")
+StableId = "zombie.bungi_bin.to_down"
+SourceStateId = "character.root"
+TargetStateId = "zombie.bungi_bin.down"
+EventName = &"ToDown"
+DeclarationOrder = 8
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_bungi_bin_to_down_idle"]
+script = ExtResource("3")
+StableId = "zombie.bungi_bin.to_down_idle"
+SourceStateId = "character.root"
+TargetStateId = "zombie.bungi_bin.down_idle"
+EventName = &"ToDownIdle"
+DeclarationOrder = 9
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_inherited_zombie_to_garlic"]
+script = ExtResource("3")
+StableId = "zombie.to_garlic"
+SourceStateId = "character.root"
+TargetStateId = "zombie.garlic"
+EventName = &"ToGarlic"
+DeclarationOrder = 10
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_inherited_zombie_to_die"]
+script = ExtResource("3")
+StableId = "zombie.to_die"
+SourceStateId = "character.root"
+TargetStateId = "zombie.die"
+EventName = &"ToDie"
+DeclarationOrder = 11
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.zombie.bungi_bin"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_bungi_bin_drop"), SubResource("State_bungi_bin_grab"), SubResource("State_bungi_bin_rise"), SubResource("State_bungi_bin_down"), SubResource("State_bungi_bin_down_idle")]
+Transitions = [SubResource("Transition_bungi_bin_to_drop"), SubResource("Transition_bungi_bin_to_grab"), SubResource("Transition_bungi_bin_to_rise"), SubResource("Transition_bungi_bin_to_down"), SubResource("Transition_bungi_bin_to_down_idle"), SubResource("Transition_inherited_zombie_to_garlic"), SubResource("Transition_inherited_zombie_to_die")]

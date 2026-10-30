@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c2wv4vkdsftq6"]
+
+[ext_resource type="PackedScene" uid="uid://jm05awl7yeg" path="res://Prefab/TowerDefense/Character/TowerDefenseGravestone.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dwldiyao63abw" path="res://Asset/Anime/Character/GraveStone/RuneStonesD/Scene/TowerDefenseRuneStonesD.cs" id="2"]
+[ext_resource type="Script" uid="uid://bt7fis5jparcx" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.cs" id="3"]
+[ext_resource type="Resource" uid="uid://t1fup7577vet" path="res://Asset/Anime/Character/GraveStone/RuneStonesD/Config/TowerDefenseRuneStonesD.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://c1jocs3s84m21" path="res://Asset/Texture/Character/Effect/Shadow.png" id="5"]
+[ext_resource type="PackedScene" uid="uid://crdw4lnfbsgdt" path="res://Asset/Anime/Character/GraveStone/RuneStonesD/RuneStonesD.tscn" id="6"]
+
+[sub_resource type="Resource" id="Resource_vev3g"]
+script = ExtResource("3")
+metadata/_custom_type_script = "uid://bt7fis5jparcx"
+
+[node name="TowerDefenseRuneStonesD" unique_id=993489319 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+eventList = [SubResource("Resource_vev3g")]
+rise = false
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/RuneStonesD")
+PreviewDamagePointPersontage = 1.0
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 20)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5")
+
+[node name="RuneStonesD" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=1313846696 instance=ExtResource("6")]
+position = Vector2(0, -18)

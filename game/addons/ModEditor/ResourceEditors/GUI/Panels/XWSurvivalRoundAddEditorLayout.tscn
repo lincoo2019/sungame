@@ -1,0 +1,216 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleHeader"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.075, 0.13, 0.085, 0.98)
+border_width_left = 3
+border_color = Color(0.44, 0.86, 0.34, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleStage"]
+bg_color = Color(0.025, 0.045, 0.03, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.58, 0.26, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleList"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.055, 0.07, 0.06, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.34, 0.23, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="SurvivalRoundAddEditor" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleHeader")
+
+[node name="Layout" type="HBoxContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Header/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.72, 1, 0.62, 1)
+theme_override_font_sizes/font_size = 20
+text = "生存模式 · 轮次新增僵尸"
+vertical_alignment = 1
+
+[node name="RoundLabel" type="Label" parent="Header/Layout"]
+layout_mode = 2
+text = "生效轮次"
+vertical_alignment = 1
+
+[node name="RoundSpinBox" type="SpinBox" parent="Header/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+min_value = 0.0
+max_value = 9999.0
+step = 1.0
+prefix = "第 "
+suffix = " 轮"
+
+[node name="Stage" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleStage")
+
+[node name="Content" type="Control" parent="Stage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="Stage/Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+mouse_filter = 2
+
+[node name="Viewport" type="SubViewport" parent="Stage/Content/ViewportContainer"]
+transparent_bg = true
+disable_3d = true
+size = Vector2i(960, 320)
+render_target_update_mode = 4
+gui_disable_input = true
+
+[node name="Background" type="TextureRect" parent="Stage/Content/ViewportContainer/Viewport"]
+offset_right = 960.0
+offset_bottom = 320.0
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ZombieRoot" type="Node2D" parent="Stage/Content/ViewportContainer/Viewport"]
+unique_name_in_owner = true
+
+[node name="StageTitle" type="Label" parent="Stage/Content"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.5, 1)
+theme_override_font_sizes/font_size = 24
+text = "第 0 轮加入阵容"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreviewStatus" type="Label" parent="Stage/Content"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9, 0.96, 0.88, 1)
+text = "尚未配置新增僵尸"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ListPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleList")
+
+[node name="Layout" type="VBoxContainer" parent="ListPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="ListHeader" type="HBoxContainer" parent="ListPanel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="ListPanel/Layout/ListHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.66, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 17
+text = "本轮加入僵尸（按顺序预览）"
+vertical_alignment = 1
+
+[node name="AddZombieButton" type="Button" parent="ListPanel/Layout/ListHeader"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 36)
+layout_mode = 2
+text = "从僵尸图鉴添加"
+
+[node name="ZombieList" type="ItemList" parent="ListPanel/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+select_mode = 0
+allow_reselect = true
+
+[node name="Actions" type="HBoxContainer" parent="ListPanel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="RemoveZombieButton" type="Button" parent="ListPanel/Layout/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "移除"
+
+[node name="MoveZombieUpButton" type="Button" parent="ListPanel/Layout/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "上移"
+
+[node name="MoveZombieDownButton" type="Button" parent="ListPanel/Layout/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "下移"
+
+[node name="SafetyHint" type="Label" parent="ListPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.38, 1)
+text = "草坪中显示该轮新增阵容；只实例化编辑器预览角色，不执行出怪、攻击、随机或生存结算逻辑。"
+autowrap_mode = 2

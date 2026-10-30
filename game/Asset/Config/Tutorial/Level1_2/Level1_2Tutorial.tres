@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="TutorialConfig" load_steps=13 format=3 uid="uid://dt4k6wbnagc45"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Tutorial/Level1_2/Level1_2Tutorial.json" id="1_76xf4"]
+[ext_resource type="Script" uid="uid://ciasl1r6mxl1w" path="res://Core/TutorialManager/Resource/TutorialConfig.cs" id="2_ax5ak"]
+[ext_resource type="Script" uid="uid://do4exfdrtmgkl" path="res://Core/TutorialManager/Resource/TutorialStep/TutorialStepConfig.cs" id="3_wfv2t"]
+[ext_resource type="Script" uid="uid://fn1fkec8nrfp" path="res://Core/BroadCastManager/Resource/BroadCastConfig.cs" id="4_7rrlu"]
+[ext_resource type="Script" uid="uid://be2wh4w4lt5ej" path="res://Core/TutorialManager/Resource/TutorialCondition/TutorialConditionConfig.cs" id="5_dkmxr"]
+[ext_resource type="Script" uid="uid://dw7rfoxp8o3wl" path="res://Resource/Tutorial/Condition/TutorialConditionCheckCharaterNum.cs" id="6_rfna4"]
+
+[sub_resource type="Resource" id="Resource_h35uj"]
+script = ExtResource("4_7rrlu")
+broadCastString = "LEVEL1_2_TUTORIAL_1"
+broadCastTime = -1.0
+
+[sub_resource type="Resource" id="Resource_ax5ak"]
+script = ExtResource("6_rfna4")
+characterName = "PlantSunflowerPea"
+method = ">="
+num = 1
+
+[sub_resource type="Resource" id="Resource_wfv2t"]
+script = ExtResource("3_wfv2t")
+broadCastUse = true
+broadCastConfig = SubResource("Resource_h35uj")
+conditionList = Array[ExtResource("5_dkmxr")]([SubResource("Resource_ax5ak")])
+
+[sub_resource type="Resource" id="Resource_7rrlu"]
+script = ExtResource("4_7rrlu")
+broadCastString = "LEVEL1_2_TUTORIAL_2"
+broadCastTime = -1.0
+
+[sub_resource type="Resource" id="Resource_dkmxr"]
+script = ExtResource("6_rfna4")
+characterName = "PlantSunflowerPea"
+method = ">="
+num = 3
+
+[sub_resource type="Resource" id="Resource_rfna4"]
+script = ExtResource("3_wfv2t")
+broadCastUse = true
+broadCastConfig = SubResource("Resource_7rrlu")
+conditionList = Array[ExtResource("5_dkmxr")]([SubResource("Resource_dkmxr")])
+
+[resource]
+script = ExtResource("2_ax5ak")
+data = ExtResource("1_76xf4")
+saveKey = "Level1_2Tutorial"
+step = Array[ExtResource("3_wfv2t")]([SubResource("Resource_wfv2t"), SubResource("Resource_rfna4")])
+metadata/_custom_type_script = "uid://ciasl1r6mxl1w"

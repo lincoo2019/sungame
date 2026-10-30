@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cjasib6n7wkmg"]
+
+[ext_resource type="PackedScene" uid="uid://be74ryvl4k6y7" path="res://Prefab/TowerDefense/Character/TowerDefenseZombieGargantuarBase.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://b4pqkgbg4x837" path="res://Asset/Anime/Character/Zombie/Other/GargantuarPaper/Scene/TowerDefenseZombieGargantuarPaperComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://dirr2g31c2h5a" path="res://Asset/Anime/Character/Zombie/Other/GargantuarPaper/Scene/TowerDefenseZombieGargantuarPaper.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_59x70_At_n1p5_n6p5.tres" id="4"]
+[ext_resource type="Resource" uid="uid://djicptksbm615" path="res://Asset/Anime/Character/Zombie/Other/GargantuarPaper/Scene/TowerDefenseZombieGargantuarPaperStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dyxtnfjivm4cu" path="res://Asset/Anime/Character/Zombie/Other/GargantuarPaper/Config/TowerDefenseZombieGargantuarPaper.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cpp4t1ysy3e03" path="res://Asset/Anime/Character/Zombie/Other/GargantuarPaper/DamagePoint/Config/ZombieGargantuarPaperDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://dgmd7k2yriwg8" path="res://Asset/Anime/Character/Zombie/Other/GargantuarPaper/DamagePoint/Config/ZombieGargantuarPaperDamagePointHead.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://blbiojio8k46u" path="res://Asset/Anime/Character/Zombie/Other/GargantuarPaper/ZombieGargantuarPaper.tscn" id="9"]
+
+[node name="TowerDefenseZombieGargantuarPaper" unique_id=1423825710 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+impName = ""
+impFireEvent = ""
+impThrowDamagePointName = "Noone"
+walkSpeedScale = 0.4
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarPaper")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieGargantuarPaper/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"Head": ExtResource("8")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieGargantuarPaper/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieGargantuarPaper/HeadSlot")
+}
+currentArmor = ["Paper"]
+
+[node name="ZombieGargantuarPaper" parent="SpriteGroup/TransformPoint" index="0" unique_id=941168190 instance=ExtResource("9")]
+position = Vector2(-12, -36)
+clip = "Idle"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "res://Asset/AtlasSource/Armor/Texture/Character/Armor/Paper/ZombiePaper1.png"]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieGargantuarPaper" index="0" unique_id=1415550513]
+drawLayerId = -2
+position = Vector2(-50.026955, -86.782394)
+rotation = 0.050716113
+scale = Vector2(1, 1)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieGargantuarPaper" index="1" unique_id=1542697994]
+position = Vector2(21.7, -2.9)
+scale = Vector2(1, 1)
+
+[node name="PaperSlot" parent="SpriteGroup/TransformPoint/ZombieGargantuarPaper" index="2" unique_id=510406270]
+position = Vector2(-59.4, -0.05)
+scale = Vector2(1, 1)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieGargantuarPaper" index="3" unique_id=981302551]
+Layer = 1
+position = Vector2(-52.31923, -10)
+
+[editable path="SpriteGroup/TransformPoint/ZombieGargantuarPaper"]

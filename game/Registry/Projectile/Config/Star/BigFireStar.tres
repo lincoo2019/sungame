@@ -1,0 +1,96 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://b6kl706obuqep"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_04c5x"]
+[ext_resource type="Script" uid="uid://cbb0hpvlj3t1p" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventCreateProjectile.cs" id="2_6jg7x"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="2_nah7c"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="2_tg4gj"]
+[ext_resource type="PackedScene" uid="uid://38bcfh2fl3qw" path="res://Asset/Config/Projectile/Star/FireBigStar/FireBigStar.tscn" id="3_tg4gj"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="4_nah7c"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="5_73ypc"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="5_dw16g"]
+[ext_resource type="Script" uid="uid://bqyxask6qffq7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFireHit.cs" id="6_wgt8b"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="7_c1r60"]
+
+[sub_resource type="Resource" id="Resource_nah7c"]
+script = ExtResource("2_tg4gj")
+projectileName = &"FireStar"
+baseDamage = 40.0
+damageFlags = 7
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_73ypc"]
+script = ExtResource("2_6jg7x")
+dir = 330.0
+projectileData = SubResource("Resource_nah7c")
+metadata/_custom_type_script = "uid://cbb0hpvlj3t1p"
+
+[sub_resource type="Resource" id="Resource_dw16g"]
+script = ExtResource("2_tg4gj")
+projectileName = &"FireStar"
+baseDamage = 40.0
+damageFlags = 7
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_wgt8b"]
+script = ExtResource("2_6jg7x")
+dir = 270.0
+projectileData = SubResource("Resource_dw16g")
+metadata/_custom_type_script = "uid://cbb0hpvlj3t1p"
+
+[sub_resource type="Resource" id="Resource_c1r60"]
+script = ExtResource("2_tg4gj")
+projectileName = &"FireStar"
+baseDamage = 40.0
+damageFlags = 7
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_4i60w"]
+script = ExtResource("2_6jg7x")
+dir = 180.0
+projectileData = SubResource("Resource_c1r60")
+metadata/_custom_type_script = "uid://cbb0hpvlj3t1p"
+
+[sub_resource type="Resource" id="Resource_sws6q"]
+script = ExtResource("2_tg4gj")
+projectileName = &"FireStar"
+baseDamage = 40.0
+damageFlags = 7
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_kb1lr"]
+script = ExtResource("2_6jg7x")
+dir = 90.0
+projectileData = SubResource("Resource_sws6q")
+metadata/_custom_type_script = "uid://cbb0hpvlj3t1p"
+
+[sub_resource type="Resource" id="Resource_2ri73"]
+script = ExtResource("2_tg4gj")
+projectileName = &"FireStar"
+baseDamage = 40.0
+damageFlags = 7
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_glem0"]
+script = ExtResource("2_6jg7x")
+dir = 30.0
+projectileData = SubResource("Resource_2ri73")
+metadata/_custom_type_script = "uid://cbb0hpvlj3t1p"
+
+[sub_resource type="Resource" id="Resource_sb4r4"]
+script = ExtResource("6_wgt8b")
+metadata/_custom_type_script = "uid://bqyxask6qffq7"
+
+[sub_resource type="Resource" id="Resource_fafcp"]
+script = ExtResource("7_c1r60")
+buffList = Array[ExtResource("5_dw16g")]([SubResource("Resource_sb4r4")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("4_nah7c")
+name = "BigFireStar"
+isStar = true
+baseDamage = 100.0
+projectileScene = ExtResource("3_tg4gj")
+splatScene = ExtResource("5_73ypc")
+hitTargetEventList = Array[ExtResource("1_04c5x")]([SubResource("Resource_73ypc"), SubResource("Resource_wgt8b"), SubResource("Resource_4i60w"), SubResource("Resource_kb1lr"), SubResource("Resource_glem0"), SubResource("Resource_fafcp")])
+isFire = true

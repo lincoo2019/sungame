@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://dys1rlyeuvsh5"]
+
+[ext_resource type="Resource" uid="uid://cktl6q1og62xd" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseZombieStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_dancer_dance"]
+script = ExtResource("2")
+StableId = "zombie.dancer.dance"
+DisplayName = &"Dance"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_dancer_to_dance"]
+script = ExtResource("3")
+StableId = "zombie.dancer.to_dance"
+SourceStateId = "character.root"
+TargetStateId = "zombie.dancer.dance"
+EventName = &"ToDance"
+DeclarationOrder = 6
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_inherited_zombie_to_die"]
+script = ExtResource("3")
+StableId = "zombie.to_die"
+SourceStateId = "character.root"
+TargetStateId = "zombie.die"
+EventName = &"ToDie"
+DeclarationOrder = 7
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.zombie.dancer"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_dancer_dance")]
+Transitions = [SubResource("Transition_dancer_to_dance"), SubResource("Transition_inherited_zombie_to_die")]

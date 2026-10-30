@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://bcv0vtg3h0yt6"]
+
+[ext_resource type="Resource" path="res://Script/Component/TowerDefense/Character/PotatoComponent/PotatoComponentKelpMineDefinition.tres" id="1"]
+[ext_resource type="Resource" uid="uid://cgi5wkb5vit7w" path="res://Asset/Anime/Character/Plant/Other/KelpMine/Scene/TowerDefensePlantKelpMineTanglekelpDefinition.tres" id="2"]
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="3"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="4"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="5"]
+[ext_resource type="Resource" uid="uid://g0gxsgsivawf" path="res://Asset/Anime/Character/Plant/Other/KelpMine/Scene/TowerDefensePlantKelpMineExplodeDefinition.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cbxq7byydonxd" path="res://Asset/Anime/Character/Plant/Other/KelpMine/Scene/TowerDefensePlantKelpMineTimerComponentDefinition.tres" id="7"]
+[ext_resource type="Resource" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantPotatoComponentSet.tres" id="8"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="9"]
+
+[sub_resource type="RectangleShape2D" id="Attack0_RectangleShape2D_km"]
+size = Vector2(70, 49.5)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_km"]
+script = ExtResource("4")
+Geometry = SubResource("Attack0_RectangleShape2D_km")
+LocalTransform = Transform2D(1, 0, 0, 1, -1, 0.75)
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("5")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_km")]
+checkLine = true
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.other.kelpmine.scene.towerdefenseplantkelpmine.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("3")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("9")
+ParentSet = ExtResource("8")
+Components = [ExtResource("1"), ExtResource("2"), SubResource("Attack0_Definition"), ExtResource("6"), ExtResource("7")]

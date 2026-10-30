@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://bt7j2ugfk7em3"]
+
+[ext_resource type="Resource" uid="uid://dfm5r4mn8aoo6" path="res://Script/Component/TowerDefense/Character/BowlingComponent/BowlingComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://d1fsh2su8nbl0" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventBowlingHurt.cs" id="2"]
+[ext_resource type="Script" uid="uid://bpobxkjerypff" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventForzen.cs" id="3"]
+[ext_resource type="Script" uid="uid://cghdgwf4bcxx7" path="res://Script/Component/TowerDefense/Character/BowlingComponent/BowlingComponentDefinition.cs" id="4"]
+[ext_resource type="Resource" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantBowlingWaterEnvironmentComponentSet.tres" id="5"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="6"]
+
+[sub_resource type="Resource" id="BowlingHurtEvent"]
+script = ExtResource("2")
+
+[sub_resource type="Resource" id="FrozenEvent"]
+script = ExtResource("3")
+time = 5.0
+fliterShield = true
+
+[sub_resource type="Resource" id="BowlingDefinition"]
+script = ExtResource("4")
+useParentHitBox = true
+hitEvent = [SubResource("BowlingHurtEvent"), SubResource("FrozenEvent")]
+spritePath = NodePath("SpriteGroup/TransformPoint/Icenut")
+ComponentTypeId = "BowlingComponent"
+DefinitionId = "builtin.component.bowling.plant.icenut"
+InstanceId = "character.bowling"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"BowlingComponent"]
+
+[resource]
+script = ExtResource("6")
+ParentSet = ExtResource("5")
+Components = [SubResource("BowlingDefinition")]

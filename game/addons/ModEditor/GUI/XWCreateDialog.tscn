@@ -1,0 +1,241 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8m0createdlg1"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/GUI/XWCreateDialog.cs" id="1_create"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/FileList.svg" id="2_all"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/FileThumbnail.svg" id="3_resource"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Node.svg" id="4_node"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ClassIcon/Search.svg" id="5_search"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window"]
+bg_color = Color(0.035, 0.055, 0.045, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.34, 0.58, 0.28, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 18.0
+content_margin_top = 16.0
+content_margin_right = 18.0
+content_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_preview"]
+bg_color = Color(0.055, 0.08, 0.065, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.22, 0.36, 0.2, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_search"]
+bg_color = Color(0.02, 0.035, 0.028, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.5, 0.24, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 10.0
+content_margin_right = 10.0
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_type"]
+allow_unpress = false
+
+[node name="XWCreateDialog" type="ConfirmationDialog"]
+title = "新建 Resource"
+initial_position = 1
+size = Vector2i(820, 620)
+min_size = Vector2i(560, 440)
+ok_button_text = "创建资源"
+theme_override_styles/panel = SubResource("StyleBoxFlat_window")
+script = ExtResource("1_create")
+
+[node name="ContentScroll" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Header" type="VBoxContainer" parent="ContentScroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Title" type="Label" parent="ContentScroll/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 1, 0.68, 1)
+theme_override_font_sizes/font_size = 24
+text = "选择资源类型"
+
+[node name="Subtitle" type="Label" parent="ContentScroll/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.72, 0.64, 1)
+text = "所有项目 Resource 全局类都可以从这里创建，创建后会自动进入对应可视化编辑器。"
+autowrap_mode = 2
+
+[node name="SearchHBox" type="HFlowContainer" parent="ContentScroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SearchIcon" type="TextureRect" parent="ContentScroll/VBoxContainer/SearchHBox"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+texture = ExtResource("5_search")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SearchEdit" type="LineEdit" parent="ContentScroll/VBoxContainer/SearchHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_search")
+placeholder_text = "搜索类型，例如 Event、Buff、Wave、Shop…"
+clear_button_enabled = true
+
+[node name="TypeFilter" type="OptionButton" parent="ContentScroll/VBoxContainer/SearchHBox"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+
+[node name="TypeChips" type="HBoxContainer" parent="ContentScroll/VBoxContainer/SearchHBox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="AllTypeChip" type="Button" parent="ContentScroll/VBoxContainer/SearchHBox/TypeChips"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "显示全部可创建类型"
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_type")
+text = "全部"
+icon = ExtResource("2_all")
+
+[node name="ResourceTypeChip" type="Button" parent="ContentScroll/VBoxContainer/SearchHBox/TypeChips"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "只显示 Resource 类型"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_type")
+text = "资源"
+icon = ExtResource("3_resource")
+
+[node name="NodeTypeChip" type="Button" parent="ContentScroll/VBoxContainer/SearchHBox/TypeChips"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "只显示 Node 类型"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_type")
+text = "节点"
+icon = ExtResource("4_node")
+
+[node name="ContentSplit" type="HSplitContainer" parent="ContentScroll/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 390)
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 320
+
+[node name="TypeTree" type="Tree" parent="ContentScroll/VBoxContainer/ContentSplit"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+hide_root = true
+
+[node name="RightPanel" type="PanelContainer" parent="ContentScroll/VBoxContainer/ContentSplit"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_preview")
+
+[node name="PreviewContainer" type="VBoxContainer" parent="ContentScroll/VBoxContainer/ContentSplit/RightPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="PreviewTitle" type="Label" parent="ContentScroll/VBoxContainer/ContentSplit/RightPanel/PreviewContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.8, 0.35, 1)
+text = "资源类型详情"
+
+[node name="TypeIcon" type="TextureRect" parent="ContentScroll/VBoxContainer/ContentSplit/RightPanel/PreviewContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SelectedTypeLabel" type="Label" parent="ContentScroll/VBoxContainer/ContentSplit/RightPanel/PreviewContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 1, 0.68, 1)
+theme_override_font_sizes/font_size = 20
+text = "请选择资源类型"
+autowrap_mode = 2
+
+[node name="InheritanceLabel" type="Label" parent="ContentScroll/VBoxContainer/ContentSplit/RightPanel/PreviewContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.78, 0.72, 1)
+autowrap_mode = 2
+
+[node name="ScriptPathLabel" type="Label" parent="ContentScroll/VBoxContainer/ContentSplit/RightPanel/PreviewContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.66, 0.55, 1)
+autowrap_mode = 2
+
+[node name="Hint" type="Label" parent="ContentScroll/VBoxContainer/ContentSplit/RightPanel/PreviewContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.68, 0.76, 0.64, 1)
+text = "建议优先使用目录中的专用创建入口；这里用于事件、Buff、解锁条件、波次子配置等高级资源。"
+autowrap_mode = 2
+vertical_alignment = 2
+
+[node name="TypePageBar" type="HBoxContainer" parent="ContentScroll/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="PreviousTypePageButton" type="Button" parent="ContentScroll/VBoxContainer/TypePageBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "上一页"
+
+[node name="TypePageLabel" type="Label" parent="ContentScroll/VBoxContainer/TypePageBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "第 1 / 1 页"
+horizontal_alignment = 1
+
+[node name="NextTypePageButton" type="Button" parent="ContentScroll/VBoxContainer/TypePageBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "下一页"

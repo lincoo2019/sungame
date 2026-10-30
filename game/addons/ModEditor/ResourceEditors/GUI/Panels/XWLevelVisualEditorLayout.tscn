@@ -1,0 +1,924 @@
+[gd_scene load_steps=5 format=3]
+
+[sub_resource type="StyleBoxFlat" id="StyleBasic"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.105, 0.115, 1)
+border_color = Color(0.298, 0.303, 0.311, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleEvent"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.105, 0.1, 0.095, 1)
+border_color = Color(0.303, 0.298, 0.294, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StylePreSpawn"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.095, 0.1, 0.105, 1)
+border_color = Color(0.294, 0.298, 0.303, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleFeatureProcess"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.095, 0.1, 0.105, 1)
+border_color = Color(0.294, 0.298, 0.303, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="LevelVisualEditorLayout" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="BasicInfoPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBasic")
+
+[node name="BasicLayout" type="VBoxContainer" parent="BasicInfoPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="SummaryLabel" type="Label" parent="BasicInfoPanel/BasicLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BasicGrid" type="GridContainer" parent="BasicInfoPanel/BasicLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="NameKeyRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/NameKeyRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "资源 Key"
+vertical_alignment = 1
+clip_text = true
+
+[node name="LevelNameKeyLineEdit" type="LineEdit" parent="BasicInfoPanel/BasicLayout/BasicGrid/NameKeyRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DisplayNameRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/DisplayNameRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "显示名称"
+vertical_alignment = 1
+clip_text = true
+
+[node name="LevelDisplayNameLineEdit" type="LineEdit" parent="BasicInfoPanel/BasicLayout/BasicGrid/DisplayNameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DescriptionRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/DescriptionRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "描述"
+vertical_alignment = 1
+clip_text = true
+
+[node name="DescriptionLineEdit" type="LineEdit" parent="BasicInfoPanel/BasicLayout/BasicGrid/DescriptionRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LevelNumberRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/LevelNumberRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "关卡编号"
+vertical_alignment = 1
+clip_text = true
+
+[node name="LevelNumberSpinBox" type="SpinBox" parent="BasicInfoPanel/BasicLayout/BasicGrid/LevelNumberRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 9999.0
+rounded = true
+
+[node name="NextLevelRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/NextLevelRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "下一关"
+vertical_alignment = 1
+clip_text = true
+
+[node name="NextLevelLineEdit" type="LineEdit" parent="BasicInfoPanel/BasicLayout/BasicGrid/NextLevelRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NextLevelSelectButton" type="Button" parent="BasicInfoPanel/BasicLayout/BasicGrid/NextLevelRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "选择"
+
+[node name="HomeWorldRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/HomeWorldRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "世界"
+vertical_alignment = 1
+clip_text = true
+
+[node name="HomeWorldOption" type="OptionButton" parent="BasicInfoPanel/BasicLayout/BasicGrid/HomeWorldRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HomeWorldCatalogButton" type="Button" parent="BasicInfoPanel/BasicLayout/BasicGrid/HomeWorldRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "世界图鉴"
+tooltip_text = "打开可搜索世界图鉴"
+
+[node name="ModernVersionRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/ModernVersionRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "版本"
+vertical_alignment = 1
+clip_text = true
+
+[node name="VersionLineEdit" type="LineEdit" parent="BasicInfoPanel/BasicLayout/BasicGrid/ModernVersionRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FinishMethodRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/FinishMethodRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "完成方式"
+vertical_alignment = 1
+clip_text = true
+
+[node name="FinishMethodOption" type="OptionButton" parent="BasicInfoPanel/BasicLayout/BasicGrid/FinishMethodRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FinishMethodSegments" type="HFlowContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid/FinishMethodRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="BaseTimeScaleRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/BaseTimeScaleRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "基础速度"
+vertical_alignment = 1
+clip_text = true
+
+[node name="BaseTimeScaleSpinBox" type="SpinBox" parent="BasicInfoPanel/BasicLayout/BasicGrid/BaseTimeScaleRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.1
+max_value = 16.0
+step = 0.1
+
+[node name="MapRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/MapRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "地图"
+vertical_alignment = 1
+clip_text = true
+
+[node name="MapLineEdit" type="LineEdit" parent="BasicInfoPanel/BasicLayout/BasicGrid/MapRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MapSelectButton" type="Button" parent="BasicInfoPanel/BasicLayout/BasicGrid/MapRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "选择"
+
+[node name="BackgroundMusicRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/BackgroundMusicRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "BGM"
+vertical_alignment = 1
+clip_text = true
+
+[node name="BackgroundMusicLineEdit" type="LineEdit" parent="BasicInfoPanel/BasicLayout/BasicGrid/BackgroundMusicRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackgroundMusicSelectButton" type="Button" parent="BasicInfoPanel/BasicLayout/BasicGrid/BackgroundMusicRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "选择"
+
+[node name="MowerUseRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/MowerUseRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "小推车"
+vertical_alignment = 1
+clip_text = true
+
+[node name="MowerUseCheck" type="CheckBox" parent="BasicInfoPanel/BasicLayout/BasicGrid/MowerUseRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "启用"
+
+[node name="StormOpenRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/StormOpenRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "电影/风暴效果"
+vertical_alignment = 1
+clip_text = true
+
+[node name="StormOpenCheck" type="CheckBox" parent="BasicInfoPanel/BasicLayout/BasicGrid/StormOpenRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "启用"
+
+[node name="FirstRewardTypeRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/FirstRewardTypeRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "首通奖励类型"
+vertical_alignment = 1
+clip_text = true
+
+[node name="FirstRewardTypeOption" type="OptionButton" parent="BasicInfoPanel/BasicLayout/BasicGrid/FirstRewardTypeRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FirstRewardTypeSegments" type="HFlowContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid/FirstRewardTypeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="FirstRewardValueRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/FirstRewardValueRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "首通奖励值"
+vertical_alignment = 1
+clip_text = true
+
+[node name="FirstRewardValueLineEdit" type="LineEdit" parent="BasicInfoPanel/BasicLayout/BasicGrid/FirstRewardValueRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PacketBankRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/PacketBankRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "卡牌库"
+vertical_alignment = 1
+clip_text = true
+
+[node name="PacketBankLineEdit" type="LineEdit" parent="BasicInfoPanel/BasicLayout/BasicGrid/PacketBankRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PacketBankSelectButton" type="Button" parent="BasicInfoPanel/BasicLayout/BasicGrid/PacketBankRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "选择"
+
+[node name="LimitGridPlantNumRow" type="HBoxContainer" parent="BasicInfoPanel/BasicLayout/BasicGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BasicInfoPanel/BasicLayout/BasicGrid/LimitGridPlantNumRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "限制植物数"
+vertical_alignment = 1
+clip_text = true
+
+[node name="LimitGridPlantNumSpinBox" type="SpinBox" parent="BasicInfoPanel/BasicLayout/BasicGrid/LimitGridPlantNumRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 9999.0
+value = -1.0
+rounded = true
+
+[node name="WavePreviewHost" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FeatureProcessHost" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FeatureProcessPanel" type="PanelContainer" parent="FeatureProcessHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleFeatureProcess")
+
+[node name="Split" type="HBoxContainer" parent="FeatureProcessHost/FeatureProcessPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="FeaturePanel" type="VBoxContainer" parent="FeatureProcessHost/FeatureProcessPanel/Split"]
+custom_minimum_size = Vector2(460, 340)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel"]
+layout_mode = 2
+text = "关卡功能 Feature"
+
+[node name="FeatureSummaryLabel" type="Label" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FeatureToolbar" type="HBoxContainer" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="FeatureNameLineEdit" type="LineEdit" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel/FeatureToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Feature 名称，例如 Map / Sun / Wave"
+
+[node name="ChooseFeatureButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel/FeatureToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "选择"
+
+[node name="AddFeatureButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel/FeatureToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "添加"
+
+[node name="RemoveFeatureButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel/FeatureToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "删除"
+
+[node name="FeatureEnabledCheck" type="CheckBox" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel/FeatureToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "启用"
+
+[node name="FeatureList" type="ItemList" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FeatureDataToolbar" type="HBoxContainer" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="FeatureDataKeyLineEdit" type="LineEdit" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel/FeatureDataToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Data Key"
+
+[node name="FeatureDataValueLineEdit" type="LineEdit" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel/FeatureDataToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Value"
+
+[node name="WriteFeatureDataButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel/FeatureDataToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "写入"
+
+[node name="EditFeatureDataButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel/FeatureDataToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 28)
+layout_mode = 2
+text = "编辑 Data"
+
+[node name="FeatureDataList" type="ItemList" parent="FeatureProcessHost/FeatureProcessPanel/Split/FeaturePanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ProcessPanel" type="VBoxContainer" parent="FeatureProcessHost/FeatureProcessPanel/Split"]
+custom_minimum_size = Vector2(460, 340)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel"]
+layout_mode = 2
+text = "关卡流程 Process"
+
+[node name="ProcessSummaryLabel" type="Label" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProcessToolbar" type="HBoxContainer" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="ProcessNameLineEdit" type="LineEdit" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel/ProcessToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Wave / Vase / IZM / IZM2 / Quiz / Empty"
+
+[node name="ChooseProcessButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel/ProcessToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "选择"
+
+[node name="SetProcessButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel/ProcessToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "设置"
+
+[node name="ProcessPresets" type="HBoxContainer" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="WaveProcessButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel/ProcessPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Wave"
+
+[node name="VaseProcessButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel/ProcessPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Vase"
+
+[node name="IZMProcessButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel/ProcessPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "IZM"
+
+[node name="IZM2ProcessButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel/ProcessPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "IZM2"
+
+[node name="QuizProcessButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel/ProcessPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Quiz"
+
+[node name="EmptyProcessButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel/ProcessPresets"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "Empty"
+
+[node name="ProcessDataToolbar" type="HBoxContainer" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="ProcessDataKeyLineEdit" type="LineEdit" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel/ProcessDataToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Data Key"
+
+[node name="ProcessDataValueLineEdit" type="LineEdit" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel/ProcessDataToolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Value"
+
+[node name="WriteProcessDataButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel/ProcessDataToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "写入"
+
+[node name="EditProcessDataButton" type="Button" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel/ProcessDataToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 28)
+layout_mode = 2
+text = "编辑 Data"
+
+[node name="ProcessDataList" type="ItemList" parent="FeatureProcessHost/FeatureProcessPanel/Split/ProcessPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 220)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EventHost" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EventPanel" type="PanelContainer" parent="EventHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleEvent")
+
+[node name="EventLayout" type="VBoxContainer" parent="EventHost/EventPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="EventHost/EventPanel/EventLayout"]
+layout_mode = 2
+text = "事件 / 预生成 / 卡牌库"
+
+[node name="EventToolbar" type="HBoxContainer" parent="EventHost/EventPanel/EventLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="AddInitEventButton" type="Button" parent="EventHost/EventPanel/EventLayout/EventToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 28)
+layout_mode = 2
+text = "添加初始化事件"
+
+[node name="AddReadyEventButton" type="Button" parent="EventHost/EventPanel/EventLayout/EventToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 28)
+layout_mode = 2
+text = "添加准备事件"
+
+[node name="AddStartEventButton" type="Button" parent="EventHost/EventPanel/EventLayout/EventToolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 28)
+layout_mode = 2
+text = "添加开始事件"
+
+[node name="PreSpawnPanel" type="PanelContainer" parent="EventHost/EventPanel/EventLayout"]
+custom_minimum_size = Vector2(720, 360)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StylePreSpawn")
+
+[node name="PreSpawnLayout" type="VBoxContainer" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="Header" type="HBoxContainer" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "预生成场地"
+
+[node name="PreSpawnMapLabel" type="Label" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "map: 未同步"
+horizontal_alignment = 2
+clip_text = true
+
+[node name="Toolbar" type="HBoxContainer" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="PreSpawnPacketNameLineEdit" type="LineEdit" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "卡牌/角色 Key"
+
+[node name="ChoosePreSpawnPacketButton" type="Button" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(54, 28)
+layout_mode = 2
+text = "选择"
+
+[node name="SyncPreSpawnMapButton" type="Button" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 28)
+layout_mode = 2
+text = "同步 Map"
+
+[node name="ResetPreSpawnViewButton" type="Button" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 28)
+layout_mode = 2
+text = "重置视图"
+
+[node name="DeletePreSpawnButton" type="Button" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 28)
+layout_mode = 2
+text = "删除选中"
+
+[node name="PreSpawnPreviewStack" type="Control" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(700, 280)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout/PreSpawnPreviewStack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PreSpawnMapViewport" type="SubViewport" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout/PreSpawnPreviewStack/ViewportContainer"]
+unique_name_in_owner = true
+disable_3d = true
+transparent_bg = true
+size = Vector2i(700, 280)
+render_target_update_mode = 4
+
+[node name="PreSpawnMapPreviewRoot" type="Node2D" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout/PreSpawnPreviewStack/ViewportContainer/PreSpawnMapViewport"]
+unique_name_in_owner = true
+
+[node name="PreSpawnGridOverlay" type="Control" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout/PreSpawnPreviewStack"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="PreSpawnSelectionLabel" type="Label" parent="EventHost/EventPanel/EventLayout/PreSpawnPanel/PreSpawnLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+
+[node name="Lists" type="HBoxContainer" parent="EventHost/EventPanel/EventLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="InitBox" type="VBoxContainer" parent="EventHost/EventPanel/EventLayout/Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="EventHost/EventPanel/EventLayout/Lists/InitBox"]
+layout_mode = 2
+text = "初始化事件"
+
+[node name="EventInitList" type="ItemList" parent="EventHost/EventPanel/EventLayout/Lists/InitBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(145, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "eventInit"
+
+[node name="ReadyBox" type="VBoxContainer" parent="EventHost/EventPanel/EventLayout/Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="EventHost/EventPanel/EventLayout/Lists/ReadyBox"]
+layout_mode = 2
+text = "准备事件"
+
+[node name="EventReadyList" type="ItemList" parent="EventHost/EventPanel/EventLayout/Lists/ReadyBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(145, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "eventReady"
+
+[node name="StartBox" type="VBoxContainer" parent="EventHost/EventPanel/EventLayout/Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="EventHost/EventPanel/EventLayout/Lists/StartBox"]
+layout_mode = 2
+text = "开始事件"
+
+[node name="EventStartList" type="ItemList" parent="EventHost/EventPanel/EventLayout/Lists/StartBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(145, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "eventStart"
+
+[node name="PreSpawnBox" type="VBoxContainer" parent="EventHost/EventPanel/EventLayout/Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="EventHost/EventPanel/EventLayout/Lists/PreSpawnBox"]
+layout_mode = 2
+text = "预生成"
+
+[node name="PreSpawnList" type="ItemList" parent="EventHost/EventPanel/EventLayout/Lists/PreSpawnBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(145, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "preSpawnList"
+
+[node name="PacketBankBox" type="VBoxContainer" parent="EventHost/EventPanel/EventLayout/Lists"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="EventHost/EventPanel/EventLayout/Lists/PacketBankBox"]
+layout_mode = 2
+text = "卡牌库"
+
+[node name="PacketBankList" type="ItemList" parent="EventHost/EventPanel/EventLayout/Lists/PacketBankBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(145, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "packetBankList"

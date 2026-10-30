@@ -1,0 +1,332 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://bma43yy5umdv7"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/IZM2/Chapter4/IZM2_Level4_3_D.json" id="1_zkb3m"]
+[ext_resource type="Script" uid="uid://ba76j1qc1ehmt" path="res://Registry/Battle/Feature/Event/Resource/TowerDefenseLevelEventBase.cs" id="2_tlpf2"]
+[ext_resource type="Script" uid="uid://dbpqspbkam44d" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.cs" id="4_3jrs7"]
+[ext_resource type="Script" uid="uid://elndp7rr41y0" path="res://Registry/Battle/Feature/LookStar/Resource/TowerDefenseLevelLookStarCheckConfig.cs" id="5_f52r2"]
+[ext_resource type="Script" uid="uid://ge6chewkhjqd" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.cs" id="6_17nj7"]
+[ext_resource type="Script" uid="uid://d17gywmt3g3lb" path="res://Resource/TowerDefense/Level/PreSpawn/TowerDefenseLevelPreSpawnConfig.cs" id="7_jalpi"]
+[ext_resource type="Script" uid="uid://dfj86l56q1n8g" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.cs" id="8_gzwqg"]
+[ext_resource type="Script" uid="uid://blrb5liskebi6" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.cs" id="9_vyivh"]
+[ext_resource type="Script" uid="uid://br6kawt7m03sc" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelDynamicConfig.cs" id="10_yj556"]
+[ext_resource type="Script" uid="uid://ctvkmai1q8sa6" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.cs" id="11_96q2g"]
+[ext_resource type="Script" uid="uid://c67uxwpu4jftb" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.cs" id="15_a6hfw"]
+
+[sub_resource type="Resource" id="Resource_tmr7d"]
+script = ExtResource("4_3jrs7")
+
+[sub_resource type="Resource" id="Resource_vfgp8"]
+script = ExtResource("6_17nj7")
+
+[sub_resource type="Resource" id="Resource_lq07w"]
+script = ExtResource("9_vyivh")
+
+[sub_resource type="Resource" id="Resource_0r5x1"]
+script = ExtResource("11_96q2g")
+flagWaveInterval = 5
+dynamic = Array[ExtResource("10_yj556")]([])
+
+[resource]
+script = ExtResource("8_gzwqg")
+data = ExtResource("1_zkb3m")
+featureData = Dictionary[StringName, Dictionary]({
+&"BGM": {
+"BackgroundMusic": "BackyardNight"
+},
+&"Brain": {},
+&"Camera": {},
+&"Event": {
+"EventInit": [{
+"EventName": "CurrentMapUseStripe",
+"Value": {
+"Row": 5.0
+}
+}],
+"EventReady": [],
+"EventStart": []
+},
+&"Map": {
+"MapName": "BackyardNight"
+},
+&"Mower": {},
+&"PacketBank": {
+"PacketBankName": "GeneralZombie"
+},
+&"PacketPick": {},
+&"PreSpawn": {
+"Packet": []
+},
+&"Progress": {},
+&"SeedBank": {
+"Method": "Choose",
+"Packet": []
+},
+&"Shovel": {},
+&"Sun": {
+"Begin": 300.0,
+"MovingMethod": "Land",
+"Open": false,
+"SpawnInterval": 12.0,
+"SpawnNum": 50.0
+},
+&"Wave": {
+"BeginCol": 20.0,
+"Dynamic": [{}, {}, {}, {}, {}, {}, {}],
+"FlagWaveInterval": 8.0,
+"FlagZombie": "ZombieFlag",
+"FlagZombieUse": false,
+"MaxNextWaveHealthPercentage": 0.3,
+"MinNextWaveHealthPercentage": 0.15,
+"SpawnColEnd": 20.0,
+"SpawnColStart": 10.0,
+"SpawnOverride": {},
+"Wave": [{
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [5.0, 2.0],
+"Packet": "PlantSunMine"
+}, {
+"GridPos": [3.0, 5.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [2.0, 3.0],
+"Packet": "PlantIceSeaShroom"
+}, {
+"GridPos": [4.0, 5.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [1.0, 6.0],
+"Packet": "PlantSunflowerPea"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [2.0, 1.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [4.0, 4.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [4.0, 4.0],
+"Packet": "PlantLilyPad"
+}, {
+"GridPos": [5.0, 6.0],
+"Packet": "PlantSquash"
+}, {
+"GridPos": [1.0, 2.0],
+"Packet": "PlantSquash"
+}, {
+"GridPos": [3.0, 1.0],
+"Packet": "PlantPuffShroom"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [5.0, 3.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [5.0, 3.0],
+"Packet": "PlantLilyPad"
+}, {
+"GridPos": [2.0, 5.0],
+"Packet": "PlantIceSquash"
+}, {
+"GridPos": [3.0, 6.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [3.0, 3.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [3.0, 3.0],
+"Packet": "PlantLilyPad"
+}, {
+"GridPos": [3.0, 2.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [5.0, 2.0],
+"Packet": "PlantPuffShroom"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [3.0, 4.0],
+"Packet": "PlantIceSeaShroom"
+}, {
+"GridPos": [1.0, 1.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [1.0, 5.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [5.0, 4.0],
+"Packet": "PlantLilyPad"
+}, {
+"GridPos": [5.0, 4.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [2.0, 2.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [4.0, 6.0],
+"Packet": "PlantFumeShroom"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [4.0, 1.0],
+"Packet": "PlantIceSquash"
+}, {
+"GridPos": [3.0, 2.0],
+"Packet": "PlantWallnut"
+}, {
+"GridPos": [1.0, 6.0],
+"Packet": "PlantWallnut"
+}, {
+"GridPos": [4.0, 3.0],
+"Packet": "PlantIceSeaShroom"
+}, {
+"GridPos": [2.0, 6.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [5.0, 2.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [4.0, 5.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [1.0, 2.0],
+"Packet": "PlantSunMine"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [1.0, 3.0],
+"Packet": "PlantIceSeaShroom"
+}, {
+"GridPos": [2.0, 1.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [3.0, 1.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [5.0, 3.0],
+"Packet": "PlantLilyPad"
+}, {
+"GridPos": [5.0, 3.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [3.0, 6.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [1.0, 5.0],
+"Packet": "PlantSquash"
+}, {
+"GridPos": [5.0, 1.0],
+"Packet": "PlantSunflowerPea"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [2.0, 5.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [2.0, 2.0],
+"Packet": "PlantFumeShroom"
+}, {
+"GridPos": [4.0, 4.0],
+"Packet": "PlantIceSeaShroom"
+}, {
+"GridPos": [4.0, 2.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [4.0, 6.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [4.0, 1.0],
+"Packet": "PlantWallnut"
+}, {
+"GridPos": [1.0, 4.0],
+"Packet": "PlantLilyPad"
+}, {
+"GridPos": [1.0, 4.0],
+"Packet": "PlantIceSquash"
+}],
+"Spawn": []
+}, {
+"DynamicPlantfood": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+"Event": [],
+"GridSpawn": [{
+"GridPos": [5.0, 2.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [5.0, 5.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [5.0, 4.0],
+"Packet": "PlantSunflowerPea"
+}, {
+"GridPos": [5.0, 4.0],
+"Packet": "PlantLilyPad"
+}, {
+"GridPos": [3.0, 2.0],
+"Packet": "PlantWallnut"
+}, {
+"GridPos": [5.0, 6.0],
+"Packet": "PlantIceSquash"
+}, {
+"GridPos": [2.0, 3.0],
+"Packet": "PlantLilyPad"
+}, {
+"GridPos": [3.0, 5.0],
+"Packet": "PlantPuffShroom"
+}, {
+"GridPos": [1.0, 1.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [1.0, 6.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [2.0, 3.0],
+"Packet": "PlantScaredyShroom"
+}, {
+"GridPos": [1.0, 2.0],
+"Packet": "PlantScaredyShroom"
+}],
+"Spawn": []
+}]
+}
+})
+processName = &"IZM2"
+processData = {
+"MowerUse": true
+}
+finishMethod = 4
+map = ""
+backgroundMusic = ""
+firstRewardType = 1
+firstRewardValue = "ZombieBalloonpult"
+sunManager = SubResource("Resource_lq07w")
+fogManager = SubResource("Resource_tmr7d")
+lookStarManager = SubResource("Resource_vfgp8")
+waveManager = SubResource("Resource_0r5x1")
+packetBank = "GeneralZombie"
+PacketBank/Name = "GeneralZombie"
+name = "IZM2_Level4_3"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "PLAYERS_MORDEN_IZM2_BACKYARD_NIGHT_LEVEL_NAME"
+levelNumber = 3
+homeWorld = 1
+metadata/_custom_type_script = "uid://dfj86l56q1n8g"

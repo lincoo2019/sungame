@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://cd4vphbgen3fc"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://bvhf3txcvx6wb" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Scene/Cornpult/TowerDefenseZombieNormalCornpultComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bxnwg5uyaulvm" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Scene/Cornpult/TowerDefenseZombieNormalCornpult.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dfv0ss785ex2j" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Config/TowerDefenseZombieNormalCornpult.tres" id="5"]
+[ext_resource type="Resource" uid="uid://chvyxpm81irbp" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://clvqblkq2jo2l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://d4b68a6hw3c2d" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBucket.tres" id="8"]
+[ext_resource type="Resource" uid="uid://cfim36uopws7u" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorCone.tres" id="9"]
+[ext_resource type="Resource" uid="uid://c7nx2fl3rq01m" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalPlantDamagePointHead.tres" id="10"]
+[ext_resource type="Resource" uid="uid://byth0yfgejk1l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorHelmet.tres" id="11"]
+[ext_resource type="Resource" uid="uid://dmgd4ygng30xn" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorScreendoor.tres" id="12"]
+[ext_resource type="Resource" uid="uid://cryuyu1d8jqbt" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorSpecialHelmet.tres" id="13"]
+[ext_resource type="PackedScene" uid="uid://cnyedjfify6a6" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Sprite/Cornpult/ZombieNormalCornpult.tscn" id="14"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="15"]
+
+[node name="TowerDefenseZombieNormalCornpult" unique_id=712894744 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 3.0
+fireNum = 1
+walkAnimeClip = "Walk1&Walk2"
+swimAnimeClip = "Swim"
+dieAnimeClip = "Death1&Death2"
+dieWaterAnimeClip = "Waterdeath"
+waterHeight = 25.0
+idleAnimeClip = "Idle1&Idle2"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieNormalCornpult")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieNormalCornpult/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Bucket": ExtResource("8"),
+"Cone": ExtResource("9"),
+"Head": ExtResource("10"),
+"Helmet": ExtResource("11"),
+"Screendoor": ExtResource("12"),
+"SpecialHelmet": ExtResource("13")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieNormalCornpult/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalCornpult/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieNormalCornpult/BucketSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieNormalCornpult/ConeSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieNormalCornpult/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalCornpult/HeadSlot"),
+"Screendoor": NodePath("SpriteGroup/TransformPoint/ZombieNormalCornpult/ScreendoorSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalCornpult/HeadSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieNormalCornpult" parent="SpriteGroup/TransformPoint" index="0" unique_id=2005208045 instance=ExtResource("14")]
+position = Vector2(-12, -33)
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieNormalCornpult" index="0" unique_id=1447859647]
+
+[node name="ProjectileSlot" type="Node2D" parent="SpriteGroup/TransformPoint/ZombieNormalCornpult/Head" index="0" unique_id=480430240]
+script = ExtResource("15")
+followSlotId = 6
+Layer = 6
+drawLayerId = 6
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieNormalCornpult/Head/ProjectileSlot" index="0" unique_id=2050676815]
+position = Vector2(9.968758, 13.247787)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCornpult" index="1" unique_id=743571121]
+drawLayerId = -2
+position = Vector2(-16.081083, -43.688972)
+rotation = -0.05592737
+scale = Vector2(0.7998426, 0.7998426)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCornpult" index="2" unique_id=614180353]
+position = Vector2(3.3641663, 2.3456755)
+rotation = -0.052574277
+scale = Vector2(0.7997213, 0.7997213)
+
+[node name="ConeSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCornpult" index="3" unique_id=802627952]
+position = Vector2(-9.576519, -69.14984)
+rotation = 0.017252697
+scale = Vector2(0.79916847, 0.79916847)
+
+[node name="BucketSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCornpult" index="4" unique_id=1107578253]
+position = Vector2(-14.584717, -58.55079)
+rotation = -0.0532503
+scale = Vector2(0.7998441, 0.7998441)
+
+[node name="ScreendoorSlot" parent="SpriteGroup/TransformPoint/ZombieNormalCornpult" index="5" unique_id=1067547515]
+position = Vector2(-20.150787, 1.0188904)
+rotation = -0.040263668
+scale = Vector2(0.7998766, 0.7998766)
+
+[editable path="SpriteGroup/TransformPoint/ZombieNormalCornpult"]

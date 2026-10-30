@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://dqcvgdjiwl85s"]
+
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="1"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="3"]
+
+[sub_resource type="Resource" id="State_cactus_root"]
+script = ExtResource("1")
+StableId = "cactus.root"
+DisplayName = &"Root"
+Kind = 1
+InitialChildId = "cactus.idle"
+
+[sub_resource type="Resource" id="State_cactus_idle"]
+script = ExtResource("1")
+StableId = "cactus.idle"
+DisplayName = &"Idle"
+ParentId = "cactus.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_cactus_up"]
+script = ExtResource("1")
+StableId = "cactus.up"
+DisplayName = &"Up"
+ParentId = "cactus.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_cactus_down"]
+script = ExtResource("1")
+StableId = "cactus.down"
+DisplayName = &"Down"
+ParentId = "cactus.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_to_idle"]
+script = ExtResource("2")
+StableId = "cactus.to_idle"
+SourceStateId = "cactus.root"
+TargetStateId = "cactus.idle"
+EventName = &"ToIdle"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_up"]
+script = ExtResource("2")
+StableId = "cactus.to_up"
+SourceStateId = "cactus.root"
+TargetStateId = "cactus.up"
+EventName = &"ToUp"
+DeclarationOrder = 1
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_down"]
+script = ExtResource("2")
+StableId = "cactus.to_down"
+SourceStateId = "cactus.root"
+TargetStateId = "cactus.down"
+EventName = &"ToDown"
+DeclarationOrder = 2
+GuardDefinition = null
+
+[resource]
+script = ExtResource("3")
+DefinitionId = "builtin.component.fire.cactus"
+BaseDefinition = null
+RootStateId = "cactus.root"
+States = [SubResource("State_cactus_root"), SubResource("State_cactus_idle"), SubResource("State_cactus_up"), SubResource("State_cactus_down")]
+Transitions = [SubResource("Transition_to_idle"), SubResource("Transition_to_up"), SubResource("Transition_to_down")]

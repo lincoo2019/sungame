@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/XWInspectorPropertyEditorBase.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/ResourceInspectorExtend/Gradient/XWInspectorPropertyEditorGradient.cs" id="2_script"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Add.svg" id="3_add"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Remove.svg" id="4_remove"]
+
+[node name="XWInspectorPropertyEditorGradient" node_paths=PackedStringArray("PropertyEditorPath") instance=ExtResource("1_base")]
+custom_minimum_size = Vector2(0, 172)
+script = ExtResource("2_script")
+PropertyEditorPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/GradientEditor")
+
+[node name="GradientEditor" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 164)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="GradientPreview" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientEditor"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "左键添加颜色点，右键选择最近颜色点"
+texture_filter = 1
+expand_mode = 1
+stretch_mode = 1
+
+[node name="OptionsGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientEditor"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="InterpolationModeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientEditor/OptionsGrid"]
+custom_minimum_size = Vector2(72, 26)
+layout_mode = 2
+text = "插值"
+vertical_alignment = 1
+
+[node name="InterpolationModeOption" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientEditor/OptionsGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorSpaceLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientEditor/OptionsGrid"]
+custom_minimum_size = Vector2(72, 26)
+layout_mode = 2
+text = "颜色空间"
+vertical_alignment = 1
+
+[node name="ColorSpaceOption" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientEditor/OptionsGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EditRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientEditor"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="OffsetSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientEditor/EditRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(88, 28)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+allow_greater = false
+allow_lesser = false
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientEditor/EditRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AddPointButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientEditor/EditRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "添加颜色点"
+icon = ExtResource("3_add")
+flat = true
+
+[node name="RemovePointButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientEditor/EditRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 28)
+layout_mode = 2
+tooltip_text = "删除颜色点"
+icon = ExtResource("4_remove")
+flat = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientEditor"]
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="GradientStops" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GradientEditor/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2

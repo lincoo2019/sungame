@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://6gc6pv7nsm1e"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://0skliwrjs5mx" path="res://Asset/Anime/Character/Zombie/Chapter10/SleepMage/Scene/TowerDefenseZombieSleepMage.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b3whcky11nq38" path="res://Asset/Anime/Character/Zombie/Chapter10/SleepMage/Scene/TowerDefenseZombieSleepMageStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://4epr35ca6whn" path="res://Asset/Anime/Character/Zombie/Chapter10/SleepMage/Config/TowerDefenseZombieSleepMage.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cvvudhvm660sm" path="res://Asset/Anime/Character/Zombie/Chapter10/SleepMage/DamagePoint/Config/ZombieSleepMageDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cgo7vi3u5qeeb" path="res://Asset/Anime/Character/Zombie/Chapter10/SleepMage/DamagePoint/Config/ZombieSleepMageDamagePointHead.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://5pyrwuyclh6x" path="res://Asset/Anime/Character/Zombie/Chapter10/SleepMage/ZombieSleepMage.tscn" id="9"]
+
+[sub_resource type="Resource" id="Resource_spell"]
+script = ExtResource("3")
+projectileName = &"SleepMagicBall"
+baseDamage = 0.0
+damageFlags = 67
+
+[node name="TowerDefenseZombieSleepMage" unique_id=1750164581 node_paths=PackedStringArray("spellMuzzle", "sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+spellProjectile = SubResource("Resource_spell")
+spellMuzzle = NodePath("SpriteGroup/TransformPoint/ZombieSleepMage/SpellMuzzleSlot/Marker2D")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieSleepMage")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieSleepMage/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"Head": ExtResource("8")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieSleepMage/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieSleepMage/HeadSlot")
+}
+currentArmor = []
+currentCustom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(9, 37)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieSleepMage" parent="SpriteGroup/TransformPoint" index="0" unique_id=1043841373 instance=ExtResource("9")]
+position = Vector2(-12, -33)
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieSleepMage" index="0" unique_id=368691796]
+drawLayerId = -2

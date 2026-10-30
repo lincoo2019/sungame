@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bqk87rvjyfa2k"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://dly8bleduq1x7" path="res://Asset/Anime/Character/Plant/Chapter10/PeaShooterMagic/Scene/TowerDefensePlantPeaShooterMagicComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://cvtj3xvekcv4k" path="res://Asset/Anime/Character/Plant/Chapter10/PeaShooterMagic/Scene/TowerDefensePlantPeaShooterMagic.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bd5pi0vt4fpel" path="res://Asset/Anime/Character/Plant/Chapter10/PeaShooterMagic/Config/TowerDefensePlantPeaShooterMagic.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://b4dqiy6h7am77" path="res://Asset/Anime/Character/Plant/Chapter10/PeaShooterMagic/PeaShooterMagic.tscn" id="6"]
+
+[node name="TowerDefensePlantPeaShooterMagic" node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 1
+projectileName = "MagicPea"
+idleAnimeClip = "BodyIdle"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/PeaShooterMagic")
+
+[node name="ShadowSprite" parent="." index="0"]
+position = Vector2(0, 30)
+
+[node name="SpriteGroup" parent="." index="2"]
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(0, 30)
+
+[node name="PeaShooterMagic" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("6")]
+position = Vector2(0, -30)
+clip = "BodyIdle"
+
+[node name="Head" parent="SpriteGroup/TransformPoint/PeaShooterMagic" index="0"]
+trueFrameRate = 180.0
+clip = "HeadIdle"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/PeaShooterMagic/Head" index="0"]
+position = Vector2(29.26, -18.05)
+
+[editable path="SpriteGroup/TransformPoint/PeaShooterMagic"]

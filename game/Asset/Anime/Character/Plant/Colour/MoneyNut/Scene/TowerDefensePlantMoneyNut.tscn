@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c64lasvu4ikbh"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://b3xvunj8v526d" path="res://Asset/Anime/Character/Plant/Colour/MoneyNut/Scene/TowerDefensePlantMoneyNutComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://b5g5vngtlgm61" path="res://Asset/Anime/Character/Plant/Colour/MoneyNut/Scene/TowerDefensePlantMoneyNut.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://ce6lgdgd0ir87" path="res://Asset/Anime/Character/Plant/Colour/MoneyNut/Scene/TowerDefensePlantMoneyNutStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://b5jtj0rfaryt2" path="res://Asset/Anime/Character/Plant/Colour/MoneyNut/Config/TowerDefensePlantMoneyNut.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://d1mjsb37vv18v" path="res://Asset/Anime/Character/Plant/Colour/MoneyNut/MoneyNut.tscn" id="7"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="8"]
+
+[node name="TowerDefensePlantMoneyNut" unique_id=773252184 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/MoneyNut")
+PreviewDamagePointPersontage = 1.0
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="MoneyNut" parent="SpriteGroup/TransformPoint" index="0" unique_id=1155473962 instance=ExtResource("7")]
+position = Vector2(0, -30)
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/MoneyNut" index="0" unique_id=1279487374]
+script = ExtResource("8")
+followSlotId = 5
+Layer = 5
+drawLayerId = 5
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/MoneyNut/AdobeAnimateSlot" index="0" unique_id=755822239]
+position = Vector2(4.227829, 16.54768)

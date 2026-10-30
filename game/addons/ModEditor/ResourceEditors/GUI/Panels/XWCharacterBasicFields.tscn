@@ -1,0 +1,629 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/Resource/XWResourcePicker.tscn" id="1_picker"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Search.svg" id="2_search"]
+
+[sub_resource type="StyleBoxFlat" id="StyleIdentity"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.075, 0.09, 0.105, 0.98)
+border_width_left = 3
+border_color = Color(0.27, 0.67, 0.92, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleAppearance"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.09, 0.085, 0.12, 0.98)
+border_width_left = 3
+border_color = Color(0.62, 0.48, 0.92, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleCombat"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.105, 0.09, 0.065, 0.98)
+border_width_left = 3
+border_color = Color(0.96, 0.67, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StylePlant"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.07, 0.12, 0.075, 0.98)
+border_width_left = 3
+border_color = Color(0.36, 0.78, 0.34, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleZombie"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.12, 0.075, 0.07, 0.98)
+border_width_left = 3
+border_color = Color(0.9, 0.36, 0.25, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="CharacterBasicFields" type="VBoxContainer"]
+custom_minimum_size = Vector2(360, 0)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="IdentityPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleIdentity")
+
+[node name="Layout" type="VBoxContainer" parent="IdentityPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="IdentityPanel/Layout"]
+layout_mode = 2
+text = "角色身份"
+theme_override_colors/font_color = Color(0.55, 0.82, 1, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Grid" type="GridContainer" parent="IdentityPanel/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="NameLabel" type="Label" parent="IdentityPanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "游戏内名称"
+vertical_alignment = 1
+
+[node name="CharacterNameLineEdit" type="LineEdit" parent="IdentityPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "角色资源名称"
+
+[node name="CategoryLabel" type="Label" parent="IdentityPanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "角色阵营"
+vertical_alignment = 1
+
+[node name="CategoryChoice" type="VBoxContainer" parent="IdentityPanel/Layout/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterCategoryOption" type="OptionButton" parent="IdentityPanel/Layout/Grid/CategoryChoice"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterCategorySegments" type="HFlowContainer" parent="IdentityPanel/Layout/Grid/CategoryChoice"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="CreationLabel" type="Label" parent="IdentityPanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "Mod 创建方式"
+vertical_alignment = 1
+
+[node name="CreationChoice" type="VBoxContainer" parent="IdentityPanel/Layout/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CreationModeOption" type="OptionButton" parent="IdentityPanel/Layout/Grid/CreationChoice"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CreationModeSegments" type="HFlowContainer" parent="IdentityPanel/Layout/Grid/CreationChoice"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="BaseKeyLabel" type="Label" parent="IdentityPanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "继承角色 Key"
+vertical_alignment = 1
+
+[node name="BaseCharacterChoice" type="HBoxContainer" parent="IdentityPanel/Layout/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="BaseCharacterKeyLineEdit" type="LineEdit" parent="IdentityPanel/Layout/Grid/BaseCharacterChoice"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "从内置角色继承"
+
+[node name="BaseCharacterSelectButton" type="Button" parent="IdentityPanel/Layout/Grid/BaseCharacterChoice"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 34)
+layout_mode = 2
+tooltip_text = "Search game and Mod character catalog"
+icon = ExtResource("2_search")
+
+[node name="TargetKeyLabel" type="Label" parent="IdentityPanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "覆盖角色 Key"
+vertical_alignment = 1
+
+[node name="TargetCharacterChoice" type="HBoxContainer" parent="IdentityPanel/Layout/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="TargetCharacterKeyLineEdit" type="LineEdit" parent="IdentityPanel/Layout/Grid/TargetCharacterChoice"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "替换目标角色"
+
+[node name="TargetCharacterSelectButton" type="Button" parent="IdentityPanel/Layout/Grid/TargetCharacterChoice"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 34)
+layout_mode = 2
+tooltip_text = "Search game and Mod character catalog"
+icon = ExtResource("2_search")
+
+[node name="AppearancePanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleAppearance")
+
+[node name="Layout" type="VBoxContainer" parent="AppearancePanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="AppearancePanel/Layout"]
+layout_mode = 2
+text = "游戏场景与外观"
+theme_override_colors/font_color = Color(0.76, 0.66, 1, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Grid" type="GridContainer" parent="AppearancePanel/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="SceneLabel" type="Label" parent="AppearancePanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "角色场景"
+vertical_alignment = 1
+
+[node name="SceneOverrideChoice" type="HBoxContainer" parent="AppearancePanel/Layout/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="SceneOverridePicker" parent="AppearancePanel/Layout/Grid/SceneOverrideChoice" instance=ExtResource("1_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SceneOverrideCatalogButton" type="Button" parent="AppearancePanel/Layout/Grid/SceneOverrideChoice"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 34)
+layout_mode = 2
+tooltip_text = "Search scene catalog"
+icon = ExtResource("2_search")
+
+[node name="SpriteLabel" type="Label" parent="AppearancePanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "预览贴图"
+vertical_alignment = 1
+
+[node name="SpriteOverrideChoice" type="HBoxContainer" parent="AppearancePanel/Layout/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="SpriteOverridePicker" parent="AppearancePanel/Layout/Grid/SpriteOverrideChoice" instance=ExtResource("1_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpriteOverrideCatalogButton" type="Button" parent="AppearancePanel/Layout/Grid/SpriteOverrideChoice"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 34)
+layout_mode = 2
+tooltip_text = "Search texture catalog"
+icon = ExtResource("2_search")
+
+[node name="PacketLabel" type="Label" parent="AppearancePanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "卡牌补丁"
+vertical_alignment = 1
+
+[node name="PacketPatchChoice" type="HBoxContainer" parent="AppearancePanel/Layout/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="PacketPatchPicker" parent="AppearancePanel/Layout/Grid/PacketPatchChoice" instance=ExtResource("1_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PacketPatchCatalogButton" type="Button" parent="AppearancePanel/Layout/Grid/PacketPatchChoice"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 34)
+layout_mode = 2
+tooltip_text = "Search packet resource catalog"
+icon = ExtResource("2_search")
+
+[node name="ConfigLabel" type="Label" parent="AppearancePanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "配置补丁"
+vertical_alignment = 1
+
+[node name="CharacterConfigPatchChoice" type="HBoxContainer" parent="AppearancePanel/Layout/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="CharacterConfigPatchPicker" parent="AppearancePanel/Layout/Grid/CharacterConfigPatchChoice" instance=ExtResource("1_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterConfigPatchCatalogButton" type="Button" parent="AppearancePanel/Layout/Grid/CharacterConfigPatchChoice"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 34)
+layout_mode = 2
+tooltip_text = "Search character config catalog"
+icon = ExtResource("2_search")
+
+[node name="CombatPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleCombat")
+
+[node name="Layout" type="VBoxContainer" parent="CombatPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="CombatPanel/Layout"]
+layout_mode = 2
+text = "战斗卡片数据"
+theme_override_colors/font_color = Color(1, 0.78, 0.4, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Grid" type="GridContainer" parent="CombatPanel/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="HitpointsLabel" type="Label" parent="CombatPanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "生命值"
+vertical_alignment = 1
+
+[node name="HitpointsSpinBox" type="SpinBox" parent="CombatPanel/Layout/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 999999.0
+step = 1.0
+
+[node name="NearDeathLabel" type="Label" parent="CombatPanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "濒死生命"
+vertical_alignment = 1
+
+[node name="NearDeathSpinBox" type="SpinBox" parent="CombatPanel/Layout/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 999999.0
+step = 1.0
+
+[node name="CostLabel" type="Label" parent="CombatPanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "卡片费用"
+vertical_alignment = 1
+
+[node name="CostSpinBox" type="SpinBox" parent="CombatPanel/Layout/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 99999.0
+step = 1.0
+
+[node name="CooldownLabel" type="Label" parent="CombatPanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "卡片冷却"
+vertical_alignment = 1
+
+[node name="CooldownSpinBox" type="SpinBox" parent="CombatPanel/Layout/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 9999.0
+step = 0.1
+
+[node name="StartingCooldownLabel" type="Label" parent="CombatPanel/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "开局冷却"
+vertical_alignment = 1
+
+[node name="StartingCooldownSpinBox" type="SpinBox" parent="CombatPanel/Layout/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 9999.0
+step = 0.1
+
+[node name="Flags" type="GridContainer" parent="CombatPanel/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="CanImitateCheck" type="CheckButton" parent="CombatPanel/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "允许模仿"
+
+[node name="CanCopyCheck" type="CheckButton" parent="CombatPanel/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "允许复制"
+
+[node name="CanDragIntoWaterCheck" type="CheckButton" parent="CombatPanel/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "可拖入水"
+
+[node name="PlantFields" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StylePlant")
+
+[node name="Layout" type="VBoxContainer" parent="PlantFields"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="PlantFields/Layout"]
+layout_mode = 2
+text = "植物能力"
+theme_override_colors/font_color = Color(0.58, 0.94, 0.5, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Flags" type="GridContainer" parent="PlantFields/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="CanUsePlantfoodCheck" type="CheckButton" parent="PlantFields/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "可使用叶绿素"
+
+[node name="Izn2FilterCheck" type="CheckButton" parent="PlantFields/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "启用 IZM2 过滤"
+
+[node name="PlantCoverAllCheck" type="CheckButton" parent="PlantFields/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "覆盖全部植物"
+
+[node name="PlantCoverSelfCheck" type="CheckButton" parent="PlantFields/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "允许覆盖自身"
+
+[node name="ZombieFields" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleZombie")
+
+[node name="Layout" type="VBoxContainer" parent="ZombieFields"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="ZombieFields/Layout"]
+layout_mode = 2
+text = "僵尸战斗数据"
+theme_override_colors/font_color = Color(1, 0.55, 0.42, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Grid" type="GridContainer" parent="ZombieFields/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="AttackLabel" type="Label" parent="ZombieFields/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "啃咬攻击"
+vertical_alignment = 1
+
+[node name="AttackSpinBox" type="SpinBox" parent="ZombieFields/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 999999.0
+step = 1.0
+
+[node name="SmashLabel" type="Label" parent="ZombieFields/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "砸击伤害"
+vertical_alignment = 1
+
+[node name="SmashAttackSpinBox" type="SpinBox" parent="ZombieFields/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 999999.0
+step = 1.0
+
+[node name="WeightLabel" type="Label" parent="ZombieFields/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "出怪权重"
+vertical_alignment = 1
+
+[node name="WeightSpinBox" type="SpinBox" parent="ZombieFields/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 999999.0
+step = 1.0
+
+[node name="WaveCostLabel" type="Label" parent="ZombieFields/Layout/Grid"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "波次点数"
+vertical_alignment = 1
+
+[node name="WavePointCostSpinBox" type="SpinBox" parent="ZombieFields/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 999999.0
+step = 1.0
+
+[node name="ZombiePreviewCheck" type="CheckButton" parent="ZombieFields/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "允许在出怪池中预览"
+
+[node name="MowerFields" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StylePlant")
+
+[node name="Layout" type="VBoxContainer" parent="MowerFields"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="MowerFields/Layout"]
+layout_mode = 2
+text = "小推车配置"
+theme_override_font_sizes/font_size = 16
+
+[node name="MowerConfigPicker" parent="MowerFields/Layout" instance=ExtResource("1_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VaseFields" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleAppearance")
+
+[node name="Layout" type="VBoxContainer" parent="VaseFields"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="VaseFields/Layout"]
+layout_mode = 2
+text = "花瓶类型"
+theme_override_font_sizes/font_size = 16
+
+[node name="VaseTypeOption" type="OptionButton" parent="VaseFields/Layout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VaseTypeSegments" type="HFlowContainer" parent="VaseFields/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="ItemFields" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleCombat")
+
+[node name="Layout" type="VBoxContainer" parent="ItemFields"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="ItemFields/Layout"]
+layout_mode = 2
+text = "物品碰撞能力"
+theme_override_font_sizes/font_size = 16
+
+[node name="Flags" type="GridContainer" parent="ItemFields/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="IsLadderCheck" type="CheckButton" parent="ItemFields/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "作为梯子"
+
+[node name="IsShieldCheck" type="CheckButton" parent="ItemFields/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "作为盾牌"

@@ -1,0 +1,389 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/GameplayLogic/XWGameplayResourcePickerWindow.cs" id="1_picker"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_window"]
+bg_color = Color(0.047, 0.067, 0.055, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.55, 0.25, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_header"]
+bg_color = Color(0.09, 0.18, 0.11, 1)
+border_width_bottom = 2
+border_color = Color(0.36, 0.59, 0.22, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_search"]
+bg_color = Color(0.025, 0.04, 0.033, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28, 0.42, 0.22, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 14.0
+content_margin_right = 14.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_preview"]
+bg_color = Color(0.07, 0.095, 0.075, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.38, 0.2, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_badge"]
+bg_color = Color(0.2, 0.34, 0.12, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_warning"]
+bg_color = Color(0.45, 0.17, 0.08, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_footer"]
+bg_color = Color(0.035, 0.05, 0.04, 1)
+border_width_top = 1
+border_color = Color(0.22, 0.34, 0.17, 1)
+
+[node name="XWGameplayResourcePickerWindow" type="Window"]
+title = "战斗资源图鉴"
+initial_position = 1
+size = Vector2i(920, 640)
+min_size = Vector2i(680, 480)
+exclusive = true
+transient = true
+visible = false
+script = ExtResource("1_picker")
+
+[node name="WindowSurface" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_window")
+
+[node name="RootVBox" type="VBoxContainer" parent="WindowSurface"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Header" type="PanelContainer" parent="WindowSurface/RootVBox"]
+custom_minimum_size = Vector2(0, 84)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_header")
+
+[node name="HeaderMargin" type="MarginContainer" parent="WindowSurface/RootVBox/Header"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 12
+
+[node name="HeaderRow" type="HBoxContainer" parent="WindowSurface/RootVBox/Header/HeaderMargin"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="TitleStack" type="VBoxContainer" parent="WindowSurface/RootVBox/Header/HeaderMargin/HeaderRow"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="WindowSurface/RootVBox/Header/HeaderMargin/HeaderRow/TitleStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 1, 0.83, 1)
+theme_override_font_sizes/font_size = 24
+text = "战斗资源图鉴"
+
+[node name="Subtitle" type="Label" parent="WindowSurface/RootVBox/Header/HeaderMargin/HeaderRow/TitleStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.72, 0.52, 1)
+text = "像选卡一样选择角色、地图、关卡与声音"
+
+[node name="SearchEdit" type="LineEdit" parent="WindowSurface/RootVBox/Header/HeaderMargin/HeaderRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBox_search")
+placeholder_text = "搜索名称或 Key…"
+clear_button_enabled = true
+
+[node name="CategoryTabs" type="HBoxContainer" parent="WindowSurface/RootVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ResourceTab" type="Button" parent="WindowSurface/RootVBox/CategoryTabs"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "资源"
+
+[node name="CharacterTab" type="Button" parent="WindowSurface/RootVBox/CategoryTabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "角色"
+
+[node name="CardTab" type="Button" parent="WindowSurface/RootVBox/CategoryTabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "卡片"
+
+[node name="ProjectileTab" type="Button" parent="WindowSurface/RootVBox/CategoryTabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "子弹"
+
+[node name="PacketBankTab" type="Button" parent="WindowSurface/RootVBox/CategoryTabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "卡组"
+
+[node name="MapTab" type="Button" parent="WindowSurface/RootVBox/CategoryTabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "地图"
+
+[node name="BgmTab" type="Button" parent="WindowSurface/RootVBox/CategoryTabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "BGM"
+
+[node name="LevelTab" type="Button" parent="WindowSurface/RootVBox/CategoryTabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "关卡"
+
+[node name="AudioTab" type="Button" parent="WindowSurface/RootVBox/CategoryTabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "音效"
+
+[node name="BodyMargin" type="MarginContainer" parent="WindowSurface/RootVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="BodySplit" type="HSplitContainer" parent="WindowSurface/RootVBox/BodyMargin"]
+layout_mode = 2
+split_offset = 520
+
+[node name="ChoiceTree" type="Tree" parent="WindowSurface/RootVBox/BodyMargin/BodySplit"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 32
+columns = 2
+column_titles_visible = false
+hide_root = true
+scroll_horizontal_enabled = false
+
+[node name="PreviewPanel" type="PanelContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_preview")
+
+[node name="PreviewMargin" type="MarginContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="PreviewScroll" type="ScrollContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="PreviewStack" type="VBoxContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="PreviewCaption" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.74, 0.52, 1)
+text = "资源预览"
+
+[node name="PreviewTexture" type="TextureRect" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(184, 210)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MissingBadge" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBox_warning")
+text = "缺少图像 · 将使用类型标识"
+horizontal_alignment = 1
+
+[node name="DisplayNameLabel" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 1, 0.88, 1)
+theme_override_font_sizes/font_size = 20
+text = "从左侧选择一个资源"
+autowrap_mode = 2
+
+[node name="ResourceKeyLabel" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.66, 0.76, 0.62, 1)
+text = "Key  —"
+autowrap_mode = 2
+
+[node name="SourceBadge" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBox_badge")
+text = "尚未选择"
+horizontal_alignment = 1
+
+[node name="AudioPreviewControls" type="VBoxContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="AudioButtons" type="HBoxContainer" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack/AudioPreviewControls"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="AudioPreviewButton" type="Button" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack/AudioPreviewControls/AudioButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "▶ 试听"
+
+[node name="AudioStopButton" type="Button" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack/AudioPreviewControls/AudioButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 38)
+layout_mode = 2
+disabled = true
+text = "■ 停止"
+
+[node name="AudioProgress" type="HSlider" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack/AudioPreviewControls"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+max_value = 1.0
+step = 0.01
+
+[node name="AudioTimeLabel" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack/AudioPreviewControls"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.72, 0.54, 1)
+theme_override_font_sizes/font_size = 12
+text = "00:00 / 00:00"
+horizontal_alignment = 2
+
+[node name="Spacer" type="Control" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Hint" type="Label" parent="WindowSurface/RootVBox/BodyMargin/BodySplit/PreviewPanel/PreviewMargin/PreviewScroll/PreviewStack"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.61, 0.48, 1)
+text = "选择后只写回资源 Key；实际资源在确认时按需使用。"
+autowrap_mode = 2
+
+[node name="Footer" type="PanelContainer" parent="WindowSurface/RootVBox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_footer")
+
+[node name="FooterMargin" type="MarginContainer" parent="WindowSurface/RootVBox/Footer"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 10
+
+[node name="FooterRow" type="HBoxContainer" parent="WindowSurface/RootVBox/Footer/FooterMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StatusLabel" type="Label" parent="WindowSurface/RootVBox/Footer/FooterMargin/FooterRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.58, 0.69, 0.54, 1)
+text = "正在读取资源索引…"
+
+[node name="CancelButton" type="Button" parent="WindowSurface/RootVBox/Footer/FooterMargin/FooterRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 42)
+layout_mode = 2
+text = "取消"
+
+[node name="ConfirmButton" type="Button" parent="WindowSurface/RootVBox/Footer/FooterMargin/FooterRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 42)
+layout_mode = 2
+disabled = true
+text = "选用此资源"
+
+[node name="AudioPreviewPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true

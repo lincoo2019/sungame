@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://bv51t6wsuqtq"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_fclzr"]
+[ext_resource type="PackedScene" uid="uid://dlmaukj0h6h0q" path="res://Asset/Config/Projectile/Pea/Sprite/MagicPea/MagicPea.tscn" id="2_umbsk"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="3_jqv4p"]
+[ext_resource type="PackedScene" uid="uid://citia6twnyck" path="res://Prefab/Particles/Splats/PeaSplats/PeaSplats.tscn" id="4_zx03t"]
+[ext_resource type="PackedScene" uid="uid://ca8778o5qtdax" path="res://Prefab/ProjectileEffect/MagicPeaBlow/TowerDefenseProjectileEffectMagicPeaBlow.tscn" id="5_oyltq"]
+[ext_resource type="Script" uid="uid://dagqelp0alh1i" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventProjectileSplit.cs" id="6_vzw80"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="7_8hkq5"]
+
+[sub_resource type="Resource" id="Resource_ecnz2"]
+script = ExtResource("7_8hkq5")
+projectileName = &"Pea"
+
+[sub_resource type="Resource" id="Resource_0pwzc"]
+script = ExtResource("6_vzw80")
+projectileData = SubResource("Resource_ecnz2")
+effectScene = ExtResource("5_oyltq")
+metadata/_custom_type_script = "uid://dagqelp0alh1i"
+
+[resource]
+script = ExtResource("3_jqv4p")
+name = "MagicPea"
+baseDamage = 20.0
+projectileScene = ExtResource("2_umbsk")
+splatScene = ExtResource("4_zx03t")
+hitEffect = ExtResource("5_oyltq")
+hitTargetEventList = Array[ExtResource("1_fclzr")]([SubResource("Resource_0pwzc")])
+hitBody = true
+isMagic = true

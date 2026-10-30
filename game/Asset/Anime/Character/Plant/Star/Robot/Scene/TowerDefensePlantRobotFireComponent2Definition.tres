@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="FireComponentDefinition" format=3 uid="uid://brpd665868u17"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="5"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="6"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="7"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_aepxm"]
+b = Vector2(2000, 0)
+
+[sub_resource type="Resource" id="AabbShape2DResource_robot_upper"]
+script = ExtResource("2")
+Geometry = SubResource("SegmentShape2D_aepxm")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, -70)
+
+[sub_resource type="Resource" id="AabbShape2DResource_robot_center"]
+script = ExtResource("2")
+Geometry = SubResource("SegmentShape2D_aepxm")
+
+[sub_resource type="Resource" id="AabbShape2DResource_robot_lower"]
+script = ExtResource("2")
+Geometry = SubResource("SegmentShape2D_aepxm")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, 70)
+
+[sub_resource type="Resource" id="Resource_553ad"]
+script = ExtResource("3")
+projectileName = &"Melon"
+fireMethodFlags = 2
+
+[sub_resource type="Resource" id="Resource_rbnt0"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_553ad")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_8blu3"]
+script = ExtResource("5")
+projectile = SubResource("Resource_rbnt0")
+useParentCollision = false
+collisionFlags = 43
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Resource_cewlf"]
+script = ExtResource("6")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[resource]
+script = ExtResource("7")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/Robot/ProjectileSlot3/Marker2D3")]
+spritePath = NodePath("SpriteGroup/TransformPoint/Robot")
+checkShapeResources = [SubResource("AabbShape2DResource_robot_upper"), SubResource("AabbShape2DResource_robot_center"), SubResource("AabbShape2DResource_robot_lower")]
+fireEventName = "melon_fire"
+fireAnimeClipsArray = ["FireA", "FireB"]
+fireAnimeClips = "FireB"
+fireAnimeTimeScale = 6.0
+fireIntervalBase = 3.0
+fireInterval = 2.0
+fireNum = 6
+fireCheckList = [SubResource("Resource_8blu3")]
+fireProjectileList = [SubResource("Resource_cewlf")]
+checkHeight = false
+randomChoose = true
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.star.robot.scene.towerdefenseplantrobot.2"
+InstanceId = "character.fire.1"
+WireIndex = 1
+InitiallyAlive = false
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent2"]

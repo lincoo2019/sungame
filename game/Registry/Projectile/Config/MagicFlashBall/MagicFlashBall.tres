@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://cstmcyo8updo6"]
+
+[ext_resource type="PackedScene" uid="uid://15bv4rgbibtf" path="res://Asset/Config/Projectile/MagicFlashBall/Sprite/MagicFlashBall/MagicFlashBall.tscn" id="1_m0hvz"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="2_2avmh"]
+[ext_resource type="PackedScene" uid="uid://cxghtqumcubh4" path="res://Asset/Anime/Effect/MagicFlash/MagicFlash.tscn" id="3_1ogjq"]
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="4_fjh4r"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="5_9eexg"]
+[ext_resource type="Script" uid="uid://c4cnj7r56bj3k" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffDizziness.cs" id="6_2bb1l"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="7_fzenm"]
+
+[sub_resource type="Resource" id="Resource_ppxzd"]
+script = ExtResource("6_2bb1l")
+time = 5.0
+metadata/_custom_type_script = "uid://c4cnj7r56bj3k"
+
+[sub_resource type="Resource" id="Resource_t5sgy"]
+script = ExtResource("7_fzenm")
+buffList = Array[ExtResource("5_9eexg")]([SubResource("Resource_ppxzd")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("2_2avmh")
+name = "MagicFlashBall"
+baseDamage = 0.0
+projectileScene = ExtResource("1_m0hvz")
+splatSceneType = "Sprite"
+splatScene = ExtResource("3_1ogjq")
+hitCharacterEventList = Array[ExtResource("4_fjh4r")]([SubResource("Resource_t5sgy")])
+rangeType = "Bomb"
+useRange = true
+rangeSize = Vector2(1.5, 1.5)
+hitPesontage = 1.0

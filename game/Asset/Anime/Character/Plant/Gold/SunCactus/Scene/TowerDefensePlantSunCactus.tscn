@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ml622xmehje8"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://b8avtiv57a5tq" path="res://Asset/Anime/Character/Plant/Gold/SunCactus/Scene/TowerDefensePlantSunCactusComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://dgjkgtftvwctg" path="res://Asset/Anime/Character/Plant/Gold/SunCactus/Scene/TowerDefensePlantSunCactus.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_64x33_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c2m26e5lxf7c2" path="res://Asset/Anime/Character/Plant/Gold/SunCactus/Config/TowerDefensePlantSunCactus.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://c72rdvx6fsw6q" path="res://Asset/Anime/Character/Plant/Gold/SunCactus/SunCactus.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantSunCactus" unique_id=2074302875 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+fireInterval = 1.5
+projectileName = "WhiteFireSpike"
+HitBoxDefinition = ExtResource("4")
+showHealthOffset = Vector2(0, 16)
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/SunCactus")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="SunCactus" parent="SpriteGroup/TransformPoint" index="0" unique_id=1525986993 instance=ExtResource("6")]
+position = Vector2(0, -30)
+layerVisible = [false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, true, true, true, false, true, true, false, true, true]
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/SunCactus" index="0" unique_id=329461081]
+position = Vector2(19.618797, -19.990965)
+scale = Vector2(1.0023423, 0.90631735)
+script = ExtResource("7")
+followSlotId = 20
+drawLayerId = 20
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SunCactus/AdobeAnimateSlot" index="0" unique_id=266636916]
+position = Vector2(12.7896, 15.5895815)
+
+[node name="AdobeAnimateSlot2" type="Node2D" parent="SpriteGroup/TransformPoint/SunCactus" index="1" unique_id=1526956542]
+position = Vector2(-36.32237, -37.591156)
+scale = Vector2(0.99594814, 0.90401775)
+script = ExtResource("7")
+followSlotId = 11
+drawLayerId = 11
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/SunCactus/AdobeAnimateSlot2" index="0" unique_id=107611146]
+position = Vector2(34.570854, 37.872105)
+
+[editable path="SpriteGroup/TransformPoint/SunCactus"]

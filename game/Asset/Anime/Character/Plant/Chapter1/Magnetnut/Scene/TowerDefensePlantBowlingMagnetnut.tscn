@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bp3ohvijwolsf"]
+
+[ext_resource type="PackedScene" uid="uid://colk7liw31q6k" path="res://Prefab/TowerDefense/Character/TowerDefensePlantBowlingBase.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://gl4xsdqxxp6l" path="res://Asset/Anime/Character/Plant/Chapter1/Magnetnut/Scene/TowerDefensePlantBowlingMagnetnutComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bxj36mk4b8gqp" path="res://Asset/Anime/Character/Plant/Chapter1/Magnetnut/Scene/TowerDefensePlantBowlingMagnetnut.cs" id="3"]
+[ext_resource type="Resource" uid="uid://da1vcyx6hqlsi" path="res://Asset/Anime/Character/Plant/Chapter1/Magnetnut/Config/TowerDefensePlantMagnetnutBowling.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://csp3p80bpd1cn" path="res://Asset/Anime/Character/Plant/Chapter1/Magnetnut/Magnetnut.tscn" id="5"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="6"]
+
+[node name="TowerDefensePlantBowlingMagnetnut" unique_id=1706335219 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/Magnetnut")
+PreviewDamagePointPersontage = 1.0
+Custom = []
+
+[node name="Magnetnut" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=2005080262 instance=ExtResource("5")]
+position = Vector2(0, -30)
+Animation/Clip = "Roll"
+Animation/MediaReplace/MagnetNut.png = "res://Asset/AtlasSource/DamagePoint/Anime/Character/Plant/Chapter1/Magnetnut/DamagePoint/MagnetnutBody.png"
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/Magnetnut" index="0" unique_id=1025083097]
+script = ExtResource("6")
+followSlotId = 3
+offset = Vector2(65, 60)
+Layer = 3
+drawLayerId = 3
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/Magnetnut/AdobeAnimateSlot" index="0" unique_id=1400388793]

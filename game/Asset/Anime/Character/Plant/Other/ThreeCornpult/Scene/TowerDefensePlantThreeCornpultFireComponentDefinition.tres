@@ -1,0 +1,125 @@
+[gd_resource type="Resource" script_class="FireComponentDefinition" format=3 uid="uid://bohd404h56kxv"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://bi6p43no6bcyx" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeightItem.cs" id="5"]
+[ext_resource type="Script" uid="uid://6pte6bht2hgs" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileWeight.cs" id="6"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="7"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="8"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="9"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1kiwe"]
+b = Vector2(2000, 0)
+
+[sub_resource type="Resource" id="AabbShape2DResource_fire_upper"]
+script = ExtResource("2")
+Geometry = SubResource("SegmentShape2D_1kiwe")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, -70)
+
+[sub_resource type="Resource" id="AabbShape2DResource_fire_center"]
+script = ExtResource("2")
+Geometry = SubResource("SegmentShape2D_1kiwe")
+
+[sub_resource type="Resource" id="AabbShape2DResource_fire_lower"]
+script = ExtResource("2")
+Geometry = SubResource("SegmentShape2D_1kiwe")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, 70)
+
+[sub_resource type="Resource" id="Resource_8nrgk"]
+script = ExtResource("3")
+projectileName = &"Kernal"
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+overrideCatapultHeight = true
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_57kdu"]
+script = ExtResource("3")
+projectileName = &"Butter"
+baseDamage = 40.0
+damageFlags = 2
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+overrideCatapultHeight = true
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_ymkcs"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_57kdu")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_leoqh"]
+script = ExtResource("5")
+projectileResource = SubResource("Resource_ymkcs")
+weight = 0.25
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Resource_wrxq2"]
+script = ExtResource("3")
+projectileName = &"Kernal"
+damageFlags = 2
+collisionFlags = 43
+fireMethodFlags = 2
+catapultHeight = 400.0
+overrideCatapultHeight = true
+metadata/_custom_type_script = "uid://cw4vt8l6l82xs"
+
+[sub_resource type="Resource" id="Resource_yteqd"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_wrxq2")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_1d0j6"]
+script = ExtResource("5")
+projectileResource = SubResource("Resource_yteqd")
+weight = 0.75
+metadata/_custom_type_script = "uid://bi6p43no6bcyx"
+
+[sub_resource type="Resource" id="Resource_airxd"]
+script = ExtResource("6")
+projectileData = SubResource("Resource_8nrgk")
+projectileWeight = [SubResource("Resource_leoqh"), SubResource("Resource_1d0j6")]
+metadata/_custom_type_script = "uid://6pte6bht2hgs"
+
+[sub_resource type="Resource" id="Resource_6ftbd"]
+script = ExtResource("7")
+projectile = SubResource("Resource_airxd")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Resource_3w88d"]
+script = ExtResource("8")
+offsetLine = -1
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_1kiwe"]
+script = ExtResource("8")
+firePosId = 1
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_73g7q"]
+script = ExtResource("8")
+firePosId = 2
+offsetLine = 1
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[resource]
+script = ExtResource("9")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/ThreeCornpult/AdobeAnimateSlot/Marker2D"), NodePath("SpriteGroup/TransformPoint/ThreeCornpult/AdobeAnimateSlot2/Marker2D2"), NodePath("SpriteGroup/TransformPoint/ThreeCornpult/AdobeAnimateSlot3/Marker2D3")]
+spritePath = NodePath("SpriteGroup/TransformPoint/ThreeCornpult")
+checkShapeResources = [SubResource("AabbShape2DResource_fire_upper"), SubResource("AabbShape2DResource_fire_center"), SubResource("AabbShape2DResource_fire_lower")]
+fireAnimeTimeScale = 3.0
+fireIntervalBase = 3.0
+fireInterval = 3.0
+fireCheckList = [SubResource("Resource_6ftbd")]
+fireProjectileList = [SubResource("Resource_3w88d"), SubResource("Resource_1kiwe"), SubResource("Resource_73g7q")]
+checkAllLine = true
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.other.three_cornpult"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]

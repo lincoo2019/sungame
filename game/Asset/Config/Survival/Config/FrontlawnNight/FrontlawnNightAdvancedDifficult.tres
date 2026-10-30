@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://c02lk8yn1g8yv"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/FrontlawnNight/FrontlawnNightAdvancedDifficult.json" id="1_dvko3"]
+[ext_resource type="Script" uid="uid://huks85pqdgqb" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalConfig.cs" id="2_ompfd"]
+[ext_resource type="Script" uid="uid://bru304ldtwq3e" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.cs" id="3_ui8ed"]
+
+[sub_resource type="Resource" id="Resource_cb3j5"]
+script = ExtResource("3_ui8ed")
+_round = 1
+zombieList = ["ZombiePaper", "ZombieSleeper", "ZombieNormalScreendoor", "ZombieFootball"]
+
+[sub_resource type="Resource" id="Resource_noawk"]
+script = ExtResource("3_ui8ed")
+_round = 2
+zombieList = ["ZombieJackson", "ZombieShadow", "ZombieLadder", "ZombiePogo", "ZombiePolestriker", "ZombiePolevaulter", "ZombieFootballBlack", "ZombieDisco", "ZombieDigger"]
+
+[sub_resource type="Resource" id="Resource_05eoo"]
+script = ExtResource("3_ui8ed")
+_round = 3
+zombieList = ["ZombieShieldArmor", "ZombieImpSnail", "ZombieAxe", "ZombieDiscopaper", "ZombiePaperball", "ZombieYetiDigger"]
+
+[sub_resource type="Resource" id="Resource_4y67m"]
+script = ExtResource("3_ui8ed")
+_round = 4
+zombieList = ["ZombieMagnetic", "ZombieBed", "ZombieJackbox", "ZombieGargantuar", "ZombieJacksonX", "ZombieImphacker", "ZombieGargantuarRedEyes", "ZombiePogoJackson", "ZombiePogoball", "ZombieGargantuarArmed", "ZombieGardener", "ZombieDiamond"]
+
+[resource]
+script = ExtResource("2_ompfd")
+json = ExtResource("1_dvko3")
+roundLimit = 5
+pointIncrementPerWave = 150
+pointIncrementPerBigWave = 200
+pointIncrementPerRound = 1000
+pointMax = 60000
+pointBigWaveScale = 0.5
+zombiePoolBase = ["ZombieNormal", "ZombieNormalCone", "ZombieNormalBucket"]
+zombiePoolRoundAdd = Array[ExtResource("3_ui8ed")]([SubResource("Resource_cb3j5"), SubResource("Resource_noawk"), SubResource("Resource_05eoo"), SubResource("Resource_4y67m")])
+metadata/_custom_type_script = "uid://huks85pqdgqb"

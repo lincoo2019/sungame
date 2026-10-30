@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://5pgcojefedgf"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_7tbaa"]
+[ext_resource type="Script" uid="uid://ky0rohwug6p1" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventPacketSpawn.cs" id="2_xvqmm"]
+[ext_resource type="PackedScene" uid="uid://qwdnsaywv4ol" path="res://Asset/Config/Projectile/Magnet/Sprite/Magnet/ProjectileMagnet.tscn" id="3_873ti"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="4_xqbus"]
+
+[sub_resource type="Resource" id="Resource_ffqoo"]
+script = ExtResource("2_xvqmm")
+packetName = "ItemMagnet"
+byCamp = true
+metadata/_custom_type_script = "uid://ky0rohwug6p1"
+
+[sub_resource type="Resource" id="Resource_m3rgy"]
+script = ExtResource("2_xvqmm")
+packetName = "ItemMagnet"
+byCamp = true
+metadata/_custom_type_script = "uid://ky0rohwug6p1"
+
+[resource]
+script = ExtResource("4_xqbus")
+name = "Magnet"
+projectileScene = ExtResource("3_873ti")
+hitTargetEventList = Array[ExtResource("1_7tbaa")]([SubResource("Resource_m3rgy")])
+hitGroundEventList = Array[ExtResource("1_7tbaa")]([SubResource("Resource_ffqoo")])
+rotateScale = 5.0

@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://c2lo6qp35dna7"]
+
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="1"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="3"]
+
+[sub_resource type="Resource" id="State_root"]
+script = ExtResource("1")
+StableId = "gravebuster.root"
+DisplayName = &"Root"
+Kind = 1
+InitialChildId = "gravebuster.idle"
+
+[sub_resource type="Resource" id="State_idle"]
+script = ExtResource("1")
+StableId = "gravebuster.idle"
+DisplayName = &"Idle"
+ParentId = "gravebuster.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_consume"]
+script = ExtResource("1")
+StableId = "gravebuster.consume"
+DisplayName = &"Gravebuster"
+ParentId = "gravebuster.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_idle"]
+script = ExtResource("2")
+StableId = "gravebuster.to_idle"
+SourceStateId = "gravebuster.root"
+TargetStateId = "gravebuster.idle"
+EventName = &"ToIdle"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_consume"]
+script = ExtResource("2")
+StableId = "gravebuster.to_consume"
+SourceStateId = "gravebuster.root"
+TargetStateId = "gravebuster.consume"
+EventName = &"ToGravebuster"
+DeclarationOrder = 1
+GuardDefinition = null
+
+[resource]
+script = ExtResource("3")
+DefinitionId = "builtin.component.gravebuster"
+BaseDefinition = null
+RootStateId = "gravebuster.root"
+States = [SubResource("State_root"), SubResource("State_idle"), SubResource("State_consume")]
+Transitions = [SubResource("Transition_idle"), SubResource("Transition_consume")]

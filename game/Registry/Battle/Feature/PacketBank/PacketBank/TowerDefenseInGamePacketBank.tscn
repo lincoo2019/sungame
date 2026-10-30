@@ -1,0 +1,742 @@
+[gd_scene format=3 uid="uid://iydc3rp06xgs"]
+
+[ext_resource type="Script" uid="uid://c6jejuxfod1xi" path="res://Registry/Battle/Feature/PacketBank/PacketBank/TowerDefenseInGamePacketBank.cs" id="1_jby0v"]
+[ext_resource type="Texture2D" uid="uid://hoey72hrwb60" path="res://Asset/Texture/TowerDefense/PacketBank/PacketBankPanel.png" id="2_5st44"]
+[ext_resource type="Texture2D" uid="uid://bd4qwbgjr0upr" path="res://Asset/Texture/TowerDefense/PacketBank/PacketBankCardSort.png" id="2_l8663"]
+[ext_resource type="PackedScene" uid="uid://c3g8bb7vutqsp" path="res://Registry/Battle/Feature/PacketBank/PacketBank/PacketCategory/PacketCategoryButton.tscn" id="3_em5sh"]
+[ext_resource type="Shader" uid="uid://bi8x813unwm5l" path="res://Asset/Shader/ShaderBright.gdshader" id="4_0a0g5"]
+[ext_resource type="Texture2D" uid="uid://br8flgo5rvajd" path="res://Asset/Texture/TowerDefense/PacketBank/Cards2.png" id="5_hjamx"]
+[ext_resource type="Texture2D" uid="uid://tdj4o6msgch1" path="res://Asset/Texture/TowerDefense/PacketBank/Cards3.png" id="6_afvwr"]
+[ext_resource type="Texture2D" uid="uid://mgf1htk12uhi" path="res://Asset/Texture/TowerDefense/PacketBank/Cards4.png" id="7_ns1b0"]
+[ext_resource type="Texture2D" uid="uid://c3lrapc1la8so" path="res://Asset/Texture/TowerDefense/PacketBank/Cards5.png" id="8_5mivh"]
+[ext_resource type="Texture2D" uid="uid://bi03i1nvq4m10" path="res://Asset/Texture/TowerDefense/PacketBank/Cards6.png" id="9_u13cd"]
+[ext_resource type="PackedScene" uid="uid://bgkuthysw0876" path="res://Prefab/GUI/Button/NinePatchButtonBase/NinePatchButtonBase.tscn" id="9_w7ao4"]
+[ext_resource type="Texture2D" uid="uid://da1nikmivd2n8" path="res://Asset/Texture/TowerDefense/PacketBank/PacketBankButton.png" id="12_ns1b0"]
+[ext_resource type="Texture2D" uid="uid://dphra8cjrdw34" path="res://Asset/Texture/TowerDefense/PacketBank/PacketBankButtonGlow.png" id="13_5mivh"]
+[ext_resource type="FontFile" uid="uid://d0aylc13b87r0" path="res://Asset/Font/BrianneTod.ttf" id="14_u13cd"]
+[ext_resource type="PackedScene" uid="uid://baeeahg8pe61u" path="res://Registry/Battle/Feature/PacketBank/PacketBank/PacketGroup/PacketGroupButton.tscn" id="15_5mivh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2bwr"]
+shader = ExtResource("4_0a0g5")
+shader_parameter/brightStrength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_drkcr"]
+shader = ExtResource("4_0a0g5")
+shader_parameter/brightStrength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dccxo"]
+shader = ExtResource("4_0a0g5")
+shader_parameter/brightStrength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pnjhw"]
+shader = ExtResource("4_0a0g5")
+shader_parameter/brightStrength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_elr58"]
+shader = ExtResource("4_0a0g5")
+shader_parameter/brightStrength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c27yt"]
+shader = ExtResource("4_0a0g5")
+shader_parameter/brightStrength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_it1vo"]
+shader = ExtResource("4_0a0g5")
+shader_parameter/brightStrength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdt4h"]
+shader = ExtResource("4_0a0g5")
+shader_parameter/brightStrength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o07ck"]
+shader = ExtResource("4_0a0g5")
+shader_parameter/brightStrength = 0.0
+
+[sub_resource type="Animation" id="Animation_50gkw"]
+resource_name = "Enter"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Translate:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 600), Vector2(0, 80)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShopButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AlmanacButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Translate:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_y04q1"]
+resource_name = "Exit"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Translate:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 86), Vector2(0, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShopButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AlmanacButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Translate:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_fdhmt"]
+resource_name = "MobileEnter"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Translate:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(210, 600), Vector2(210, 72)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShopButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AlmanacButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Translate:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ptdco"]
+resource_name = "MobileExit"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Translate:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(210, 72), Vector2(210, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShopButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AlmanacButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Translate:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_7jw7n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Translate:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShopButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AlmanacButton:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Translate:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ve4l2"]
+_data = {
+&"Enter": SubResource("Animation_50gkw"),
+&"Exit": SubResource("Animation_y04q1"),
+&"MobileEnter": SubResource("Animation_fdhmt"),
+&"MobileExit": SubResource("Animation_ptdco"),
+&"RESET": SubResource("Animation_7jw7n")
+}
+
+[node name="TowerDefenseInGamePacketBank" type="Control" unique_id=1298110351]
+light_mask = 0
+layout_mode = 3
+anchors_preset = 0
+offset_top = 600.0
+offset_bottom = 600.0
+script = ExtResource("1_jby0v")
+
+[node name="Translate" type="Control" parent="." unique_id=1579790952]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_top = 600.0
+offset_bottom = 600.0
+mouse_filter = 2
+
+[node name="CardSort" type="TextureRect" parent="Translate" unique_id=1559490828]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 616.0
+offset_top = -596.0
+offset_right = 710.0
+offset_bottom = -97.0
+texture = ExtResource("2_l8663")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Translate/CardSort" unique_id=1246658113]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 62.0
+offset_right = -55.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 75
+
+[node name="CardWhite" parent="Translate/CardSort/VBoxContainer" unique_id=530619923 instance=ExtResource("3_em5sh")]
+layout_mode = 2
+
+[node name="SpriteBrightButton" parent="Translate/CardSort/VBoxContainer/CardWhite" index="0"]
+material = SubResource("ShaderMaterial_m2bwr")
+offset_top = -29.0
+offset_bottom = 166.0
+
+[node name="CardGold" parent="Translate/CardSort/VBoxContainer" unique_id=252601888 instance=ExtResource("3_em5sh")]
+layout_mode = 2
+category = "Gold"
+
+[node name="SpriteBrightButton" parent="Translate/CardSort/VBoxContainer/CardGold" index="0"]
+material = SubResource("ShaderMaterial_drkcr")
+offset_left = -25.0
+offset_top = -29.0
+offset_right = 167.0
+offset_bottom = 166.0
+texture = ExtResource("5_hjamx")
+
+[node name="Label" parent="Translate/CardSort/VBoxContainer/CardGold/LabelNode" index="0"]
+theme_override_colors/font_color = Color(0.984314, 0.85098, 0.180392, 1)
+text = "金卡"
+
+[node name="CardDiamond" parent="Translate/CardSort/VBoxContainer" unique_id=677535321 instance=ExtResource("3_em5sh")]
+layout_mode = 2
+category = "Diamond"
+
+[node name="SpriteBrightButton" parent="Translate/CardSort/VBoxContainer/CardDiamond" index="0"]
+material = SubResource("ShaderMaterial_dccxo")
+offset_left = -25.0
+offset_top = -29.0
+offset_right = 167.0
+offset_bottom = 166.0
+texture = ExtResource("6_afvwr")
+
+[node name="Label" parent="Translate/CardSort/VBoxContainer/CardDiamond/LabelNode" index="0"]
+theme_override_colors/font_color = Color(0.513726, 0.933333, 1, 1)
+text = "钻卡"
+
+[node name="CardColour" parent="Translate/CardSort/VBoxContainer" unique_id=870735311 instance=ExtResource("3_em5sh")]
+layout_mode = 2
+category = "Colour"
+
+[node name="SpriteBrightButton" parent="Translate/CardSort/VBoxContainer/CardColour" index="0"]
+material = SubResource("ShaderMaterial_pnjhw")
+offset_left = -25.0
+offset_top = -29.0
+offset_right = 167.0
+offset_bottom = 166.0
+texture = ExtResource("7_ns1b0")
+
+[node name="Label" parent="Translate/CardSort/VBoxContainer/CardColour/LabelNode" index="0"]
+theme_override_colors/font_color = Color(0.999998, 0.588078, 0.568435, 1)
+text = "彩卡"
+
+[node name="CardStar" parent="Translate/CardSort/VBoxContainer" unique_id=607075465 instance=ExtResource("3_em5sh")]
+layout_mode = 2
+category = "Star"
+
+[node name="SpriteBrightButton" parent="Translate/CardSort/VBoxContainer/CardStar" index="0"]
+material = SubResource("ShaderMaterial_elr58")
+offset_left = -25.0
+offset_top = -29.0
+offset_right = 167.0
+offset_bottom = 166.0
+texture = ExtResource("8_5mivh")
+
+[node name="Label" parent="Translate/CardSort/VBoxContainer/CardStar/LabelNode" index="0"]
+theme_override_colors/font_color = Color(1, 0.984314, 0.0313726, 1)
+text = "星卡"
+
+[node name="CardOriginal" parent="Translate/CardSort/VBoxContainer" unique_id=709854032 instance=ExtResource("3_em5sh")]
+layout_mode = 2
+category = "Original"
+
+[node name="SpriteBrightButton" parent="Translate/CardSort/VBoxContainer/CardOriginal" index="0"]
+material = SubResource("ShaderMaterial_c27yt")
+offset_left = -25.0
+offset_top = -29.0
+offset_right = 167.0
+offset_bottom = 166.0
+texture = ExtResource("9_u13cd")
+
+[node name="Label" parent="Translate/CardSort/VBoxContainer/CardOriginal/LabelNode" index="0"]
+text = "原卡"
+
+[node name="CardItem" parent="Translate/CardSort" unique_id=1476795658 instance=ExtResource("3_em5sh")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 133.0
+offset_top = 137.0
+offset_right = 133.0
+offset_bottom = 137.0
+category = "Item"
+
+[node name="SpriteBrightButton" parent="Translate/CardSort/CardItem" index="0"]
+material = SubResource("ShaderMaterial_it1vo")
+offset_left = -28.0
+offset_top = -29.0
+offset_right = 164.0
+offset_bottom = 166.0
+texture = ExtResource("9_u13cd")
+
+[node name="Label" parent="Translate/CardSort/CardItem/LabelNode" index="0"]
+offset_left = -12.0
+offset_right = 60.0
+theme_override_colors/font_color = Color(0.728761, 0.824951, 0.152246, 1)
+text = "物品卡"
+
+[node name="CardGraveStone" parent="Translate/CardSort" unique_id=964065366 instance=ExtResource("3_em5sh")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 133.0
+offset_top = 212.0
+offset_right = 133.0
+offset_bottom = 212.0
+category = "GraveStone"
+
+[node name="SpriteBrightButton" parent="Translate/CardSort/CardGraveStone" index="0"]
+material = SubResource("ShaderMaterial_jdt4h")
+offset_left = -28.0
+offset_top = -29.0
+offset_right = 164.0
+offset_bottom = 166.0
+texture = ExtResource("9_u13cd")
+
+[node name="Label" parent="Translate/CardSort/CardGraveStone/LabelNode" index="0"]
+offset_left = -12.0
+offset_right = 60.0
+theme_override_colors/font_color = Color(0.625597, 0.625597, 0.625597, 1)
+text = "障碍物"
+
+[node name="CardZombie" parent="Translate/CardSort" unique_id=2035167110 instance=ExtResource("3_em5sh")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 133.0
+offset_top = 287.0
+offset_right = 133.0
+offset_bottom = 287.0
+category = "Zombie"
+
+[node name="SpriteBrightButton" parent="Translate/CardSort/CardZombie" index="0"]
+material = SubResource("ShaderMaterial_o07ck")
+offset_left = -28.0
+offset_top = -29.0
+offset_right = 164.0
+offset_bottom = 166.0
+texture = ExtResource("9_u13cd")
+
+[node name="Label" parent="Translate/CardSort/CardZombie/LabelNode" index="0"]
+offset_left = -12.0
+offset_right = 60.0
+theme_override_colors/font_color = Color(0.670724, 0.417215, 1, 1)
+text = "僵尸卡"
+
+[node name="CardMod" parent="Translate/CardSort" unique_id=1674886003 instance=ExtResource("3_em5sh")]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 62.0
+offset_right = 133.0
+offset_bottom = 62.0
+category = "ModPlants"
+
+[node name="Label" parent="Translate/CardSort/CardMod/LabelNode" index="0"]
+text = "Mod 植物"
+
+[node name="PacketBankPanelTexture" type="NinePatchRect" parent="Translate" unique_id=62228902]
+unique_name_in_owner = true
+light_mask = 0
+custom_minimum_size = Vector2(610, 513)
+layout_mode = 0
+offset_left = 7.0
+offset_top = -600.0
+offset_right = 617.0
+offset_bottom = -87.0
+texture = ExtResource("2_5st44")
+patch_margin_left = 219
+patch_margin_top = 43
+patch_margin_right = 70
+patch_margin_bottom = 214
+
+[node name="PacketBankScroll" type="ScrollContainer" parent="Translate/PacketBankPanelTexture" unique_id=418562874]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 17.0
+offset_top = 34.0
+offset_right = 597.0
+offset_bottom = 456.0
+horizontal_scroll_mode = 0
+scroll_deadzone = 20
+
+[node name="PacketBankMargin" type="MarginContainer" parent="Translate/PacketBankPanelTexture/PacketBankScroll" unique_id=763750942]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 38
+
+[node name="PacketContainer" type="Control" parent="Translate/PacketBankPanelTexture/PacketBankScroll/PacketBankMargin" unique_id=332881234]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 2
+mouse_filter = 1
+
+[node name="RockButton" parent="Translate" unique_id=713451167 instance=ExtResource("9_w7ao4")]
+layout_mode = 0
+offset_left = 219.0
+offset_top = -144.0
+offset_right = 394.0
+offset_bottom = -102.0
+text = "INGAME_ROCK"
+
+[node name="ReSelectButton" parent="Translate" unique_id=1182735394 instance=ExtResource("9_w7ao4")]
+layout_mode = 0
+offset_left = 423.0
+offset_top = -139.0
+offset_right = 591.0
+offset_bottom = -108.0
+text = "INGAME_RESELECT"
+normalTexture = ExtResource("12_ns1b0")
+pressedTexture = ExtResource("13_5mivh")
+hoverTexture = ExtResource("13_5mivh")
+
+[node name="NinePatchTexture" parent="Translate/ReSelectButton" index="0"]
+texture = ExtResource("12_ns1b0")
+
+[node name="LabelText" parent="Translate/ReSelectButton/CenterContainer" index="0"]
+theme_override_colors/font_color = Color(0.306155, 0.122686, 6.49765e-07, 1)
+theme_override_fonts/font = ExtResource("14_u13cd")
+text = "INGAME_RESELECT"
+
+[node name="ViewButton" parent="Translate" unique_id=34210338 instance=ExtResource("9_w7ao4")]
+layout_mode = 0
+offset_left = 31.0
+offset_top = -139.0
+offset_right = 188.0
+offset_bottom = -108.0
+text = "INGAME_VIEW"
+normalTexture = ExtResource("12_ns1b0")
+pressedTexture = ExtResource("13_5mivh")
+hoverTexture = ExtResource("13_5mivh")
+
+[node name="NinePatchTexture" parent="Translate/ViewButton" index="0"]
+texture = ExtResource("12_ns1b0")
+
+[node name="LabelText" parent="Translate/ViewButton/CenterContainer" index="0"]
+theme_override_colors/font_color = Color(0.306155, 0.122686, 6.49765e-07, 1)
+theme_override_fonts/font = ExtResource("14_u13cd")
+text = "INGAME_VIEW"
+
+[node name="PacketGroup" type="HBoxContainer" parent="Translate" unique_id=1397765854]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -600.0
+offset_right = 613.0
+offset_bottom = -568.0
+theme_override_constants/separation = 0
+
+[node name="PacketGroupButton" parent="Translate/PacketGroup" unique_id=92633281 instance=ExtResource("15_5mivh")]
+layout_mode = 2
+text = "卡组1"
+
+[node name="PacketGroupButton2" parent="Translate/PacketGroup" unique_id=1306938850 instance=ExtResource("15_5mivh")]
+layout_mode = 2
+id = 2
+text = "卡组2"
+
+[node name="PacketGroupButton3" parent="Translate/PacketGroup" unique_id=674547467 instance=ExtResource("15_5mivh")]
+layout_mode = 2
+id = 3
+text = "卡组3"
+
+[node name="PacketGroupButton4" parent="Translate/PacketGroup" unique_id=930718776 instance=ExtResource("15_5mivh")]
+layout_mode = 2
+id = 4
+text = "卡组4"
+
+[node name="PacketGroupButton5" parent="Translate/PacketGroup" unique_id=720289825 instance=ExtResource("15_5mivh")]
+layout_mode = 2
+id = 5
+text = "卡组5"
+
+[node name="PacketGroupButton6" parent="Translate/PacketGroup" unique_id=1300493531 instance=ExtResource("15_5mivh")]
+layout_mode = 2
+id = 6
+text = "卡组6"
+
+[node name="AnimeNode" type="Control" parent="." unique_id=1546766504]
+unique_name_in_owner = true
+z_index = 10
+anchors_preset = 0
+offset_top = 9.0
+offset_bottom = 9.0
+
+[node name="PacketBankAnimationPlayer" type="AnimationPlayer" parent="." unique_id=934248947]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_ve4l2")
+
+[node name="ShopButton" parent="." unique_id=1857978797 instance=ExtResource("9_w7ao4")]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 738.0
+offset_top = -40.799927
+offset_right = 895.0
+offset_bottom = -9.799927
+grow_horizontal = 0
+grow_vertical = 0
+text = "商店"
+normalTexture = ExtResource("12_ns1b0")
+pressedTexture = ExtResource("13_5mivh")
+hoverTexture = ExtResource("13_5mivh")
+
+[node name="NinePatchTexture" parent="ShopButton" index="0"]
+texture = ExtResource("12_ns1b0")
+
+[node name="LabelText" parent="ShopButton/CenterContainer" index="0"]
+theme_override_colors/font_color = Color(0.306155, 0.122686, 6.49765e-07, 1)
+theme_override_fonts/font = ExtResource("14_u13cd")
+text = "商店"
+
+[node name="AlmanacButton" parent="." unique_id=58890319 instance=ExtResource("9_w7ao4")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.002
+anchor_right = 1.0
+anchor_bottom = 1.002
+offset_left = 902.0
+offset_top = -42.000027
+offset_right = 1059.0
+offset_bottom = -10.999996
+text = "查看图鉴"
+normalTexture = ExtResource("12_ns1b0")
+pressedTexture = ExtResource("13_5mivh")
+hoverTexture = ExtResource("13_5mivh")
+
+[node name="NinePatchTexture" parent="AlmanacButton" index="0"]
+texture = ExtResource("12_ns1b0")
+
+[node name="LabelText" parent="AlmanacButton/CenterContainer" index="0"]
+theme_override_colors/font_color = Color(0.306155, 0.122686, 6.49765e-07, 1)
+theme_override_fonts/font = ExtResource("14_u13cd")
+text = "查看图鉴"
+
+[editable path="Translate/CardSort/VBoxContainer/CardWhite"]
+[editable path="Translate/CardSort/VBoxContainer/CardWhite/SpriteBrightButton"]
+[editable path="Translate/CardSort/VBoxContainer/CardGold"]
+[editable path="Translate/CardSort/VBoxContainer/CardGold/SpriteBrightButton"]
+[editable path="Translate/CardSort/VBoxContainer/CardDiamond"]
+[editable path="Translate/CardSort/VBoxContainer/CardDiamond/SpriteBrightButton"]
+[editable path="Translate/CardSort/VBoxContainer/CardColour"]
+[editable path="Translate/CardSort/VBoxContainer/CardColour/SpriteBrightButton"]
+[editable path="Translate/CardSort/VBoxContainer/CardStar"]
+[editable path="Translate/CardSort/VBoxContainer/CardStar/SpriteBrightButton"]
+[editable path="Translate/CardSort/VBoxContainer/CardOriginal"]
+[editable path="Translate/CardSort/VBoxContainer/CardOriginal/SpriteBrightButton"]
+[editable path="Translate/CardSort/CardItem"]
+[editable path="Translate/CardSort/CardItem/SpriteBrightButton"]
+[editable path="Translate/CardSort/CardGraveStone"]
+[editable path="Translate/CardSort/CardGraveStone/SpriteBrightButton"]
+[editable path="Translate/CardSort/CardZombie"]
+[editable path="Translate/CardSort/CardZombie/SpriteBrightButton"]
+[editable path="Translate/ReSelectButton"]
+[editable path="Translate/ViewButton"]
+[editable path="ShopButton"]
+[editable path="AlmanacButton"]
+
+[editable path="Translate/CardSort/CardMod"]

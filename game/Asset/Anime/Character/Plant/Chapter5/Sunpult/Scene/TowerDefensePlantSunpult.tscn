@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://qaq1qel3qat2"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter5/Sunpult/Scene/TowerDefensePlantSunpultComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://d20u8o4uopuo3" path="res://Asset/Anime/Character/Plant/Chapter5/Sunpult/Scene/TowerDefensePlantSunpult.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cclqdfwmkvwte" path="res://Asset/Anime/Character/Plant/Chapter5/Sunpult/Config/TowerDefensePlantSunpult.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://w2ofgnyygma2" path="res://Asset/Anime/Character/Plant/Chapter5/Sunpult/Sunpult.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantScaredySunShroom" unique_id=1771047133 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+produceInterval = 25.0
+sunNum = 15
+growUpTime = 60.0
+fireInterval = 3.0
+fireNum = 1
+projectileName = "Sunshroom"
+sleepAnimeClip = "Sleep"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/Sunpult")
+Custom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 33)
+scale = Vector2(0.604651, 0.555556)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="Sunpult" parent="SpriteGroup/TransformPoint" index="0" unique_id=1412286185 instance=ExtResource("6")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/Sunpult" index="0" unique_id=544454066]
+skew = -1.4662743e-05
+script = ExtResource("7")
+followSlotId = 3
+Layer = 3
+drawLayerId = 3
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/Sunpult/AdobeAnimateSlot" index="0" unique_id=511983978]
+position = Vector2(46.993675, 29.97909)
+
+[node name="AdobeAnimateSlot2" type="Node2D" parent="SpriteGroup/TransformPoint/Sunpult" index="1" unique_id=1999350419]
+skew = 1.0728836e-05
+script = ExtResource("7")
+followSlotId = 18
+Layer = 18
+drawLayerId = 18
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/Sunpult/AdobeAnimateSlot2" index="0" unique_id=1234043522]
+position = Vector2(46.62242, 32.195747)

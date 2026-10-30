@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://q2eo6wgcbefw"]
+
+[ext_resource type="Script" uid="uid://vojrtcq6ih4o" path="res://Registry/Battle/Feature/Map/Control/TowerDefenseMapControl.cs" id="1_qtifa"]
+[ext_resource type="PackedScene" uid="uid://dpco4f0jycuf2" path="res://Asset/Config/Map/Frontlawn/Scene/Day/TowerDefenseMapFrontlawn.tscn" id="2_4glta"]
+
+[sub_resource type="Environment" id="Environment_tjnwr"]
+background_mode = 3
+background_canvas_max_layer = 1
+glow_enabled = true
+glow_intensity = 1.5
+glow_bloom = 0.02
+
+[node name="TowerDefenseMapControl" type="Node2D" unique_id=709279985]
+script = ExtResource("1_qtifa")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1573737953]
+environment = SubResource("Environment_tjnwr")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=742829830]
+unique_name_in_owner = true
+
+[node name="GUILayer" type="CanvasLayer" parent="." unique_id=515981222]
+layer = 3
+follow_viewport_enabled = true
+
+[node name="SpriteNode" type="Node2D" parent="GUILayer" unique_id=548465293]
+unique_name_in_owner = true
+
+[node name="MapNode" type="Node2D" parent="." unique_id=770155239]
+unique_name_in_owner = true
+
+[node name="TowerDefenseMapFrontlawn" parent="MapNode" unique_id=2074942844 instance=ExtResource("2_4glta")]
+
+[node name="ChangeMapLayer" type="CanvasLayer" parent="." unique_id=829284235]
+unique_name_in_owner = true
+layer = 0
+follow_viewport_enabled = true
+
+[node name="MapIceCap" type="Node2D" parent="." unique_id=1464517376]
+unique_name_in_owner = true

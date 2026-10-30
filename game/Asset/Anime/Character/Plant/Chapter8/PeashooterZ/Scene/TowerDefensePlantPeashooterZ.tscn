@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://co4m538ghmwd"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter8/PeashooterZ/Scene/TowerDefensePlantPeashooterZComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://6133ibfhpk0e" path="res://Asset/Anime/Character/Plant/Chapter8/PeashooterZ/Scene/TowerDefensePlantPeashooterZ.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_40p5x64_At_0_0.tres" id="4"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="5"]
+[ext_resource type="Resource" uid="uid://c2y8k4lqiwyqd" path="res://Asset/Anime/Character/Plant/Chapter8/PeashooterZ/Config/TowerDefensePlantPeashooterZ.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://batu4svuiqdwy" path="res://Asset/Anime/Character/Plant/Chapter8/PeashooterZ/PeashooterZ.tscn" id="7"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="8"]
+
+[sub_resource type="Resource" id="Resource_18606"]
+script = ExtResource("5")
+projectileName = &"ZombiePea"
+baseDamage = 40.0
+catapultHeight = 400.0
+
+[node name="TowerDefensePlantPeashooterZ" unique_id=1446955766 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 1
+projectileData = SubResource("Resource_18606")
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/PeashooterZ")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PeashooterZ" parent="SpriteGroup/TransformPoint" index="0" unique_id=1501709067 instance=ExtResource("7")]
+position = Vector2(0, -30)
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/PeashooterZ" index="0" unique_id=1337606331]
+skew = 0.024443507
+script = ExtResource("8")
+followSlotId = 10
+offset = Vector2(15, 15)
+Layer = 10
+drawLayerId = 10
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/PeashooterZ/AdobeAnimateSlot" index="0" unique_id=911442984]
+position = Vector2(8.43, 10)

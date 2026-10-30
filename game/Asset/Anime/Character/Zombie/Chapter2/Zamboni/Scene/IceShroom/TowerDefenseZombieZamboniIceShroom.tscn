@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://1wjtjgsjusmr"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://cdcw77k5bbmv3" path="res://Asset/Anime/Character/Zombie/Chapter2/Zamboni/Scene/IceShroom/TowerDefenseZombieZamboniIceShroomComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bhpl3kw53vxs" path="res://Asset/Anime/Character/Zombie/Chapter2/Zamboni/Scene/IceShroom/TowerDefenseZombieZamboniIceShroom.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_154x33_At_26_n1.tres" id="4"]
+[ext_resource type="Resource" uid="uid://06usr30dbhib" path="res://Asset/Anime/Character/Zombie/Chapter2/Zamboni/Config/TowerDefenseZombieZamboniIceShroom.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://b2errjvhm7s61" path="res://Asset/Anime/Character/Zombie/Chapter2/Zamboni/Sprite/IceShroom/ZombieZamboniIceShroom.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://c64t5qco6f0gu" path="res://Prefab/Particles/Smoke/ZamboniSmoke/ZamboniSmoke.tscn" id="7"]
+
+[node name="TowerDefenseZombieZamboniIceShroom" unique_id=1120911688 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+walkAnimeClip = "Drive"
+swimAnimeClip = "Drive"
+attackAnimeClip = "Drive"
+dieAnimeClip = "Wheelie&Wheelie2"
+dieWaterAnimeClip = "Wheelie&Wheelie2"
+idleAnimeClip = "Drive"
+sleepAnimeClip = "Drive"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieZamboniIceShroom")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(17, 45)
+scale = Vector2(3.02326, 1.44444)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieZamboniIceShroom" parent="SpriteGroup/TransformPoint" index="0" unique_id=1476925965 instance=ExtResource("6")]
+position = Vector2(16, -34)
+clip = "Drive"
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, true, true, true, true, true, true, true]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieZamboniIceShroom" index="0" unique_id=153821015]
+clip = "Idle"
+layerVisible = [true, true, true, true, true]
+mediaReplaceAtlasPaths = ["", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false]
+followParentSpriteLayerId = 11
+
+[node name="IceCapMarker" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieZamboniIceShroom" index="2" unique_id=1987568520]
+unique_name_in_owner = true
+position = Vector2(56, 19)
+
+[node name="ZamboniSmoke" parent="SpriteGroup/TransformPoint" index="1" unique_id=522777376 instance=ExtResource("7")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-55, -42)

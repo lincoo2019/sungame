@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://b2o4j70hymnbc"]
+
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="3"]
+[ext_resource type="Script" uid="uid://b521os1avx4n6" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffCherry.cs" id="4"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="5"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="6"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="7"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="8"]
+
+[sub_resource type="SegmentShape2D" id="Attack0_SegmentShape2D_o5pol"]
+b = Vector2(100, 0)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_attack_check"]
+script = ExtResource("2")
+Geometry = SubResource("Attack0_SegmentShape2D_o5pol")
+
+[sub_resource type="Resource" id="Attack0_Resource_rw0y7"]
+script = ExtResource("3")
+num = 40.0
+damageFlags = 2
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[sub_resource type="Resource" id="Attack0_Resource_qxwxc"]
+script = ExtResource("4")
+metadata/_custom_type_script = "uid://b521os1avx4n6"
+
+[sub_resource type="Resource" id="Attack0_Resource_u4qoi"]
+script = ExtResource("5")
+buffList = [SubResource("Attack0_Resource_qxwxc")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("6")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_attack_check")]
+spritePath = NodePath("SpriteGroup/TransformPoint/FumeShroomC")
+attackAnimeClipsArray = ["Fire"]
+attackAnimeClips = "Fire"
+attackEventName = "fire"
+attackAnimeTimeScale = 3.0
+eventList = [SubResource("Attack0_Resource_rw0y7"), SubResource("Attack0_Resource_u4qoi")]
+checkLine = true
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.other.fumeshroomc.scene.towerdefenseplantfumeshroomc.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("8")
+ParentSet = ExtResource("7")
+Components = [SubResource("Attack0_Definition")]

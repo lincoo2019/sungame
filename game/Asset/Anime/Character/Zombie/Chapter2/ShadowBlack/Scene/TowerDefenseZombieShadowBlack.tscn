@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://b6pgwdp553g35"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bopfl782r7530" path="res://Asset/Anime/Character/Zombie/Chapter2/ShadowBlack/Scene/TowerDefenseZombieShadowBlack.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://dgcqcck1k8cxy" path="res://Asset/Anime/Character/Zombie/Chapter2/ShadowBlack/Scene/TowerDefenseZombieShadowBlackStateMachine.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c1v1fnndfsmjk" path="res://Asset/Anime/Character/Zombie/Chapter2/ShadowBlack/Config/TowerDefenseZombieShadowBlack.tres" id="5"]
+[ext_resource type="Resource" uid="uid://bpafjnfry44c0" path="res://Asset/Anime/Character/Zombie/Chapter2/ShadowBlack/DamagePoint/Config/ZombieShadowBlackDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://bm5xlqvumkd0j" path="res://Asset/Anime/Character/Zombie/Chapter2/ShadowBlack/Armor/Config/ZombieShadowBlackArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://csxhx353sl0ul" path="res://Asset/Anime/Character/Zombie/Chapter2/ShadowBlack/Armor/Config/ZombieShadowBlackArmorBucket.tres" id="8"]
+[ext_resource type="Resource" uid="uid://ccb7geb1432r" path="res://Asset/Anime/Character/Zombie/Chapter2/ShadowBlack/Armor/Config/ZombieShadowBlackArmorCone.tres" id="9"]
+[ext_resource type="Resource" uid="uid://dc3pedoxibyyr" path="res://Asset/Anime/Character/Zombie/Chapter2/ShadowBlack/DamagePoint/Config/ZombieShadowBlackDamagePointHead.tres" id="10"]
+[ext_resource type="Resource" uid="uid://dw2ils853qnav" path="res://Asset/Anime/Character/Zombie/Chapter2/ShadowBlack/Armor/Config/ZombieShadowBlackArmorHelmet.tres" id="11"]
+[ext_resource type="Resource" uid="uid://cjstyauwcv48m" path="res://Asset/Anime/Character/Zombie/Chapter2/ShadowBlack/Armor/Config/ZombieShadowBlackArmorSpecialHelmet.tres" id="12"]
+[ext_resource type="PackedScene" uid="uid://dv2yqj4brj4op" path="res://Asset/Anime/Character/Zombie/Chapter2/ShadowBlack/ZombieShadowBlack.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="14"]
+
+[node name="TowerDefenseZombieShadowBlack" node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+walkSpeedScale = 2.0
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieShadowBlack/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+waterHeight = 20.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieShadowBlack")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieShadowBlack/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Bucket": ExtResource("8"),
+"Cone": ExtResource("9"),
+"Head": ExtResource("10"),
+"Helmet": ExtResource("11"),
+"SpecialHelmet": ExtResource("12")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieShadowBlack/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieShadowBlack/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieShadowBlack/HeadSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieShadowBlack/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieShadowBlack/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieShadowBlack/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieShadowBlack/HeadSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(12, 33)
+
+[node name="ZombieShadowBlack" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("13")]
+position = Vector2(-12, -33)
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieShadowBlack" index="0"]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieShadowBlack" index="1"]
+drawLayerId = -2
+position = Vector2(-13.450146, -47.04321)
+rotation = -0.0038821213
+scale = Vector2(0.79995364, 0.79995364)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieShadowBlack" index="2"]
+position = Vector2(5.0247965, 1.57833)
+rotation = -0.052924406
+scale = Vector2(0.79983467, 0.79983467)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieShadowBlack" index="3"]
+position = Vector2(-40, -80)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" instance=ExtResource("14")]
+visible = false
+position = Vector2(-2, -37)
+useTween = true
+
+[editable path="SpriteGroup/TransformPoint/ZombieShadowBlack"]

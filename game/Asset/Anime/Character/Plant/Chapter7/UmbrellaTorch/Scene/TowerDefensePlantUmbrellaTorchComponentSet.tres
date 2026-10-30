@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://bvfb3adstiw1y"]
+
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="1"]
+[ext_resource type="Script" uid="uid://dblockdef0001" path="res://Script/Component/TowerDefense/Character/BlockComponent/BlockComponentDefinition.cs" id="2"]
+[ext_resource type="Resource" uid="uid://bvjgd1q22ya8s" path="res://Script/Component/TowerDefense/Character/ChangeProjectile/Definitions/FireOffset3Definition.tres" id="3"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="4"]
+[ext_resource type="Script" uid="uid://b8rialbjr540d" path="res://Script/Component/TowerDefense/Character/PeriodicAreaEventComponent/PeriodicAreaEventComponentDefinition.cs" id="5"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="6"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="7"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_block"]
+size = Vector2(73, 33)
+
+[sub_resource type="Resource" id="AabbShape2DResource_block"]
+script = ExtResource("1")
+Geometry = SubResource("RectangleShape2D_block")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, -16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rebound"]
+size = Vector2(34, 33)
+
+[sub_resource type="Resource" id="AabbShape2DResource_rebound"]
+script = ExtResource("1")
+Geometry = SubResource("RectangleShape2D_rebound")
+LocalTransform = Transform2D(1, 0, 0, 1, 0, -16)
+
+[sub_resource type="Resource" id="BlockComponentDefinition"]
+script = ExtResource("2")
+checkShape = SubResource("AabbShape2DResource_block")
+reboundProjectile = true
+reboundProjectileShape = SubResource("AabbShape2DResource_rebound")
+ComponentTypeId = "BlockComponent"
+DefinitionId = "builtin.component.block.umbrella_torch"
+InstanceId = "character.block"
+WireIndex = 0
+StateMachineDefinition = null
+LegacyNodeNames = [&"BlockComponent"]
+
+[sub_resource type="Resource" id="HurtEvent"]
+script = ExtResource("4")
+num = 40.0
+damageFlags = 6
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[sub_resource type="Resource" id="PeriodicDefinition"]
+script = ExtResource("5")
+eventList = [SubResource("HurtEvent")]
+staticTime = 1.5
+targetEffectType = "Sprite"
+targetEffectScene = ExtResource("6")
+checkShape = null
+ComponentTypeId = "PeriodicAreaEventComponent"
+DefinitionId = "builtin.component.periodic_area_event.umbrella_torch"
+InstanceId = "character.periodic_area_event"
+WireIndex = 0
+StateMachineDefinition = null
+LegacyNodeNames = [&"PeriodicAreaEventComponent"]
+
+[resource]
+script = ExtResource("8")
+ParentSet = ExtResource("7")
+Components = [SubResource("BlockComponentDefinition"), ExtResource("3"), SubResource("PeriodicDefinition")]

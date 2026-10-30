@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cl55j4owphkpg"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter8/PumpLantern/Scene/TowerDefensePumpLanternComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bmib4ktl4d11x" path="res://Asset/Anime/Character/Plant/Chapter8/PumpLantern/Scene/TowerDefensePumpLantern.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bou274xpy5y1s" path="res://Asset/Anime/Character/Plant/Chapter8/PumpLantern/Config/TowerDefensePlantPumpLantern.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://b3dj0cewtlyd8" path="res://Asset/Anime/Character/Plant/Chapter8/PumpLantern/PumpLantern.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://dsc2tkcmoc8l1" path="res://Prefab/Particles/Plant/PlanternFog/PlanternFog.tscn" id="7"]
+[ext_resource type="Texture2D" uid="uid://d1ef1wja3qep4" path="res://Asset/Anime/Particles/Plant/PlanternFog.png" id="8"]
+
+[sub_resource type="Gradient" id="Gradient_7kd5i"]
+offsets = PackedFloat32Array(0, 0.346154, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.952991, 0.952991, 0.952991, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oxn47"]
+gradient = SubResource("Gradient_7kd5i")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[node name="TowerDefensePumpLantern" unique_id=1993823851 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/PumpLantern")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PumpLantern" parent="SpriteGroup/TransformPoint" index="0" unique_id=1381487427 instance=ExtResource("6")]
+position = Vector2(0, -36)
+
+[node name="PlanternFog" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=1546346317 instance=ExtResource("7")]
+z_index = -4
+texture = ExtResource("8")
+
+[node name="Light" type="PointLight2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="5" unique_id=206506469]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(1.35156, 1.35156)
+color = Color(0.552941, 1, 1, 1)
+energy = 0.35
+texture = SubResource("GradientTexture2D_oxn47")

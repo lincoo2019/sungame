@@ -1,0 +1,135 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ScriptCreate.svg" id="1_script_icon"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/GraphEdit.svg" id="2_blueprint_icon"]
+
+[node name="ScriptCreateDialog" type="ConfirmationDialog"]
+title = "新建脚本"
+initial_position = 1
+size = Vector2i(720, 540)
+min_size = Vector2i(520, 380)
+ok_button_text = "创建"
+cancel_button_text = "取消"
+
+[node name="Form" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DirectoryLabel" type="Label" parent="Form"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="AuthoringModeSection" type="VBoxContainer" parent="Form"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="AuthoringModeTitle" type="Label" parent="Form/AuthoringModeSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "选择创作方式"
+
+[node name="AuthoringModeCards" type="HFlowContainer" parent="Form/AuthoringModeSection"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="CSharpModeCard" type="Button" parent="Form/AuthoringModeSection/AuthoringModeCards"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(290, 84)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "使用 C# 编写完整 Mod 逻辑"
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("1_script_icon")
+icon_max_width = 48
+text = "C# 代码\n精确控制 · 完整 API · 可调试"
+
+[node name="BlueprintModeCard" type="Button" parent="Form/AuthoringModeSection/AuthoringModeCards"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(290, 84)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "使用拼图节点制作可视化逻辑"
+toggle_mode = true
+icon = ExtResource("2_blueprint_icon")
+icon_max_width = 48
+text = "蓝图拼图\n拖放节点 · 连线逻辑 · 安全预览"
+
+[node name="AuthoringModeHint" type="Label" parent="Form/AuthoringModeSection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "C# 是唯一文本脚本语言；可视化脚本统一在蓝图编辑器中创作。"
+autowrap_mode = 3
+
+[node name="AuthoringSeparator" type="HSeparator" parent="Form/AuthoringModeSection"]
+layout_mode = 2
+
+[node name="TemplateTitle" type="Label" parent="Form"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择脚本模板"
+
+[node name="TemplateCardScroll" type="ScrollContainer" parent="Form"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="TemplateCards" type="HFlowContainer" parent="Form/TemplateCardScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="TemplateRow" type="HBoxContainer" parent="Form"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="TemplateLabel" type="Label" parent="Form/TemplateRow"]
+layout_mode = 2
+text = "模板"
+
+[node name="TemplateOption" type="OptionButton" parent="Form/TemplateRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameEdit" type="LineEdit" parent="Form"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "脚本名称（不含扩展名）"
+
+[node name="PreviewHeader" type="HBoxContainer" parent="Form"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PreviewIcon" type="TextureRect" parent="Form/PreviewHeader"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("1_script_icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PreviewTitle" type="Label" parent="Form/PreviewHeader"]
+layout_mode = 2
+text = "将要创建的脚本"
+
+[node name="TemplatePreview" type="TextEdit" parent="Form"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+editable = false
+wrap_mode = 0
+scroll_fit_content_height = false
+
+[node name="TemplateHint" type="Label" parent="Form"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3

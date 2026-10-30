@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://b688h8n68escw"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://fxoph40oql0k" path="res://Asset/Anime/Character/Plant/Chapter2/FireSnowPea/Scene/TowerDefensePlantFireSnowPeaComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://cp38yjna1ta84" path="res://Asset/Anime/Character/Plant/Chapter2/FireSnowPea/Scene/TowerDefensePlantFireSnowPea.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bl3admeot4jbu" path="res://Asset/Anime/Character/Plant/Chapter2/FireSnowPea/Config/TowerDefensePlantFireSnowPea.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://d03bh7b2moome" path="res://Asset/Anime/Character/Plant/Chapter2/FireSnowPea/FireSnowPea.tscn" id="6"]
+
+[node name="TowerDefensePlantFireSnowPea" unique_id=308605277 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 2
+idleAnimeClip = "BodyIdle"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/FireSnowPea")
+Custom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="FireSnowPea" parent="SpriteGroup/TransformPoint" index="0" unique_id=1024258225 instance=ExtResource("6")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="HeadRight" parent="SpriteGroup/TransformPoint/FireSnowPea" index="0"]
+trueFrameRate = 180.0
+Animation/LayerVisible/backleaf = true
+Animation/LayerVisible/backleaf_left_tip = true
+Animation/LayerVisible/backleaf_right_tip = true
+Animation/LayerVisible/frontleaf = true
+Animation/LayerVisible/frontleaf_right_tip = true
+Animation/LayerVisible/frontleaf_tip_left = true
+Animation/LayerVisible/stalk_bottom = true
+Animation/LayerVisible/stalk_top = true
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/FireSnowPea/HeadRight" index="0" unique_id=633281648]
+position = Vector2(30, -17.629)
+scale = Vector2(0.5, 0.536442)
+
+[node name="HeadLeft" parent="SpriteGroup/TransformPoint/FireSnowPea" index="1"]
+trueFrameRate = 180.0
+Animation/LayerVisible/anim_bink2 = true
+Animation/LayerVisible/anim_sprout = true
+Animation/LayerVisible/backleaf = true
+Animation/LayerVisible/backleaf_left_tip = true
+Animation/LayerVisible/backleaf_right_tip = true
+Animation/LayerVisible/frontleaf = true
+Animation/LayerVisible/frontleaf_right_tip = true
+Animation/LayerVisible/frontleaf_tip_left = true
+Animation/LayerVisible/mouth = true
+Animation/LayerVisible/stalk_bottom = true
+Animation/LayerVisible/stalk_top = true
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/FireSnowPea/HeadLeft" index="0" unique_id=1601072264]
+position = Vector2(-43.5499, -18.4622)
+scale = Vector2(0.557777, 0.606751)
+skew = -0.0360675
+
+[editable path="SpriteGroup/TransformPoint/FireSnowPea"]

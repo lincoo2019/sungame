@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvadcalsore2n"]
+
+[ext_resource type="PackedScene" uid="uid://dxu4nl0muu0rr" path="res://Prefab/Npc/NpcBase.tscn" id="1_pdo7n"]
+[ext_resource type="PackedScene" uid="uid://wjqh10cu7js2" path="res://Asset/Anime/Npc/CrazyDave/CrazyDave.tscn" id="2_gjx00"]
+[ext_resource type="Script" uid="uid://c0mo1jyfvuiqy" path="res://Prefab/Npc/CrazyDave/NpcCrazyDave.cs" id="2_isud3"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="4_g4aj1"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="4_xk3jb"]
+[ext_resource type="Resource" uid="uid://byl6nt0mbgroq" path="res://Prefab/Npc/CrazyDave/CrazyDaveAnimation.tres" id="6_fynbt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xk3jb"]
+shader = ExtResource("4_g4aj1")
+shader_parameter/brightStrength = 0.0
+shader_parameter/whiteStrength = 0.0
+shader_parameter/discardUpPos = -10000.0
+shader_parameter/discardDownPos = 10000.0
+shader_parameter/surfacePos = 0.0
+shader_parameter/ash = false
+shader_parameter/iceSpeedDown = false
+shader_parameter/cover = false
+shader_parameter/hypnoses = false
+shader_parameter/imitater = false
+shader_parameter/redHeat = false
+shader_parameter/puzzle = false
+shader_parameter/poisoning = false
+shader_parameter/imageAtlasSize = Vector2(991, 1065)
+shader_parameter/uvs = Array[Rect2]([Rect2(158, 673, 144, 109), Rect2(783, 955, 34, 33), Rect2(749, 955, 34, 33), Rect2(0, 0, 344, 401), Rect2(344, 0, 281, 373), Rect2(605, 955, 38, 31), Rect2(880, 955, 30, 18), Rect2(234, 534, 185, 139), Rect2(599, 564, 172, 112), Rect2(237, 861, 114, 75), Rect2(525, 966, 41, 32), Rect2(817, 955, 32, 43), Rect2(419, 564, 180, 189), Rect2(248, 936, 78, 75), Rect2(566, 909, 39, 28), Rect2(679, 955, 35, 34), Rect2(714, 955, 35, 35), Rect2(910, 886, 29, 35), Rect2(89, 852, 81, 71), Rect2(234, 480, 216, 54), Rect2(635, 905, 89, 50), Rect2(724, 905, 89, 50), Rect2(813, 905, 89, 50), Rect2(902, 786, 89, 50), Rect2(902, 836, 89, 50), Rect2(0, 850, 89, 50), Rect2(585, 753, 122, 82), Rect2(643, 955, 36, 39), Rect2(440, 967, 43, 28), Rect2(483, 966, 42, 26), Rect2(849, 955, 31, 28), Rect2(388, 967, 52, 88), Rect2(344, 373, 240, 107), Rect2(828, 734, 121, 52), Rect2(584, 373, 234, 191), Rect2(0, 401, 234, 176), Rect2(0, 577, 158, 181), Rect2(302, 753, 142, 108), Rect2(444, 753, 141, 107), Rect2(326, 967, 62, 90), Rect2(351, 861, 97, 106), Rect2(448, 860, 96, 106), Rect2(771, 564, 167, 170), Rect2(544, 860, 91, 49), Rect2(170, 936, 78, 129), Rect2(707, 734, 121, 171), Rect2(939, 886, 23, 26), Rect2(120, 782, 117, 70), Rect2(0, 758, 120, 92)])
+shader_parameter/layerVisible = Array[bool]([true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true])
+shader_parameter/mediaReplace = Array[Texture2D]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+shader_parameter/mediaReplaceUse = Array[bool]([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false])
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="NpcCrazyDave" node_paths=PackedStringArray("sprite") instance=ExtResource("1_pdo7n")]
+script = ExtResource("2_isud3")
+sprite = NodePath("CrazyDave")
+animationConfig = ExtResource("6_fynbt")
+
+[node name="CrazyDave" parent="." index="0" instance=ExtResource("2_gjx00")]
+unique_name_in_owner = true
+light_mask = 0
+material = SubResource("ShaderMaterial_xk3jb")
+timeScale = 0.8
+
+[node name="HandSlot" type="Node2D" parent="CrazyDave" index="0"]
+unique_name_in_owner = true
+light_mask = 0
+position = Vector2(145.44597, 433.75534)
+rotation = 0.015236776
+scale = Vector2(0.99686444, 0.99686444)
+script = ExtResource("4_xk3jb")
+followSlotId = 43
+offset = Vector2(-5, -25)
+Layer = 43
+drawLayerId = 43
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="ShoulderSlot" type="Node2D" parent="CrazyDave" index="1"]
+unique_name_in_owner = true
+light_mask = 0
+position = Vector2(-25.538025, 322.59882)
+rotation = 0.030719895
+scale = Vector2(0.99976933, 1.0036957)
+skew = -0.00010955334
+script = ExtResource("4_xk3jb")
+followSlotId = 18
+offset = Vector2(23, 100)
+Layer = 18
+drawLayerId = 18
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="HeadSlot" type="Node2D" parent="CrazyDave" index="2"]
+unique_name_in_owner = true
+light_mask = 0
+position = Vector2(88.33476, 90.922966)
+rotation = 0.061387714
+scale = Vector2(1.032016, 1.0032144)
+script = ExtResource("4_xk3jb")
+followSlotId = 28
+offset = Vector2(55, -7)
+Layer = 28
+drawLayerId = 28
+metadata/_custom_type_script = "uid://hd68vjdh2w02"

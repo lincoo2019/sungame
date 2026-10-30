@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b3y8v3hddvg"]
+
+[ext_resource type="PackedScene" uid="uid://clpu43psaiqf2" path="res://Prefab/TowerDefense/Projectile/ProjectileEffect/TowerDefenseProjectileEffectBase.tscn" id="1_hc1ml"]
+[ext_resource type="Script" uid="uid://cslrk7bdn4keu" path="res://Prefab/ProjectileEffect/GloomSquash/TowerDefenseProjectileEffectGloomSquash.cs" id="2_2vpr5"]
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="3_eventbase"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="4_omw6h"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="5_buffcfg"]
+[ext_resource type="Script" uid="uid://c4cnj7r56bj3k" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffDizziness.cs" id="6_dizzy"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="7_addbuff"]
+[ext_resource type="Script" uid="uid://c55feeuvm3ss" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionRandom.cs" id="8_random"]
+
+[sub_resource type="Resource" id="Resource_3qury"]
+script = ExtResource("4_omw6h")
+playSplatAudio = false
+damageFlags = 2
+collisionFlags = 43
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[sub_resource type="Resource" id="Resource_dizziness"]
+script = ExtResource("6_dizzy")
+time = 2.0
+metadata/_custom_type_script = "uid://c4cnj7r56bj3k"
+
+[sub_resource type="Resource" id="Resource_add_dizziness"]
+script = ExtResource("7_addbuff")
+buffList = Array[ExtResource("5_buffcfg")]([SubResource("Resource_dizziness")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Resource_random_dizziness"]
+script = ExtResource("8_random")
+eventList = Array[ExtResource("3_eventbase")]([SubResource("Resource_add_dizziness")])
+percentage = 0.1
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[node name="TowerDefenseProjectileEffectGloomSquash" unique_id=989217067 instance=ExtResource("1_hc1ml")]
+script = ExtResource("2_2vpr5")
+Eventlist = Array[Object]([SubResource("Resource_3qury"), SubResource("Resource_random_dizziness")])
+
+[node name="Timer" type="Timer" parent="." index="0" unique_id=1286582916]
+wait_time = 0.2
+autostart = true

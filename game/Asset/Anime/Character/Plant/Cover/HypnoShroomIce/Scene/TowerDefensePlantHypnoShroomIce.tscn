@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b6oe6vi1puxea"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Cover/HypnoShroomIce/Scene/TowerDefensePlantHypnoShroomIceComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://ccxf7bndvg8pa" path="res://Asset/Anime/Character/Plant/Cover/HypnoShroomIce/Scene/TowerDefensePlantHypnoShroomIce.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://3bqjmgaad35h" path="res://Asset/Anime/Character/Plant/Cover/HypnoShroomIce/Config/TowerDefensePlantHypnoShroomIce.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://q3g7hqxg2vyg" path="res://Asset/Anime/Character/Plant/Cover/HypnoShroomIce/HypnoShroomIce.tscn" id="6"]
+
+[sub_resource type="Gradient" id="Gradient_7kd5i"]
+offsets = PackedFloat32Array(0, 0.346154, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.952991, 0.952991, 0.952991, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xbidj"]
+gradient = SubResource("Gradient_7kd5i")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[node name="TowerDefensePlantHypnoShroomIce" unique_id=680376732 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+sleepAnimeClip = "Sleep"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/HypnoShroomIce")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="HypnoShroomIce" parent="SpriteGroup/TransformPoint" index="0" unique_id=1595046620 instance=ExtResource("6")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="Light" type="PointLight2D" parent="." index="7" unique_id=316127010]
+unique_name_in_owner = true
+visible = false
+color = Color(0.545098, 1, 1, 1)
+energy = 0.35
+texture = SubResource("GradientTexture2D_xbidj")

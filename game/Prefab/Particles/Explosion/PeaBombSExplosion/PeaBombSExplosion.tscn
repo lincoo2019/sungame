@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://esp31duw2h25"]
+
+[ext_resource type="Texture2D" uid="uid://dv5x6ax2qiod0" path="res://Asset/Anime/Particles/Explosion/ExplosionCloud.png" id="1_y73jo"]
+[ext_resource type="Material" uid="uid://g2b0tl64poyb" path="res://Prefab/Particles/Explosion/PeaBombSExplosion/PeaBombSExplosionSide.tres" id="2_vubdu"]
+[ext_resource type="Script" uid="uid://cmjj5ejt1ranr" path="res://Extends/Particles/GPUParticles2DOnece.cs" id="3_e1uyo"]
+[ext_resource type="Material" uid="uid://c8wjtongh4mq6" path="res://Prefab/Particles/Explosion/PeaBombSExplosion/PeaBombSExplosion.tres" id="4_mc1hg"]
+[ext_resource type="Texture2D" uid="uid://dqmg2rlgyrvte" path="res://Asset/Anime/Particles/Explosion/ExplosionPowiePeaS.png" id="5_6ydap"]
+
+[node name="PeaBombSExplosion" type="GPUParticles2D" unique_id=229561649]
+z_index = 1
+emitting = false
+amount = 32
+texture = ExtResource("1_y73jo")
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = ExtResource("2_vubdu")
+script = ExtResource("3_e1uyo")
+
+[node name="PeaBombSExplosionSide" type="GPUParticles2D" parent="." unique_id=1939527640]
+z_index = 1
+emitting = false
+amount = 12
+texture = ExtResource("1_y73jo")
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+draw_order = 0
+process_material = ExtResource("4_mc1hg")
+
+[node name="Sprite2D" type="Sprite2D" parent="PeaBombSExplosionSide" unique_id=536897090]
+z_index = 1
+texture = ExtResource("5_6ydap")

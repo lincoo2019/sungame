@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://btxyp2t4ugaer"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dylpyd488ql6g" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Scene/TowerDefenseZombieJackbox.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://c1qhksihto4t8" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Scene/TowerDefenseZombieJackboxStateMachine.tres" id="4"]
+[ext_resource type="Script" uid="uid://bt7fis5jparcx" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.cs" id="5"]
+[ext_resource type="Resource" uid="uid://4osgipib31m8" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Config/TowerDefenseZombieJackbox.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cdxetlc5yvbvw" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/DamagePoint/Config/ZombieJackboxDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cpo75jfcrj5hk" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombiejackboxArmorBlackHelmet.tres" id="8"]
+[ext_resource type="Resource" uid="uid://bjqwrh2qsb7up" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombiejackboxArmorBucket.tres" id="9"]
+[ext_resource type="Resource" uid="uid://ksphtdgy7iis" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombiejackboxArmorCone.tres" id="10"]
+[ext_resource type="Resource" uid="uid://cytp71toc3llu" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/DamagePoint/Config/ZombieJackboxDamagePointHead.tres" id="11"]
+[ext_resource type="Resource" uid="uid://d13ae6ujl52h6" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombiejackboxArmorHelmet.tres" id="12"]
+[ext_resource type="Resource" uid="uid://eakjcfnkvk83" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombieJackboxArmorJackbox.tres" id="13"]
+[ext_resource type="Resource" uid="uid://cs60goofuyev6" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/Armor/Config/ZombiejackboxArmorSpecialHelmet.tres" id="14"]
+[ext_resource type="PackedScene" uid="uid://n51avv4ftbrw" path="res://Asset/Anime/Character/Zombie/Chapter2/Jackbox/ZombieJackbox.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="16"]
+
+[sub_resource type="Resource" id="Resource_p8fol"]
+script = ExtResource("5")
+metadata/_custom_type_script = "uid://bt7fis5jparcx"
+
+[node name="TowerDefenseZombieJackbox" unique_id=707227448 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+eventList = [SubResource("Resource_p8fol")]
+walkSpeedScale = 1.5
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieJackbox/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+waterHeight = 30.0
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieJackbox")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"BlackHelmet": ExtResource("8"),
+"Bucket": ExtResource("9"),
+"Cone": ExtResource("10"),
+"Head": ExtResource("11"),
+"Helmet": ExtResource("12"),
+"Jackbox": ExtResource("13"),
+"SpecialHelmet": ExtResource("14")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieJackbox/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot"),
+"Jackbox": NodePath("SpriteGroup/TransformPoint/ZombieJackbox/JackboxSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieJackbox/HeadSlot")
+}
+currentArmor = ["Jackbox"]
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(12.6, 40)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(23, 44)
+
+[node name="ZombieJackbox" parent="SpriteGroup/TransformPoint" index="0" unique_id=1281169547 instance=ExtResource("15")]
+position = Vector2(-23, -44)
+trueFrameRate = 180.0
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieJackbox" index="0"]
+trueFrameRate = 180.0
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieJackbox" index="1"]
+drawLayerId = -2
+position = Vector2(-19.650307, -57.55037)
+rotation = 0.0
+scale = Vector2(0.7999878, 0.7999878)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieJackbox" index="2"]
+position = Vector2(5.1415462, -8.642742)
+rotation = -0.10203174
+scale = Vector2(0.74735683, 0.74735683)
+
+[node name="JackboxSlot" parent="SpriteGroup/TransformPoint/ZombieJackbox" index="3"]
+position = Vector2(-8.809742, -18.67807)
+rotation = -0.10205345
+scale = Vector2(0.67040396, 0.67040396)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieJackbox" index="4"]
+position = Vector2(-40, -80)
+scale = Vector2(1, 1)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=783003573 instance=ExtResource("16")]
+visible = false
+position = Vector2(-12, -58)
+trueFrameRate = 180.0
+
+[editable path="SpriteGroup/TransformPoint/ZombieJackbox"]

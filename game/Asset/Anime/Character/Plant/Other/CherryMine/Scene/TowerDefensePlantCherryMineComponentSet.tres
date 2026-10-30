@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://ujunn1rt2mw8"]
+
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="3"]
+[ext_resource type="Resource" uid="uid://bh3kdcc5idvyy" path="res://Asset/Anime/Character/Plant/Other/CherryMine/Scene/TowerDefensePlantCherryMineExplodeDefinition.tres" id="4"]
+[ext_resource type="Resource" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantPotatoComponentSet.tres" id="5"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="6"]
+
+[sub_resource type="RectangleShape2D" id="Attack0_RectangleShape2D_xotnw"]
+size = Vector2(70, 49.5)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_attack"]
+script = ExtResource("2")
+Geometry = SubResource("Attack0_RectangleShape2D_xotnw")
+LocalTransform = Transform2D(1, 0, 0, 1, -1, 0.75)
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("3")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_attack")]
+checkLine = true
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.other.cherrymine.scene.towerdefenseplantcherrymine.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("6")
+ParentSet = ExtResource("5")
+Components = [SubResource("Attack0_Definition"), ExtResource("4")]

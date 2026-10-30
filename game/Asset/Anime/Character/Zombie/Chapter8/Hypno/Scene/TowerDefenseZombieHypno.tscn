@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dkcjq0gx513wp"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://1pr0oqn8rfw5" path="res://Asset/Anime/Character/Zombie/Chapter8/Hypno/Scene/TowerDefenseZombieHypno.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_5_0.tres" id="3"]
+[ext_resource type="Resource" uid="uid://cbvnyh1u5fjgo" path="res://Asset/Anime/Character/Zombie/Chapter8/Hypno/Config/TowerDefenseZombieHypno.tres" id="4"]
+[ext_resource type="Resource" uid="uid://djp5yfbi6s5g5" path="res://Asset/Anime/Character/Zombie/Chapter8/Hypno/DamagePoint/Config/ZombieHypnoDamagePointArm.tres" id="5"]
+[ext_resource type="Resource" uid="uid://0v0xmx3jnod2" path="res://Asset/Anime/Character/Zombie/Chapter8/Hypno/DamagePoint/Config/ZombieHypnoDamagePointHead.tres" id="6"]
+[ext_resource type="Resource" uid="uid://igfdvrghl1jt" path="res://Asset/Anime/Character/Zombie/Chapter8/Hypno/Armor/Config/ZombieHypnoArmorHypnoHat.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://b66f8n7tswufe" path="res://Asset/Anime/Character/Zombie/Chapter8/Hypno/ZombieHypno.tscn" id="8"]
+
+[node name="TowerDefenseZombieHypno" unique_id=196070422 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+swimAnimeClip = "Swim"
+dieWaterAnimeClip = "Waterdeath"
+waterHeight = 25.0
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieHypno")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieHypno/HeadSlot")
+damagePart = {
+"Arm": ExtResource("5"),
+"Head": ExtResource("6"),
+"HypnoHat": ExtResource("7")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieHypno/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieHypno/HeadSlot"),
+"HypnoHat": NodePath("SpriteGroup/TransformPoint/ZombieHypno/HatSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieHypno" parent="SpriteGroup/TransformPoint" index="0" unique_id=580848539 instance=ExtResource("8")]
+position = Vector2(-12, -33)
+Animation/LayerVisible/anim_hat = false
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieHypno" index="0" unique_id=486872282]
+drawLayerId = -2
+position = Vector2(-4.8604603, -50.830124)
+rotation = 0.08451889
+scale = Vector2(0.7990245, 0.7990245)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieHypno" index="1" unique_id=468311533]
+position = Vector2(7.829257, -1.0928917)
+rotation = 0.07307656
+scale = Vector2(0.7980546, 0.7980546)
+
+[node name="HatSlot" parent="SpriteGroup/TransformPoint/ZombieHypno" index="2" unique_id=2130362940]
+position = Vector2(19.264452, 36.735016)
+rotation = 0.23975356
+scale = Vector2(0.79766923, 0.79766923)
+
+[editable path="SpriteGroup/TransformPoint/ZombieHypno"]

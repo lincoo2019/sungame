@@ -1,0 +1,445 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Inspector/GUI/Editor/Resource/XWResourcePicker.tscn" id="1_picker"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ResourceMap.svg" id="2_map"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Save.svg" id="3_save"]
+
+[sub_resource type="StyleBoxFlat" id="Style_header"]
+bg_color = Color(0.075, 0.105, 0.055, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.46, 0.64, 0.22, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxFlat" id="Style_board"]
+bg_color = Color(0.055, 0.04, 0.018, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.43, 0.32, 0.12, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="Style_panel"]
+bg_color = Color(0.047, 0.057, 0.04, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.22, 0.3, 0.15, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="Style_curve"]
+bg_color = Color(0.025, 0.034, 0.024, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.42, 0.18, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="Style_save"]
+bg_color = Color(0.25, 0.39, 0.12, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.67, 0.86, 0.34, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="MapCellVisualEditorLayout" type="VBoxContainer"]
+custom_minimum_size = Vector2(420, 360)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_header")
+
+[node name="HeaderFlow" type="HFlowContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 5
+
+[node name="MapIcon" type="TextureRect" parent="Header/HeaderFlow"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = ExtResource("2_map")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleBlock" type="VBoxContainer" parent="Header/HeaderFlow"]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Header/HeaderFlow/TitleBlock"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "地图格子画笔"
+
+[node name="Subtitle" type="Label" parent="Header/HeaderFlow/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.78, 0.57, 1)
+text = "框选格子 · 拼装放置层 · 预览高度曲线"
+
+[node name="ResourceNameEdit" type="LineEdit" parent="Header/HeaderFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 34)
+layout_mode = 2
+placeholder_text = "格子资源名称"
+clear_button_enabled = true
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="Header/HeaderFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "场景独立"
+
+[node name="CoverageBadge" type="Label" parent="Header/HeaderFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.93, 0.5, 1)
+text = "区域 1 × 1"
+vertical_alignment = 1
+
+[node name="SaveButton" type="Button" parent="Header/HeaderFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 38)
+layout_mode = 2
+theme_override_styles/normal = SubResource("Style_save")
+icon = ExtResource("3_save")
+icon_max_width = 24
+expand_icon = true
+text = "保存格子"
+
+[node name="MapCellPages" type="TabContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="BoardPage" type="MarginContainer" parent="MapCellPages"]
+layout_mode = 2
+metadata/_tab_name = "格子画布"
+theme_override_constants/margin_top = 6
+
+[node name="BoardPanel" type="PanelContainer" parent="MapCellPages/BoardPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("Style_board")
+
+[node name="BoardLayout" type="VBoxContainer" parent="MapCellPages/BoardPage/BoardPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 7
+
+[node name="BoardTitleFlow" type="HFlowContainer" parent="MapCellPages/BoardPage/BoardPanel/BoardLayout"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 4
+
+[node name="BoardTitle" type="Label" parent="MapCellPages/BoardPage/BoardPanel/BoardLayout/BoardTitleFlow"]
+custom_minimum_size = Vector2(260, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "游戏地图区域 · 连点两个格子框选"
+vertical_alignment = 1
+
+[node name="BoardHint" type="Label" parent="MapCellPages/BoardPage/BoardPanel/BoardLayout/BoardTitleFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.62, 1)
+text = "第一次选择起点，第二次选择终点"
+
+[node name="BoardScroll" type="ScrollContainer" parent="MapCellPages/BoardPage/BoardPanel/BoardLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BoardCenter" type="CenterContainer" parent="MapCellPages/BoardPage/BoardPanel/BoardLayout/BoardScroll"]
+custom_minimum_size = Vector2(480, 320)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BoardGrid" type="GridContainer" parent="MapCellPages/BoardPage/BoardPanel/BoardLayout/BoardScroll/BoardCenter"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(460, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 3
+columns = 9
+
+[node name="LegendFlow" type="HFlowContainer" parent="MapCellPages/BoardPage/BoardPanel/BoardLayout"]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 3
+
+[node name="GroundLegend" type="Label" parent="MapCellPages/BoardPage/BoardPanel/BoardLayout/LegendFlow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.46, 0.83, 0.35, 1)
+text = "● 陆地"
+
+[node name="WaterLegend" type="Label" parent="MapCellPages/BoardPage/BoardPanel/BoardLayout/LegendFlow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.32, 0.68, 1, 1)
+text = "● 水面"
+
+[node name="AirLegend" type="Label" parent="MapCellPages/BoardPage/BoardPanel/BoardLayout/LegendFlow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.73, 0.54, 1, 1)
+text = "● 空中"
+
+[node name="SelectionSummary" type="Label" parent="MapCellPages/BoardPage/BoardPanel/BoardLayout/LegendFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.89, 0.79, 0.42, 1)
+text = "生效区域：(1, 1) → (1, 1)，共 1 格"
+
+[node name="DirectPropertiesPage" type="MarginContainer" parent="MapCellPages"]
+layout_mode = 2
+metadata/_tab_name = "直接属性"
+theme_override_constants/margin_top = 6
+
+[node name="DirectScroll" type="ScrollContainer" parent="MapCellPages/DirectPropertiesPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Settings" type="VBoxContainer" parent="MapCellPages/DirectPropertiesPage/DirectScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="PositionPanel" type="PanelContainer" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_panel")
+
+[node name="PositionLayout" type="VBoxContainer" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/PositionPanel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PositionTitle" type="Label" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/PositionPanel/PositionLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "精确区域 · 游戏坐标从 1 开始"
+
+[node name="PositionFlow" type="HFlowContainer" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/PositionPanel/PositionLayout"]
+layout_mode = 2
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 5
+
+[node name="StartXLabel" type="Label" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/PositionPanel/PositionLayout/PositionFlow"]
+layout_mode = 2
+text = "左"
+
+[node name="StartX" type="SpinBox" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/PositionPanel/PositionLayout/PositionFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 32)
+layout_mode = 2
+min_value = 1.0
+max_value = 64.0
+value = 1.0
+
+[node name="StartYLabel" type="Label" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/PositionPanel/PositionLayout/PositionFlow"]
+layout_mode = 2
+text = "上"
+
+[node name="StartY" type="SpinBox" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/PositionPanel/PositionLayout/PositionFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 32)
+layout_mode = 2
+min_value = 1.0
+max_value = 64.0
+value = 1.0
+
+[node name="EndXLabel" type="Label" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/PositionPanel/PositionLayout/PositionFlow"]
+layout_mode = 2
+text = "右"
+
+[node name="EndX" type="SpinBox" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/PositionPanel/PositionLayout/PositionFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 32)
+layout_mode = 2
+min_value = 1.0
+max_value = 64.0
+value = 1.0
+
+[node name="EndYLabel" type="Label" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/PositionPanel/PositionLayout/PositionFlow"]
+layout_mode = 2
+text = "下"
+
+[node name="EndY" type="SpinBox" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/PositionPanel/PositionLayout/PositionFlow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 32)
+layout_mode = 2
+min_value = 1.0
+max_value = 64.0
+value = 1.0
+
+[node name="GridTypePanel" type="PanelContainer" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_panel")
+
+[node name="GridTypeLayout" type="VBoxContainer" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/GridTypePanel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="GridTypeTitle" type="Label" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/GridTypePanel/GridTypeLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "可放置层 · 点击图标卡组合"
+
+[node name="GridTypeButtons" type="HFlowContainer" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/GridTypePanel/GridTypeLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="ElementPanel" type="PanelContainer" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_panel")
+
+[node name="ElementLayout" type="VBoxContainer" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/ElementPanel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ElementTitle" type="Label" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/ElementPanel/ElementLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "元素环境标记 · 图形拼图"
+
+[node name="ElementButtons" type="HFlowContainer" parent="MapCellPages/DirectPropertiesPage/DirectScroll/Settings/ElementPanel/ElementLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="CurvePage" type="MarginContainer" parent="MapCellPages"]
+layout_mode = 2
+metadata/_tab_name = "高度曲线"
+theme_override_constants/margin_top = 6
+
+[node name="CurvePanel" type="PanelContainer" parent="MapCellPages/CurvePage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("Style_panel")
+
+[node name="CurveLayout" type="VBoxContainer" parent="MapCellPages/CurvePage/CurvePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 7
+
+[node name="CurveTitle" type="Label" parent="MapCellPages/CurvePage/CurvePanel/CurveLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "地面高度曲线 · 视觉预设或资源拖放"
+
+[node name="CurveGraph" type="Control" parent="MapCellPages/CurvePage/CurvePanel/CurveLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 190)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="GraphBackground" type="Panel" parent="MapCellPages/CurvePage/CurvePanel/CurveLayout/CurveGraph"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_curve")
+
+[node name="CurveControls" type="VBoxContainer" parent="MapCellPages/CurvePage/CurvePanel/CurveLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="PresetButtons" type="HFlowContainer" parent="MapCellPages/CurvePage/CurvePanel/CurveLayout/CurveControls"]
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="FlatCurve" type="Button" parent="MapCellPages/CurvePage/CurvePanel/CurveLayout/CurveControls/PresetButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "━ 平地"
+
+[node name="RiseCurve" type="Button" parent="MapCellPages/CurvePage/CurvePanel/CurveLayout/CurveControls/PresetButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "↗ 上坡"
+
+[node name="FallCurve" type="Button" parent="MapCellPages/CurvePage/CurvePanel/CurveLayout/CurveControls/PresetButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "↘ 下坡"
+
+[node name="RidgeCurve" type="Button" parent="MapCellPages/CurvePage/CurvePanel/CurveLayout/CurveControls/PresetButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "⌃ 屋脊"
+
+[node name="ValleyCurve" type="Button" parent="MapCellPages/CurvePage/CurvePanel/CurveLayout/CurveControls/PresetButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "⌄ 凹地"
+
+[node name="ClearCurve" type="Button" parent="MapCellPages/CurvePage/CurvePanel/CurveLayout/CurveControls/PresetButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "清空"
+
+[node name="GroundCurvePicker" parent="MapCellPages/CurvePage/CurvePanel/CurveLayout/CurveControls" instance=ExtResource("1_picker")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CurveStatus" type="Label" parent="MapCellPages/CurvePage/CurvePanel/CurveLayout/CurveControls"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.82, 0.62, 1)
+text = "未配置高度曲线：整块地面高度为 0"

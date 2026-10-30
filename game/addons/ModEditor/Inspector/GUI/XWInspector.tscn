@@ -1,0 +1,180 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8m0d1t7insp1"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/Inspector/GUI/XWInspector.cs" id="1_insp"]
+[ext_resource type="PackedScene" path="res://addons/AdobeAnimateEditor/Inspector/AdobeAnimateInspectorPreview.tscn" id="2_animation_preview"]
+
+[node name="XWInspector" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+script = ExtResource("1_insp")
+
+[node name="Toolbar" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="NewResourceButton" type="MenuButton" parent="Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+tooltip_text = "新建资源"
+text = "新建"
+flat = true
+
+[node name="LoadResourceButton" type="Button" parent="Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+tooltip_text = "加载资源"
+text = "加载"
+flat = true
+
+[node name="SaveResourceButton" type="MenuButton" parent="Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+tooltip_text = "保存资源"
+disabled = true
+text = "保存"
+flat = true
+
+[node name="ResourceExtraButton" type="MenuButton" parent="Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+tooltip_text = "资源额外选项"
+text = "⋮"
+flat = true
+
+[node name="ObjectMenuButton" type="MenuButton" parent="Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+tooltip_text = "对象菜单"
+text = "⚙"
+flat = true
+
+[node name="Spacer" type="Control" parent="Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackButton" type="Button" parent="Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+tooltip_text = "后退"
+disabled = true
+text = "◀"
+flat = true
+
+[node name="ForwardButton" type="Button" parent="Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+tooltip_text = "前进"
+disabled = true
+text = "▶"
+flat = true
+
+[node name="HistoryButton" type="MenuButton" parent="Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+tooltip_text = "历史记录"
+text = "历史"
+flat = true
+
+[node name="SubResourceBar" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ObjectSelector" type="HBoxContainer" parent="SubResourceBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ObjectIcon" type="TextureRect" parent="SubResourceBar/ObjectSelector"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+stretch_mode = 4
+
+[node name="ObjectLabel" type="Label" parent="SubResourceBar/ObjectSelector"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "无选中对象"
+
+[node name="OpenDocsButton" type="Button" parent="SubResourceBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+tooltip_text = "打开文档"
+disabled = true
+text = "文档"
+flat = true
+
+[node name="SearchBar" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="SearchLineEdit" type="LineEdit" parent="SearchBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "筛选属性"
+clear_button_enabled = true
+
+[node name="ObjectHeader" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="HeaderIcon" type="TextureRect" parent="ObjectHeader"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HeaderInfo" type="VBoxContainer" parent="ObjectHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameRow" type="HBoxContainer" parent="ObjectHeader/HeaderInfo"]
+layout_mode = 2
+
+[node name="HeaderLabel" type="Label" parent="ObjectHeader/HeaderInfo/NameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HeaderClassLabel" type="Label" parent="ObjectHeader/HeaderInfo/NameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.5, 0.62, 1)
+horizontal_alignment = 2
+
+[node name="HeaderIdLabel" type="Label" parent="ObjectHeader/HeaderInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.4, 0.52, 1)
+
+[node name="ObjectAnimationPreview" parent="." instance=ExtResource("2_animation_preview")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="PropertyContainer" type="VBoxContainer" parent="ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+
+[node name="PropertyContextMenu" type="PopupMenu" parent="."]
+unique_name_in_owner = true

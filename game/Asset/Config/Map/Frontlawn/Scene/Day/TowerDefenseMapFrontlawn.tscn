@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dpco4f0jycuf2"]
+
+[ext_resource type="Script" uid="uid://bar3s5ucdson5" path="res://Asset/Config/Map/Frontlawn/Scene/Day/TowerDefenseMapFrontlawn.cs" id="1_spiak"]
+[ext_resource type="Texture2D" uid="uid://6wjsihcglscj" path="res://Asset/Config/Map/Frontlawn/Scene/Day/TowerDefenseMapFrontlawnGradient.tres" id="2_cmgyv"]
+[ext_resource type="Texture2D" uid="uid://dwwg5awviq8g2" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="3_j0u3a"]
+[ext_resource type="Texture2D" uid="uid://bbbiwhq1ib7vi" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Stripe.png" id="4_4pv47"]
+[ext_resource type="Texture2D" uid="uid://j3ifp3elg8ak" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/FrontlawnFloor.png" id="5_etce8"]
+[ext_resource type="Texture2D" uid="uid://bsr0qehg7lbyy" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/FrontlawnDoor.png" id="6_oco0r"]
+
+[node name="TowerDefenseMapFrontlawn" type="Node2D" unique_id=870386029 node_paths=PackedStringArray("stripe")]
+script = ExtResource("1_spiak")
+stripe = NodePath("Stripe")
+canvasModulateGradient = ExtResource("2_cmgyv")
+
+[node name="Frontlawn" type="Sprite2D" parent="." unique_id=1402023019]
+scale = Vector2(1, 1)
+texture = ExtResource("3_j0u3a")
+centered = false
+
+[node name="Stripe" type="Sprite2D" parent="." unique_id=1523130221]
+visible = false
+position = Vector2(494, 70)
+scale = Vector2(2, 2)
+texture = ExtResource("4_4pv47")
+centered = false
+
+[node name="FrontlawnFloor" type="Sprite2D" parent="." unique_id=1508565202]
+unique_name_in_owner = true
+visible = false
+position = Vector2(101, 296)
+scale = Vector2(1, 0.99857143)
+texture = ExtResource("5_etce8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1175075090]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="FrontlawnDoor" type="Sprite2D" parent="CanvasLayer" unique_id=795502426]
+unique_name_in_owner = true
+visible = false
+position = Vector2(101, 297)
+scale = Vector2(1, 0.99857143)
+texture = ExtResource("6_oco0r")

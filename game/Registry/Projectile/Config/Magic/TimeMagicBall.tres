@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://bensh17ls5dyy"]
+
+[ext_resource type="Script" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="script"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventMagicHit.cs" id="spell"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffMagicImmobilize.cs" id="buff"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="buffbase"]
+[ext_resource type="Script" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="event"]
+[ext_resource type="PackedScene" uid="uid://4pfuu0bmxpoe" path="res://Registry/Projectile/Config/Magic/Sprite/TimeMagicBall/TimeMagicBall.tscn" id="sprite"]
+[ext_resource type="PackedScene" path="res://Asset/Anime/Effect/TimeMagic/TimeMagic.tscn" id="effect"]
+
+[sub_resource type="Resource" id="MagicImmobilize"]
+script = ExtResource("buff")
+time = 5.0
+
+[sub_resource type="Resource" id="Spell"]
+script = ExtResource("spell")
+num = 150.0
+buffList = Array[ExtResource("buffbase")]([SubResource("MagicImmobilize")])
+slowRangeColumns = 1
+slowRangeLines = 1
+slowTime = 5.0
+
+[resource]
+script = ExtResource("script")
+name = "TimeMagicBall"
+baseDamage = 0.0
+size = Vector2(24, 24)
+projectileScene = ExtResource("sprite")
+splatScene = ExtResource("effect")
+splatSceneType = "Sprite"
+splatAudio = ""
+hitBody = true
+hitTargetEventList = Array[ExtResource("event")]([SubResource("Spell")])

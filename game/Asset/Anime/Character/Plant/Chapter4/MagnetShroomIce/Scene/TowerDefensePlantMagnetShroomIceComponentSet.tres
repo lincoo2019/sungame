@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://h0xennann7r4"]
+
+[ext_resource type="Resource" uid="uid://tb7d2ev7d0lw" path="res://Script/Component/TowerDefense/Character/MagnetComponent/Definitions/MagnetShroomIceDefinition.tres" id="1"]
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="2"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="3"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="4"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="5"]
+
+[sub_resource type="Resource" id="FireDefinition"]
+script = ExtResource("3")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/MagnetShroomIce/AdobeAnimateSlot/Marker2D")]
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter4.magnetshroomice"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("2")
+LegacyNodeNames = [&"FireComponent"]
+
+[resource]
+script = ExtResource("5")
+ParentSet = ExtResource("4")
+Components = [ExtResource("1"), SubResource("FireDefinition")]

@@ -1,0 +1,7 @@
+root = true
+
+# 本工程是从发布版反编译回来的，反编译丢失了 Godot 要求的 partial 修饰符，导致
+# Godot 源生成器报 GD0002。报错类型都是 ModEditor 里的内部 helper（Presenter 等），
+# 不是挂在场景上的 Godot 脚本，不需要源生成器注入绑定代码，因此关闭该诊断。
+[*.cs]
+dotnet_diagnostic.GD0002.severity = none

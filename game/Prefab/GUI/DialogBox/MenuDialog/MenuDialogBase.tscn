@@ -1,0 +1,251 @@
+[gd_scene format=3 uid="uid://fc46lp4e26sk"]
+
+[ext_resource type="Script" uid="uid://dx47wv3no3ux7" path="res://Prefab/GUI/DialogBox/MenuDialog/MenuDialogBase.cs" id="1_8rn20"]
+[ext_resource type="Texture2D" uid="uid://chuk70ax7bshq" path="res://Asset/Texture/GUI/General/DialogBox/DialogMenu.png" id="2_aol7w"]
+[ext_resource type="Texture2D" uid="uid://m88hw8qnccy3" path="res://Asset/Texture/GUI/General/General/OptionsBackToGamebButton0.png" id="3_yu75f"]
+[ext_resource type="Texture2D" uid="uid://bq65uhww8tprd" path="res://Asset/Texture/GUI/General/General/OptionsBackToGamebButton1.png" id="4_to1xw"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_obgbh"]
+button_index = 6
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_byygv"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_5jdxe"]
+events = [SubResource("InputEventJoypadButton_obgbh"), SubResource("InputEventKey_byygv")]
+
+[node name="MenuDialogBase" type="Control" unique_id=2114908840 node_paths=PackedStringArray("dragControl")]
+light_mask = 0
+z_index = 1000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8rn20")
+dragControl = NodePath("Layer/Control/DialogMenu")
+
+[node name="Layer" type="CanvasLayer" parent="." unique_id=767706692]
+layer = 100
+
+[node name="Control" type="Control" parent="Layer" unique_id=70096199]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogMenu" type="TextureRect" parent="Layer/Control" unique_id=1774329612]
+light_mask = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.5
+offset_top = -249.0
+offset_right = 211.5
+offset_bottom = 249.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_aol7w")
+
+[node name="FullScreenLabel" type="Label" parent="Layer/Control/DialogMenu" unique_id=2047019811]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 273.5
+offset_top = 204.0
+offset_right = 321.5
+offset_bottom = 233.0
+theme_override_colors/font_color = Color(0.360784, 0.360784, 0.494118, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "全屏"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FullScreenCheckBox" type="CheckBox" parent="Layer/Control/DialogMenu/FullScreenLabel" unique_id=1087748420]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 42.0
+offset_top = -7.0
+offset_right = 92.0
+offset_bottom = 40.0
+mouse_default_cursor_shape = 2
+
+[node name="MobilePresetLabel" type="Label" parent="Layer/Control/DialogMenu" unique_id=184631615]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 48.5
+offset_top = 205.0
+offset_right = 117.5
+offset_bottom = 232.0
+theme_override_colors/font_color = Color(0.360784, 0.360784, 0.494118, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "横板UI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MobilePresetCheckBox" type="CheckBox" parent="Layer/Control/DialogMenu/MobilePresetLabel" unique_id=801323435]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 61.0
+offset_top = -9.0
+offset_right = 111.0
+offset_bottom = 38.0
+mouse_default_cursor_shape = 2
+
+[node name="GpuOptimizationLabel" type="Label" parent="Layer/Control/DialogMenu" unique_id=2072200442]
+light_mask = 0
+layout_mode = 0
+offset_left = 151.5
+offset_top = 203.0
+offset_right = 239.5
+offset_bottom = 232.0
+theme_override_colors/font_color = Color(0.360784, 0.360784, 0.494118, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "GPU优化"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GpuOptimizationCheckBox" type="CheckBox" parent="Layer/Control/DialogMenu/GpuOptimizationLabel" unique_id=643806924]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 82.0
+offset_top = -7.0
+offset_right = 132.0
+offset_bottom = 40.0
+mouse_default_cursor_shape = 2
+
+[node name="MusicLabel" type="Label" parent="Layer/Control/DialogMenu" unique_id=839774208]
+light_mask = 0
+layout_mode = 0
+offset_left = 137.5
+offset_top = 118.0
+offset_right = 185.5
+offset_bottom = 147.0
+theme_override_colors/font_color = Color(0.360784, 0.360784, 0.494118, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "音乐"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicHSlider" type="HSlider" parent="Layer/Control/DialogMenu/MusicLabel" unique_id=593119463]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 56.0
+offset_right = 180.0
+offset_bottom = 29.0
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.001
+value = 0.8
+
+[node name="SfxLabel" type="Label" parent="Layer/Control/DialogMenu" unique_id=1375618681]
+light_mask = 0
+layout_mode = 0
+offset_left = 138.0
+offset_top = 146.0
+offset_right = 186.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(0.360784, 0.360784, 0.494118, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "音效"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SfxHSlider" type="HSlider" parent="Layer/Control/DialogMenu/SfxLabel" unique_id=1911456981]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 56.0
+offset_right = 180.0
+offset_bottom = 29.0
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.001
+value = 0.8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Layer/Control/DialogMenu" unique_id=406164923]
+light_mask = 0
+layout_mode = 0
+offset_left = 72.5
+offset_top = 172.0
+offset_right = 317.5
+offset_bottom = 201.0
+
+[node name="AnimeFrameRateLabel" type="Label" parent="Layer/Control/DialogMenu/HBoxContainer" unique_id=1438163240]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 2
+theme_override_colors/font_color = Color(0.360784, 0.360784, 0.494118, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "动画帧率:24"
+horizontal_alignment = 2
+
+[node name="AnimeFrameRateSlider" type="HSlider" parent="Layer/Control/DialogMenu/HBoxContainer" unique_id=1205988248]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+max_value = 20.0
+value = 8.0
+rounded = true
+
+[node name="BackButton" type="TextureButton" parent="Layer/Control/DialogMenu" unique_id=1176248793]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_left = 31.5
+offset_top = 381.0
+offset_right = 391.5
+offset_bottom = 481.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_5jdxe")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("3_yu75f")
+texture_pressed = ExtResource("4_to1xw")
+texture_hover = ExtResource("3_yu75f")
+
+[node name="Label" type="Label" parent="Layer/Control/DialogMenu/BackButton" unique_id=1124285683]
+light_mask = 0
+layout_mode = 0
+offset_left = 104.0
+offset_top = 31.0
+offset_right = 248.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0, 0.760784, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.215686, 0.219608, 0.290196, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = -2
+theme_override_font_sizes/font_size = 36
+text = "返回游戏"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="Layer/Control/DialogMenu" unique_id=1679830577]
+visible = false
+light_mask = 0
+layout_mode = 0
+offset_left = 116.5
+offset_top = 228.0
+offset_right = 320.5
+offset_bottom = 352.0
+theme_override_constants/separation = -2

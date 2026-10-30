@@ -1,0 +1,155 @@
+[gd_scene load_steps=7 format=3]
+
+[sub_resource type="StyleBoxFlat" id="Style_card"]
+content_margin_left = 6.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.035, 0.055, 0.04, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.23, 0.37, 0.18, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="Style_surface"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.47, 0.2, 0.5)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="Style_surface_hover"]
+bg_color = Color(0.3, 0.45, 0.13, 0.18)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.66, 0.88, 0.3, 0.9)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="Style_surface_selected"]
+bg_color = Color(0.42, 0.55, 0.13, 0.28)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.78, 0.2, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="Style_glyph"]
+bg_color = Color(0.18, 0.31, 0.1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.58, 0.78, 0.24, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="Style_source"]
+content_margin_left = 7.0
+content_margin_top = 2.0
+content_margin_right = 7.0
+content_margin_bottom = 2.0
+bg_color = Color(0.17, 0.29, 0.11, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="CompactPacketEventSelectorRow" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 48)
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Style_card")
+
+[node name="SelectSurface" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+theme_override_styles/normal = SubResource("Style_surface")
+theme_override_styles/hover = SubResource("Style_surface_hover")
+theme_override_styles/pressed = SubResource("Style_surface_selected")
+theme_override_styles/hover_pressed = SubResource("Style_surface_selected")
+
+[node name="Content" type="HBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="GlyphFrame" type="PanelContainer" parent="Content"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_glyph")
+
+[node name="EventGlyph" type="Label" parent="Content/GlyphFrame"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.9, 1, 0.62, 1)
+theme_override_font_sizes/font_size = 16
+text = "◆"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Info" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="EventName" type="Label" parent="Content/Info"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.93, 0.98, 0.8, 1)
+theme_override_font_sizes/font_size = 14
+text = "事件名称"
+text_overrun_behavior = 3
+
+[node name="ClassName" type="Label" parent="Content/Info"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.57, 0.68, 0.54, 1)
+theme_override_font_sizes/font_size = 11
+text = "CardActionBehaviorDefinition"
+text_overrun_behavior = 3
+
+[node name="SourceBadge" type="Label" parent="Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.82, 0.94, 0.61, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("Style_source")
+text = "内置"
+horizontal_alignment = 1
+
+[node name="Arrow" type="Label" parent="Content"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.5, 0.66, 0.4, 1)
+text = "›"

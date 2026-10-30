@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bexrfifm3d11i"]
+
+[ext_resource type="PackedScene" uid="uid://clpu43psaiqf2" path="res://Prefab/TowerDefense/Projectile/ProjectileEffect/TowerDefenseProjectileEffectBase.tscn" id="1_6fi6o"]
+[ext_resource type="Script" uid="uid://3rg5b3v1vdil" path="res://Prefab/ProjectileEffect/GloomSquid/TowerDefenseProjectileEffectGloomSquid.cs" id="2_6slaq"]
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="3_7yfgc"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="4_6t4pv"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="5_5jxol"]
+[ext_resource type="Script" uid="uid://y5vx0n6v2ib2" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffSquid.cs" id="6_5jxol"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="7_esbxf"]
+[ext_resource type="Script" uid="uid://c55feeuvm3ss" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionRandom.cs" id="8_7pa1d"]
+
+[sub_resource type="Resource" id="Resource_5jxol"]
+script = ExtResource("4_6t4pv")
+damageFlags = 2
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[sub_resource type="Resource" id="Resource_mifkr"]
+script = ExtResource("6_5jxol")
+time = 8.0
+key = "Squid"
+metadata/_custom_type_script = "uid://y5vx0n6v2ib2"
+
+[sub_resource type="Resource" id="Resource_esbxf"]
+script = ExtResource("7_esbxf")
+buffList = Array[ExtResource("5_5jxol")]([SubResource("Resource_mifkr")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Resource_7pa1d"]
+script = ExtResource("8_7pa1d")
+eventList = Array[ExtResource("3_7yfgc")]([SubResource("Resource_esbxf")])
+percentage = 0.1
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[node name="TowerDefenseProjectileEffectGloomSquid" unique_id=989217067 instance=ExtResource("1_6fi6o")]
+script = ExtResource("2_6slaq")
+Eventlist = Array[Object]([SubResource("Resource_5jxol"), SubResource("Resource_7pa1d")])
+
+[node name="Timer" type="Timer" parent="." index="0" unique_id=1286582916]
+wait_time = 0.2
+autostart = true

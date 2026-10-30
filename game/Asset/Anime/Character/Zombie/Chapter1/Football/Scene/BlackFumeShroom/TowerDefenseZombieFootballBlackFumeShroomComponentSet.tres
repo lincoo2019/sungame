@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://nyo22lyfufs5"]
+
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="3"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="4"]
+[ext_resource type="Resource" uid="uid://c1i5ib2qopguv" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefenseZombieComponentSet.tres" id="5"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="6"]
+
+[sub_resource type="SegmentShape2D" id="AttackCollisionGeometry_0"]
+b = Vector2(-100, 0)
+
+[sub_resource type="Resource" id="AttackCollisionShape_0"]
+script = ExtResource("2")
+Geometry = SubResource("AttackCollisionGeometry_0")
+
+[sub_resource type="Resource" id="Attack1_Resource_y2qf1"]
+script = ExtResource("3")
+damageFlags = 2
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[sub_resource type="Resource" id="Attack1_Definition"]
+script = ExtResource("4")
+attackType = "Default"
+checkShapeResources = [SubResource("AttackCollisionShape_0")]
+spritePath = NodePath("SpriteGroup/TransformPoint/ZombieFootballBlackFumeShroom/Head")
+attackAnimeClipsArray = ["Fire"]
+attackAnimeClips = "Fire"
+attackEventName = "fire"
+attackAnimeTimeScale = 3.0
+spliceIdleAnimeClips = "Idle"
+eventList = [SubResource("Attack1_Resource_y2qf1")]
+useCheckAreaGridColumn = true
+checkLine = true
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.zombie.chapter1.football.scene.blackfumeshroom.towerdefensezombiefootballblackfumeshroom.1"
+InstanceId = "character.attack.1"
+WireIndex = 1
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"AttackComponent2"]
+
+[resource]
+script = ExtResource("6")
+ParentSet = ExtResource("5")
+Components = [SubResource("Attack1_Definition")]

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://t6ae66afiid7"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_yd0h3"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_8cuu1"]
+[ext_resource type="PackedScene" uid="uid://cirhpq8imwh7g" path="res://Asset/Config/Projectile/Pea/Sprite/FireZombiePea/FireZombiePea.tscn" id="2_58gk5"]
+[ext_resource type="Script" uid="uid://bqyxask6qffq7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFireHit.cs" id="3_cqxk5"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="3_yd0h3"]
+[ext_resource type="PackedScene" uid="uid://u72ounml4uiv" path="res://Prefab/Particles/Splats/FireZombiePeaSplats/FireZombiePeaSplats.tscn" id="4_hb7nv"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_pvm43"]
+
+[sub_resource type="Resource" id="Resource_m3j84"]
+script = ExtResource("3_cqxk5")
+metadata/_custom_type_script = "uid://bqyxask6qffq7"
+
+[sub_resource type="Resource" id="Resource_dl64p"]
+script = ExtResource("4_pvm43")
+buffList = Array[ExtResource("2_8cuu1")]([SubResource("Resource_m3j84")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("3_yd0h3")
+name = "FireZombiePea"
+baseDamage = 80.0
+projectileScene = ExtResource("2_58gk5")
+splatAudio = "Ignite"
+splatScene = ExtResource("4_hb7nv")
+hitTargetEventList = Array[ExtResource("1_yd0h3")]([SubResource("Resource_dl64p")])
+hitBody = true
+useRange = true
+rangeSize = Vector2(0.5, 0.25)
+isFire = true

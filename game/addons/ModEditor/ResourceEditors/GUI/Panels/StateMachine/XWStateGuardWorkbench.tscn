@@ -1,0 +1,236 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/StateMachine/XWStateGuardPreviewCanvas.cs" id="1_canvas"]
+[ext_resource type="Texture2D" path="res://addons/godot_state_charts/guard.svg" id="2_guard"]
+
+[sub_resource type="StyleBoxFlat" id="Style_header"]
+bg_color = Color(0.055, 0.075, 0.045, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.43, 0.61, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="Style_card"]
+bg_color = Color(0.035, 0.045, 0.032, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.34, 0.18, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="Style_result"]
+bg_color = Color(0.12, 0.17, 0.09, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.52, 0.69, 0.31, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+
+[node name="StateGuardWorkbench" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 540)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_header")
+
+[node name="HeaderFlow" type="HFlowContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 6
+
+[node name="Icon" type="TextureRect" parent="Header/HeaderFlow"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+texture = ExtResource("2_guard")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Header/HeaderFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "状态切换条件拼图"
+
+[node name="TypeBadge" type="Label" parent="Header/HeaderFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.95, 0.55, 1)
+text = "条件类型"
+
+[node name="SaveGuardButton" type="Button" parent="Header/HeaderFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "保存当前条件资源；内联条件会保存到所属资源"
+text = "保存条件"
+
+[node name="ResourceRow" type="HFlowContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 6
+
+[node name="ResourceNameLabel" type="Label" parent="ResourceRow"]
+layout_mode = 2
+text = "资源名称"
+
+[node name="ResourceNameEdit" type="LineEdit" parent="ResourceRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "用于资源库和状态机图中的中文名称"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="ResourceRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "随所属场景保存"
+
+[node name="WorkbenchFlow" type="HFlowContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="AuthoringCard" type="PanelContainer" parent="WorkbenchFlow"]
+custom_minimum_size = Vector2(360, 360)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("Style_card")
+
+[node name="AuthoringLayout" type="VBoxContainer" parent="WorkbenchFlow/AuthoringCard"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AuthoringTitle" type="Label" parent="WorkbenchFlow/AuthoringCard/AuthoringLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "直接编辑"
+
+[node name="AuthoringHint" type="Label" parent="WorkbenchFlow/AuthoringCard/AuthoringLayout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.72, 0.58, 1)
+text = "所有属性都在主面板修改，并进入共享撤销历史。"
+autowrap_mode = 2
+
+[node name="FieldsScroll" type="ScrollContainer" parent="WorkbenchFlow/AuthoringCard/AuthoringLayout"]
+custom_minimum_size = Vector2(0, 270)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="FieldsHost" type="VBoxContainer" parent="WorkbenchFlow/AuthoringCard/AuthoringLayout/FieldsScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="PreviewCard" type="PanelContainer" parent="WorkbenchFlow"]
+custom_minimum_size = Vector2(360, 360)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("Style_card")
+
+[node name="PreviewLayout" type="VBoxContainer" parent="WorkbenchFlow/PreviewCard"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PreviewTitle" type="Label" parent="WorkbenchFlow/PreviewCard/PreviewLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "切换链路预览"
+
+[node name="PreviewCanvas" type="Control" parent="WorkbenchFlow/PreviewCard/PreviewLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(340, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_canvas")
+
+[node name="SimulationFlow" type="HFlowContainer" parent="WorkbenchFlow/PreviewCard/PreviewLayout"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+
+[node name="SimulationLabel" type="Label" parent="WorkbenchFlow/PreviewCard/PreviewLayout/SimulationFlow"]
+layout_mode = 2
+text = "模拟当前值"
+
+[node name="ActualEditorHost" type="HBoxContainer" parent="WorkbenchFlow/PreviewCard/PreviewLayout/SimulationFlow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResultPanel" type="PanelContainer" parent="WorkbenchFlow/PreviewCard/PreviewLayout/SimulationFlow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_result")
+
+[node name="ResultBadge" type="Label" parent="WorkbenchFlow/PreviewCard/PreviewLayout/SimulationFlow/ResultPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "等待输入"
+
+[node name="CompositionCard" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_card")
+
+[node name="CompositionLayout" type="VBoxContainer" parent="CompositionCard"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CompositionTitle" type="Label" parent="CompositionCard/CompositionLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "组合条件拼图"
+
+[node name="CompositionHint" type="Label" parent="CompositionCard/CompositionLayout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.72, 0.58, 1)
+text = "按顺序组合子条件；点击卡片可进入同一个专用面板继续编辑。"
+autowrap_mode = 2
+
+[node name="AddConditionFlow" type="HFlowContainer" parent="CompositionCard/CompositionLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="CompositionList" type="VBoxContainer" parent="CompositionCard/CompositionLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6

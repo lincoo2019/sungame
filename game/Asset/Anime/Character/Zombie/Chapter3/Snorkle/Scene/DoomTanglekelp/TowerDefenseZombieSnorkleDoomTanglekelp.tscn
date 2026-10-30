@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://cv5trc7c6na41"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://dopn5ygbeikm4" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Scene/DoomTanglekelp/TowerDefenseZombieSnorkleDoomTanglekelpComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://qk70rpkk81y5" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Scene/DoomTanglekelp/TowerDefenseZombieSnorkleDoomTanglekelp.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://biss5y8gsya7d" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Config/TowerDefenseZombieSnorkleDoomTanglekelp.tres" id="5"]
+[ext_resource type="Resource" uid="uid://co537d8wk2trx" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/DamagePoint/Config/ZombieSnorkleDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dswwhb2lomp7n" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://csk4e2hffpd8y" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/DamagePoint/Config/ZombieSnorkleDamagePointHead.tres" id="8"]
+[ext_resource type="Resource" uid="uid://dat20ya1dcy8c" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorHelmet.tres" id="9"]
+[ext_resource type="Resource" uid="uid://d2ou8b5l3dpji" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Armor/Config/ZombieSnorkleArmorSpecialHelmet.tres" id="10"]
+[ext_resource type="PackedScene" uid="uid://w7p8u72yv1b6" path="res://Asset/Anime/Character/Zombie/Chapter3/Snorkle/Sprite/DoomTanglekelp/ZombieSnorkleDoomTanglekelp.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://dy8ohvmyh2j1k" path="res://Asset/Anime/Character/Plant/Chapter0/Tanglekelp/TanglekelpGrab.tscn" id="12"]
+[ext_resource type="Resource" uid="uid://crocuvqf0kkmv" path="res://Asset/Anime/Character/Plant/Chapter3/DoomTanglekelp/DoomTanglekelp.tres" id="13"]
+
+[node name="TowerDefenseZombieSnorkleDoomTanglekelp" unique_id=351134899 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+walkSpeedScale = 1.5
+inSwimAnimeClip = "Jump"
+swimAnimeClip = "Swim"
+attackWaterAnimeClip = "SwimEat"
+dieWaterAnimeClip = "SwimDeath"
+waterHeight = -5.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieSnorkleDoomTanglekelp")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieSnorkleDoomTanglekelp/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Head": ExtResource("8"),
+"Helmet": ExtResource("9"),
+"SpecialHelmet": ExtResource("10")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieSnorkleDoomTanglekelp/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieSnorkleDoomTanglekelp/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieSnorkleDoomTanglekelp/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieSnorkleDoomTanglekelp/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieSnorkleDoomTanglekelp/HeadSlot")
+}
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieSnorkleDoomTanglekelp" parent="SpriteGroup/TransformPoint" index="0" unique_id=1355872680 instance=ExtResource("11")]
+position = Vector2(-12, -33)
+clip = "Idle"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, true, true, true, true, true, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieSnorkleDoomTanglekelp" index="0" unique_id=42789994]
+clip = "IdleNoWater"
+layerVisible = [true, false, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, true, false, true, false, false, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+followParentSpriteLayerId = 12
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieSnorkleDoomTanglekelp" index="1" unique_id=434785775]
+drawLayerId = -2
+position = Vector2(-17.821915, -46.58113)
+rotation = -0.23688804
+scale = Vector2(0.7969367, 0.79851365)
+skew = 0.0029883385
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieSnorkleDoomTanglekelp" index="2" unique_id=1753800985]
+position = Vector2(17.094252, -0.6703148)
+rotation = -0.3700719
+scale = Vector2(0.7979666, 0.7979666)
+
+[node name="TanglekelpGrab" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=27916467 instance=ExtResource("12")]
+visible = false
+position = Vector2(12, 33)
+flashAnimeData = ExtResource("13")
+trueFrameRate = 180.0
+clip = "Grab"
+layerVisible = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]

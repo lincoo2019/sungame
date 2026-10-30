@@ -1,0 +1,158 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://addons/AdobeAnimateEditor/Inspector/AdobeAnimateInspectorPreview.cs" id="1_preview"]
+[ext_resource type="Script" path="res://addons/AdobeAnimateEditor/Inspector/AdobeAnimateCpuPreviewCanvas.cs" id="2_cpu_preview"]
+
+[sub_resource type="World2D" id="World2D_preview"]
+
+[node name="AdobeAnimateInspectorPreview" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 286)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_preview")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Header" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Margin/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "动画预览"
+
+[node name="StatusLabel" type="Label" parent="Margin/VBox/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 帧"
+horizontal_alignment = 2
+
+[node name="ClipOption" type="OptionButton" parent="Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "选择动画片段"
+
+[node name="Controls" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+
+[node name="PreviousButton" type="Button" parent="Margin/VBox/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "上一帧"
+text = "◀"
+
+[node name="PlayButton" type="Button" parent="Margin/VBox/Controls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+tooltip_text = "播放或暂停动画预览"
+text = "暂停"
+
+[node name="NextButton" type="Button" parent="Margin/VBox/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "下一帧"
+text = "▶"
+
+[node name="FrameSlider" type="HSlider" parent="Margin/VBox/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+step = 1.0
+tooltip_text = "拖动查看指定帧"
+
+[node name="FrameLabel" type="Label" parent="Margin/VBox/Controls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(62, 0)
+layout_mode = 2
+text = "0 / 0"
+horizontal_alignment = 2
+
+[node name="ZoomOption" type="OptionButton" parent="Margin/VBox/Controls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+tooltip_text = "预览缩放"
+item_count = 5
+selected = 0
+popup/item_0/text = "适应"
+popup/item_0/id = 0
+popup/item_1/text = "50%"
+popup/item_1/id = 50
+popup/item_2/text = "100%"
+popup/item_2/id = 100
+popup/item_3/text = "200%"
+popup/item_3/id = 200
+popup/item_4/text = "400%"
+popup/item_4/id = 400
+
+[node name="FitButton" type="Button" parent="Margin/VBox/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "自适应填充并居中；右键预览也可重置"
+text = "适应"
+
+[node name="PreviewViewportContainer" type="SubViewportContainer" parent="Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 190)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = false
+mouse_default_cursor_shape = 13
+tooltip_text = "左键或中键拖拽平移，鼠标滚轮缩放，右键恢复自适应"
+
+[node name="PreviewViewport" type="SubViewport" parent="Margin/VBox/PreviewViewportContainer"]
+unique_name_in_owner = true
+world_2d = SubResource("World2D_preview")
+transparent_bg = true
+size = Vector2i(320, 190)
+render_target_update_mode = 4
+
+[node name="Background" type="ColorRect" parent="Margin/VBox/PreviewViewportContainer/PreviewViewport"]
+unique_name_in_owner = true
+offset_right = 320.0
+offset_bottom = 190.0
+mouse_filter = 2
+color = Color(0.065, 0.075, 0.095, 1)
+
+[node name="HorizontalAxis" type="ColorRect" parent="Margin/VBox/PreviewViewportContainer/PreviewViewport"]
+unique_name_in_owner = true
+offset_top = 94.0
+offset_right = 320.0
+offset_bottom = 96.0
+mouse_filter = 2
+color = Color(0.28, 0.33, 0.42, 0.45)
+
+[node name="VerticalAxis" type="ColorRect" parent="Margin/VBox/PreviewViewportContainer/PreviewViewport"]
+unique_name_in_owner = true
+offset_left = 159.0
+offset_right = 161.0
+offset_bottom = 190.0
+mouse_filter = 2
+color = Color(0.28, 0.33, 0.42, 0.45)
+
+[node name="PreviewRoot" type="Node2D" parent="Margin/VBox/PreviewViewportContainer/PreviewViewport"]
+unique_name_in_owner = true
+position = Vector2(160, 95)
+
+[node name="CpuPreviewCanvas" type="Control" parent="Margin/VBox/PreviewViewportContainer/PreviewViewport"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+z_index = 1
+script = ExtResource("2_cpu_preview")

@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelConfig" format=3 uid="uid://8b2ynckwjwav"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Level/TowerDefense/Chapter6/Level6_12_D.json" id="1_tnxxf"]
+[ext_resource type="Script" uid="uid://ba76j1qc1ehmt" path="res://Registry/Battle/Feature/Event/Resource/TowerDefenseLevelEventBase.cs" id="2_w2ygk"]
+[ext_resource type="Script" uid="uid://dbpqspbkam44d" path="res://Resource/TowerDefense/Level/Fog/TowerDefenseLevelFogManagerConfig.cs" id="3_f3aee"]
+[ext_resource type="Script" uid="uid://elndp7rr41y0" path="res://Registry/Battle/Feature/LookStar/Resource/TowerDefenseLevelLookStarCheckConfig.cs" id="4_2wjlm"]
+[ext_resource type="Script" uid="uid://ge6chewkhjqd" path="res://Resource/TowerDefense/Level/LookStar/TowerDefenseLevelLookStarManagerConfig.cs" id="5_e4t4g"]
+[ext_resource type="Script" uid="uid://crdubirc3xofm" path="res://Resource/TowerDefense/Level/Packet/TowerDefenseLevelPacketConfig.cs" id="6_r7dyk"]
+[ext_resource type="Script" uid="uid://d17gywmt3g3lb" path="res://Resource/TowerDefense/Level/PreSpawn/TowerDefenseLevelPreSpawnConfig.cs" id="7_do6a4"]
+[ext_resource type="Script" uid="uid://dfj86l56q1n8g" path="res://Resource/TowerDefense/Level/TowerDefenseLevelConfig.cs" id="8_hy425"]
+[ext_resource type="Script" uid="uid://blrb5liskebi6" path="res://Resource/TowerDefense/Level/Sun/TowerDefenseLevelSunManagerConfig.cs" id="9_sfoqm"]
+[ext_resource type="Script" uid="uid://br6kawt7m03sc" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelDynamicConfig.cs" id="10_qp3g1"]
+[ext_resource type="Script" uid="uid://ctvkmai1q8sa6" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveManagerConfig.cs" id="11_vcvvc"]
+[ext_resource type="Script" uid="uid://c67uxwpu4jftb" path="res://Resource/TowerDefense/Level/Wave/TowerDefenseLevelWaveConfig.cs" id="12_rhb2c"]
+
+[sub_resource type="Resource" id="Resource_fdkbs"]
+script = ExtResource("3_f3aee")
+
+[sub_resource type="Resource" id="Resource_vt3yo"]
+script = ExtResource("5_e4t4g")
+
+[sub_resource type="Resource" id="Resource_p0oaf"]
+script = ExtResource("6_r7dyk")
+packetName = "PlantWallnutSquash"
+
+[sub_resource type="Resource" id="Resource_hxf8y"]
+script = ExtResource("9_sfoqm")
+open = false
+
+[sub_resource type="Resource" id="Resource_w2ygk"]
+script = ExtResource("11_vcvvc")
+flagWaveInterval = 6
+maxNextWaveHealthPercentage = 0.25
+minNextWaveHealthPercentage = 0.3
+spawnColStart = 10.0
+
+[resource]
+script = ExtResource("8_hy425")
+data = ExtResource("1_tnxxf")
+name = "Level6_12"
+description = "PLAYERS_TRIP_TO_MODERN"
+levelName = "PLAYERS_MORDEN_ROOFNIGHT_LEVEL_NAME"
+levelNumber = 12
+homeWorld = 1
+map = "FrontlawnNightThreePart"
+backgroundMusic = "RoofNight"
+firstRewardType = 1
+firstRewardValue = "PlantWallnutSquash"
+sunManager = SubResource("Resource_hxf8y")
+fogManager = SubResource("Resource_fdkbs")
+lookStarManager = SubResource("Resource_vt3yo")
+waveManager = SubResource("Resource_w2ygk")
+packetBankList = [SubResource("Resource_p0oaf")]
+PacketBank/Name = "GeneralPlant"
+metadata/_custom_type_script = "uid://dfj86l56q1n8g"

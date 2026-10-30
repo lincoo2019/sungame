@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b3il31xnadbxg"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://4k2xssgg83t6" path="res://Asset/Anime/Character/Plant/Chapter4/WallnutABC/WallnutABC_C/Scene/TowerDefensePlantWallnutABC_C.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_40p5x64_At_0_0.tres" id="3"]
+[ext_resource type="Resource" uid="uid://i1l373t5hmgj" path="res://Asset/Anime/Character/Plant/Chapter4/WallnutABC/WallnutABC_C/Config/TowerDefensePlantWallnutABC_C.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://sreiwu286ng0" path="res://Asset/Anime/Character/Plant/Chapter4/WallnutABC/WallnutABC_C.tscn" id="5"]
+
+[node name="TowerDefensePlantWallnutABC_C" node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+idleAnimeClip = "Idle3"
+sleepAnimeClip = "Idle3"
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/WallnutABC_C")
+PreviewDamagePointPersontage = 1.0
+Custom = []
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(0, 30)
+
+[node name="WallnutABC_C" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("5")]
+position = Vector2(0, -30)
+
+[node name="ShadowSprite" parent="." index="3"]
+position = Vector2(0, 30)

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://p30xslel80fv"]
+
+[ext_resource type="Texture2D" uid="uid://ccbvmn0uarwko" path="res://Asset/Config/Projectile/Iceball/Sprite/Iceball/ProjectileIceBall.png" id="1_snmmf"]
+[ext_resource type="PackedScene" uid="uid://bepjav38dfli7" path="res://Prefab/Particles/Special/SnowFlakes/SnowFlakes.tscn" id="2_gw06a"]
+
+[sub_resource type="Curve" id="Curve_0rvu8"]
+_data = [Vector2(0, 0.491401), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_aswy4"]
+curve = SubResource("Curve_0rvu8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7mxx8"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector3(-1, 0, 0)
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_aswy4")
+anim_offset_max = 1.0
+
+[node name="ProjectileSnowPea" type="Sprite2D"]
+texture = ExtResource("1_snmmf")
+
+[node name="SnowFlakes" parent="." instance=ExtResource("2_gw06a")]
+show_behind_parent = true
+amount = 32
+local_coords = false
+process_material = SubResource("ParticleProcessMaterial_7mxx8")

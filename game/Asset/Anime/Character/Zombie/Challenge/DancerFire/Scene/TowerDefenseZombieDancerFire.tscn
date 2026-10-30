@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bq0ytoj2cj1c8"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Challenge/DancerFire/Scene/TowerDefenseZombieDancerFireComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://cy61n62y1kwae" path="res://Asset/Anime/Character/Zombie/Challenge/DancerFire/Scene/TowerDefenseZombieDancerFire.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://57tpnqa0smlu" path="res://Asset/Anime/Character/Zombie/Challenge/DancerFire/Scene/TowerDefenseZombieDancerFireStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://cesk2jrkvqes8" path="res://Asset/Anime/Character/Zombie/Challenge/DancerFire/Config/TowerDefenseZombieDancerFire.tres" id="6"]
+[ext_resource type="Resource" uid="uid://2h2qtnh4bxv3" path="res://Asset/Anime/Character/Zombie/Challenge/DancerFire/DamagePoint/Config/ZombieDancerFireDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://p8kn83c4plmb" path="res://Asset/Anime/Character/Zombie/Challenge/DancerFire/DamagePoint/Config/ZombieDancerFireDamagePointHead.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://cuymqysccrpnm" path="res://Asset/Anime/Character/Zombie/Challenge/DancerFire/ZombieDancerFire.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="10"]
+
+[node name="TowerDefenseZombieDancerFire" unique_id=1980542594 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+groan = ""
+waterHeight = 25.0
+idleAnimeClip = "Walk"
+sleepAnimeClip = "Walk"
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieDancerFire")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieDancerFire/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"Head": ExtResource("8")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieDancerFire/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieDancerFire/HeadSlot")
+}
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieDancerFire" parent="SpriteGroup/TransformPoint" index="0" unique_id=1802488806 instance=ExtResource("9")]
+position = Vector2(-12, -33)
+clip = "Walk"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieDancerFire" index="0" unique_id=129935418]
+flashAnimeData = null
+clip = "Idle"
+layerVisible = [false, true, false]
+mediaReplaceAtlasPaths = ["", ""]
+mediaReplaceUse = [false, false]
+followParentSpriteLayerId = 12
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieDancerFire" index="2" unique_id=1525334873]
+drawLayerId = -2
+position = Vector2(4.5863104, -59.792213)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieDancerFire" index="3" unique_id=412233744]
+position = Vector2(27.530771, -22.619017)
+rotation = -0.15318371
+scale = Vector2(0.6367618, 0.6367618)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieDancerFire" index="4" unique_id=2013776663]
+position = Vector2(-33.4255, -40)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=1435744777 instance=ExtResource("10")]
+visible = false
+position = Vector2(3, -46)
+flashAnimeData = null
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = [true, true]
+mediaReplaceAtlasPaths = ["", "", ""]
+mediaReplaceUse = [false, false, false]
+
+[editable path="SpriteGroup/TransformPoint/ZombieDancerFire"]

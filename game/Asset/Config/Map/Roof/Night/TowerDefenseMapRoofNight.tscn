@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bygk6hruxyu3q"]
+
+[ext_resource type="Script" uid="uid://b836fxe1qpvgu" path="res://Asset/Config/Map/Roof/Night/TowerDefenseMapRoofNight.cs" id="1_f1xej"]
+[ext_resource type="Texture2D" uid="uid://ctewm3tg8j3uj" path="res://Asset/Config/Map/Roof/Night/TowerDefenseMapRoofNightGradient.tres" id="2_odd3w"]
+[ext_resource type="Texture2D" uid="uid://dcu7gqkfrfnqi" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Roof/RoofNight.jpg" id="3_g3sd5"]
+[ext_resource type="Texture2D" uid="uid://cdaabuc2vghs7" path="res://Asset/Config/Map/General/LightTexture.tres" id="4_m8hty"]
+[ext_resource type="Texture2D" uid="uid://bbbiwhq1ib7vi" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Stripe.png" id="5_l0p85"]
+[ext_resource type="Script" uid="uid://b5ar37hp0yfwu" path="res://Extends/PointLight2D/PointLight2DFollowMudulate.cs" id="6_um6ab"]
+[ext_resource type="Texture2D" uid="uid://j3ifp3elg8ak" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/FrontlawnFloor.png" id="7_icc1e"]
+[ext_resource type="Texture2D" uid="uid://bsr0qehg7lbyy" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/FrontlawnDoor.png" id="8_qkudj"]
+
+[node name="TowerDefenseMapRoofNight" type="Node2D" unique_id=2135951170 node_paths=PackedStringArray("stripe")]
+script = ExtResource("1_f1xej")
+stripe = NodePath("Stripe")
+canvasModulateGradient = ExtResource("2_odd3w")
+
+[node name="Roof" type="Sprite2D" parent="." unique_id=782797279]
+scale = Vector2(1, 1)
+texture = ExtResource("3_g3sd5")
+centered = false
+
+[node name="PointLight2DFollowMudulate" type="PointLight2D" parent="." unique_id=1540863418 node_paths=PackedStringArray("followNode")]
+position = Vector2(449, 300)
+scale = Vector2(0.6, 0.4)
+range_layer_max = 512
+texture = ExtResource("4_m8hty")
+script = ExtResource("6_um6ab")
+followNode = NodePath("..")
+saveEnergy = 1.0
+
+[node name="Stripe" type="Sprite2D" parent="." unique_id=1888650002]
+visible = false
+position = Vector2(494, 70)
+scale = Vector2(2, 2)
+texture = ExtResource("5_l0p85")
+centered = false
+
+[node name="RoofFloor" type="Sprite2D" parent="." unique_id=105893538]
+unique_name_in_owner = true
+visible = false
+position = Vector2(101, 296)
+scale = Vector2(1, 0.99857143)
+texture = ExtResource("7_icc1e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1482527606]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer" unique_id=91653063]
+unique_name_in_owner = true
+color = Color(0.67451, 0.67451, 0.67451, 1)
+
+[node name="RoofDoor" type="Sprite2D" parent="CanvasLayer" unique_id=1674444656]
+unique_name_in_owner = true
+visible = false
+position = Vector2(101, 297)
+scale = Vector2(1, 0.99857143)
+texture = ExtResource("8_qkudj")

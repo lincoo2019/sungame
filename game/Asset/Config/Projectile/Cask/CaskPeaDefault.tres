@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://bmc8omvub0xcy"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_gajv4"]
+[ext_resource type="Script" uid="uid://cbb0hpvlj3t1p" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventCreateProjectile.cs" id="2_fplht"]
+[ext_resource type="Script" uid="uid://ce1i8olrvxerv" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHitBack.cs" id="2_gajv4"]
+[ext_resource type="PackedScene" uid="uid://oigbi8gud5sh" path="res://Asset/Config/Projectile/Cask/Sprite/CaskPea/ProjectileCaskPea.tscn" id="3_gajv4"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="3_lc46w"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="4_lc46w"]
+
+[sub_resource type="Resource" id="Resource_lc46w"]
+script = ExtResource("2_gajv4")
+length = 0.125
+time = 0.1
+metadata/_custom_type_script = "uid://ce1i8olrvxerv"
+
+[sub_resource type="Resource" id="Resource_fplht"]
+script = ExtResource("2_fplht")
+metadata/_custom_type_script = "uid://cbb0hpvlj3t1p"
+
+[sub_resource type="Resource" id="Resource_nocx0"]
+script = ExtResource("2_fplht")
+dir = 90.0
+metadata/_custom_type_script = "uid://cbb0hpvlj3t1p"
+
+[sub_resource type="Resource" id="Resource_n3ga2"]
+script = ExtResource("2_fplht")
+dir = 180.0
+metadata/_custom_type_script = "uid://cbb0hpvlj3t1p"
+
+[sub_resource type="Resource" id="Resource_06j4v"]
+script = ExtResource("2_fplht")
+dir = 270.0
+metadata/_custom_type_script = "uid://cbb0hpvlj3t1p"
+
+[resource]
+script = ExtResource("3_lc46w")
+name = "CaskPea"
+baseDamage = 80.0
+projectileScene = ExtResource("3_gajv4")
+projectileObject = 389
+hitTargetEventList = Array[ExtResource("1_gajv4")]([SubResource("Resource_lc46w"), SubResource("Resource_fplht"), SubResource("Resource_nocx0"), SubResource("Resource_n3ga2"), SubResource("Resource_06j4v")])
+useRange = true
+rangeSize = Vector2(0.5, 0.25)
+hitPesontage = 0.5
+collisionFlags = 1
+catapultHeight = 400.0

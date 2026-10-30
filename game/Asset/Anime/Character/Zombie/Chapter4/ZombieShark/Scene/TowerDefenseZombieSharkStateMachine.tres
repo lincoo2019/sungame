@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://6t70okulm51r"]
+
+[ext_resource type="Resource" uid="uid://cktl6q1og62xd" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseZombieStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_shark_run"]
+script = ExtResource("2")
+StableId = "zombie.shark.run"
+DisplayName = &"Run"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="Transition_shark_to_run"]
+script = ExtResource("3")
+StableId = "zombie.shark.to_run"
+SourceStateId = "character.root"
+TargetStateId = "zombie.shark.run"
+EventName = &"ToRun"
+DeclarationOrder = 7
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.zombie.shark"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_shark_run")]
+Transitions = [SubResource("Transition_shark_to_run")]

@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://bf2vg1k12uswl"]
+
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="1"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="3"]
+
+[sub_resource type="Resource" id="State_character_root"]
+script = ExtResource("1")
+StableId = "character.root"
+DisplayName = &"Root"
+Kind = 1
+InitialChildId = "character.idle"
+
+[sub_resource type="Resource" id="State_character_idle"]
+script = ExtResource("1")
+StableId = "character.idle"
+DisplayName = &"Idle"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_character_sleep"]
+script = ExtResource("1")
+StableId = "character.sleep"
+DisplayName = &"Sleep"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_character_component"]
+script = ExtResource("1")
+StableId = "character.component"
+DisplayName = &"Component"
+ParentId = "character.root"
+
+[sub_resource type="Resource" id="Transition_to_idle"]
+script = ExtResource("2")
+StableId = "character.to_idle"
+SourceStateId = "character.root"
+TargetStateId = "character.idle"
+EventName = &"ToIdle"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_sleep"]
+script = ExtResource("2")
+StableId = "character.to_sleep"
+SourceStateId = "character.root"
+TargetStateId = "character.sleep"
+EventName = &"ToSleep"
+DeclarationOrder = 1
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_component"]
+script = ExtResource("2")
+StableId = "character.to_component"
+SourceStateId = "character.root"
+TargetStateId = "character.component"
+EventName = &"ToComponent"
+DeclarationOrder = 2
+GuardDefinition = null
+
+[resource]
+script = ExtResource("3")
+DefinitionId = "builtin.character.base"
+BaseDefinition = null
+RootStateId = "character.root"
+States = [SubResource("State_character_root"), SubResource("State_character_idle"), SubResource("State_character_sleep"), SubResource("State_character_component")]
+Transitions = [SubResource("Transition_to_idle"), SubResource("Transition_to_sleep"), SubResource("Transition_to_component")]

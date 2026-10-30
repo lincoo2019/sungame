@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://ce7uh3pg70fi6"]
+
+[ext_resource type="Resource" path="res://Script/Component/TowerDefense/Character/PotatoComponent/PotatoComponentMagnetMineDefinition.tres" id="1"]
+[ext_resource type="Resource" uid="uid://i8efeuimirfh" path="res://Script/Component/TowerDefense/Character/MagnetComponent/Definitions/MagnetMineDefinition.tres" id="2"]
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="3"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="4"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="5"]
+[ext_resource type="Resource" uid="uid://do05bp0ckbyeu" path="res://Asset/Anime/Character/Plant/Chapter2/MagnetMine/Scene/TowerDefensePlantMagnetMineExplodeDefinition.tres" id="6"]
+[ext_resource type="Resource" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantPotatoComponentSet.tres" id="7"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="8"]
+
+[sub_resource type="RectangleShape2D" id="Attack0_RectangleShape2D_figmo"]
+size = Vector2(70, 49.5)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_attack"]
+script = ExtResource("4")
+Geometry = SubResource("Attack0_RectangleShape2D_figmo")
+LocalTransform = Transform2D(1, 0, 0, 1, -1, 0.75)
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("5")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_attack")]
+checkLine = true
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.chapter2.magnetmine.scene.towerdefenseplantmagnetmine.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("3")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("8")
+ParentSet = ExtResource("7")
+Components = [ExtResource("1"), ExtResource("2"), SubResource("Attack0_Definition"), ExtResource("6")]

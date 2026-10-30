@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/XWGenericVisualResourceEditor.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/GameplayLogic/XWGameplayLogicVisualResourceEditor.cs" id="2_script"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/GameplayLogic/XWGameplayLogicResourceShelf.tscn" id="3_shelf"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/GameplayLogic/XWGameplayLogicStage.tscn" id="4_stage"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/GameplayLogic/XWGameplayLogicTimeline.tscn" id="5_timeline"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/GameplayLogic/XWGameplayLogicErrorBar.tscn" id="6_error"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ResourceCharacter.svg" id="7_shelf_icon"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Game.svg" id="8_battle_icon"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/MemberProperty.svg" id="9_property_icon"]
+
+[node name="XWGameplayLogicVisualResourceEditor" instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+
+[node name="CanvasGrid" parent="Root/Split/MainPanel/MainStack" index="0"]
+columns = 1
+
+[node name="GameplayWorkbench" type="VBoxContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid" groups=["mod_editor_static_surface"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 460)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="ContextBar" type="PanelContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench"]
+layout_mode = 2
+
+[node name="Layout" type="HFlowContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/ContextBar"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 4
+
+[node name="ModeLabel" type="Label" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/ContextBar/Layout"]
+layout_mode = 2
+text = "游戏内战斗逻辑"
+
+[node name="OwnerPathLabel" type="Button" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/ContextBar/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "拥有者: 尚未选择"
+text_overrun_behavior = 3
+flat = true
+alignment = 0
+
+[node name="SaveStateLabel" type="Label" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/ContextBar/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mod 资源 · 可撤销 / 可自动保存"
+
+[node name="GameplayPages" type="TabContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 1
+tab_0/icon = ExtResource("7_shelf_icon")
+tab_1/icon = ExtResource("8_battle_icon")
+tab_2/icon = ExtResource("9_property_icon")
+
+[node name="资源库" type="MarginContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/GameplayPages"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="ResourceShelfHost" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/GameplayPages/资源库" instance=ExtResource("3_shelf")]
+custom_minimum_size = Vector2(0, 0)
+size_flags_horizontal = 3
+
+[node name="战场" type="VBoxContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/GameplayPages"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="StageHost" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/GameplayPages/战场" instance=ExtResource("4_stage")]
+
+[node name="TimelineHost" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/GameplayPages/战场" instance=ExtResource("5_timeline")]
+
+[node name="直接属性" type="ScrollContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/GameplayPages"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="DirectPropertiesPanel" type="PanelContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/GameplayPages/直接属性"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AdvancedInspectorHost" type="VBoxContainer" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/GameplayPages/直接属性/DirectPropertiesPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/GameplayPages/直接属性/DirectPropertiesPanel/AdvancedInspectorHost"]
+layout_mode = 2
+text = "战斗对象 · 直接属性"
+
+[node name="Hint" type="Label" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/GameplayPages/直接属性/DirectPropertiesPanel/AdvancedInspectorHost"]
+layout_mode = 2
+text = "在草坪上选择对象后，这里直接编辑位置、阶段和引用；其余字段在同页“全部属性”卡片中直接编辑。"
+autowrap_mode = 2
+
+[node name="ErrorBarHost" parent="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench" instance=ExtResource("6_error")]
+
+[node name="InspectorPanel" parent="Root/Split" index="1"]
+custom_minimum_size = Vector2(280, 0)
+
+[editable path="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/GameplayPages/资源库/ResourceShelfHost"]
+[editable path="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/GameplayPages/战场/StageHost"]
+[editable path="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/GameplayPages/战场/TimelineHost"]
+[editable path="Root/Split/MainPanel/MainStack/CanvasGrid/GameplayWorkbench/ErrorBarHost"]

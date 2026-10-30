@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://eiqf367udkja"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_jnf3n"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_gsoaq"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="3_e3si3"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_8xo05"]
+[ext_resource type="Script" uid="uid://bpobxkjerypff" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventForzen.cs" id="5_tub73"]
+[ext_resource type="Script" uid="uid://c55feeuvm3ss" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionRandom.cs" id="6_fhef8"]
+[ext_resource type="PackedScene" uid="uid://cqowt7y2nvjvw" path="res://Asset/Config/Projectile/Melon/Sprite/WinterMelonX/ProjectileWinterMelonX.tscn" id="7_ebeoc"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="8_jnf3n"]
+[ext_resource type="PackedScene" uid="uid://dgpaa81bf1c08" path="res://Prefab/Particles/Splats/WinterMelonXSplats/WinterMelonXSplats.tscn" id="9_im2yj"]
+
+[sub_resource type="Resource" id="Resource_84nba"]
+script = ExtResource("3_e3si3")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_m1xpu"]
+script = ExtResource("4_8xo05")
+buffList = Array[ExtResource("2_gsoaq")]([SubResource("Resource_84nba")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Resource_mlbvk"]
+script = ExtResource("5_tub73")
+time = 5.0
+metadata/_custom_type_script = "uid://bpobxkjerypff"
+
+[sub_resource type="Resource" id="Resource_p7a5e"]
+script = ExtResource("6_fhef8")
+eventList = Array[ExtResource("1_jnf3n")]([SubResource("Resource_mlbvk")])
+percentage = 0.1
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[resource]
+script = ExtResource("8_jnf3n")
+name = "WinterMelonX"
+baseDamage = 100.0
+projectileScene = ExtResource("7_ebeoc")
+splatAudio = "MelonImpact"
+splatScene = ExtResource("9_im2yj")
+hitCharacterEventList = Array[ExtResource("1_jnf3n")]([SubResource("Resource_m1xpu"), SubResource("Resource_p7a5e")])
+rotateScale = 5.0
+hitBody = true
+useRange = true
+rangeSize = Vector2(0.5, 1)
+hitPesontage = 0.5

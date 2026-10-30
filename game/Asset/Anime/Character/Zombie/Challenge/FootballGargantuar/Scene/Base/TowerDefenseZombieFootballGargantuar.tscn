@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://d4b0bkkivnww"]
+
+[ext_resource type="PackedScene" uid="uid://be74ryvl4k6y7" path="res://Prefab/TowerDefense/Character/TowerDefenseZombieGargantuarBase.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://c41qxfhrv570c" path="res://Asset/Anime/Character/Zombie/Challenge/FootballGargantuar/Scene/Base/TowerDefenseZombieFootballGargantuarComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://cma32rib73pth" path="res://Asset/Anime/Character/Zombie/Challenge/FootballGargantuar/Scene/Base/TowerDefenseZombieFootballGargantuar.cs" id="3"]
+[ext_resource type="Resource" uid="uid://dra8f0sip7mrf" path="res://Asset/Anime/Character/Zombie/Challenge/FootballGargantuar/Config/TowerDefenseZombieFootballGargantuar.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b7kt2yh0oo2jt" path="res://Asset/Anime/Character/Zombie/Challenge/FootballGargantuar/Armor/Config/ZombieFootballGargantuarArmorBlackHelmet.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dwjukfmecdr4l" path="res://Asset/Anime/Character/Zombie/Challenge/FootballGargantuar/Armor/Config/ZombieFootballGargantuarArmorHelmet.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://cnmreno6oqg8q" path="res://Asset/Anime/Character/Zombie/Challenge/FootballGargantuar/Sprite/Base/ZombieFootballGargantuar.tscn" id="7"]
+
+[node name="TowerDefenseZombieFootballGargantuar" unique_id=1453892550 node_paths=PackedStringArray("impSpawnSlot", "sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+impName = "ZombieFootballImp"
+impSpawnSlot = NodePath("SpriteGroup/TransformPoint/ZombieFootballGargantuar/ImpSlot")
+impFilter = "Zombie_imp_jaw&Zombie_imp_head&Zombie_imp_body1&Zombie_imp_body2&Zombie_imp_outerleg_upper&Zombie_imp_outerleg_lower&Zombie_imp_outerleg_foot&Zombie_imp_innerleg_upper&Zombie_imp_innerleg_lower&Zombie_imp_innerleg_foot&Zombie_imp_innerarm_upper&Zombie_imp_outerarm_lower&Zombie_imp_outerarm_upper&Zombie_imp_innerarm_lower&Zombie_gargantuar_whiterope&Zombie_duckytube&Zombie_football_helmet"
+impFliters = ["Zombie_imp_jaw", "Zombie_imp_head", "Zombie_imp_body1", "Zombie_imp_body2", "Zombie_imp_outerleg_upper", "Zombie_imp_outerleg_lower", "Zombie_imp_outerleg_foot", "Zombie_imp_innerleg_upper", "Zombie_imp_innerleg_lower", "Zombie_imp_innerleg_foot", "Zombie_imp_innerarm_upper", "Zombie_imp_outerarm_lower", "Zombie_imp_outerarm_upper", "Zombie_imp_innerarm_lower", "Zombie_gargantuar_whiterope", "Zombie_duckytube", "Zombie_football_helmet"]
+waterHeight = 85.0
+config = ExtResource("4")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieFootballGargantuar")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieFootballGargantuar/HeadSlot")
+damagePart = {
+"BlackHelmet": ExtResource("5"),
+"Helmet": ExtResource("6")
+}
+damagePartSlot = {
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieFootballGargantuar/HelmetSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieFootballGargantuar/HelmetSlot")
+}
+currentArmor = []
+
+[node name="ZombieFootballGargantuar" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=1083778043 instance=ExtResource("7")]
+position = Vector2(-12, -36)
+Animation/MediaReplace/Zombie_football_helmet.png = "res://Asset/AtlasSource/Armor/Texture/Character/Armor/Helmet/ZombieHelmet1.png"
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieFootballGargantuar" index="0" unique_id=759577093]
+drawLayerId = -2
+position = Vector2(-48.689697, -85.57851)
+rotation = -0.021717029
+scale = Vector2(0.9998949, 0.9998949)
+Layer = 30
+
+[node name="HelmetSlot" parent="SpriteGroup/TransformPoint/ZombieFootballGargantuar" index="1" unique_id=897365408]
+position = Vector2(-51.217194, -90.16664)
+Layer = 32
+
+[node name="ImpSlot" parent="SpriteGroup/TransformPoint/ZombieFootballGargantuar" index="2" unique_id=490407977]
+position = Vector2(51.331715, -113.67848)
+rotation = -0.0033070822
+scale = Vector2(0.97371686, 1.0019758)
+skew = -0.008418918
+Layer = 21
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieFootballGargantuar" index="3" unique_id=2003834603]
+Layer = 1

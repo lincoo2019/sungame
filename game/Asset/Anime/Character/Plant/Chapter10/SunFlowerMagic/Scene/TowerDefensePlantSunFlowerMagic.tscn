@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ct5xtc7ntjwu"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://u0bmwn80c63o" path="res://Asset/Anime/Character/Plant/Chapter10/SunFlowerMagic/Scene/TowerDefensePlantSunFlowerMagicComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bptcpjv3pfl8j" path="res://Asset/Anime/Character/Plant/Chapter10/SunFlowerMagic/Scene/TowerDefensePlantSunFlowerMagic.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dynn1gg3jm34a" path="res://Asset/Anime/Character/Plant/Chapter10/SunFlowerMagic/Config/TowerDefensePlantSunFlowerMagic.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://dv8bar68jh6f8" path="res://Asset/Anime/Character/Plant/Chapter10/SunFlowerMagic/SunFlowerMagic.tscn" id="6"]
+
+[node name="TowerDefensePlantSunFlowerMagic" node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/SunFlowerMagic")
+
+[node name="ShadowSprite" parent="." index="0"]
+position = Vector2(0, 30)
+
+[node name="SpriteGroup" parent="." index="2"]
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(0, 30)
+
+[node name="SunFlowerMagic" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("6")]
+position = Vector2(0, -30)
+clip = "Idle"

@@ -1,0 +1,103 @@
+[gd_resource type="Resource" script_class="FireComponentDefinition" format=3 uid="uid://bs60hfmnx1fbs"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbglc127qw1jb" path="res://Resource/TowerDefense/Collision/AabbRay2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="5"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="6"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="7"]
+
+[sub_resource type="Resource" id="AabbRay2DResource_AabbRayProbe3"]
+script = ExtResource("2")
+TargetPosition = Vector2(-2000, 0)
+
+[sub_resource type="Resource" id="AabbRay2DResource_AabbRayProbe2"]
+script = ExtResource("2")
+LocalTransform = Transform2D(0.9914449, 0.1305262, -0.1305262, 0.9914449, 0, 0)
+TargetPosition = Vector2(-2000, 0)
+
+[sub_resource type="Resource" id="AabbRay2DResource_AabbRayProbe4"]
+script = ExtResource("2")
+LocalTransform = Transform2D(0.9914449, -0.1305262, 0.1305262, 0.9914449, 0, 0)
+TargetPosition = Vector2(-2000, 0)
+
+[sub_resource type="Resource" id="AabbRay2DResource_AabbRayProbe"]
+script = ExtResource("2")
+LocalTransform = Transform2D(0.9659258, 0.25881904, -0.25881904, 0.9659258, 0, 0)
+TargetPosition = Vector2(-2000, 0)
+
+[sub_resource type="Resource" id="AabbRay2DResource_AabbRayProbe5"]
+script = ExtResource("2")
+LocalTransform = Transform2D(0.9659258, -0.25881904, 0.25881904, 0.9659258, 0, 0)
+TargetPosition = Vector2(-2000, 0)
+
+[sub_resource type="Resource" id="Resource_344d6"]
+script = ExtResource("3")
+projectileName = &"Pea"
+catapultHeight = 400.0
+
+[sub_resource type="Resource" id="Resource_q8jl1"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_344d6")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_tukt2"]
+script = ExtResource("5")
+projectile = SubResource("Resource_q8jl1")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Resource_4tn14"]
+script = ExtResource("6")
+speed = -300.0
+dir = -15.0
+projectileFlip = true
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_au25d"]
+script = ExtResource("6")
+speed = -300.0
+dir = -7.5
+projectileFlip = true
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_rloyq"]
+script = ExtResource("6")
+speed = -300.0
+projectileFlip = true
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_umjgv"]
+script = ExtResource("6")
+speed = -300.0
+dir = 7.5
+projectileFlip = true
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_mhvfj"]
+script = ExtResource("6")
+speed = -300.0
+dir = 15.0
+projectileFlip = true
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[resource]
+script = ExtResource("7")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/ZombieNormalWildPea/Head/Marker2D")]
+spritePath = NodePath("SpriteGroup/TransformPoint/ZombieNormalWildPea/Head")
+checkRayResources = [SubResource("AabbRay2DResource_AabbRayProbe3"), SubResource("AabbRay2DResource_AabbRayProbe2"), SubResource("AabbRay2DResource_AabbRayProbe4"), SubResource("AabbRay2DResource_AabbRayProbe"), SubResource("AabbRay2DResource_AabbRayProbe5")]
+fireAnimeClipsArray = ["HeadFire"]
+fireAnimeClips = "HeadFire"
+fireAnimeTimeScale = 3.0
+spliceIdleAnimeClips = "HeadIdle"
+isSpliceSprite = true
+fireInterval = 2.0
+fireCheckList = [SubResource("Resource_tukt2")]
+fireProjectileList = [SubResource("Resource_4tn14"), SubResource("Resource_au25d"), SubResource("Resource_rloyq"), SubResource("Resource_umjgv"), SubResource("Resource_mhvfj")]
+checkAllLine = true
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.zombie.chapter1.normal.scene.wildpea.towerdefensezombienormalwildpea"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]

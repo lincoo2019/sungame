@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://b78ph0xtc5o2w"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Scene/Starfruit/TowerDefenseZombieNormalStarfruitComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://boki2br8iekdn" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Scene/Starfruit/TowerDefenseZombieNormalStarfruit.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://0xaob7mfli6c" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Config/TowerDefenseZombieNormalStarfruit.tres" id="5"]
+[ext_resource type="Resource" uid="uid://chvyxpm81irbp" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://clvqblkq2jo2l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://d4b68a6hw3c2d" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorBucket.tres" id="8"]
+[ext_resource type="Resource" uid="uid://cfim36uopws7u" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorCone.tres" id="9"]
+[ext_resource type="Resource" uid="uid://c7nx2fl3rq01m" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/DamagePoint/Config/ZombieNormalPlantDamagePointHead.tres" id="10"]
+[ext_resource type="Resource" uid="uid://byth0yfgejk1l" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorHelmet.tres" id="11"]
+[ext_resource type="Resource" uid="uid://dmgd4ygng30xn" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorScreendoor.tres" id="12"]
+[ext_resource type="Resource" uid="uid://cryuyu1d8jqbt" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Armor/Config/ZombieNormalArmorSpecialHelmet.tres" id="13"]
+[ext_resource type="PackedScene" uid="uid://b3ig2slq2nel5" path="res://Asset/Anime/Character/Zombie/Chapter1/Normal/Sprite/Starfruit/ZombieNormalStarfruitSprite.tscn" id="14"]
+
+[node name="TowerDefenseZombieNormalStarfruit" unique_id=712894744 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 1
+projectileName = "Star"
+walkAnimeClip = "Walk1&Walk2"
+swimAnimeClip = "Swim"
+dieAnimeClip = "Death1&Death2"
+dieWaterAnimeClip = "Waterdeath"
+waterHeight = 25.0
+idleAnimeClip = "Idle1&Idle2"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieNormalStarfruit")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieNormalStarfruit/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Bucket": ExtResource("8"),
+"Cone": ExtResource("9"),
+"Head": ExtResource("10"),
+"Helmet": ExtResource("11"),
+"Screendoor": ExtResource("12"),
+"SpecialHelmet": ExtResource("13")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieNormalStarfruit/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalStarfruit/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieNormalStarfruit/BucketSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieNormalStarfruit/ConeSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieNormalStarfruit/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalStarfruit/HeadSlot"),
+"Screendoor": NodePath("SpriteGroup/TransformPoint/ZombieNormalStarfruit/ScreendoorSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieNormalStarfruit/HeadSlot")
+}
+currentArmor = []
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieNormalStarfruit" parent="SpriteGroup/TransformPoint" index="0" unique_id=2005208045 instance=ExtResource("14")]
+position = Vector2(-12, -33)
+Animation/Clip = "Idle1"
+
+[node name="Head" parent="SpriteGroup/TransformPoint/ZombieNormalStarfruit" index="0" unique_id=1447859647]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieNormalStarfruit" index="1" unique_id=743571121]
+drawLayerId = -2
+position = Vector2(-11.715492, -48.475273)
+rotation = 0.010202537
+scale = Vector2(0.79980206, 0.79980206)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieNormalStarfruit" index="2" unique_id=614180353]
+position = Vector2(5.416464, 0.6485977)
+rotation = 0.00021957024
+scale = Vector2(0.7994896, 0.7994896)
+
+[node name="ConeSlot" parent="SpriteGroup/TransformPoint/ZombieNormalStarfruit" index="3" unique_id=802627952]
+position = Vector2(-3.3735504, -74.1896)
+rotation = 0.091269605
+scale = Vector2(0.7997437, 0.7997437)
+
+[node name="BucketSlot" parent="SpriteGroup/TransformPoint/ZombieNormalStarfruit" index="4" unique_id=1107578253]
+position = Vector2(-9.621731, -64.035385)
+
+[node name="ScreendoorSlot" parent="SpriteGroup/TransformPoint/ZombieNormalStarfruit" index="5" unique_id=1067547515]
+position = Vector2(-17.702854, -0.5216751)
+rotation = 0.0
+scale = Vector2(0.7997766, 0.7997766)
+
+[node name="FireMarker" type="Marker2D" parent="SpriteGroup/TransformPoint" index="1" unique_id=630507720]
+position = Vector2(-42.999996, -63.999992)
+rotation = 2.6179938
+skew = -1.7642975e-05
+
+[node name="FireMarker2" type="Marker2D" parent="SpriteGroup/TransformPoint" index="2" unique_id=1766724556]
+position = Vector2(-16, -55)
+rotation = 1.5707964
+skew = 3.0398369e-05
+
+[node name="FireMarker3" type="Marker2D" parent="SpriteGroup/TransformPoint" index="3" unique_id=1452070725]
+position = Vector2(14, -80)
+skew = -3.504753e-05
+
+[node name="FireMarker4" type="Marker2D" parent="SpriteGroup/TransformPoint" index="4" unique_id=1108426792]
+position = Vector2(-14.999999, -104)
+rotation = 4.712389
+skew = 3.504753e-05
+
+[node name="FireMarker5" type="Marker2D" parent="SpriteGroup/TransformPoint" index="5" unique_id=1859742529]
+position = Vector2(-44, -97)
+rotation = 3.6651914
+skew = -1.7523766e-05
+
+[editable path="SpriteGroup/TransformPoint/ZombieNormalStarfruit"]

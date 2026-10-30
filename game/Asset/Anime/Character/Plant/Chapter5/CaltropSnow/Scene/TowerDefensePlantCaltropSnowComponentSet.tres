@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://c6rk30v3w5gu3"]
+
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw2vrb8rkj87m" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFrozen.cs" id="3"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4"]
+[ext_resource type="Script" uid="uid://c55feeuvm3ss" path="res://Resource/TowerDefense/Character/Event/Condition/TowerDefenseCharacterEventConditionRandom.cs" id="5"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="6"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="7"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="8"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="9"]
+
+[sub_resource type="RectangleShape2D" id="Attack0_RectangleShape2D_f6h0u"]
+size = Vector2(73, 33)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_attack"]
+script = ExtResource("2")
+Geometry = SubResource("Attack0_RectangleShape2D_f6h0u")
+LocalTransform = Transform2D(1, 0, 0, 1, -1.5, -0.5)
+
+[sub_resource type="Resource" id="Attack0_Resource_5hpth"]
+script = ExtResource("3")
+time = 3.0
+metadata/_custom_type_script = "uid://cw2vrb8rkj87m"
+
+[sub_resource type="Resource" id="Attack0_Resource_co8oq"]
+script = ExtResource("4")
+buffList = [SubResource("Attack0_Resource_5hpth")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Attack0_Resource_64pdi"]
+script = ExtResource("5")
+eventList = [SubResource("Attack0_Resource_co8oq")]
+percentage = 0.15
+metadata/_custom_type_script = "uid://c55feeuvm3ss"
+
+[sub_resource type="Resource" id="Attack0_Resource_ie8au"]
+script = ExtResource("6")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Attack0_Resource_xy5fe"]
+script = ExtResource("4")
+buffList = [SubResource("Attack0_Resource_ie8au")]
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("7")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_attack")]
+spritePath = NodePath("SpriteGroup/TransformPoint/Corntrop")
+attackAnimeTimeScale = 2.0
+eventList = [SubResource("Attack0_Resource_64pdi"), SubResource("Attack0_Resource_xy5fe")]
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.chapter5.caltropsnow.scene.towerdefenseplantcaltropsnow.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("9")
+ParentSet = ExtResource("8")
+Components = [SubResource("Attack0_Definition")]

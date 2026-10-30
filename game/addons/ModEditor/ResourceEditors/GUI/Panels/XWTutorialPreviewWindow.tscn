@@ -1,0 +1,123 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/ResourceEditors/GUI/Panels/XWTutorialPreviewWindow.cs" id="1_script"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="2_lawn"]
+[ext_resource type="PackedScene" path="res://Core/BroadCastManager/BroadCastManager.tscn" id="3_broadcast"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stage"]
+bg_color = Color(0.08, 0.13, 0.11, 1)
+
+[node name="TutorialRuntimePreviewWindow" type="Window"]
+title = "教程流程运行预览"
+initial_position = 1
+size = Vector2i(960, 640)
+min_size = Vector2i(760, 500)
+transient = true
+script = ExtResource("1_script")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "教程流程运行预览"
+
+[node name="Split" type="HSplitContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offset = 220
+
+[node name="StepList" type="ItemList" parent="Layout/Split"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Right" type="VBoxContainer" parent="Layout/Split"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Stage" type="PanelContainer" parent="Layout/Split/Right"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_stage")
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="Layout/Split/Right/Stage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="Layout/Split/Right/Stage/ViewportContainer"]
+size = Vector2i(960, 310)
+render_target_update_mode = 4
+handle_input_locally = true
+
+[node name="GameBackground" type="TextureRect" parent="Layout/Split/Right/Stage/ViewportContainer/Viewport"]
+offset_right = 960.0
+offset_bottom = 310.0
+mouse_filter = 2
+texture = ExtResource("2_lawn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="RuntimeBroadcast" parent="Layout/Split/Right/Stage/ViewportContainer/Viewport" instance=ExtResource("3_broadcast")]
+unique_name_in_owner = true
+editorPreviewMode = true
+
+[node name="ConditionTitle" type="Label" parent="Layout/Split/Right"]
+layout_mode = 2
+text = "步骤完成条件"
+
+[node name="ConditionScroll" type="ScrollContainer" parent="Layout/Split/Right"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="ConditionRows" type="VBoxContainer" parent="Layout/Split/Right/ConditionScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Controls" type="HBoxContainer" parent="Layout/Split/Right"]
+layout_mode = 2
+alignment = 1
+
+[node name="PreviousButton" type="Button" parent="Layout/Split/Right/Controls"]
+custom_minimum_size = Vector2(110, 36)
+layout_mode = 2
+text = "◀ 上一步"
+
+[node name="CompleteButton" type="Button" parent="Layout/Split/Right/Controls"]
+custom_minimum_size = Vector2(140, 36)
+layout_mode = 2
+text = "模拟满足条件"
+
+[node name="AutoButton" type="Button" parent="Layout/Split/Right/Controls"]
+custom_minimum_size = Vector2(110, 36)
+layout_mode = 2
+text = "自动播放"
+
+[node name="NextButton" type="Button" parent="Layout/Split/Right/Controls"]
+custom_minimum_size = Vector2(110, 36)
+layout_mode = 2
+text = "下一步 ▶"
+
+[node name="Status" type="Label" parent="Layout/Split/Right"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="AutoTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true

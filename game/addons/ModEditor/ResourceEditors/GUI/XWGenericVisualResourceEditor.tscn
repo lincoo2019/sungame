@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://5fsjbjo111tb"]
+
+[ext_resource type="Script" uid="uid://cdftfel5wokru" path="res://addons/ModEditor/ResourceEditors/GUI/XWGenericVisualResourceEditor.cs" id="1_generic"]
+
+[node name="XWGenericVisualResourceEditor" type="PanelContainer" unique_id=249627583]
+script = ExtResource("1_generic")
+
+[node name="Root" type="VBoxContainer" parent="." unique_id=388895133]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="HBoxContainer" parent="Root" unique_id=865394244]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Root/Header" unique_id=6114631]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "资源编辑器"
+
+[node name="Toolbar" type="HBoxContainer" parent="Root/Header" unique_id=2090259225]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResourceTabBar" type="TabBar" parent="Root" unique_id=175868261]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+tab_close_display_policy = 1
+
+[node name="Summary" type="Label" parent="Root" unique_id=2005523329]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "打开资源后显示对应的可视化编辑界面。"
+clip_text = true
+
+[node name="Split" type="MarginContainer" parent="Root" unique_id=152992310]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MainPanel" type="ScrollContainer" parent="Root/Split" unique_id=683503500]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 1
+vertical_scroll_mode = 1
+
+[node name="MainStack" type="VBoxContainer" parent="Root/Split/MainPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="CanvasGrid" type="GridContainer" parent="Root/Split/MainPanel/MainStack" unique_id=157392525]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DirectPropertiesHost" type="VBoxContainer" parent="Root/Split/MainPanel/MainStack"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LoadResourceDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "加载资源"
+initial_position = 1
+size = Vector2i(700, 500)
+min_size = Vector2i(620, 420)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.tres, *.res ; Resources", "*.png, *.jpg, *.jpeg, *.webp, *.svg ; Images")
+
+[node name="SaveResourceAsDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "另存为"
+initial_position = 1
+size = Vector2i(700, 500)
+min_size = Vector2i(620, 420)
+file_mode = 4
+access = 2
+filters = PackedStringArray("*.tres ; Godot Text Resource", "*.res ; Godot Binary Resource")
+
+; Compatibility-only sentinels for older probes and extensions. They are outside
+; the visual workspace, permanently hidden, and never host an XWInspector.
+[node name="InspectorPanel" type="PanelContainer" parent="."]
+visible = false
+process_mode = 4
+mouse_filter = 2
+
+[node name="EmbeddedInspectorHost" type="VBoxContainer" parent="InspectorPanel"]
+unique_name_in_owner = true
+process_mode = 4
+mouse_filter = 2

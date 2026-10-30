@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://1di8c5yxjqnn"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://ce1mrxooac0xv" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiBobsledTeam/Scene/TowerDefenseZombieYetiBobsledTeamComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://c0r4tlflehrdn" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiBobsledTeam/Scene/TowerDefenseZombieYetiBobsledTeam.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_154x33_At_26_n1.tres" id="4"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiBobsledTeam/Config/TowerDefenseZombieYetiBobsledTeam.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://bx8kjj5d8oswm" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiBobsledTeam/ZombieYetiBobsledTeam.tscn" id="6"]
+
+[node name="TowerDefenseZombieYetiBobsledTeam" node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+walkAnimeClip = "Drive"
+attackAnimeClip = "Drive"
+dieAnimeClip = "Wheelie"
+dieWaterAnimeClip = "Wheelie"
+idleAnimeClip = "Drive"
+sleepAnimeClip = "Drive"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieYetiBobsledTeam")
+slowSpeed = 30.0
+iceSpeed = 60.0
+requiresIce = false
+createsIce = true
+crushesPlants = true
+usesEntryChoreography = false
+
+[node name="TransformPoint" parent="SpriteGroup" index="0"]
+position = Vector2(12, 33)
+
+[node name="ZombieYetiBobsledTeam" parent="SpriteGroup/TransformPoint" index="0" instance=ExtResource("6")]
+position = Vector2(-12, -33)
+
+[node name="IceCapMarker" type="Marker2D" parent="SpriteGroup/TransformPoint/ZombieYetiBobsledTeam" index="0"]
+unique_name_in_owner = true
+position = Vector2(40, 53)
+
+[node name="ShadowSprite" parent="." index="3"]
+position = Vector2(18, 45)
+scale = Vector2(3, 1.45)
+
+[editable path="SpriteGroup/TransformPoint/ZombieYetiBobsledTeam"]

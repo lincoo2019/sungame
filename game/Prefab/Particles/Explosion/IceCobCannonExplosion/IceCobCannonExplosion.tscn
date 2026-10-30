@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c0jqarake84mi"]
+
+[ext_resource type="Material" uid="uid://cy7sexcwgkpns" path="res://Prefab/Particles/Explosion/IceCobCannonExplosion/IceCobCannonExplosionParticles.tres" id="1_0wfc5"]
+[ext_resource type="Texture2D" uid="uid://rwnfdwllbeyy" path="res://Asset/Anime/Particles/Explosion/IceCobCannonExplosion/IceCobCannonPopcorn.png" id="1_qjjel"]
+[ext_resource type="Script" uid="uid://cmjj5ejt1ranr" path="res://Extends/Particles/GPUParticles2DOnece.cs" id="2_qjjel"]
+[ext_resource type="Texture2D" uid="uid://bhrqk28duy6bt" path="res://Asset/Anime/Particles/Explosion/BlastMark.png" id="3_4l4gt"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jbvug"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_ec5d3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.755738, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_q26dj"]
+curve = SubResource("Curve_ec5d3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h3b8v"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_q26dj")
+
+[node name="IceCobCannonExplosion" type="GPUParticles2D" unique_id=679756372]
+material = SubResource("CanvasItemMaterial_jbvug")
+emitting = false
+amount = 48
+texture = ExtResource("1_qjjel")
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+draw_order = 0
+process_material = ExtResource("1_0wfc5")
+script = ExtResource("2_qjjel")
+
+[node name="Sprite2D2" type="GPUParticles2D" parent="." unique_id=744343513]
+show_behind_parent = true
+position = Vector2(2, 0)
+emitting = false
+amount = 1
+texture = ExtResource("3_4l4gt")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_h3b8v")

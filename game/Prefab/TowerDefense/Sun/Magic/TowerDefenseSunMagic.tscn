@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c4r7bn2wqxnat"]
+
+[ext_resource type="Script" uid="uid://tvm7xmxifuun" path="res://Prefab/TowerDefense/Sun/Magic/TowerDefenseSunMagic.cs" id="1_iu3aa"]
+[ext_resource type="PackedScene" uid="uid://xux6c5s2w6vf" path="res://Asset/Anime/Effect/Sun/SunMagic/SunMagic.tscn" id="2_gf7jp"]
+[ext_resource type="PackedScene" uid="uid://bhh76tmil13cb" path="res://Script/Component/MoveComponent/MoveComponent.tscn" id="3_i7kft"]
+[ext_resource type="Resource" uid="uid://chqbheykh1bky" path="res://Asset/Anime/Effect/Sun/SunMagic/SunMagic.tres" id="4_05s33"]
+
+[sub_resource type="Gradient" id="Gradient_y4p2o"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_zbwli"]
+gradient = SubResource("Gradient_y4p2o")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7, 0.7)
+
+[node name="TowerDefenseSunMagic" type="Node2D"]
+physics_interpolation_mode = 1
+z_index = 1000
+script = ExtResource("1_iu3aa")
+
+[node name="SunSprite" parent="." instance=ExtResource("2_gf7jp")]
+unique_name_in_owner = true
+material = null
+flashAnimeData = ExtResource("4_05s33")
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = Array[bool]([true, true, true, true, true])
+mediaReplace = Array[Texture2D]([null, null, null, null])
+mediaReplaceUse = Array[bool]([false, false, false, false])
+mediaReplaceAtlasPaths = Array[String](["", "", "", ""])
+
+[node name="Light" type="PointLight2D" parent="SunSprite"]
+unique_name_in_owner = true
+visible = false
+energy = 0.5
+texture = SubResource("GradientTexture2D_zbwli")
+
+[node name="MoveComponent" parent="SunSprite" instance=ExtResource("3_i7kft")]
+unique_name_in_owner = true
+
+[node name="DieDownTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 15.0
+one_shot = true
+autostart = true

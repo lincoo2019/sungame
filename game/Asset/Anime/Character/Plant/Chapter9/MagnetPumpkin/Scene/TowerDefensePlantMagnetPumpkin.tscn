@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://o7cgkuj77n52"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dqb3wr81u04l8" path="res://Asset/Anime/Character/Plant/Chapter9/MagnetPumpkin/Scene/TowerDefensePlantMagnetPumpkin.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_64x33_At_0_0.tres" id="3"]
+[ext_resource type="Resource" uid="uid://c2p6bv8q6q6jp" path="res://Asset/Anime/Character/Plant/Chapter9/MagnetPumpkin/Scene/TowerDefensePlantMagnetPumpkinComponentSet.tres" id="4"]
+[ext_resource type="Resource" uid="uid://badxnsu5j7bwf" path="res://Asset/Anime/Character/Plant/Chapter9/MagnetPumpkin/Config/TowerDefensePlantMagnetPumpkin.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://d3ul5mtee8fum" path="res://Asset/Anime/Character/Plant/Chapter9/MagnetPumpkin/MagnetPumpkin.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantMagnetPumpkin" unique_id=1899595520 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+z_index = -10
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+showHealthOffset = Vector2(0, 16)
+ComponentSet = ExtResource("4")
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/MagnetPumpkin")
+damagePart = {}
+damagePartSlot = {}
+currentArmor = []
+currentCustom = []
+itemLayer = 5
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="MagnetPumpkin" parent="SpriteGroup/TransformPoint" index="0" unique_id=1496728279 instance=ExtResource("6")]
+position = Vector2(0, -30)
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/MagnetPumpkin" index="1" unique_id=1158288696]
+position = Vector2(4.806572, 34.776585)
+scale = Vector2(0.7810138, 0.81612104)
+script = ExtResource("7")
+followSlotId = 7
+drawLayerId = 7
+offset = Vector2(65, 60)
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/MagnetPumpkin/AdobeAnimateSlot" index="0" unique_id=1361969991]
+position = Vector2(-4.9771366, -16.366053)
+
+[editable path="SpriteGroup/TransformPoint/MagnetPumpkin"]

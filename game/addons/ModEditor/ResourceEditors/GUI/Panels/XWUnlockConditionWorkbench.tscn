@@ -1,0 +1,376 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/Frontlawn.jpg" id="1_lawn"]
+[ext_resource type="Texture2D" path="res://Asset/Texture/TowerDefense/Packet/PC/SeedPacketLarger.png" id="2_packet"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Lock.svg" id="3_lock"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Unlock.svg" id="4_unlock"]
+
+[sub_resource type="StyleBoxFlat" id="Style_header"]
+bg_color = Color(0.08, 0.095, 0.075, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.46, 0.58, 0.28, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="Style_stage"]
+bg_color = Color(0.025, 0.03, 0.025, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.21, 0.29, 0.14, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_card"]
+bg_color = Color(0.08, 0.085, 0.075, 0.9)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.24, 0.28, 0.2, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_bubble"]
+bg_color = Color(0.055, 0.065, 0.05, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.55, 0.64, 0.32, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="Style_progress_bg"]
+bg_color = Color(0.025, 0.03, 0.025, 0.9)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="Style_progress_fill"]
+bg_color = Color(0.45, 0.72, 0.22, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="UnlockConditionWorkbench" type="VBoxContainer"]
+custom_minimum_size = Vector2(720, 500)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_header")
+
+[node name="HeaderRow" type="HBoxContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Header/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "游戏解锁条件"
+
+[node name="Type" type="Label" parent="Header/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.92, 0.58, 1)
+text = "条件类型"
+
+[node name="ResourceFields" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_header")
+
+[node name="Row" type="HBoxContainer" parent="ResourceFields"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ResourceNameLabel" type="Label" parent="ResourceFields/Row"]
+layout_mode = 2
+text = "资源名称"
+
+[node name="ResourceNameEdit" type="LineEdit" parent="ResourceFields/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "用于在编辑器中识别这个解锁条件"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="ResourceFields/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "本地化到场景"
+
+[node name="StageFrame" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(700, 405)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("Style_stage")
+
+[node name="Stage" type="Control" parent="StageFrame"]
+custom_minimum_size = Vector2(700, 405)
+layout_mode = 2
+
+[node name="Lawn" type="TextureRect" parent="StageFrame/Stage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_lawn")
+expand_mode = 1
+stretch_mode = 6
+modulate = Color(0.55, 0.58, 0.5, 1)
+
+[node name="Shade" type="ColorRect" parent="StageFrame/Stage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.015, 0.02, 0.015, 0.42)
+
+[node name="CardFrame" type="PanelContainer" parent="StageFrame/Stage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 42.0
+offset_top = 48.0
+offset_right = 282.0
+offset_bottom = 346.0
+theme_override_styles/panel = SubResource("Style_card")
+
+[node name="PacketBackground" type="TextureRect" parent="StageFrame/Stage/CardFrame"]
+layout_mode = 2
+texture = ExtResource("2_packet")
+expand_mode = 1
+stretch_mode = 5
+modulate = Color(0.42, 0.42, 0.42, 1)
+
+[node name="CardOverlay" type="VBoxContainer" parent="StageFrame/Stage/CardFrame"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="TargetLabel" type="Label" parent="StageFrame/Stage/CardFrame/CardOverlay"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.94, 0.7, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 18
+text = "待解锁内容"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SpacerTop" type="Control" parent="StageFrame/Stage/CardFrame/CardOverlay"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+
+[node name="LockIcon" type="TextureRect" parent="StageFrame/Stage/CardFrame/CardOverlay"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 82)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_lock")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="UnlockIcon" type="TextureRect" parent="StageFrame/Stage/CardFrame/CardOverlay"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(82, 82)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_unlock")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="StateLabel" type="Label" parent="StageFrame/Stage/CardFrame/CardOverlay"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "尚未解锁"
+horizontal_alignment = 1
+
+[node name="ConditionBubble" type="PanelContainer" parent="StageFrame/Stage"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 30.0
+offset_right = 677.0
+offset_bottom = 375.0
+theme_override_styles/panel = SubResource("Style_bubble")
+
+[node name="ConditionLayout" type="VBoxContainer" parent="StageFrame/Stage/ConditionBubble"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Requirement" type="Label" parent="StageFrame/Stage/ConditionBubble/ConditionLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.9, 0.6, 1)
+theme_override_font_sizes/font_size = 17
+text = "解锁要求"
+autowrap_mode = 2
+
+[node name="Separator" type="HSeparator" parent="StageFrame/Stage/ConditionBubble/ConditionLayout"]
+layout_mode = 2
+
+[node name="BaseFields" type="VBoxContainer" parent="StageFrame/Stage/ConditionBubble/ConditionLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Hint" type="Label" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/BaseFields"]
+layout_mode = 2
+text = "基础条件不会自动解锁，请选择一个具体的条件类型。"
+autowrap_mode = 2
+
+[node name="LevelFinishFields" type="VBoxContainer" parent="StageFrame/Stage/ConditionBubble/ConditionLayout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/LevelFinishFields"]
+layout_mode = 2
+text = "直接在关卡通关提示上编辑关卡存档键"
+autowrap_mode = 2
+
+[node name="LevelFinishKey" type="LineEdit" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/LevelFinishFields"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "例如 Chapter1-1；Unlock 表示始终解锁"
+
+[node name="SurvivalFields" type="VBoxContainer" parent="StageFrame/Stage/ConditionBubble/ConditionLayout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="SurvivalLevelKey" type="LineEdit" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/SurvivalFields"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "生存关卡存档键"
+
+[node name="RoundRow" type="HBoxContainer" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/SurvivalFields"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/SurvivalFields/RoundRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "需要完成轮数"
+
+[node name="Round" type="SpinBox" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/SurvivalFields/RoundRow"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 999.0
+value = 10.0
+
+[node name="PacketFields" type="VBoxContainer" parent="StageFrame/Stage/ConditionBubble/ConditionLayout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="PacketName" type="LineEdit" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/PacketFields"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "作为前置条件的卡牌 saveKey"
+
+[node name="PacketBankFields" type="VBoxContainer" parent="StageFrame/Stage/ConditionBubble/ConditionLayout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="BankName" type="LineEdit" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/PacketBankFields"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "卡牌库名称"
+
+[node name="Category" type="LineEdit" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/PacketBankFields"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "卡牌分类"
+
+[node name="CountRow" type="HBoxContainer" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/PacketBankFields"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/PacketBankFields/CountRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "至少解锁数量"
+
+[node name="Count" type="SpinBox" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/PacketBankFields/CountRow"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 999.0
+value = 1.0
+
+[node name="SimulationTitle" type="Label" parent="StageFrame/Stage/ConditionBubble/ConditionLayout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.82, 0.56, 1)
+text = "游戏状态模拟"
+
+[node name="SimulationRow" type="HBoxContainer" parent="StageFrame/Stage/ConditionBubble/ConditionLayout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SimulateComplete" type="CheckBox" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/SimulationRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "前置条件已完成"
+
+[node name="SimulateProgressLabel" type="Label" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/SimulationRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "当前进度"
+
+[node name="SimulateProgress" type="SpinBox" parent="StageFrame/Stage/ConditionBubble/ConditionLayout/SimulationRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+max_value = 999.0
+
+[node name="Progress" type="ProgressBar" parent="StageFrame/Stage/ConditionBubble/ConditionLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+theme_override_styles/background = SubResource("Style_progress_bg")
+theme_override_styles/fill = SubResource("Style_progress_fill")
+show_percentage = false
+
+[node name="SimulationHint" type="Label" parent="StageFrame/Stage/ConditionBubble/ConditionLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "调整模拟状态可立即查看游戏中的锁定/解锁结果。"
+autowrap_mode = 2

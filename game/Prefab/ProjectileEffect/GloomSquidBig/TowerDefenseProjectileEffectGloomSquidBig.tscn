@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cc2e55hq70tn6"]
+
+[ext_resource type="PackedScene" uid="uid://clpu43psaiqf2" path="res://Prefab/TowerDefense/Projectile/ProjectileEffect/TowerDefenseProjectileEffectBase.tscn" id="1_u7agh"]
+[ext_resource type="Script" uid="uid://c2khryi4dwpq5" path="res://Prefab/ProjectileEffect/GloomSquidBig/TowerDefenseProjectileEffectGloomSquidBig.cs" id="2_i1qkb"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="4_qpdys"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="5_60gh1"]
+[ext_resource type="Script" uid="uid://y5vx0n6v2ib2" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffSquid.cs" id="6_e1j8s"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="7_myufi"]
+
+[sub_resource type="Resource" id="Resource_cj7bl"]
+script = ExtResource("4_qpdys")
+num = 200.0
+damageFlags = 2
+collisionFlags = 43
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[sub_resource type="Resource" id="Resource_e1j8s"]
+script = ExtResource("6_e1j8s")
+time = 8.0
+key = "Squid"
+metadata/_custom_type_script = "uid://y5vx0n6v2ib2"
+
+[sub_resource type="Resource" id="Resource_m5ypn"]
+script = ExtResource("7_myufi")
+buffList = Array[ExtResource("5_60gh1")]([SubResource("Resource_e1j8s")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[node name="TowerDefenseProjectileEffectGloomSquidBig" unique_id=989217067 instance=ExtResource("1_u7agh")]
+script = ExtResource("2_i1qkb")
+Eventlist = Array[Object]([SubResource("Resource_cj7bl"), SubResource("Resource_m5ypn")])
+
+[node name="Timer" type="Timer" parent="." index="0" unique_id=1286582916]
+wait_time = 0.2
+autostart = true

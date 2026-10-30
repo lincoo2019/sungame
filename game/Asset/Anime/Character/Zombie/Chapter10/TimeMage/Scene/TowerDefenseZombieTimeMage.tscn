@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://duxjot4tmms23"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://kgh5n88kadfa" path="res://Asset/Anime/Character/Zombie/Chapter10/TimeMage/Scene/TowerDefenseZombieTimeMage.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="PackedScene" uid="uid://y1ud2wixo63f" path="res://Asset/Anime/Effect/TimeRevive/TimeRevive.tscn" id="4"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="5"]
+[ext_resource type="Resource" uid="uid://2ukqvmnncibg" path="res://Asset/Anime/Character/Zombie/Chapter10/TimeMage/Scene/TowerDefenseZombieTimeMageStateMachine.tres" id="6"]
+[ext_resource type="Resource" uid="uid://d0tjvc4h0pr1o" path="res://Asset/Anime/Character/Zombie/Chapter10/TimeMage/Config/TowerDefenseZombieTimeMage.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cdw1pqewts2ju" path="res://Asset/Anime/Character/Zombie/Chapter10/TimeMage/DamagePoint/Config/ZombieTimeMageDamagePointArm.tres" id="8"]
+[ext_resource type="Resource" uid="uid://w2g4ylm744ln" path="res://Asset/Anime/Character/Zombie/Chapter10/TimeMage/DamagePoint/Config/ZombieTimeMageDamagePointHead.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://diwqbcw2x2iwq" path="res://Asset/Anime/Character/Zombie/Chapter10/TimeMage/ZombieTimeMage.tscn" id="10"]
+
+[sub_resource type="Resource" id="Resource_spell"]
+script = ExtResource("3")
+projectileName = &"TimeMagicBall"
+baseDamage = 0.0
+damageFlags = 67
+
+[node name="TowerDefenseZombieTimeMage" unique_id=1259931589 node_paths=PackedStringArray("spellMuzzle", "sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+spellProjectile = SubResource("Resource_spell")
+spellMuzzle = NodePath("SpriteGroup/TransformPoint/ZombieTimeMage/SpellMuzzleSlot/Marker2D")
+reviveEffect = ExtResource("4")
+HitBoxDefinition = ExtResource("5")
+MainStateMachineDefinition = ExtResource("6")
+config = ExtResource("7")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieTimeMage")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieTimeMage/HeadSlot")
+damagePart = {
+"Arm": ExtResource("8"),
+"Head": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieTimeMage/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieTimeMage/HeadSlot")
+}
+currentArmor = []
+currentCustom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(9, 37)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieTimeMage" parent="SpriteGroup/TransformPoint" index="0" unique_id=2085001352 instance=ExtResource("10")]
+position = Vector2(-12, -33)
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieTimeMage" index="0" unique_id=2001428178]
+drawLayerId = -2

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bgd8sd4mt6c78"]
+
+[ext_resource type="PackedScene" uid="uid://udsya47xq3qh" path="res://Prefab/TowerDefense/Character/TowerDefenseVase.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dutdy7utjw1lj" path="res://Asset/Anime/Character/Vase/SquashBlack/Scene/TowerDefenseVaseSquashBlack.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_1p25.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://djs8ytienucdy" path="res://Prefab/Particles/Vase/Zombie/VaseZombieChunks.tscn" id="4"]
+[ext_resource type="Resource" uid="uid://dp2jullxubw38" path="res://Asset/Anime/Character/Vase/SquashBlack/Config/TowerDefenseVaseSquashBlack.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://i507b30s3tpd" path="res://Asset/Anime/Character/Vase/SquashBlack/VaseSquashBlack.tscn" id="6"]
+
+[node name="TowerDefenseVaseSquashBlack" unique_id=1430194038 node_paths=PackedStringArray("backSprite", "sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+backSprite = NodePath("SpriteGroup/TransformPoint/VaseZombie/Node2D/Back")
+packetCanShow = false
+chunkParticles = ExtResource("4")
+useEnterAnime = false
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/VaseZombie")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+scale = Vector2(1.1395348, 1.1111112)
+
+[node name="VaseZombie" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=860683214 instance=ExtResource("6")]
+position = Vector2(0, -36)
+runtimeViewportCullingEnabled = false
+clip = "Idle"
+layerVisible = [true, false]
+mediaReplaceAtlasPaths = ["", "res://Asset/Anime/Character/Vase/SquashBlack/SquashVase_Pot.png"]
+mediaReplaceUse = [false, true]
+
+[node name="ZombieWaterLine" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=736068738]
+clip = "Idle"
+layerVisible = [true, true]
+mediaReplaceAtlasPaths = ["", "", ""]
+mediaReplaceUse = [false, false, false]
+
+[node name="Hammer" parent="." index="3" unique_id=335477754]
+clip = "OpenPot"
+layerVisible = [true, true, true, true]
+mediaReplaceAtlasPaths = ["", "", ""]
+mediaReplaceUse = [false, false, false]

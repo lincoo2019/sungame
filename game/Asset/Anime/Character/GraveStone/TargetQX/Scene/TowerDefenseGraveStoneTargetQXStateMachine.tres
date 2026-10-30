@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="StateMachineDefinition" format=3 uid="uid://lm6porosvkyj"]
+
+[ext_resource type="Resource" uid="uid://bf2vg1k12uswl" path="res://Prefab/TowerDefense/Character/StateMachine/TowerDefenseCharacterStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbeiiwsi6lxih" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineStateDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://cci07lohyeck3" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineTransitionDefinition.cs" id="3"]
+[ext_resource type="Script" uid="uid://n4ro0a2kenv5" path="res://addons/godot_state_charts/ResourceRuntime/StateMachineDefinition.cs" id="4"]
+
+[sub_resource type="Resource" id="State_down"]
+script = ExtResource("2")
+StableId = "gravestone.qx.down"
+DisplayName = &"Down"
+ParentId = "character.root"
+
+[sub_resource type="Resource" id="State_down_idle"]
+script = ExtResource("2")
+StableId = "gravestone.qx.down_idle"
+DisplayName = &"DownIdle"
+ParentId = "character.root"
+ProcessFlags = 2
+
+[sub_resource type="Resource" id="State_up"]
+script = ExtResource("2")
+StableId = "gravestone.qx.up"
+DisplayName = &"Up"
+ParentId = "character.root"
+
+[sub_resource type="Resource" id="Transition_to_down"]
+script = ExtResource("3")
+StableId = "gravestone.qx.to_down"
+SourceStateId = "character.root"
+TargetStateId = "gravestone.qx.down"
+EventName = &"ToDown"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_down_idle"]
+script = ExtResource("3")
+StableId = "gravestone.qx.to_down_idle"
+SourceStateId = "gravestone.qx.down"
+TargetStateId = "gravestone.qx.down_idle"
+EventName = &"ToDownIdle"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_up"]
+script = ExtResource("3")
+StableId = "gravestone.qx.to_up"
+SourceStateId = "gravestone.qx.down_idle"
+TargetStateId = "gravestone.qx.up"
+EventName = &"ToUp"
+GuardDefinition = null
+
+[sub_resource type="Resource" id="Transition_to_revived"]
+script = ExtResource("3")
+StableId = "gravestone.qx.to_revived"
+SourceStateId = "gravestone.qx.up"
+TargetStateId = "character.idle"
+EventName = &"ToRevived"
+GuardDefinition = null
+
+[resource]
+script = ExtResource("4")
+DefinitionId = "builtin.character.gravestone.qx"
+BaseDefinition = ExtResource("1")
+States = [SubResource("State_down"), SubResource("State_down_idle"), SubResource("State_up")]
+Transitions = [SubResource("Transition_to_down"), SubResource("Transition_to_down_idle"), SubResource("Transition_to_up"), SubResource("Transition_to_revived")]

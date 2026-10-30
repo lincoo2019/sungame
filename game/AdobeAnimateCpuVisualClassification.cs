@@ -1,0 +1,1 @@
+internal readonly record struct AdobeAnimateCpuVisualClassification(AdobeAnimateCpuVisualDisposition Disposition, AdobeAnimateDrawItem DrawItem, AdobeAnimateCpuNativeSpriteItem NativeItem, AdobeAnimateCpuVisualFailure Failure, AdobeAnimateExternalTextureAtlasAllocation Allocation);

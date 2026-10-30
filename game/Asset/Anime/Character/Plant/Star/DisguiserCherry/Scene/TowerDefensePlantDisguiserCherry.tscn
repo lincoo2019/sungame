@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b0xeds0ssqjj6"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Star/DisguiserCherry/Scene/TowerDefensePlantDisguiserCherryComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bygeaoj4dxrgc" path="res://Asset/Anime/Character/Plant/Star/DisguiserCherry/Scene/TowerDefensePlantDisguiserCherry.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Script" uid="uid://bt7fis5jparcx" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventExplodeHurt.cs" id="5"]
+[ext_resource type="Resource" uid="uid://duanr471frxvv" path="res://Asset/Anime/Character/Plant/Star/DisguiserCherry/Config/TowerDefensePlantDisguiserCherry.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://bylssuwt1oexh" path="res://Asset/Anime/Character/Plant/Star/DisguiserCherry/DisguiserCherry.tscn" id="7"]
+
+[sub_resource type="Resource" id="Resource_x2utx"]
+script = ExtResource("5")
+num = 300.0
+metadata/_custom_type_script = "uid://bt7fis5jparcx"
+
+[node name="TowerDefensePlantDisguiserCherry" unique_id=1028185840 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+eventList = [SubResource("Resource_x2utx")]
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/DisguiserCherry")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="DisguiserCherry" parent="SpriteGroup/TransformPoint" index="0" unique_id=1354256960 instance=ExtResource("7")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0

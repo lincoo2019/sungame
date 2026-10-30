@@ -1,0 +1,202 @@
+[gd_scene load_steps=10 format=3 uid="uid://c8m0d1t7bp1"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/Blueprint/GUI/XWBPEditor.cs" id="1_bp"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Blueprint/GUI/GraphEdit/XWBPGraphEdit.tscn" id="2_graph"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Blueprint/GUI/ScriptItemTree/Graph/XWBPEditorGraphTree.tscn" id="3_gtree"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Blueprint/GUI/ScriptItemTree/Function/XWBPEditorFunctionTree.tscn" id="4_ftree"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Blueprint/GUI/ScriptItemTree/Variable/XWBPEditorVariableTree.tscn" id="5_vtree"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/Add.svg" id="6_add"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Blueprint/GUI/ScriptItemTree/Signal/XWBPEditorSignalTree.tscn" id="7_stree"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Blueprint/GUI/ValidationPanel/XWBPValidationPanel.tscn" id="8_valid"]
+[ext_resource type="PackedScene" path="res://addons/ModEditor/Debugging/GUI/XWModDebugWorkbench.tscn" id="9_debug_workbench"]
+
+[node name="XWBPEditor" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_bp")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(-280)
+split_offset = -280
+
+[node name="CenterVSplit" type="VSplitContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(-100)
+split_offset = -100
+
+[node name="XWBPGraphEdit" parent="HSplitContainer/CenterVSplit" instance=ExtResource("2_graph")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="XWBPValidationPanel" parent="HSplitContainer/CenterVSplit" instance=ExtResource("8_valid")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="BlueprintSidebar" type="TabContainer" parent="HSplitContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BlueprintDirectPropertyPanel" type="PanelContainer" parent="HSplitContainer/BlueprintSidebar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Margin" type="MarginContainer" parent="HSplitContainer/BlueprintSidebar/BlueprintDirectPropertyPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Layout" type="VBoxContainer" parent="HSplitContainer/BlueprintSidebar/BlueprintDirectPropertyPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BlueprintDirectPropertyTitle" type="Label" parent="HSplitContainer/BlueprintSidebar/BlueprintDirectPropertyPanel/Margin/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.28, 0.78, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "蓝图属性"
+
+[node name="Separator" type="HSeparator" parent="HSplitContainer/BlueprintSidebar/BlueprintDirectPropertyPanel/Margin/Layout"]
+layout_mode = 2
+
+[node name="PropertyScroll" type="ScrollContainer" parent="HSplitContainer/BlueprintSidebar/BlueprintDirectPropertyPanel/Margin/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="BlueprintDirectPropertyHost" type="VBoxContainer" parent="HSplitContainer/BlueprintSidebar/BlueprintDirectPropertyPanel/Margin/Layout/PropertyScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="MembersPanel" type="PanelContainer" parent="HSplitContainer/BlueprintSidebar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/BlueprintSidebar/MembersPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="GraphFold" type="FoldableContainer" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+title = "图表"
+
+[node name="XWBPEditorGraphTree" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer/HBoxContainer/GraphFold" instance=ExtResource("3_gtree")]
+unique_name_in_owner = true
+layout_mode = 2
+scroll_vertical_enabled = true
+
+[node name="GraphAddButton" type="Button" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+icon = ExtResource("6_add")
+icon_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="FunctionFold" type="FoldableContainer" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+title = "方法"
+
+[node name="XWBPEditorFunctionTree" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer/HBoxContainer2/FunctionFold" instance=ExtResource("4_ftree")]
+unique_name_in_owner = true
+layout_mode = 2
+scroll_vertical_enabled = true
+
+[node name="FunctionAddButton" type="Button" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+icon = ExtResource("6_add")
+icon_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="VariableFold" type="FoldableContainer" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+title = "变量"
+
+[node name="XWBPEditorVariableTree" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer/HBoxContainer3/VariableFold" instance=ExtResource("5_vtree")]
+unique_name_in_owner = true
+layout_mode = 2
+scroll_vertical_enabled = true
+
+[node name="VariableAddButton" type="Button" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+icon = ExtResource("6_add")
+icon_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SignalFold" type="FoldableContainer" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+title = "信号"
+
+[node name="XWBPEditorSignalTree" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer/HBoxContainer4/SignalFold" instance=ExtResource("7_stree")]
+unique_name_in_owner = true
+layout_mode = 2
+scroll_vertical_enabled = true
+
+[node name="SignalAddButton" type="Button" parent="HSplitContainer/BlueprintSidebar/MembersPanel/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+icon = ExtResource("6_add")
+icon_alignment = 1
+
+[node name="DebugWorkbench" parent="HSplitContainer/BlueprintSidebar" instance=ExtResource("9_debug_workbench")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GeneratedScriptSaveDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "保存蓝图生成的 C# 脚本"
+initial_position = 1
+size = Vector2i(700, 500)
+min_size = Vector2i(620, 420)
+file_mode = 4
+access = 2
+current_file = "Blueprint.generated.cs"
+filters = PackedStringArray("*.cs ; C# Script")

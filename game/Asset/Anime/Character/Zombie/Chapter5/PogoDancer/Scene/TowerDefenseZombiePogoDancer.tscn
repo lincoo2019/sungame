@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cahofikjudlxo"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://ewv8d6leoslm" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoDancer/Scene/TowerDefenseZombiePogoDancerComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://di0l1pb63rcb1" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoDancer/Scene/TowerDefenseZombiePogoDancer.cs" id="3"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="4"]
+[ext_resource type="Resource" uid="uid://bahdqlwbshtxc" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoDancer/Scene/TowerDefenseZombiePogoDancerStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://cjyblsp0uks4k" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoDancer/Config/TowerDefenseZombiePogoDancer.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cqqx6tv3vrey1" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoDancer/DamagePoint/Config/ZombiePogoDancerDamagePointArm.tres" id="7"]
+[ext_resource type="Resource" uid="uid://ctlsnhbnpc66t" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoDancer/DamagePoint/Config/ZombiePogoDancerDamagePointHead.tres" id="8"]
+[ext_resource type="Resource" uid="uid://d0441ccp5jk0s" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoDancer/Armor/Config/ZombiePogoDancerArmorPogo.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://d2xq055ht5fn7" path="res://Asset/Anime/Character/Zombie/Chapter5/PogoDancer/ZombiePogoDancer.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="11"]
+
+[node name="TowerDefenseZombiePogoDancer" unique_id=1094335968 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombiePogoDancer/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+garlicReplace = "Zombie_dancer__head.png"
+waterHeight = 25.0
+idleAnimeClip = "Pogo"
+sleepAnimeClip = "Walk"
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombiePogoDancer")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombiePogoDancer/HeadSlot")
+damagePart = {
+"Arm": ExtResource("7"),
+"Head": ExtResource("8"),
+"Pogo": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombiePogoDancer/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombiePogoDancer/HeadSlot"),
+"Pogo": NodePath("SpriteGroup/TransformPoint/ZombiePogoDancer/PogoSlot")
+}
+currentArmor = ["Pogo"]
+gravity = 490.0
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombiePogoDancer" parent="SpriteGroup/TransformPoint" index="0" unique_id=1113460578 instance=ExtResource("10")]
+position = Vector2(-12, -33)
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombiePogoDancer" index="0" unique_id=303618848]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombiePogoDancer" index="1" unique_id=2019433193]
+drawLayerId = -2
+position = Vector2(-9.486176, -53.051197)
+rotation = -0.109496616
+scale = Vector2(0.7958849, 0.7958849)
+Layer = 17
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombiePogoDancer" index="2" unique_id=802491156]
+position = Vector2(9.94815, -14.516758)
+rotation = 0.44749552
+scale = Vector2(0.79281884, 1.0803707)
+Layer = 25
+
+[node name="PogoSlot" parent="SpriteGroup/TransformPoint/ZombiePogoDancer" index="3" unique_id=1253665275]
+Layer = 21
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombiePogoDancer" index="4" unique_id=1841215009]
+position = Vector2(-30.085321, -40.345562)
+Layer = 1
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=1417798824 instance=ExtResource("11")]
+visible = false
+position = Vector2(3, -46)
+trueFrameRate = 180.0
+
+[editable path="SpriteGroup/TransformPoint/ZombiePogoDancer"]

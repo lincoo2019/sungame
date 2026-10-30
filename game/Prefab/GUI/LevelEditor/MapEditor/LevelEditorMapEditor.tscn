@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://7iektvi8ig8n"]
+
+[ext_resource type="Script" uid="uid://wykypxckivi" path="res://Prefab/GUI/LevelEditor/MapEditor/LevelEditorMapEditor.cs" id="1_gplvh"]
+[ext_resource type="PackedScene" uid="uid://q2eo6wgcbefw" path="res://Registry/Battle/Feature/Map/Control/TowerDefenseMapControl.tscn" id="2_7erp6"]
+[ext_resource type="PackedScene" uid="uid://cn2sof4iex5w0" path="res://Prefab/GUI/LevelEditor/MapEditor/PacketBank/LevelEditorPacketBank.tscn" id="3_jkdsh"]
+[ext_resource type="Texture2D" uid="uid://3p5tg4mgg3df" path="res://Asset/Texture/GUI/General/ShovelBank/ShovelBank.png" id="7_qgsjr"]
+[ext_resource type="Texture2D" uid="uid://fbnfrolt1kma" path="res://Asset/Texture/TowerDefense/Shovel/Shovel.png" id="8_ipgih"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_jfhdv"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_7erp6"]
+events = [SubResource("InputEventKey_jfhdv")]
+
+[node name="LevelEditorMapEditor" type="Control" unique_id=489338436]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_gplvh")
+
+[node name="TransformNode" type="Control" parent="." unique_id=554511746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+scale = Vector2(0.85, 0.85)
+
+[node name="MapViewport" type="Node2D" parent="TransformNode" unique_id=1036107282]
+unique_name_in_owner = true
+
+[node name="TowerDefenseMapControl" parent="TransformNode/MapViewport" unique_id=1749714833 instance=ExtResource("2_7erp6")]
+unique_name_in_owner = true
+z_index = -100
+position = Vector2(-207.059, -9.53675e-07)
+
+[node name="LevelEditorPacketBank" parent="TransformNode" unique_id=1859359319 instance=ExtResource("3_jkdsh")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.176
+anchor_right = 1.176
+offset_left = -408.904
+offset_right = -408.904
+
+[node name="ShovelNode" type="Control" parent="TransformNode" unique_id=1761004773]
+unique_name_in_owner = true
+light_mask = 0
+anchors_preset = 0
+offset_left = 790.588
+offset_right = 790.588
+
+[node name="ShovelButton" type="TextureButton" parent="TransformNode/ShovelNode" unique_id=1501332592]
+unique_name_in_owner = true
+light_mask = 0
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 72.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+shortcut = SubResource("Shortcut_7erp6")
+texture_normal = ExtResource("7_qgsjr")
+
+[node name="ShovelSprite" type="Sprite2D" parent="TransformNode/ShovelNode/ShovelButton" unique_id=1812316406]
+unique_name_in_owner = true
+position = Vector2(33, 34)
+texture = ExtResource("8_ipgih")
+
+[node name="CharacterNode" type="Node2D" parent="TransformNode/MapViewport" unique_id=742077505]
+unique_name_in_owner = true

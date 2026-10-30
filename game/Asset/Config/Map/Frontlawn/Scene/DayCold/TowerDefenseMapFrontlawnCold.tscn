@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://deydufftemj2k"]
+
+[ext_resource type="Script" uid="uid://dd6f52u4dng6o" path="res://Asset/Config/Map/Frontlawn/Scene/DayCold/TowerDefenseMapFrontlawnCold.cs" id="1_c3eyy"]
+[ext_resource type="Texture2D" uid="uid://lpa2ukewcebx" path="res://Asset/Config/Map/Frontlawn/Scene/DayCold/TowerDefenseMapFrontlawnColdGradient.tres" id="2_n7sx4"]
+[ext_resource type="Texture2D" uid="uid://c6yqgvbd7wvrq" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/FrontlawnCold.jpg" id="3_c3eyy"]
+[ext_resource type="Texture2D" uid="uid://bbbiwhq1ib7vi" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Stripe.png" id="4_thdin"]
+[ext_resource type="Texture2D" uid="uid://j3ifp3elg8ak" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/FrontlawnFloor.png" id="5_agvjj"]
+[ext_resource type="Texture2D" uid="uid://bsr0qehg7lbyy" path="res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/Frontlawn/FrontlawnDoor.png" id="6_glrmv"]
+
+[node name="TowerDefenseMapFrontlawnCold" type="Node2D" node_paths=PackedStringArray("stripe")]
+script = ExtResource("1_c3eyy")
+stripe = NodePath("Stripe")
+canvasModulateGradient = ExtResource("2_n7sx4")
+
+[node name="Frontlawn" type="Sprite2D" parent="."]
+scale = Vector2(1, 1)
+texture = ExtResource("3_c3eyy")
+centered = false
+
+[node name="Stripe" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(494, 70)
+scale = Vector2(2, 2)
+texture = ExtResource("4_thdin")
+centered = false
+
+[node name="FrontlawnFloor" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(101, 296)
+scale = Vector2(1, 0.99857143)
+texture = ExtResource("5_agvjj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="FrontlawnDoor" type="Sprite2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(101, 297)
+scale = Vector2(1, 0.99857143)
+texture = ExtResource("6_glrmv")

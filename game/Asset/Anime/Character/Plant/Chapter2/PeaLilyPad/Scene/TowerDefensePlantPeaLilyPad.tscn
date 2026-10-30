@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dcy74u4p7xj5t"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://dyxjd8amsny6y" path="res://Asset/Anime/Character/Plant/Chapter2/PeaLilyPad/Scene/TowerDefensePlantPeaLilyPadComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://hrqjblqw5fj4" path="res://Asset/Anime/Character/Plant/Chapter2/PeaLilyPad/Scene/TowerDefensePlantPeaLilyPad.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cdqqr5opgx5xp" path="res://Asset/Anime/Character/Plant/Chapter2/PeaLilyPad/Config/TowerDefensePlantPeaLilyPad.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://cuewregk73bwm" path="res://Asset/Anime/Character/Plant/Chapter2/PeaLilyPad/PeaLilyPad.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantPeaLilyPad" unique_id=369208719 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+showHealthOffset = Vector2(0, 30)
+z_index = -13
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 3.0
+fireNum = 1
+projectileName = "Pea"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/PeaLilyPad")
+Custom = []
+itemLayer = 2
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+z_index = -10
+position = Vector2(0, 24)
+scale = Vector2(0.821918, 0.77551)
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PeaLilyPad" parent="SpriteGroup/TransformPoint" index="0" unique_id=1487223034 instance=ExtResource("6")]
+position = Vector2(0, -30)
+offset = Vector2(-40, -20.196306)
+trueFrameRate = 180.0
+
+[node name="PotSlot" type="Node2D" parent="SpriteGroup/TransformPoint/PeaLilyPad" index="0" unique_id=324526626]
+script = ExtResource("7")
+followSlotId = 1
+useScale = false
+Layer = 1
+drawLayerId = 1
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/PeaLilyPad/PotSlot" index="0" unique_id=2015203449]
+position = Vector2(41.35, 10.1448)
+
+[node name="MouseSlot" type="Node2D" parent="SpriteGroup/TransformPoint/PeaLilyPad" index="1" unique_id=39273146]
+script = ExtResource("7")
+followSlotId = 4
+useRotate = false
+useSkew = false
+Layer = 4
+drawLayerId = 4
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="FireMarker" type="Marker2D" parent="SpriteGroup/TransformPoint/PeaLilyPad/MouseSlot" index="0" unique_id=783992955]
+position = Vector2(23.17, 22.8264)

@@ -1,0 +1,343 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/Tools/GUI/XWModToolsPanel.cs" id="1_xwtools"]
+
+[node name="XWModToolsPanel" type="PanelContainer"]
+script = ExtResource("1_xwtools")
+
+[node name="Root" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Root"]
+layout_mode = 2
+text = "Mod 工具"
+
+[node name="ToolTabs" type="TabContainer" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="检查" type="ScrollContainer" parent="Root/ToolTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CheckContent" type="VBoxContainer" parent="Root/ToolTabs/检查"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CheckActions" type="HFlowContainer" parent="Root/ToolTabs/检查/CheckContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RunReleaseCheck" type="Button" parent="Root/ToolTabs/检查/CheckContent/CheckActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "发布检查"
+
+[node name="RunScriptBuild" type="Button" parent="Root/ToolTabs/检查/CheckContent/CheckActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "脚本编译"
+
+[node name="RunReferenceGraph" type="Button" parent="Root/ToolTabs/检查/CheckContent/CheckActions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "引用图"
+
+[node name="ReferenceGraphTree" type="Tree" parent="Root/ToolTabs/检查/CheckContent"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+column_titles_visible = true
+hide_root = true
+
+[node name="ReferenceGraphSummary" type="Label" parent="Root/ToolTabs/检查/CheckContent"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "运行引用图后显示资源引用、反向引用和断链。"
+autowrap_mode = 3
+
+[node name="检查说明" type="Label" parent="Root/ToolTabs/检查/CheckContent"]
+layout_mode = 2
+text = "检查缺资源、无效 UID、脚本编译、蓝图生成、重复 key、依赖和覆盖冲突。"
+autowrap_mode = 3
+
+[node name="模板库" type="ScrollContainer" parent="Root/ToolTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TemplateContent" type="VBoxContainer" parent="Root/ToolTabs/模板库"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TemplateCardScroll" type="ScrollContainer" parent="Root/ToolTabs/模板库/TemplateContent"]
+custom_minimum_size = Vector2(0, 146)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="TemplateCardGrid" type="HFlowContainer" parent="Root/ToolTabs/模板库/TemplateContent/TemplateCardScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="TemplateControls" type="HFlowContainer" parent="Root/ToolTabs/模板库/TemplateContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TemplateOption" type="OptionButton" parent="Root/ToolTabs/模板库/TemplateContent/TemplateControls"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TemplateName" type="LineEdit" parent="Root/ToolTabs/模板库/TemplateContent/TemplateControls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "资源名"
+
+[node name="CreateTemplate" type="Button" parent="Root/ToolTabs/模板库/TemplateContent/TemplateControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "创建"
+
+[node name="TemplatePreview" type="TextEdit" parent="Root/ToolTabs/模板库/TemplateContent"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+editable = false
+wrap_mode = 1
+
+[node name="TemplateStatus" type="Label" parent="Root/ToolTabs/模板库/TemplateContent"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择模板后可以预览并创建。"
+autowrap_mode = 3
+
+[node name="Mod 管理" type="ScrollContainer" parent="Root/ToolTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ModManagerContent" type="VBoxContainer" parent="Root/ToolTabs/Mod 管理"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ModActions" type="HFlowContainer" parent="Root/ToolTabs/Mod 管理/ModManagerContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RefreshMods" type="Button" parent="Root/ToolTabs/Mod 管理/ModManagerContent/ModActions"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "刷新"
+
+[node name="ImportModPackage" type="Button" parent="Root/ToolTabs/Mod 管理/ModManagerContent/ModActions"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "导入 Mod"
+
+[node name="EnableMod" type="Button" parent="Root/ToolTabs/Mod 管理/ModManagerContent/ModActions"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "启用"
+
+[node name="DisableMod" type="Button" parent="Root/ToolTabs/Mod 管理/ModManagerContent/ModActions"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "停用"
+
+[node name="DeleteMod" type="Button" parent="Root/ToolTabs/Mod 管理/ModManagerContent/ModActions"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除安装包"
+
+[node name="ModTree" type="Tree" parent="Root/ToolTabs/Mod 管理/ModManagerContent"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+column_titles_visible = true
+hide_root = true
+
+[node name="ModSummary" type="Label" parent="Root/ToolTabs/Mod 管理/ModManagerContent"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mods/"
+autowrap_mode = 3
+
+[node name="其它" type="ScrollContainer" parent="Root/ToolTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="OtherContent" type="VBoxContainer" parent="Root/ToolTabs/其它"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="OtherGrid" type="HFlowContainer" parent="Root/ToolTabs/其它/OtherContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ShowOverrideDiff" type="Button" parent="Root/ToolTabs/其它/OtherContent/OtherGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "差异覆盖"
+
+[node name="StartSandbox" type="Button" parent="Root/ToolTabs/其它/OtherContent/OtherGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "测试沙盒"
+
+[node name="ShowImportHint" type="Button" parent="Root/ToolTabs/其它/OtherContent/OtherGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "导入向导"
+
+[node name="ShowLocalizationHint" type="Button" parent="Root/ToolTabs/其它/OtherContent/OtherGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "多语言"
+
+[node name="ImportCategoryScroll" type="ScrollContainer" parent="Root/ToolTabs/其它/OtherContent"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="ImportCategoryGrid" type="HFlowContainer" parent="Root/ToolTabs/其它/OtherContent/ImportCategoryScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="ImportControls" type="HFlowContainer" parent="Root/ToolTabs/其它/OtherContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ImportCategoryOption" type="OptionButton" parent="Root/ToolTabs/其它/OtherContent/ImportControls"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="ImportSourcePath" type="LineEdit" parent="Root/ToolTabs/其它/OtherContent/ImportControls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "本地资源路径；多个路径用换行或分号分隔"
+
+[node name="RunImportWizard" type="Button" parent="Root/ToolTabs/其它/OtherContent/ImportControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "导入"
+
+[node name="ImportResultTree" type="Tree" parent="Root/ToolTabs/其它/OtherContent"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+column_titles_visible = true
+hide_root = true
+
+[node name="ImportSummary" type="Label" parent="Root/ToolTabs/其它/OtherContent"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "导入图片、动画、音频后会自动复制到 Mod 目录并更新 mod.json。"
+autowrap_mode = 3
+
+[node name="LocalizationControls" type="HFlowContainer" parent="Root/ToolTabs/其它/OtherContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RefreshLocalizationTable" type="Button" parent="Root/ToolTabs/其它/OtherContent/LocalizationControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "刷新文本"
+
+[node name="SaveLocalizationTable" type="Button" parent="Root/ToolTabs/其它/OtherContent/LocalizationControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "保存文本"
+
+[node name="LocalizationTree" type="Tree" parent="Root/ToolTabs/其它/OtherContent"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+column_titles_visible = true
+hide_root = true
+
+[node name="LocalizationSummary" type="Label" parent="Root/ToolTabs/其它/OtherContent"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "多语言总表会显示缺失翻译，并保存到 Localization/*.csv。"
+autowrap_mode = 3
+
+[node name="OverrideDiffTree" type="Tree" parent="Root/ToolTabs/其它/OtherContent"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 6
+column_titles_visible = true
+hide_root = true
+
+[node name="OverrideDiffSummary" type="Label" parent="Root/ToolTabs/其它/OtherContent"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择差异覆盖后显示覆盖项。"
+autowrap_mode = 3
+
+[node name="其它说明" type="Label" parent="Root/ToolTabs/其它/OtherContent"]
+layout_mode = 2
+text = "差异覆盖、测试沙盒、导入向导和多语言总表会继续扩展成独立可视化编辑器。"
+autowrap_mode = 3
+
+[node name="ResultScroll" type="ScrollContainer" parent="Root"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Result" type="RichTextLabel" parent="Root/ResultScroll"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_active = true

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="TowerDefenseLevelSurvivalConfig" format=3 uid="uid://4inm8skbs6r8"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Survival/Config/Heaven/HeavenBaseNormal.json" id="1_eytxl"]
+[ext_resource type="Script" uid="uid://huks85pqdgqb" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalConfig.cs" id="2_5rub8"]
+[ext_resource type="Script" uid="uid://bru304ldtwq3e" path="res://Registry/Battle/Feature/Wave/Resource/TowerDefenseLevelSurvivalZombiePoolRoundAddConfig.cs" id="3_qa2p0"]
+
+[sub_resource type="Resource" id="Resource_b1sv7"]
+script = ExtResource("3_qa2p0")
+_round = 1
+zombieList = ["ZombieNormalBucket", "ZombieBalloon"]
+
+[sub_resource type="Resource" id="Resource_uh0y7"]
+script = ExtResource("3_qa2p0")
+_round = 2
+zombieList = ["ZombieBalloonColour"]
+
+[resource]
+script = ExtResource("2_5rub8")
+json = ExtResource("1_eytxl")
+roundLimit = 3
+pointIncrementPerWave = 80
+pointIncrementPerBigWave = 120
+pointIncrementPerRound = 400
+pointMax = 50000
+pointBigWaveScale = 0.5
+zombiePoolRoundAdd = Array[ExtResource("3_qa2p0")]([SubResource("Resource_b1sv7"), SubResource("Resource_uh0y7")])
+metadata/_custom_type_script = "uid://huks85pqdgqb"

@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="FireComponentDefinition" format=3 uid="uid://bwrq5tyc61xf4"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="2"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="3"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="4"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="5"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="6"]
+
+[sub_resource type="Resource" id="Resource_05184"]
+script = ExtResource("2")
+projectileName = &"PowShroom"
+baseDamage = 1000.0
+collisionFlags = 63
+catapultHeight = 600.0
+
+[sub_resource type="Resource" id="Resource_fps0"]
+script = ExtResource("3")
+projectileData = SubResource("Resource_05184")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_chk0"]
+script = ExtResource("4")
+projectile = SubResource("Resource_fps0")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Resource_fpc0"]
+script = ExtResource("5")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[resource]
+script = ExtResource("6")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/PowShroom/AdobeAnimateSlot/Marker2D")]
+fireCheckList = [SubResource("Resource_chk0")]
+fireProjectileList = [SubResource("Resource_fpc0")]
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter7.pow_shroom"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]

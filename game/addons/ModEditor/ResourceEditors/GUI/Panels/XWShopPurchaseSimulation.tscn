@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.075, 0.085, 0.095, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24, 0.31, 0.38, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+
+[node name="ShopPurchaseSimulationPanel" type="PanelContainer"]
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="Layout"]
+layout_mode = 2
+text = "购买结果模拟"
+
+[node name="Inputs" type="GridContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 3
+columns = 2
+
+[node name="BalanceLabel" type="Label" parent="Layout/Inputs"]
+layout_mode = 2
+text = "当前余额"
+vertical_alignment = 1
+
+[node name="Balance" type="SpinBox" parent="Layout/Inputs"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 999999999.0
+value = 1000.0
+rounded = true
+
+[node name="OwnedLabel" type="Label" parent="Layout/Inputs"]
+layout_mode = 2
+text = "当前拥有"
+vertical_alignment = 1
+
+[node name="Owned" type="SpinBox" parent="Layout/Inputs"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 999999999.0
+rounded = true
+
+[node name="QuantityLabel" type="Label" parent="Layout/Inputs"]
+layout_mode = 2
+text = "购买次数"
+vertical_alignment = 1
+
+[node name="Quantity" type="SpinBox" parent="Layout/Inputs"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 9999.0
+value = 1.0
+rounded = true
+
+[node name="StockProgress" type="ProgressBar" parent="Layout"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+show_percentage = false
+
+[node name="Result" type="Label" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bbapdp81ql6ox"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Gold/HotDog/Scene/TowerDefensePlantHotDogComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://q5ly18fsfqjk" path="res://Asset/Anime/Character/Plant/Gold/HotDog/Scene/TowerDefensePlantHotDog.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_122x32_At_43_n5.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cxkbhs2p3kimt" path="res://Asset/Anime/Character/Plant/Gold/HotDog/Config/TowerDefensePlantHotDog.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://bdm3w5qpfphqe" path="res://Asset/Anime/Character/Plant/Gold/HotDog/HotDog.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantHotDog" unique_id=58784662 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+showHealthOffset = Vector2(43, 0)
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+produceInterval = 25.0
+sunNum = 100
+fireInterval = 2.0
+fireNum = 1
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/HotDog")
+PreviewDamagePointPersontage = 1.0
+Custom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(41, 30)
+
+[node name="HotDog" parent="SpriteGroup/TransformPoint" index="0" unique_id=2083117291 instance=ExtResource("6")]
+position = Vector2(-42, -30)
+trueFrameRate = 180.0
+Animation/LayerVisible/skin2 = false
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/HotDog" index="0" unique_id=1416833634]
+skew = -0.26472425
+script = ExtResource("7")
+followSlotId = 7
+Layer = 7
+drawLayerId = 7
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/HotDog/AdobeAnimateSlot" index="0" unique_id=430348596]
+position = Vector2(6.0204167, 24.484547)
+
+[node name="AdobeAnimateSlot2" type="Node2D" parent="SpriteGroup/TransformPoint/HotDog" index="1" unique_id=1762260553]
+skew = 0.34834433
+script = ExtResource("7")
+followSlotId = 9
+Layer = 9
+drawLayerId = 9
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/HotDog/AdobeAnimateSlot2" index="0" unique_id=975945940]
+position = Vector2(20.051416, 24.455288)
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=172213369]
+position = Vector2(42, 20)

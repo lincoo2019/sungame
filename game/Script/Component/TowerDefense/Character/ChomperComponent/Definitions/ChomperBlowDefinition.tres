@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ChomperComponentDefinition" format=3 uid="uid://ctkqs23dymeg3"]
+
+[ext_resource type="Resource" uid="uid://dttjblct10whh" path="res://Script/Component/TowerDefense/Character/ChomperComponent/ChomperComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://di3tmqto18oj4" path="res://Script/Component/TowerDefense/Character/ChomperComponent/ChomperComponentDefinition.cs" id="2"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="3"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_suction"]
+b = Vector2(2000, 0)
+
+[sub_resource type="Resource" id="AabbShape2DResource_suction"]
+script = ExtResource("3")
+Geometry = SubResource("SegmentShape2D_suction")
+
+[resource]
+script = ExtResource("2")
+biteStartAnimeClips = "BiteStart"
+suckUse = true
+suckShape = SubResource("AabbShape2DResource_suction")
+attackComponentPath = NodePath("ComponentManager/AttackComponent")
+spritePath = NodePath("SpriteGroup/TransformPoint/ChomperBlow")
+ComponentTypeId = "ChomperComponent"
+DefinitionId = "builtin.chomper.blow"
+InstanceId = "character.chomper"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"ChomperComponent"]

@@ -1,0 +1,3 @@
+using System.Text.Json.Serialization;
+
+internal sealed record AdobeAnimateCpuDefinitionSummary([property: JsonPropertyOrder(0)] string ResourcePath, [property: JsonPropertyOrder(1)] int ClipCount, [property: JsonPropertyOrder(2)] int FrameCount, [property: JsonPropertyOrder(3)] int ExpectedVisibleItems, [property: JsonPropertyOrder(4)] int CpuMeshItems, [property: JsonPropertyOrder(5)] int NativeSpriteItems, [property: JsonPropertyOrder(6)] int RenderSlotCount, [property: JsonPropertyOrder(7)] int MeshCapacity, [property: JsonPropertyOrder(8)] int StateTexels, [property: JsonPropertyOrder(9)] bool PoseArrayReady);

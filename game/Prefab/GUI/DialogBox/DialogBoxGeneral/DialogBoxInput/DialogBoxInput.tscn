@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bm70be8qeyqip"]
+
+[ext_resource type="PackedScene" uid="uid://nx2prtbxim66" path="res://Prefab/GUI/DialogBox/DialogBoxGeneral/DialogPopup.tscn" id="1_fyivl"]
+[ext_resource type="Script" uid="uid://ci0a24uprt47" path="res://Prefab/GUI/DialogBox/DialogBoxGeneral/DialogBoxInput/DialogBoxInput.cs" id="2_abc123"]
+[ext_resource type="PackedScene" uid="uid://bml60wmq62jay" path="res://Prefab/GUI/Button/MainButton.tscn" id="3_fc70j"]
+[ext_resource type="Texture2D" uid="uid://omuqqfo1aao5" path="res://Asset/Texture/GUI/General/EditBox/EditBox.png" id="5_1xdwp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vfvn8"]
+texture = ExtResource("5_1xdwp")
+texture_margin_left = 15.0
+texture_margin_top = 5.0
+texture_margin_right = 15.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b8luq"]
+
+[node name="DialogBoxInput" unique_id=117778541 instance=ExtResource("1_fyivl")]
+script = ExtResource("2_abc123")
+
+[node name="MarginContainer2" parent="Layer/Control" index="0"]
+offset_top = -132.0
+offset_bottom = 132.0
+
+[node name="TextLabel" parent="Layer/Control/MarginContainer2/MarginContainer/CenterContainer" index="0"]
+visible = false
+
+[node name="ButtonContainer" parent="Layer/Control" index="1"]
+offset_top = 28.016
+offset_bottom = 74.016
+
+[node name="ConfirmButton" parent="Layer/Control/ButtonContainer" index="0" unique_id=653342536 instance=ExtResource("3_fc70j")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "确定"
+
+[node name="CancelButton" parent="Layer/Control/ButtonContainer" index="1" unique_id=838571405 instance=ExtResource("3_fc70j")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "取消"
+
+[node name="TitleLabel" type="RichTextLabel" parent="Layer/Control" index="2" unique_id=1557172061]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -84.0
+offset_right = 158.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.92549, 0.741176, 0.447059, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][font_size=24]输入[/font_size][/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="InputLineEdit" type="LineEdit" parent="Layer/Control" index="3" unique_id=1551041424]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -22.0
+offset_right = 148.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_vfvn8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b8luq")
+context_menu_enabled = false
+

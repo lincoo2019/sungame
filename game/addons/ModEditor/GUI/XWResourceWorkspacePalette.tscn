@@ -1,0 +1,113 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://addons/ModEditor/GUI/XWResourceWorkspacePalette.cs" id="1_script"]
+[ext_resource type="Texture2D" path="res://addons/ModEditor/Icons/ResourceMap.svg" id="2_icon"]
+
+[node name="XWResourceWorkspacePalette" type="Window"]
+title = "资源工作台"
+initial_position = 1
+size = Vector2i(900, 640)
+min_size = Vector2i(680, 460)
+transient = true
+exclusive = true
+visible = false
+script = ExtResource("1_script")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.018, 0.037, 0.026, 1)
+
+[node name="Surface" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Surface"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="Layout" type="VBoxContainer" parent="Surface/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="Surface/Margin/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Icon" type="TextureRect" parent="Surface/Margin/Layout/Header"]
+custom_minimum_size = Vector2(38, 38)
+layout_mode = 2
+texture = ExtResource("2_icon")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TitleStack" type="VBoxContainer" parent="Surface/Margin/Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Surface/Margin/Layout/Header/TitleStack"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "选择资源工作台"
+
+[node name="Subtitle" type="Label" parent="Surface/Margin/Layout/Header/TitleStack"]
+layout_mode = 2
+text = "用图块进入全部 37 类可视编辑面板；名称、类型和分组都可搜索。"
+
+[node name="ResultLabel" type="Label" parent="Surface/Margin/Layout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 / 0 个可视工作台"
+vertical_alignment = 1
+
+[node name="SearchEdit" type="LineEdit" parent="Surface/Margin/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+placeholder_text = "搜索资源、类型或分组…"
+clear_button_enabled = true
+
+[node name="GroupFlow" type="HFlowContainer" parent="Surface/Margin/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+
+[node name="Divider" type="HSeparator" parent="Surface/Margin/Layout"]
+layout_mode = 2
+
+[node name="CardScroll" type="ScrollContainer" parent="Surface/Margin/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CardGrid" type="GridContainer" parent="Surface/Margin/Layout/CardScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="EmptyLabel" type="Label" parent="Surface/Margin/Layout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "没有匹配的工作台，试试资源类型或游戏功能名称。"
+horizontal_alignment = 1
+
+[node name="Footer" type="Label" parent="Surface/Margin/Layout"]
+layout_mode = 2
+text = "每个图块对应一个主画布资源面板；属性直接编辑，不打开右侧 Inspector。"
+horizontal_alignment = 1

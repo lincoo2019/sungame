@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://c8m0d1t7port1"]
+
+[ext_resource type="Script" path="res://addons/ModEditor/Blueprint/GUI/GraphNode/PortWidget/XWBPGraphNodePortContainer.cs" id="1_port"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c3ghj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w2ele"]
+
+[node name="XWBPGraphNodePortContainer" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 32)
+offset_left = 2.0
+offset_right = 267.0
+offset_bottom = 24.0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+script = ExtResource("1_port")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="InputContainer" type="PanelContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_c3ghj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/InputContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="InputTypeIcon" type="TextureRect" parent="HBoxContainer/InputContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+stretch_mode = 2
+
+[node name="InputLabel" type="Label" parent="HBoxContainer/InputContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "输入"
+
+[node name="InputEditorContainer" type="PanelContainer" parent="HBoxContainer/InputContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_w2ele")
+
+[node name="OutputContainer" type="PanelContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_c3ghj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/OutputContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+alignment = 2
+
+[node name="OutputLabel" type="Label" parent="HBoxContainer/OutputContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+text = "输出"
+horizontal_alignment = 2
+
+[node name="OutputTypeIcon" type="TextureRect" parent="HBoxContainer/OutputContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+stretch_mode = 2

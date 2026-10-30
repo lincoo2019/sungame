@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TutorialConfig" format=3 uid="uid://6f8lu64ngx7t"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Tutorial/IZM_Level4/IZM_Level4Tutorial.json" id="1_p6s3d"]
+[ext_resource type="Script" uid="uid://ciasl1r6mxl1w" path="res://Core/TutorialManager/Resource/TutorialConfig.cs" id="2_yax4s"]
+[ext_resource type="Script" uid="uid://do4exfdrtmgkl" path="res://Core/TutorialManager/Resource/TutorialStep/TutorialStepConfig.cs" id="3_kl0ee"]
+[ext_resource type="Script" uid="uid://fn1fkec8nrfp" path="res://Core/BroadCastManager/Resource/BroadCastConfig.cs" id="4_we0ig"]
+[ext_resource type="Script" uid="uid://be2wh4w4lt5ej" path="res://Core/TutorialManager/Resource/TutorialCondition/TutorialConditionConfig.cs" id="5_umdve"]
+
+[sub_resource type="Resource" id="Resource_we0ig"]
+script = ExtResource("4_we0ig")
+broadCastString = "IZM_LEVEL4_TUTORIAL_1"
+broadCastTime = 5.0
+
+[sub_resource type="Resource" id="Resource_umdve"]
+script = ExtResource("3_kl0ee")
+broadCastUse = true
+broadCastConfig = SubResource("Resource_we0ig")
+
+[resource]
+script = ExtResource("2_yax4s")
+data = ExtResource("1_p6s3d")
+saveKey = "IZM_Level4Tutorial"
+step = Array[ExtResource("3_kl0ee")]([SubResource("Resource_umdve")])
+metadata/_custom_type_script = "uid://ciasl1r6mxl1w"

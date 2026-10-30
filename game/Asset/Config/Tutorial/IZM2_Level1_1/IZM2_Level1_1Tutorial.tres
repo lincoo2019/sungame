@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="TutorialConfig" format=3 uid="uid://b8xca6v5d0tjf"]
+
+[ext_resource type="JSON" path="res://Asset/Config/Tutorial/IZM2_Level1_1/IZM2_Level1_1Tutorial.json" id="1_r0fnn"]
+[ext_resource type="Script" uid="uid://ciasl1r6mxl1w" path="res://Core/TutorialManager/Resource/TutorialConfig.cs" id="2_rf8ab"]
+[ext_resource type="Script" uid="uid://do4exfdrtmgkl" path="res://Core/TutorialManager/Resource/TutorialStep/TutorialStepConfig.cs" id="3_j61gm"]
+[ext_resource type="Script" uid="uid://fn1fkec8nrfp" path="res://Core/BroadCastManager/Resource/BroadCastConfig.cs" id="4_q4v13"]
+[ext_resource type="Script" uid="uid://be2wh4w4lt5ej" path="res://Core/TutorialManager/Resource/TutorialCondition/TutorialConditionConfig.cs" id="5_ivkse"]
+[ext_resource type="Script" uid="uid://dw7rfoxp8o3wl" path="res://Resource/Tutorial/Condition/TutorialConditionCheckCharaterNum.cs" id="6_k7pg6"]
+[ext_resource type="Script" uid="uid://do5nc4igp00hn" path="res://Resource/Tutorial/Condition/TutorialConditionCheckSunCollect.cs" id="7_t7pef"]
+
+[sub_resource type="Resource" id="Resource_finrp"]
+script = ExtResource("4_q4v13")
+broadCastString = "IZM2_LEVEL1_1_TUTORIAL_1"
+broadCastTime = 5.0
+
+[sub_resource type="Resource" id="Resource_te0gd"]
+script = ExtResource("3_j61gm")
+broadCastUse = true
+broadCastConfig = SubResource("Resource_finrp")
+
+[sub_resource type="Resource" id="Resource_ikxw6"]
+script = ExtResource("4_q4v13")
+broadCastString = "IZM2_LEVEL1_1_TUTORIAL_2"
+
+[sub_resource type="Resource" id="Resource_iusal"]
+script = ExtResource("6_k7pg6")
+characterName = "ZombieNormal"
+method = ">="
+
+[sub_resource type="Resource" id="Resource_e502b"]
+script = ExtResource("3_j61gm")
+broadCastUse = true
+broadCastConfig = SubResource("Resource_ikxw6")
+conditionList = Array[ExtResource("5_ivkse")]([SubResource("Resource_iusal")])
+
+[sub_resource type="Resource" id="Resource_emj2m"]
+script = ExtResource("4_q4v13")
+broadCastString = "IZM2_LEVEL1_1_TUTORIAL_3"
+broadCastTime = 8.0
+
+[sub_resource type="Resource" id="Resource_qhf3g"]
+script = ExtResource("7_t7pef")
+
+[sub_resource type="Resource" id="Resource_a1ogv"]
+script = ExtResource("3_j61gm")
+broadCastUse = true
+broadCastConfig = SubResource("Resource_emj2m")
+conditionList = Array[ExtResource("5_ivkse")]([SubResource("Resource_qhf3g")])
+
+[sub_resource type="Resource" id="Resource_vwsdg"]
+script = ExtResource("4_q4v13")
+broadCastString = "IZM2_LEVEL1_1_TUTORIAL_4"
+broadCastTime = 8.0
+
+[sub_resource type="Resource" id="Resource_pwa1n"]
+script = ExtResource("6_k7pg6")
+characterName = "ZombieNormal"
+method = ">="
+num = 2
+
+[sub_resource type="Resource" id="Resource_wfwoe"]
+script = ExtResource("3_j61gm")
+broadCastUse = true
+broadCastConfig = SubResource("Resource_vwsdg")
+conditionList = Array[ExtResource("5_ivkse")]([SubResource("Resource_pwa1n")])
+
+[resource]
+script = ExtResource("2_rf8ab")
+data = ExtResource("1_r0fnn")
+saveKey = "IZM2_Level1_1Tutorial"
+step = Array[ExtResource("3_j61gm")]([SubResource("Resource_te0gd"), SubResource("Resource_e502b"), SubResource("Resource_a1ogv"), SubResource("Resource_wfwoe")])
+metadata/_custom_type_script = "uid://ciasl1r6mxl1w"

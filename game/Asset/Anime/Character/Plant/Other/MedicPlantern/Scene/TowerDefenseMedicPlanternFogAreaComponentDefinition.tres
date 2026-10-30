@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="CharacterAabbAreaComponentDefinition" format=3 uid="uid://dula84cipbesa"]
+
+[ext_resource type="Script" uid="uid://8sqrqrup4i58" path="res://Script/Component/TowerDefense/Character/CharacterAabbAreaComponent/CharacterAabbAreaComponentDefinition.cs" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_medic_fog"]
+radius = 200.0
+
+[sub_resource type="Resource" id="AabbShape2DResource_medic_fog"]
+script = ExtResource("2")
+Geometry = SubResource("CircleShape2D_medic_fog")
+LocalTransform = Transform2D(0.99999994, 0, 0, 0.99999994, 0, 0)
+
+[resource]
+script = ExtResource("1")
+shapeResources = [SubResource("AabbShape2DResource_medic_fog")]
+collisionLayer = 8
+collisionMask = 0
+monitoring = false
+anchorPath = NodePath("SpriteGroup")
+ComponentTypeId = "CharacterAabbAreaComponent"
+DefinitionId = "builtin.component.character_aabb_area.plant.medic_plantern.fog"
+InstanceId = "character.aabb.fog"
+WireIndex = 1
+StateMachineDefinition = null
+LegacyNodeNames = [&"FogArea"]

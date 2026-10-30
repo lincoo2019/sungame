@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://dly8bleduq1x7"]
+
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://bbglc127qw1jb" path="res://Resource/TowerDefense/Collision/AabbRay2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="3"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="4"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="5"]
+[ext_resource type="Script" uid="uid://bkfnfjjurp106" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentFireProjectileConfig.cs" id="6"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="7"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="8"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="9"]
+
+[sub_resource type="Resource" id="Resource_iw2xw"]
+script = ExtResource("2")
+
+[sub_resource type="Resource" id="Resource_d5s06"]
+script = ExtResource("3")
+projectileName = &"MagicPea"
+damageFlags = 66
+catapultHeight = 400.0
+
+[sub_resource type="Resource" id="Resource_mmsgo"]
+script = ExtResource("4")
+projectileData = SubResource("Resource_d5s06")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Resource_8d24y"]
+script = ExtResource("5")
+projectile = SubResource("Resource_mmsgo")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="Resource_iz9mh"]
+script = ExtResource("6")
+metadata/_custom_type_script = "uid://bkfnfjjurp106"
+
+[sub_resource type="Resource" id="Resource_yq5a7"]
+script = ExtResource("7")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/PeaShooterMagic/Head/Marker2D")]
+spritePath = NodePath("SpriteGroup/TransformPoint/PeaShooterMagic/Head")
+checkRayResources = [SubResource("Resource_iw2xw")]
+fireAnimeClipsArray = ["HeadFire"]
+fireAnimeClips = "HeadFire"
+fireAnimeTimeScale = 2.0
+spliceIdleAnimeClips = "HeadIdle"
+isSpliceSprite = true
+fireCheckList = [SubResource("Resource_8d24y")]
+fireProjectileList = [SubResource("Resource_iz9mh")]
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter10.peashootermagic"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"FireComponent"]
+
+[resource]
+script = ExtResource("9")
+ParentSet = ExtResource("8")
+Components = [SubResource("Resource_yq5a7")]

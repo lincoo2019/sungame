@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileData" format=3 uid="uid://d4kr0awpq03ah"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_evt"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_buff"]
+[ext_resource type="Script" uid="uid://bqyxask6qffq7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffFireHit.cs" id="3_firehit"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_addbuff"]
+[ext_resource type="PackedScene" uid="uid://bq3n0r8ksv2me" path="res://Asset/Config/Projectile/Pea/Sprite/MagicPeaGarlicFire/MagicPeaGarlicFire.tscn" id="5_sprite"]
+[ext_resource type="Script" uid="uid://lxm4ws12fc3d" path="res://Registry/Projectile/Data/TowerDefenseProjectileData.cs" id="6_data"]
+[ext_resource type="PackedScene" uid="uid://d3pygqi0yhd01" path="res://Prefab/ProjectileEffect/MagicPeaBlow/TowerDefenseProjectileEffectMagicPeaFireBlow.tscn" id="7_blow"]
+[ext_resource type="Script" uid="uid://b1r6jiky7kngd" path="res://Resource/TowerDefense/Character/Event/Special/TowerDefenseCharacterEventGarlicFireHit.cs" id="8_garlichit"]
+[ext_resource type="Script" uid="uid://cn7y3781yd18v" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventGarlic.cs" id="9_garlic"]
+[ext_resource type="PackedScene" uid="uid://bv4juwge7ravc" path="res://Prefab/Particles/Splats/FireSplats/FireSplats.tscn" id="10_splat"]
+[ext_resource type="Script" uid="uid://dagqelp0alh1i" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventProjectileSplit.cs" id="11_split"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="12_splitdata"]
+[ext_resource type="PackedScene" uid="uid://dav2m8wxp7ktb" path="res://Prefab/ProjectileEffect/MagicPeaBlow/TowerDefenseProjectileEffectMagicPeaFireGarlicBlow.tscn" id="13_garlicblow"]
+
+[sub_resource type="Resource" id="Resource_firehit"]
+script = ExtResource("3_firehit")
+metadata/_custom_type_script = "uid://bqyxask6qffq7"
+
+[sub_resource type="Resource" id="Resource_addbuff"]
+script = ExtResource("4_addbuff")
+buffList = Array[ExtResource("2_buff")]([SubResource("Resource_firehit")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[sub_resource type="Resource" id="Resource_garlic"]
+script = ExtResource("9_garlic")
+probability = 0.2
+metadata/_custom_type_script = "uid://cn7y3781yd18v"
+
+[sub_resource type="Resource" id="Resource_garlichit"]
+script = ExtResource("8_garlichit")
+metadata/_custom_type_script = "uid://b1r6jiky7kngd"
+
+[sub_resource type="Resource" id="Resource_splitdata"]
+script = ExtResource("12_splitdata")
+projectileName = &"GarlicFirePea"
+
+[sub_resource type="Resource" id="Resource_split"]
+script = ExtResource("11_split")
+projectileData = SubResource("Resource_splitdata")
+effectScene = ExtResource("13_garlicblow")
+metadata/_custom_type_script = "uid://dagqelp0alh1i"
+
+[resource]
+script = ExtResource("6_data")
+name = "MagicPeaGarlicFire"
+baseDamage = 40.0
+projectileScene = ExtResource("5_sprite")
+splatSceneType = "Sprite"
+splatAudio = "Ignite"
+splatScene = ExtResource("10_splat")
+hitEffect = ExtResource("7_blow")
+hitTargetEventList = Array[ExtResource("1_evt")]([SubResource("Resource_addbuff"), SubResource("Resource_garlic"), SubResource("Resource_garlichit"), SubResource("Resource_split")])
+hitBody = true
+useRange = true
+rangeSize = Vector2(0.5, 0.25)
+isFire = true
+isMagic = true
+rotateFollowVelocity = true

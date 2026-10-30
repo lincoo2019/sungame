@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://dnixqu1tjefg8"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cfeiw0tva20i5" path="res://Asset/Anime/Character/Zombie/Chapter2/Dancer/Scene/TowerDefenseZombieDancer.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://dys1rlyeuvsh5" path="res://Asset/Anime/Character/Zombie/Chapter2/Dancer/Scene/TowerDefenseZombieDancerStateMachine.tres" id="4"]
+[ext_resource type="Resource" uid="uid://ccpssdws2t0dx" path="res://Asset/Anime/Character/Zombie/Chapter2/Dancer/Config/TowerDefenseZombieDancer.tres" id="5"]
+[ext_resource type="Resource" uid="uid://dq16ntvxrqymh" path="res://Asset/Anime/Character/Zombie/Chapter2/Dancer/DamagePoint/Config/ZombieDancerDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://bdi75ybw0by0n" path="res://Asset/Anime/Character/Zombie/Chapter2/Dancer/Armor/Config/ZombieDancerArmorBlackHelmet.tres" id="7"]
+[ext_resource type="Resource" uid="uid://vios8de3nrua" path="res://Asset/Anime/Character/Zombie/Chapter2/Dancer/Armor/Config/ZombieDancerArmorBucket.tres" id="8"]
+[ext_resource type="Resource" uid="uid://bnoux24n57ehe" path="res://Asset/Anime/Character/Zombie/Chapter2/Dancer/Armor/Config/ZombieDancerArmorCone.tres" id="9"]
+[ext_resource type="Resource" uid="uid://dyd4fq2payoyt" path="res://Asset/Anime/Character/Zombie/Chapter2/Dancer/DamagePoint/Config/ZombieDancerDamagePointHead.tres" id="10"]
+[ext_resource type="Resource" uid="uid://xj8ud8lih3bs" path="res://Asset/Anime/Character/Zombie/Chapter2/Dancer/Armor/Config/ZombieDancerArmorHelmet.tres" id="11"]
+[ext_resource type="Resource" uid="uid://1y3hm6jsmfbb" path="res://Asset/Anime/Character/Zombie/Chapter2/Dancer/Armor/Config/ZombieDancerArmorSpecialHelmet.tres" id="12"]
+[ext_resource type="PackedScene" uid="uid://boehcm445gww" path="res://Asset/Anime/Character/Zombie/Chapter2/Dancer/ZombieDancer.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="14"]
+
+[node name="TowerDefenseZombieDancer" unique_id=1094335968 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+HitBoxDefinition = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieDancer/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+garlicReplace = "Zombie_dancer__head.png"
+waterHeight = 25.0
+idleAnimeClip = "Walk"
+sleepAnimeClip = "Walk"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieDancer")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieDancer/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"BlackHelmet": ExtResource("7"),
+"Bucket": ExtResource("8"),
+"Cone": ExtResource("9"),
+"Head": ExtResource("10"),
+"Helmet": ExtResource("11"),
+"SpecialHelmet": ExtResource("12")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieDancer/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieDancer/HeadSlot"),
+"Bucket": NodePath("SpriteGroup/TransformPoint/ZombieDancer/HeadSlot"),
+"Cone": NodePath("SpriteGroup/TransformPoint/ZombieDancer/HeadSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieDancer/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieDancer/HeadSlot"),
+"SpecialHelmet": NodePath("SpriteGroup/TransformPoint/ZombieDancer/HeadSlot")
+}
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(12, 33)
+
+[node name="ZombieDancer" parent="SpriteGroup/TransformPoint" index="0" unique_id=1113460578 instance=ExtResource("13")]
+position = Vector2(-12, -33)
+clip = "Walk"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false]
+mediaReplaceAtlasPaths = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieDancer" index="0" unique_id=1872335200]
+clip = "Idle"
+layerVisible = [false, true, false]
+mediaReplaceAtlasPaths = ["", ""]
+mediaReplaceUse = [false, false]
+followParentSpriteLayerId = 13
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieDancer" index="2" unique_id=980759038]
+drawLayerId = -2
+position = Vector2(20.969452, -56.207638)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieDancer" index="3" unique_id=1193677204]
+position = Vector2(21.697416, -51.690403)
+rotation = -2.9289315
+scale = Vector2(0.7939033, 1.0805128)
+skew = 2.002716e-05
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieDancer" index="4" unique_id=1468459164]
+position = Vector2(-40.25, -40.884888)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=1417798824 instance=ExtResource("14")]
+visible = false
+position = Vector2(3, -46)
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = [true, true]
+mediaReplaceAtlasPaths = ["", "", ""]
+mediaReplaceUse = [false, false, false]
+
+[editable path="SpriteGroup/TransformPoint/ZombieDancer"]

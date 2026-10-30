@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://ce1mrxooac0xv"]
+
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="2"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Zombie/Chapter5/YetiBobsledTeam/Component/BobsledTeamYetiDefinition.tres" id="3"]
+[ext_resource type="Resource" uid="uid://c1i5ib2qopguv" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefenseZombieComponentSet.tres" id="4"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="5"]
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("2")
+attackType = "Smash"
+useParentHitBox = true
+useCheckAreaGridColumn = true
+checkLine = true
+checkVase = true
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.zombie.chapter5.yeti_bobsled_team.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("5")
+ParentSet = ExtResource("4")
+Components = [SubResource("Attack0_Definition"), ExtResource("3")]
+RemovedInstanceIds = ["character.ground_move"]

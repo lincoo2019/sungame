@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://d17vtgjxhj15h"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_p8h1i"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_jgvfs"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="3_8jq67"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_k6p0f"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="5_jgvfs"]
+[ext_resource type="PackedScene" uid="uid://khrcn58c3h6w" path="res://Asset/Config/Projectile/Pea/Sprite/IcePiece/ProjectileIcePiece.tscn" id="5_k8exd"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="6_sccu7"]
+[ext_resource type="PackedScene" uid="uid://c73f1gkmmso7m" path="res://Prefab/Particles/Splats/SnowPeaSplats/SnowPeaSplats.tscn" id="7_vimw3"]
+
+[sub_resource type="Resource" id="Resource_m37m2"]
+script = ExtResource("3_8jq67")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_r2lpg"]
+script = ExtResource("4_k6p0f")
+buffList = Array[ExtResource("2_jgvfs")]([SubResource("Resource_m37m2")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("6_sccu7")
+name = "SnowPea"
+projectileScene = ExtResource("5_k8exd")
+splatScene = ExtResource("7_vimw3")
+hitCharacterEventList = Array[ExtResource("1_p8h1i")]([SubResource("Resource_r2lpg")])
+collisionFlags = 3
+catapultHeight = 400.0

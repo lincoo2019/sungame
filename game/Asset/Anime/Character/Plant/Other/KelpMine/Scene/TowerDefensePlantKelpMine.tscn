@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dpk15o1v4p21m"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://bcv0vtg3h0yt6" path="res://Asset/Anime/Character/Plant/Other/KelpMine/Scene/TowerDefensePlantKelpMineComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://bib8ea674ugig" path="res://Asset/Anime/Character/Plant/Other/KelpMine/Scene/TowerDefensePlantKelpMine.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://dctjrsdsmp3i8" path="res://Asset/Anime/Character/Plant/Other/KelpMine/Scene/TowerDefensePlantKelpMineStateMachine.tres" id="5"]
+[ext_resource type="Resource" uid="uid://ckej54os8ah2a" path="res://Asset/Anime/Character/Plant/Other/KelpMine/Config/TowerDefensePlantKelpMine.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://ekrqr0tbcal0" path="res://Asset/Anime/Character/Plant/Other/KelpMine/KelpMine.tscn" id="7"]
+
+[node name="TowerDefensePlantKelpMine" unique_id=1665278024 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+MainStateMachineDefinition = ExtResource("5")
+config = ExtResource("6")
+sprite = NodePath("SpriteGroup/TransformPoint/KelpMine")
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+texture = null
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="KelpMine" parent="SpriteGroup/TransformPoint" index="0" unique_id=196397858 instance=ExtResource("7")]
+position = Vector2(0, -30)

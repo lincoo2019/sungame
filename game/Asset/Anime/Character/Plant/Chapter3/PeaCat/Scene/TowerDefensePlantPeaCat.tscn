@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ddfmqorhf7nqm"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://4p2kjtjmufq0" path="res://Asset/Anime/Character/Plant/Chapter3/PeaCat/Scene/TowerDefensePlantPeaCatComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://cbhbxq0a1xdvv" path="res://Asset/Anime/Character/Plant/Chapter3/PeaCat/Scene/TowerDefensePlantPeaCat.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://cyuupo4gmvweo" path="res://Asset/Anime/Character/Plant/Chapter3/PeaCat/Config/TowerDefensePlantPeaCat.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://d3cv7y73te5rv" path="res://Asset/Anime/Character/Plant/Chapter3/PeaCat/PeaCat.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+
+[node name="TowerDefensePlantPeaCat" unique_id=1103907929 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+fireInterval = 1.5
+fireNum = 1
+projectileName = "Pea"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/PeaCat")
+Custom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+visible = false
+position = Vector2(0, 47)
+scale = Vector2(0.821918, 0.77551)
+texture = null
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PeaCat" parent="SpriteGroup/TransformPoint" index="0" unique_id=1275436636 instance=ExtResource("6")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/PeaCat" index="0" unique_id=297775065]
+script = ExtResource("7")
+followSlotId = 5
+Layer = 5
+drawLayerId = 5
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/PeaCat/AdobeAnimateSlot" index="0" unique_id=1147487645]
+position = Vector2(14.1167, 12.9167)
+
+[node name="AdobeAnimateSlot2" type="Node2D" parent="SpriteGroup/TransformPoint/PeaCat" index="1" unique_id=2108566301]
+script = ExtResource("7")
+followSlotId = 11
+Layer = 11
+drawLayerId = 11
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/PeaCat/AdobeAnimateSlot2" index="0" unique_id=993169061]
+position = Vector2(21.7022, 25.32)

@@ -1,0 +1,95 @@
+[gd_scene format=4 uid="uid://udsya47xq3qh"]
+
+[ext_resource type="PackedScene" uid="uid://uawo0nxcj2ji" path="res://Prefab/TowerDefense/Character/TowerDefenseItem.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://bc5jr82isat7i" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefenseVaseComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://uke48ym78cp1" path="res://Prefab/TowerDefense/Character/TowerDefenseVase.cs" id="3"]
+[ext_resource type="PackedScene" uid="uid://y3tmsmwujsmd" path="res://Prefab/Particles/Vase/Normal/VaseNormalChunks.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="5"]
+[ext_resource type="Shader" uid="uid://bbit4jhs4p0ww" path="res://Asset/Shader/TowerDefense/ShaderTowerDefenseCharacter.gdshader" id="6"]
+[ext_resource type="PackedScene" uid="uid://4okp7722qggt" path="res://Asset/Anime/Effect/Hammer/Hammer.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://bhqecss20rwpb" path="res://Prefab/TowerDefense/GUI/InGame/Packet/TowerDefenseInGamePacketShow.tscn" id="8"]
+
+[sub_resource type="Image" id="Image_0n4y8"]
+data = {
+"data": PackedByteArray("AMxMPwAAAAAAAAAAAMxMPwAAAAAAAIA+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD2amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP83MzD8AAAA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAAAMxMPwAAAAAAAAAAAMxMP5qZGT+amZk+AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAgD8AAAAA"),
+"format": "RGBAFloat",
+"height": 4,
+"mipmaps": false,
+"width": 6
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ponxk"]
+image = SubResource("Image_0n4y8")
+
+[sub_resource type="Image" id="Image_a310r"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAP9/RwAAgD8AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA/39HAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAD/f0cAAIA/AAAAAAAAAAA="),
+"format": "RGBAFloat",
+"height": 4,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_ejlky"]
+image = SubResource("Image_a310r")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wr33g"]
+shader = ExtResource("6")
+shader_parameter/frameBlend = -1.0
+shader_parameter/blend = false
+shader_parameter/imageCustomData = SubResource("ImageTexture_ejlky")
+shader_parameter/imageAnimeData = SubResource("ImageTexture_ponxk")
+shader_parameter/imageCustomBlendData = null
+shader_parameter/imageAnimeBlendData = null
+shader_parameter/imageAtlasSize = Vector2(72, 57)
+shader_parameter/uvs = [Rect2(0, 0, 72, 19), Rect2(0, 19, 72, 19), Rect2(0, 38, 72, 19)]
+shader_parameter/layerVisible = [true, true]
+shader_parameter/mediaReplaceAtlas = null
+shader_parameter/mediaReplaceRect = [Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0), Rect2(0, 0, 0, 0)]
+shader_parameter/mediaReplaceUse = [false, false, false]
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="TowerDefenseVase" unique_id=467584533 node_paths=PackedStringArray("waterLineSprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+z_index = -9
+script = ExtResource("3")
+packetCanShow = true
+waterLineSprite = NodePath("SpriteGroup/ZombieWaterLine")
+chunkParticles = ExtResource("4")
+packetBank = "VaseNormal"
+packetName = ""
+packetConfig = null
+useEnterAnime = true
+invisible = false
+config = null
+damagePartClip = "particles"
+itemLayer = 6
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 39)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 36)
+
+[node name="ZombieWaterLine" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="1" unique_id=736068738 instance=ExtResource("5")]
+visible = false
+material = SubResource("ShaderMaterial_wr33g")
+instance_shader_parameters/frameIndex = 2.8946538888888886
+position = Vector2(0, 10)
+scale = Vector2(1.5, 1)
+trueFrameRate = 180.0
+
+[node name="Hammer" parent="." index="3" unique_id=335477754 instance=ExtResource("7")]
+unique_name_in_owner = true
+visible = false
+material = null
+position = Vector2(25, -37)
+timeScale = 5.0
+trueFrameRate = 180.0
+Animation/Clip = "OpenPot"
+
+[node name="PacketShow" parent="FrontEffectNode" parent_id_path=PackedInt32Array(1161662400) index="0" unique_id=1420833072 instance=ExtResource("8")]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(0.75, 0.75)
+onlyDraw = true

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="TowerDefenseProjectileConfig" format=3 uid="uid://dt0lx7fj1jkcu"]
+
+[ext_resource type="Script" uid="uid://cnj074h4i0yb1" path="res://Resource/TowerDefense/Character/Event/TowerDefenseCharacterEventBase.cs" id="1_l0nvt"]
+[ext_resource type="Script" uid="uid://bdn0a7cr1n4p7" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffConfig.cs" id="2_tdpsy"]
+[ext_resource type="Script" uid="uid://crjltirv5y1bv" path="res://Resource/TowerDefense/Character/Buff/TowerDefenseCharacterBuffIceSpeedDown.cs" id="3_v0xrk"]
+[ext_resource type="Script" uid="uid://dhf6ayv71ru1h" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventAddBuff.cs" id="4_3f2kv"]
+[ext_resource type="PackedScene" uid="uid://3pmhi4k1pb0w" path="res://Asset/Config/Projectile/Star/SnowStar/ProjectileSnowStar.tscn" id="5_3t71c"]
+[ext_resource type="Script" uid="uid://nolcleao4tam" path="res://Registry/Behavior/Projectile/ProjectileBehaviorDefinition.cs" id="5_ipniv"]
+[ext_resource type="Script" uid="uid://bk3bi1tbywdrl" path="res://Resource/TowerDefense/Projectile/TowerDefenseProjectileConfig.cs" id="6_5x77t"]
+[ext_resource type="PackedScene" uid="uid://b53q3je0sw0ao" path="res://Prefab/Particles/Splats/SnowStarSplats/TowerDefenseEffectParticlesSnowStarSplats.tscn" id="7_3t71c"]
+
+[sub_resource type="Resource" id="Resource_m37m2"]
+script = ExtResource("3_v0xrk")
+metadata/_custom_type_script = "uid://crjltirv5y1bv"
+
+[sub_resource type="Resource" id="Resource_r2lpg"]
+script = ExtResource("4_3f2kv")
+buffList = Array[ExtResource("2_tdpsy")]([SubResource("Resource_m37m2")])
+metadata/_custom_type_script = "uid://dhf6ayv71ru1h"
+
+[resource]
+script = ExtResource("6_5x77t")
+name = "SnowStar"
+isStar = true
+projectileScene = ExtResource("5_3t71c")
+projectileObject = 336
+splatScene = ExtResource("7_3t71c")
+hitCharacterEventList = Array[ExtResource("1_l0nvt")]([SubResource("Resource_r2lpg")])
+rotateScale = 2.0
+collisionFlags = 1
+catapultHeight = 400.0

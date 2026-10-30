@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://d2o7nos16jb47"]
+
+[ext_resource type="Resource" uid="uid://chk6guj0cwr1n" path="res://Script/Component/TowerDefense/Character/CatapultComponent/CatapultComponentStateMachine.tres" id="1"]
+[ext_resource type="PackedScene" uid="uid://ch2ysy2khufj4" path="res://Prefab/Particles/Explosion/CariExplosion/CariExplosion.tscn" id="2"]
+[ext_resource type="Script" uid="uid://dcatapultdef1" path="res://Script/Component/TowerDefense/Character/CatapultComponent/CatapultComponentDefinition.cs" id="3"]
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="4"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="5"]
+[ext_resource type="Resource" uid="uid://dbtgywlkqllkp" path="res://Asset/Anime/Character/Zombie/Chapter5/Balloonpult/Scene/TowerDefenseZombieBalloonpultFireComponentDefinition.tres" id="6"]
+[ext_resource type="Resource" uid="uid://c1i5ib2qopguv" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefenseZombieComponentSet.tres" id="7"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="8"]
+
+[sub_resource type="Resource" id="CatapultDefinition"]
+script = ExtResource("3")
+projectileNum = 10
+projectileName = "BalloonBomb"
+useCanFireCheck = false
+explosionEffect = ExtResource("2")
+smokeParticlePath = NodePath("SpriteGroup/TransformPoint/ZamboniSmoke")
+fireSlotPath = NodePath("SpriteGroup/TransformPoint/ZombieBalloonpult/AdobeAnimateSlot")
+ComponentTypeId = "CatapultComponent"
+DefinitionId = "builtin.component.catapult.balloonpult"
+InstanceId = "character.catapult"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"CatapultComponent"]
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("5")
+attackType = "Smash"
+useParentHitBox = true
+useCheckAreaGridColumn = true
+checkLine = true
+checkVase = true
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.zombie.chapter5.balloonpult.scene.towerdefensezombieballoonpult.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("4")
+LegacyNodeNames = [&"AttackComponent"]
+
+[resource]
+script = ExtResource("8")
+ParentSet = ExtResource("7")
+Components = [SubResource("CatapultDefinition"), SubResource("Attack0_Definition"), ExtResource("6")]
+RemovedInstanceIds = ["character.ground_move"]

@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dfh7icqkhnyh3"]
+
+[ext_resource type="PackedScene" uid="uid://buhu7tmsbjtc6" path="res://Prefab/TowerDefense/Character/TowerDefenseZombie.tscn" id="1"]
+[ext_resource type="Script" uid="uid://i3t0m5txmkjg" path="res://Asset/Anime/Character/Zombie/Other/LadderFB/Scene/TowerDefenseZombieLadderFB.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d4p7nw3r6t2y" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_4_n2.tres" id="3"]
+[ext_resource type="Resource" uid="uid://dpik3gdvemxl5" path="res://Asset/Anime/Character/Zombie/Other/LadderFB/Scene/TowerDefenseZombieLadderFBStateMachine.tres" id="4"]
+[ext_resource type="Resource" uid="uid://tkeau6h51t4q" path="res://Asset/Anime/Character/Zombie/Other/LadderFB/Config/TowerDefenseZombieLadderFB.tres" id="5"]
+[ext_resource type="Resource" uid="uid://diwhuah4oud7" path="res://Asset/Anime/Character/Zombie/Other/LadderFB/DamagePoint/Config/ZombieLadderFBDamagePointArm.tres" id="6"]
+[ext_resource type="Resource" uid="uid://cux47qb6bt2ry" path="res://Asset/Anime/Character/Zombie/Other/LadderFB/DamagePoint/Config/ZombieLadderFBDamagePointHead.tres" id="7"]
+[ext_resource type="Resource" uid="uid://cq1umwrenrwrm" path="res://Asset/Anime/Character/Zombie/Other/LadderFB/Armor/Config/ZombieLadderFBArmorHelmet.tres" id="8"]
+[ext_resource type="Resource" uid="uid://buq8jumygqe8s" path="res://Asset/Anime/Character/Zombie/Other/LadderFB/Armor/Config/ZombieLadderFBArmorLadder.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://ddbviewj50okj" path="res://Asset/Anime/Character/Zombie/Other/LadderFB/ZombieLadderFB.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://bjm31m10ujp84" path="res://Asset/Anime/Character/Zombie/WaterLine/ZombieWaterLine.tscn" id="11"]
+
+[node name="TowerDefenseZombieLadderFB" unique_id=119969861 node_paths=PackedStringArray("duckytobeSprite", "waterLineSprite", "sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+groan = ""
+walkSpeedScale = 2.0
+walkAnimeClip = "LaderWalk"
+swimAnimeClip = "LaderWalk"
+attackAnimeClip = "LadderEat"
+duckytobeSprite = NodePath("SpriteGroup/TransformPoint/ZombieLadderFB/ZombieDuckytube")
+waterLineSprite = NodePath("SpriteGroup/TransformPoint/ZombieWaterLine")
+waterHeight = 25.0
+HitBoxDefinition = ExtResource("3")
+MainStateMachineDefinition = ExtResource("4")
+showHealthOffset = Vector2(0, 0)
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieLadderFB")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieLadderFB/HeadSlot")
+damagePart = {
+"Arm": ExtResource("6"),
+"Head": ExtResource("7"),
+"Helmet": ExtResource("8"),
+"Ladder": ExtResource("9")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieLadderFB/ArmSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieLadderFB/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieLadderFB/HeadSlot"),
+"Ladder": NodePath("SpriteGroup/TransformPoint/ZombieLadderFB/LadderSlot")
+}
+currentArmor = ["Ladder", "Helmet"]
+currentCustom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(12.6, 40)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(23, 44)
+
+[node name="ZombieLadderFB" parent="SpriteGroup/TransformPoint" index="0" unique_id=343857198 instance=ExtResource("10")]
+position = Vector2(-23, -44)
+trueFrameRate = 180.0
+Animation/MediaReplace/Zombie_ladder_1.png = "res://Asset/AtlasSource/Armor/Texture/Character/Armor/Ladder/ZombieLadder1.png"
+
+[node name="ZombieDuckytube" parent="SpriteGroup/TransformPoint/ZombieLadderFB" index="0" unique_id=649985362]
+position = Vector2(-11.47625, -46.780415)
+rotation = -0.017192896
+trueFrameRate = 180.0
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieLadderFB" index="1" unique_id=415372738]
+position = Vector2(-12.9850025, -49.686253)
+rotation = -0.05021352
+scale = Vector2(0.8496803, 0.8496803)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieLadderFB" index="2" unique_id=753876301]
+position = Vector2(-2.3384857, -7.66119)
+rotation = 1.0934706
+scale = Vector2(0.8479978, 1.0782992)
+skew = 0.010047913
+
+[node name="LadderSlot" parent="SpriteGroup/TransformPoint/ZombieLadderFB" index="3" unique_id=1064240159]
+position = Vector2(-21.210175, 7.116127)
+rotation = 0.0
+scale = Vector2(0.84999084, 0.84999084)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieLadderFB" index="4" unique_id=252876622]
+position = Vector2(-40, -80)
+
+[node name="ZombieWaterLine" parent="SpriteGroup/TransformPoint" index="1" unique_id=650382982 instance=ExtResource("11")]
+visible = false
+position = Vector2(-12, -52)
+trueFrameRate = 180.0
+clip = "Idle"
+layerVisible = [true, true]
+mediaReplace = [null, null, null]
+mediaReplaceUse = [false, false, false]
+mediaReplaceAtlasPaths = ["", "", ""]
+
+[editable path="SpriteGroup/TransformPoint/ZombieLadderFB"]

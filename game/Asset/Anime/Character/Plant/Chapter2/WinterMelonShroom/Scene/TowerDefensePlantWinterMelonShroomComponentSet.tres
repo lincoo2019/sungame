@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="CharacterComponentSet" format=3 uid="uid://cpymwnfemkpio"]
+
+[ext_resource type="Resource" uid="uid://5uidegqofmob" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentStateMachine.tres" id="1"]
+[ext_resource type="Script" uid="uid://n4b4cnyw2vms" path="res://Resource/TowerDefense/Collision/AabbShape2DResource.cs" id="2"]
+[ext_resource type="Script" uid="uid://qhanqul6rou" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventHurt.cs" id="3"]
+[ext_resource type="Script" uid="uid://3a448lphbsvn" path="res://Resource/TowerDefense/Character/Event/General/TowerDefenseCharacterEventIceSpeedDown.cs" id="4"]
+[ext_resource type="Script" uid="uid://dfhl7wi450uho" path="res://Script/Component/TowerDefense/Character/AttackComponent/AttackComponentDefinition.cs" id="5"]
+[ext_resource type="Resource" uid="uid://ddgn75dlmc8mw" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentStateMachine.tres" id="6"]
+[ext_resource type="Script" uid="uid://cw4vt8l6l82xs" path="res://Registry/Projectile/Resource/TowerDefenseProjectileCreateData.cs" id="7"]
+[ext_resource type="Script" uid="uid://ixwf13igrxl2" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/Projectile/FireComponentProjectileSingle.cs" id="8"]
+[ext_resource type="Script" uid="uid://ng84tkouwend" path="res://Script/Component/TowerDefense/Character/FireComponent/Resource/FireComponentCheckConfig.cs" id="9"]
+[ext_resource type="Script" uid="uid://jga1if4gpsc8" path="res://Script/Component/TowerDefense/Character/FireComponent/FireComponentDefinition.cs" id="10"]
+[ext_resource type="Resource" uid="uid://ce8g4ro1e1da" path="res://Prefab/TowerDefense/Character/ComponentSets/TowerDefensePlantComponentSet.tres" id="11"]
+[ext_resource type="Script" uid="uid://bk4n3xmg4ke0v" path="res://Script/Component/Runtime/CharacterComponentSet.cs" id="12"]
+
+[sub_resource type="SegmentShape2D" id="Attack0_SegmentShape2D_o5pol"]
+b = Vector2(100, 0)
+
+[sub_resource type="Resource" id="Attack0_AabbShape2DResource_attack_check"]
+script = ExtResource("2")
+Geometry = SubResource("Attack0_SegmentShape2D_o5pol")
+
+[sub_resource type="Resource" id="Attack0_Resource_4p3xn"]
+script = ExtResource("3")
+damageFlags = 2
+metadata/_custom_type_script = "uid://qhanqul6rou"
+
+[sub_resource type="Resource" id="Attack0_Resource_snlq4"]
+script = ExtResource("4")
+metadata/_custom_type_script = "uid://3a448lphbsvn"
+
+[sub_resource type="Resource" id="Attack0_Definition"]
+script = ExtResource("5")
+attackType = "Default"
+checkShapeResources = [SubResource("Attack0_AabbShape2DResource_attack_check")]
+spritePath = NodePath("SpriteGroup/TransformPoint/WinterMelonShroom")
+attackAnimeClipsArray = ["Fire"]
+attackAnimeClips = "Fire"
+attackEventName = "fire"
+attackAnimeTimeScale = 3.0
+attackIntervalBase = 2.0
+attackInterval = 2.0
+eventList = [SubResource("Attack0_Resource_4p3xn"), SubResource("Attack0_Resource_snlq4")]
+ComponentTypeId = "AttackComponent"
+DefinitionId = "builtin.component.attack.asset.anime.character.plant.chapter2.wintermelonshroom.scene.towerdefenseplantwintermelonshroom.0"
+InstanceId = "character.attack.0"
+WireIndex = 0
+StateMachineDefinition = ExtResource("1")
+LegacyNodeNames = [&"AttackComponent"]
+
+[sub_resource type="Resource" id="Fire_Resource_518q3"]
+script = ExtResource("7")
+projectileName = &"WinterMelon"
+baseDamage = 80.0
+damageFlags = 2
+metadata/_custom_type_script = "uid://eughsv2mxyyl"
+
+[sub_resource type="Resource" id="Fire_Resource_rnkuh"]
+script = ExtResource("8")
+projectileData = SubResource("Fire_Resource_518q3")
+metadata/_custom_type_script = "uid://ixwf13igrxl2"
+
+[sub_resource type="Resource" id="Fire_Resource_n5srx"]
+script = ExtResource("9")
+projectile = SubResource("Fire_Resource_rnkuh")
+metadata/_custom_type_script = "uid://ng84tkouwend"
+
+[sub_resource type="Resource" id="FireDefinition"]
+script = ExtResource("10")
+firePosMarkerPaths = [NodePath("SpriteGroup/TransformPoint/WinterMelonShroom/AdobeAnimateSlot/Marker2D")]
+fireCheckList = [SubResource("Fire_Resource_n5srx")]
+ComponentTypeId = "FireComponent"
+DefinitionId = "builtin.component.fire.asset.anime.character.plant.chapter2.wintermelonshroom"
+InstanceId = "character.fire"
+WireIndex = 0
+StateMachineDefinition = ExtResource("6")
+LegacyNodeNames = [&"FireComponent"]
+
+[resource]
+script = ExtResource("12")
+ParentSet = ExtResource("11")
+Components = [SubResource("Attack0_Definition"), SubResource("FireDefinition")]

@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dfrfaitx5tmra"]
+
+[ext_resource type="PackedScene" uid="uid://s74hf6v6x5r7" path="res://Prefab/TowerDefense/Character/TowerDefenseZombieImpBase.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dgy4wpr8hnqeu" path="res://Asset/Anime/Character/Zombie/Challenge/FootballImp/Scene/BlackWhiteEyes/TowerDefenseZombieFootballImpBlackWhiteEyes.cs" id="2"]
+[ext_resource type="Resource" uid="uid://d12fmc50g7fyb" path="res://Asset/Anime/Character/Zombie/Challenge/FootballImp/Config/TowerDefenseZombieFootballImpBlackWhiteEyes.tres" id="3"]
+[ext_resource type="Resource" uid="uid://dq6kv14syg3p" path="res://Asset/Anime/Character/Zombie/Challenge/FootballImp/DamagePoint/Config/ZombieFootballImpDamagePointArm.tres" id="4"]
+[ext_resource type="Resource" uid="uid://oa7v6ap4aj5v" path="res://Asset/Anime/Character/Zombie/Challenge/FootballImp/Armor/Config/ZombieFootballImpArmorBlackHelmet.tres" id="5"]
+[ext_resource type="Resource" uid="uid://crlv02gdxiwii" path="res://Asset/Anime/Character/Zombie/Challenge/FootballImp/DamagePoint/Config/ZombieFootballImpDamagePointHead.tres" id="6"]
+[ext_resource type="Resource" uid="uid://brstjb5gvrmul" path="res://Asset/Anime/Character/Zombie/Challenge/FootballImp/Armor/Config/ZombieFootballImpArmorHelmet.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://barotu7rmehh7" path="res://Asset/Anime/Character/Zombie/Challenge/FootballImp/Sprite/BlackWhiteEyes/ZombieFootballImpBlackWhiteEyes.tscn" id="8"]
+
+[node name="TowerDefenseZombieFootballImpBlackWhiteEyes" unique_id=200970129 node_paths=PackedStringArray("sprite", "headSlot") instance=ExtResource("1")]
+script = ExtResource("2")
+groan = ""
+waterHeight = 10.0
+invisible = false
+idleAnimeClip = "Walk"
+config = ExtResource("3")
+sprite = NodePath("SpriteGroup/TransformPoint/ZombieFootballImpBlackWhiteEyes")
+headSlot = NodePath("SpriteGroup/TransformPoint/ZombieFootballImpBlackWhiteEyes/HeadSlot")
+damagePartClip = "0"
+damagePart = {
+"Arm": ExtResource("4"),
+"BlackHelmet": ExtResource("5"),
+"Head": ExtResource("6"),
+"Helmet": ExtResource("7")
+}
+damagePartSlot = {
+"Arm": NodePath("SpriteGroup/TransformPoint/ZombieFootballImpBlackWhiteEyes/ArmSlot"),
+"BlackHelmet": NodePath("SpriteGroup/TransformPoint/ZombieFootballImpBlackWhiteEyes/HelmetSlot"),
+"Head": NodePath("SpriteGroup/TransformPoint/ZombieFootballImpBlackWhiteEyes/HeadSlot"),
+"Helmet": NodePath("SpriteGroup/TransformPoint/ZombieFootballImpBlackWhiteEyes/HelmetSlot")
+}
+currentArmor = ["BlackHelmet"]
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(9, 40)
+scale = Vector2(0.906977, 0.944445)
+
+[node name="ZombieFootballImpBlackWhiteEyes" parent="SpriteGroup/TransformPoint" parent_id_path=PackedInt32Array(429682308) index="0" unique_id=2048511694 instance=ExtResource("8")]
+position = Vector2(-12, -36)
+clip = "Walk"
+layerVisible = [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+mediaReplaceAtlasPaths = ["", "res://Asset/AtlasSource/Armor/Texture/Character/Armor/BlackHelmet/ZombieBlackHelmet1.png", "res://Asset/Anime/Character/Zombie/Challenge/FootballGargantuar/Sprite/Black/Zombie_football_impR_arm1.png", "", "res://Asset/Anime/Character/Zombie/Challenge/FootballGargantuar/Sprite/Black/Zombie_football_impR_body1.png", "", "", "", "", "", "", "", "", ""]
+mediaReplaceUse = [false, true, true, false, true, false, false, false, false, false, false, false, false, false]
+
+[node name="HeadSlot" parent="SpriteGroup/TransformPoint/ZombieFootballImpBlackWhiteEyes" index="0" unique_id=1118988935]
+drawLayerId = -2
+position = Vector2(0.83783627, -10.039915)
+rotation = 0.103847384
+scale = Vector2(0.9989444, 0.9989444)
+
+[node name="ArmSlot" parent="SpriteGroup/TransformPoint/ZombieFootballImpBlackWhiteEyes" index="1" unique_id=1612712697]
+position = Vector2(12.71934, 18.9464)
+rotation = -0.2780088
+scale = Vector2(1.0537895, 1.0178313)
+skew = 0.048211336
+
+[node name="HelmetSlot" parent="SpriteGroup/TransformPoint/ZombieFootballImpBlackWhiteEyes" index="2" unique_id=679771215]
+position = Vector2(-0.2624054, -11.369682)
+rotation = 0.17641345
+scale = Vector2(0.68982345, 0.645193)
+
+[node name="GroundSlot" parent="SpriteGroup/TransformPoint/ZombieFootballImpBlackWhiteEyes" index="3" unique_id=984416916]
+position = Vector2(-83.47655, 10)
+
+[editable path="SpriteGroup/TransformPoint/ZombieFootballImpBlackWhiteEyes"]

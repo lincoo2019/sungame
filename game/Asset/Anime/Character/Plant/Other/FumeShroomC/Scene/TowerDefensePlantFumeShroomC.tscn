@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://bi3ypdqwadlul"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c7fqdbs0dot6d" path="res://Asset/Anime/Character/Plant/Other/FumeShroomC/Scene/TowerDefensePlantFumeShroomC.cs" id="2"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="3"]
+[ext_resource type="Resource" uid="uid://b2o4j70hymnbc" path="res://Asset/Anime/Character/Plant/Other/FumeShroomC/Scene/TowerDefensePlantFumeShroomCComponentSet.tres" id="4"]
+[ext_resource type="Resource" uid="uid://c1ibdkfd1x2fn" path="res://Asset/Anime/Character/Plant/Other/FumeShroomC/Config/TowerDefensePlantFumeShroomC.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://cwokgi261mg85" path="res://Asset/Anime/Character/Plant/Other/FumeShroomC/FumeShroomC.tscn" id="6"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="7"]
+[ext_resource type="Texture2D" uid="uid://bab0fvnj488aw" path="res://Asset/Config/Projectile/Puff/Sprite/CherryShroom/ProjectilePuffShroomPuff1C.png" id="8"]
+
+[sub_resource type="Curve" id="Curve_8wwub"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.589744, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4p3xn"]
+curve = SubResource("Curve_8wwub")
+
+[sub_resource type="Curve" id="Curve_snlq4"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 38.1566), 0.0, 0.0, 0, 0, Vector2(0.535897, 100), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rw0y7"]
+curve = SubResource("Curve_snlq4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bxw42"]
+lifetime_randomness = 0.38
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 1.0
+flatness = 0.552
+initial_velocity_min = 240.58
+initial_velocity_max = 788.5
+gravity = Vector3(0, 0, 0)
+damping_min = 3.199
+damping_max = 36.884
+damping_curve = SubResource("CurveTexture_rw0y7")
+scale_min = 0.6
+scale_max = 0.9
+alpha_curve = SubResource("CurveTexture_4p3xn")
+
+[node name="TowerDefensePlantFumeShroomC" unique_id=1723293125 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+script = ExtResource("2")
+fireInterval = 1.5
+HitBoxDefinition = ExtResource("3")
+ComponentSet = ExtResource("4")
+sleepAnimeClip = "Sleep"
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/FumeShroomC")
+damagePart = {}
+damagePartSlot = {}
+currentArmor = []
+currentCustom = []
+
+[node name="ShadowSprite" parent="." index="0" unique_id=1970894107]
+position = Vector2(0, 24.5)
+scale = Vector2(1.2093, 1.47222)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="FumeShroomC" parent="SpriteGroup/TransformPoint" index="0" unique_id=798667950 instance=ExtResource("6")]
+position = Vector2(0, -30)
+
+[node name="AdobeAnimateSlot" type="Node2D" parent="SpriteGroup/TransformPoint/FumeShroomC" index="0" unique_id=641422380]
+position = Vector2(33.523872, -28.433739)
+rotation = -0.03224943
+scale = Vector2(0.78816754, 0.8203961)
+skew = 0.03224933
+script = ExtResource("7")
+followSlotId = 14
+drawLayerId = 14
+metadata/_custom_type_script = "uid://hd68vjdh2w02"
+
+[node name="Marker2D" type="Marker2D" parent="SpriteGroup/TransformPoint/FumeShroomC/AdobeAnimateSlot" index="0" unique_id=1995692599]
+position = Vector2(9.025894, 11.193742)
+
+[node name="FireParticles" type="GPUParticles2D" parent="SpriteGroup/TransformPoint/FumeShroomC/AdobeAnimateSlot" index="1" unique_id=241888988]
+unique_name_in_owner = true
+z_index = 3
+position = Vector2(8.79036, 13.2048)
+rotation = -0.0306024
+scale = Vector2(1.21982, 1.28157)
+skew = 0.0306022
+emitting = false
+amount = 64
+texture = ExtResource("8")
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.4
+randomness = 0.4
+process_material = SubResource("ParticleProcessMaterial_bxw42")

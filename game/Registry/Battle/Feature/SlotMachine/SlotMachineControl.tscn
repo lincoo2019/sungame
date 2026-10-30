@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://cw2m7v0cwrrt0"]
+
+[ext_resource type="Script" uid="uid://bs8x30ccg1nb7" path="res://Registry/Battle/Feature/SlotMachine/SlotMachineControl.cs" id="1_slot"]
+[ext_resource type="Texture2D" uid="uid://b2qj6cv0sml2a" path="res://Asset/Texture/TowerDefense/SlotMachine/SlotMachine_Overlay.png" id="2_overlay"]
+[ext_resource type="Texture2D" uid="uid://ccm76ba8aq5ch" path="res://Asset/Texture/TowerDefense/SlotMachine/SlotMachine_base.png" id="3_base"]
+[ext_resource type="Texture2D" uid="uid://drhwv83d1ysqm" path="res://Asset/Texture/TowerDefense/SlotMachine/SlotMachine_shaft.png" id="4_shaft"]
+[ext_resource type="Texture2D" uid="uid://d0kf1cpi0l7je" path="res://Asset/Texture/TowerDefense/SlotMachine/SlotMachine_ball.png" id="5_ball"]
+[ext_resource type="AudioStream" uid="uid://b8o5cad4pkmte" path="res://Asset/Audio/Sfx/GUI/SlotMachine/SlotMachine.ogg" id="6_audio"]
+
+[node name="SlotMachineControl" type="Control" unique_id=870704873]
+custom_minimum_size = Vector2(340, 108)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 340.0
+offset_bottom = 108.0
+mouse_default_cursor_shape = 2
+script = ExtResource("1_slot")
+
+[node name="Overlay" type="TextureRect" parent="." unique_id=101001]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 285.0
+offset_bottom = 108.0
+mouse_filter = 2
+texture = ExtResource("2_overlay")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Reel1" type="Control" parent="." unique_id=101101]
+unique_name_in_owner = true
+clip_contents = true
+anchors_preset = 0
+offset_left = 57.0
+offset_top = 20.0
+offset_right = 106.0
+offset_bottom = 67.0
+mouse_filter = 2
+
+[node name="Reel1Track" type="Control" parent="Reel1" unique_id=101102]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 49.0
+offset_bottom = 47.0
+mouse_filter = 2
+
+[node name="Reel2" type="Control" parent="." unique_id=101201]
+unique_name_in_owner = true
+clip_contents = true
+anchors_preset = 0
+offset_left = 117.0
+offset_top = 20.0
+offset_right = 166.0
+offset_bottom = 67.0
+mouse_filter = 2
+
+[node name="Reel2Track" type="Control" parent="Reel2" unique_id=101202]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 49.0
+offset_bottom = 47.0
+mouse_filter = 2
+
+[node name="Reel3" type="Control" parent="." unique_id=101301]
+unique_name_in_owner = true
+clip_contents = true
+anchors_preset = 0
+offset_left = 177.0
+offset_top = 20.0
+offset_right = 226.0
+offset_bottom = 67.0
+mouse_filter = 2
+
+[node name="Reel3Track" type="Control" parent="Reel3" unique_id=101302]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 49.0
+offset_bottom = 47.0
+mouse_filter = 2
+
+[node name="StatusLabel" type="Label" parent="." unique_id=102001]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 12.0
+offset_top = 77.0
+offset_right = 272.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(1, 0.92, 0.45, 1)
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="HandleShaft" type="TextureRect" parent="." unique_id=103002]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 279.0
+offset_top = 69.0
+offset_right = 323.0
+offset_bottom = 87.0
+pivot_offset = Vector2(4, 5.5)
+mouse_filter = 2
+texture = ExtResource("4_shaft")
+expand_mode = 1
+
+[node name="HandleBase" type="TextureRect" parent="." unique_id=103001]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 281.0
+offset_top = 1.0
+offset_right = 338.0
+offset_bottom = 157.0
+mouse_filter = 2
+texture = ExtResource("3_base")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HandleBall" type="TextureRect" parent="." unique_id=103003]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 309.5
+offset_top = 18.0
+offset_right = 334.5
+offset_bottom = 43.0
+mouse_filter = 2
+texture = ExtResource("5_ball")
+expand_mode = 1
+
+[node name="SlotMachineAudio" type="AudioStreamPlayer" parent="." unique_id=104001]
+unique_name_in_owner = true
+stream = ExtResource("6_audio")

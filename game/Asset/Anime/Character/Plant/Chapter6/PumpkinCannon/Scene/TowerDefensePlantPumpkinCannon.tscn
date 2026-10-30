@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://2dwdcatnqtdx"]
+
+[ext_resource type="PackedScene" uid="uid://c3lnqei4itfpx" path="res://Prefab/TowerDefense/Character/TowerDefensePlant.tscn" id="1"]
+[ext_resource type="Resource" path="res://Asset/Anime/Character/Plant/Chapter6/PumpkinCannon/Scene/TowerDefensePlantPumpkinCannonComponentSet.tres" id="2"]
+[ext_resource type="Script" uid="uid://diwlg8q6oychy" path="res://Asset/Anime/Character/Plant/Chapter6/PumpkinCannon/Scene/TowerDefensePlantPumpkinCannon.cs" id="3"]
+[ext_resource type="Resource" path="res://Resource/TowerDefense/Collision/CharacterHitBoxes/Rect_44x70_At_0_0.tres" id="4"]
+[ext_resource type="Resource" uid="uid://b2caqxrge7705" path="res://Asset/Anime/Character/Plant/Chapter6/PumpkinCannon/Config/TowerDefensePlantPumpkinCannon.tres" id="5"]
+[ext_resource type="Texture2D" uid="uid://c07s22oke4426" path="res://Asset/Texture/Character/Effect/CobCannonTarget.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://c1kjk40q6bgef" path="res://Asset/Config/Projectile/PumpkinCannonCob/PumpkinCannonCob/PumpkinCannonCob.png" id="7"]
+[ext_resource type="PackedScene" uid="uid://f2vdek54dhsq" path="res://Asset/Anime/Character/Plant/Chapter6/PumpkinCannon/PumpkinCannon.tscn" id="8"]
+[ext_resource type="Script" uid="uid://hd68vjdh2w02" path="res://addons/AdobeAnimateEditor/Node/AdobeAnimateSlot.cs" id="9"]
+
+[node name="TowerDefensePlantPumpkinCannon" unique_id=1540887503 node_paths=PackedStringArray("sprite") instance=ExtResource("1")]
+ComponentSet = ExtResource("2")
+script = ExtResource("3")
+HitBoxDefinition = ExtResource("4")
+restTime = 30.0
+config = ExtResource("5")
+sprite = NodePath("SpriteGroup/TransformPoint/PumpkinCannon")
+PreviewDamagePointPersontage = 1.0
+Custom = []
+
+[node name="CobCannonTarget" type="Sprite2D" parent="." index="0" unique_id=257434880]
+visible = false
+z_index = 2048
+position = Vector2(81, 0)
+texture = ExtResource("6")
+
+[node name="PumpkinCannonCob" type="Sprite2D" parent="." index="1" unique_id=2064251296]
+visible = false
+position = Vector2(-29, -10)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7")
+centered = false
+
+[node name="ShadowSprite" parent="." index="2" unique_id=1970894107]
+position = Vector2(0, 30)
+
+[node name="TransformPoint" parent="SpriteGroup" parent_id_path=PackedInt32Array(1006029617) index="0" unique_id=429682308]
+position = Vector2(0, 30)
+
+[node name="PumpkinCannon" parent="SpriteGroup/TransformPoint" index="0" unique_id=1973676087 instance=ExtResource("8")]
+position = Vector2(0, -30)
+trueFrameRate = 180.0
+Animation/MediaReplace/PumpkinCannon_front.png = "res://Asset/AtlasSource/DamagePoint/Anime/Character/Plant/Chapter6/PumpkinCannon/DamagePoint/PumpkinCannon_front.png"
+Animation/MediaReplace/PumpkinCannon_husk1.png = "res://Asset/AtlasSource/DamagePoint/Anime/Character/Plant/Chapter6/PumpkinCannon/DamagePoint/PumpkinCannon_husk1.png"
+
+[node name="ProjectileSlot" type="Node2D" parent="SpriteGroup/TransformPoint/PumpkinCannon" index="0" unique_id=1481053495]
+unique_name_in_owner = true
+script = ExtResource("9")
+followSlotId = 8
+Layer = 8
+drawLayerId = 8
+metadata/_custom_type_script = "uid://hd68vjdh2w02"

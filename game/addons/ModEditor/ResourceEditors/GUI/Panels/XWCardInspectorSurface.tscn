@@ -1,0 +1,737 @@
+[gd_scene load_steps=6 format=3]
+
+[sub_resource type="StyleBoxFlat" id="StyleIdentity"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.065, 0.12, 0.075, 0.98)
+border_width_left = 3
+border_color = Color(0.48, 0.78, 0.24, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBinding"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.075, 0.095, 0.125, 0.98)
+border_width_left = 3
+border_color = Color(0.34, 0.67, 0.92, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleAnimation"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.105, 0.075, 0.12, 0.98)
+border_width_left = 3
+border_color = Color(0.68, 0.45, 0.92, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleHandbook"]
+content_margin_left = 16.0
+content_margin_top = 14.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.31, 0.235, 0.105, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.71, 0.52, 0.22, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleTextPage"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+bg_color = Color(0.9, 0.78, 0.52, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.44, 0.31, 0.12, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="CardInspectorSurface" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="IdentityPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleIdentity")
+
+[node name="Layout" type="VBoxContainer" parent="IdentityPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="IdentityPanel/Layout"]
+layout_mode = 2
+text = "种子包身份"
+theme_override_colors/font_color = Color(0.72, 0.96, 0.46, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Grid" type="GridContainer" parent="IdentityPanel/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="ResourceNameLabel" type="Label" parent="IdentityPanel/Layout/Grid"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "资源名称"
+vertical_alignment = 1
+
+[node name="ResourceNameEdit" type="LineEdit" parent="IdentityPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Godot 资源名称"
+
+[node name="SaveKeyLabel" type="Label" parent="IdentityPanel/Layout/Grid"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "资源 Key"
+vertical_alignment = 1
+
+[node name="SaveKeyLineEdit" type="LineEdit" parent="IdentityPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "卡牌唯一标识"
+
+[node name="NameLabel" type="Label" parent="IdentityPanel/Layout/Grid"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "名称文本 Key"
+vertical_alignment = 1
+
+[node name="NameLineEdit" type="LineEdit" parent="IdentityPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "显示在卡牌上的名称"
+
+[node name="TypeLabel" type="Label" parent="IdentityPanel/Layout/Grid"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "卡牌品质"
+vertical_alignment = 1
+
+[node name="TypeCards" type="HFlowContainer" parent="IdentityPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="PacketFlipCheck" type="CheckButton" parent="IdentityPanel/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "水平翻转卡面动画"
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="IdentityPanel/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "资源仅属于当前场景"
+
+[node name="CharacterBindingPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBinding")
+
+[node name="Layout" type="VBoxContainer" parent="CharacterBindingPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="CharacterBindingPanel/Layout"]
+layout_mode = 2
+text = "绑定游戏角色"
+theme_override_colors/font_color = Color(0.55, 0.82, 1, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Buttons" type="HBoxContainer" parent="CharacterBindingPanel/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="CharacterBindingWindowButton" type="Button" parent="CharacterBindingPanel/Layout/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "从角色图库选择…"
+
+[node name="ClearCharacterBindingButton" type="Button" parent="CharacterBindingPanel/Layout/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+text = "清除"
+
+[node name="CharacterSourceLabel" type="Label" parent="CharacterBindingPanel/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "来源：未绑定"
+clip_text = true
+
+[node name="EconomyPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleIdentity")
+
+[node name="Layout" type="VBoxContainer" parent="EconomyPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="EconomyPanel/Layout"]
+layout_mode = 2
+text = "战斗费用与冷却"
+theme_override_colors/font_color = Color(1, 0.83, 0.36, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Grid" type="GridContainer" parent="EconomyPanel/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="CostLabel" type="Label" parent="EconomyPanel/Layout/Grid"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "覆盖费用"
+vertical_alignment = 1
+
+[node name="CostSpinBox" type="SpinBox" parent="EconomyPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 9999.0
+step = 1.0
+
+[node name="CooldownLabel" type="Label" parent="EconomyPanel/Layout/Grid"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "覆盖冷却"
+vertical_alignment = 1
+
+[node name="CooldownSpinBox" type="SpinBox" parent="EconomyPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 9999.0
+step = 0.1
+
+[node name="StartingCooldownLabel" type="Label" parent="EconomyPanel/Layout/Grid"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "开局冷却"
+vertical_alignment = 1
+
+[node name="StartingCooldownSpinBox" type="SpinBox" parent="EconomyPanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 9999.0
+step = 0.1
+
+[node name="RulePanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleIdentity")
+
+[node name="Layout" type="VBoxContainer" parent="RulePanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="RulePanel/Layout"]
+layout_mode = 2
+text = "出场、战斗与放置规则"
+theme_override_colors/font_color = Color(0.72, 0.96, 0.46, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Grid" type="GridContainer" parent="RulePanel/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="SpawnMethodLabel" type="Label" parent="RulePanel/Layout/Grid"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "出场方式"
+vertical_alignment = 1
+
+[node name="SpawnMethodCards" type="HFlowContainer" parent="RulePanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="OverrideCostRiseLabel" type="Label" parent="RulePanel/Layout/Grid"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "费用递增覆盖"
+vertical_alignment = 1
+
+[node name="OverrideCostRiseSpinBox" type="SpinBox" parent="RulePanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 99999.0
+allow_greater = true
+
+[node name="OverrideWeightLabel" type="Label" parent="RulePanel/Layout/Grid"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "僵尸权重覆盖"
+vertical_alignment = 1
+
+[node name="OverrideWeightSpinBox" type="SpinBox" parent="RulePanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 99999.0
+allow_greater = true
+
+[node name="OverrideWavePointCostLabel" type="Label" parent="RulePanel/Layout/Grid"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "波次点数覆盖"
+vertical_alignment = 1
+
+[node name="OverrideWavePointCostSpinBox" type="SpinBox" parent="RulePanel/Layout/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 99999.0
+allow_greater = true
+
+[node name="Flags" type="GridContainer" parent="RulePanel/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="CanChangeCostCheck" type="CheckButton" parent="RulePanel/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "允许费用规则修改"
+
+[node name="OverrideHypnosesCheck" type="CheckButton" parent="RulePanel/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "覆盖为魅惑阵营"
+
+[node name="PlantUseCellCheck" type="CheckButton" parent="RulePanel/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "种植时占用格子"
+
+[node name="IzmPlantAllCellCheck" type="CheckButton" parent="RulePanel/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "IZM 可种所有格子"
+
+[node name="IzmPlantLeftCheck" type="CheckButton" parent="RulePanel/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "IZM 仅左侧种植"
+
+[node name="DisableWhenSunNegativeCheck" type="CheckButton" parent="RulePanel/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "阳光为负时禁用卡牌"
+
+[node name="CanPlaceOnZombieCheck" type="CheckButton" parent="RulePanel/Layout/Flags"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "可直接放置到僵尸上"
+
+[node name="CollectionPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBinding")
+
+[node name="Layout" type="VBoxContainer" parent="CollectionPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="CollectionPanel/Layout"]
+layout_mode = 2
+text = "解锁条件与初始护甲"
+theme_override_colors/font_color = Color(0.55, 0.82, 1, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="UnlockTitle" type="Label" parent="CollectionPanel/Layout"]
+layout_mode = 2
+text = "解锁条件（在下方事件区选中后操作）"
+
+[node name="UnlockPickerHost" type="HBoxContainer" parent="CollectionPanel/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UnlockButtons" type="HBoxContainer" parent="CollectionPanel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="AddUnlockButton" type="Button" parent="CollectionPanel/Layout/UnlockButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加"
+
+[node name="ReplaceUnlockButton" type="Button" parent="CollectionPanel/Layout/UnlockButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "替换"
+
+[node name="RemoveUnlockButton" type="Button" parent="CollectionPanel/Layout/UnlockButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除"
+
+[node name="OpenUnlockButton" type="Button" parent="CollectionPanel/Layout/UnlockButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "打开"
+
+[node name="MoveUnlockUpButton" type="Button" parent="CollectionPanel/Layout/UnlockButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "上移"
+
+[node name="MoveUnlockDownButton" type="Button" parent="CollectionPanel/Layout/UnlockButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "下移"
+
+[node name="ArmorTitle" type="Label" parent="CollectionPanel/Layout"]
+layout_mode = 2
+text = "初始护甲 Key（按顺序装配）"
+
+[node name="ArmorList" type="ItemList" parent="CollectionPanel/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 105)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ArmorEditRow" type="HBoxContainer" parent="CollectionPanel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ArmorValueEdit" type="LineEdit" parent="CollectionPanel/Layout/ArmorEditRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "输入护甲 Key"
+
+[node name="AddArmorButton" type="Button" parent="CollectionPanel/Layout/ArmorEditRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加"
+
+[node name="ReplaceArmorButton" type="Button" parent="CollectionPanel/Layout/ArmorEditRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "替换"
+
+[node name="RemoveArmorButton" type="Button" parent="CollectionPanel/Layout/ArmorEditRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除"
+
+[node name="MoveArmorUpButton" type="Button" parent="CollectionPanel/Layout/ArmorEditRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "上移"
+
+[node name="MoveArmorDownButton" type="Button" parent="CollectionPanel/Layout/ArmorEditRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "下移"
+
+[node name="OverrideEntryPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBinding")
+
+[node name="Layout" type="VBoxContainer" parent="OverrideEntryPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="OverrideEntryPanel/Layout"]
+layout_mode = 2
+text = "运行时覆盖规则"
+theme_override_colors/font_color = Color(0.55, 0.82, 1, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="OverrideStatus" type="Label" parent="OverrideEntryPanel/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "当前卡牌未配置覆盖规则"
+autowrap_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="OverrideEntryPanel/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="CreateOverrideButton" type="Button" parent="OverrideEntryPanel/Layout/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "创建覆盖规则"
+
+[node name="OpenOverrideButton" type="Button" parent="OverrideEntryPanel/Layout/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "打开可视化编辑器"
+
+[node name="ClearOverrideButton" type="Button" parent="OverrideEntryPanel/Layout/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+text = "清除"
+
+[node name="AnimationPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleAnimation")
+
+[node name="Layout" type="VBoxContainer" parent="AnimationPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="AnimationPanel/Layout"]
+layout_mode = 2
+text = "卡面动画定位"
+theme_override_colors/font_color = Color(0.82, 0.65, 1, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="ClipRow" type="HBoxContainer" parent="AnimationPanel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="AnimationPanel/Layout/ClipRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "动画 Clip"
+vertical_alignment = 1
+
+[node name="PacketAnimeClipLineEdit" type="LineEdit" parent="AnimationPanel/Layout/ClipRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "例如 BodyIdle"
+
+[node name="PacketOffsetRow" type="HBoxContainer" parent="AnimationPanel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="AnimationPanel/Layout/PacketOffsetRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "卡面偏移"
+vertical_alignment = 1
+
+[node name="XLabel" type="Label" parent="AnimationPanel/Layout/PacketOffsetRow"]
+layout_mode = 2
+text = "X"
+
+[node name="PacketAnimeOffsetX" type="SpinBox" parent="AnimationPanel/Layout/PacketOffsetRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -10000.0
+max_value = 10000.0
+step = 0.01
+
+[node name="YLabel" type="Label" parent="AnimationPanel/Layout/PacketOffsetRow"]
+layout_mode = 2
+text = "Y"
+
+[node name="PacketAnimeOffsetY" type="SpinBox" parent="AnimationPanel/Layout/PacketOffsetRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -10000.0
+max_value = 10000.0
+step = 0.01
+
+[node name="PacketScaleRow" type="HBoxContainer" parent="AnimationPanel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="AnimationPanel/Layout/PacketScaleRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "卡面缩放"
+vertical_alignment = 1
+
+[node name="XLabel" type="Label" parent="AnimationPanel/Layout/PacketScaleRow"]
+layout_mode = 2
+text = "X"
+
+[node name="PacketAnimeScaleX" type="SpinBox" parent="AnimationPanel/Layout/PacketScaleRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -10000.0
+max_value = 10000.0
+step = 0.01
+
+[node name="YLabel" type="Label" parent="AnimationPanel/Layout/PacketScaleRow"]
+layout_mode = 2
+text = "Y"
+
+[node name="PacketAnimeScaleY" type="SpinBox" parent="AnimationPanel/Layout/PacketScaleRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -10000.0
+max_value = 10000.0
+step = 0.01
+
+[node name="HandbookOffsetRow" type="HBoxContainer" parent="AnimationPanel/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="AnimationPanel/Layout/HandbookOffsetRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "图鉴偏移"
+vertical_alignment = 1
+
+[node name="XLabel" type="Label" parent="AnimationPanel/Layout/HandbookOffsetRow"]
+layout_mode = 2
+text = "X"
+
+[node name="HandbookPacketAnimeOffsetX" type="SpinBox" parent="AnimationPanel/Layout/HandbookOffsetRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -10000.0
+max_value = 10000.0
+step = 0.01
+
+[node name="YLabel" type="Label" parent="AnimationPanel/Layout/HandbookOffsetRow"]
+layout_mode = 2
+text = "Y"
+
+[node name="HandbookPacketAnimeOffsetY" type="SpinBox" parent="AnimationPanel/Layout/HandbookOffsetRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -10000.0
+max_value = 10000.0
+step = 0.01
+
+[node name="HandbookPage" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleHandbook")
+
+[node name="Layout" type="VBoxContainer" parent="HandbookPage"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Title" type="Label" parent="HandbookPage/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.91, 0.68, 1)
+theme_override_font_sizes/font_size = 18
+text = "植物百科 · 文本位置预览"
+horizontal_alignment = 1
+
+[node name="DescribeLabel" type="Label" parent="HandbookPage/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.58, 1)
+text = "卡牌说明（战斗选择界面）"
+
+[node name="DescribeTextEdit" type="TextEdit" parent="HandbookPage/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 66)
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+placeholder_text = "描述文本 Key"
+theme_override_colors/font_color = Color(0.16, 0.1, 0.035, 1)
+theme_override_styles/normal = SubResource("StyleTextPage")
+
+[node name="PlantFoodLabel" type="Label" parent="HandbookPage/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 1, 0.48, 1)
+text = "叶绿素能力说明"
+
+[node name="PlantFoodTextEdit" type="TextEdit" parent="HandbookPage/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 66)
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+placeholder_text = "叶绿素文本 Key"
+theme_override_colors/font_color = Color(0.16, 0.1, 0.035, 1)
+theme_override_styles/normal = SubResource("StyleTextPage")
+
+[node name="HandbookDescribeLabel" type="Label" parent="HandbookPage/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.58, 1)
+text = "图鉴描述"
+
+[node name="HandbookDescribeTextEdit" type="TextEdit" parent="HandbookPage/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+placeholder_text = "图鉴描述 Key"
+theme_override_colors/font_color = Color(0.16, 0.1, 0.035, 1)
+theme_override_styles/normal = SubResource("StyleTextPage")
+
+[node name="HandbookStoryLabel" type="Label" parent="HandbookPage/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.58, 1)
+text = "角色故事"
+
+[node name="HandbookStoryTextEdit" type="TextEdit" parent="HandbookPage/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 118)
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+placeholder_text = "图鉴故事 Key"
+theme_override_colors/font_color = Color(0.16, 0.1, 0.035, 1)
+theme_override_styles/normal = SubResource("StyleTextPage")

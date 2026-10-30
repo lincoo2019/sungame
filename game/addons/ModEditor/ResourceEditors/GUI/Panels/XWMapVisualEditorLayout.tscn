@@ -1,0 +1,761 @@
+[gd_scene load_steps=3 format=3]
+
+[sub_resource type="StyleBoxFlat" id="StylePreview"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.105, 0.11, 1)
+border_color = Color(0.298, 0.303, 0.307, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBrush"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.095, 0.1, 0.11, 1)
+border_color = Color(0.294, 0.298, 0.307, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="MapVisualEditorLayout" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PreviewPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(720, 390)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StylePreview")
+
+[node name="PreviewLayout" type="VBoxContainer" parent="PreviewPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="Header" type="HBoxContainer" parent="PreviewPanel/PreviewLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="PreviewPanel/PreviewLayout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "地图场景预览"
+
+[node name="ScenePathLabel" type="Label" parent="PreviewPanel/PreviewLayout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 2
+clip_text = true
+
+[node name="ResetViewButton" type="Button" parent="PreviewPanel/PreviewLayout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+tooltip_text = "缩放并居中显示整张地图"
+text = "重置视图"
+
+[node name="PreviewBody" type="HBoxContainer" parent="PreviewPanel/PreviewLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="PreviewStack" type="Control" parent="PreviewPanel/PreviewLayout/PreviewBody"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(700, 330)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="PreviewPanel/PreviewLayout/PreviewBody/PreviewStack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapSceneViewport" type="SubViewport" parent="PreviewPanel/PreviewLayout/PreviewBody/PreviewStack/ViewportContainer"]
+unique_name_in_owner = true
+disable_3d = true
+transparent_bg = true
+size = Vector2i(700, 330)
+render_target_update_mode = 4
+
+[node name="MapScenePreviewRoot" type="Node2D" parent="PreviewPanel/PreviewLayout/PreviewBody/PreviewStack/ViewportContainer/MapSceneViewport"]
+unique_name_in_owner = true
+
+[node name="MapGridOverlay" type="Control" parent="PreviewPanel/PreviewLayout/PreviewBody/PreviewStack"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="BrushSidePanel" type="VBoxContainer" parent="PreviewPanel/PreviewLayout/PreviewBody"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel"]
+layout_mode = 2
+text = "格子刷子"
+
+[node name="BrushPanel" type="PanelContainer" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBrush")
+
+[node name="BrushLayout" type="VBoxContainer" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="UseCellBrushTool" type="CheckBox" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel/BrushLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+text = "启用瓷砖刷子"
+
+[node name="PresetRow" type="HBoxContainer" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel/BrushLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel/BrushLayout/PresetRow"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "预设"
+vertical_alignment = 1
+clip_text = true
+
+[node name="BrushGridTypeOption" type="OptionButton" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel/BrushLayout/PresetRow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BrushGridTypeSegments" type="HFlowContainer" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel/BrushLayout/PresetRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="TypeRow" type="HBoxContainer" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel/BrushLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel/BrushLayout/TypeRow"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "类型"
+vertical_alignment = 1
+clip_text = true
+
+[node name="BrushGroundCheckBox" type="CheckBox" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel/BrushLayout/TypeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+text = "地面"
+
+[node name="BrushAirCheckBox" type="CheckBox" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel/BrushLayout/TypeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+text = "空中"
+
+[node name="BrushWaterCheckBox" type="CheckBox" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel/BrushLayout/TypeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "水面"
+
+[node name="ElementFlagsRow" type="HBoxContainer" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel/BrushLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel/BrushLayout/ElementFlagsRow"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "元素 flags"
+vertical_alignment = 1
+clip_text = true
+
+[node name="BrushElementFlagsSpinBox" type="SpinBox" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel/BrushPanel/BrushLayout/ElementFlagsRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 2147483647.0
+rounded = true
+
+[node name="CellSelectionLabel" type="Label" parent="PreviewPanel/PreviewLayout/PreviewBody/BrushSidePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+
+[node name="FieldsSplit" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="ResourceFieldsHost" type="VBoxContainer" parent="FieldsSplit"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="ResourceTitle" type="Label" parent="FieldsSplit/ResourceFieldsHost"]
+layout_mode = 2
+text = "资源"
+
+[node name="ResourceNameRow" type="HBoxContainer" parent="FieldsSplit/ResourceFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/ResourceFieldsHost/ResourceNameRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "资源名称"
+vertical_alignment = 1
+clip_text = true
+
+[node name="ResourceNameEdit" type="LineEdit" parent="FieldsSplit/ResourceFieldsHost/ResourceNameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "地图资源名称"
+
+[node name="LocalToSceneRow" type="HBoxContainer" parent="FieldsSplit/ResourceFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/ResourceFieldsHost/LocalToSceneRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "场景本地化"
+vertical_alignment = 1
+clip_text = true
+
+[node name="LocalToSceneCheck" type="CheckButton" parent="FieldsSplit/ResourceFieldsHost/LocalToSceneRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "随场景保存"
+
+[node name="TranslateRow" type="HBoxContainer" parent="FieldsSplit/ResourceFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/ResourceFieldsHost/TranslateRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "多语言 Key"
+vertical_alignment = 1
+clip_text = true
+
+[node name="TranslateLineEdit" type="LineEdit" parent="FieldsSplit/ResourceFieldsHost/TranslateRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DayNightRow" type="HBoxContainer" parent="FieldsSplit/ResourceFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/ResourceFieldsHost/DayNightRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "昼夜切换"
+vertical_alignment = 1
+clip_text = true
+
+[node name="DayNightSwitchingLineEdit" type="LineEdit" parent="FieldsSplit/ResourceFieldsHost/DayNightRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MapSceneRow" type="HBoxContainer" parent="FieldsSplit/ResourceFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/ResourceFieldsHost/MapSceneRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "配置场景"
+vertical_alignment = 1
+clip_text = true
+
+[node name="MapScenePickerHost" type="HBoxContainer" parent="FieldsSplit/ResourceFieldsHost/MapSceneRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MapTextureRow" type="HBoxContainer" parent="FieldsSplit/ResourceFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/ResourceFieldsHost/MapTextureRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "背景贴图"
+vertical_alignment = 1
+clip_text = true
+
+[node name="MapTexturePickerHost" type="HBoxContainer" parent="FieldsSplit/ResourceFieldsHost/MapTextureRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FlagsTitle" type="Label" parent="FieldsSplit/ResourceFieldsHost"]
+layout_mode = 2
+text = "标记"
+
+[node name="IsNightRow" type="HBoxContainer" parent="FieldsSplit/ResourceFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/ResourceFieldsHost/IsNightRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "夜晚"
+vertical_alignment = 1
+clip_text = true
+
+[node name="IsNightCheck" type="CheckBox" parent="FieldsSplit/ResourceFieldsHost/IsNightRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "启用"
+
+[node name="UseSunFallRow" type="HBoxContainer" parent="FieldsSplit/ResourceFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/ResourceFieldsHost/UseSunFallRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "自然掉阳光"
+vertical_alignment = 1
+clip_text = true
+
+[node name="UseSunFallCheck" type="CheckBox" parent="FieldsSplit/ResourceFieldsHost/UseSunFallRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "启用"
+
+[node name="FlagsSummaryLabel" type="Label" parent="FieldsSplit/ResourceFieldsHost"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+
+[node name="SpecialRulesHeader" type="HBoxContainer" parent="FieldsSplit/ResourceFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="FieldsSplit/ResourceFieldsHost/SpecialRulesHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "地图特殊规则"
+vertical_alignment = 1
+
+[node name="AddRuleButton" type="Button" parent="FieldsSplit/ResourceFieldsHost/SpecialRulesHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+tooltip_text = "添加一条可复用地图规则"
+text = "+ 添加规则"
+
+[node name="SpecialRulesHost" type="VBoxContainer" parent="FieldsSplit/ResourceFieldsHost"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="SpecialRulesSummary" type="Label" parent="FieldsSplit/ResourceFieldsHost"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+
+[node name="GeometryFieldsHost" type="VBoxContainer" parent="FieldsSplit"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(390, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="CanvasTitle" type="Label" parent="FieldsSplit/GeometryFieldsHost"]
+layout_mode = 2
+text = "画布"
+
+[node name="MapSizeRow" type="HBoxContainer" parent="FieldsSplit/GeometryFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/GeometryFieldsHost/MapSizeRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "地图尺寸"
+vertical_alignment = 1
+clip_text = true
+
+[node name="XLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/MapSizeRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "X"
+horizontal_alignment = 1
+
+[node name="MapSizeX" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/MapSizeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.1
+
+[node name="YLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/MapSizeRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "Y"
+horizontal_alignment = 1
+
+[node name="MapSizeY" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/MapSizeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.1
+
+[node name="MapOffsetRow" type="HBoxContainer" parent="FieldsSplit/GeometryFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/GeometryFieldsHost/MapOffsetRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "地图偏移"
+vertical_alignment = 1
+clip_text = true
+
+[node name="XLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/MapOffsetRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "X"
+horizontal_alignment = 1
+
+[node name="MapOffsetX" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/MapOffsetRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.1
+
+[node name="YLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/MapOffsetRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "Y"
+horizontal_alignment = 1
+
+[node name="MapOffsetY" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/MapOffsetRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.1
+
+[node name="PlantOffsetRow" type="HBoxContainer" parent="FieldsSplit/GeometryFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/GeometryFieldsHost/PlantOffsetRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "种植高度"
+vertical_alignment = 1
+clip_text = true
+
+[node name="PlantOffsetSpinBox" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/PlantOffsetRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -10000.0
+max_value = 10000.0
+step = 0.1
+
+[node name="GridTitle" type="Label" parent="FieldsSplit/GeometryFieldsHost"]
+layout_mode = 2
+text = "格子"
+
+[node name="LineUseTitle" type="Label" parent="FieldsSplit/GeometryFieldsHost"]
+layout_mode = 2
+text = "启用战线（直接对应游戏行）"
+
+[node name="LineUseHost" type="FlowContainer" parent="FieldsSplit/GeometryFieldsHost"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 4
+
+[node name="GridNumRow" type="HBoxContainer" parent="FieldsSplit/GeometryFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/GeometryFieldsHost/GridNumRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "行列数量"
+vertical_alignment = 1
+clip_text = true
+
+[node name="XLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/GridNumRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "X"
+horizontal_alignment = 1
+
+[node name="GridNumX" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/GridNumRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 26.0
+rounded = true
+
+[node name="YLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/GridNumRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "Y"
+horizontal_alignment = 1
+
+[node name="GridNumY" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/GridNumRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 26.0
+rounded = true
+
+[node name="GridBeginRow" type="HBoxContainer" parent="FieldsSplit/GeometryFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/GeometryFieldsHost/GridBeginRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "起始坐标"
+vertical_alignment = 1
+clip_text = true
+
+[node name="XLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/GridBeginRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "X"
+horizontal_alignment = 1
+
+[node name="GridBeginX" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/GridBeginRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.1
+
+[node name="YLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/GridBeginRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "Y"
+horizontal_alignment = 1
+
+[node name="GridBeginY" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/GridBeginRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.1
+
+[node name="GridSizeRow" type="HBoxContainer" parent="FieldsSplit/GeometryFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="FieldsSplit/GeometryFieldsHost/GridSizeRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "格子大小"
+vertical_alignment = 1
+clip_text = true
+
+[node name="XLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/GridSizeRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "X"
+horizontal_alignment = 1
+
+[node name="GridSizeX" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/GridSizeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.1
+
+[node name="YLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/GridSizeRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "Y"
+horizontal_alignment = 1
+
+[node name="GridSizeY" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/GridSizeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.1
+
+[node name="EdgeRow" type="HBoxContainer" parent="FieldsSplit/GeometryFieldsHost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="FieldsSplit/GeometryFieldsHost/EdgeRow"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+text = "边界"
+vertical_alignment = 1
+clip_text = true
+
+[node name="LLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/EdgeRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "L"
+horizontal_alignment = 1
+
+[node name="EdgeLeft" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/EdgeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.1
+
+[node name="TLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/EdgeRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "T"
+horizontal_alignment = 1
+
+[node name="EdgeTop" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/EdgeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.1
+
+[node name="RLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/EdgeRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "R"
+horizontal_alignment = 1
+
+[node name="EdgeRight" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/EdgeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.1
+
+[node name="BLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost/EdgeRow"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "B"
+horizontal_alignment = 1
+
+[node name="EdgeBottom" type="SpinBox" parent="FieldsSplit/GeometryFieldsHost/EdgeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100000.0
+max_value = 100000.0
+step = 0.1
+
+[node name="GridSummaryLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+
+[node name="EdgeSummaryLabel" type="Label" parent="FieldsSplit/GeometryFieldsHost"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2

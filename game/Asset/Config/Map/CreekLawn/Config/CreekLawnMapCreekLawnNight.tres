@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="TowerDefenseMapConfig" format=3 uid="uid://ssdodns0ygiv"]
+
+[ext_resource type="Script" uid="uid://eoxnow8u525l" path="res://Registry/Battle/Feature/Map/Resource/Cell/Config/TowerDefenseCellConfig.cs" id="1_cell"]
+[ext_resource type="Script" uid="uid://do66qasykqnkv" path="res://Registry/Battle/Feature/Map/Resource/TowerDefenseMapConfig.cs" id="2_map"]
+
+[sub_resource type="Resource" id="Resource_grass"]
+script = ExtResource("1_cell")
+pos = Vector4i(1, 1, 9, 5)
+
+[sub_resource type="Resource" id="Resource_water1"]
+script = ExtResource("1_cell")
+pos = Vector4i(1, 1, 9, 1)
+gridType = Array[int]([3, 4])
+metadata/_custom_type_script = "uid://eoxnow8u525l"
+
+[sub_resource type="Resource" id="Resource_water5"]
+script = ExtResource("1_cell")
+pos = Vector4i(1, 5, 9, 5)
+gridType = Array[int]([3, 4])
+metadata/_custom_type_script = "uid://eoxnow8u525l"
+
+[resource]
+script = ExtResource("2_map")
+translate = "MAP_CREEKLAWN_NIGHT"
+dayNightSwitching = "CreekLawn"
+mapTexturePath = "res://Asset/Texture/TowerDefense/Background/TowerDefenseMap/CreekLawn/CreekLawnNight.png"
+mapScenePath = "res://Asset/Config/Map/CreekLawn/Scene/Night/TowerDefenseMapCreekLawnNight.tscn"
+mapSize = Vector2(1400, 600)
+gridNum = Vector2i(9, 5)
+gridBeginPos = Vector2(248, 75)
+gridSize = Vector2(83, 98)
+edge = Vector4(100, 0, 1100, 600)
+cellConfig = Array[ExtResource("1_cell")]([SubResource("Resource_grass"), SubResource("Resource_water1"), SubResource("Resource_water5")])
+lineUse = Array[int]([1, 2, 3, 4, 5])
+maximumFps = 60
+isNight = true
+useSunFall = false
