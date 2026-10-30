@@ -33,6 +33,18 @@ Moonlight 主机端（HTTP 47989 / HTTPS 47984 / RTSP 48010 / 视频 UDP 47998 /
 可把 `engine/` 编译产物与 dotnet 部署到该位置，或自行调整 `StreamingHost` 中的
 `gameEngineDirectory()`。
 
+### 在其他机器上运行
+
+仓库里只有源码，没有预编译的 `SunGame.app`，需要先构建；运行游戏还依赖引擎二进制与 .NET SDK：
+
+1. 用 Xcode 打开 `app/sungame.xcodeproj`，构建 `SunGame.app`（macOS 14.2+，arm64）。
+2. 从 [Releases](https://github.com/lincoo2019/sungame/releases) 下载并解压到上述目录：
+   - `GodotPatched.zip` → `~/Library/Application Support/QuickRecorder/Engine/GodotPatched.app`
+   - `dotnet-sdk.zip` → `~/Library/Application Support/QuickRecorder/dotnet/`
+3. 打开 App，把「游戏串流 → 工程目录」改成克隆下来的 `game/` 绝对路径
+   （默认值是作者本机的工程路径）。
+4. 首次启动会由 .NET SDK 编译 `game/` 里的 C# 脚本，耗时稍长；之后正常。
+
 ## engine/
 
 魔改的 Godot 4 源码，去掉 `bin/` 构建产物与 `.git`。主要改动：
