@@ -686,23 +686,46 @@ final class MLStreamingHost: ObservableObject {
         return false
     }
 
-    /// 游戏工程目录来源：优先 UserDefaults 的 QRGameProjectPath，否则用固定默认值。
+    /// 游戏工程目录来源：环境变量 → 已保存的设置 → 自动识别。
     /// nonisolated：/applist 在非主线程的 HTTP 处理里构造应用条目，需要在此处直接读取。
     nonisolated static func gameProjectPath() -> String {
+        if let path = ProcessInfo.processInfo.environment["QR_GAME_PROJECT"], !path.isEmpty {
+            return path
+        }
         if let path = UserDefaults.standard.string(forKey: "QRGameProjectPath"), !path.isEmpty {
             return path
         }
-        return "/Volumes/soft/backup/prototype/remote/植物大战僵尸杂交版"
+        return detectedGameProjectPath()
     }
 
-    /// 引擎与 .NET 运行时所在的持久化目录（Application Support 下）。
-    ///
-    /// 沿用 QuickRecorder 的目录，避免独立应用首次启动时找不到已部署的引擎与 dotnet。
+    /// 自动识别游戏工程目录：
+    /// Application Support/sunGame/game → 可执行文件所在仓库的 game/ → 旧的本机路径兜底。
+    nonisolated static func detectedGameProjectPath() -> String {
+        var candidates = [applicationSupportBase() + "/sunGame/game"]
+        if let root = repositoryRoot() { candidates.append(root + "/game") }
+        candidates.append("/Volumes/soft/backup/prototype/remote/植物大战僵尸杂交版")
+
+        if let hit = candidates.first(where: {
+            FileManager.default.fileExists(atPath: $0 + "/project.godot")
+        }) {
+            return hit
+        }
+        return candidates[0]
+    }
+
+    /// 引擎与 .NET 运行时所在目录：优先 sunGame，其次沿用 QuickRecorder（兼容旧部署）。
     nonisolated static func gameEngineDirectory() -> String {
-        let base = (try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask,
-                                                 appropriateFor: nil, create: false).path)
-            ?? (NSHomeDirectory() + "/Library/Application Support")
-        return base + "/QuickRecorder"
+        let base = applicationSupportBase()
+        let preferred = base + "/sunGame"
+        let legacy = base + "/QuickRecorder"
+        let fm = FileManager.default
+        for candidate in [preferred, legacy] {
+            if fm.fileExists(atPath: candidate + "/Engine/GodotPatched.app") ||
+                fm.fileExists(atPath: candidate + "/dotnet/dotnet") {
+                return candidate
+            }
+        }
+        return preferred
     }
 
     /// 游戏可执行文件路径（官方 Godot_mono.app 副本里被替换过的二进制）。
@@ -726,8 +749,10 @@ final class MLStreamingHost: ObservableObject {
         if let path = ProcessInfo.processInfo.environment["DOTNET_ROOT"], !path.isEmpty {
             return path
         }
+        let base = applicationSupportBase()
         let candidates = [
             gameEngineDirectory() + "/dotnet",
+            base + "/sunGame/dotnet",
             NSHomeDirectory() + "/.dotnet",
             "/usr/local/share/dotnet",
         ]
@@ -735,6 +760,32 @@ final class MLStreamingHost: ObservableObject {
             return hit
         }
         return candidates[0]
+    }
+
+    /// Application Support 根目录（不创建）。
+    nonisolated static func applicationSupportBase() -> String {
+        (try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask,
+                                      appropriateFor: nil, create: false).path)
+            ?? (NSHomeDirectory() + "/Library/Application Support")
+    }
+
+    /// 从可执行文件向上查找仓库根目录（含 game/project.godot 或 engine/COPYRIGHT.txt）。
+    nonisolated static func repositoryRoot() -> String? {
+        guard var dir = Bundle.main.executableURL?
+            .resolvingSymlinksInPath()
+            .deletingLastPathComponent() else { return nil }
+        let fm = FileManager.default
+        // 从 .app 内部逐级向上：Contents/MacOS → Contents → .app → 构建目录 → 仓库根
+        for _ in 0..<8 {
+            if fm.fileExists(atPath: dir.appendingPathComponent("game/project.godot").path) ||
+                fm.fileExists(atPath: dir.appendingPathComponent("engine/COPYRIGHT.txt").path) {
+                return dir.path
+            }
+            let parent = dir.deletingLastPathComponent()
+            if parent.path == dir.path { break }
+            dir = parent
+        }
+        return nil
     }
 
     static func supportDirectory() throws -> URL {

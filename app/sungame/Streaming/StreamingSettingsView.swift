@@ -95,9 +95,20 @@ struct StreamingSettingsView: View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack(spacing: 8) {
                     Text("工程目录").frame(width: 64, alignment: .leading)
-                    TextField("游戏工程目录", text: $gameProjectPath)
+                    TextField("自动识别", text: $gameProjectPath)
                         .textFieldStyle(.roundedBorder)
                         .onSubmit { saveGameProjectPath() }
+                    Button("自动识别") {
+                        UserDefaults.standard.removeObject(forKey: "QRGameProjectPath")
+                        gameProjectPath = MLStreamingHost.detectedGameProjectPath()
+                    }
+                    .controlSize(.small)
+                }
+
+                HStack(alignment: .top, spacing: 8) {
+                    Image(systemName: "wand.and.stars").foregroundStyle(.secondary)
+                    Text("不填写时自动识别：优先 Application Support/sunGame/game，其次可执行文件所在仓库的 game/。")
+                        .font(.system(size: 11))
                 }
 
                 Toggle("合成虚拟光标", isOn: Binding(
@@ -124,6 +135,12 @@ struct StreamingSettingsView: View {
 
     private func saveGameProjectPath() {
         let trimmed = gameProjectPath.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmed.isEmpty {
+            // 留空即恢复自动识别
+            UserDefaults.standard.removeObject(forKey: "QRGameProjectPath")
+            gameProjectPath = MLStreamingHost.detectedGameProjectPath()
+            return
+        }
         UserDefaults.standard.set(trimmed, forKey: "QRGameProjectPath")
     }
 

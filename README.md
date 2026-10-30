@@ -23,15 +23,14 @@ Moonlight 主机端（HTTP 47989 / HTTPS 47984 / RTSP 48010 / 视频 UDP 47998 /
   添加本机 IP，配对时把 Moonlight 显示的 4 位 PIN 填回界面。
 - PS5 需填写主机地址、PSN Account-ID 与 8 位 Remote Play PIN，先「注册到主机」。
 
-游戏串流的引擎与 .NET 运行时默认复用 QuickRecorder 的部署目录：
+游戏串流用到的路径会**自动识别**，无需改代码：
 
-```
-~/Library/Application Support/QuickRecorder/Engine/GodotPatched.app
-~/Library/Application Support/QuickRecorder/Engine/dotnet
-```
-
-可把 `engine/` 编译产物与 dotnet 部署到该位置，或自行调整 `StreamingHost` 中的
-`gameEngineDirectory()`。
+- 引擎与 .NET：优先 `~/Library/Application Support/sunGame/`，找不到时回退到旧的
+  `~/Library/Application Support/QuickRecorder/`。
+- 游戏工程：未手动填写时，依次查找 `~/Library/Application Support/sunGame/game`、
+  可执行文件所在仓库的 `game/`（如 `app/build/…` 构建的产物），最后是作者本机旧路径。
+- 界面上「工程目录」留空或点「自动识别」即恢复自动查找；也可用环境变量
+  `QR_GAME_PROJECT` / `QR_GAMESTREAM_EXEC` / `DOTNET_ROOT` 覆盖。
 
 ### 在其他机器上运行
 
@@ -39,10 +38,10 @@ Moonlight 主机端（HTTP 47989 / HTTPS 47984 / RTSP 48010 / 视频 UDP 47998 /
 
 1. 用 Xcode 打开 `app/sungame.xcodeproj`，构建 `SunGame.app`（macOS 14.2+，arm64）。
 2. 从 [Releases](https://github.com/lincoo2019/sungame/releases) 下载并解压到上述目录：
-   - `GodotPatched.zip` → `~/Library/Application Support/QuickRecorder/Engine/GodotPatched.app`
-   - `dotnet-sdk.zip` → `~/Library/Application Support/QuickRecorder/dotnet/`
-3. 打开 App，把「游戏串流 → 工程目录」改成克隆下来的 `game/` 绝对路径
-   （默认值是作者本机的工程路径）。
+   - `GodotPatched.zip` → `~/Library/Application Support/sunGame/Engine/GodotPatched.app`
+   - `dotnet-sdk.zip` → `~/Library/Application Support/sunGame/dotnet/`
+3. 打开 App 即可；「工程目录」留空会自动识别克隆下来的 `game/`（构建位置不在仓库内时，
+   手动填一次该目录的绝对路径）。
 4. 首次启动会由 .NET SDK 编译 `game/` 里的 C# 脚本，耗时稍长；之后正常。
 
 ## engine/
